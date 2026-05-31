@@ -73,10 +73,12 @@ The highest-leverage generation-time MUSTs the generator holds in context. Mecha
 - [RECALL — Retrieval practice](#recall) (2)
 - [ART — Operational artifacts](#art) (6)
 - [EVID — Empirical claims & epistemic honesty](#evid) (3)
-- [GROUND — Anti-hallucination / citation grounding](#ground) (4)
+- [GROUND — Anti-hallucination / citation grounding](#ground) (5)
 - [FIG — Figures & diagrams](#fig) (5)
 - [XREF — Cross-domain mapping & cross-referencing](#xref) (3)
 - [PROJ — IR-first & projections](#proj) (6)
+- [DISC — Discovery campaign (recall augmentation)](#disc) (6)
+- [CONV — Convergence guard (escalate loop)](#conv) (2)
 - [CONSIST — Consistency & build invariants](#consist) (3)
 - [REJECT — Anti-rules / do-not-adopt](#reject) (5)
 
@@ -475,6 +477,13 @@ Named technologies/libraries/models carry current versions; flag any version ref
 - **Counters:** Stale version references (recurring failure).
 - **Phase:** 1,6 · **Evidence:** research phase 1e
 
+#### R-GROUND-05 — Ledger records corroboration and recency
+`SHOULD` · `hard_lint` · *convergent_craft*  
+Each ledger claim supported by >1 independent source sets corroboration_count + corroborated_by; version/SOTA claims set as_of_date; cross-source disagreement uses the existing contested + contradicts (which route to the contested rendering). This is where deep-research's per-claim corroboration / conflict / recency signal lands.  
+- **Check (hard lint):** `checks/ledger.py::provenance_fields` — claims with >1 supporting source set corroboration_count + corroborated_by; version/SOTA claims set as_of_date; contested claims list contradicts
+- **Counters:** The campaign's corroboration / conflict / recency signal is lost because the ledger never records it; provenance collapses to a bare source id.
+- **Phase:** 1 · **Evidence:** design (capture deep-research corroboration + conflict + recency); R-DISC-01; R-EVID-03; R-GROUND-04
+
 <a id='fig'></a>
 
 ### FIG — Figures & diagrams
@@ -532,7 +541,7 @@ Where a home-domain analogue exists, it appears in the L1 card's opening sentenc
 #### R-XREF-02 — References resolve; nav/TOC in sync
 `MUST` · `hard_lint` · *engineering*  
 Every internal cross-reference resolves; nav and TOC are in sync with headings; no phantom references to figures/tables ('as shown below').  
-- **Check (hard lint):** `checks/xrefs.py::xrefs_resolve` — all anchors resolve; nav/TOC == headings; no phantom figure/table refs
+- **Check (hard lint):** `checks/structure_coverage.py::xrefs_resolve` — all anchors resolve; nav/TOC == headings; no phantom figure/table refs
 - **Counters:** LLM emits broken refs and phantom 'see Figure X' pointers.
 - **Phase:** 7 · **Evidence:** styleguide §11,§14; deep-primer Phase 4 self-check
 
@@ -557,7 +566,7 @@ Drafting emits the structured document IR; the HTML and the distilled LLM-MD are
 #### R-PROJ-02 — Block-id alignment across projections
 `MUST` · `hard_lint` · *engineering*  
 Every block_id emitted in the LLM-MD exists in the HTML and vice versa, except blocks intentionally removed by the role filter; a citation by block_id resolves in either artifact.  
-- **Check (hard lint):** `render/check_alignment.py::check_alignment` — set(md block_ids) subset of set(html block_ids); the diff is exactly the role-filtered roles
+- **Check (hard lint):** `render/check_alignment.py::block_ids` — set(md block_ids) subset of set(html block_ids); the diff is exactly the role-filtered roles
 - **Counters:** Renderers assign different ids, breaking cross-artifact traceability.
 - **Phase:** 8 · **Evidence:** artifact-schemas.md (Projections); design decision (align by block-id)
 
@@ -589,6 +598,70 @@ The LLM-MD omits SVG/figure markup and keeps each figure's complete-claim captio
 - **Counters:** SVG XML as token-noise in an LLM context source.
 - **Phase:** 8 · **Evidence:** design decision (modality); R-FIG-01 (captions are complete claims)
 
+<a id='disc'></a>
+
+### DISC — Discovery campaign (recall augmentation)
+
+#### R-DISC-01 — Leads, not evidence
+`MUST` · `human` · *engineering*  
+Discovery output enters the pipeline only as leads: an accepted topic-lead becomes a question in the research-plan, an accepted source-lead becomes a fetch candidate. The grounding loop then independently fetches, quotes (<=15 words), and provenance-tags. A discovery lead is never itself a ledger claim.  
+- **Check (human):** no ledger entry is grounded solely on a discovery-lead URL without an independent grounding-loop fetch
+- **Counters:** Treating deep-research's synthesized claims as evidence, collapsing provenance to 'the research agent asserted it'.
+- **Phase:** 1 · **Evidence:** design (augment-not-replace; leads-not-evidence); EM Addendum §A (attributable generation)
+
+#### R-DISC-02 — Framing diversity per wave
+`MUST` · `hard_lint` · *convergent_craft*  
+Each discovery wave runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), with >=1 deliberately orthogonal framing (contrarian / adjacent-field) per wave; inter-run novelty is measured and redundant archetypes pruned.  
+- **Check (hard lint):** `checks/discovery.py::framing_diversity` — each wave's brief manifest covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal
+- **Counters:** Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost.
+- **Phase:** 1 · **Evidence:** design (diversity is the lever; blind-spot decorrelation)
+
+#### R-DISC-03 — Saturation-gated termination
+`MUST` · `hard_lint` · *engineering*  
+The campaign runs waves until the novel-lead fraction (vs the accepted set, diversity-aware) falls below SATURATION_THRESHOLD or MAX_WAVES is hit; the per-wave saturation metric is recorded in discovery-log.  
+- **Check (hard lint):** `checks/discovery.py::saturation_terminal` — discovery-log shows waves<=MAX_WAVES, per-wave novel_fraction recorded, terminal in {saturated, max_waves}
+- **Counters:** Open-ended sweeping (cost/time) or premature stop (missed blind spots).
+- **Phase:** 1 · **Evidence:** design (saturation stopping rule; theoretical saturation / info-gain plateau)
+
+#### R-DISC-04 — Triage is model-judged; lead metrics are deterministic
+`MUST` · `human` · *engineering*  
+Lead triage (accept/flag/drop) and salience scoring are model-judged; lead dedup/clustering, cross-run support-count, novelty diff, and the saturation metric are deterministic code. Never compute clustering or saturation with an LLM call.  
+- **Check (human):** research/discovery.py is pure/deterministic (cluster_leads, support_count, novelty, saturation, framing_diversity); the judge supplies only extract_leads, triage_leads, assess_topic, wave_briefs
+- **Counters:** Model-judged clustering/saturation makes the campaign's stopping decision irreproducible.
+- **Phase:** 1 · **Evidence:** design (model-judged gate); local/model split (CLAUDE.md); R-CONV-02
+
+#### R-DISC-05 — Discovery snapshot for reproducibility
+`SHOULD` · `hard_lint` · *engineering*  
+Every deep-research report and the accepted lead set are frozen into discovery-snapshot/; eval replays the snapshot rather than re-running the campaign; accepted leads carry their snapshot report id.  
+- **Check (hard lint):** `checks/discovery.py::snapshot_complete` — every report referenced by an accepted lead exists in discovery-snapshot/; accepted leads carry report ids
+- **Counters:** A nondeterministic campaign makes eval / golden runs unreproducible.
+- **Phase:** 1,7 · **Evidence:** design (reproducibility; ledger_snapshot pattern)
+
+#### R-DISC-06 — User seed sources: consulted, grounded, not gospel
+`MUST` · `hard_lint` · *convergent_craft*  
+User-provided seed_sources are consulted and grounded. Direct seeds (url/file/project_ref) enter as accepted source_leads, exempt from triage-drop, marked provenance_origin=user; author/entity directives seed a targeted discovery brief. Seeds are authoritative for INCLUSION only: claims from them are still corroboration-graded (R-GROUND-05) and a seed contradicted by the discovered consensus renders as contested. The R-DISC-01 firewall still applies - a seed is fetched and grounded, never pre-trusted prose.  
+- **Check (hard lint):** `checks/discovery.py::seed_handling` — every seed_source appears in discovery-leads as status=accepted with provenance_origin=user; seed-only claims carry corroboration_count and are not promoted past their evidence
+- **Counters:** Treating a user-named source as ground truth - laundering a single seed into an asserted claim, or dropping it because the salience gate scored it low.
+- **Phase:** 0,1 · **Evidence:** design (seeds = likely-worth-looking-at, not gospel); R-DISC-01; R-GROUND-05
+
+<a id='conv'></a>
+
+### CONV — Convergence guard (escalate loop)
+
+#### R-CONV-01 — Escalate loop terminates in a valid terminal state
+`MUST` · `hard_lint` · *engineering*  
+The re-front-load (escalate) loop runs at most K_MAX cycles and ends in exactly one of: a coherent draft, a footnoted residual, a rendered contested-structure block, or a chaotic-scope flag. The deepen path is separately bounded by max_dives per draft.  
+- **Check (hard lint):** `checks/convergence.py::terminal_state` — convergence-log shows <=K_MAX cycles and a single valid terminal regime; no escalate decision after K_MAX
+- **Counters:** A loose escalate threshold oscillates: each redraft surfaces a new structural wrinkle and the loop never terminates.
+- **Phase:** 3 · **Evidence:** convergence-guard spec (artifact-schemas.md); design decision (loose escalate + auto-tighten)
+
+#### R-CONV-02 — Structural classification is model-judged; structural distance is deterministic
+`MUST` · `human` · *engineering*  
+Deciding whether a finding is structural and what concept-map edits it implies is model-judged; computing structural distance, the tau schedule, convergence ratios, and trajectory clustering is deterministic code. Never compute struct_distance or the regime with an LLM call.  
+- **Check (human):** research/convergence.py is pure/deterministic (struct_distance, tau, classify_trajectory); the judge supplies only scan_for_structural + implied_edits
+- **Counters:** Making struct_distance or convergence an LLM call destroys reproducibility of the termination decision.
+- **Phase:** 3 · **Evidence:** convergence-guard spec; local/model split (CLAUDE.md)
+
 <a id='consist'></a>
 
 ### CONSIST — Consistency & build invariants
@@ -610,7 +683,7 @@ Every section/subsection/card/figure carries a stable data-block-id; the HTML em
 #### R-CONSIST-03 — Footnotes balanced
 `SHOULD` · `hard_lint` · *engineering*  
 Every footnote marker has a matching definition and vice versa.  
-- **Check (hard lint):** `checks/footnote.py::footnote_balance` — markers == definitions
+- **Check (hard lint):** `checks/structure_coverage.py::footnote_balance` — markers == definitions
 - **Counters:** Dangling or orphaned footnotes.
 - **Phase:** 7 · **Evidence:** styleguide §14
 

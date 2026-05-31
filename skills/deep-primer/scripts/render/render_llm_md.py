@@ -68,8 +68,25 @@ def _sources_line(b: Block) -> str:
     return "Sources: [none yet — inferred]"
 
 
+def _distill_contested(b: Block, referent: str) -> str:
+    """A contested-structure block is operational (kept): one `## [block: <id>]` per framing,
+    each carrying provenance (R-PROJ-05). All share the block-id so they resolve in the HTML."""
+    prov = b.provenance.value if b.provenance else "-"
+    chunks = []
+    for f in b.framings or []:
+        applies = f"\nReach-for-it-when: {f.applies_when}" if f.applies_when else ""
+        srcs = f"Sources: [{', '.join(f.source_ids)}]" if f.source_ids else "Sources: [none yet — inferred]"
+        chunks.append(
+            f"## [block: {b.block_id}]   framing: {f.label}   provenance: {prov}\n"
+            f"Framing: {deanaphorize(f.summary or '', referent)}{applies}\n{srcs}"
+        )
+    return "\n\n".join(chunks)
+
+
 def _distill(sec, b: Block, referents: dict[str, str]) -> str:
     referent = referents.get(b.concept or sec.concept or "", None) or sec.title.split(",")[0]
+    if b.role.value == "contested":
+        return _distill_contested(b, referent)
     head = (f"## [block: {b.block_id}]   concept: {b.concept or sec.concept or '-'}   "
             f"mode: {b.mode.value if b.mode else '-'}   provenance: {b.provenance.value if b.provenance else '-'}")
     if b.role.value == "figure":

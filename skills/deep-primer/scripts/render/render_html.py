@@ -63,12 +63,31 @@ def _placeholder_svg() -> str:
             '<text x="24" y="60">schematic</text></svg>')
 
 
-def _footnote_sup(b: Block, fn_index: dict[str, int]) -> str:
+def _footnote_sup_ids(source_ids, fn_index: dict[str, int]) -> str:
     sups = []
-    for sid in b.source_ids:
+    for sid in source_ids:
         n = fn_index.setdefault(sid, len(fn_index) + 1)
         sups.append(f'<sup class="fn">[{n}]</sup>')
     return "".join(sups)
+
+
+def _footnote_sup(b: Block, fn_index: dict[str, int]) -> str:
+    return _footnote_sup_ids(b.source_ids, fn_index)
+
+
+def _contested_html(b: Block, attrs: str, fn_index: dict[str, int]) -> str:
+    """Render a contested-structure block: each framing as a comparison panel (reuses the
+    tradeoff/Toulmin path). The competing-views banner is document-level (see render_html)."""
+    panels = []
+    for f in b.framings or []:
+        applies = f'<p class="applies-when">Reach for it when: {_esc(f.applies_when)}</p>' if f.applies_when else ""
+        panels.append(
+            f'<div class="toulmin framing"><strong>{_esc(f.label)}</strong>'
+            f'<p>{_esc(f.summary)}</p>{applies}{_footnote_sup_ids(f.source_ids, fn_index)}</div>'
+        )
+    return (f'<div class="contested" {attrs} role="group" aria-label="competing organizing views">'
+            f'<p class="contested-note">Competing organizing views — presented, not asserted.{_prov_span(b)}</p>'
+            f'{"".join(panels)}</div>')
 
 
 def _block_html(b: Block, fn_index: dict[str, int]) -> str:
@@ -77,6 +96,8 @@ def _block_html(b: Block, fn_index: dict[str, int]) -> str:
         svg = _placeholder_svg()
         cap = f'<figcaption>{_esc(b.caption)}{_prov_span(b)}</figcaption>' if b.caption else ""
         return f'<figure {attrs} role="img" aria-label="{_esc(b.caption or "")}">{svg}{cap}</figure>'
+    if b.role.value == "contested":
+        return _contested_html(b, attrs, fn_index)
     text = _esc(b.text)
     tail = _prov_span(b) + _footnote_sup(b, fn_index)
     if b.role.value == "lede":
@@ -128,7 +149,11 @@ def render_html(
     title: str | None = None,
 ) -> str:
     fn_index: dict[str, int] = {}
-    sections_html = "\n".join(_section_html(sec, fn_index) for sec in ir.sections)
+    banner = ""
+    if concept_map is not None and concept_map.contested:
+        banner = ('<aside class="contested-banner" role="note">Competing organizing views: this '
+                  'primer presents its structure as contested, not asserted.</aside>\n')
+    sections_html = banner + "\n".join(_section_html(sec, fn_index) for sec in ir.sections)
     refs_html = _references_html(fn_index)
     doc_title = title or (ir.sections[0].title if ir.sections else "Primer")
 

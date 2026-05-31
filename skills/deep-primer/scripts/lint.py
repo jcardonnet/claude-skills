@@ -54,8 +54,9 @@ CHECKS = {
     "checks/univocity_terms.py::canonical_terms": univocity_terms.canonical_terms,
     "checks/multiview_concepts.py::modes_per_concept": multiview_concepts.modes_per_concept,
     "checks/recency_versions.py::version_freshness": recency_versions.version_freshness,
-    "checks/footnote.py::footnote_balance": footnote.footnote_balance,
-    "checks/xrefs.py::xrefs_resolve": xrefs.xrefs_resolve,
+    # the registry names these two under structure_coverage.py; the impls live in their own modules
+    "checks/structure_coverage.py::footnote_balance": footnote.footnote_balance,
+    "checks/structure_coverage.py::xrefs_resolve": xrefs.xrefs_resolve,
     "checks/provenance.py::tagged": provenance.tagged,
 }
 
@@ -88,23 +89,19 @@ def _run_ref(rule: dict, ref: str, ctx: LintContext) -> list[dict]:
     return [_record(rule, ref, v.block_id, _status_for(rule, v.force_status), v.detail) for v in violations]
 
 
-def _refs_for(rule: dict) -> list[str]:
-    """A hard_lint rule's own ref, plus any also_hard_lint companion on a soft rule."""
-    refs: list[str] = []
-    chk = rule.get("check", {})
-    if rule.get("enforcement") == "hard_lint" and chk.get("ref"):
-        refs.append(chk["ref"])
-    if chk.get("also_hard_lint"):
-        refs.append(chk["also_hard_lint"])
-    return refs
+def _ir_hard(rules: list[dict]) -> list[dict]:
+    """IR-targeting hard_lints only. Convention: absent check.input => 'ir'. The render /
+    discovery / convergence / ledger checks run in their own passes — their artifacts don't
+    exist during an IR-only lint, and several are unimplemented stubs we must not call here."""
+    return [r for r in rules
+            if r["enforcement"] == "hard_lint" and r.get("check", {}).get("input", "ir") == "ir"]
 
 
 def run_lint(ctx: LintContext, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
     rules = yaml.safe_load(Path(registry_path).read_text(encoding="utf-8")).get("rules", [])
     findings: list[dict] = []
-    for rule in rules:
-        for ref in _refs_for(rule):
-            findings.extend(_run_ref(rule, ref, ctx))
+    for rule in _ir_hard(rules):
+        findings.extend(_run_ref(rule, rule["check"]["ref"], ctx))
 
     counts: dict[str, int] = {}
     for f in findings:

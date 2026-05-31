@@ -10,9 +10,10 @@ models pin the on-disk YAML contracts so the Phase-6/7 checks have a stable shap
 """
 from __future__ import annotations
 
+from datetime import date
 from enum import Enum
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field
@@ -33,6 +34,7 @@ class Role(str, Enum):
     recall = "recall"
     glossary = "glossary"
     further_reading = "further_reading"
+    contested = "contested"   # 6b convergence loop: a presented-not-asserted structure (carries framings)
 
 
 class Mode(str, Enum):
@@ -92,6 +94,17 @@ def _read_yaml(path: str | Path) -> dict[str, Any]:
 
 # --- Document IR (canonical) -------------------------------------------------
 
+class Framing(BaseModel):
+    """One cluster centroid a contested-structure block oscillated among (artifact-schemas.md)."""
+
+    model_config = ConfigDict(extra="allow")
+
+    label: str
+    summary: str | None = None
+    applies_when: str | None = None
+    source_ids: list[str] = Field(default_factory=list)
+
+
 class Block(BaseModel):
     """A leaf field-guide block. `extra=forbid` turns stray/misspelled keys into errors."""
 
@@ -107,6 +120,7 @@ class Block(BaseModel):
     source_ids: list[str] = Field(default_factory=list)
     caption: str | None = None
     svg_ref: str | None = None
+    framings: list[Framing] | None = None   # only on role=contested (6b convergence loop)
 
 
 class Section(BaseModel):
@@ -164,6 +178,11 @@ class Claim(BaseModel):
     confidence: Tier | None = None
     contested: bool = False
     contradicts: list[str] = Field(default_factory=list)
+    # grounding-loop fields (populated in Prompt 6; only need to exist on the model now)
+    corroboration_count: int | None = None
+    corroborated_by: list[str] = Field(default_factory=list)   # other source_ids supporting this claim
+    as_of_date: date | None = None                             # version/SOTA claims: when verified current
+    provenance_origin: Literal["discovered", "user"] = "discovered"  # user = a seed_source (R-DISC-06)
 
 
 class Source(BaseModel):
@@ -177,6 +196,7 @@ class Source(BaseModel):
     date: str | None = None
     type: SourceType | None = None
     credibility: Tier | None = None
+    provenance_origin: Literal["discovered", "user"] = "discovered"  # user = a seed_source (R-DISC-06)
     retrieved_at: str | None = None
     content_hash: str | None = None
     claims: list[Claim] = Field(default_factory=list)
@@ -226,6 +246,8 @@ class ConceptMap(BaseModel):
     model_config = ConfigDict(extra="allow")
 
     concepts: list[Concept] = Field(default_factory=list)
+    cycle: int | None = None        # concept-map-vK.yaml: the convergence cycle K (R-CONV)
+    contested: bool = False         # true when the structure is presented, not asserted (see Role.contested)
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> ConceptMap:
