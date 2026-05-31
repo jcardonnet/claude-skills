@@ -7,3 +7,4 @@ CAPABILITIES.md
 *-report.json
 run-manifest.json
 .DS_Store
+.specstory/
