@@ -42,6 +42,7 @@ question. Write `parameters.yaml`.
 - **seniority_band** — `early_career | mid_senior | staff_plus`; scales scaffolding suppression (`R-PARAM-02`, `R-EXPERT-01`). Default `mid_senior` if unknown.
 - **length_budget** — drives depth allocation via the ledger-salience proxy (claim frequency / centrality), since V1 has no concept graph. Total length tracks the budget; allocate by salience rather than padding uniformly (`R-ARCH-06`), and scale the apparatus to each section's substance (`R-DEPTH-03`).
 - **outputs** — which projections to render from the IR: `html` (human) and/or `llm_md` (operationally-distilled, block-id-aligned, provenance-tagged). Default `[html]`; add `llm_md` when the primer will also ground an LLM (`R-PROJ-01..06`).
+- **seed_sources** — optional user-provided sources to consult ("check the work of John Doe and <URL>"): `url` / `file` / `project_ref` (direct — fetched, grounded, never dropped) and `author`/entity directives (seed a targeted brief). Treated as leads worth looking at, not gospel — still corroboration-graded and surfaced as contested where the consensus disagrees (`R-DISC-06`). `project_ref` resolves only in claude.ai.
 
 ## CORE — hold these throughout (the resident `must_core`)
 1. **R-ARCH-03** Open with the thesis/answer (BLUF/SCQA), cuttable from the bottom; no throat-clearing intro.
@@ -76,6 +77,8 @@ can resume after interruption.
 **IR-first:** Phase 3 emits a canonical **document IR** (`references/artifact-schemas.md`), not HTML;
 Phases 4–7 read the IR; Phase 8 renders it into the requested `outputs` (HTML and/or the distilled
 LLM-MD), which share block-ids (`R-PROJ-01..06`).
+**Discovery (Phase 1a):** before retrieval, a saturating cascade of parallel deep-research ensembles (`references/discovery-brief-templates.md`) augments recall, feeding leads — not evidence — into the grounding loop (`R-DISC-01..05`; deterministic engine `scripts/research/discovery.py`).
+**Convergence guard:** the drafting↔structure loop is bounded by `R-CONV-01..02` — a loose escalate (re-front-load) threshold that auto-tightens to a hard `K_MAX`, and renders a `contested-structure` block when the structure won't settle (`scripts/research/convergence.py`).
 
 ### Circuit breakers (from registry `budgets`; tune in eval)
 `max_retrieval_iterations: 6` · `min_sources_per_question: 2` · `min_independent_nonvendor_sources_for_perf_claim: 2` · `recall_calibration_target: 0.75` · `critic_human_divergence_recalibrate_threshold: 0.25` · `max_revise_iterations: 3` · `per_run_token_cap: TODO`. A loop that hits a cap halts and surfaces state rather than spending more.

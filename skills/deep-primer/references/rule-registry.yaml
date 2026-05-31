@@ -643,7 +643,7 @@ rules:
     directive: "Every internal cross-reference resolves; nav and TOC are in sync with headings; no phantom references to figures/tables ('as shown below')."
     priority: MUST
     enforcement: hard_lint
-    check: {type: script, ref: "checks/xrefs.py::xrefs_resolve", detail: "all anchors resolve; nav/TOC == headings; no phantom figure/table refs"}
+    check: {type: script, ref: "checks/structure_coverage.py::xrefs_resolve", detail: "all anchors resolve; nav/TOC == headings; no phantom figure/table refs"}
     phase: [7]
     counters: "LLM emits broken refs and phantom 'see Figure X' pointers."
     evidence_grade: engineering
@@ -677,7 +677,7 @@ rules:
     directive: "Every section/subsection/card/figure carries a stable data-block-id; the HTML embeds a primer-meta JSON (parameters, frozen ledger snapshot, concept-map, lint report)."
     priority: MUST
     enforcement: hard_lint
-    check: {type: script, ref: "utils/parse_primer.py::block_ids_and_meta", detail: "block_ids present and unique; primer-meta JSON parseable and complete"}
+    check: {type: script, ref: "utils/parse_primer.py::block_ids_and_meta", input: html, detail: "block_ids present and unique; primer-meta JSON parseable and complete"}
     phase: [3,7]
     counters: "Whole-document regeneration on revision (no targetable blocks); non-reproducible output."
     evidence_grade: engineering
@@ -688,7 +688,7 @@ rules:
     directive: "Every footnote marker has a matching definition and vice versa."
     priority: SHOULD
     enforcement: hard_lint
-    check: {type: script, ref: "checks/footnote.py::footnote_balance", detail: "markers == definitions"}
+    check: {type: script, ref: "checks/structure_coverage.py::footnote_balance", detail: "markers == definitions"}
     phase: [7]
     counters: "Dangling or orphaned footnotes."
     evidence_grade: engineering
@@ -802,7 +802,7 @@ rules:
     directive: "Every block_id emitted in the LLM-MD exists in the HTML and vice versa, except blocks intentionally removed by the role filter; a citation by block_id resolves in either artifact."
     priority: MUST
     enforcement: hard_lint
-    check: {type: script, ref: "render/check_alignment.py::check_alignment", detail: "set(md block_ids) subset of set(html block_ids); the diff is exactly the role-filtered roles"}
+    check: {type: script, ref: "render/check_alignment.py::block_ids", input: projections, detail: "set(md block_ids) subset of set(html block_ids); the diff is exactly the role-filtered roles"}
     phase: [8]
     counters: "Renderers assign different ids, breaking cross-artifact traceability."
     evidence_grade: engineering
@@ -813,7 +813,7 @@ rules:
     directive: "The LLM-MD keeps the operational core (claims, Toulmin recommendations, decision matrix, figure captions, glossary, annotated further-reading) and drops pedagogical apparatus (recall questions; the advance-organizer hook framing of cards)."
     priority: SHOULD
     enforcement: hard_lint
-    check: {type: script, ref: "render/render_llm_md.py::role_filter", detail: "no role=recall blocks in md; cards reduced to their information content"}
+    check: {type: script, ref: "render/render_llm_md.py::role_filter", input: llm_md, detail: "no role=recall blocks in md; cards reduced to their information content"}
     phase: [8]
     counters: "Shipping the human pedagogy verbatim as the LLM context source."
     evidence_grade: convergent_craft
@@ -824,7 +824,7 @@ rules:
     directive: "Each LLM-MD block stands alone when retrieved: referents restated, no cross-block anaphora ('as above'); cross-chunk minimalism is suspended while within-chunk minimalism is kept. Each rewritten block must still entail its source claim_ids."
     priority: MUST
     enforcement: model_verified
-    check: {type: model, ref: "verify/chunk_selfcontained.py::entailment", detail: "no dangling anaphora; rewritten block entails its claim_ids (NLI/MiniCheck or scoped Claude)"}
+    check: {type: model, ref: "verify/chunk_selfcontained.py::entailment", input: llm_md, detail: "no dangling anaphora; rewritten block entails its claim_ids (NLI/MiniCheck or scoped Claude)"}
     phase: [8]
     counters: "Given->new flow (R-PROSE-01) leaves a chunk leaning on its neighbors, useless when retrieved alone."
     evidence_grade: convergent_craft
@@ -846,8 +846,110 @@ rules:
     directive: "The LLM-MD omits SVG/figure markup and keeps each figure's complete-claim caption as text."
     priority: SHOULD
     enforcement: hard_lint
-    check: {type: script, ref: "render/render_llm_md.py::no_svg", detail: "no <svg> in md; each figure's figcaption present as text"}
+    check: {type: script, ref: "render/render_llm_md.py::no_svg", input: llm_md, detail: "no <svg> in md; each figure's figcaption present as text"}
     phase: [8]
     counters: "SVG XML as token-noise in an LLM context source."
     evidence_grade: engineering
     evidence_ref: "design decision (modality); R-FIG-01 (captions are complete claims)"
+
+  # --- CONV: convergence guard for the escalate (re-front-load) loop -----------
+  - id: R-CONV-01
+    title: "Escalate loop terminates in a valid terminal state"
+    directive: "The re-front-load (escalate) loop runs at most K_MAX cycles and ends in exactly one of: a coherent draft, a footnoted residual, a rendered contested-structure block, or a chaotic-scope flag. The deepen path is separately bounded by max_dives per draft."
+    priority: MUST
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/convergence.py::terminal_state", input: convergence-log, detail: "convergence-log shows <=K_MAX cycles and a single valid terminal regime; no escalate decision after K_MAX"}
+    phase: [3]
+    counters: "A loose escalate threshold oscillates: each redraft surfaces a new structural wrinkle and the loop never terminates."
+    evidence_grade: engineering
+    evidence_ref: "convergence-guard spec (artifact-schemas.md); design decision (loose escalate + auto-tighten)"
+
+  - id: R-CONV-02
+    title: "Structural classification is model-judged; structural distance is deterministic"
+    directive: "Deciding whether a finding is structural and what concept-map edits it implies is model-judged; computing structural distance, the tau schedule, convergence ratios, and trajectory clustering is deterministic code. Never compute struct_distance or the regime with an LLM call."
+    priority: MUST
+    enforcement: human
+    check: {type: human, inspect: "research/convergence.py is pure/deterministic (struct_distance, tau, classify_trajectory); the judge supplies only scan_for_structural + implied_edits"}
+    phase: [3]
+    counters: "Making struct_distance or convergence an LLM call destroys reproducibility of the termination decision."
+    evidence_grade: engineering
+    evidence_ref: "convergence-guard spec; local/model split (CLAUDE.md)"
+
+  # --- DISC: discovery campaign (deep-research as a recall layer) --------------
+  - id: R-DISC-01
+    title: "Leads, not evidence"
+    directive: "Discovery output enters the pipeline only as leads: an accepted topic-lead becomes a question in the research-plan, an accepted source-lead becomes a fetch candidate. The grounding loop then independently fetches, quotes (<=15 words), and provenance-tags. A discovery lead is never itself a ledger claim."
+    priority: MUST
+    enforcement: human
+    check: {type: human, inspect: "no ledger entry is grounded solely on a discovery-lead URL without an independent grounding-loop fetch"}
+    phase: [1]
+    counters: "Treating deep-research's synthesized claims as evidence, collapsing provenance to 'the research agent asserted it'."
+    evidence_grade: engineering
+    evidence_ref: "design (augment-not-replace; leads-not-evidence); EM Addendum §A (attributable generation)"
+
+  - id: R-DISC-02
+    title: "Framing diversity per wave"
+    directive: "Each discovery wave runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), with >=1 deliberately orthogonal framing (contrarian / adjacent-field) per wave; inter-run novelty is measured and redundant archetypes pruned."
+    priority: MUST
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/discovery.py::framing_diversity", input: discovery-log, detail: "each wave's brief manifest covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal"}
+    phase: [1]
+    counters: "Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost."
+    evidence_grade: convergent_craft
+    evidence_ref: "design (diversity is the lever; blind-spot decorrelation)"
+
+  - id: R-DISC-03
+    title: "Saturation-gated termination"
+    directive: "The campaign runs waves until the novel-lead fraction (vs the accepted set, diversity-aware) falls below SATURATION_THRESHOLD or MAX_WAVES is hit; the per-wave saturation metric is recorded in discovery-log."
+    priority: MUST
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/discovery.py::saturation_terminal", input: discovery-log, detail: "discovery-log shows waves<=MAX_WAVES, per-wave novel_fraction recorded, terminal in {saturated, max_waves}"}
+    phase: [1]
+    counters: "Open-ended sweeping (cost/time) or premature stop (missed blind spots)."
+    evidence_grade: engineering
+    evidence_ref: "design (saturation stopping rule; theoretical saturation / info-gain plateau)"
+
+  - id: R-DISC-04
+    title: "Triage is model-judged; lead metrics are deterministic"
+    directive: "Lead triage (accept/flag/drop) and salience scoring are model-judged; lead dedup/clustering, cross-run support-count, novelty diff, and the saturation metric are deterministic code. Never compute clustering or saturation with an LLM call."
+    priority: MUST
+    enforcement: human
+    check: {type: human, inspect: "research/discovery.py is pure/deterministic (cluster_leads, support_count, novelty, saturation, framing_diversity); the judge supplies only extract_leads, triage_leads, assess_topic, wave_briefs"}
+    phase: [1]
+    counters: "Model-judged clustering/saturation makes the campaign's stopping decision irreproducible."
+    evidence_grade: engineering
+    evidence_ref: "design (model-judged gate); local/model split (CLAUDE.md); R-CONV-02"
+
+  - id: R-DISC-05
+    title: "Discovery snapshot for reproducibility"
+    directive: "Every deep-research report and the accepted lead set are frozen into discovery-snapshot/; eval replays the snapshot rather than re-running the campaign; accepted leads carry their snapshot report id."
+    priority: SHOULD
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/discovery.py::snapshot_complete", input: snapshot, detail: "every report referenced by an accepted lead exists in discovery-snapshot/; accepted leads carry report ids"}
+    phase: [1,7]
+    counters: "A nondeterministic campaign makes eval / golden runs unreproducible."
+    evidence_grade: engineering
+    evidence_ref: "design (reproducibility; ledger_snapshot pattern)"
+
+  # --- GROUND addendum: ledger carries corroboration + recency ----------------
+  - id: R-GROUND-05
+    title: "Ledger records corroboration and recency"
+    directive: "Each ledger claim supported by >1 independent source sets corroboration_count + corroborated_by; version/SOTA claims set as_of_date; cross-source disagreement uses the existing contested + contradicts (which route to the contested rendering). This is where deep-research's per-claim corroboration / conflict / recency signal lands."
+    priority: SHOULD
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/ledger.py::provenance_fields", input: ledger, detail: "claims with >1 supporting source set corroboration_count + corroborated_by; version/SOTA claims set as_of_date; contested claims list contradicts"}
+    phase: [1]
+    counters: "The campaign's corroboration / conflict / recency signal is lost because the ledger never records it; provenance collapses to a bare source id."
+    evidence_grade: convergent_craft
+    evidence_ref: "design (capture deep-research corroboration + conflict + recency); R-DISC-01; R-EVID-03; R-GROUND-04"
+
+  - id: R-DISC-06
+    title: "User seed sources: consulted, grounded, not gospel"
+    directive: "User-provided seed_sources are consulted and grounded. Direct seeds (url/file/project_ref) enter as accepted source_leads, exempt from triage-drop, marked provenance_origin=user; author/entity directives seed a targeted discovery brief. Seeds are authoritative for INCLUSION only: claims from them are still corroboration-graded (R-GROUND-05) and a seed contradicted by the discovered consensus renders as contested. The R-DISC-01 firewall still applies - a seed is fetched and grounded, never pre-trusted prose."
+    priority: MUST
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/discovery.py::seed_handling", input: discovery-log, detail: "every seed_source appears in discovery-leads as status=accepted with provenance_origin=user; seed-only claims carry corroboration_count and are not promoted past their evidence"}
+    phase: [0,1]
+    counters: "Treating a user-named source as ground truth - laundering a single seed into an asserted claim, or dropping it because the salience gate scored it low."
+    evidence_grade: convergent_craft
+    evidence_ref: "design (seeds = likely-worth-looking-at, not gospel); R-DISC-01; R-GROUND-05"

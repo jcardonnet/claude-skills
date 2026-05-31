@@ -11,11 +11,25 @@ Paths below are relative to `skills/deep-primer/` unless noted.
 
 ## Prompt 0 — Orient & set up the environment (no feature code yet)
 Read `README.md`, `CLAUDE.md`, `skills/deep-primer/SKILL.md`, `skills/deep-primer/references/artifact-schemas.md`, and `skills/deep-primer/references/rule-registry.yaml` (skim `references/evidence-map.md`). Then:
-1. Create a venv (`uv venv`) and `uv pip install -e .[dev]`. Try the optional extras `[nlp]` (spaCy + a coref model; download a spaCy English model) and the verify option (see Prompt 3) — record what actually installs in this environment.
+1. Create a venv and `pip install -e .[dev]`. Try the optional extras `[nlp]` (spaCy + a coref model; download a spaCy English model) and the verify option (see Prompt 3) — record what actually installs in this environment.
 2. Implement `scripts/probe_env.py` to detect availability of: spaCy + coreference, an NLI/entailment model, lxml/bs4. Write `CAPABILITIES.md` recording which lints and which verifier can run natively vs must fall back.
 3. Run `python tools/validate_skill.py skills/*` and `make build`; confirm the lockstep regeneration is idempotent (`git diff` empty after build).
 
 Done when `CAPABILITIES.md` exists, validation + idempotent build pass, and you can state back to me the IR-first contract and the local-deterministic / model_verified / agent-orchestrated script split.
+
+## Prompt 0.5 — Reconcile the contract deltas into your Prompts 1–5 code (apply `RECONCILE.md`)
+You implemented Prompts 1–5 before the discovery / convergence / seed-source contracts landed. The *registry and schema* changes are already in the repo (you pulled them); this prompt applies the small **code** touch-ups in `RECONCILE.md` to your implemented files. It is mechanical — review the diff at the end and run nothing else.
+
+Read `RECONCILE.md` and the `R-GROUND-05`, `R-DISC-0*`, `R-CONV-0*` rows of `references/rule-registry.yaml`. Apply exactly these and nothing more:
+1. `scripts/ir/schema.py` (+ `validate_ir`): add `contested` to the block `Role` enum; add `cycle: int | None = None` and `contested: bool = False` to `ConceptMap`; add to the ledger-claim model `corroboration_count: int | None = None`, `corroborated_by: list[str] = []`, `as_of_date: date | None = None`, and `provenance_origin: Literal["discovered","user"] = "discovered"`. If `validate_ir` asserts an exhaustive role set, include `contested`. Change no other invariant.
+2. `scripts/lint.py`: scope the IR pass to IR-targeting hard_lints — `ir_hard = [r for r in rules if r["enforcement"]=="hard_lint" and r["check"].get("input","ir")=="ir"]` — run `ir_hard` on the IR and leave the render / discovery / convergence / ledger checks to their own passes (those artifacts don't exist during an IR-only lint, and several are unimplemented stubs you must not call here). Scope your lint tests to `ir_hard`.
+3. `scripts/render/render_html.py`: add a `contested` role branch — render `block.framings` as a comparison panel (reuse the tradeoff / Toulmin path); when the concept-map has `contested: true`, show a "competing organizing views" banner. `scripts/render/render_llm_md.py`: keep `contested` (emit one `## [block: <id>]` per framing, each with `provenance`). `scripts/render/check_alignment.py`: no change.
+
+Do **not** touch `scripts/verify/*` (Prompt 3) or `scripts/critics/run_critics.py` (Prompt 5) — they are unchanged. Do **not** populate `corroboration_count` / `as_of_date` or implement `checks/ledger.py` here — that is Prompt 6 grounding-loop work; the new fields only need to *exist* on the model now.
+
+Then `bash tools/build.sh`, confirm idempotent (`git diff --exit-code -- references/rule-registry.md references/critic-prompts`), and run pytest (the new enum value + optional fields must not break existing fixtures).
+
+Done when: `contested` plus the four ledger fields exist on the models, `lint.py` runs only the `ir_hard` set on the IR (no stub checks invoked), `render_html` / `render_llm_md` accept a `contested` block, the lockstep build is idempotent, and pytest is green.
 
 ## Prompt 1 — Document IR schema + validation (the canonical contract)
 Read `references/artifact-schemas.md` (Document IR + all schemas). Then:
@@ -59,15 +73,33 @@ Read `references/critic-prompts/*` and `R-REJECT-05`. Then:
 
 Done when a run produces binary verdicts keyed by `rule_id`+`block_id` across all six passes, with holistic scoring impossible by construction.
 
-## Prompt 6 — Research arc (agent-orchestrated)
-Read `references/research-perspectives.md`, the research-plan / source-ledger / concept-map schemas, and `R-EVID-03` / `R-GROUND-04`. Then:
-1. `scripts/research/planner.py` — questions × perspectives; **dedup** near-duplicates (`merged_from`); set `budget_weight` per perspective (defaults are re-weightable — a prior-art-mapping request raises historian/bridge-builder); write `research-plan.yaml`.
-2. `retrieval_loop.py` — bounded web search → fetch full pages → extract → gap → re-query (`max_retrieval_iterations`).
-3. `claim_extractor.py` — atomic claims → `source-ledger.yaml` (≤15-word quotes, provenance, confidence).
-4. `recency.py` — version sweep (R-GROUND-04). `coverage.py` — conflict/coverage, mark `thin`, perf claims need `min_independent_nonvendor`. `kb.py` — leave as the deferred stub.
-5. Curate → `concept-map.yaml` + outline seed.
+## Prompt 6a — Discovery campaign (recall augmentation)
+Read `references/discovery-brief-templates.md`, the Discovery-campaign artifacts in `references/artifact-schemas.md`, `R-DISC-01..05`, and the stubs `scripts/research/discovery.py`, `scripts/research/deep_research.py`, `scripts/research/planner.py`, `scripts/checks/discovery.py`. Then:
+1. `deep_research.py::run_brief` — invoke `/deep-research` for one `research-brief` (you're on Max), capture report + sources, and freeze the report into `discovery-snapshot/`. Provide the local `retrieval_loop` as the fallback backend, selected by `CAPABILITIES.md`.
+2. `discovery.py` (deterministic, `R-DISC-04`): `cluster_leads`, `support_count`, `novelty`, `saturation`, `framing_diversity`, using the config constants (`MIN_FRAMINGS`, `SATURATION_THRESHOLD`, `MAX_WAVES`, `FRAMING_AXES`, `ORTHOGONAL_FRAMINGS`).
+3. `planner.py` (model-judged): `assess_topic` (→ front-load aggressiveness + interleave budget), `wave_briefs` (emit each wave's diverse ensemble from the templates, ≥`MIN_FRAMINGS` cells incl. ≥1 orthogonal), `extract_leads` (report → `--json-schema` topic/source leads, leads only), `triage_leads` (accept / flag high-salience singletons / drop + salience). Then the cascade `front_load_campaign` (Wave A→B→C to saturation) and `re_front_load` (focused, seeded by an escalation finding) — the entry points the convergence guard (6b) calls. Add `route_seeds` (split `seed_sources` into direct accepted leads vs author/URL directives); `triage_leads` exempts user seeds from drop and marks `provenance_origin=user`; `wave_briefs` emits a seed-anchored brief per directive (`R-DISC-06`).
+4. Emit `discovery-leads.yaml` + `discovery-log.yaml`; accepted topic-leads become questions in `research-plan.yaml`, accepted source-leads become fetch candidates for Prompt 6 — never ledger claims (`R-DISC-01`). Route leads surfaced only under contrarian/adjacent framings to the `contested` rendering.
+5. `checks/discovery.py`: `framing_diversity` (`R-DISC-02`), `saturation_terminal` (`R-DISC-03`), `snapshot_complete` (`R-DISC-05`) + tests.
 
-These are tool-loops, **not** hermetic functions; keep single-agent now, multi-agent-ready behind the same interfaces. Done when a real run on `spec-01` yields a populated plan + ledger + concept-map with provenance tags.
+Done when a real campaign on `spec-01` saturates (the `discovery-log` shows novel-fraction falling below threshold), produces a triaged `discovery-leads.yaml`, and freezes a `discovery-snapshot/`.
+
+## Prompt 6 — Grounding loop (agent-orchestrated)
+Grounds the campaign's accepted leads (Prompt 6a) into the schema-bound ledger. Read the research-plan / source-ledger / concept-map schemas and `R-GROUND-01..04`, `R-EVID-03`. Then:
+1. `retrieval_loop.py` — fetch the accepted **source-leads**, and bounded web search → fetch → gap → re-query for accepted **topic-lead** questions not yet covered (`max_retrieval_iterations`).
+2. `claim_extractor.py` — atomic claims → `source-ledger.yaml` with independently-fetched ≤15-word quotes, provenance, and confidence. Re-anchor each claim to a fetched source — a discovery lead is a pointer, not provenance (`R-DISC-01`). Set `corroboration_count`/`corroborated_by` from the campaign's per-claim source counts and `as_of_date` on version/SOTA claims, plus `provenance_origin` (user for seed-derived claims) (`R-GROUND-05`/`R-DISC-06`); implement `checks/ledger.py::provenance_fields`.
+3. `recency.py` — version sweep (`R-GROUND-04`). `coverage.py` — conflict/coverage vs the plan, mark `thin`, perf claims need `min_independent_nonvendor`. `kb.py` — deferred stub.
+4. Curate → `concept-map.yaml` + outline seed — derived from the ledger, never copied from a deep-research report's structure.
+
+Tool-loops, not hermetic functions. Done when a real run on `spec-01` turns the accepted leads into a populated ledger + concept-map with every claim independently grounded.
+
+## Prompt 6b — Convergence guard (the escalate loop)
+Read `references/artifact-schemas.md` (Convergence-guard artifacts), `R-CONV-01/02`, and the stubs `scripts/research/convergence.py` + `scripts/checks/convergence.py`. Then:
+1. Implement `convergence.py` (deterministic, `R-CONV-02`): `struct_distance` (concept-map graph-edit distance via `EDIT_WEIGHTS`), `tau` (rising schedule, `+inf` past `K_MAX`), `escalate`, `classify_trajectory` (cluster per-cycle maps → `converged` / `contested` / `chaotic`), `contested_framings`.
+2. Implement the model-judged side in `planner.py` (or a judge module) — NOT in `convergence.py`: `scan_for_structural` and `implied_edits`. Wire the draft loop: deepen-in-place when `Δ_struct < tau`, escalate (re-front-load, `cycle++`) when `Δ_struct ≥ tau` and `cycle < K_MAX`, else footnote/render per `classify_trajectory`.
+3. Emit `concept-map-vK.yaml` per cycle + `convergence-log.yaml`; render the `contested-structure` block (`role: contested`) when the regime is contested, and set the concept-map `contested: true`.
+4. Implement `checks/convergence.py::terminal_state` (the `R-CONV-01` lint over the log) + tests: a converging trajectory footnotes; an oscillating one renders a contested-structure; the loop never exceeds `K_MAX`.
+
+Done when the loop provably terminates (≤`K_MAX` escalations), the lint passes, and a synthetic oscillating fixture produces a contested-structure block.
 
 ## Prompt 7 — Eval harness + the quantitative loop
 Read `references/eval/*` and your existing `skills/skill-creator`. Then:

@@ -2,6 +2,7 @@
 
 Classification: local-deterministic
 Implements: R-EVID-03
+See also: scripts/research/convergence.py — the escalate-loop convergence guard (R-CONV-01/02), a separate concern from research-phase coverage.
 Stage 6 - implement per ../../CLAUDE_CODE_PROMPTS.md (Prompt 6).
 """
 

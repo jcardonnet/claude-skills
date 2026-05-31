@@ -7,6 +7,19 @@ persistent source store is indexed in Mixedbread for retrieval/dedup.
 
 ---
 
+## `seed_sources` (Phase 0 — user-provided sources)
+Sources the user points the primer at ("check the work of John Doe and <URL>"). They are **leads worth looking at, not gospel** (`R-DISC-06`): consulted and grounded, but still corroboration-graded, and surfaced as contested where the discovered consensus disagrees.
+```yaml
+seed_sources:
+  - {kind: url,         ref: "https://...", note: "user-supplied"}         # fetched + grounded; provenance_origin=user
+  - {kind: file,        ref: "uploads/spec.pdf"}                           # parsed + grounded
+  - {kind: project_ref, ref: "conversation:... | artifact:... | file:..."} # claude.ai ONLY (not reachable from a Claude Code run)
+  - {kind: author,      ref: "John Doe", note: "survey their work"}        # a discovery DIRECTIVE -> seed-anchored brief
+```
+Direct seeds (`url` / `file` / `project_ref`) enter as accepted `source_leads` (`provenance_origin: user`, exempt from triage-drop); `author`/entity directives seed a targeted brief. `project_ref` resolves only when the skill runs in claude.ai.
+
+---
+
 ## `research-plan.yaml` (Phase 1, step 1)
 The planner emits this; the retrieval loop fills `coverage`. Feeds `source-ledger` and `concept-map`.
 
@@ -52,6 +65,7 @@ sources:
     date: "YYYY-MM-DD"                  # publication date
     type: primary_paper                # primary_paper | docs | blog | vendor | standard
     credibility: high                  # high | medium | low
+    provenance_origin: discovered      # discovered | user  (user = a seed_source; R-DISC-06)
     retrieved_at: "2026-05-28T00:00:00Z"
     content_hash: "<sha1 of fetched body>"
     claims:
@@ -62,6 +76,9 @@ sources:
         confidence: high                       # high | medium | low
         contested: false                       # true if another source contradicts it
         contradicts: []                        # claim_ids this conflicts with
+        corroboration_count:                   # set when >1 independent source supports this claim
+        corroborated_by: []                    # the other source_ids supporting it (R-GROUND-05)
+        as_of_date:                            # version/SOTA claims: when verified current (R-GROUND-04/05)
 ```
 
 ---
@@ -145,7 +162,7 @@ sections:
       - {block_id: fig-maskfree,    role: figure,  mode: tradeoff, caption: "Figure 3: ...", svg_ref: "assets/..."}
       - {block_id: recall-maskfree, role: recall,  text: "..."}        # pedagogical → dropped in llm_md
 ```
-`role ∈ {lede, card, summary, body, toulmin, matrix, figure, recall, glossary, further_reading}`;
+`role ∈ {lede, card, summary, body, toulmin, matrix, figure, recall, glossary, further_reading, contested}`;
 `provenance ∈ {verified, inferred, unverified}` (the G4 axis; surfaced inline in both projections, `R-PROJ-05`).
 Lints run on this structure — no brittle HTML parsing.
 
@@ -171,3 +188,80 @@ Sources: [none yet — inferred]
 ```
 
 Consumption (v1, no index): whole-context attach, or file-in-repo for a Claude Code assistant (grep by block-id). Mixedbread indexing is deferred but a no-op import later, because each block is already a self-contained, metadata-tagged record.
+
+---
+
+## Convergence-guard artifacts (the escalate loop)
+The drafting↔structure loop is governed by the convergence guard (`R-CONV-01/02`; deterministic engine in `scripts/research/convergence.py`, lint in `scripts/checks/convergence.py`). A *loose* escalate threshold auto-tightens to a hard `K_MAX`; a non-converging trajectory becomes a rendered `contested-structure`. Three artifacts:
+
+**`concept-map-vK.yaml`** — the curated concept-map for cycle K (K=0 is the initial front-load). Same schema as `concept-map.yaml`, plus:
+```yaml
+cycle: 2
+contested: false        # true when the structure is presented, not asserted (see the contested role)
+```
+
+**`convergence-log.yaml`** — one entry per cycle; the audit/eval trail for whether the loop converged or oscillated.
+```yaml
+k_max: 3
+cycles:
+  - {cycle: 0, c_k: null, rho: null, tau: 4, finding: "initial",                  decision: draft}
+  - {cycle: 1, c_k: 11,  rho: null, tau: 6, finding: "split 'retrieval' concept",  decision: escalate}
+  - {cycle: 2, c_k: 9,   rho: 0.82, tau: 9, finding: "reorder top-level sections",  decision: escalate}
+terminal_regime: contested          # converged | contested | chaotic | coherent
+terminal_decision: render-contested
+```
+`c_k` = structural distance between the cycle K-1 and K concept-maps; `rho` = c_k / c_(k-1); `tau` = the rising escalate threshold at that cycle. Regimes: `converged` (rho<0.5 or maps collapse to one cluster → footnote residual), `contested` (rho≥~0.7, 2–3 stable clusters → render them), `chaotic` (>3 clusters → scope/diversity flag), `coherent` (loop exited with no structural finding).
+
+**`contested-structure`** — an IR block (`role: contested`) emitted when `terminal_regime == contested`; renders via the conflict/tradeoff modes (`R-MV`, Toulmin rebuttal).
+```yaml
+- block_id: contested-structure
+  role: contested
+  framings:                         # the cluster centroids the trajectory oscillated among
+    - {label: "by retrieval stage", summary: "...", applies_when: "...", source_ids: ["..."]}
+    - {label: "by index type",      summary: "...", applies_when: "...", source_ids: ["..."]}
+  provenance: verified              # backed by the campaign's conflict evidence
+```
+When this fires, the primer's concept-map carries `contested: true` — the structure is shown, not asserted.
+
+---
+
+## Discovery-campaign artifacts (Phase 1a — recall augmentation)
+Deep-research is a *recall* layer feeding leads — never evidence (`R-DISC-01`) — into the existing grounding loop: an adaptive, saturating cascade of parallel deep-research ensembles (Wave A landscape → Wave B targeted dives → Wave C findings audit). The convergence guard's `front_load_campaign` / `re_front_load` are this cascade. Deterministic metrics in `scripts/research/discovery.py` (`R-DISC-04`); backend adapter in `scripts/research/deep_research.py`; orchestration + triage in `planner.py`; brief archetypes in `references/discovery-brief-templates.md`.
+
+**`research-brief.yaml`** — one deep-research run.
+```yaml
+wave: A
+framing: contrarian-seed          # one cell of the diversity matrix
+angle: by-failure-mode
+source_class: primary             # primary | industry | latest-release
+stance: against-dominant
+questions: ["...", "..."]
+instructions:                     # standing, on every brief
+  - prioritize primary / non-vendor sources
+  - report independent-source count per key claim, and any disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+```
+
+**`discovery-leads.yaml`** — the campaign's output.
+```yaml
+topic_leads:
+  - {id: tl-07, concept: "late-interaction reranking", why: "...", surfaced_by: [structure, source-authority],
+     support_count: 2, novelty: 0.8, salience: high, status: accepted, provenance_origin: discovered}  # new plan question; =user for directive-seeded topics
+source_leads:
+  - {id: sl-12, url: "...", type: primary, supports: [tl-07], support_count: 3, status: accepted, provenance_origin: discovered}  # -> fetch candidate
+# status in {accepted, flagged, dropped}; flagged = high-salience singleton (rare-gem-vs-noise -> you/judge)
+```
+
+**`discovery-log.yaml`** — per-wave audit + saturation trail.
+```yaml
+max_waves: 4
+saturation_threshold: 0.15
+waves:
+  - {wave: A, briefs: 6, framing_cells: 6, leads_total: 41, leads_new: 41, novel_fraction: 1.00, decision: continue}
+  - {wave: B, briefs: 5, framing_cells: 5, leads_total: 18, leads_new: 12, novel_fraction: 0.29, decision: continue}
+  - {wave: C, briefs: 3, framing_cells: 3, leads_total: 9,  leads_new: 1,  novel_fraction: 0.11, decision: stop}
+terminal: saturated               # saturated | max_waves
+```
+
+**`discovery-snapshot/`** — frozen reports (`report-<id>.md`) + the accepted lead set, for reproducible eval (`R-DISC-05`). Leads surfaced *only* under contrarian/adjacent framings route to the `contested` rendering (disagreement-as-signal).

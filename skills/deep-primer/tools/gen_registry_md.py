@@ -12,6 +12,8 @@ NS_TITLES = {
  'EVID':'Empirical claims & epistemic honesty','GROUND':'Anti-hallucination / citation grounding',
  'FIG':'Figures & diagrams','XREF':'Cross-domain mapping & cross-referencing',
  'PROJ':'IR-first & projections',
+ 'DISC':'Discovery campaign (recall augmentation)',
+ 'CONV':'Convergence guard (escalate loop)',
  'CONSIST':'Consistency & build invariants','REJECT':'Anti-rules / do-not-adopt',
 }
 order = list(NS_TITLES)

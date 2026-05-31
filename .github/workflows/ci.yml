@@ -1,15 +1,44 @@
 name: skills-ci
 on: { push: {}, pull_request: {} }
+
 jobs:
-  validate:
+  build-validate-bundle:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install -e .[dev]
-      # TODO (Prompt 8): path-filter so only CHANGED skills run; then per changed skill:
-      #   bash skills/<s>/tools/build.sh && git diff --exit-code   # lockstep is idempotent
-      #   python tools/validate_skill.py skills/<s>
-      #   python skills/<s>/scripts/eval.py
-      - run: python tools/validate_skill.py skills/*
+
+      # --- lockstep drift gate ------------------------------------------------
+      # rule-registry.md and critic-prompts/* are GENERATED from rule-registry.yaml.
+      # build.sh is idempotent, so regenerating must produce no diff. A non-empty diff
+      # means a generated file was hand-edited, or the YAML changed without a rebuild.
+      - name: regenerate lockstep-derived files
+        run: make build
+      - name: fail on generated-file drift
+        run: |
+          if ! git diff --exit-code -- \
+                'skills/*/references/rule-registry.md' \
+                'skills/*/references/critic-prompts'; then
+            echo '::error::Generated files are out of sync with rule-registry.yaml.'
+            echo 'Run `bash skills/<skill>/tools/build.sh` and commit the result.'
+            exit 1
+          fi
+
+      # --- structural validation + unit tests --------------------------------
+      - name: validate skills
+        run: python tools/validate_skill.py skills/*
+      - name: unit tests
+        run: pytest -q
+
+      # --- bundle smoke test --------------------------------------------------
+      # Every skill must emit a self-contained, structurally-valid bundle (no shared/
+      # imports left dangling, no cross-skill imports). Non-zero exit fails the build.
+      - name: bundle (self-containment check)
+        run: python tools/bundle.py skills/* --out dist/ --zip
+      - uses: actions/upload-artifact@v4
+        with: { name: skill-bundles, path: dist/*.zip, if-no-files-found: ignore }
+
+# TODO (Prompt 8): add dorny/paths-filter so build/validate/eval run only for CHANGED
+# skills on large PRs, and add `python skills/<skill>/scripts/eval.py` once Prompt 7 lands.
