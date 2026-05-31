@@ -1,0 +1,24 @@
+# Concept-map fixture: defines the concepts referenced by document-ir.yaml.
+concepts:
+  - concept_id: mask-free-linkage
+    canonical_term: "mask-free linkage"
+    aliases: ["maskless linkage"]
+    home_anchor: "instance segmentation"
+    fidelity_boundary: "breaks when downstream needs per-part pixel crops"
+    epistemic_status: contested
+    salience: 0.82
+    representation_modes:
+      - {mode: mental_model, block_ref: card-maskfree}
+      - {mode: tradeoff, block_ref: fig-maskfree}
+    source_ids: [s-aaaa]
+    claim_ids: [C1]
+  - concept_id: leader-anchoring
+    canonical_term: "leader anchoring"
+    aliases: []
+    home_anchor: "ray casting"
+    epistemic_status: settled
+    salience: 0.6
+    representation_modes:
+      - {mode: architecture, block_ref: card-anchor}
+    source_ids: [s-aaaa]
+    claim_ids: [C7]

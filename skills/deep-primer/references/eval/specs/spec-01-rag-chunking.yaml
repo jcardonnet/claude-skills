@@ -1,0 +1,11 @@
+# A parameterized eval spec. The runner generates a primer for these params, then scores it.
+id: spec-01-rag-chunking
+parameters:
+  home_domain: ["classical IR", "databases"]
+  target_domain: "retrieval-augmented generation chunking strategies"
+  seniority_band: staff_plus
+  length_budget: 6000
+  outputs: [html, llm_md]
+expect:
+  must_pass: [R-ARCH-03, R-SCENT-01, R-CARD-01, R-MV-01, R-GROUND-01, R-PROJ-02]
+  notes: "bridge from IR/db background; decision matrix on chunkers; mask-free analogue not relevant here"

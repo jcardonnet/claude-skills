@@ -1,0 +1,15 @@
+# Citation-quality fixture (Prompt 3). Planted cases:
+#   A — supported (quote entails statement)
+#   B — UNSUPPORTED citation (quote unrelated to statement) -> lowers recall
+#   C — has one supporting (C3) + one DECORATIVE (C4) citation -> lowers precision
+#   D — cites C99, absent from the ledger -> deterministic resolves_to_ledger failure
+meta:
+  generated_at: "2026-05-29T00:00:00Z"
+sections:
+  - block_id: sec-v
+    title: "A fixture for citation quality"
+    blocks:
+      - {block_id: A, role: toulmin, text: "X reduces latency", claim_ids: [C1], provenance: verified, source_ids: [s1]}
+      - {block_id: B, role: body, text: "Y improves recall", claim_ids: [C2], provenance: verified, source_ids: [s1]}
+      - {block_id: C, role: body, text: "Z lowers cost", claim_ids: [C3, C4], provenance: verified, source_ids: [s1]}
+      - {block_id: D, role: body, text: "W is fast", claim_ids: [C99]}

@@ -1,0 +1,22 @@
+[project]
+name = "skills-monorepo"
+version = "0.1.0"
+description = "Personal Claude skills monorepo (deep-primer + others). Dev workspace; skills are bundled self-contained for deployment."
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6", "pydantic>=2", "beautifulsoup4>=4.12", "lxml>=5", "jinja2>=3"]
+
+[project.optional-dependencies]
+nlp = ["spacy>=3.7", "fastcoref>=2.1"]     # given->new coref (R-PROSE-01); probe availability, fallback if absent
+verify = []                                  # NLI/MiniCheck for citation entailment (R-GROUND-02/03) — see Prompt 3 for options
+dev = ["pytest>=8", "ruff>=0.5"]
+
+# This is a dev *workspace*, not an importable library: skill scripts are run per-skill
+# (registry check refs like `checks/structure_coverage.py::...`), and shared/ is vendored
+# into each skill at bundle time — nothing here is meant to install as a top-level package.
+# Declare no modules so `pip install -e .[dev]` resolves dependencies without setuptools
+# flat-layout auto-discovery choking on the eval/ skills/ shared/ top-level dirs.
+[tool.setuptools]
+py-modules = []
+
+# Skill scripts import from a per-skill `scripts/` package (paths match registry check refs:
+# checks/*, verify/*, render/*, ir/*). shared/ is DEV-ONLY and is vendored into each skill at bundle time.

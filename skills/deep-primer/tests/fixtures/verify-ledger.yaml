@@ -1,0 +1,12 @@
+# Ledger for verify-ir.yaml. Quotes are designed so the lexical backend entails the right cases.
+# C99 is intentionally ABSENT (D cites it -> unledgered marker).
+sources:
+  - source_id: s1
+    title: "Fixture source"
+    type: primary_paper
+    credibility: high
+    claims:
+      - {claim_id: C1, text: "X reduces latency", quote: "X reduces latency by half"}
+      - {claim_id: C2, text: "unrelated remark", quote: "the sky is blue"}
+      - {claim_id: C3, text: "Z lowers cost", quote: "Z lowers cost markedly"}
+      - {claim_id: C4, text: "off-topic remark", quote: "weather is rainy today"}

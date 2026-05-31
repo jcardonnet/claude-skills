@@ -1,0 +1,21 @@
+# Source-ledger fixture: provides claims C1 and C7 referenced by document-ir.yaml.
+sources:
+  - source_id: s-aaaa
+    url: "https://example.org/maskfree"
+    title: "Mask-free linkage for engineering drawings"
+    authors: ["A. Researcher"]
+    venue: "Example Conf"
+    date: "2025-06-01"
+    type: primary_paper
+    credibility: high
+    retrieved_at: "2026-05-28T00:00:00Z"
+    content_hash: "deadbeef"
+    claims:
+      - {claim_id: C1, text: "bbox plus callout value suffices for BOM attribution", quote: "a box and its value suffice", location: "p.3 / §2", confidence: high}
+      - {claim_id: C7, text: "leader geometry resolves which part a callout names", quote: "the leader resolves the target part", location: "p.5 / §3.2", confidence: medium, contested: true}
+  - source_id: s-bbbb
+    url: "https://example.org/anchoring"
+    title: "Leader-line anchoring study"
+    type: docs
+    credibility: medium
+    claims: []

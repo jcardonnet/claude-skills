@@ -1,0 +1,28 @@
+# Valid Document IR fixture (Prompt 1). Mirrors the artifact-schemas.md example.
+# Every claim_id resolves to source-ledger.yaml; every concept resolves to concept-map.yaml.
+meta:
+  parameters:
+    home_domain: [computer-vision]
+    target_domain: bom-linkage
+    seniority_band: staff_plus
+    length_budget: 4000
+  ledger_snapshot: [s-aaaa, s-bbbb]
+  model_versions: {generator: claude-opus-4-8, verifier: local-nli}
+  generated_at: "2026-05-29T00:00:00Z"
+sections:
+  - block_id: sec-maskfree
+    title: "Pixel masks are usually wasted work for BOM linkage"
+    concept: mask-free-linkage
+    blocks:
+      - {block_id: lede-maskfree, role: lede, text: "Callout value plus bbox suffices for BOM attribution.", claim_ids: [C1], provenance: inferred}
+      - {block_id: card-maskfree, role: card, text: "If you know instance segmentation, linkage is detection without the mask.", concept: mask-free-linkage, mode: mental_model, claim_ids: [C1]}
+      - {block_id: rec-maskfree, role: toulmin, text: "Use bbox+leader anchoring; skip masks unless downstream needs per-part crops.", claim_ids: [C1, C7], provenance: verified, source_ids: [s-aaaa]}
+      - {block_id: fig-maskfree, role: figure, mode: tradeoff, caption: "Figure 1: masks add cost without improving attribution recall.", svg_ref: "assets/maskfree.svg", concept: mask-free-linkage}
+      - {block_id: recall-maskfree, role: recall, text: "In your home domain, what plays the role the bbox plays here?"}
+  - block_id: sec-anchor
+    title: "Leader-line geometry, not pixels, resolves which part a callout names"
+    concept: leader-anchoring
+    blocks:
+      - {block_id: lede-anchor, role: lede, text: "Leader geometry disambiguates callout-to-part attribution.", claim_ids: [C7], provenance: inferred}
+      - {block_id: card-anchor, role: card, text: "Like ray-casting in graphics: follow the leader to its terminus.", concept: leader-anchoring, mode: architecture, claim_ids: [C7]}
+      - {block_id: recall-anchor, role: recall, text: "When does leader geometry fail to identify the part?"}

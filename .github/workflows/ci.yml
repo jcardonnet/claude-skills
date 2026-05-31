@@ -1,0 +1,15 @@
+name: skills-ci
+on: { push: {}, pull_request: {} }
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -e .[dev]
+      # TODO (Prompt 8): path-filter so only CHANGED skills run; then per changed skill:
+      #   bash skills/<s>/tools/build.sh && git diff --exit-code   # lockstep is idempotent
+      #   python tools/validate_skill.py skills/<s>
+      #   python skills/<s>/scripts/eval.py
+      - run: python tools/validate_skill.py skills/*

@@ -1,0 +1,17 @@
+# Malformed Document IR fixture (Prompt 1). Schema-VALID (parses cleanly) but violates every
+# structural invariant, so validate_ir must reject it:
+#   - duplicate block_id 'dup'
+#   - block 'bad-claim' cites C99, absent from the source-ledger
+#   - section 'sec-bad' names concept 'bogus-concept', absent from the concept-map
+#   - block 'rec-bad' is provenance: verified with no source_ids
+meta:
+  generated_at: "2026-05-29T00:00:00Z"
+sections:
+  - block_id: sec-bad
+    title: "A section naming an unknown concept"
+    concept: bogus-concept
+    blocks:
+      - {block_id: dup, role: lede, text: "first block", claim_ids: [C1]}
+      - {block_id: dup, role: card, text: "duplicate block_id", concept: mask-free-linkage, mode: tradeoff}
+      - {block_id: rec-bad, role: toulmin, text: "verified but unsourced", provenance: verified}
+      - {block_id: bad-claim, role: body, text: "cites a missing claim", claim_ids: [C99]}

@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- assets/primer-template.html — HTML PROJECTION SHELL (filled by render/render_html.py from the IR).
+     Depth-dial L1–L5; dark/light; floating font-size; data-block-id/-concept/-mode on blocks;
+     embedded #primer-meta JSON; theme-variable SVG; numbered footnotes -> references; provenance inline. -->
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<style>
+  :root{
+    --bg:#fbfaf7; --fg:#1c1b19; --muted:#5d5a54; --rule:#e0dcd3;
+    --accent:#9a3b2e; --accent-2:#2e5d6b; --card:#f3f0e9; --stroke:#1c1b19; --fill:#f3f0e9;
+    --serif:"Charter","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:"IBM Plex Sans","Avenir Next","Optima","Segoe UI",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,monospace;
+    --fs:1.0rem;
+  }
+  html[data-theme="dark"]{
+    --bg:#16181c; --fg:#e9e6df; --muted:#a7a299; --rule:#2d3137;
+    --accent:#e08a6b; --accent-2:#7fb0c0; --card:#1e2228; --stroke:#e9e6df; --fill:#1e2228;
+  }
+  @media (prefers-color-scheme:dark){ html[data-theme="auto"]{
+    --bg:#16181c; --fg:#e9e6df; --muted:#a7a299; --rule:#2d3137;
+    --accent:#e08a6b; --accent-2:#7fb0c0; --card:#1e2228; --stroke:#e9e6df; --fill:#1e2228; } }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--fg); font-family:var(--serif); font-size:var(--fs);
+       line-height:1.62; margin:0; padding:2.5rem clamp(1rem,4vw,4rem) 6rem;}
+  h1,h2,h3,h4{font-family:var(--sans); line-height:1.2; font-weight:600;}
+  h1{font-size:2.1em; letter-spacing:-.01em}
+  h2{font-size:1.5em; margin-top:2.4em; padding-top:.6em; border-top:2px solid var(--rule)}
+  section{margin-bottom:1.5em}
+  .lede{font-size:1.12em}
+  .card{background:var(--card); border-left:3px solid var(--accent); border-radius:6px;
+        padding:.9em 1.1em; margin:1em 0; font-family:var(--sans); font-size:.96em}
+  .toulmin{border-left:3px solid var(--accent-2); padding:.4em 1em; margin:1em 0}
+  .recall{background:var(--card); border-radius:6px; padding:.6em 1em; margin:1em 0}
+  figure{margin:1.4em 0; text-align:center}
+  figure svg{max-width:100%; height:auto}
+  figcaption{font-family:var(--sans); font-size:.9em; color:var(--muted); margin-top:.5em}
+  .prov{font-family:var(--mono); font-size:.7em; text-transform:uppercase; letter-spacing:.05em;
+        padding:.1em .45em; border-radius:4px; border:1px solid var(--rule); color:var(--muted); margin-left:.4em}
+  .prov-verified{color:var(--accent-2); border-color:var(--accent-2)}
+  .prov-unverified{color:var(--accent); border-color:var(--accent)}
+  sup.fn{font-family:var(--sans); color:var(--accent)}
+  .refs{margin-top:3em; border-top:2px solid var(--rule); font-size:.92em}
+  .refs ol{padding-left:1.4em}
+  /* SVG uses theme variables so strokes survive dark mode */
+  svg .stroke{stroke:var(--stroke); fill:none} svg .fill{fill:var(--fill); stroke:var(--stroke)}
+  svg .accent{stroke:var(--accent); fill:none} svg text{fill:var(--fg); font-family:var(--sans)}
+  /* depth dial: hide tiers deeper than the selected level */
+  body[data-depth="1"] [data-tierlevel="2"],body[data-depth="1"] [data-tierlevel="3"],body[data-depth="1"] [data-tierlevel="4"],body[data-depth="1"] [data-tierlevel="5"],
+  body[data-depth="2"] [data-tierlevel="3"],body[data-depth="2"] [data-tierlevel="4"],body[data-depth="2"] [data-tierlevel="5"],
+  body[data-depth="3"] [data-tierlevel="4"],body[data-depth="3"] [data-tierlevel="5"],
+  body[data-depth="4"] [data-tierlevel="5"]{display:none}
+  #controls{position:fixed; top:0; right:0; display:flex; gap:.3em; padding:.5em; background:var(--card);
+            border-bottom-left-radius:8px; border:1px solid var(--rule); font-family:var(--sans); font-size:.8rem; z-index:9}
+  #controls button{font:inherit; cursor:pointer; border:1px solid var(--rule); background:var(--bg); color:var(--fg);
+                   border-radius:4px; padding:.2em .5em}
+  #controls button[aria-pressed="true"]{background:var(--accent); color:#fff; border-color:var(--accent)}
+</style>
+</head>
+<body data-depth="3">
+<nav id="controls" aria-label="reading controls">
+  <span>Depth</span>
+  <button data-depth-set="1">L1</button><button data-depth-set="2">L2</button>
+  <button data-depth-set="3" aria-pressed="true">L3</button><button data-depth-set="4">L4</button>
+  <button data-depth-set="5">L5</button>
+  <span>·</span><button id="font-dn">A−</button><button id="font-up">A+</button>
+  <button id="theme">◑</button>
+</nav>
+<main>
+<h1>{{ title }}</h1>
+{{ blocks }}
+{{ footnotes }}
+</main>
+<script type="application/json" id="primer-meta">{{ primer_meta }}</script>
+<script>
+(function(){
+  var body=document.body, root=document.documentElement;
+  document.querySelectorAll('[data-depth-set]').forEach(function(b){
+    b.addEventListener('click',function(){
+      body.setAttribute('data-depth', b.getAttribute('data-depth-set'));
+      document.querySelectorAll('[data-depth-set]').forEach(function(x){x.setAttribute('aria-pressed', x===b);});
+    });
+  });
+  var fs=1.0;
+  function setFs(v){ fs=Math.max(.7,Math.min(1.6,v)); root.style.setProperty('--fs', fs.toFixed(2)+'rem'); }
+  document.getElementById('font-up').onclick=function(){ setFs(fs+.1); };
+  document.getElementById('font-dn').onclick=function(){ setFs(fs-.1); };
+  document.getElementById('theme').onclick=function(){
+    var t=root.getAttribute('data-theme'); root.setAttribute('data-theme', t==='dark'?'light':'dark');
+  };
+})();
+</script>
+</body>
+</html>

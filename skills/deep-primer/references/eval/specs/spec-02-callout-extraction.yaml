@@ -1,0 +1,13 @@
+# Stress spec: home≈target (CV->niche sub-task), reference-case grounding, dual outputs.
+# Exercises dry-run gaps G1/G2/G6 — keep until those are resolved.
+id: spec-02-callout-extraction
+parameters:
+  home_domain: ["classical CV", "OCR", "instance segmentation", "SAM family", "document-AI"]
+  target_domain: "callout/leader-line reading + exploded-view part segmentation for parts catalogues"
+  seniority_band: staff_plus
+  length_budget: 8000
+  outputs: [html, llm_md]
+reference_case: "binary exploded-view drawing, ~80 numbered leader callouts (some repeated), thin/kinked/dotted leaders, hatching, seated/overlapping parts"
+expect:
+  must_pass: [R-ARCH-03, R-CARD-03, R-ART-03, R-ART-04, R-EVID-03, R-PROJ-05]
+  watch: [G1_home_equals_target, G2_reference_case_vs_worked_example, G6_user_structure_override]

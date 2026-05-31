@@ -1,0 +1,14 @@
+# eval-rubric.yaml — scoring overlay for the eval harness (Stage 6, Prompt 7).
+# Three tiers, matching the registry's enforcement model.
+hard_lints:        # from scripts/lint.py against the IR; MUST failures block (priority-derived)
+  weight: 1.0
+  source: lint-report.json
+model_verified:    # scripts/verify/* (citation recall/precision; chunk self-containment)
+  weight: 1.0
+  source: verify-report.json
+  thresholds:
+    citation_recall: 0.75      # TODO: tune against real runs (registry budgets)
+    citation_precision: 0.90   # TODO
+human_overlay:     # spot-checked, calibrates the soft critics
+  weight: 1.0
+  divergence_recalibrate_threshold: 0.25
