@@ -463,6 +463,37 @@ class DiscoveryLog(BaseModel):
         return cls(**_read_yaml(path))
 
 
+# --- convergence guard (the escalate loop) -----------------------------------
+
+class CycleRecord(BaseModel):
+    """One cycle of the drafting<->structure loop. `c_k` is the structural distance from the
+    previous cycle's map, `rho` the ratio c_k / c_(k-1), `tau` the threshold in force."""
+
+    model_config = ConfigDict(extra="allow")
+
+    cycle: int
+    c_k: float | None = None
+    rho: float | None = None
+    tau: float
+    finding: str
+    decision: Literal["draft", "deepen", "escalate", "stop"]
+
+
+class ConvergenceLog(BaseModel):
+    """The audit trail R-CONV-01's lint reads: did the loop terminate, and in what regime."""
+
+    model_config = ConfigDict(extra="allow")
+
+    k_max: int
+    cycles: list[CycleRecord] = Field(default_factory=list)
+    terminal_regime: Literal["converged", "contested", "chaotic", "coherent"] | None = None
+    terminal_decision: str | None = None
+
+    @classmethod
+    def from_yaml(cls, path: str | Path) -> ConvergenceLog:
+        return cls(**_read_yaml(path))
+
+
 # --- primer-meta (the HTML-embedded JSON, Phase 3 rendering) -----------------
 
 class PrimerMeta(BaseModel):

@@ -251,7 +251,20 @@ new ledger lint on its first run.
 **Verify C:** a recorded-fixture run turns accepted leads into a populated ledger + concept-map; the
 ledger lint catches a claim with two sources and no `corroboration_count`.
 
-## Stage D — Prompt 6b: convergence guard
+## Stage D — Prompt 6b: convergence guard — **DONE**
+
+**Outcome:** the loop provably terminates. Three bounds do it: `tau` rises per cycle and becomes
+`+inf` at `K_MAX`, `escalate` additionally requires `cycle < K_MAX` (the cap is the guarantee and
+should not rest on a float comparison against infinity), and the deepen path is separately capped
+by `MAX_DIVES` — without which a run of sub-tau findings never escalates and never ends. A
+synthetic oscillating trajectory classifies `contested`, emits the `role: contested` block, and
+sets `contested: true` on every cycle map; the R-CONV-01 lint additionally fails a log that
+*records* `contested` while rendering no block, since that would drop the disagreement silently.
+One bug found: `struct_distance` ordered concepts by `canonical_term`, so a pure rename read as a
+reorder and cost 4 — the exact cosmetic-vs-structural confusion `alias_rename: 0` exists to
+prevent. Ordering is now compared over matched concepts, matched by claim-set overlap.
+
+## Stage D — Prompt 6b: convergence guard (original plan)
 
 Entirely pure, so it is the most testable stage: `tau`, `struct_distance` (via the given `EDIT_WEIGHTS`),
 `escalate`, `classify_trajectory`, `contested_framings`, plus `checks/convergence.py::terminal_state`.

@@ -38,6 +38,7 @@ from checks import (  # noqa: E402
     univocity_terms,
     xrefs,
 )
+from checks import convergence as convergence_checks  # noqa: E402
 from checks import ledger as ledger_checks  # noqa: E402
 from checks._base import LintContext, Violation  # noqa: E402
 from ir.schema import ConceptMap, DocumentIR, SourceLedger  # noqa: E402
@@ -95,6 +96,11 @@ HTML_CHECKS = {
 # The `ledger` pass: reads source-ledger.yaml at the end of Phase 1, before any drafting exists.
 LEDGER_CHECKS = {
     "checks/ledger.py::provenance_fields": ledger_checks.provenance_fields,
+}
+
+# The `convergence-log` pass: run after the drafting<->structure loop terminates (R-CONV-01).
+CONVERGENCE_CHECKS = {
+    "checks/convergence.py::terminal_state": convergence_checks.terminal_state,
 }
 
 
@@ -175,7 +181,8 @@ def run_lint(ctx: LintContext, registry_path: str | Path = DEFAULT_REGISTRY) -> 
     }
 
 
-_ARTIFACT_CHECKS = {"html": HTML_CHECKS, "ledger": LEDGER_CHECKS}
+_ARTIFACT_CHECKS = {"html": HTML_CHECKS, "ledger": LEDGER_CHECKS,
+                    "convergence-log": CONVERGENCE_CHECKS}
 
 
 def run_artifact_pass(artifact, input_tag: str, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
@@ -228,6 +235,11 @@ def run_html_pass(html: str, registry_path: str | Path = DEFAULT_REGISTRY) -> di
 def run_ledger_pass(ledger, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
     """The `ledger` pass (R-GROUND-05), run at the end of Phase 1."""
     return run_artifact_pass(ledger, "ledger", registry_path)
+
+
+def run_convergence_pass(log, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `convergence-log` pass (R-CONV-01), run once the escalate loop terminates."""
+    return run_artifact_pass(log, "convergence-log", registry_path)
 
 
 def lint_files(

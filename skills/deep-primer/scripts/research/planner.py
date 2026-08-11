@@ -27,15 +27,20 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ir.schema import (  # noqa: E402
+    Block,
+    ConceptMap,
+    ConvergenceLog,
+    CycleRecord,
     DiscoveryLeads,
     DiscoveryLog,
+    Framing,
     Lead,
     ResearchBrief,
     SourceLead,
     TopicLead,
     WaveRecord,
 )
-from research import discovery  # noqa: E402
+from research import convergence, discovery  # noqa: E402
 from research.deep_research import Backend, brief_id, run_brief  # noqa: E402
 
 # Standing instructions carried on every brief (discovery-brief-templates.md).
@@ -327,4 +332,160 @@ def write_campaign(result: CampaignResult, out_dir: str | Path = ".") -> dict[st
     paths["log"].write_text(
         yaml.safe_dump(result.log.model_dump(mode="json"), sort_keys=False, allow_unicode=True),
         encoding="utf-8")
+    return paths
+
+
+# --- the convergence guard's model-judged side + the draft loop (R-CONV-02) ---
+# convergence.py stays pure; the judgment calls live here, next to the campaign they re-trigger.
+
+class StructureJudge(Protocol):
+    """The two model calls the convergence guard makes. Everything else about it is arithmetic."""
+
+    def scan_for_structural(self, concept_map: ConceptMap, params: dict) -> dict | None:
+        """Is there a finding that changes the STRUCTURE (vs one that just deepens a section)?"""
+
+    def implied_edits(self, finding: dict, concept_map: ConceptMap) -> ConceptMap:
+        """The concept-map that finding implies. Its distance from the current map is Delta_struct."""
+
+
+@dataclass
+class ScriptedStructureJudge:
+    """Deterministic offline structure judge: replays a scripted list of findings.
+
+    Each entry is (finding, next_map). Exhausting the script means "no further structural
+    finding", which is how a converging trajectory terminates.
+    """
+
+    script: list[tuple[dict, ConceptMap]] = field(default_factory=list)
+    _i: int = 0
+
+    def scan_for_structural(self, concept_map: ConceptMap, params: dict) -> dict | None:
+        return self.script[self._i][0] if self._i < len(self.script) else None
+
+    def implied_edits(self, finding: dict, concept_map: ConceptMap) -> ConceptMap:
+        proposed = self.script[self._i][1]
+        self._i += 1
+        return proposed
+
+
+@dataclass
+class ConvergenceRun:
+    log: ConvergenceLog
+    cycle_maps: list[ConceptMap]
+    contested_block: Block | None = None
+
+    @property
+    def regime(self) -> str | None:
+        return self.log.terminal_regime
+
+
+_TERMINAL_DECISION = {
+    "converged": "footnote-residual",
+    "contested": "render-contested",
+    "chaotic": "flag-scope",
+    "coherent": "draft",
+}
+
+
+def run_convergence_loop(initial_map: ConceptMap, judge: StructureJudge,
+                         params: dict | None = None,
+                         recurate=None) -> ConvergenceRun:
+    """Drive the drafting<->structure loop to a valid terminal state (R-CONV-01).
+
+    Three exits, and the loop provably reaches one of them:
+      - no further structural finding            -> converged / coherent (footnote the residual)
+      - Delta_struct >= tau(cycle), cycle < K_MAX -> escalate: re-front-load, cycle++
+      - neither                                   -> deepen in place, bounded by MAX_DIVES
+
+    Termination: `cycle` only ever increments on an escalate, escalation requires cycle < K_MAX,
+    and the deepen path is separately capped — so neither branch can spin.
+
+    `recurate(finding, current_map) -> ConceptMap` is the escalation seam: in production it runs
+    re_front_load, re-grounds, and re-curates. Offline it defaults to the judge's proposed map, so
+    the control flow is exercisable without a campaign.
+    """
+    params = params or {}
+    cycle = 0
+    dives = 0
+    current = initial_map
+    cycle_maps = [initial_map]
+    records = [CycleRecord(cycle=0, c_k=None, rho=None, tau=convergence.tau(0),
+                           finding="initial", decision="draft")]
+    prev_c: float | None = None
+
+    while True:
+        finding = judge.scan_for_structural(current, params)
+        if finding is None:
+            regime = "coherent" if len(cycle_maps) == 1 else convergence.classify_trajectory(cycle_maps)
+            break
+
+        proposed = judge.implied_edits(finding, current)
+        delta = convergence.struct_distance(current, proposed)
+        label = str(finding.get("finding") or finding.get("concept") or "structural finding")
+
+        if convergence.escalate(delta, cycle):
+            cycle += 1
+            current = (recurate(finding, current) if recurate else proposed)
+            c_k = convergence.struct_distance(cycle_maps[-1], current)
+            cycle_maps.append(current)
+            records.append(CycleRecord(cycle=cycle, c_k=c_k, rho=convergence.rho(c_k, prev_c),
+                                       tau=convergence.tau(cycle), finding=label,
+                                       decision="escalate"))
+            prev_c = c_k
+            dives = 0
+            continue
+
+        dives += 1
+        if dives > convergence.MAX_DIVES:
+            records.append(CycleRecord(cycle=cycle, c_k=None, rho=None, tau=convergence.tau(cycle),
+                                       finding=f"{label} (dive cap reached)", decision="stop"))
+            regime = convergence.classify_trajectory(cycle_maps) if len(cycle_maps) > 1 else "coherent"
+            break
+        current = proposed
+        records.append(CycleRecord(cycle=cycle, c_k=None, rho=None, tau=convergence.tau(cycle),
+                                   finding=label, decision="deepen"))
+
+    if records[-1].decision not in ("stop",):
+        records.append(CycleRecord(cycle=cycle, c_k=None, rho=None, tau=convergence.tau(cycle),
+                                   finding="terminal", decision="stop"))
+
+    log = ConvergenceLog(k_max=convergence.K_MAX, cycles=records, terminal_regime=regime,
+                         terminal_decision=_TERMINAL_DECISION[regime])
+
+    block = None
+    if regime == "contested":
+        block = build_contested_block(cycle_maps)
+        for cmap in cycle_maps:
+            cmap.contested = True
+    return ConvergenceRun(log=log, cycle_maps=cycle_maps, contested_block=block)
+
+
+def build_contested_block(cycle_maps: list[ConceptMap], block_id: str = "contested-structure") -> Block:
+    """The `role: contested` IR block: the framings the trajectory oscillated among.
+
+    Emitting this is the point of the whole guard — when the structure will not settle, the primer
+    presents the competing organizations rather than asserting one and hiding the disagreement.
+    """
+    framings = [Framing(label=f["label"], summary=f["summary"], applies_when=f["applies_when"],
+                        source_ids=f["source_ids"])
+                for f in convergence.contested_framings(cycle_maps)]
+    return Block(block_id=block_id, role="contested", framings=framings, provenance="verified",
+                 source_ids=sorted({sid for f in framings for sid in f.source_ids}))
+
+
+def write_convergence(run: ConvergenceRun, out_dir: str | Path = ".") -> dict[str, Path]:
+    """Persist concept-map-vK.yaml per cycle + convergence-log.yaml."""
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    paths: dict[str, Path] = {}
+    for k, cmap in enumerate(run.cycle_maps):
+        cmap.cycle = k
+        p = out / f"concept-map-v{k}.yaml"
+        p.write_text(yaml.safe_dump(cmap.model_dump(mode="json"), sort_keys=False, allow_unicode=True),
+                     encoding="utf-8")
+        paths[f"map_v{k}"] = p
+    log_path = out / "convergence-log.yaml"
+    log_path.write_text(yaml.safe_dump(run.log.model_dump(mode="json"), sort_keys=False, allow_unicode=True),
+                        encoding="utf-8")
+    paths["log"] = log_path
     return paths

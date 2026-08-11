@@ -254,6 +254,27 @@ terminal_decision: render-contested
 ```
 `c_k` = structural distance between the cycle K-1 and K concept-maps; `rho` = c_k / c_(k-1); `tau` = the rising escalate threshold at that cycle. Regimes: `converged` (rho<0.5 or maps collapse to one cluster → footnote residual), `contested` (rho≥~0.7, 2–3 stable clusters → render them), `chaotic` (>3 clusters → scope/diversity flag), `coherent` (loop exited with no structural finding).
 
+`decision ∈ {draft, deepen, escalate, stop}`. Only `escalate` opens a new cycle; `deepen` refines
+in place and is separately bounded by `MAX_DIVES`, without which a run of sub-tau findings would
+never escalate and never end. The final entry is always `stop`.
+
+**What the edit weights apply to.** The registry fixes the weights; the V1 concept-map has no
+explicit relation graph, so `research/convergence.py` fixes what they measure:
+
+| Weight | Charged when |
+|---|---|
+| `concept_split_merge` (4) | a concept in one map has no counterpart in the other |
+| `edge_add_remove` (2) | a claim present in both maps moved between concepts |
+| `leaf_add_remove` (1) | a claim entered or left the map entirely |
+| `home_anchor_or_framing` (6) | a matched concept's anchor or epistemic status changed |
+| `section_add_remove_reorder` (4) | the salience ordering of the *matched* concepts changed |
+| `alias_rename` (0) | term/alias changes on an otherwise identical concept |
+
+Concepts are matched **across cycles by claim-set overlap**, never by `concept_id` or term:
+curation regenerates ids and may rename a concept, and a rename is cosmetic while a claim
+regrouping is structural — so identity has to follow the evidence, not the label. Ordering is
+compared over matched concepts only, so a split is not charged twice.
+
 **`contested-structure`** — an IR block (`role: contested`) emitted when `terminal_regime == contested`; renders via the conflict/tradeoff modes (`R-MV`, Toulmin rebuttal).
 ```yaml
 - block_id: contested-structure

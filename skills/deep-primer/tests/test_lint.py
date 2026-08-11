@@ -4,7 +4,7 @@ import json
 import pytest
 
 from checks._base import LintContext, nlp_available
-from ir.schema import Block, Concept, ConceptMap, DocumentIR, Section
+from ir.schema import Block, ConceptMap, DocumentIR, Section
 from lint import lint_files, main, run_lint
 
 
@@ -136,7 +136,6 @@ def test_coherence_degraded_is_warn_not_fail():
 # --- the html pass (input: html rules) ---------------------------------------
 
 def test_html_pass_dispatches_and_passes_on_rendered_output(fixtures):
-    from ir.schema import ConceptMap
     from lint import run_html_pass
     from render.render_html import render_html
 
