@@ -101,10 +101,24 @@ Edit `references/rule-registry.yaml`, then `bash skills/deep-primer/tools/build.
 - **`assets/primer-template.html` must not spell its own placeholders with braces.** It once named
   `{{ blocks }}` inside its header comment, and `str.replace` injected a second copy of the whole
   document into that comment. Covered by `test_template_placeholders_are_substituted_once`.
-- **SonarCloud is red on this PR and was never diagnosed.** Its detail lives only on the SonarCloud
-  dashboard, which the web container could not reach (egress-blocked); the check-run carries no
-  annotations, and neither `ruff --select S` nor `bandit` reproduces it. Locally you can just open
-  the dashboard. `build-validate-bundle` has been green on every commit.
+- **SonarCloud is red on this PR — the Security half is identified and looks like a false positive.**
+  Late in the session `github-advanced-security[bot]` posted the finding as an inline review comment
+  (the dashboard itself was egress-blocked from the container, which is why it went undiagnosed for
+  most of the run):
+
+  > `skills/deep-primer/scripts/research/discovery.py:114` — S5332 *Clear-text protocols should not
+  > be used. Using HTTP protocol is insecure. Use HTTPS instead.*
+
+  Line 114 is `for prefix in ("https://", "http://"):` inside `normalize_url`, which strips a scheme
+  prefix to canonicalize a URL for **source identity**. Nothing there opens a connection — the rule
+  targets code that *uses* clear-text protocols, so this reads as a false positive. Note the
+  canonicalization is deliberate and tested: `http://` and `https://` forms of one URL are treated as
+  the same source (`test_cluster_merges_urls_differing_only_cosmetically`), so *removing* the
+  `"http://"` literal would change dedup behaviour — mark it won't-fix in SonarCloud rather than
+  "fixing" it.
+
+  The **Reliability (C)** finding is still unidentified; no inline comment arrived for it. Both are
+  visible on the dashboard from your machine. `build-validate-bundle` has been green on every commit.
 
 ---
 
