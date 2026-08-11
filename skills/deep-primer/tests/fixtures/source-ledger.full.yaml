@@ -20,6 +20,15 @@ sources:
         confidence: high
         corroboration_count: 2
         corroborated_by: [s-rerank]
+      # the other side of the C-rerank-2 disagreement; contested/contradicts are symmetric so the
+      # conflict is visible from either source (R-GROUND-05)
+      - claim_id: C-chunk-2
+        text: "batching keeps cross-encoder cost flat well past the quoted QPS ceiling"
+        quote: "batching keeps cross-encoder cost flat past that ceiling"
+        location: "p.9 / §6"
+        confidence: medium
+        contested: true
+        contradicts: [C-rerank-2]
   - source_id: s-rerank
     url: "https://example.org/reranking-ablation"
     title: "What reranking can and cannot recover"
@@ -43,3 +52,4 @@ sources:
         location: "p.7 / §5"
         confidence: medium
         contested: true
+        contradicts: [C-chunk-2]

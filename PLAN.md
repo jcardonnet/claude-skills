@@ -224,7 +224,21 @@ Applied ahead of Stage C, since both bite there.
   stays a predictive claim and `maps_to` records which entry it realizes. The concept-map still
   drives depth within sections. Deterministic (hard_lint, MUST) — it checks the mapping, not strings.
 
-## Stage C — Prompt 6: grounding loop
+## Stage C — Prompt 6: grounding loop — **DONE**
+
+**Outcome:** the R-DISC-01 firewall is now *mechanical* rather than conventional. `anchor_claims`
+is a pure gate around the model's proposals: a claim reaches the ledger only if its quote appears
+**verbatim in a document we actually fetched**, is ≤15 words, and carries its source. A claim
+lifted from a discovery report's prose cannot pass it, which is the anti-fabrication floor
+(R-GROUND-01) and the leads-not-evidence firewall in one check. Corroboration, recency and
+conflict are computed rather than asserted, and `curate.py` derives the concept-map **from the
+ledger**, never from a report's taxonomy — the same firewall applied to shape. `kb.py` stays a
+documented V2 deferral. Two fixes found by running it: the version regex required a capitalized
+name, silently missing `pgvector`/`numpy`/`spaCy` (now filtered by version shape instead), and the
+reference ledger had a `contested` claim with nothing recorded as contradicting it — caught by the
+new ledger lint on its first run.
+
+## Stage C — Prompt 6: grounding loop (original plan)
 
 - `retrieval_loop.py`, `claim_extractor.py`, `recency.py`, `coverage.py` — tool-loops behind the same
   seam. `kb.py` stays a documented V2 deferral.

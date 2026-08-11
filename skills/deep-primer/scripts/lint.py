@@ -38,6 +38,7 @@ from checks import (  # noqa: E402
     univocity_terms,
     xrefs,
 )
+from checks import ledger as ledger_checks  # noqa: E402
 from checks._base import LintContext, Violation  # noqa: E402
 from ir.schema import ConceptMap, DocumentIR, SourceLedger  # noqa: E402
 from utils import parse_primer  # noqa: E402
@@ -89,6 +90,11 @@ HTML_CHECKS = {
     "utils/parse_primer.py::block_ids_and_meta": parse_primer.block_ids_and_meta,
     "utils/parse_primer.py::depth_dial_present": parse_primer.depth_dial_present,
     "utils/parse_primer.py::figure_a11y": parse_primer.figure_a11y,
+}
+
+# The `ledger` pass: reads source-ledger.yaml at the end of Phase 1, before any drafting exists.
+LEDGER_CHECKS = {
+    "checks/ledger.py::provenance_fields": ledger_checks.provenance_fields,
 }
 
 
@@ -169,23 +175,30 @@ def run_lint(ctx: LintContext, registry_path: str | Path = DEFAULT_REGISTRY) -> 
     }
 
 
-def run_html_pass(html: str, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
-    """Dispatch the `input: html` hard_lints against a rendered primer (R-CONSIST-02, R-DEPTH-02,
-    R-FIG-04). Separate from the IR pass because the artifact only exists after Phase 8 rendering."""
+_ARTIFACT_CHECKS = {"html": HTML_CHECKS, "ledger": LEDGER_CHECKS}
+
+
+def run_artifact_pass(artifact, input_tag: str, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """Dispatch the hard_lints tagged `input: <input_tag>` against a non-IR artifact.
+
+    Each pass runs when its artifact exists — `ledger` at the end of Phase 1, `html` after Phase 8
+    rendering — which is why they cannot ride along with the IR lint.
+    """
     rules = yaml.safe_load(Path(registry_path).read_text(encoding="utf-8")).get("rules", [])
+    table = _ARTIFACT_CHECKS.get(input_tag, {})
     findings: list[dict] = []
     dispatched = 0
     for rule in rules:
         check = rule.get("check", {})
-        if rule["enforcement"] != "hard_lint" or check.get("input") != "html":
+        if rule["enforcement"] != "hard_lint" or check.get("input") != input_tag:
             continue
         ref = check.get("ref")
-        fn = HTML_CHECKS.get(ref)
+        fn = table.get(ref)
         dispatched += 1
         if fn is None:
             findings.append(_record(rule, ref, None, "skip", "not implemented"))
             continue
-        problems = fn(html)
+        problems = fn(artifact)
         if not problems:
             findings.append(_record(rule, ref, None, "pass", "ok"))
         else:
@@ -205,6 +218,16 @@ def run_html_pass(html: str, registry_path: str | Path = DEFAULT_REGISTRY) -> di
         },
         "findings": findings,
     }
+
+
+def run_html_pass(html: str, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `html` pass (R-CONSIST-02, R-DEPTH-02, R-FIG-04)."""
+    return run_artifact_pass(html, "html", registry_path)
+
+
+def run_ledger_pass(ledger, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `ledger` pass (R-GROUND-05), run at the end of Phase 1."""
+    return run_artifact_pass(ledger, "ledger", registry_path)
 
 
 def lint_files(
