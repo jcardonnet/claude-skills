@@ -324,11 +324,29 @@ Add the build-idempotence check to `tools/validate_skill.py`; add `dorny/paths-f
 changed skills and add the eval step; make `make eval` real; implement the `run-manifest.json` phase
 ledger `SKILL.md` promises but nothing writes.
 
-## Stage G — the live run (trigger separately)
+## Stage G — the live run — **BLOCKED BY ENVIRONMENT (not started)**
 
 A real `/deep-research` campaign + grounding run on `spec-01`, producing a genuine
-`discovery-snapshot/` and populated ledger — the prompts' stated done-criteria for 6a/6. Held out of the
-main sequence so the build stays deterministic and CI-safe; run it when you want to spend the tokens.
+`discovery-snapshot/` and populated ledger — the prompts' stated done-criteria for 6a/6.
+
+**It cannot run in the Claude Code web container.** Outbound egress to general hosts is refused by
+the environment's network proxy — `curl https://arxiv.org` returns `CONNECT tunnel failed, 403`, and
+the harness fetcher returns `EGRESS_BLOCKED`; only package registries (pypi, npm) are reachable. So
+there is no path to live research here regardless of budget, which is what the "build now, live run
+later" decision anticipated.
+
+Everything Stage G needs is in place and exercised offline against frozen artifacts: the campaign
+cascade with a `ReplayBackend`, the grounding loop with a `ReplayFetcher`, and an eval harness that
+refuses to propose citation thresholds until a real entailment backend has scored a run. To do it:
+
+1. run from an environment with web egress (a local Claude Code session, or a cloud environment
+   whose network policy allows it);
+2. `front_load_campaign(..., backend=CallableBackend(<invoke /deep-research>))` → a real
+   `discovery-snapshot/`;
+3. ground it with a live `Fetcher`, then `python scripts/eval.py --spec spec-01-rag-chunking`
+   with the NLI or Claude entailment backend;
+4. take the proposed `citation_recall` / `citation_precision` and settle the rubric TODOs, plus
+   `per_run_token_cap` from the observed spend.
 
 ---
 
