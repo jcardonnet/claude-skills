@@ -151,20 +151,53 @@ Under IR-first, Phase 3 emits a structured **document IR**, not HTML. Lints, cri
 ```yaml
 # document-ir.yaml (canonical)
 meta: {parameters, ledger_snapshot, model_versions, generated_at}
-sections:
+sections:                                  # h2
   - block_id: sec-maskfree
     title: "Pixel masks are usually wasted work for BOM linkage"
     concept: mask-free-linkage
     blocks:
       - {block_id: lede-maskfree,   role: lede,    text: "...", claim_ids: [C1], provenance: inferred}
-      - {block_id: card-maskfree,   role: card,    text: "...", concept: mask-free-linkage, mode: mental_model, claim_ids: [C1]}
+      - block_id: card-maskfree                    # role=card carries TYPED rows (R-CARD-02)
+        role: card
+        concept: mask-free-linkage
+        mode: mental_model
+        claim_ids: [C1]
+        rows: {idea: "...", home_anchor: "...", whats_new_vs_renamed: "...",
+               reach_for_when: "...", skip_when: "...", key_exemplar: "...", confidence: "..."}
       - {block_id: rec-maskfree,    role: toulmin, text: "...", claim_ids: [C1,C7], provenance: verified, source_ids: ["<...>"]}
+      - {block_id: mtx-maskfree,    role: matrix,  artifact_kind: decision_matrix, text: "..."}
       - {block_id: fig-maskfree,    role: figure,  mode: tradeoff, caption: "Figure 3: ...", svg_ref: "assets/..."}
-      - {block_id: recall-maskfree, role: recall,  text: "..."}        # pedagogical → dropped in llm_md
+      - block_id: recall-maskfree                  # pedagogical → dropped whole in llm_md
+        role: recall
+        items:                                     # exactly 3 (R-RECALL-01); >=1 cross_domain (R-RECALL-02)
+          - {question: "...", answer: "...", cross_domain: true}
+          - {question: "...", answer: "..."}
+          - {question: "...", answer: "..."}
+    subsections:                           # h3 — each carries exactly ONE `summary` block (the sub-sum)
+      - block_id: sub-leaders
+        title: "Leader geometry resolves attribution where pixels cannot"
+        concept: leader-anchoring
+        blocks:
+          - {block_id: subsum-leaders, role: summary, text: "..."}          # the 1:1 sub-sum
+          - {block_id: body-leaders,   role: body, text: "...", heading: "An h4 label"}
 ```
 `role ∈ {lede, card, summary, body, toulmin, matrix, figure, recall, glossary, further_reading, contested}`;
-`provenance ∈ {verified, inferred, unverified}` (the G4 axis; surfaced inline in both projections, `R-PROJ-05`).
-Lints run on this structure — no brittle HTML parsing.
+`provenance ∈ {verified, inferred, unverified}` (the G4 axis; surfaced inline in both projections, `R-PROJ-05`);
+`artifact_kind ∈ {decision_matrix, checklist, failure_catalog, decision_aid}` — the four operational
+artifacts, kept distinct (`R-ART-01`).
+
+**Three levels, and why h4 is not one of them.** h2 is a `section`, h3 a `subsection`; **h4 is a
+`heading` attribute on a body block, never a container**. `R-ARCH-05` requires h4 to stay out of
+nav/TOC, and modelling it as an attribute makes that structural rather than checked — the renderer
+builds nav from containers, so an h4 cannot leak in.
+
+Role-scoped fields (`rows` on card, `items` on recall, `artifact_kind` on matrix, `framings` on
+contested) are structural invariants enforced by `validate_ir`. Their *presence* requirements — a
+card must carry all seven rows, a section exactly three recall items, a document all four artifacts —
+are registry rules enforced by `scripts/lint.py`, where blocking derives from priority.
+
+Lints run on this structure — no brittle HTML parsing. `DocumentIR.flatten_blocks()` recurses into
+subsections, so every consumer (lints, both renderers, verify, critics) sees subsection content.
 
 ## Projections — one IR, two renderings
 Both artifacts are pure functions of the IR and **share block_ids** (`R-PROJ-02`), so a claim cited as `[block: rec-maskfree]` resolves in either.

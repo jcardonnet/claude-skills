@@ -27,8 +27,7 @@ def test_full_hard_lint_run_blocks_on_fixture(fixtures):
     # R-ARCH-06 is SHOULD -> warn (non-blocking)
     arch = _by_rule(report, "R-ARCH-06")
     assert arch and all(f["status"] == "warn" and not f["blocking"] for f in arch)
-    # the full set ran: pass, warn, fail, and skip all present
-    assert set(report["counts"]) >= {"pass", "warn", "fail", "skip"}
+    assert set(report["counts"]) >= {"pass", "warn", "fail"}
 
 
 def test_report_record_shape(fixtures):
@@ -38,11 +37,30 @@ def test_report_record_shape(fixtures):
         assert f["status"] in {"pass", "fail", "warn", "skip"}
 
 
-def test_unimplemented_refs_are_skipped(fixtures):
+def test_every_dispatched_ir_check_is_implemented(fixtures):
+    """The regression guard for the Stage-A gap: an unimplemented check reports 'skip', which is
+    non-blocking, so the report reads clean while the rule goes unenforced. Six MUST rules stayed
+    dark that way. No IR-targeting check may be unimplemented."""
     report = lint_files(fixtures / "document-ir.yaml")
-    # R-CARD-02 (card_rows) needs richer IR than V1 models -> skip, never crashes
-    card = _by_rule(report, "R-CARD-02")
-    assert card and card[0]["status"] == "skip"
+    assert report["coverage"]["rules_skipped"] == []
+    assert report["coverage"]["unenforced_musts"] == []
+    assert report["counts"].get("skip", 0) == 0
+
+
+def test_also_hard_lint_companion_is_dispatched(fixtures):
+    """R-SCENT-01 is a soft_critic rule carrying an also_hard_lint companion (banned generic
+    headings). Filtering dispatch on enforcement is how that lint went missing."""
+    report = lint_files(fixtures / "document-ir.yaml")
+    assert _by_rule(report, "R-SCENT-01"), "R-SCENT-01's also_hard_lint companion never ran"
+
+
+def test_banned_generic_heading_is_caught():
+    d = DocumentIR(sections=[Section(
+        block_id="s1", title="Background",
+        blocks=[Block(block_id="l1", role="lede", text="x")],
+    )])
+    scent = _by_rule(run_lint(LintContext(ir=d)), "R-SCENT-01")
+    assert any(f["status"] == "fail" and "Background" in f["detail"] for f in scent)
 
 
 def test_cli_main_exit_and_report(fixtures, tmp_path):
@@ -58,34 +76,21 @@ def test_cli_main_exit_and_report(fixtures, tmp_path):
     assert data["blocking"] is True and data["findings"]
 
 
-# --- a clean IR passes (no blocking failures) --------------------------------
+# --- a complete field-guide IR passes (no blocking failures) -----------------
 
-def _clean_ctx():
-    d = DocumentIR(sections=[Section(
-        block_id="sec-vi",
-        title="A vector index trades recall for speed",
-        concept="vector-index",
-        blocks=[
-            Block(block_id="lede-vi", role="lede", text="A vector index trades recall for query speed.",
-                  claim_ids=["C1"], provenance="inferred"),
-            Block(block_id="card-vi", role="card", concept="vector-index", mode="mental_model",
-                  text="If you know B-trees, this is nearest-not-equal lookup.", claim_ids=["C1"], provenance="inferred"),
-            Block(block_id="fig1-vi", role="figure", concept="vector-index", mode="architecture",
-                  caption="Figure 1: search descends layers, so latency is logarithmic."),
-            Block(block_id="fig2-vi", role="figure", concept="vector-index", mode="benchmark",
-                  caption="Figure 2: recall climbs with ef_search at a latency cost."),
-            Block(block_id="recall-vi", role="recall", text="When would you skip an ANN index entirely?"),
-        ],
-    )])
-    cm = ConceptMap(concepts=[Concept(concept_id="vector-index", canonical_term="vector index")])
-    return LintContext(ir=d, concept_map=cm, parameters={})
-
-
-def test_clean_ir_is_not_blocking():
-    report = run_lint(_clean_ctx())
+def test_full_fixture_is_not_blocking(fixtures):
+    """document-ir.full.yaml exercises the whole structural contract — subsections with one
+    sub-sum each, typed card rows, three recall items per section, all four artifacts — and must
+    come back clean with nothing skipped."""
+    report = lint_files(
+        fixtures / "document-ir.full.yaml",
+        fixtures / "concept-map.full.yaml",
+        fixtures / "source-ledger.full.yaml",
+    )
     fails = [f for f in report["findings"] if f["status"] == "fail"]
+    assert fails == [], f"unexpected failures: {[(f['rule_id'], f['detail']) for f in fails]}"
     assert report["blocking"] is False
-    assert fails == []
+    assert report["counts"].get("skip", 0) == 0
 
 
 # --- blocking derives from priority ------------------------------------------
@@ -126,3 +131,26 @@ def test_coherence_degraded_is_warn_not_fail():
     prose = _by_rule(run_lint(_choppy_ctx({"force_no_nlp": True})), "R-PROSE-01")
     assert prose, "fallback should still produce R-PROSE-01 findings"
     assert all(f["status"] == "warn" and not f["blocking"] for f in prose)
+
+
+# --- the html pass (input: html rules) ---------------------------------------
+
+def test_html_pass_dispatches_and_passes_on_rendered_output(fixtures):
+    from ir.schema import ConceptMap
+    from lint import run_html_pass
+    from render.render_html import render_html
+
+    ir = DocumentIR.from_yaml(fixtures / "document-ir.full.yaml")
+    cm = ConceptMap.from_yaml(fixtures / "concept-map.full.yaml")
+    report = run_html_pass(render_html(ir, cm))
+    assert report["coverage"]["checks_dispatched"] == 3
+    assert report["coverage"]["rules_skipped"] == []
+    assert report["blocking"] is False
+
+
+def test_html_pass_blocks_on_missing_primer_meta():
+    from lint import run_html_pass
+    report = run_html_pass('<p data-block-id="x" data-tierlevel="1"></p><body data-depth="1"></body>')
+    consist = [f for f in report["findings"] if f["rule_id"] == "R-CONSIST-02"]
+    assert any(f["status"] == "fail" for f in consist)   # MUST -> blocking
+    assert report["blocking"] is True

@@ -1,7 +1,11 @@
 """HTML -> block list, for legacy/round-trip back to the IR (the IR remains canonical).
 
 Classification: local-deterministic
-Implements: -
+Implements: R-CONSIST-02 (block_ids_and_meta), R-DEPTH-02 (depth_dial_present), R-FIG-04 (figure_a11y)
+
+These three checks read the *rendered HTML*, not the IR — they verify properties the renderer is
+responsible for (stable ids, the depth-dial shell, figure accessibility), so they run in the
+`html` pass rather than the IR pass. Every other structural rule reads the IR.
 
 Under IR-first the document-ir.yaml is the source of truth; this module reads a rendered
 primer back into the typed `Block` list so the two stay reconcilable. It also exposes
@@ -80,6 +84,63 @@ def parse_primer(html: str) -> list[Block]:
             svg_ref=el.get("data-svg-ref") or None,
         ))
     return blocks
+
+
+# --- HTML-input checks (the `html` pass) -------------------------------------
+
+def block_ids_and_meta(html: str) -> list[str]:
+    """R-CONSIST-02: block-ids present and unique; primer-meta JSON parseable and complete."""
+    import json
+
+    problems: list[str] = []
+    soup = _make_soup(html)
+    ids = [el.get("data-block-id") for el in soup.select("[data-block-id]")]
+    if not ids:
+        problems.append("no data-block-id attributes found")
+    seen: set[str] = set()
+    for bid in ids:
+        if bid in seen:
+            problems.append(f"duplicate data-block-id {bid!r}")
+        seen.add(bid)
+
+    node = soup.find(id="primer-meta")
+    if node is None:
+        problems.append("no <script id='primer-meta'> block")
+        return problems
+    try:
+        meta = json.loads(node.get_text() or "{}")
+    except ValueError as e:
+        problems.append(f"primer-meta is not parseable JSON: {e}")
+        return problems
+    for key in ("parameters", "ledger_snapshot", "concept_map", "generated_at"):
+        if key not in meta:
+            problems.append(f"primer-meta missing key {key!r}")
+    return problems
+
+
+def depth_dial_present(html: str) -> list[str]:
+    """R-DEPTH-02: the L1-L5 depth-dial controls exist and blocks carry their tier."""
+    problems: list[str] = []
+    soup = _make_soup(html)
+    if soup.select_one("[data-depth]") is None:
+        problems.append("no [data-depth] host element (the depth dial has nothing to drive)")
+    if not soup.select("[data-tierlevel]"):
+        problems.append("no [data-tierlevel] blocks (nothing to fold at depth)")
+    return problems
+
+
+def figure_a11y(html: str) -> list[str]:
+    """R-FIG-04: every figure carries aria-label + role=img + a standalone figcaption."""
+    problems: list[str] = []
+    for fig in _make_soup(html).find_all("figure"):
+        bid = fig.get("data-block-id") or "<figure>"
+        if fig.get("role") != "img":
+            problems.append(f"{bid}: figure missing role='img'")
+        if not (fig.get("aria-label") or "").strip():
+            problems.append(f"{bid}: figure missing a non-empty aria-label")
+        if fig.find("figcaption") is None:
+            problems.append(f"{bid}: figure missing a <figcaption>")
+    return problems
 
 
 def _attr(name: str, value: str | None) -> str:

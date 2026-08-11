@@ -49,9 +49,13 @@ def deanaphorize(text: str, referent: str | None) -> str:
 
 
 def kept_blocks(ir: DocumentIR):
-    """Yield (section, block) for every block the role filter keeps (everything but recall)."""
+    """Yield (section, block) for every block the role filter keeps (everything but recall).
+
+    Recurses into subsections via Section.all_blocks(): a subsection block that rendered into the
+    HTML but never reached the MD would break block-id alignment (R-PROJ-02).
+    """
     for sec in ir.sections:
-        for b in sec.blocks:
+        for b in sec.all_blocks():
             if b.role.value not in DROPPED_ROLES:
                 yield sec, b
 
@@ -83,14 +87,38 @@ def _distill_contested(b: Block, referent: str) -> str:
     return "\n\n".join(chunks)
 
 
+def _distill_card(b: Block, referent: str) -> str:
+    """R-PROJ-03: keep the card's information content, drop the advance-organizer *hook*.
+
+    The home-domain analogue is pedagogy for a human reader, so it is demoted rather than kept as
+    the opener; what survives is the operational core — the idea, what is genuinely new, and the
+    reach-for/skip pair, which is decision content an LLM needs.
+    """
+    r = b.rows
+    if r is None:
+        return f"Claim: {deanaphorize(b.text or '', referent)}"
+    lines = [f"Claim: {deanaphorize(r.idea, referent)}"]
+    if (r.whats_new_vs_renamed or "").strip():
+        lines.append(f"New-vs-renamed: {deanaphorize(r.whats_new_vs_renamed, referent)}")
+    lines.append(f"Reach-for-it-when: {deanaphorize(r.reach_for_when, referent)}")
+    lines.append(f"Skip-it-when: {deanaphorize(r.skip_when, referent)}")
+    if (r.confidence or "").strip():
+        lines.append(f"Confidence: {r.confidence}")
+    return "\n".join(lines)
+
+
 def _distill(sec, b: Block, referents: dict[str, str]) -> str:
     referent = referents.get(b.concept or sec.concept or "", None) or sec.title.split(",")[0]
     if b.role.value == "contested":
         return _distill_contested(b, referent)
     head = (f"## [block: {b.block_id}]   concept: {b.concept or sec.concept or '-'}   "
             f"mode: {b.mode.value if b.mode else '-'}   provenance: {b.provenance.value if b.provenance else '-'}")
+    if b.artifact_kind:
+        head += f"   artifact: {b.artifact_kind.value}"
     if b.role.value == "figure":
         body = f"Figure: {b.caption or ''}".rstrip()          # R-PROJ-06: caption only, SVG dropped
+    elif b.role.value == "card":
+        body = _distill_card(b, referent)
     else:
         body = f"Claim: {deanaphorize(b.text or '', referent)}"
     return f"{head}\n{body}\n{_sources_line(b)}"

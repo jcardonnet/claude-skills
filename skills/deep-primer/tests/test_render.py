@@ -117,3 +117,108 @@ def test_chunk_selfcontained_flags_entailment_failure():
     ir, ledger, cm = _chunk_ctx("completely unrelated remark about weather", "vector index trades recall for speed")
     report = verify(ir, ledger, cm, backend=LexicalEntailment())
     assert report["ok"] is False and report["verdicts"][0]["entails_claims"] is False
+
+
+# --- Stage A: the extended IR renders into both projections ------------------
+
+def _full(fixtures):
+    from ir.schema import ConceptMap, DocumentIR
+    return (DocumentIR.from_yaml(fixtures / "document-ir.full.yaml"),
+            ConceptMap.from_yaml(fixtures / "concept-map.full.yaml"))
+
+
+def test_html_renders_subsection_as_h3(fixtures):
+    ir, cm = _full(fixtures)
+    html = render_html(ir, cm)
+    assert '<h3 data-block-id="sub-chunk-size"' in html
+
+
+def test_html_renders_card_rows_as_dl_with_anchor_first(fixtures):
+    """R-CARD-02 rows become a <dl>; R-XREF-01 puts the home-domain analogue first."""
+    ir, cm = _full(fixtures)
+    html = render_html(ir, cm)
+    card = html.split('data-block-id="card-chunking"')[1].split("</aside>")[0]
+    assert "<dl>" in card
+    assert card.index("If you know") < card.index("Idea")
+    assert "Skip it when" in card
+
+
+def test_html_renders_three_recall_items(fixtures):
+    ir, cm = _full(fixtures)
+    html = render_html(ir, cm)
+    block = html.split('data-block-id="recall-chunking"')[1].split("</div>")[0]
+    assert block.count('class="recall-item"') == 3
+
+
+def test_html_emits_artifact_kind_and_h4(fixtures):
+    ir, cm = _full(fixtures)
+    html = render_html(ir, cm)
+    assert 'data-artifact-kind="decision_matrix"' in html
+    assert 'data-artifact-kind="checklist"' in html
+    assert "<h4>Where fixed windows sever context</h4>" in html
+
+
+def test_template_placeholders_are_substituted_once(fixtures):
+    """The template names its placeholders in a header comment. Spelling one with braces made
+    str.replace inject a second copy of the whole document into that comment."""
+    ir, cm = _full(fixtures)
+    html = render_html(ir, cm)
+    assert html.count('data-block-id="recall-chunking"') == 1
+    assert html.count('<h3 data-block-id="sub-chunk-size"') == 1
+    assert "{{ blocks }}" not in html
+
+
+def test_llm_md_includes_subsection_blocks(fixtures):
+    """A subsection block that renders into HTML but never reaches the MD breaks R-PROJ-02."""
+    ir, cm = _full(fixtures)
+    md = render_llm_md(ir, cm)
+    assert "[block: body-chunk-size]" in md
+
+
+def test_llm_md_distills_card_rows_and_drops_the_hook(fixtures):
+    """R-PROJ-03: keep the card's operational content, demote the advance-organizer hook."""
+    ir, cm = _full(fixtures)
+    md = render_llm_md(ir, cm)
+    card = md.split("[block: card-chunking]")[1].split("## [block:")[0]
+    assert "Skip-it-when:" in card and "Reach-for-it-when:" in card
+    assert "Like choosing a row-versus-page" not in card   # the hook is demoted
+
+
+def test_llm_md_surfaces_artifact_kind(fixtures):
+    ir, cm = _full(fixtures)
+    assert "artifact: decision_matrix" in render_llm_md(ir, cm)
+
+
+def test_full_fixture_projections_align(fixtures):
+    from render.check_alignment import check_alignment
+    ir, cm = _full(fixtures)
+    report = check_alignment(render_html(ir, cm), render_llm_md(ir, cm))
+    assert report["ok"], report
+    assert set(report["html_only"]) == {"recall-chunking", "recall-reranking"}
+
+
+# --- the html-input checks (R-CONSIST-02, R-DEPTH-02, R-FIG-04) --------------
+
+def test_html_checks_pass_on_rendered_output(fixtures):
+    from utils.parse_primer import block_ids_and_meta, depth_dial_present, figure_a11y
+    ir, cm = _full(fixtures)
+    html = render_html(ir, cm)
+    assert block_ids_and_meta(html) == []
+    assert depth_dial_present(html) == []
+    assert figure_a11y(html) == []
+
+
+def test_figure_a11y_flags_missing_aria_label():
+    from utils.parse_primer import figure_a11y
+    bad = '<figure data-block-id="f1" role="img"><figcaption>c</figcaption></figure>'
+    out = figure_a11y(bad)
+    assert out and "aria-label" in out[0]
+
+
+def test_block_ids_and_meta_flags_duplicate_ids():
+    from utils.parse_primer import block_ids_and_meta
+    bad = ('<p data-block-id="x"></p><p data-block-id="x"></p>'
+           '<script id="primer-meta">{"parameters":{},"ledger_snapshot":[],'
+           '"concept_map":[],"generated_at":"t"}</script>')
+    out = block_ids_and_meta(bad)
+    assert out and "duplicate" in out[0]

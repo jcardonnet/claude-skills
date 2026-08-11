@@ -22,6 +22,7 @@ The generalization layer — set once per primer; rules reference these.
 - **`target_domain`** (str) — The primer's subject (the adjacent domain being bridged into).
 - **`seniority_band`** (enum) *(values: early_career, mid_senior, staff_plus)* — Scales expertise-reversal suppression. staff_plus = maximal scaffolding suppression; early_career = one opt-in worked example per core concept permitted.
 - **`length_budget`** (str|int) — Target length. Drives depth allocation via the ledger-salience proxy (claim-frequency / centrality-in-claims), since V1 has no concept graph.
+- **`reference_case`** (str|null) — OPTIONAL. A single concrete artifact every claim is grounded against (R-EXPERT-03). A contrastive anchor, not a worked example — R-EXPERT-01 suppresses procedural walkthroughs, never the reference case.
 
 ## Circuit-breaker & calibration defaults
 
@@ -49,7 +50,7 @@ The highest-leverage generation-time MUSTs the generator holds in context. Mecha
 - **R-MV-01** — Multi-view per core concept
 - **R-PROSE-01** — Given-new information flow
 - **R-PROSE-02** — Trade-offs as word-choice
-- **R-EXPERT-01** — No worked examples in the primary layer
+- **R-EXPERT-01** — No procedural walkthroughs in the primary layer
 - **R-VOCAB-01** — Terminology univocity
 - **R-RECALL-02** — Generation-based, calibrated recall
 - **R-ART-03** — Toulmin recommendation blocks
@@ -69,7 +70,7 @@ The highest-leverage generation-time MUSTs the generator holds in context. Mecha
 - [MV — Multi-view (cognitive flexibility)](#mv) (1)
 - [PROSE — Prose & tone](#prose) (6)
 - [VOCAB — Vocabulary & univocity](#vocab) (2)
-- [EXPERT — Expertise reversal](#expert) (2)
+- [EXPERT — Expertise reversal](#expert) (3)
 - [RECALL — Retrieval practice](#recall) (2)
 - [ART — Operational artifacts](#art) (6)
 - [EVID — Empirical claims & epistemic honesty](#evid) (3)
@@ -333,14 +334,23 @@ Give failure modes, patterns, and tiers short evocative names and reuse them as 
 
 ### EXPERT — Expertise reversal
 
-#### R-EXPERT-01 — No worked examples in the primary layer
+#### R-EXPERT-01 — No procedural walkthroughs in the primary layer
 `MUST` · `soft_critic` · *load_bearing_empirical* · **CORE**  
-For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step worked examples; worked examples appear only behind opt-in deeper layers, scaled by seniority_band.  
-- **Check (critic · expertise-calibration pass):** “Is the primary layer free of step-by-step worked examples (above early_career), using contrast instead? y/n”
+For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step PROCEDURAL walkthroughs ('first do X, then do Y'); such walkthroughs appear only behind opt-in deeper layers, scaled by seniority_band. This does NOT suppress a running reference case (R-EXPERT-03): grounding a claim against a shared concrete artifact is contrastive evidence, not scaffolding.  
+- **Check (critic · expertise-calibration pass):** “Is the primary layer free of step-by-step procedural walkthroughs (above early_career), using contrast instead? y/n”
 - **PASS looks like:** The API is the same three calls as any datastore; the only new part is query-by-vector — taught by contrast, no install-step walkthrough.
 - **Counters:** LLM defaults to tutorial-style scaffolding (its training distribution).
-- **Phase:** 3,4,7 · **Evidence:** EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003
+- **Phase:** 3,4,7 · **Evidence:** EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003; dry-run gap G2 (narrowed to procedural)
 - **Params:** seniority_band
+
+#### R-EXPERT-03 — Running reference case
+`SHOULD` · `soft_critic` · *convergent_craft*  
+When a reference_case is supplied, ground claims against that one shared concrete artifact throughout, and name it where a claim is checked against it. A reference case is a contrastive anchor, not a worked example: it shows what a claim predicts about a real artifact rather than walking the reader through a procedure. Never suppress it as scaffolding (R-EXPERT-01).  
+- **Check (critic · expertise-calibration pass):** “When a reference_case is supplied, are claims grounded against it as a contrastive anchor rather than replaced by a procedural walkthrough? y/n”
+- **PASS looks like:** 'On the reference drawing, 12 of ~80 callouts have kinked leaders — which is where the straight-ray heuristic loses attribution' — the claim is checked against the shared artifact, no step-by-step.
+- **Counters:** Expertise-reversal suppression over-fires and strips the concrete grounding the reader needs to check a claim.
+- **Phase:** 3,4,7 · **Evidence:** dry-run gap G2; EM Part II §7 (CFT — multiple concrete cases for advanced learners)
+- **Params:** reference_case, seniority_band
 
 #### R-EXPERT-02 — Scaffolding behind explicit gates
 `SHOULD` · `soft_critic` · *load_bearing_empirical*  

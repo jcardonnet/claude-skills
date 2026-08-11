@@ -78,6 +78,15 @@ class EpistemicStatus(str, Enum):
     speculative = "speculative"
 
 
+class ArtifactKind(str, Enum):
+    """The four operational artifacts, kept distinct (R-ART-01). Valid only on role=matrix."""
+
+    decision_matrix = "decision_matrix"
+    checklist = "checklist"
+    failure_catalog = "failure_catalog"
+    decision_aid = "decision_aid"
+
+
 class CoverageStatus(str, Enum):
     open = "open"
     covered = "covered"
@@ -105,6 +114,38 @@ class Framing(BaseModel):
     source_ids: list[str] = Field(default_factory=list)
 
 
+class CardRows(BaseModel):
+    """The at-a-glance card's required rows (R-CARD-02).
+
+    `home_anchor` leads by contract — the cross-domain mapping belongs in the card's opening,
+    not a footnote (R-XREF-01) — and `skip_when` is mandatory alongside `reach_for_when`
+    (R-CARD-03). Typing the rows is what makes those rules mechanically checkable; whether a
+    row *activates prior knowledge* rather than teasing the section stays a critic judgment
+    (R-CARD-01).
+    """
+
+    model_config = ConfigDict(extra="allow")
+
+    idea: str
+    home_anchor: str
+    whats_new_vs_renamed: str
+    reach_for_when: str
+    skip_when: str
+    key_exemplar: str
+    confidence: str
+
+
+class RecallItem(BaseModel):
+    """One check-yourself Q&A. A section carries exactly three (R-RECALL-01), at least one of
+    which forces a cross-domain mapping (R-RECALL-02, judged by the critic; the flag is a hint)."""
+
+    model_config = ConfigDict(extra="allow")
+
+    question: str
+    answer: str
+    cross_domain: bool = False
+
+
 class Block(BaseModel):
     """A leaf field-guide block. `extra=forbid` turns stray/misspelled keys into errors."""
 
@@ -121,6 +162,24 @@ class Block(BaseModel):
     caption: str | None = None
     svg_ref: str | None = None
     framings: list[Framing] | None = None   # only on role=contested (6b convergence loop)
+    # h4 is a block ATTRIBUTE, not a container: R-ARCH-05 requires h4 to stay out of nav/TOC,
+    # and modelling it here makes that invariant structural rather than checked.
+    heading: str | None = None
+    rows: CardRows | None = None                 # only on role=card (R-CARD-02)
+    items: list[RecallItem] | None = None        # only on role=recall (R-RECALL-01)
+    artifact_kind: ArtifactKind | None = None    # only on role=matrix (R-ART-01)
+
+
+class Subsection(BaseModel):
+    """An h3 subsection. Carries exactly one sub-sum — a `summary` block — per R-SUMM-02 /
+    R-CONSIST-01; the check lives in checks/structure_coverage.py."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    block_id: str
+    title: str
+    concept: str | None = None
+    blocks: list[Block] = Field(default_factory=list)
 
 
 class Section(BaseModel):
@@ -130,6 +189,11 @@ class Section(BaseModel):
     title: str
     concept: str | None = None
     blocks: list[Block] = Field(default_factory=list)
+    subsections: list[Subsection] = Field(default_factory=list)
+
+    def all_blocks(self) -> list[Block]:
+        """This section's own blocks followed by its subsections', in document order."""
+        return [*self.blocks, *(b for sub in self.subsections for b in sub.blocks)]
 
 
 class IRMeta(BaseModel):
@@ -154,15 +218,20 @@ class DocumentIR(BaseModel):
         return cls(**_read_yaml(path))
 
     def flatten_blocks(self) -> list[Block]:
-        """All leaf blocks in document order (the round-trip / projection unit)."""
-        return [b for sec in self.sections for b in sec.blocks]
+        """All leaf blocks in document order, recursing into subsections (the round-trip /
+        projection unit). Every consumer — lints, both renderers, verify, critics — reads the
+        document through this method, so subsection content is visible everywhere by construction."""
+        return [b for sec in self.sections for b in sec.all_blocks()]
 
     def all_block_ids(self) -> list[str]:
-        """Every block_id in the document — section containers *and* leaf blocks."""
+        """Every block_id in the document — section and subsection containers *and* leaf blocks."""
         ids: list[str] = []
         for sec in self.sections:
             ids.append(sec.block_id)
             ids.extend(b.block_id for b in sec.blocks)
+            for sub in sec.subsections:
+                ids.append(sub.block_id)
+                ids.extend(b.block_id for b in sub.blocks)
         return ids
 
 

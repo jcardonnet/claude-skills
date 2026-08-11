@@ -69,9 +69,18 @@ class of silent gap recur.
 
 ---
 
-## Stage A — Prompt 2b: close the IR ↔ registry structural gap
+## Stage A — Prompt 2b: close the IR ↔ registry structural gap — **DONE**
 
 The prerequisite for every later stage, because Prompt 7 calibrates against the lint report.
+
+**Outcome:** the IR pass dispatches 20 checks with **zero skips** (was 9 skips / 6 unenforced MUSTs);
+`document-ir.full.yaml` lints `fail=0 warn=0 skip=0`. Two extras surfaced during the work and were
+fixed: the template named its own placeholders *with braces* inside its header comment, so
+`str.replace` injected a second copy of the whole document into that comment (harmless to the DOM —
+BeautifulSoup ignores comment content — but it doubled file size and would corrupt the page if any
+content contained `-->`); and `render_llm_md.kept_blocks` iterated `sec.blocks`, which would have
+dropped every subsection block from the MD projection and broken R-PROJ-02 alignment the moment
+subsections existed.
 
 ### A1 · Extend the IR (`scripts/ir/schema.py`)
 

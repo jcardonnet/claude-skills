@@ -45,7 +45,9 @@ def compression_gradient(ctx: LintContext) -> list[Violation]:
     for sec in ctx.ir.sections:
         layers: list[tuple[str, int]] = []
         for name, roles in (("card", {"card"}), ("summary", {"summary"}), ("body", CONTENT_ROLES)):
-            present = [b for b in sec.blocks if b.role.value in roles]
+            # card/summary are section-level layers; body includes subsection prose
+            scope = sec.blocks if name != "body" else sec.all_blocks()
+            present = [b for b in scope if b.role.value in roles]
             if present:
                 layers.append((name, sum(n_words(b.text) for b in present)))
         for (a_name, a_w), (b_name, b_w) in zip(layers, layers[1:]):

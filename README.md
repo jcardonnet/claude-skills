@@ -12,8 +12,8 @@ skills/
     references/           rule-registry.yaml (source of truth) + generated md/critics,
                           artifact-schemas.md (IR + projections), evidence-map.md, exemplars.md,
                           research-perspectives.md, eval/ (specs + rubric)
-    scripts/              Stage-6 stubs (checks/ verify/ render/ ir/ critics/ research/ utils/)
-    assets/               primer-template.html, card-template.html, llm_md_template.md (stubs)
+    scripts/              implemented: ir/ checks/ verify/ render/ critics/ utils/; stubs: research/, eval.py
+    assets/               primer-template.html (depth-dial shell), card-template.html, llm_md_template.md
     tools/                gen_registry_md.py, gen_critic_prompts.py, build.sh  (lockstep)
   arch-design-doc-obsidian/   placeholder — drop your existing skill here
   skill-creator/              placeholder — drop your existing skill here
@@ -41,4 +41,6 @@ make build                       # regenerate lockstep files (idempotent)
 Then open **`CLAUDE_CODE_PROMPTS.md`** and run Prompt 0 → Prompt 8. `CLAUDE.md` is the standing orientation for the coding agent; `GAPS.md` holds the open design decisions to settle along the way.
 
 ## Status
-Design + contracts shipped (registry at 67 rules incl. the `R-PROJ-*` projection rules; IR + projections schema; SKILL pipeline). Everything under `scripts/`, `assets/`, and the eval harness is a documented stub awaiting Stage 6.
+Design + contracts shipped (registry at 77 rules incl. the `R-PROJ-*` projection rules; IR + projections schema; SKILL pipeline).
+Prompts 0–5 and Stage A (the IR extension + the full hard_lint set) are implemented; `scripts/research/*`,
+`scripts/eval.py`, and the discovery/convergence checks remain stubs — see `PLAN.md`.

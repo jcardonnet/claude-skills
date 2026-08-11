@@ -267,3 +267,165 @@ def test_provenance_verified_without_source():
 def test_provenance_ok():
     d = doc(sec("s1", blk("b", "toulmin", text="x", claim_ids=["C1"], provenance="verified", source_ids=["s1"])))
     assert provenance.tagged(ctx(d)) == []
+
+
+# --- Stage A: the structural checks the flat V1 IR could not express ----------
+
+def _rows(**overrides):
+    base = dict(idea="i", home_anchor="h", whats_new_vs_renamed="n", reach_for_when="r",
+                skip_when="s", key_exemplar="k", confidence="c")
+    base.update(overrides)
+    return base
+
+
+def _items(n, **kw):
+    return [{"question": f"q{i}", "answer": f"a{i}", **kw} for i in range(n)]
+
+
+def sub(block_id, *blocks, title="A subsection claim", concept=None):
+    from ir.schema import Subsection
+    return Subsection(block_id=block_id, title=title, concept=concept, blocks=list(blocks))
+
+
+def sec_with_subs(block_id, blocks, subsections, title="A claim-bearing title"):
+    return Section(block_id=block_id, title=title, blocks=list(blocks), subsections=list(subsections))
+
+
+# structure_coverage.params_present (R-PARAM-01)
+
+def test_params_present_pass():
+    p = {"home_domain": ["ir"], "target_domain": "rag", "seniority_band": "staff_plus", "length_budget": 4000}
+    assert structure_coverage.params_present(ctx(doc(), parameters=p)) == []
+
+
+def test_params_present_flags_each_missing():
+    p = {"home_domain": ["ir"], "target_domain": "rag"}
+    out = structure_coverage.params_present(ctx(doc(), parameters=p))
+    assert out and "seniority_band" in details(out) and "length_budget" in details(out)
+
+
+# structure_coverage.card_rows (R-CARD-02)
+
+def test_card_rows_pass():
+    d = doc(sec("s1", blk("c", "card", text="x", rows=_rows())))
+    assert structure_coverage.card_rows(ctx(d)) == []
+
+
+def test_card_rows_flags_untyped_card():
+    d = doc(sec("s1", blk("c", "card", text="a free-text card")))
+    out = structure_coverage.card_rows(ctx(d))
+    assert out and out[0].block_id == "c" and "no typed rows" in out[0].detail
+
+
+def test_card_rows_flags_blank_skip_when():
+    d = doc(sec("s1", blk("c", "card", text="x", rows=_rows(skip_when="   "))))
+    out = structure_coverage.card_rows(ctx(d))
+    assert out and "skip_when" in out[0].detail
+
+
+# structure_coverage.recall_count (R-RECALL-01)
+
+def test_recall_count_pass_with_three_items():
+    d = doc(sec("s1", blk("r", "recall", items=_items(3))))
+    assert structure_coverage.recall_count(ctx(d)) == []
+
+
+def test_recall_count_flags_wrong_number():
+    d = doc(sec("s1", blk("r", "recall", items=_items(2))))
+    out = structure_coverage.recall_count(ctx(d))
+    assert out and "2 recall item" in out[0].detail
+
+
+def test_recall_count_silent_when_section_has_no_recall_block():
+    """A missing recall layer is layer_coverage's finding; recall_count must not double-report."""
+    d = doc(sec("s1", blk("l", "lede", text="x")))
+    assert structure_coverage.recall_count(ctx(d)) == []
+
+
+# structure_coverage.operational_artifacts (R-ART-01)
+
+def test_operational_artifacts_pass_with_all_four():
+    d = doc(sec("s1", *[blk(f"a{i}", "matrix", artifact_kind=k) for i, k in enumerate(
+        ["decision_matrix", "checklist", "failure_catalog", "decision_aid"])]))
+    assert structure_coverage.operational_artifacts(ctx(d)) == []
+
+
+def test_operational_artifacts_flags_collapsed_set():
+    d = doc(sec("s1", blk("a0", "matrix", artifact_kind="decision_matrix")))
+    out = structure_coverage.operational_artifacts(ctx(d))
+    assert out and "checklist" in out[0].detail and "decision_aid" in out[0].detail
+
+
+# structure_coverage.heading_hierarchy + banned_heading_terms (R-ARCH-05, R-SCENT-01)
+
+def test_heading_hierarchy_pass():
+    d = doc(sec_with_subs("s1", [blk("l", "lede", text="x")],
+                          [sub("s1a", blk("m", "summary", text="y"),
+                               blk("b", "body", text="z", heading="An h4 label"))]))
+    assert structure_coverage.heading_hierarchy(ctx(d)) == []
+
+
+def test_heading_hierarchy_flags_untitled_subsection():
+    d = doc(sec_with_subs("s1", [], [sub("s1a", blk("m", "summary", text="y"), title="  ")]))
+    out = structure_coverage.heading_hierarchy(ctx(d))
+    assert out and out[0].block_id == "s1a"
+
+
+def test_heading_hierarchy_flags_h4_on_non_body_role():
+    d = doc(sec("s1", blk("c", "card", text="x", rows=_rows(), heading="not allowed here")))
+    out = structure_coverage.heading_hierarchy(ctx(d))
+    assert out and "body blocks only" in out[0].detail
+
+
+def test_banned_heading_terms_flags_generic_labels():
+    d = doc(sec("s1", blk("l", "lede", text="x"), title="Overview"))
+    out = structure_coverage.banned_heading_terms(ctx(d))
+    assert out and "Overview" in out[0].detail
+
+
+def test_banned_heading_terms_allows_predictive_heading():
+    d = doc(sec("s1", blk("l", "lede", text="x"), title="Why long context did not kill chunking"))
+    assert structure_coverage.banned_heading_terms(ctx(d)) == []
+
+
+# structure_coverage.summary_budgets + the h3:sub-sum 1:1 clause (R-SUMM-02, R-CONSIST-01)
+
+def test_summary_budgets_pass():
+    d = doc(sec_with_subs("s1", [blk("m", "summary", text="short")],
+                          [sub("s1a", blk("sm", "summary", text="one sub-sum"))]))
+    assert structure_coverage.summary_budgets(ctx(d)) == []
+
+
+def test_summary_budgets_flags_overlong_section_summary():
+    d = doc(sec("s1", blk("m", "summary", text=" ".join(["word"] * 501))))
+    out = structure_coverage.summary_budgets(ctx(d))
+    assert out and "501 words" in out[0].detail
+
+
+def test_summary_budgets_flags_missing_sub_sum():
+    d = doc(sec_with_subs("s1", [], [sub("s1a", blk("b", "body", text="no sub-sum here"))]))
+    out = structure_coverage.summary_budgets(ctx(d))
+    assert out and "0 sub-sum" in out[0].detail
+
+
+def test_layer_coverage_flags_duplicate_sub_sum():
+    d = doc(sec_with_subs("s1",
+                          [blk("l", "lede", text="x"), blk("c", "card", text="y"), blk("r", "recall", text="q")],
+                          [sub("s1a", blk("m1", "summary", text="a"), blk("m2", "summary", text="b"))]))
+    out = structure_coverage.layer_coverage(ctx(d))
+    assert out and "2 sub-sum" in details(out)
+
+
+# subsection-awareness of the pre-existing checks
+
+def test_flatten_blocks_recurses_into_subsections():
+    d = doc(sec_with_subs("s1", [blk("a", "lede", text="x")], [sub("s1a", blk("b", "body", text="y"))]))
+    assert [b.block_id for b in d.flatten_blocks()] == ["a", "b"]
+    assert d.all_block_ids() == ["s1", "a", "s1a", "b"]
+
+
+def test_compression_gradient_counts_subsection_body():
+    """Body prose living in a subsection still counts as the section's body layer."""
+    d = doc(sec_with_subs("s1", [blk("c", "card", text="one two three")],
+                          [sub("s1a", blk("b", "body", text=" ".join(["w"] * 20)))]))
+    assert prose_caps.compression_gradient(ctx(d)) == []

@@ -49,6 +49,9 @@ parameters:
   length_budget:
     type: "str|int"
     desc: "Target length. Drives depth allocation via the ledger-salience proxy (claim-frequency / centrality-in-claims), since V1 has no concept graph."
+  reference_case:
+    type: "str|null"
+    desc: "OPTIONAL. A single concrete artifact every claim is grounded against (R-EXPERT-03). A contrastive anchor, not a worked example — R-EXPERT-01 suppresses procedural walkthroughs, never the reference case."
 
 # --- Circuit-breaker / calibration defaults (tune in the eval loop) ----------
 budgets:
@@ -276,7 +279,7 @@ rules:
     directive: "Emit the L1-L5 depth-dial controls and ensure each depth tier renders coherently."
     priority: SHOULD
     enforcement: hard_lint
-    check: {type: script, ref: "utils/parse_primer.py::depth_dial_present", detail: "depth toggles + tier classes present"}
+    check: {type: script, ref: "utils/parse_primer.py::depth_dial_present", input: html, detail: "depth toggles + tier classes present"}
     phase: [3,7]
     counters: "Static document with no disclosure control."
     evidence_grade: engineering
@@ -388,16 +391,28 @@ rules:
 
   # --- EXPERT: expertise reversal --------------------------------------------
   - id: R-EXPERT-01
-    title: "No worked examples in the primary layer"
-    directive: "For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step worked examples; worked examples appear only behind opt-in deeper layers, scaled by seniority_band."
+    title: "No procedural walkthroughs in the primary layer"
+    directive: "For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step PROCEDURAL walkthroughs ('first do X, then do Y'); such walkthroughs appear only behind opt-in deeper layers, scaled by seniority_band. This does NOT suppress a running reference case (R-EXPERT-03): grounding a claim against a shared concrete artifact is contrastive evidence, not scaffolding."
     priority: MUST
     enforcement: soft_critic
-    check: {type: rubric, pass: expertise-calibration, question: "Is the primary layer free of step-by-step worked examples (above early_career), using contrast instead? y/n", pass_example: "The API is the same three calls as any datastore; the only new part is query-by-vector — taught by contrast, no install-step walkthrough."}
+    check: {type: rubric, pass: expertise-calibration, question: "Is the primary layer free of step-by-step procedural walkthroughs (above early_career), using contrast instead? y/n", pass_example: "The API is the same three calls as any datastore; the only new part is query-by-vector — taught by contrast, no install-step walkthrough."}
     phase: [3,4,7]
     counters: "LLM defaults to tutorial-style scaffolding (its training distribution)."
     evidence_grade: load_bearing_empirical
-    evidence_ref: "EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003"
+    evidence_ref: "EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003; dry-run gap G2 (narrowed to procedural)"
     params_used: [seniority_band]
+
+  - id: R-EXPERT-03
+    title: "Running reference case"
+    directive: "When a reference_case is supplied, ground claims against that one shared concrete artifact throughout, and name it where a claim is checked against it. A reference case is a contrastive anchor, not a worked example: it shows what a claim predicts about a real artifact rather than walking the reader through a procedure. Never suppress it as scaffolding (R-EXPERT-01)."
+    priority: SHOULD
+    enforcement: soft_critic
+    check: {type: rubric, pass: expertise-calibration, question: "When a reference_case is supplied, are claims grounded against it as a contrastive anchor rather than replaced by a procedural walkthrough? y/n", pass_example: "'On the reference drawing, 12 of ~80 callouts have kinked leaders — which is where the straight-ray heuristic loses attribution' — the claim is checked against the shared artifact, no step-by-step."}
+    phase: [3,4,7]
+    counters: "Expertise-reversal suppression over-fires and strips the concrete grounding the reader needs to check a claim."
+    evidence_grade: convergent_craft
+    evidence_ref: "dry-run gap G2; EM Part II §7 (CFT — multiple concrete cases for advanced learners)"
+    params_used: [reference_case, seniority_band]
 
   - id: R-EXPERT-02
     title: "Scaffolding behind explicit gates"
@@ -608,7 +623,7 @@ rules:
     directive: "Every figure carries aria-label + role=img + a standalone figcaption."
     priority: SHOULD
     enforcement: hard_lint
-    check: {type: script, ref: "utils/parse_primer.py::figure_a11y", detail: "each <svg>/figure has aria-label, role=img, figcaption"}
+    check: {type: script, ref: "utils/parse_primer.py::figure_a11y", input: html, detail: "each <svg>/figure has aria-label, role=img, figcaption"}
     phase: [5,7]
     counters: "Inaccessible figures with no text alternative."
     evidence_grade: engineering

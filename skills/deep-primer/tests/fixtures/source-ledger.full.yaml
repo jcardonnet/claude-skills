@@ -1,0 +1,45 @@
+# Source-ledger for document-ir.full.yaml. Quotes are <=15 words (R-GROUND-01 discipline) and are
+# lexically close to the statements they support, so the offline lexical entailment proxy resolves them.
+sources:
+  - source_id: s-chunk
+    url: "https://example.org/chunking-study"
+    title: "Chunk granularity and retrieval recall"
+    authors: ["A. Researcher"]
+    venue: "Example Conf"
+    date: "2025-03-01"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-01T00:00:00Z"
+    content_hash: "c0ffee01"
+    claims:
+      - claim_id: C-chunk-1
+        text: "chunking is the unit of retrieval and bounds achievable recall"
+        quote: "the chunk is the retrieval unit and bounds recall"
+        location: "p.4 / §3"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-rerank]
+  - source_id: s-rerank
+    url: "https://example.org/reranking-ablation"
+    title: "What reranking can and cannot recover"
+    authors: ["B. Author"]
+    venue: "Example Workshop"
+    date: "2025-09-15"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-01T00:00:00Z"
+    content_hash: "c0ffee02"
+    claims:
+      - claim_id: C-rerank-1
+        text: "reranking improves ordering but cannot recover a document retrieval never returned"
+        quote: "reranking improves ordering, never recovers documents retrieval missed"
+        location: "p.2 / §2.1"
+        confidence: high
+      - claim_id: C-rerank-2
+        text: "cross-encoder per-pair cost dominates on high-QPS paths"
+        quote: "per-pair cost dominates at high QPS"
+        location: "p.7 / §5"
+        confidence: medium
+        contested: true

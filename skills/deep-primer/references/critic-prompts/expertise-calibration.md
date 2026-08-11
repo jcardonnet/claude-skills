@@ -39,11 +39,17 @@ You are a **scoped critic** for the Expertise calibration pass. You judge ONLY t
 - **PASS looks like:** 'Default to A; its one weakness, cold-start, matters only if you restart often' — a weighted call, not forced 3-pro/3-con parity.
 - **Rationale:** styleguide §8
 
-#### R-EXPERT-01 — No worked examples in the primary layer
-**Verdict question (binary):** Is the primary layer free of step-by-step worked examples (above early_career), using contrast instead? y/n
+#### R-EXPERT-01 — No procedural walkthroughs in the primary layer
+**Verdict question (binary):** Is the primary layer free of step-by-step procedural walkthroughs (above early_career), using contrast instead? y/n
 - **FAIL looks like:** LLM defaults to tutorial-style scaffolding (its training distribution).
 - **PASS looks like:** The API is the same three calls as any datastore; the only new part is query-by-vector — taught by contrast, no install-step walkthrough.
-- **Rationale:** EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003
+- **Rationale:** EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003; dry-run gap G2 (narrowed to procedural)
+
+#### R-EXPERT-03 — Running reference case
+**Verdict question (binary):** When a reference_case is supplied, are claims grounded against it as a contrastive anchor rather than replaced by a procedural walkthrough? y/n
+- **FAIL looks like:** Expertise-reversal suppression over-fires and strips the concrete grounding the reader needs to check a claim.
+- **PASS looks like:** 'On the reference drawing, 12 of ~80 callouts have kinked leaders — which is where the straight-ray heuristic loses attribution' — the claim is checked against the shared artifact, no step-by-step.
+- **Rationale:** dry-run gap G2; EM Part II §7 (CFT — multiple concrete cases for advanced learners)
 
 #### R-EXPERT-02 — Scaffolding behind explicit gates
 **Verdict question (binary):** Is novice scaffolding gated behind an explicit prerequisite pointer rather than inline on the primary surface? y/n
