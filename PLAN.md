@@ -176,7 +176,18 @@ optional.
 
 ---
 
-## Stage B — Prompt 6a: discovery campaign
+## Stage B — Prompt 6a: discovery campaign — **DONE**
+
+**Outcome:** the cascade runs end-to-end offline against a frozen snapshot and saturates
+deterministically (wave A: 27 novel of 60 → continue; wave B: 2 of 18 → below threshold → stop).
+The R-DISC-04 split holds: `wave_briefs` guarantees the R-DISC-02 diversity invariant *in code*
+(a model asked to "be diverse" reliably produces cosmetically-different briefs sharing a blind
+spot), and stopping is decided by the saturation metric, never by a model's opinion that it has
+found enough. Two design corrections during the work: source leads are matched by **normalized
+URL** rather than text similarity (fuzzy-matching collapsed two papers on one host into one lead,
+understating novelty and stopping the campaign early), and `leads_new` counts genuinely-novel
+leads deduped within the wave rather than a delta in accepted count. Registry fix: `R-DISC-06`
+retagged `input: discovery-leads` (it was `discovery-log`, which is not what the check reads).
 
 Reuse the **Protocol + deterministic stub** pattern already proven in `critics/run_critics.py` and
 `verify/_entailment.py`: pure code is hermetic and unit-tested; every model/tool call sits behind an
@@ -258,3 +269,9 @@ main sequence so the build stays deterministic and CI-safe; run it when you want
   NLP-dependent lints silently take their fallback path.
 - **Google-Fonts links in `primer-template.html`** sit oddly with "self-contained HTML artifact."
   Not in scope here; worth a later decision.
+- **SonarCloud's quality gate is red and parked as advisory** (`C Security Rating on New Code`).
+  The finding is visible only on the SonarCloud dashboard, which this environment's egress proxy
+  blocks; the check-run carries no annotations, and neither `ruff --select S` nor `bandit` over the
+  diff reproduces it (their only hits are pre-existing and non-vulnerability). Resolve before the
+  PR leaves draft — either paste the finding or scope the gate. The real gate,
+  `build-validate-bundle`, is green.

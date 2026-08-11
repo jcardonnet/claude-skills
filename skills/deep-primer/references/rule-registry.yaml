@@ -963,7 +963,7 @@ rules:
     directive: "User-provided seed_sources are consulted and grounded. Direct seeds (url/file/project_ref) enter as accepted source_leads, exempt from triage-drop, marked provenance_origin=user; author/entity directives seed a targeted discovery brief. Seeds are authoritative for INCLUSION only: claims from them are still corroboration-graded (R-GROUND-05) and a seed contradicted by the discovered consensus renders as contested. The R-DISC-01 firewall still applies - a seed is fetched and grounded, never pre-trusted prose."
     priority: MUST
     enforcement: hard_lint
-    check: {type: script, ref: "checks/discovery.py::seed_handling", input: discovery-log, detail: "every seed_source appears in discovery-leads as status=accepted with provenance_origin=user; seed-only claims carry corroboration_count and are not promoted past their evidence"}
+    check: {type: script, ref: "checks/discovery.py::seed_handling", input: discovery-leads, detail: "every seed_source appears in discovery-leads as status=accepted with provenance_origin=user; seed-only claims carry corroboration_count and are not promoted past their evidence"}
     phase: [0,1]
     counters: "Treating a user-named source as ground truth - laundering a single seed into an asserted claim, or dropping it because the salience gate scored it low."
     evidence_grade: convergent_craft

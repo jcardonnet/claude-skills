@@ -280,11 +280,19 @@ instructions:                     # standing, on every brief
 ```yaml
 topic_leads:
   - {id: tl-07, concept: "late-interaction reranking", why: "...", surfaced_by: [structure, source-authority],
-     support_count: 2, novelty: 0.8, salience: high, status: accepted, provenance_origin: discovered}  # new plan question; =user for directive-seeded topics
+     support_count: 2, novelty: 0.8, salience: high, status: accepted, provenance_origin: discovered,
+     report_ids: [a-3f9c1b2e]}   # new plan question; =user for directive-seeded topics
 source_leads:
-  - {id: sl-12, url: "...", type: primary, supports: [tl-07], support_count: 3, status: accepted, provenance_origin: discovered}  # -> fetch candidate
+  - {id: sl-12, url: "...", type: primary, supports: [tl-07], support_count: 3, status: accepted,
+     provenance_origin: discovered, report_ids: [a-3f9c1b2e]}   # -> fetch candidate
 # status in {accepted, flagged, dropped}; flagged = high-salience singleton (rare-gem-vs-noise -> you/judge)
+# report_ids: the frozen discovery-snapshot/report-<id>.md each lead came from (R-DISC-05).
+# support_count counts DISTINCT FRAMINGS, not mentions — five briefs sharing one framing are one
+# blind spot, not five confirmations, so they must not inflate a lead's support.
 ```
+**Lead identity.** Source leads are matched by normalized URL (scheme/`www.`/trailing-slash
+insensitive); topic leads by text similarity. Fuzzy-matching URLs would collapse two papers on one
+host into a single lead, understating novelty and stopping the campaign early.
 
 **`discovery-log.yaml`** — per-wave audit + saturation trail.
 ```yaml

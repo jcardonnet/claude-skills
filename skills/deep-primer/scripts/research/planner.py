@@ -3,53 +3,328 @@
 Classification: agent-orchestrated / model-judged. Deterministic metrics live in
 research/discovery.py (R-DISC-04); the backend adapter in research/deep_research.py.
 
-Holds: assess_topic (maturity/breadth/contestedness -> front-load aggressiveness + interleave budget),
-wave_briefs (emit the diverse brief ensemble per wave from discovery-brief-templates.md + the
-perspectives registry), extract_leads (report -> structured leads via --json-schema, leads only),
-triage_leads (accept/flag/drop + salience: the model-judged gate), and the cascade entry points the
-convergence guard calls - front_load_campaign and re_front_load.
+The R-DISC-04 split is load-bearing and runs through this file: the model supplies JUDGMENT
+(what a report is pointing at, whether a lead is worth chasing, how aggressive to be), while the
+campaign's STRUCTURE and STOPPING DECISION stay deterministic. So `wave_briefs` guarantees the
+R-DISC-02 diversity invariant in code and asks the model only to phrase questions; `triage_leads`
+lets the model accept/flag/drop but computes support and novelty in discovery.py; and
+`front_load_campaign` decides when to stop from the saturation metric, never from a model's
+opinion that it has "found enough".
+
+Brief archetypes are the machine-readable half of references/discovery-brief-templates.md; a test
+asserts the two stay in lockstep.
 Spec: references/artifact-schemas.md (Discovery-campaign artifacts).
-Stage 6 - implement per ../../CLAUDE_CODE_PROMPTS.md (Prompt 6a).
-NOTE: agent-orchestrated - tool-loops using /deep-research + the model, NOT hermetic functions.
 """
 from __future__ import annotations
 
+import sys
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Protocol
 
-def route_seeds(seed_sources: list) -> tuple:
-    """Split user seed_sources into (direct_leads, directive_briefs). Direct seeds (url/file/project_ref)
-    -> accepted source_leads with provenance_origin=user, exempt from triage-drop; author/entity ->
-    a seed-anchored brief. Seeds are inclusion-authoritative only (R-DISC-06): still corroboration-graded.
-    NOTE: project_ref resolves only under claude.ai (not reachable from a Claude Code run)."""
-    raise NotImplementedError("Prompt 6a")
+import yaml
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from ir.schema import (  # noqa: E402
+    DiscoveryLeads,
+    DiscoveryLog,
+    Lead,
+    ResearchBrief,
+    SourceLead,
+    TopicLead,
+    WaveRecord,
+)
+from research import discovery  # noqa: E402
+from research.deep_research import Backend, brief_id, run_brief  # noqa: E402
+
+# Standing instructions carried on every brief (discovery-brief-templates.md).
+STANDING_INSTRUCTIONS = [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs",
+]
+
+# archetype -> (framing, angle, source_class, stance, question template)
+BRIEF_ARCHETYPES: dict[str, tuple] = {
+    # Wave A - divergent landscape
+    "A1": ("structure", "by-method-family", None, None,
+           "Map the full landscape of {topic}: subfields, the canonical taxonomy, and how practitioners carve it up."),
+    "A2": ("debates", "by-failure-mode", None, None,
+           "What are the live controversies and open problems in {topic}? Where is there no consensus?"),
+    "A3": ("recency-frontier", None, "latest-release", None,
+           "What changed in {topic} in the last 6-12 months - new releases, SOTA shifts, deprecated approaches?"),
+    "A4": ("source-authority", None, "primary", None,
+           "The most authoritative primary sources, seminal works, key recent papers, and best practitioner writeups on {topic}."),
+    "A5": ("adjacent-field", None, None, None,
+           "What adjacent fields does {topic} borrow from, resemble, or get confused with? Where are the false friends?"),
+    "A6": ("contrarian-seed", None, None, "against-dominant",
+           "Make the strongest case against the dominant approach in {topic}. What do skeptics argue, and on what evidence?"),
+    # Wave B - convergent targeted dives
+    "B-seed": ("source-authority", None, "primary", None,
+               "Survey the work of {seed} on {topic}. Summarize key claims and where they sit relative to the consensus."),
+    "B-dive": ("theorist", "by-method-family", "primary", None,
+               "Deep dive on {concept} within {topic}: mechanism, tradeoffs, when it fails, current best practice, primary sources."),
+    "B-conflict": ("debates", "by-failure-mode", None, "against-dominant",
+                   "Claim: {claim}. Counter-claim: not-{claim}. Find the deciding evidence and why the two camps disagree."),
+    # Wave C - findings audit
+    "C-omission": ("practitioner", "by-application", None, None,
+                   "A primer on {topic} currently covers: {coverage}. What important aspects are missing?"),
+    "C-disconfirm": ("contrarian-seed", "by-failure-mode", None, "against-dominant",
+                     "Key claims of a primer on {topic}: {claims}. Find the strongest evidence any are wrong or overstated."),
+    "C-source-completeness": ("adjacent-field", None, "primary", None,
+                              "Sources a primer on {topic} cites: {sources}. What authoritative sources are NOT in this list?"),
+}
+
+WAVE_ARCHETYPES = {
+    "A": ["A1", "A2", "A3", "A4", "A5", "A6"],
+    "B": ["B-dive", "B-conflict", "B-seed"],
+    "C": ["C-omission", "C-disconfirm", "C-source-completeness"],
+}
+
+_DIRECT_SEED_KINDS = {"url", "file", "project_ref"}
+_DIRECTIVE_SEED_KINDS = {"author", "entity"}
 
 
-def assess_topic(topic: str, params: dict) -> dict:
-    """Model-judged: maturity / breadth / contestedness -> {front_load_aggressiveness, interleave_budget}."""
-    raise NotImplementedError("Prompt 6a")
+# --- the model-judged seam ---------------------------------------------------
+
+class Judge(Protocol):
+    """Every model call the campaign makes. Injecting it keeps the cascade testable offline."""
+
+    def assess_topic(self, topic: str, params: dict) -> dict: ...
+    def extract_leads(self, report: str, sources: list[dict], brief: ResearchBrief) -> dict: ...
+    def triage(self, clusters: list[list[Lead]], params: dict) -> dict: ...
 
 
-def wave_briefs(wave: str, residual: list, params: dict) -> list:
-    """Emit a wave's diverse brief ensemble (>= MIN_FRAMINGS cells, >=1 orthogonal) from the templates."""
-    raise NotImplementedError("Prompt 6a")
+@dataclass
+class StubJudge:
+    """Deterministic offline judge — the test/replay default.
+
+    Extracts leads by reading the frozen report's own `- lead:` lines rather than inventing any,
+    and accepts everything it is given. It exists so the cascade's control flow can be exercised
+    without a model; it is not a substitute for one.
+    """
+
+    accept_all: bool = True
+
+    def assess_topic(self, topic: str, params: dict) -> dict:
+        return {"front_load_aggressiveness": "standard", "interleave_budget": 0}
+
+    def extract_leads(self, report: str, sources: list[dict], brief: ResearchBrief) -> dict:
+        topic_leads, source_leads = [], []
+        for i, line in enumerate(report.splitlines()):
+            line = line.strip()
+            if line.startswith("- lead:"):
+                concept = line.removeprefix("- lead:").strip()
+                topic_leads.append({"id": f"tl-{brief_id(brief)}-{i}", "concept": concept,
+                                    "surfaced_by": [brief.framing]})
+        for j, s in enumerate(sources):
+            source_leads.append({"id": f"sl-{brief_id(brief)}-{j}", "url": s.get("url", ""),
+                                 "type": s.get("type"), "surfaced_by": [brief.framing]})
+        return {"topic_leads": topic_leads, "source_leads": source_leads}
+
+    def triage(self, clusters: list[list[Lead]], params: dict) -> dict:
+        return {cluster[0].id: ("accepted" if self.accept_all else "dropped") for cluster in clusters}
 
 
-def extract_leads(report: str, sources: list) -> dict:
-    """Model (--json-schema): report+sources -> topic_leads + source_leads (no claims; leads only)."""
-    raise NotImplementedError("Prompt 6a")
+# --- deterministic helpers (no model) ----------------------------------------
+
+def route_seeds(seed_sources: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Split user seed_sources into (direct_leads, directive_briefs). Deterministic.
+
+    Direct seeds (url/file/project_ref) become accepted source_leads carrying
+    provenance_origin=user and exempt from triage-drop; author/entity directives seed a targeted
+    brief instead. Seeds are inclusion-authoritative only (R-DISC-06) — still corroboration-graded
+    downstream, and the R-DISC-01 firewall still applies: a seed is fetched and grounded, never
+    pre-trusted prose.
+
+    NOTE: project_ref resolves only under claude.ai, not from a Claude Code run.
+    """
+    direct, directives = [], []
+    for seed in seed_sources or []:
+        kind = seed.get("kind")
+        if kind in _DIRECT_SEED_KINDS:
+            direct.append({
+                "id": f"sl-seed-{len(direct)}",
+                "url": seed.get("ref", ""),
+                "type": seed.get("type"),
+                "status": "accepted",
+                "provenance_origin": "user",
+                "surfaced_by": ["user-seed"],
+            })
+        elif kind in _DIRECTIVE_SEED_KINDS:
+            directives.append(seed)
+    return direct, directives
 
 
-def triage_leads(clustered: list, params: dict) -> dict:
-    """Model-judged gate: accept / flag (high-salience singleton) / drop, salience vs audience+budget.
-    User seeds (provenance_origin=user) are exempt from drop (R-DISC-06)."""
-    raise NotImplementedError("Prompt 6a")
+def wave_briefs(wave: str, residual: list | None = None, params: dict | None = None,
+                judge: Judge | None = None) -> list[ResearchBrief]:
+    """Emit a wave's brief ensemble from the archetypes.
+
+    The R-DISC-02 invariant (>= MIN_FRAMINGS distinct cells, >=1 orthogonal) is guaranteed HERE,
+    in code, because it is a MUST lint — a model asked to "be diverse" reliably produces
+    cosmetically-different briefs that share a blind spot. The model's contribution is wording.
+    """
+    params = params or {}
+    topic = params.get("target_domain", "{topic}")
+    names = WAVE_ARCHETYPES.get(wave, [])
+    briefs: list[ResearchBrief] = []
+    for name in names:
+        framing, angle, source_class, stance, template = BRIEF_ARCHETYPES[name]
+        if name == "B-seed" and not params.get("seed"):
+            continue
+        question = (template
+                    .replace("{topic}", str(topic))
+                    .replace("{seed}", str(params.get("seed", "")))
+                    .replace("{concept}", str((residual or ["the residual gap"])[0]))
+                    .replace("{claim}", str(params.get("claim", "the dominant claim")))
+                    .replace("{coverage}", str(params.get("coverage", "")))
+                    .replace("{claims}", str(params.get("claims", "")))
+                    .replace("{sources}", str(params.get("sources", ""))))
+        briefs.append(ResearchBrief(
+            wave=wave, framing=framing, angle=angle, source_class=source_class, stance=stance,
+            questions=[question], instructions=list(STANDING_INSTRUCTIONS), brief_id=f"{wave}-{name}",
+            seed_ref=params.get("seed") if name == "B-seed" else None,
+        ))
+
+    if wave == "A" and discovery.orthogonal_count(briefs) < 1:  # defensive: the archetypes supply A5/A6
+        raise ValueError("wave A must carry >=1 orthogonal framing (R-DISC-02)")
+    return briefs
 
 
-def front_load_campaign(topic: str, params: dict) -> dict:
-    """Run Wave A->B->C to saturation; return accepted discovery-leads + write discovery-snapshot/.
-    Called at cycle 0 and (via re_front_load) on escalation by the convergence guard."""
-    raise NotImplementedError("Prompt 6a")
+def _to_leads(payload: dict, report_id: str) -> tuple[list[TopicLead], list[SourceLead]]:
+    topic = [TopicLead(**{**t, "report_ids": [report_id]}) for t in payload.get("topic_leads", [])]
+    source = [SourceLead(**{**s, "report_ids": [report_id]}) for s in payload.get("source_leads", [])]
+    return topic, source
 
 
-def re_front_load(topic: str, finding: dict) -> dict:
-    """Re-run a focused campaign seeded by an escalation finding; return a new curated concept-map."""
-    raise NotImplementedError("Prompt 6a")
+def triage_leads(clustered: list[list[Lead]], params: dict | None = None,
+                 judge: Judge | None = None, briefs: list[ResearchBrief] | None = None) -> list[Lead]:
+    """Model-judged accept/flag/drop, with the deterministic metrics attached first.
+
+    Order matters: support_count and novelty are computed in discovery.py BEFORE the judge sees a
+    cluster, so its decision is informed by reproducible numbers rather than producing them. User
+    seeds are exempt from drop (R-DISC-06), and a high-salience singleton is flagged rather than
+    dropped — the rare-gem-vs-noise call is not one to make silently.
+    """
+    judge = judge or StubJudge()
+    params = params or {}
+    verdicts = judge.triage(clustered, params)
+
+    out: list[Lead] = []
+    for cluster in clustered:
+        head = cluster[0]
+        head.support_count = discovery.support_count(cluster, briefs or [])
+        head.surfaced_by = sorted({f for m in cluster for f in m.surfaced_by})
+        head.report_ids = sorted({r for m in cluster for r in m.report_ids})
+        status = verdicts.get(head.id, "accepted")
+        if head.provenance_origin == "user":
+            status = "accepted"                                  # R-DISC-06: exempt from drop
+        elif (discovery.SINGLETON_FLAG and head.support_count <= 1
+              and head.salience == "high" and status == "dropped"):
+            status = "flagged"                                   # rare gem vs noise -> human/judge
+        head.status = status
+        out.append(head)
+    return out
+
+
+# --- the cascade -------------------------------------------------------------
+
+@dataclass
+class CampaignResult:
+    leads: DiscoveryLeads
+    log: DiscoveryLog
+    briefs: list[ResearchBrief] = field(default_factory=list)
+
+
+def front_load_campaign(topic: str, params: dict | None = None, snapshot_dir: str | Path = "discovery-snapshot",
+                        backend: Backend | None = None, judge: Judge | None = None,
+                        waves: tuple[str, ...] = ("A", "B", "C")) -> CampaignResult:
+    """Run Wave A->B->C to saturation; return the triaged leads plus the audit log.
+
+    Stopping is deterministic (R-DISC-03/04): a wave's novel_fraction against the accepted set
+    decides whether another runs, bounded by MAX_WAVES. Called at cycle 0 and, via re_front_load,
+    on escalation by the convergence guard.
+    """
+    params = dict(params or {})
+    params.setdefault("target_domain", topic)
+    judge = judge or StubJudge()
+
+    accepted: list[Lead] = []
+    all_briefs: list[ResearchBrief] = []
+    records: list[WaveRecord] = []
+    terminal = "max_waves"
+
+    seed_direct, _ = route_seeds(params.get("seed_sources", []))
+    accepted.extend(SourceLead(**s) for s in seed_direct)
+
+    for wave in waves[:discovery.MAX_WAVES]:
+        briefs = wave_briefs(wave, residual=params.get("residual"), params=params, judge=judge)
+        all_briefs.extend(briefs)
+
+        fresh: list[Lead] = []
+        for brief in briefs:
+            report, sources = run_brief(brief, snapshot_dir, backend)
+            topic_leads, source_leads = _to_leads(
+                judge.extract_leads(report, sources, brief), brief_id(brief))
+            fresh.extend([*topic_leads, *source_leads])
+
+        novel = discovery.novel_leads(fresh, accepted)
+        novel_fraction = len(novel) / len(fresh) if fresh else 0.0
+        clusters = discovery.cluster_leads([*accepted, *fresh])
+        accepted = triage_leads(clusters, params, judge, all_briefs)
+
+        saturated = novel_fraction < discovery.SATURATION_THRESHOLD
+        records.append(WaveRecord(
+            wave=wave, briefs=len(briefs), framing_cells=discovery.framing_diversity(briefs),
+            leads_total=len(fresh), leads_new=len(novel),
+            novel_fraction=round(novel_fraction, 4),
+            decision="stop" if saturated else "continue",
+        ))
+        if saturated:
+            terminal = "saturated"
+            break
+
+    if records and records[-1].decision != "stop":
+        records[-1].decision = "stop"   # the cap stopped it; the log must say so
+
+    leads = DiscoveryLeads(
+        topic_leads=[lead for lead in accepted if isinstance(lead, TopicLead)],
+        source_leads=[lead for lead in accepted if isinstance(lead, SourceLead)],
+    )
+    log = DiscoveryLog(max_waves=discovery.MAX_WAVES, saturation_threshold=discovery.SATURATION_THRESHOLD,
+                       waves=records, terminal=terminal)
+    return CampaignResult(leads=leads, log=log, briefs=all_briefs)
+
+
+def re_front_load(topic: str, finding: dict, params: dict | None = None,
+                  snapshot_dir: str | Path = "discovery-snapshot",
+                  backend: Backend | None = None, judge: Judge | None = None) -> CampaignResult:
+    """A focused campaign seeded by an escalation finding (the convergence guard's entry point).
+
+    Narrower than the initial front-load by design: Wave B dives on the specific structural
+    wrinkle that escalated, then a Wave C audit. Wave A is not re-run — the landscape was already
+    swept, and re-sweeping it is how an escalate loop burns its budget without new information.
+    """
+    params = dict(params or {})
+    params["residual"] = [finding.get("concept") or finding.get("finding", "the escalation finding")]
+    params["claim"] = finding.get("claim", params.get("claim", "the dominant claim"))
+    return front_load_campaign(topic, params, snapshot_dir, backend, judge, waves=("B", "C"))
+
+
+def write_campaign(result: CampaignResult, out_dir: str | Path = ".") -> dict[str, Path]:
+    """Persist discovery-leads.yaml + discovery-log.yaml (the artifacts the lints read)."""
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    paths = {
+        "leads": out / "discovery-leads.yaml",
+        "log": out / "discovery-log.yaml",
+    }
+    paths["leads"].write_text(
+        yaml.safe_dump(result.leads.model_dump(mode="json"), sort_keys=False, allow_unicode=True),
+        encoding="utf-8")
+    paths["log"].write_text(
+        yaml.safe_dump(result.log.model_dump(mode="json"), sort_keys=False, allow_unicode=True),
+        encoding="utf-8")
+    return paths

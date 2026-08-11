@@ -364,6 +364,101 @@ class ResearchPlan(BaseModel):
         return cls(**_read_yaml(path))
 
 
+# --- discovery campaign (Phase 1a — the recall layer) ------------------------
+# Discovery output enters the pipeline as LEADS ONLY (R-DISC-01): an accepted topic-lead becomes a
+# research-plan question, an accepted source-lead becomes a fetch candidate. Nothing here is
+# evidence — the grounding loop re-fetches and quotes independently.
+
+class ResearchBrief(BaseModel):
+    """One deep-research run. Its position in the diversity matrix is what R-DISC-02 counts."""
+
+    model_config = ConfigDict(extra="allow")
+
+    wave: str
+    framing: str
+    angle: str | None = None
+    source_class: str | None = None
+    stance: str | None = None
+    questions: list[str] = Field(default_factory=list)
+    instructions: list[str] = Field(default_factory=list)
+    brief_id: str | None = None
+    seed_ref: str | None = None          # set on a seed-anchored brief (R-DISC-06)
+
+    def cell(self) -> tuple[str, str | None, str | None, str | None]:
+        """This brief's cell in the diversity matrix (framing x angle x source_class x stance)."""
+        return (self.framing, self.angle, self.source_class, self.stance)
+
+
+class Lead(BaseModel):
+    """Fields shared by topic- and source-leads."""
+
+    model_config = ConfigDict(extra="allow")
+
+    id: str
+    support_count: int = 0               # DISTINCT framings that surfaced it (cross-run corroboration)
+    novelty: float | None = None
+    salience: str | None = None          # model-judged (R-DISC-04)
+    status: Literal["accepted", "flagged", "dropped"] = "accepted"
+    provenance_origin: Literal["discovered", "user"] = "discovered"
+    surfaced_by: list[str] = Field(default_factory=list)   # framings / brief ids
+    report_ids: list[str] = Field(default_factory=list)    # snapshot linkage (R-DISC-05)
+
+
+class TopicLead(Lead):
+    concept: str
+    why: str | None = None
+
+
+class SourceLead(Lead):
+    url: str
+    type: str | None = None
+    supports: list[str] = Field(default_factory=list)      # topic-lead ids this source serves
+
+
+class DiscoveryLeads(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    topic_leads: list[TopicLead] = Field(default_factory=list)
+    source_leads: list[SourceLead] = Field(default_factory=list)
+
+    @classmethod
+    def from_yaml(cls, path: str | Path) -> DiscoveryLeads:
+        return cls(**_read_yaml(path))
+
+    def all_leads(self) -> list[Lead]:
+        return [*self.topic_leads, *self.source_leads]
+
+    def accepted(self) -> list[Lead]:
+        return [lead for lead in self.all_leads() if lead.status == "accepted"]
+
+
+class WaveRecord(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    wave: str
+    briefs: int
+    framing_cells: int
+    leads_total: int
+    leads_new: int
+    novel_fraction: float
+    decision: Literal["continue", "stop"]
+
+
+class DiscoveryLog(BaseModel):
+    """Per-wave audit + saturation trail — the evidence R-DISC-03's lint reads."""
+
+    model_config = ConfigDict(extra="allow")
+
+    max_waves: int
+    saturation_threshold: float
+    waves: list[WaveRecord] = Field(default_factory=list)
+    terminal: Literal["saturated", "max_waves"] | None = None
+
+    @classmethod
+    def from_yaml(cls, path: str | Path) -> DiscoveryLog:
+        return cls(**_read_yaml(path))
+
+
 # --- primer-meta (the HTML-embedded JSON, Phase 3 rendering) -----------------
 
 class PrimerMeta(BaseModel):

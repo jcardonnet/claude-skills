@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://example.org/debates-0",
+    "type": "primary"
+  },
+  {
+    "url": "https://example.org/debates-1",
+    "type": "primary"
+  },
+  {
+    "url": "https://example.org/debates-2",
+    "type": "primary"
+  },
+  {
+    "url": "https://example.org/debates-3",
+    "type": "primary"
+  }
+]
