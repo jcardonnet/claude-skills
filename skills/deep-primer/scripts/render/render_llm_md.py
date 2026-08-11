@@ -25,6 +25,10 @@ from ir.schema import Block, ConceptMap, DocumentIR  # noqa: E402
 
 DROPPED_ROLES = {"recall"}  # the only role removed by the filter -> the alignment diff (R-PROJ-02/03)
 
+# The projection's block heading. Defined here because this module owns the MD format;
+# check_alignment imports it rather than keeping a second copy that can drift.
+MD_BLOCK_RE = re.compile(r"^##\s*\[block:\s*([\w-]+)\]", re.MULTILINE)
+
 _ANAPHOR_LEAD = re.compile(r"^(This|That|These|Those|It|They|Such)\b", re.IGNORECASE)
 _CROSSREF = re.compile(
     r"\((?:see|cf\.?)[^)]*\)"
@@ -147,6 +151,43 @@ def render_llm_md(ir: DocumentIR, concept_map: ConceptMap | None = None) -> str:
     referents = _referent_map(concept_map)
     chunks = [_distill(sec, b, referents) for sec, b in kept_blocks(ir)]
     return _front_matter(ir, concept_map) + "\n\n" + "\n\n".join(chunks) + "\n"
+
+
+# --- the `llm_md` pass: deterministic checks over the rendered projection -----
+# Artifact shape is (markdown, DocumentIR): the roles a block-id belongs to live in the IR, so a
+# projection check needs both halves to say anything stronger than "grep for <svg>".
+
+def role_filter(artifact) -> list[str]:
+    """R-PROJ-03: the distilled projection drops pedagogy and keeps the operational core."""
+    md, ir = artifact
+    problems: list[str] = []
+    present = set(MD_BLOCK_RE.findall(md))
+
+    leaked = sorted({b.block_id for b in ir.flatten_blocks()
+                     if b.role.value in DROPPED_ROLES} & present)
+    for bid in leaked:
+        problems.append(f"{bid}: role={'/'.join(sorted(DROPPED_ROLES))} block survived the filter")
+
+    # cards must arrive distilled to their information content, not copied verbatim
+    for b in ir.flatten_blocks():
+        if b.role.value != "card" or b.block_id not in present:
+            continue
+        chunk = md.split(f"[block: {b.block_id}]", 1)[1].split("## [block:", 1)[0]
+        if "Skip-it-when:" not in chunk and b.rows is not None:
+            problems.append(f"{b.block_id}: card kept in the md without its distilled decision content")
+    return problems
+
+
+def no_svg(artifact) -> list[str]:
+    """R-PROJ-06: SVG markup is dropped, the complete-claim caption is kept as text."""
+    md, ir = artifact
+    problems: list[str] = []
+    if "<svg" in md.lower():
+        problems.append("SVG markup present in the llm_md projection (token noise, R-PROJ-06)")
+    for b in ir.flatten_blocks():
+        if b.role.value == "figure" and b.caption and b.caption not in md:
+            problems.append(f"{b.block_id}: figure caption dropped from the md projection")
+    return problems
 
 
 def main(argv: list[str] | None = None) -> int:

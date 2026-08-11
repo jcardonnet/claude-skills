@@ -1,0 +1,13 @@
+# Non-software domain. The rules are domain-independent by design; this is the spec that proves it,
+# and the one most likely to expose software-shaped assumptions baked into the checks or exemplars.
+id: spec-05-clinical-trial-design
+parameters:
+  home_domain: ["applied statistics", "experimental design"]
+  target_domain: "adaptive clinical trial design and its regulatory constraints"
+  seniority_band: staff_plus
+  length_budget: 5000
+  outputs: [html]
+expect:
+  must_pass: [R-ARCH-03, R-CARD-01, R-XREF-01, R-EVID-01, R-ART-03, R-MV-01]
+  watch: [standards_compliance_perspective, non_software_vocabulary]
+  notes: "the conditional standards/compliance perspective applies here; version/recency sweep should stay quiet"

@@ -6,6 +6,13 @@ parameters:
   seniority_band: staff_plus
   length_budget: 6000
   outputs: [html, llm_md]
+# Until a real generation exists (Stage G), spec-01 scores the reference artifact — the same
+# complete field-guide IR the structural tests use. Paths resolve from the skill root; a bundled
+# skill drops tests/, so eval reports `not_generated` there rather than failing.
+artifact:
+  ir: tests/fixtures/document-ir.full.yaml
+  concept_map: tests/fixtures/concept-map.full.yaml
+  ledger: tests/fixtures/source-ledger.full.yaml
 expect:
   must_pass: [R-ARCH-03, R-SCENT-01, R-CARD-01, R-MV-01, R-GROUND-01, R-PROJ-02]
   notes: "bridge from IR/db background; decision matrix on chunkers; mask-free analogue not relevant here"

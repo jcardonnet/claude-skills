@@ -274,7 +274,26 @@ The model-judged `scan_for_structural` / `implied_edits` go in `planner.py`, nev
 **Verify D:** a converging trajectory footnotes; a synthetic oscillating one emits a `role: contested`
 block and sets `concept_map.contested = true`; a property test proves the loop never exceeds `K_MAX`.
 
-## Stage E — Prompt 7: eval harness
+## Stage E — Prompt 7: eval harness — **DONE**
+
+**Outcome:** six specs spanning bands, budgets, domains and the G1/G6/seed paths; `eval.py` scores
+every deterministic tier and reports **enforcement coverage per tier** (hard_lint 27/32,
+model_verified 2/3, soft_critic 2/35 — a bare 39% would read as "two-thirds broken" when it is
+mostly "critics need a judge model"). Three honesty properties are the point: a spec with no
+artifact reports `not_generated` rather than passing; an expected rule that never *ran* is not a
+pass, and the report classifies **why** (judge gap vs missing artifact vs a real silent skip); and
+
+**the harness REFUSES to propose thresholds from the offline lexical backend.** That refusal is the
+main finding of the stage. The proxy scores word overlap between a ≤15-word quote and a paraphrased
+block, and `R-GROUND-01` *requires* paraphrase — so the observed recall 0.14 / precision 0.13 are
+what a **compliant** primer produces, not evidence of bad citations. Writing that floor into
+`eval-rubric.yaml` would have silently disabled the citation check. The rubric TODOs stay TODOs
+until a run with the NLI or Claude backend (Stage G); a test guards them against being lowered.
+
+Also implemented the `llm_md` pass (`R-PROJ-03`, `R-PROJ-06`) and wired the deterministic
+`R-PROJ-02` alignment check into eval — three more rules that were quietly unexercised.
+
+## Stage E — Prompt 7: eval harness (original plan)
 
 Author 5–8 specs spanning domain / seniority / length (keep `spec-01` and `spec-02`; add one with
 `seed_sources` and one non-software topic). Implement `scripts/eval.py` over the specs +
@@ -284,7 +303,22 @@ numbers: `per_run_token_cap`, `citation_recall`, `citation_precision`, recency t
 **Verify E:** `make eval` scores `spec-01` end-to-end and reports concrete pass/fail per rule with
 proposed threshold values.
 
-## Stage F — Prompt 8: remaining plumbing
+## Stage F — Prompt 8: remaining plumbing — **DONE**
+
+`validate_skill.py --check-build` regenerates the lockstep files **in a temp copy** and diffs — a
+validator that mutates the tree it validates can turn a red run green just by running. Verified
+negatively: hand-editing `rule-registry.md` makes it fail. CI gains `dorny/paths-filter` (repo-level
+files count as touching every skill), the eval step, and an explicit **unenforced-MUST gate**
+running `lint.py --strict`. `run_manifest.py` implements the phase ledger `SKILL.md` promised:
+timestamps are injected rather than read from the clock so a replayed run is byte-identical, and
+`resume_from()` returns the first incomplete phase rather than the one after the last complete one
+— phase 8 consumes what phase 3 produced, so a gap must be re-run, not skipped.
+
+Both `Makefile` and CI now invoke `python -m pytest`: bare `pytest` resolved to a different
+interpreter in this container and failed on a missing dependency, and `python -m` guarantees the
+same environment as `python`.
+
+## Stage F — Prompt 8: remaining plumbing (original plan)
 
 Add the build-idempotence check to `tools/validate_skill.py`; add `dorny/paths-filter` so CI runs only
 changed skills and add the eval step; make `make eval` real; implement the `run-manifest.json` phase

@@ -1,0 +1,13 @@
+# Mid-band, modest budget, HTML only. Checks that the apparatus scales DOWN (R-DEPTH-03):
+# a 2500-word primer must not carry the same heavy artifact set as an 8000-word one.
+id: spec-03-observability-tracing
+parameters:
+  home_domain: ["backend services", "relational databases"]
+  target_domain: "distributed tracing and the observability stack"
+  seniority_band: mid_senior
+  length_budget: 2500
+  outputs: [html]
+expect:
+  must_pass: [R-ARCH-03, R-SCENT-01, R-CARD-02, R-RECALL-01, R-CONSIST-01, R-ARCH-06]
+  watch: [apparatus_proportionality]
+  notes: "small budget: R-DEPTH-03 should suppress padding, and R-ARCH-06's uniform-length heuristic should stay quiet"

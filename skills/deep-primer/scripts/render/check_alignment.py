@@ -11,22 +11,18 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from render.render_llm_md import DROPPED_ROLES  # noqa: E402
+from render.render_llm_md import DROPPED_ROLES, MD_BLOCK_RE  # noqa: E402
 from utils.parse_primer import parse_primer  # noqa: E402
-
-_MD_BLOCK_RE = re.compile(r"^##\s*\[block:\s*([\w-]+)\]", re.MULTILINE)
-
 
 def check_alignment(html: str, md: str) -> dict:
     html_blocks = parse_primer(html)
     html_ids = {b.block_id for b in html_blocks}
-    md_ids = set(_MD_BLOCK_RE.findall(md))
+    md_ids = set(MD_BLOCK_RE.findall(md))
 
     dropped_ids = {b.block_id for b in html_blocks if b.role.value in DROPPED_ROLES}
     diff = html_ids - md_ids

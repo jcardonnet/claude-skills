@@ -42,6 +42,7 @@ from checks import convergence as convergence_checks  # noqa: E402
 from checks import ledger as ledger_checks  # noqa: E402
 from checks._base import LintContext, Violation  # noqa: E402
 from ir.schema import ConceptMap, DocumentIR, SourceLedger  # noqa: E402
+from render import render_llm_md as md_checks  # noqa: E402
 from utils import parse_primer  # noqa: E402
 from verify import citation_quality  # noqa: E402
 
@@ -101,6 +102,13 @@ LEDGER_CHECKS = {
 # The `convergence-log` pass: run after the drafting<->structure loop terminates (R-CONV-01).
 CONVERGENCE_CHECKS = {
     "checks/convergence.py::terminal_state": convergence_checks.terminal_state,
+}
+
+# The `llm_md` pass. Artifact is the tuple (markdown, DocumentIR) — the roles a block-id belongs
+# to live in the IR, so these need both halves.
+LLM_MD_CHECKS = {
+    "render/render_llm_md.py::role_filter": md_checks.role_filter,
+    "render/render_llm_md.py::no_svg": md_checks.no_svg,
 }
 
 
@@ -182,7 +190,7 @@ def run_lint(ctx: LintContext, registry_path: str | Path = DEFAULT_REGISTRY) -> 
 
 
 _ARTIFACT_CHECKS = {"html": HTML_CHECKS, "ledger": LEDGER_CHECKS,
-                    "convergence-log": CONVERGENCE_CHECKS}
+                    "convergence-log": CONVERGENCE_CHECKS, "llm_md": LLM_MD_CHECKS}
 
 
 def run_artifact_pass(artifact, input_tag: str, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
@@ -240,6 +248,11 @@ def run_ledger_pass(ledger, registry_path: str | Path = DEFAULT_REGISTRY) -> dic
 def run_convergence_pass(log, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
     """The `convergence-log` pass (R-CONV-01), run once the escalate loop terminates."""
     return run_artifact_pass(log, "convergence-log", registry_path)
+
+
+def run_llm_md_pass(md: str, ir, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `llm_md` pass (R-PROJ-03, R-PROJ-06) over the distilled projection."""
+    return run_artifact_pass((md, ir), "llm_md", registry_path)
 
 
 def lint_files(

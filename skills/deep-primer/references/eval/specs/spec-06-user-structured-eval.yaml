@@ -1,0 +1,19 @@
+# Exercises G6 (R-ARCH-07): an explicit user structure governs the top-level outline while headings
+# stay predictive claims. Note the deliberately generic user labels — copying them verbatim would
+# violate R-SCENT-01, so the two rules can only coexist via maps_to.
+id: spec-06-user-structured-eval
+parameters:
+  home_domain: ["ML engineering"]
+  target_domain: "evaluation of retrieval-augmented systems"
+  seniority_band: mid_senior
+  length_budget: 4500
+  outputs: [html, llm_md]
+  user_structure:
+    - "Background"
+    - "Metrics that matter"
+    - "Tooling"
+    - "Open problems"
+expect:
+  must_pass: [R-ARCH-07, R-SCENT-01, R-CONSIST-01]
+  watch: [maps_to_declared, heading_not_copied_verbatim]
+  notes: "every section must declare maps_to; no heading may be the bare user label"

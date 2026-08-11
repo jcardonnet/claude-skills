@@ -2,7 +2,32 @@ name: skills-ci
 on: { push: {}, pull_request: {} }
 
 jobs:
+  # Which skills did this change touch? Everything below runs only for those, so a one-skill PR
+  # does not pay for the whole monorepo. Repo-level files (tools/, pyproject, the workflow itself)
+  # count as touching every skill, since they can break any of them.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      deep-primer: ${{ steps.filter.outputs.deep-primer }}
+      shared: ${{ steps.filter.outputs.shared }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            deep-primer:
+              - 'skills/deep-primer/**'
+            shared:
+              - 'tools/**'
+              - 'shared/**'
+              - 'pyproject.toml'
+              - 'Makefile'
+              - '.github/workflows/ci.yml'
+
   build-validate-bundle:
+    needs: changes
+    if: needs.changes.outputs.deep-primer == 'true' || needs.changes.outputs.shared == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,10 +52,28 @@ jobs:
           fi
 
       # --- structural validation + unit tests --------------------------------
-      - name: validate skills
-        run: python tools/validate_skill.py skills/*
+      - name: validate skills (incl. lockstep idempotence)
+        run: python tools/validate_skill.py --check-build skills/*
       - name: unit tests
-        run: pytest -q
+        run: python -m pytest -q
+
+      # --- enforcement gate ---------------------------------------------------
+      # A registry rule with no dispatched implementation reports `skip`, which is NOT blocking —
+      # so the lint report reads clean while the rule goes unenforced. Six MUST rules were dark
+      # that way before Stage A. --strict makes an unenforced MUST an error.
+      - name: no unenforced MUST rules
+        run: |
+          python skills/deep-primer/scripts/lint.py \
+            skills/deep-primer/tests/fixtures/document-ir.full.yaml \
+            --concept-map skills/deep-primer/tests/fixtures/concept-map.full.yaml \
+            --ledger skills/deep-primer/tests/fixtures/source-ledger.full.yaml \
+            --strict --out lint-report.json
+
+      # --- eval harness -------------------------------------------------------
+      - name: eval
+        run: python skills/deep-primer/scripts/eval.py --out eval-report.json
+      - uses: actions/upload-artifact@v4
+        with: { name: eval-report, path: eval-report.json, if-no-files-found: warn }
 
       # --- bundle smoke test --------------------------------------------------
       # Every skill must emit a self-contained, structurally-valid bundle (no shared/
@@ -39,6 +82,3 @@ jobs:
         run: python tools/bundle.py skills/* --out dist/ --zip
       - uses: actions/upload-artifact@v4
         with: { name: skill-bundles, path: dist/*.zip, if-no-files-found: ignore }
-
-# TODO (Prompt 8): add dorny/paths-filter so build/validate/eval run only for CHANGED
-# skills on large PRs, and add `python skills/<skill>/scripts/eval.py` once Prompt 7 lands.
