@@ -19,7 +19,7 @@ Generate a research-grade primer for a senior practitioner moving into an adjace
 working map you'd build after reading a dozen papers, watching conference talks, and talking to
 practitioners — delivered as one self-contained, depth-dialed HTML artifact.
 
-This skill is governed by a **rule registry** (`references/rule-registry.yaml`, 77 rules). The
+This skill is governed by a **rule registry** (`references/rule-registry.yaml`, 79 rules). The
 18 highest-leverage generation-time rules are inlined below as the **CORE**; hold them throughout.
 The rest are enforced *after* generation by deterministic lints (`scripts/`), a model-verified
 citation check (Phase 6), and scoped binary critics (`references/critic-prompts/`) — you needn't
@@ -37,11 +37,12 @@ Set four parameters before anything else (`R-PARAM-01`). If the request is bare,
 and past chats (`conversation_search`, `recent_chats`); if still unknown, ask **one** compact
 question. Write `parameters.yaml`.
 
-- **home_domain** (list) — the reader's existing expertise; fills the card's anchor row, calibrates analogies and assumed vocabulary.
+- **home_domain** (list) — the reader's existing expertise; fills the card's anchor row, calibrates analogies and assumed vocabulary. When it overlaps `target_domain`, resolve each anchor to the nearest *adjacent* technique or sub-field instead — the bridge becomes prior-art transfer (`R-XREF-04`); an anchor that restates its own concept fires no advance organizer.
 - **target_domain** — the primer's subject (the domain being bridged into).
 - **seniority_band** — `early_career | mid_senior | staff_plus`; scales scaffolding suppression (`R-PARAM-02`, `R-EXPERT-01`). Default `mid_senior` if unknown.
 - **length_budget** — drives depth allocation via the ledger-salience proxy (claim frequency / centrality), since V1 has no concept graph. Total length tracks the budget; allocate by salience rather than padding uniformly (`R-ARCH-06`), and scale the apparatus to each section's substance (`R-DEPTH-03`).
 - **outputs** — which projections to render from the IR: `html` (human) and/or `llm_md` (operationally-distilled, block-id-aligned, provenance-tagged). Default `[html]`; add `llm_md` when the primer will also ground an LLM (`R-PROJ-01..06`).
+- **user_structure** — optional. An explicit section structure from the user. It governs the top-level outline (`R-ARCH-07`): every entry is realized by exactly one section, in order, each declaring its entry via `maps_to` — so headings stay predictive claims rather than copied labels. The concept-map still drives depth within sections.
 - **reference_case** — optional. One concrete artifact every claim is grounded against (`R-EXPERT-03`). A contrastive anchor, *not* a worked example: `R-EXPERT-01` suppresses procedural walkthroughs, never the reference case.
 - **seed_sources** — optional user-provided sources to consult ("check the work of John Doe and <URL>"): `url` / `file` / `project_ref` (direct — fetched, grounded, never dropped) and `author`/entity directives (seed a targeted brief). Treated as leads worth looking at, not gospel — still corroboration-graded and surfaced as contested where the consensus disagrees (`R-DISC-06`). `project_ref` resolves only in claude.ai.
 

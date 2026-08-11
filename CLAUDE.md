@@ -20,7 +20,7 @@ This is a personal **skills monorepo**. The active skill is `skills/deep-primer/
 - `make build` — regenerate lockstep files. `make validate` — structural checks. `make test` — pytest. `make eval` — eval harness. `make bundle` — emit self-contained skills to `dist/`.
 
 ## Key files
-- Contracts: `skills/deep-primer/SKILL.md`, `references/artifact-schemas.md` (IR + projections), `references/rule-registry.yaml` (77 rules), `references/evidence-map.md` (the "why").
+- Contracts: `skills/deep-primer/SKILL.md`, `references/artifact-schemas.md` (IR + projections), `references/rule-registry.yaml` (79 rules), `references/evidence-map.md` (the "why").
 - Generators: `skills/deep-primer/tools/{gen_registry_md.py, gen_critic_prompts.py, build.sh}`.
 - Repo tools: `tools/validate_skill.py` (working minimal), `tools/bundle.py` (stub).
 - Open design decisions: `GAPS.md` — surface these, don't silently apply them.

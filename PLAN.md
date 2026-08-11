@@ -208,6 +208,22 @@ injectable seam with an offline default.
 **Verify B:** a synthetic three-wave campaign saturates (novel-fraction falls below threshold), triage
 honours the `R-DISC-06` seed exemption, and the three lints pass on good fixtures / fail on bad ones.
 
+## G1 + G6 — the remaining registry decisions — **DONE**
+
+Applied ahead of Stage C, since both bite there.
+
+- **G1** → new **`R-XREF-04`**: when `home_domain` ≈ `target_domain`, `home_anchor` resolves to the
+  nearest *adjacent* technique or sub-field, never the concept restated. Soft-critic judgment
+  ("is this anchor genuinely adjacent?") plus a deterministic `also_hard_lint` companion,
+  `univocity_terms.py::home_anchor_distinct`, catching the detectable failure — an anchor equal to
+  or contained in its own canonical term/aliases. `research-perspectives.md` re-aims bridge-builder
+  at prior-art transfer for this case.
+- **G6** → new **`R-ARCH-07`** + a `user_structure` parameter + `Section.maps_to`. The user's
+  structure governs top-level coverage and order. The mapping is **declared, not inferred from
+  headings**: copying the user's labels verbatim would collide with `R-SCENT-01`, so the heading
+  stays a predictive claim and `maps_to` records which entry it realizes. The concept-map still
+  drives depth within sections. Deterministic (hard_lint, MUST) — it checks the mapping, not strings.
+
 ## Stage C — Prompt 6: grounding loop
 
 - `retrieval_loop.py`, `claim_extractor.py`, `recency.py`, `coverage.py` — tool-loops behind the same

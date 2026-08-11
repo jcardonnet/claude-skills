@@ -93,7 +93,9 @@ concepts:
   - concept_id: "hnsw"
     canonical_term: "HNSW"
     aliases: ["hierarchical navigable small world"]   # only these surface forms allowed (univocity)
-    home_anchor: "<the home-domain analogue>"
+    home_anchor: "<the home-domain analogue>"   # when home ~= target, the nearest ADJACENT
+                                                # technique/sub-field, never the concept restated
+                                                # (R-XREF-04)
     fidelity_boundary: "<where the analogy breaks>"
     epistemic_status: settled                          # settled | contested | speculative
     salience: 0.82                                     # centrality-in-claims proxy; drives depth
@@ -155,6 +157,7 @@ sections:                                  # h2
   - block_id: sec-maskfree
     title: "Pixel masks are usually wasted work for BOM linkage"
     concept: mask-free-linkage
+    maps_to: "Segmentation approaches"     # only when the user supplied a structure (R-ARCH-07)
     blocks:
       - {block_id: lede-maskfree,   role: lede,    text: "...", claim_ids: [C1], provenance: inferred}
       - block_id: card-maskfree                    # role=card carries TYPED rows (R-CARD-02)
@@ -185,6 +188,12 @@ sections:                                  # h2
 `provenance ∈ {verified, inferred, unverified}` (the G4 axis; surfaced inline in both projections, `R-PROJ-05`);
 `artifact_kind ∈ {decision_matrix, checklist, failure_catalog, decision_aid}` — the four operational
 artifacts, kept distinct (`R-ART-01`).
+
+**`maps_to` and user-supplied structure.** When `parameters.user_structure` is set it governs the
+top-level outline (`R-ARCH-07`): every entry is realized by exactly one section, in order. The
+mapping is declared rather than inferred from headings, because copying the user's labels verbatim
+would collide with `R-SCENT-01` — so the heading stays a predictive claim and `maps_to` records
+which entry it realizes. The concept-map still drives depth *within* each section.
 
 **Three levels, and why h4 is not one of them.** h2 is a `section`, h3 a `subsection`; **h4 is a
 `heading` attribute on a body block, never a container**. `R-ARCH-05` requires h4 to stay out of

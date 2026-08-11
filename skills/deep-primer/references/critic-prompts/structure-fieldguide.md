@@ -74,6 +74,13 @@ You are a **scoped critic** for the Structure — field-guide layer & artifacts 
 - **PASS looks like:** 'Where this primer is weakest: it treats retrieval and generation as separable, which breaks for end-to-end systems.'
 - **Rationale:** styleguide §10
 
+#### R-XREF-04 — Anchor resolution when home ~= target
+**Verdict question (binary):** Is each card's home_anchor a genuinely adjacent technique the reader already owns, rather than a restatement of the concept itself? y/n
+- **FAIL looks like:** With home ~= target the bridge metaphor degenerates into 'X is like X', and the card's advance-organizer effect never fires.
+- **PASS looks like:** For a reader who already does instance segmentation, the anchor for leader-line following is ray casting in graphics - an adjacent technique - not 'segmentation', which is the concept restated.
+- **Rationale:** dry-run gap G1; EM Part I §1 (organizers fire only by activating PRIOR knowledge); Gentner structure-mapping
+- **Companion:** A script (`checks/univocity_terms.py::home_anchor_distinct`) checks the mechanical part; you judge what it cannot.
+
 #### R-ART-06 — Annotated further-reading
 **Verdict question (binary):** Does each further-reading entry carry a one-line what-it-offers / who-it's-for note rather than a bare link? y/n
 - **FAIL looks like:** LLM dumps a bare list of links with no annotation.

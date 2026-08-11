@@ -190,6 +190,10 @@ class Section(BaseModel):
     concept: str | None = None
     blocks: list[Block] = Field(default_factory=list)
     subsections: list[Subsection] = Field(default_factory=list)
+    # Which entry of a user-supplied structure this section realizes (R-ARCH-07). Declaring the
+    # mapping is what lets the heading be a predictive claim (R-SCENT-01) instead of the user's
+    # label copied verbatim — the two rules would otherwise collide.
+    maps_to: str | None = None
 
     def all_blocks(self) -> list[Block]:
         """This section's own blocks followed by its subsections', in document order."""

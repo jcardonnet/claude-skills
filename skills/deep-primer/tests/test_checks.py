@@ -429,3 +429,88 @@ def test_compression_gradient_counts_subsection_body():
     d = doc(sec_with_subs("s1", [blk("c", "card", text="one two three")],
                           [sub("s1a", blk("b", "body", text=" ".join(["w"] * 20)))]))
     assert prose_caps.compression_gradient(ctx(d)) == []
+
+
+# --- G1: anchor resolution when home ~= target (R-XREF-04) -------------------
+
+def _cm(**kw):
+    return ConceptMap(concepts=[Concept(concept_id="c1", canonical_term="leader anchoring", **kw)])
+
+
+def test_home_anchor_distinct_passes_on_adjacent_technique():
+    out = univocity_terms.home_anchor_distinct(ctx(doc(), _cm(home_anchor="ray casting in graphics")))
+    assert out == []
+
+
+def test_home_anchor_distinct_flags_self_restatement():
+    """home ~= target degenerates the bridge into 'X is like X'."""
+    out = univocity_terms.home_anchor_distinct(ctx(doc(), _cm(home_anchor="leader anchoring")))
+    assert out and "restates its own term" in out[0].detail
+
+
+def test_home_anchor_distinct_flags_substring_restatement():
+    out = univocity_terms.home_anchor_distinct(ctx(doc(), _cm(home_anchor="anchoring")))
+    assert out
+
+
+def test_home_anchor_distinct_flags_alias_restatement():
+    out = univocity_terms.home_anchor_distinct(
+        ctx(doc(), _cm(home_anchor="leader following", aliases=["leader following"])))
+    assert out
+
+
+def test_home_anchor_distinct_silent_without_concept_map():
+    assert univocity_terms.home_anchor_distinct(ctx(doc())) == []
+
+
+# --- G6: user-specified structure is authoritative (R-ARCH-07) ---------------
+
+def _sec_mapped(bid, maps_to, title="A predictive claim about it"):
+    return Section(block_id=bid, title=title, maps_to=maps_to)
+
+
+def test_user_structure_not_enforced_when_absent():
+    d = DocumentIR(sections=[Section(block_id="s1", title="t")])
+    assert structure_coverage.user_structure_respected(ctx(d)) == []
+
+
+def test_user_structure_pass_with_rewritten_headings():
+    """The heading is a predictive claim (R-SCENT-01); maps_to carries the user's entry."""
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background"), _sec_mapped("s2", "Tradeoffs")])
+    p = {"user_structure": ["Background", "Tradeoffs"]}
+    assert structure_coverage.user_structure_respected(ctx(d, parameters=p)) == []
+
+
+def test_user_structure_flags_missing_entry():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background")])
+    p = {"user_structure": ["Background", "Tradeoffs"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("'Tradeoffs' is not realized" in v.detail for v in out)
+
+
+def test_user_structure_flags_unmapped_section():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background"), Section(block_id="s2", title="invented")])
+    p = {"user_structure": ["Background"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("declares no maps_to" in v.detail for v in out)
+
+
+def test_user_structure_flags_duplicate_claim():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background"), _sec_mapped("s2", "Background")])
+    p = {"user_structure": ["Background"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("claimed by 2 sections" in v.detail for v in out)
+
+
+def test_user_structure_flags_foreign_maps_to():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Nowhere")])
+    p = {"user_structure": ["Background"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("not an entry of the user structure" in v.detail for v in out)
+
+
+def test_user_structure_flags_reordering():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Tradeoffs"), _sec_mapped("s2", "Background")])
+    p = {"user_structure": ["Background", "Tradeoffs"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("does not follow the user structure" in v.detail for v in out)

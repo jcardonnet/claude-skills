@@ -196,6 +196,44 @@ def summary_budgets(ctx: LintContext) -> list[Violation]:
     return out
 
 
+def user_structure_respected(ctx: LintContext) -> list[Violation]:
+    """R-ARCH-07: an explicit user structure governs the top-level outline.
+
+    Checks the *mapping*, not the heading strings: each section declares the entry it realizes via
+    `maps_to`, so a heading can still be a predictive claim (R-SCENT-01) rather than the user's
+    label copied verbatim. No user_structure parameter means nothing to enforce.
+    """
+    wanted = ctx.parameters.get("user_structure")
+    if not wanted:
+        return []
+
+    out: list[Violation] = []
+    claimed: dict[str, list[str]] = {}
+    for sec in ctx.ir.sections:
+        if sec.maps_to is None:
+            out.append(Violation(sec.block_id, "section declares no maps_to; a user structure is in force"))
+        else:
+            claimed.setdefault(sec.maps_to, []).append(sec.block_id)
+
+    for entry in wanted:
+        holders = claimed.get(entry, [])
+        if not holders:
+            out.append(Violation(None, f"user-structure entry {entry!r} is not realized by any section"))
+        elif len(holders) > 1:
+            out.append(Violation(None, f"user-structure entry {entry!r} claimed by {len(holders)} sections: {holders}"))
+
+    for entry, holders in claimed.items():
+        if entry not in wanted:
+            out.append(Violation(holders[0], f"maps_to {entry!r} is not an entry of the user structure"))
+
+    # order: the realized sequence must follow the user's, ignoring unmapped/extra sections
+    realized = [s.maps_to for s in ctx.ir.sections if s.maps_to in wanted]
+    expected = [e for e in wanted if e in realized]
+    if realized != expected:
+        out.append(Violation(None, f"section order {realized} does not follow the user structure {expected}"))
+    return out
+
+
 def operational_artifacts(ctx: LintContext) -> list[Violation]:
     """R-ART-01: all four operational artifacts present and distinct.
 

@@ -64,3 +64,33 @@ def canonical_terms(ctx: LintContext) -> list[Violation]:
                 ))
                 break
     return out
+
+
+def home_anchor_distinct(ctx: LintContext) -> list[Violation]:
+    """R-XREF-04 (also_hard_lint): a home_anchor must not restate its own concept.
+
+    The mechanical half of the home ~= target gap. When the reader already lives in the target
+    domain, the bridge degenerates into "X is like X" and the advance organizer never fires; an
+    anchor equal to (or contained in) the concept's own canonical term or aliases is that failure
+    in its detectable form. Whether a distinct anchor is genuinely ADJACENT stays a critic call.
+    """
+    cm = ctx.concept_map
+    if cm is None:
+        return []
+
+    out: list[Violation] = []
+    for c in cm.concepts:
+        anchor = (c.home_anchor or "").strip().lower()
+        if not anchor:
+            continue
+        own = {(c.canonical_term or "").strip().lower(), *(a.strip().lower() for a in c.aliases)}
+        own.discard("")
+        for term in own:
+            if anchor == term or anchor in term or term in anchor:
+                out.append(Violation(
+                    None,
+                    f"concept '{c.concept_id}': home_anchor {c.home_anchor!r} restates its own term "
+                    f"{term!r}; resolve it to the nearest ADJACENT technique (R-XREF-04)",
+                ))
+                break
+    return out

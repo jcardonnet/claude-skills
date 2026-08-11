@@ -41,6 +41,6 @@ make build                       # regenerate lockstep files (idempotent)
 Then open **`CLAUDE_CODE_PROMPTS.md`** and run Prompt 0 → Prompt 8. `CLAUDE.md` is the standing orientation for the coding agent; `GAPS.md` holds the open design decisions to settle along the way.
 
 ## Status
-Design + contracts shipped (registry at 77 rules incl. the `R-PROJ-*` projection rules; IR + projections schema; SKILL pipeline).
+Design + contracts shipped (registry at 79 rules incl. the `R-PROJ-*` projection rules; IR + projections schema; SKILL pipeline).
 Prompts 0–5 and Stage A (the IR extension + the full hard_lint set) are implemented; `scripts/research/*`,
 `scripts/eval.py`, and the discovery/convergence checks remain stubs — see `PLAN.md`.

@@ -49,6 +49,9 @@ parameters:
   length_budget:
     type: "str|int"
     desc: "Target length. Drives depth allocation via the ledger-salience proxy (claim-frequency / centrality-in-claims), since V1 has no concept graph."
+  user_structure:
+    type: "list[str]|null"
+    desc: "OPTIONAL. An explicit section structure supplied by the user. Authoritative for top-level coverage and order (R-ARCH-07); each section declares the entry it realizes via `maps_to`, so headings stay predictive claims rather than copied labels. The concept-map still drives depth within sections."
   reference_case:
     type: "str|null"
     desc: "OPTIONAL. A single concrete artifact every claim is grounded against (R-EXPERT-03). A contrastive anchor, not a worked example — R-EXPERT-01 suppresses procedural walkthroughs, never the reference case."
@@ -664,6 +667,18 @@ rules:
     evidence_grade: engineering
     evidence_ref: "styleguide §11,§14; deep-primer Phase 4 self-check"
 
+  - id: R-XREF-04
+    title: "Anchor resolution when home ~= target"
+    directive: "When home_domain and target_domain are the same or overlapping, resolve home_anchor to the nearest ADJACENT technique or sub-field the reader already owns - never to the concept itself. The bridge-builder perspective becomes prior-art transfer: which neighbouring method does this borrow from, and where does the borrowing break? An anchor that restates the concept in its own terms is degenerate and fires no advance organizer."
+    priority: MUST
+    enforcement: soft_critic
+    check: {type: rubric, pass: structure, question: "Is each card's home_anchor a genuinely adjacent technique the reader already owns, rather than a restatement of the concept itself? y/n", also_hard_lint: "checks/univocity_terms.py::home_anchor_distinct", pass_example: "For a reader who already does instance segmentation, the anchor for leader-line following is ray casting in graphics - an adjacent technique - not 'segmentation', which is the concept restated."}
+    phase: [1,2,3]
+    counters: "With home ~= target the bridge metaphor degenerates into 'X is like X', and the card's advance-organizer effect never fires."
+    evidence_grade: convergent_craft
+    evidence_ref: "dry-run gap G1; EM Part I §1 (organizers fire only by activating PRIOR knowledge); Gentner structure-mapping"
+    params_used: [home_domain, target_domain]
+
   - id: R-XREF-03
     title: "Edges realized as cross-references"
     directive: "Important concept-map relations are realized as cross-references in prose, so the document reads as a navigable web."
@@ -777,6 +792,18 @@ rules:
     evidence_grade: engineering
     evidence_ref: "styleguide §6; EM Part I §2 (minimalism)"
     params_used: [length_budget]
+
+  - id: R-ARCH-07
+    title: "User-specified structure is authoritative"
+    directive: "When the user supplies an explicit section structure, it governs the top-level outline: every entry is realized by exactly one section, in the given order, and no top-level section is invented outside it. Headings may still be rewritten as predictive claims (R-SCENT-01) provided each section declares which entry it realizes via `maps_to`. The concept-map continues to drive depth WITHIN those sections."
+    priority: MUST
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/structure_coverage.py::user_structure_respected", detail: "when parameters.user_structure is set: every entry claimed by exactly one section via maps_to, order preserved, no unmapped top-level section"}
+    phase: [2,3,7]
+    counters: "The derived outline quietly replaces the structure the user asked for, or the structure is honored only by copying the user's labels verbatim (which then collide with R-SCENT-01)."
+    evidence_grade: engineering
+    evidence_ref: "dry-run gap G6"
+    params_used: [user_structure]
 
   - id: R-ART-06
     title: "Annotated further-reading"

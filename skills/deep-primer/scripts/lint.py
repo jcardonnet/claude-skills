@@ -67,6 +67,8 @@ CHECKS = {
     "checks/structure_coverage.py::recall_count": structure_coverage.recall_count,
     "checks/structure_coverage.py::summary_budgets": structure_coverage.summary_budgets,
     "checks/structure_coverage.py::operational_artifacts": structure_coverage.operational_artifacts,
+    "checks/structure_coverage.py::user_structure_respected": structure_coverage.user_structure_respected,
+    "checks/univocity_terms.py::home_anchor_distinct": univocity_terms.home_anchor_distinct,
     "checks/prose_caps.py::compression_gradient": prose_caps.compression_gradient,
     "checks/prose_caps.py::length_caps": prose_caps.length_caps,
     "checks/prose_caps.py::condition_first": prose_caps.condition_first,
