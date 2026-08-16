@@ -12,7 +12,9 @@ jobs:
       shared: ${{ steps.filter.outputs.shared }}
     steps:
       - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
+      # SHA-pinned (Sonar S7637): a third-party action referenced by moving tag can be repointed at
+      # new code without the ref changing. v3 = 0e4a8c6.
+      - uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3
         id: filter
         with:
           filters: |
@@ -51,6 +53,19 @@ jobs:
             exit 1
           fi
 
+      # spaCy + a model, so R-PROSE-01's NATIVE entity-grid path actually runs here. Without one it
+      # silently degrades to the warn-only fallback, and that fallback was the only thing CI had
+      # ever exercised — the native path's failures were invisible everywhere. Installing it locally
+      # immediately surfaced 5, of which 3 were defects in the check itself (pronominal subjects
+      # counted as new entities, `sent.root` returning a verb, Toulmin labels wrecking the parse)
+      # and 2 were real given→new breaks in the reference fixture.
+      # Deliberately NOT the `[nlp]` extra: that pulls fastcoref -> torch (~GBs) for a coref feature
+      # that is off by default. spaCy plus en_core_web_md is ~50MB and is what the lint needs.
+      - name: spaCy model (exercise the native prose path)
+        run: |
+          pip install 'spacy>=3.8.15'
+          python -m spacy download en_core_web_md
+
       # --- structural validation + unit tests --------------------------------
       - name: validate skills (incl. lockstep idempotence)
         run: python tools/validate_skill.py --check-build skills/*
@@ -70,8 +85,11 @@ jobs:
             --strict --out lint-report.json
 
       # --- eval harness -------------------------------------------------------
-      - name: eval
-        run: python skills/deep-primer/scripts/eval.py --out eval-report.json
+      # --strict is the coverage ratchet. `enforcement_coverage` had been reported since Prompt 7,
+      # but nothing ever failed on it — a rule could go dark without turning anything red, the same
+      # hole as the lint gate above, one tier up. It caught R-PROJ-04 on its first run.
+      - name: eval (coverage ratchet)
+        run: python skills/deep-primer/scripts/eval.py --strict --out eval-report.json
       - uses: actions/upload-artifact@v4
         with: { name: eval-report, path: eval-report.json, if-no-files-found: warn }
 
