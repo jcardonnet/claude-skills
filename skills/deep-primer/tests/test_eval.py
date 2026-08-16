@@ -4,14 +4,20 @@ The harness's job is to be honest about what it measured. Most of these pin that
 artifact must not read as a pass, an expected rule that never ran must not read as a pass, and a
 threshold must not be proposed from a backend that cannot support one.
 """
+import json
 from pathlib import Path
 
 import yaml
 
 from eval import (
+    _spec_strict_failures,
+    _tier_soft_critic,
     _why_unexercised,
+    coverage_gate,
     load_specs,
     propose_thresholds,
+    registry_rule_ids,
+    registry_rules,
     resolve_artifacts,
     run_eval,
     score_spec,
@@ -113,10 +119,100 @@ def test_thresholds_are_proposed_from_a_real_backend():
 
 
 def test_rubric_thresholds_are_still_the_documented_todos():
-    """Guards against a proxy-derived floor being written into the rubric by accident."""
+    """Guards against a floor derived from too little evidence being written into the rubric.
+
+    A real backend now exists (`verify/claude_entailment.py`), and scoring spec-01 with it gives
+    recall 0.5714 / precision 0.5 — roughly 4x what the lexical proxy reports (0.1429 / 0.125),
+    which is the proxy understating a compliant paraphrasing primer exactly as designed.
+    `propose_thresholds()` accordingly stops refusing and proposes 0.52 / 0.45.
+
+    Those are deliberately NOT adopted. The denominators are 7 factual statements and 8 citations,
+    on a hand-built reference fixture rather than a real generation — a project-wide quality floor
+    set from that would be calibration theatre, and `propose_thresholds` says so itself in its
+    caveat. Settle them in Stage G, against real runs and more than one spec.
+    """
     rubric = yaml.safe_load((SKILL_ROOT / "references" / "eval" / "eval-rubric.yaml").read_text())
     th = rubric["model_verified"]["thresholds"]
     assert th["citation_recall"] >= 0.7 and th["citation_precision"] >= 0.85
+
+
+# --- the coverage gate -------------------------------------------------------
+# `enforcement_coverage` was reported from Prompt 7 onward but nothing ever failed on it. These pin
+# the gate that closed that: coverage is now a ratchet, not a readout.
+
+def test_coverage_gate_passes_on_the_shipped_artifacts():
+    report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
+    gate = report["coverage_gate"]
+    assert gate["passed"], gate
+    assert not gate["silent_skips"] and not gate["shortfalls"] and not gate["spec_failures"]
+
+
+def test_coverage_gate_fails_when_a_tier_regresses():
+    """The ratchet's whole job: dropping a rule below the declared floor must fail, not just print."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
+    exercised = set(registry_rule_ids()) - set(report["enforcement_coverage"]["unexercised"])
+    assert coverage_gate(exercised, [])["passed"], "baseline must be green before thinning it"
+
+    hard_lint_ids = {r["id"] for r in registry_rules() if r["enforcement"] == "hard_lint"}
+    thinned = exercised - {min(exercised & hard_lint_ids)}
+    gate = coverage_gate(thinned, [])
+    assert not gate["passed"]
+    assert any(s["tier"] == "hard_lint" for s in gate["shortfalls"])
+
+
+def test_r_proj_04_is_actually_exercised():
+    """It is model_verified/MUST and the verifier was unit-tested from Stage A, but eval never
+    called it — so it read as unexercised forever while looking identical to a passing rule."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
+    assert "R-PROJ-04" not in report["enforcement_coverage"]["unexercised"]
+    mv = report["results"][0]["model_verified"]
+    assert mv["chunk_selfcontained"]["blocks"] > 0
+
+
+def _critic_report(path: Path, *, exercised: bool, verdict: str) -> Path:
+    path.write_text(json.dumps({
+        "judge": {"kind": "claude" if exercised else "stub", "exercised_rules": exercised},
+        "counts": {"pass": 1, "fail": 1 if verdict == "fail" else 0, "unstable": 0},
+        "passes": [{"pass": "coherence", "rules": ["R-PROSE-02"], "verdicts": [
+            {"rule_id": "R-PROSE-02", "block_id": "b1", "verdict": verdict, "evidence": ""}]}],
+    }), encoding="utf-8")
+    return path
+
+
+def test_a_stub_critic_report_is_never_counted_as_coverage(tmp_path):
+    """StubJudge returns 'pass' for every (rule, block) without consulting anything. Crediting its
+    report would manufacture a green 35/35 soft_critic tier out of a judge that never read a word —
+    Stage A's silent-skip failure with the sign flipped, and flattering enough to survive review."""
+    stub = _critic_report(tmp_path / "stub.json", exercised=False, verdict="pass")
+    tier = _tier_soft_critic({"critic_report": stub})
+    assert tier["status"] == "stub_only"
+    assert tier["rules_exercised"] == []
+
+
+def test_a_real_critic_report_scores_and_credits_the_tier(tmp_path):
+    real = _critic_report(tmp_path / "real.json", exercised=True, verdict="fail")
+    tier = _tier_soft_critic({"critic_report": real})
+    assert tier["status"] == "scored"
+    assert tier["rules_exercised"] == ["R-PROSE-02"]
+    assert tier["failed"] == ["R-PROSE-02"]
+
+
+def test_lexical_backend_does_not_trip_the_citation_gate():
+    """propose_thresholds() refuses to derive a floor from the lexical proxy because its numbers are
+    meaningless for a paraphrasing primer. Failing --strict on those same numbers would be
+    incoherent, and would leave the gate permanently red offline."""
+    results = [{
+        "id": "spec-x", "status": "scored",
+        "hard_lints": {"blocking": False},
+        "model_verified": {"status": "scored", "backend": "lexical", "recall": 0.1,
+                           "precision": 0.1, "meets_recall": False, "meets_precision": False},
+        "expected_must_pass_report": {"failed": [], "not_exercised": []},
+    }]
+    assert _spec_strict_failures(results, registry_rules()) == []
+
+    results[0]["model_verified"]["backend"] = "nli"
+    failures = _spec_strict_failures(results, registry_rules())
+    assert len(failures) == 1 and "citation quality" in failures[0]["reasons"][0]
 
 
 # --- the run manifest (Stage F) ----------------------------------------------
@@ -166,3 +262,54 @@ def test_failed_phase_blocks_resume_past_it():
     m = RunManifest(run_id="r1").complete("0-parameters").fail("1a-discovery", "backend timeout")
     assert m.resume_from() == "1a-discovery"
     assert m.completed_phases() == ["0-parameters"]
+
+
+def test_narrowed_runs_do_not_trip_the_coverage_floors():
+    """A floor counts rules exercised across EVERY spec, so comparing it against one spec's coverage
+    fails for the wrong reason — and a gate that cries wolf on a routine `--spec` run is a gate
+    someone switches off. Floors suspend; silent-skips and real spec failures stay armed, because
+    those are local facts that remain true when only one spec ran."""
+    thin = {"R-GROUND-01"}
+    full = coverage_gate(thin, [], partial=False)
+    assert not full["passed"] and full["shortfalls"] and full["floors_enforced"]
+
+    partial = coverage_gate(thin, [], partial=True)
+    assert partial["shortfalls"] == []
+    assert partial["scope"] == "partial" and partial["floors_enforced"] is False
+
+    # ...but a genuine spec failure is NOT excused by narrowing
+    failing = [{"id": "spec-x", "status": "scored", "hard_lints": {"blocking": True},
+                "model_verified": {"status": "skipped"},
+                "expected_must_pass_report": {"failed": [], "not_exercised": []}}]
+    assert coverage_gate(thin, failing, partial=True)["passed"] is False
+
+
+def test_a_stale_critic_report_is_not_counted_as_coverage(tmp_path):
+    """A frozen report judged one specific IR. If that IR has changed, the verdicts describe a
+    document that no longer exists — crediting them is coverage for judging something else, the
+    same class of lie as counting a stub but much harder to notice. Editing two sentences of the
+    reference fixture was enough to invalidate an $18 report with nothing to show it."""
+    ir = tmp_path / "ir.yaml"
+    ir.write_text("sections: []\n", encoding="utf-8")
+    stale = tmp_path / "critic.json"
+    stale.write_text(json.dumps({
+        "judge": {"kind": "claude", "exercised_rules": True},
+        "ir_sha256": "0" * 64,
+        "passes": [{"pass": "coherence", "verdicts": [
+            {"rule_id": "R-PROSE-02", "block_id": "b1", "verdict": "pass"}]}],
+    }), encoding="utf-8")
+
+    tier = _tier_soft_critic({"critic_report": stale, "ir": ir})
+    assert tier["status"] == "stale"
+    assert tier["rules_exercised"] == []
+
+    # matching digest -> credited normally
+    from eval import _ir_digest
+    fresh = tmp_path / "fresh.json"
+    fresh.write_text(json.dumps({
+        "judge": {"kind": "claude", "exercised_rules": True},
+        "ir_sha256": _ir_digest(ir),
+        "passes": [{"pass": "coherence", "verdicts": [
+            {"rule_id": "R-PROSE-02", "block_id": "b1", "verdict": "pass"}]}],
+    }), encoding="utf-8")
+    assert _tier_soft_critic({"critic_report": fresh, "ir": ir})["rules_exercised"] == ["R-PROSE-02"]

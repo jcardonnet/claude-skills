@@ -106,3 +106,71 @@ def test_cli_exit_code(fixtures, tmp_path):
                  "--backend", "lexical", "--out", str(out)])
     assert code == 1
     assert out.exists()
+
+
+# --- the Claude entailment backend (the production judge_fn) ------------------
+# resolve_backend("claude") has always raised without a judge_fn, and nothing supplied one — so
+# every citation number the harness ever produced came from the lexical proxy. These pin the
+# behaviour of the judge that closes that; the live model path is deliberately not tested.
+
+def test_resolve_backend_claude_requires_and_uses_a_judge_fn():
+    with pytest.raises(ValueError, match="judge_fn"):
+        resolve_backend("claude")
+    backend = resolve_backend("claude", judge_fn=lambda _p, _h: True)
+    assert backend.name == "claude"
+    assert backend.supports("anything", "anything") is True
+
+
+def test_claude_entailment_treats_every_failure_as_not_supported():
+    """A citation the verifier could not check has NOT been shown to be supported. Resolving the
+    ambiguity the other way would let an outage, a malformed reply, or a hedge quietly RAISE the
+    citation score — inflating the exact number the tier exists to police."""
+    from utils.claude_cli import CliUnavailable
+    from verify.claude_entailment import ClaudeEntailmentJudge
+
+    judge = ClaudeEntailmentJudge()
+
+    judge.cli.result_text = lambda _instruction: '{"supports": true, "why": "ok"}'
+    assert judge("evidence", "statement") is True
+
+    judge.cli.result_text = lambda _instruction: '{"supports": "probably", "why": "hedged"}'
+    assert judge("evidence", "statement") is False
+
+    judge.cli.result_text = lambda _instruction: "not json at all"
+    assert judge("evidence", "statement") is False
+
+    def _boom(_instruction):
+        raise CliUnavailable("simulated outage")
+
+    judge.cli.result_text = _boom
+    assert judge("evidence", "statement") is False
+
+    # every non-support above is recorded, never silently swallowed
+    assert len(judge.unresolved) == 3
+
+
+def test_claude_entailment_skips_empty_pairs_without_spending():
+    from verify.claude_entailment import ClaudeEntailmentJudge
+
+    judge = ClaudeEntailmentJudge()
+    assert judge("", "statement") is False
+    assert judge("evidence", "   ") is False
+    assert judge.calls == 0
+
+
+def test_extract_json_tolerates_packaging_but_not_absence():
+    """Three separate runs in this project died on packaging — a ```json fence, a pass-level
+    wrapper, an empty result — each discarding a correct answer over how it was wrapped. Parse
+    leniently; the CONTENT is still validated strictly by the caller."""
+    from utils.claude_cli import CliUnavailable, extract_json
+
+    assert extract_json('{"a": 1}') == {"a": 1}
+    assert extract_json('```json\n{"a": 1}\n```') == {"a": 1}
+    assert extract_json('Here is the result:\n{"a": 1}\nHope that helps!') == {"a": 1}
+    # a brace inside a string value must not end the scan early
+    assert extract_json('{"a": "} not the end", "b": 2}') == {"a": "} not the end", "b": 2}
+    assert extract_json('{"outer": {"inner": 1}}') == {"outer": {"inner": 1}}
+
+    for bad in ("", "no json here at all", '{"unterminated": '):
+        with pytest.raises(CliUnavailable):
+            extract_json(bad)

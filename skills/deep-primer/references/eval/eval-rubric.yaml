@@ -7,8 +7,34 @@ model_verified:    # scripts/verify/* (citation recall/precision; chunk self-con
   weight: 1.0
   source: verify-report.json
   thresholds:
+    # STILL TODO — but no longer un-measurable. `verify/claude_entailment.py` supplies the judge_fn
+    # resolve_backend("claude") always wanted, so these can now be scored for real:
+    #   lexical proxy : recall 0.1429  precision 0.125   <- cannot support a floor, by construction
+    #   claude        : recall 0.5714  precision 0.5     <- ~4x; the proxy was understating badly
+    # propose_thresholds() now proposes 0.52 / 0.45 instead of refusing. Not adopted: n = 7 factual
+    # statements and 8 citations, on a hand-built fixture rather than a real generation. Settle in
+    # Stage G against real runs and more than one spec.
+    #   python scripts/eval.py --spec spec-01-rag-chunking --backend claude
     citation_recall: 0.75      # TODO: tune against real runs (registry budgets)
     citation_precision: 0.90   # TODO
 human_overlay:     # spot-checked, calibrates the soft critics
   weight: 1.0
   divergence_recalibrate_threshold: 0.25
+
+# --- the coverage ratchet (what `eval.py --strict` enforces) ------------------
+# Stage A's finding was that an unenforced rule is indistinguishable from a passing one. The report
+# has carried `enforcement_coverage` since Prompt 7, but nothing ever FAILED on it — measured, never
+# gated, which is the same shape of hole one tier up.
+#
+# These are a RATCHET, not an aspiration: every number is what the offline run actually achieves
+# today, so the gate locks in current coverage and fails the moment it regresses. Raise a floor when
+# real coverage rises (Stage G artifacts, a wired judge). Never lower one to make a red run green —
+# that is precisely the silent erosion this exists to catch.
+#
+# Counts, not fractions: the registry grows. A fractional floor weakens itself every time a rule is
+# added, so the gate would quietly loosen exactly when the surface got larger.
+coverage_floor:
+  hard_lint: 27       # 27/32 — the 5 dark ones await discovery/convergence artifacts (Stage G)
+  model_verified: 3   # 3/3 — R-PROJ-04 was dark until the gate caught it; keep it that way
+  soft_critic: 35     # 35/35 — was 2/35 until the tier got a real judge; never let it slide back
+  human: 0            # 9 maintainer-judgment rules; a real number requires a review pass to exist

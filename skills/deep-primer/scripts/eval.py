@@ -41,6 +41,7 @@ from lint import (  # noqa: E402
     run_ledger_pass,
     run_llm_md_pass,
 )
+from verify._entailment import resolve_backend  # noqa: E402
 from verify.citation_quality import evaluate as verify_citations  # noqa: E402
 from verify.citation_quality import load_thresholds  # noqa: E402
 
@@ -53,6 +54,7 @@ _ARTIFACT_FILES = {
     "concept_map": "concept-map.yaml",
     "ledger": "source-ledger.yaml",
     "convergence_log": "convergence-log.yaml",
+    "critic_report": "critic-report.json",
 }
 
 
@@ -135,14 +137,15 @@ def _tier_hard_lints(paths: dict[str, Path]) -> dict:
     return out
 
 
-def _tier_model_verified(paths: dict[str, Path], rubric_path: Path) -> dict:
+def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
+                         backend: object | None = None) -> dict:
     if not paths.get("ledger"):
         return {"status": "skipped", "reason": "no source-ledger artifact"}
     thresholds = load_thresholds(rubric_path)
-    report = verify_citations(DocumentIR.from_yaml(paths["ir"]),
-                              SourceLedger.from_yaml(paths["ledger"]),
-                              thresholds=thresholds)
-    return {
+    ir = DocumentIR.from_yaml(paths["ir"])
+    ledger = SourceLedger.from_yaml(paths["ledger"])
+    report = verify_citations(ir, ledger, backend=backend, thresholds=thresholds)
+    out = {
         "status": "scored",
         "backend": report["backend"],
         "recall": report["recall"],
@@ -152,6 +155,63 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path) -> dict:
         "meets_precision": report["precision"] >= thresholds["precision"],
         "unresolved_citations": len(report["resolves_to_ledger"]["violations"]),
         "counts": report["counts"],
+    }
+
+    # R-PROJ-04 (chunk self-containment) is model_verified and MUST, and the verifier for it has
+    # existed and been unit-tested since Stage A — the eval harness simply never called it, so the
+    # rule read as "unexercised" forever while looking no different from a passing one. That is the
+    # silent-skip class, and the coverage gate is what surfaced it.
+    from verify.chunk_selfcontained import verify as verify_chunks
+    cm = ConceptMap.from_yaml(paths["concept_map"]) if paths.get("concept_map") else None
+    chunks = verify_chunks(ir, ledger, cm, backend=backend)
+    out["chunk_selfcontained"] = {
+        "ok": chunks["ok"],
+        "backend": chunks["backend"],
+        "blocks": len(chunks["verdicts"]),
+        "failures": chunks["failures"],
+    }
+    return out
+
+
+def _tier_soft_critic(paths: dict[str, Path]) -> dict:
+    """Score the critic tier from a run_critics report, if the spec's artifacts include one.
+
+    The safety property here is the whole point: a report produced by `StubJudge` is stamped
+    `exercised_rules: false` and is NOT credited as coverage. A stub run returns 'pass' for every
+    (rule, block) pair without consulting anything, so counting it would manufacture a green
+    35/35 soft_critic tier out of a judge that never read a word — Stage A's silent-skip failure
+    with the sign flipped, and far more flattering, which is what would make it stick.
+    """
+    path = paths.get("critic_report")
+    if not path:
+        return {"status": "not_run",
+                "reason": "no critic-report.json — scripts/critics/run_critics.py --judge claude"}
+    report = json.loads(path.read_text(encoding="utf-8"))
+    judge = report.get("judge") or {}
+
+    # A frozen report judged a specific IR. If that IR has since changed, these verdicts describe a
+    # document that no longer exists, and crediting them is coverage for judging something else —
+    # the same class of lie as counting a stub, just harder to notice.
+    stamped, actual = report.get("ir_sha256"), _ir_digest(paths.get("ir"))
+    if stamped and actual and stamped != actual:
+        return {"status": "stale", "judge": judge, "rules_exercised": [],
+                "reason": f"critic report was judged against a different IR "
+                          f"({stamped[:12]}… vs {actual[:12]}…) — re-run run_critics"}
+    verdicts = [v for p in report.get("passes", []) for v in p.get("verdicts", [])]
+    if not judge.get("exercised_rules"):
+        return {"status": "stub_only", "judge": judge, "rules_exercised": [],
+                "reason": "critic report came from the stub judge; not counted as coverage"}
+    return {
+        "status": "scored",
+        "judge": judge,
+        # 'error' means the judge never answered for that (rule, block). A rule whose every verdict
+        # errored was attempted, not exercised — crediting it would be the same lie as counting a
+        # stub. A rule with at least one real verdict did run, so it counts.
+        "rules_exercised": sorted({v["rule_id"] for v in verdicts if v["verdict"] != "error"}),
+        "counts": report.get("counts", {}),
+        "failed": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "fail"}),
+        "unstable": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "unstable"}),
+        "errored": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "error"}),
     }
 
 
@@ -168,9 +228,24 @@ _ARTIFACT_TIERS = {"discovery-log": "needs a discovery campaign artifact",
                    "convergence-log": "needs a convergence-log artifact"}
 
 
-def _why_unexercised(rule_id: str) -> str:
-    """Classify why an expected rule never ran — a judge gap, a missing artifact, or a real hole."""
-    for rule in registry_rules():
+def _ir_digest(ir_path: Path | None) -> str | None:
+    """Digest of an IR file — content addressing, never security. Mirrors run_critics._ir_digest."""
+    import hashlib
+    if not ir_path or not Path(ir_path).is_file():
+        return None
+    return hashlib.sha256(Path(ir_path).read_bytes(), usedforsecurity=False).hexdigest()
+
+
+SILENT_SKIP = "DETERMINISTIC RULE NOT EXERCISED — investigate (silent-skip class)"
+
+
+def _why_unexercised(rule_id: str, rules: list[dict] | None = None) -> str:
+    """Classify why a rule never ran — a judge gap, a missing artifact, or a real hole.
+
+    `rules` lets a caller hand the registry in once. Classifying all 79 rules for the coverage gate
+    would otherwise re-read and re-parse rule-registry.yaml once per rule.
+    """
+    for rule in (registry_rules() if rules is None else rules):
         if rule["id"] != rule_id:
             continue
         enforcement = rule["enforcement"]
@@ -181,11 +256,12 @@ def _why_unexercised(rule_id: str) -> str:
         artifact = (rule.get("check") or {}).get("input")
         if artifact in _ARTIFACT_TIERS:
             return _ARTIFACT_TIERS[artifact]
-        return "DETERMINISTIC RULE NOT EXERCISED — investigate (silent-skip class)"
+        return SILENT_SKIP
     return "unknown rule id"
 
 
-def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC) -> dict:
+def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC,
+               backend: object | None = None) -> dict:
     paths = resolve_artifacts(spec, root)
     result = {
         "id": spec["id"],
@@ -199,22 +275,35 @@ def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC) 
         return result
 
     hard = _tier_hard_lints(paths)
-    model = _tier_model_verified(paths, rubric_path)
+    model = _tier_model_verified(paths, rubric_path, backend)
+    critics = _tier_soft_critic(paths)
     human = _tier_human(spec)
 
+    # The union across ALL tiers, kept beside them rather than folded back into `hard_lints`.
+    # It used to be written back onto hard_lints["rules_exercised"], so the lint tier's own report
+    # claimed credit for rules the linter never touched — harmless while it was two citation rules,
+    # actively misleading once the critic tier can contribute 35 more.
     exercised = set(hard["rules_exercised"])
     if model.get("status") == "scored":
         # recall/precision genuinely ran; attribute them or the tier reads as 0% exercised
         exercised |= {"R-GROUND-02", "R-GROUND-03"}
-        hard["rules_exercised"] = sorted(exercised)
+        if "chunk_selfcontained" in model:
+            exercised.add("R-PROJ-04")
+    exercised |= set(critics.get("rules_exercised") or [])
     expected = result["expected_must_pass"]
     unexercised = [r for r in expected if r not in exercised]
-    failed_expected = [f["rule_id"] for f in hard["failures"] if f["rule_id"] in expected]
+    # a critic FAIL on an expected rule is a real failure, exactly like a lint fail. 'unstable' is
+    # not folded in: test-retest disagreement means the judge could not decide, which is a signal
+    # about the judge, and silently scoring it as a failure would blame the primer for that.
+    failed_expected = sorted({f["rule_id"] for f in hard["failures"] if f["rule_id"] in expected}
+                             | {r for r in (critics.get("failed") or []) if r in expected})
 
     result.update({
         "status": "scored",
+        "rules_exercised": sorted(exercised),
         "hard_lints": hard,
         "model_verified": model,
+        "soft_critic": critics,
         "human_overlay": human,
         "expected_must_pass_report": {
             "failed": failed_expected,
@@ -266,15 +355,93 @@ def _coverage_by_enforcement(exercised: set[str]) -> dict:
     return out
 
 
+def _spec_strict_failures(results: list[dict], rules: list[dict]) -> list[dict]:
+    """Spec failures a strict run must not tolerate.
+
+    A spec fails for two very different reasons and only one of them is a defect:
+
+      - it FAILED a rule, or missed a citation threshold  -> a real failure
+      - a rule it expects never ran, because this environment has no judge model and no generated
+        artifact                                          -> the documented offline state
+
+    Collapsing the two would make --strict useless: spec-01 fails on exactly the second kind today,
+    so a gate keyed on `passed` would be red on every offline run and get switched off. Keying on
+    the classification instead means the gate is quiet about the known gaps and loud about defects.
+    """
+    out = []
+    for r in results:
+        if r["status"] != "scored":
+            continue
+        hard, mv, expected = r["hard_lints"], r["model_verified"], r["expected_must_pass_report"]
+        reasons = []
+        if hard["blocking"]:
+            reasons.append("blocking lint failure")
+        if expected["failed"]:
+            reasons.append(f"expected rule(s) FAILED: {', '.join(expected['failed'])}")
+        # Only gate citation quality on a backend whose numbers mean something. The lexical proxy
+        # scores word overlap between a <=15-word quote and a block R-GROUND-01 requires to be a
+        # PARAPHRASE, so a low score there is compliance, not a defect — which is exactly why
+        # propose_thresholds() refuses to derive a floor from it. Failing on the same numbers it
+        # refuses to trust would be incoherent, and would make --strict permanently red offline.
+        if (mv.get("status") == "scored" and mv.get("backend") != "lexical"
+                and not (mv.get("meets_recall") and mv.get("meets_precision"))):
+            reasons.append(f"citation quality below threshold "
+                           f"(recall={mv['recall']} precision={mv['precision']}, "
+                           f"backend={mv.get('backend')})")
+        silent = [rid for rid in expected["not_exercised"]
+                  if _why_unexercised(rid, rules) == SILENT_SKIP]
+        if silent:
+            reasons.append(f"expected but silently unexercised: {', '.join(silent)}")
+        if reasons:
+            out.append({"spec": r["id"], "reasons": reasons})
+    return out
+
+
+def coverage_gate(exercised: set[str], results: list[dict], rubric_path: Path = RUBRIC,
+                  partial: bool = False) -> dict:
+    """The ratchet `--strict` enforces — see the `coverage_floor` note in eval-rubric.yaml.
+
+    Three ways to fail: a tier drops below its declared floor, a deterministic rule goes dark with
+    no attributable reason, or a spec fails for a reason that is not the documented offline gap.
+
+    `partial` (a `--spec`-narrowed run) suspends the FLOORS only. A floor counts rules exercised
+    across every spec, so comparing it against one spec's coverage would fail for the wrong reason —
+    and a gate that cries wolf on a routine single-spec run is a gate someone switches off. The
+    other two checks stay armed: a silent skip and a real spec failure are local facts, still true
+    when only one spec ran.
+    """
+    rules = registry_rules()
+    rubric = yaml.safe_load(rubric_path.read_text(encoding="utf-8")) or {}
+    floors = {tier: int(n) for tier, n in (rubric.get("coverage_floor") or {}).items()}
+    by_tier = _coverage_by_enforcement(exercised)
+
+    shortfalls = [] if partial else [
+        {"tier": tier, "floor": floor, "exercised": by_tier.get(tier, {}).get("exercised", 0)}
+        for tier, floor in sorted(floors.items())
+        if by_tier.get(tier, {}).get("exercised", 0) < floor]
+    silent = sorted(r["id"] for r in rules
+                    if r["id"] not in exercised and _why_unexercised(r["id"], rules) == SILENT_SKIP)
+    spec_failures = _spec_strict_failures(results, rules)
+    return {
+        "scope": "partial" if partial else "full",
+        "floors": floors,
+        "floors_enforced": not partial,
+        "shortfalls": shortfalls,
+        "silent_skips": silent,
+        "spec_failures": spec_failures,
+        "passed": not shortfalls and not silent and not spec_failures,
+    }
+
+
 def run_eval(spec_dir: Path = SPEC_DIR, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC,
-             only: str | None = None) -> dict:
+             only: str | None = None, backend: object | None = None) -> dict:
     specs = [s for s in load_specs(spec_dir) if only is None or s["id"] == only]
-    results = [score_spec(s, root, rubric_path) for s in specs]
+    results = [score_spec(s, root, rubric_path, backend) for s in specs]
 
     exercised: set[str] = set()
     for r in results:
         if r["status"] == "scored":
-            exercised |= set(r["hard_lints"]["rules_exercised"])
+            exercised |= set(r["rules_exercised"])
     all_rules = registry_rule_ids()
 
     return {
@@ -289,6 +456,7 @@ def run_eval(spec_dir: Path = SPEC_DIR, root: Path = SKILL_ROOT, rubric_path: Pa
             "by_enforcement": _coverage_by_enforcement(exercised),
             "unexercised": sorted(set(all_rules) - exercised),
         },
+        "coverage_gate": coverage_gate(exercised, results, rubric_path, partial=only is not None),
         "results": results,
     }
 
@@ -334,6 +502,20 @@ def propose_thresholds(report: dict) -> dict:
     }
 
 
+def _print_gate(gate: dict) -> None:
+    for s in gate["shortfalls"]:
+        print(f"  coverage REGRESSED: {s['tier']} exercised {s['exercised']}, floor is {s['floor']}")
+    for rule in gate["silent_skips"]:
+        print(f"  silent skip: {rule} — {SILENT_SKIP}")
+    for sf in gate["spec_failures"]:
+        print(f"  {sf['spec']} failed strictly: {'; '.join(sf['reasons'])}")
+    if not gate["floors_enforced"]:
+        print("  coverage floors NOT enforced: --spec narrowed the run, and a floor counts rules "
+              "across every spec")
+    print(f"coverage gate: {'PASS' if gate['passed'] else 'FAIL'}"
+          + ("" if gate["passed"] else " (use --strict to make this exit non-zero)"))
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Score deep-primer eval specs against the registry.")
     ap.add_argument("--spec", help="score only this spec id")
@@ -341,9 +523,29 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--root", default=str(SKILL_ROOT), help="root that spec `artifact:` paths resolve against")
     ap.add_argument("--rubric", default=str(RUBRIC))
     ap.add_argument("--out", default="eval-report.json")
+    ap.add_argument("--backend", default="auto", choices=("auto", "lexical", "nli", "claude"),
+                    help="entailment backend for the model_verified tier. 'auto'/'lexical' is the "
+                         "offline word-overlap proxy, whose scores cannot support a threshold — "
+                         "'nli' or 'claude' is required before citation_recall/precision mean "
+                         "anything (see propose_thresholds)")
+    ap.add_argument("--entailment-cost-cap", type=float, default=5.0,
+                    help="USD ceiling for --backend claude; the run aborts rather than overspending")
+    ap.add_argument("--strict", action="store_true",
+                    help="exit non-zero if coverage regressed below the rubric's coverage_floor, a "
+                         "deterministic rule went dark unattributed, or a spec failed for any "
+                         "reason other than the documented offline judge/artifact gap")
     args = ap.parse_args(argv)
 
-    report = run_eval(Path(args.specs_dir), Path(args.root), Path(args.rubric), args.spec)
+    judge = None
+    if args.backend == "claude":
+        from verify.claude_entailment import ClaudeEntailmentJudge
+        judge = ClaudeEntailmentJudge(cost_cap_usd=args.entailment_cost_cap)
+    backend = resolve_backend(args.backend, judge_fn=judge)
+
+    report = run_eval(Path(args.specs_dir), Path(args.root), Path(args.rubric), args.spec, backend)
+    if judge is not None:
+        report["entailment_judge"] = {"calls": judge.calls, "spend_usd": round(judge.spend_usd, 4),
+                                      "unresolved": judge.unresolved[:20]}
     report["proposed_thresholds"] = propose_thresholds(report)
     Path(args.out).write_text(json.dumps(report, indent=2), encoding="utf-8")
 
@@ -375,8 +577,10 @@ def main(argv: list[str] | None = None) -> int:
     elif pt["status"] == "refused":
         print(f"thresholds NOT proposed: {pt['reason']}")
         print(f"  observed (proxy only): {pt['observed']}")
+
+    _print_gate(report["coverage_gate"])
     print(f"-> {args.out}")
-    return 0
+    return 1 if (args.strict and not report["coverage_gate"]["passed"]) else 0
 
 
 if __name__ == "__main__":
