@@ -24,7 +24,7 @@ Expected on a clean checkout (measured at handoff):
 
 | Command | Expected |
 |---|---|
-| `make test` | `314 passed, 0 skipped` |
+| `make test` | `318 passed, 0 skipped` |
 | `make validate` | `OK — 1 skill(s) valid (lockstep in sync), 2 skipped` |
 | `make lint` | **not reproducible; not in CI** — see §4. Was `All checks passed!` only against the container's ruff |
 | `make eval` | 2/6 specs scored, enforcement coverage **79/79 (100%)**, thresholds **refused** (see §4) |
@@ -404,7 +404,7 @@ two were about the primer:
 
 CI now installs spaCy + `en_core_web_md` (~50MB) so the native path is exercised. Deliberately not
 the `[nlp]` extra, which pulls fastcoref → torch for a coref feature that is off by default.
-**`make test` is now 314 passed, 0 skipped.**
+**`make test` is now 318 passed, 0 skipped.**
 
 **A real 3-wave campaign ran live, and the discovery checks had never been dispatched at all.**
 11 briefs against spec-02's topic, 124 source leads, snapshot frozen. Two things fell out:
@@ -462,6 +462,28 @@ returns 401 and there is no token in the environment, in `gh secret list`, or on
 is genuinely blocked rather than deferred. Specs 02–06 still have no artifacts: producing them means
 authoring five complete compliant primers, which is the generation pipeline's job, not a fixture
 edit — the eval still has exactly one data point and that remains its biggest weakness.
+
+**Citation thresholds: still TODO, now for a specific reason.** The full evidence is in
+`eval-rubric.yaml`; the short version is that three separate things were wrong and two are fixed.
+
+The metric counted `inferred` blocks in the same denominator as `verified` ones, so a primer that
+labels its synthesis HONESTLY scored identically to one that fabricates citations — spec-02 reads
+0.15 overall and 1/2 on the blocks it actually claims are grounded, with the other 11 declared
+synthesis. `evaluate()` now reports `verified_recall`, `verified_precision` and `inferred_share`
+separately; a threshold belongs on the first, and the third is a composition signal, not a
+citation-quality one.
+
+It also scored card blocks against an EMPTY string — `text or caption`, when a card's content is
+its typed rows. That is the same defect the critic seam had, made independently in a second
+module, so the canonical answer now lives on the schema as `Block.readable_text` and both callers
+use it.
+
+What remains is genuine: the judge is unstable (haiku split 7 of 38 ballots under majority-of-3;
+sonnet 1 of 11 — calibrate on sonnet with `--entailment-votes 3`), and **the unit is wrong for
+composite blocks**. A card is seven typed rows and R-GROUND-01 caps a quote at 15 words, so one
+quote cannot entail all seven — `skip_when` is the author's operational judgement, not something a
+source asserts. spec-01's cards fail structurally, not because their citations are bad. Entailment
+wants to run per-row. That is the next real piece of work here.
 
 **What the ratchet now pins:** `hard_lint: 32`, `model_verified: 3`, `soft_critic: 35`, `human: 9` — **79/79, every rule in the registry exercised.**
 

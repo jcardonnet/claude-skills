@@ -72,29 +72,9 @@ class BlockView:
     text: str | None = None
 
 
-def _block_text(b: Block) -> str | None:
-    """What a critic actually reads for this block.
-
-    A card's content IS its typed rows and a recall block's IS its three Q&A items — neither sets
-    `text`. Handing a judge `text or caption` therefore presented every card and recall block as
-    EMPTY, and the first live judge run duly failed R-SUMM-04 on a card with "Card block contains no
-    text": a defect manufactured by this seam, not found in the primer. Four soft_critic rules
-    (R-CARD-01, R-CARD-03, R-RECALL-02, R-SUMM-04) target exactly those roles, so the tier could
-    never have judged them honestly. Rendering the structured fields keeps the typed rows machine-
-    checkable (R-CARD-02) while still giving the critic something to read.
-    """
-    if b.rows is not None:
-        rows = b.rows.model_dump(exclude_none=True)
-        return "\n".join(f"{k}: {v}" for k, v in rows.items() if v not in ("", [], {}))
-    if b.items:
-        return "\n".join(f"Q: {i.question}\nA: {i.answer}"
-                         + ("  [cross-domain]" if i.cross_domain else "") for i in b.items)
-    return b.text or b.caption
-
-
 def _view(b: Block) -> BlockView:
     return BlockView(b.block_id, b.role.value, b.concept, b.mode.value if b.mode else None,
-                     _block_text(b))
+                     b.readable_text)
 
 
 _DOC_VIEW = BlockView(DOCUMENT, DOCUMENT)

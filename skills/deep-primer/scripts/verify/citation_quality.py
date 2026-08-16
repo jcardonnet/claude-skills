@@ -94,7 +94,9 @@ def evaluate(
     for b in ir.flatten_blocks():
         if not b.claim_ids:
             continue
-        statement = b.text or b.caption or ""
+        # NOT `b.text or b.caption` — a card's content is its typed rows, so that form
+        # asked the entailment judge whether a quote supports "" and it correctly said no.
+        statement = b.readable_text
         resolvable = [cid for cid in b.claim_ids if cid in cidx]
         block_supported = False
         for cid in resolvable:
@@ -110,10 +112,36 @@ def evaluate(
         if resolvable:  # a block with no resolvable claim is an R-GROUND-01 failure, not a recall sample
             factual += 1
             supported += int(block_supported)
-            per_statement.append({"block_id": b.block_id, "claim_ids": resolvable, "supported": block_supported})
+            per_statement.append({"block_id": b.block_id, "claim_ids": resolvable,
+                                  "supported": block_supported,
+                                  "provenance": b.provenance.value if b.provenance else None})
 
     recall = supported / factual if factual else 1.0
     precision = cite_support / cite_total if cite_total else 1.0
+
+    # --- partition by provenance ---------------------------------------------------------------
+    # A block marked `inferred` is the author saying "this is my synthesis, not something a source
+    # states". Counting it in the same denominator as a `verified` block means a primer that labels
+    # its unsupported content HONESTLY scores identically to one that fabricates citations — which
+    # deletes the incentive to label honestly, the exact opposite of what R-GROUND-* is for.
+    # Measured: spec-02 reads 0.15 overall, and 1/2 on the blocks it actually claims are verified;
+    # the other 11 are declared synthesis. Those are two different facts and deserve two numbers.
+    #
+    # `verified_recall` is where a threshold belongs — a block asserting `verified` whose citation
+    # does not entail it is a defect. `inferred_share` is a COMPOSITION signal: a primer that is 85%
+    # synthesis may be scrupulously honest and still under-researched, which is a budget question
+    # rather than a citation-quality one, and conflating them hides both.
+    verified = [s for s in per_statement if s["provenance"] == "verified"]
+    inferred = [s for s in per_statement if s["provenance"] == "inferred"]
+    verified_ids = {s["block_id"] for s in verified}
+    v_supported = sum(1 for s in verified if s["supported"])
+    v_cites = [c for c in per_citation if c["block_id"] in verified_ids]
+    v_cite_support = sum(1 for c in v_cites if c["supports"])
+
+    verified_recall = v_supported / len(verified) if verified else 1.0
+    verified_precision = v_cite_support / len(v_cites) if v_cites else 1.0
+    inferred_share = len(inferred) / factual if factual else 0.0
+
     blocking = bool(resolves) or recall < thresholds["recall"] or precision < thresholds["precision"]
 
     return {
@@ -121,9 +149,15 @@ def evaluate(
         "resolves_to_ledger": {"ok": not resolves, "violations": resolves},
         "recall": round(recall, 4),
         "precision": round(precision, 4),
+        "verified_recall": round(verified_recall, 4),
+        "verified_precision": round(verified_precision, 4),
+        "inferred_share": round(inferred_share, 4),
         "thresholds": thresholds,
         "counts": {"factual_statements": factual, "supported_statements": supported,
-                   "citations": cite_total, "supporting_citations": cite_support},
+                   "citations": cite_total, "supporting_citations": cite_support,
+                   "verified_statements": len(verified), "verified_supported": v_supported,
+                   "verified_citations": len(v_cites), "verified_supporting": v_cite_support,
+                   "inferred_statements": len(inferred)},
         "per_statement": per_statement,
         "per_citation": per_citation,
         "blocking": blocking,

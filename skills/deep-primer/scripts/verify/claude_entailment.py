@@ -58,9 +58,15 @@ class ClaudeEntailmentJudge:
     """
 
     def __init__(self, cli: ClaudeCli | None = None, *, model: str = "haiku",
-                 cost_cap_usd: float = 5.0) -> None:
+                 cost_cap_usd: float = 5.0, votes: int = 1) -> None:
         self.cli = cli or ClaudeCli(model=model, cost_cap_usd=cost_cap_usd)
         self.unresolved: list[str] = []
+        # `votes` > 1 takes a majority over independent calls. Two runs over the SAME artifacts on
+        # the SAME backend gave spec-01 4/7 then 3/7, and spec-02 2/13 then 1/13 — one statement
+        # flipped each time. A threshold fitted to a judge that moves like that measures the judge,
+        # not the primer, so calibration runs should vote. Odd values only; ties cannot occur.
+        self.votes = max(1, votes if votes % 2 else votes + 1)
+        self.flipped: list[str] = []
 
     @property
     def calls(self) -> int:
@@ -70,9 +76,7 @@ class ClaudeEntailmentJudge:
     def spend_usd(self) -> float:
         return self.cli.spend_usd
 
-    def __call__(self, premise: str, hypothesis: str) -> bool:
-        if not (premise or "").strip() or not (hypothesis or "").strip():
-            return False
+    def _one_vote(self, premise: str, hypothesis: str) -> bool:
         try:
             payload = self.cli.result_json(_PROMPT.format(premise=premise, hypothesis=hypothesis))
         except (CliUnavailable, json.JSONDecodeError) as exc:
@@ -84,3 +88,18 @@ class ClaudeEntailmentJudge:
         # a hedged or missing answer is not support
         self.unresolved.append(f"non-boolean supports={value!r}")
         return False
+
+    def __call__(self, premise: str, hypothesis: str) -> bool:
+        if not (premise or "").strip() or not (hypothesis or "").strip():
+            return False
+        if self.votes == 1:
+            return self._one_vote(premise, hypothesis)
+
+        ballots = [self._one_vote(premise, hypothesis) for _ in range(self.votes)]
+        verdict = sum(ballots) * 2 > self.votes
+        if len(set(ballots)) > 1:
+            # A split ballot is the instability made visible. Recorded rather than smoothed away,
+            # because "the judge could not decide" is a fact about the measurement that a bare
+            # majority hides — and it is the number that says whether a threshold is fittable yet.
+            self.flipped.append(f"{sum(ballots)}/{self.votes} on: {hypothesis[:70]}")
+        return verdict

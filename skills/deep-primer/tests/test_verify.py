@@ -193,3 +193,84 @@ def test_a_shared_budget_caps_the_run_not_each_caller():
     # and an unshared caller still gets its own ceiling
     solo = ClaudeCli(cost_cap_usd=1.0)
     assert solo.spend_usd == 0.0 and solo.budget is not shared
+
+
+# --- the provenance partition ------------------------------------------------
+
+def _ir_with(provenances):
+    """Two blocks citing the same claim; only their declared provenance differs."""
+    from ir.schema import Block, DocumentIR, Section
+
+    return DocumentIR(sections=[Section(block_id="s", title="T", concept="c", blocks=[
+        Block(block_id=f"b{i}", role="body", text="chunking bounds recall", concept="c",
+              claim_ids=["C1"], provenance=p)
+        for i, p in enumerate(provenances)])])
+
+
+def _ledger_supporting(text="chunking bounds recall"):
+    from ir.schema import Claim, Source, SourceLedger
+
+    return SourceLedger(sources=[Source(source_id="s1", claims=[
+        Claim(claim_id="C1", text=text, quote=text)])])
+
+
+def test_inferred_blocks_are_scored_separately_from_verified_ones():
+    """A block marked `inferred` is the author saying "this is my synthesis". Counting it in the
+    same denominator as a `verified` block means a primer that labels its unsupported content
+    HONESTLY scores identically to one that fabricates citations — which deletes the incentive to
+    label honestly, the opposite of what R-GROUND-* is for. Measured on spec-02: 0.15 overall,
+    1/2 on the blocks it actually claims are verified, and 11 declared synthesis."""
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    ir = _ir_with(["verified", "inferred", "inferred"])
+    report = evaluate(ir, _ledger_supporting(), backend=LexicalEntailment())
+
+    assert report["counts"]["factual_statements"] == 3
+    assert report["counts"]["verified_statements"] == 1
+    assert report["counts"]["inferred_statements"] == 2
+    assert report["inferred_share"] == round(2 / 3, 4)
+    # every block cites a supporting quote here, so both views are clean...
+    assert report["verified_recall"] == 1.0
+
+
+def test_honest_labelling_is_not_punished_like_fabrication():
+    """The property that matters. Two primers cite the SAME unsupported claim; one declares the
+    blocks inferred, the other asserts they are verified. Overall recall cannot tell them apart —
+    verified_recall must."""
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    unsupported = _ledger_supporting("something else entirely unrelated to the block")
+    honest = evaluate(_ir_with(["inferred", "inferred"]), unsupported, backend=LexicalEntailment())
+    asserted = evaluate(_ir_with(["verified", "verified"]), unsupported, backend=LexicalEntailment())
+
+    assert honest["recall"] == asserted["recall"], "overall recall is blind to the difference"
+    assert honest["verified_recall"] == 1.0, "no verified claims to fail"
+    assert asserted["verified_recall"] == 0.0, "asserting verified and failing entailment IS a defect"
+    assert honest["inferred_share"] == 1.0 and asserted["inferred_share"] == 0.0
+
+
+def test_entailment_votes_take_a_majority_and_record_the_splits():
+    """Two runs over identical artifacts gave spec-01 4/7 then 3/7. A threshold fitted to a judge
+    that moves like that measures the judge, so calibration runs vote — and a split ballot is
+    recorded rather than smoothed away, because it is the number that says whether a threshold is
+    fittable yet."""
+    from verify.claude_entailment import ClaudeEntailmentJudge
+
+    judge = ClaudeEntailmentJudge.__new__(ClaudeEntailmentJudge)
+    judge.unresolved, judge.flipped, judge.votes = [], [], 3
+    ballots = iter([True, False, True])
+    judge.cli = type("_Cli", (), {
+        "result_json": staticmethod(lambda _i: {"supports": next(ballots)})})()
+
+    assert judge("evidence", "statement") is True          # 2 of 3
+    assert judge.flipped and judge.flipped[0].startswith("2/3")
+
+
+def test_votes_are_forced_odd_so_a_ballot_cannot_tie():
+    from verify.claude_entailment import ClaudeEntailmentJudge
+
+    assert ClaudeEntailmentJudge(votes=2).votes == 3
+    assert ClaudeEntailmentJudge(votes=4).votes == 5
+    assert ClaudeEntailmentJudge(votes=1).votes == 1

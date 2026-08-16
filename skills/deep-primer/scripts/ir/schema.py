@@ -169,6 +169,25 @@ class Block(BaseModel):
     items: list[RecallItem] | None = None        # only on role=recall (R-RECALL-01)
     artifact_kind: ArtifactKind | None = None    # only on role=matrix (R-ART-01)
 
+    @property
+    def readable_text(self) -> str:
+        """What this block actually SAYS — the canonical answer, so consumers stop re-deriving it.
+
+        A card's content is its typed rows and a recall block's is its three Q&A items; neither sets
+        `text`. `text or caption` therefore renders both as EMPTY, and that mistake has now been made
+        twice independently: the critic seam failed R-SUMM-04 on a card for "contains no text", and
+        `citation_quality` asked an entailment judge whether a quote supports "" — which it correctly
+        answered no, silently costing two of spec-01's seven blocks their citation credit.
+
+        Anything needing a block's prose should call this rather than reaching for `.text`.
+        """
+        if self.rows is not None:
+            rows = self.rows.model_dump(exclude_none=True)
+            return "\n".join(f"{k}: {v}" for k, v in rows.items() if v not in ("", [], {}))
+        if self.items:
+            return "\n".join(f"Q: {i.question}\nA: {i.answer}" for i in self.items)
+        return self.text or self.caption or ""
+
 
 class Subsection(BaseModel):
     """An h3 subsection. Carries exactly one sub-sum — a `summary` block — per R-SUMM-02 /

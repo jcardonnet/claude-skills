@@ -206,6 +206,11 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         "backend": report["backend"],
         "recall": report["recall"],
         "precision": report["precision"],
+        # the provenance partition — see citation_quality.evaluate(). Copying these explicitly
+        # rather than passing the whole report through keeps the eval artifact's shape declared.
+        "verified_recall": report["verified_recall"],
+        "verified_precision": report["verified_precision"],
+        "inferred_share": report["inferred_share"],
         "thresholds": thresholds,
         "meets_recall": report["recall"] >= thresholds["recall"],
         "meets_precision": report["precision"] >= thresholds["precision"],
@@ -598,6 +603,14 @@ def main(argv: list[str] | None = None) -> int:
                          "anything (see propose_thresholds)")
     ap.add_argument("--entailment-cost-cap", type=float, default=5.0,
                     help="USD ceiling for --backend claude; the run aborts rather than overspending")
+    ap.add_argument("--entailment-model", default="haiku",
+                    help="model for --backend claude. Measured: haiku split 7 of 38 "
+                         "ballots (~18%) under majority-of-3, so it cannot support a "
+                         "calibrated threshold.")
+    ap.add_argument("--entailment-votes", type=int, default=1,
+                    help="majority-of-N per entailment call (odd; --backend claude only). Two runs "
+                         "over identical artifacts gave spec-01 4/7 then 3/7 — a threshold fitted "
+                         "to a judge that moves like that measures the judge. Vote when calibrating.")
     ap.add_argument("--strict", action="store_true",
                     help="exit non-zero if coverage regressed below the rubric's coverage_floor, a "
                          "deterministic rule went dark unattributed, or a spec failed for any "
@@ -607,13 +620,16 @@ def main(argv: list[str] | None = None) -> int:
     judge = None
     if args.backend == "claude":
         from verify.claude_entailment import ClaudeEntailmentJudge
-        judge = ClaudeEntailmentJudge(cost_cap_usd=args.entailment_cost_cap)
+        judge = ClaudeEntailmentJudge(model=args.entailment_model,
+                                      cost_cap_usd=args.entailment_cost_cap,
+                                      votes=args.entailment_votes)
     backend = resolve_backend(args.backend, judge_fn=judge)
 
     report = run_eval(Path(args.specs_dir), Path(args.root), Path(args.rubric), args.spec, backend)
     if judge is not None:
         report["entailment_judge"] = {"calls": judge.calls, "spend_usd": round(judge.spend_usd, 4),
-                                      "unresolved": judge.unresolved[:20]}
+                                      "votes": judge.votes, "unresolved": judge.unresolved[:20],
+                                      "split_ballots": judge.flipped[:20]}
     report["proposed_thresholds"] = propose_thresholds(report)
     Path(args.out).write_text(json.dumps(report, indent=2), encoding="utf-8")
 

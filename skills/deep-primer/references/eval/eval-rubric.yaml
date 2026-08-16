@@ -7,14 +7,31 @@ model_verified:    # scripts/verify/* (citation recall/precision; chunk self-con
   weight: 1.0
   source: verify-report.json
   thresholds:
-    # STILL TODO — but no longer un-measurable. `verify/claude_entailment.py` supplies the judge_fn
-    # resolve_backend("claude") always wanted, so these can now be scored for real:
-    #   lexical proxy : recall 0.1429  precision 0.125   <- cannot support a floor, by construction
-    #   claude        : recall 0.5714  precision 0.5     <- ~4x; the proxy was understating badly
-    # propose_thresholds() now proposes 0.52 / 0.45 instead of refusing. Not adopted: n = 7 factual
-    # statements and 8 citations, on a hand-built fixture rather than a real generation. Settle in
-    # Stage G against real runs and more than one spec.
-    #   python scripts/eval.py --spec spec-01-rag-chunking --backend claude
+    # STILL TODO, and the reason is now specific rather than "not enough data".
+    #
+    # Measured with verify/claude_entailment.py (sonnet, majority-of-3, ~$4/run):
+    #     spec-01  verified_recall 0.29 (2/7)   verified_precision 0.25   inferred_share 0.00
+    #     spec-02  verified_recall 0.50 (1/2)   inferred_share 0.85
+    # propose_thresholds() offers min-0.05 on the overall numbers. DO NOT take it: flooring at the
+    # worst artifact makes a bar that cannot fail — the ratchet running backwards.
+    #
+    # Three things have to land before a number here means anything:
+    #
+    #  1. JUDGE STABILITY. Two runs over identical artifacts gave spec-01 4/7 then 3/7. Under
+    #     majority-of-3 haiku still split 7 of 38 ballots (~18%); sonnet split 1 of 11 (~9%). A
+    #     floor fitted to a judge that moves like that measures the judge. Calibrate on sonnet with
+    #     --entailment-votes 3, never on a single haiku pass.
+    #  2. THE UNIT IS WRONG FOR COMPOSITE BLOCKS. A card is seven typed rows — idea, home_anchor,
+    #     reach_for_when, skip_when, ... — and R-GROUND-01 caps a quote at 15 words. One quote
+    #     cannot entail all seven, and `skip_when` is the author's operational judgement rather than
+    #     something a source asserts. spec-01's cards fail for that structural reason, not because
+    #     their citations are bad. Entailment wants to run per-ROW (or per-assertion), not per-block.
+    #  3. MORE THAN TWO SPECS, and at least one from a real generation rather than a fixture.
+    #
+    # When those hold, gate `verified_recall` — not the overall number, which conflates declared
+    # synthesis with claimed grounding — and anchor to principle: a block asserting `verified` whose
+    # citation does not entail it is a defect, so the target is ~0.95. If real primers cannot reach
+    # that, the gap is the finding; do not lower the bar to meet them.
     citation_recall: 0.75      # TODO: tune against real runs (registry budgets)
     citation_precision: 0.90   # TODO
 human_overlay:     # spot-checked, calibrates the soft critics
