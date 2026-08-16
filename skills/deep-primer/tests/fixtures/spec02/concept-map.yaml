@@ -1,0 +1,34 @@
+# Concept-map for spec-02's primer. Each concept is realized in >=3 representation modes (R-MV-01).
+#
+# G1 lives here: home ~= target for this reader (they already do CV/segmentation), so `home_anchor`
+# must name an ADJACENT technique they already own rather than restating the concept. Anchors are
+# graph traversal and query planning — not "segmentation", which would be the concept in a hat.
+concepts:
+  - concept_id: leader-tracing
+    canonical_term: "leader tracing"
+    aliases: ["leader-line following", "callout association"]
+    home_anchor: "walking edges in a connectivity graph until a terminal node"
+    fidelity_boundary: "breaks where a leader crosses hatching, because the graph gains an edge the drawing does not intend"
+    epistemic_status: settled
+    salience: 1.0
+    representation_modes:
+      - {mode: mental_model, block_ref: card-leader}
+      - {mode: tradeoff, block_ref: matrix-leader}
+      - {mode: architecture, block_ref: fig-leader}
+      - {mode: failure, block_ref: body-leader-breaks}
+    source_ids: [s-tgg, s-elsed, s-letr]
+    claim_ids: [C-lead-1, C-lead-2, C-lead-3, C-lead-4, C-lead-5]
+  - concept_id: anchor-seeded-segmentation
+    canonical_term: "anchor-seeded segmentation"
+    aliases: ["prompted segmentation"]
+    home_anchor: "a query planner taking an index seek as its starting point"
+    fidelity_boundary: "breaks for seated parts, where one anchor sits inside the silhouette of another"
+    epistemic_status: contested
+    salience: 0.8
+    representation_modes:
+      - {mode: mental_model, block_ref: card-anchor}
+      - {mode: tradeoff, block_ref: toulmin-anchor}
+      - {mode: failure, block_ref: failures-anchor}
+      - {mode: benchmark, block_ref: fig-anchor}
+    source_ids: [s-sam]
+    claim_ids: [C-seg-1, C-seg-2]

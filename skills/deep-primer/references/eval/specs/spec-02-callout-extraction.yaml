@@ -8,6 +8,14 @@ parameters:
   length_budget: 8000
   outputs: [html, llm_md]
 reference_case: "binary exploded-view drawing, ~80 numbered leader callouts (some repeated), thin/kinked/dotted leaders, hatching, seated/overlapping parts"
+# The first artifact in this repo produced by a REAL grounding run rather than hand-authored prose:
+# sources found by web search, fetched over the network by research/http_fetcher.py, and every quote
+# in the ledger verified verbatim against the fetched body (R-DISC-01) at <=15 words (R-GROUND-01).
+# One candidate quote was rejected at 16 words, which is the cap doing its job rather than a nuisance.
+artifact:
+  ir: tests/fixtures/spec02/document-ir.yaml
+  concept_map: tests/fixtures/spec02/concept-map.yaml
+  ledger: tests/fixtures/spec02/source-ledger.yaml
 expect:
   must_pass: [R-ARCH-03, R-CARD-03, R-ART-03, R-ART-04, R-EVID-03, R-PROJ-05]
   watch: [G1_home_equals_target, G2_reference_case_vs_worked_example, G6_user_structure_override]

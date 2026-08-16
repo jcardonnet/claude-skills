@@ -82,6 +82,15 @@ BRIEF_ARCHETYPES: dict[str, tuple] = {
                               "Sources a primer on {topic} cites: {sources}. What authoritative sources are NOT in this list?"),
 }
 
+# NOTE (open gap, see GAPS.md): waves B and C emit 3 archetypes each — 2 for B once B-seed skips
+# without a seed — while R-DISC-02 requires ">= MIN_FRAMINGS (5) distinct cells ... with >=1
+# orthogonal framing PER WAVE". Wiring `checks/discovery.py::framing_diversity` into lint.py made
+# that visible for the first time: it had no dispatch entry, so the rule recorded `skip`, and skip
+# does not block. `wave_briefs` still claims the invariant is "guaranteed HERE, in code"; it is not.
+# Deliberately NOT resolved here: the archetype set is pinned to references/discovery-brief-
+# templates.md by test_brief_archetypes_match_the_template_document, and that document makes B and C
+# narrow targeted follow-ups on purpose. Either the rule means Wave A (as MIN_FRAMINGS' own comment
+# says, "Wave A breadth") or B and C need widening — a design call, not a lint fix.
 WAVE_ARCHETYPES = {
     "A": ["A1", "A2", "A3", "A4", "A5", "A6"],
     "B": ["B-dive", "B-conflict", "B-seed"],
@@ -125,8 +134,18 @@ class StubJudge:
                 topic_leads.append({"id": f"tl-{brief_id(brief)}-{i}", "concept": concept,
                                     "surfaced_by": [brief.framing]})
         for j, s in enumerate(sources):
-            source_leads.append({"id": f"sl-{brief_id(brief)}-{j}", "url": s.get("url", ""),
-                                 "type": s.get("type"), "surfaced_by": [brief.framing]})
+            lead = {"id": f"sl-{brief_id(brief)}-{j}", "url": s.get("url", ""),
+                    "type": s.get("type"), "surfaced_by": [brief.framing]}
+            # Carry the backend's own verdict through. This used to read only url+type, so a lead a
+            # verifying backend had already marked `dropped` — a 404, a robots-disallowed host — was
+            # rebuilt with the default `accepted` and frozen into the snapshot as a real source. The
+            # judge may DOWNGRADE a lead; it must never silently upgrade one the fetcher could not
+            # retrieve, which is R-DISC-01's "a lead is a pointer, not evidence" failing at the seam.
+            for key in ("status", "provenance_origin", "dropped_reason", "fetched_title",
+                        "retrieved_at"):
+                if s.get(key):
+                    lead[key] = s[key]
+            source_leads.append(lead)
         return {"topic_leads": topic_leads, "source_leads": source_leads}
 
     def triage(self, clusters: list[list[Lead]], params: dict) -> dict:
@@ -224,6 +243,16 @@ def triage_leads(clustered: list[list[Lead]], params: dict | None = None,
         head.surfaced_by = sorted({f for m in cluster for f in m.surfaced_by})
         head.report_ids = sorted({r for m in cluster for r in m.report_ids})
         status = verdicts.get(head.id, "accepted")
+        # A lead the FETCHER could not retrieve is a fact, not a judgement, and the judge must not
+        # overturn it. Without this a 404 or robots-disallowed URL was re-promoted to `accepted` and
+        # frozen into the snapshot as a real source — R-DISC-01's "a lead is a pointer, not
+        # evidence" failing one seam further in than extract_leads. Checked BEFORE the user-seed
+        # exemption on purpose: a seed that will not load is still not evidence, and R-DISC-06 asks
+        # for seeds to be consulted and grounded, not asserted past what they can support.
+        if head.status == "dropped" and getattr(head, "dropped_reason", None):
+            head.status = "dropped"
+            out.append(head)
+            continue
         if head.provenance_origin == "user":
             status = "accepted"                                  # R-DISC-06: exempt from drop
         elif (discovery.SINGLETON_FLAG and head.support_count <= 1
@@ -298,7 +327,12 @@ def front_load_campaign(topic: str, params: dict | None = None, snapshot_dir: st
         topic_leads=[lead for lead in accepted if isinstance(lead, TopicLead)],
         source_leads=[lead for lead in accepted if isinstance(lead, SourceLead)],
     )
-    log = DiscoveryLog(max_waves=discovery.MAX_WAVES, saturation_threshold=discovery.SATURATION_THRESHOLD,
+    # The cap this campaign actually ran under, not the global ceiling. `waves` is configurable and
+    # defaults to three, so recording MAX_WAVES=4 made every unsaturated run report terminal
+    # 'max_waves' after 3 of 4 — a label describing a cap that was never reached. R-DISC-03 checks
+    # exactly that correspondence, and the check had no dispatch entry to catch it with.
+    log = DiscoveryLog(max_waves=min(len(waves), discovery.MAX_WAVES),
+                       saturation_threshold=discovery.SATURATION_THRESHOLD,
                        waves=records, terminal=terminal)
     return CampaignResult(leads=leads, log=log, briefs=all_briefs)
 

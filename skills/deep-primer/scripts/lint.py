@@ -39,6 +39,7 @@ from checks import (  # noqa: E402
     xrefs,
 )
 from checks import convergence as convergence_checks  # noqa: E402
+from checks import discovery as discovery_checks  # noqa: E402
 from checks import ledger as ledger_checks  # noqa: E402
 from checks._base import LintContext, Violation  # noqa: E402
 from ir.schema import ConceptMap, DocumentIR, SourceLedger  # noqa: E402
@@ -109,6 +110,22 @@ CONVERGENCE_CHECKS = {
 LLM_MD_CHECKS = {
     "render/render_llm_md.py::role_filter": md_checks.role_filter,
     "render/render_llm_md.py::no_svg": md_checks.no_svg,
+}
+
+# The discovery passes. These checks have existed in checks/discovery.py since Stage B and were
+# never reachable: with no entry here `run_artifact_pass` finds no function, records `skip`, and
+# skip is NON-BLOCKING — four MUST rules (R-DISC-02/03/05/06) dark in exactly the way Stage A
+# existed to stop, one layer further out than Stage A looked. Each takes a PAIR, like llm_md:
+# a lead set means nothing without the briefs, snapshot, or seeds it is judged against.
+DISCOVERY_LOG_CHECKS = {
+    "checks/discovery.py::framing_diversity": lambda p: discovery_checks.framing_diversity(*p),
+    "checks/discovery.py::saturation_terminal": lambda p: discovery_checks.saturation_terminal(p[0]),
+}
+DISCOVERY_LEADS_CHECKS = {
+    "checks/discovery.py::seed_handling": lambda p: discovery_checks.seed_handling(*p),
+}
+SNAPSHOT_CHECKS = {
+    "checks/discovery.py::snapshot_complete": lambda p: discovery_checks.snapshot_complete(*p),
 }
 
 
@@ -190,7 +207,10 @@ def run_lint(ctx: LintContext, registry_path: str | Path = DEFAULT_REGISTRY) -> 
 
 
 _ARTIFACT_CHECKS = {"html": HTML_CHECKS, "ledger": LEDGER_CHECKS,
-                    "convergence-log": CONVERGENCE_CHECKS, "llm_md": LLM_MD_CHECKS}
+                    "convergence-log": CONVERGENCE_CHECKS, "llm_md": LLM_MD_CHECKS,
+                    "discovery-log": DISCOVERY_LOG_CHECKS,
+                    "discovery-leads": DISCOVERY_LEADS_CHECKS,
+                    "snapshot": SNAPSHOT_CHECKS}
 
 
 def run_artifact_pass(artifact, input_tag: str, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
@@ -253,6 +273,21 @@ def run_convergence_pass(log, registry_path: str | Path = DEFAULT_REGISTRY) -> d
 def run_llm_md_pass(md: str, ir, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
     """The `llm_md` pass (R-PROJ-03, R-PROJ-06) over the distilled projection."""
     return run_artifact_pass((md, ir), "llm_md", registry_path)
+
+
+def run_discovery_log_pass(log, briefs, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `discovery-log` pass (R-DISC-02 framing diversity, R-DISC-03 saturation)."""
+    return run_artifact_pass((log, briefs), "discovery-log", registry_path)
+
+
+def run_discovery_leads_pass(leads, seed_sources, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `discovery-leads` pass (R-DISC-06 seed handling)."""
+    return run_artifact_pass((leads, seed_sources or []), "discovery-leads", registry_path)
+
+
+def run_snapshot_pass(leads, snapshot_dir, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `snapshot` pass (R-DISC-05: every cited report is actually frozen)."""
+    return run_artifact_pass((leads, snapshot_dir), "snapshot", registry_path)
 
 
 def lint_files(

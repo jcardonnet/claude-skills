@@ -37,7 +37,7 @@ def brief_id(brief: ResearchBrief) -> str:
     if brief.brief_id:
         return brief.brief_id
     payload = json.dumps([brief.wave, *brief.cell(), sorted(brief.questions)], sort_keys=True)
-    return f"{brief.wave.lower()}-{hashlib.sha1(payload.encode()).hexdigest()[:8]}"
+    return f"{brief.wave.lower()}-{hashlib.sha1(payload.encode(), usedforsecurity=False).hexdigest()[:8]}"
 
 
 class ReplayBackend:
@@ -86,6 +86,14 @@ def run_brief(brief: ResearchBrief, snapshot_dir: str | Path,
     backend = backend or ReplayBackend(root)
 
     report, sources = backend(brief)
+
+    # Replay is a READ. Writing back what a ReplayBackend just handed us re-froze the snapshot
+    # against whatever parameters the caller happened to use, so simply running `make test` rewrote
+    # the committed brief fixtures — the topic string in tests differs from the one they were frozen
+    # with. A snapshot that mutates when replayed is not a snapshot, and R-DISC-05's reproducibility
+    # guarantee quietly depends on it holding still.
+    if isinstance(backend, ReplayBackend):
+        return report, sources
 
     bid = brief_id(brief)
     (root / f"report-{bid}.md").write_text(report, encoding="utf-8")

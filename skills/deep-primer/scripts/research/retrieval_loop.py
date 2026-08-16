@@ -40,8 +40,13 @@ def canonical_url(url: str) -> str:
 
 
 def source_id_for(url: str) -> str:
-    """sha1 of the canonical url — the ledger's source_id (artifact-schemas.md)."""
-    return hashlib.sha1(canonical_url(url).encode()).hexdigest()
+    """sha1 of the canonical url — the ledger's source_id (artifact-schemas.md).
+
+    `usedforsecurity=False` states the obvious for scanners (Sonar S4790 / bandit B324): this is
+    content addressing, not a security primitive. It does NOT change the digest, so every
+    source_id already written into a frozen fixture or discovery snapshot stays byte-identical.
+    """
+    return hashlib.sha1(canonical_url(url).encode(), usedforsecurity=False).hexdigest()
 
 
 def normalize(text: str | None) -> str:
@@ -67,7 +72,7 @@ class Document:
 
     @property
     def content_hash(self) -> str:
-        return hashlib.sha1(self.text.encode()).hexdigest()
+        return hashlib.sha1(self.text.encode(), usedforsecurity=False).hexdigest()
 
     def contains(self, quote: str) -> bool:
         """Whether `quote` appears verbatim in the fetched body (whitespace-insensitive)."""

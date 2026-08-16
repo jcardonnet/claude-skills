@@ -153,3 +153,29 @@ def test_html_pass_blocks_on_missing_primer_meta():
     consist = [f for f in report["findings"] if f["rule_id"] == "R-CONSIST-02"]
     assert any(f["status"] == "fail" for f in consist)   # MUST -> blocking
     assert report["blocking"] is True
+
+
+def test_spec02_primer_is_lint_clean_and_honestly_grounded(fixtures):
+    """spec-02's artifact is the first primer here built from a REAL grounding run: sources found by
+    web search, fetched over the network, every ledger quote verified verbatim at <=15 words.
+
+    It also pins the honesty correction that run produced. Scored with the real entailment backend
+    the primer came back at recall 0.15 — because four abstracts about line-segment detection and
+    promptable segmentation cannot support claims about callouts, exploded views or seated parts.
+    Those blocks are synthesis from adjacent evidence, so they carry `provenance: inferred`, not
+    `verified`. Structural compliance is not grounding, and the provenance axis is where the
+    difference is recorded rather than smoothed over.
+    """
+    from ir.schema import DocumentIR
+
+    spec02 = fixtures / "spec02"
+    report = lint_files(spec02 / "document-ir.yaml", spec02 / "concept-map.yaml",
+                        spec02 / "source-ledger.yaml")
+    fails = [f for f in report["findings"] if f["status"] == "fail"]
+    assert fails == [], f"unexpected failures: {[(f['rule_id'], f['detail']) for f in fails]}"
+    assert report["coverage"]["unenforced_musts"] == []
+
+    ir = DocumentIR.from_yaml(spec02 / "document-ir.yaml")
+    provenances = {b.provenance.value for b in ir.flatten_blocks() if b.provenance}
+    assert "inferred" in provenances, "the synthesis blocks must not claim to be verified"
+    assert "verified" in provenances, "the directly-quoted blocks should still say so"

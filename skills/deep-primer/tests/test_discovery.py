@@ -213,15 +213,37 @@ def test_brief_id_is_stable_for_the_same_brief():
     assert brief_id(b1) == brief_id(b2)
 
 
-def test_run_brief_freezes_the_report(tmp_path):
+def test_run_brief_freezes_a_live_result(tmp_path):
+    """A LIVE backend's result is frozen: report, sources and the brief that produced them."""
+    from research.deep_research import CallableBackend
+
+    b = ResearchBrief(wave="A", framing="structure", questions=["q"], brief_id="A-test")
+    snap = tmp_path / "snap"
+    live = CallableBackend(lambda _b: ("# fresh\n- lead: something\n", [{"url": "https://e.org/1"}]))
+    report, sources = run_brief(b, snap, live)
+
+    assert "fresh" in report and sources[0]["url"] == "https://e.org/1"
+    for name in ("report-A-test.md", "sources-A-test.json", "brief-A-test.json"):
+        assert (snap / name).is_file(), f"{name} was not frozen"
+
+
+def test_replaying_a_snapshot_does_not_rewrite_it(tmp_path):
+    """Replay is a READ. Writing back what ReplayBackend just returned re-froze the snapshot against
+    whatever parameters the caller used, so running `make test` rewrote the committed brief fixtures
+    (the topic string in tests differs from the one they were frozen with). A snapshot that mutates
+    when replayed is not a snapshot, and R-DISC-05's reproducibility guarantee rests on it holding
+    still."""
     b = ResearchBrief(wave="A", framing="structure", questions=["q"], brief_id="A-test")
     src = tmp_path / "snap"
     src.mkdir()
     (src / "report-A-test.md").write_text("# frozen\n- lead: something\n", encoding="utf-8")
     (src / "sources-A-test.json").write_text(json.dumps([{"url": "https://e.org/1"}]), encoding="utf-8")
+    before = {p.name: p.read_bytes() for p in src.iterdir()}
+
     report, sources = run_brief(b, src, ReplayBackend(src))
+
     assert "frozen" in report and sources[0]["url"] == "https://e.org/1"
-    assert (src / "brief-A-test.json").is_file()
+    assert {p.name: p.read_bytes() for p in src.iterdir()} == before, "replay mutated the snapshot"
 
 
 def test_write_campaign_emits_both_artifacts(tmp_path):
@@ -322,3 +344,146 @@ def test_seed_lint_flags_seed_promoted_past_its_evidence():
 
 def test_seed_lint_ignores_directive_seeds():
     assert disc_checks.seed_handling(DiscoveryLeads(), [{"kind": "author", "ref": "J. Doe"}]) == []
+
+
+# --- the live campaign backend (Stage G seam) --------------------------------
+# Hermetic: the CLI and the network are both stubbed. The point being pinned is that a lead the
+# backend could not FETCH never enters a snapshot as accepted — `run_brief` freezes what a backend
+# returns, so a confabulated URL written there becomes a fabrication replayed as fact forever.
+# This is not hypothetical: probed against this CLI, `claude -p` reported `web_search_requests: 0`
+# while claiming it had searched, and one of the three URLs it produced did not resolve.
+
+def test_backend_drops_urls_that_do_not_fetch(tmp_path):
+    from types import SimpleNamespace
+
+    from ir.schema import ResearchBrief
+    from research.claude_backend import ClaudeResearchBackend
+
+    class _Cli:
+        calls = 0
+        spend_usd = 0.0
+
+        def result_json(self, _instruction):
+            return {"report": "body", "sources": [
+                {"url": "https://real.example/a", "type": "docs", "why": "x"},
+                {"url": "https://fake.example/b", "type": "blog", "why": "y"},
+            ]}
+
+    class _Fetcher:
+        name = "stub"
+        refused = {"https://fake.example/b": "HTTPError: 404"}
+
+        def __call__(self, url):
+            if url == "https://real.example/a":
+                return SimpleNamespace(url=url, title="A", retrieved_at="2026-01-01", text="body")
+            return None
+
+    backend = ClaudeResearchBackend(cli=_Cli(), fetcher=_Fetcher())
+    report, leads = backend(ResearchBrief(wave="A", framing="mechanism", questions=["q?"]))
+
+    assert "mechanism" in report
+    by_status = {lead["url"]: lead["status"] for lead in leads}
+    assert by_status["https://real.example/a"] == "accepted"
+    assert by_status["https://fake.example/b"] == "dropped"
+    # dropped, not deleted: what a wave proposed vs what survived is a signal about the backend
+    assert len(leads) == 2
+    assert backend.dropped[0]["dropped_reason"].startswith("HTTPError")
+
+
+def test_backend_returns_an_empty_wave_rather_than_inventing_one():
+    from ir.schema import ResearchBrief
+    from research.claude_backend import ClaudeResearchBackend
+    from utils.claude_cli import CliUnavailable
+
+    class _DeadCli:
+        calls = 0
+        spend_usd = 0.0
+
+        def result_json(self, _instruction):
+            raise CliUnavailable("simulated outage")
+
+    backend = ClaudeResearchBackend(cli=_DeadCli())
+    report, leads = backend(ResearchBrief(wave="A", framing="mechanism", questions=["q?"]))
+    assert leads == []
+    assert "No report" in report
+
+
+def test_wave_a_meets_the_framing_floor_and_b_c_are_the_open_gap():
+    """Wave A satisfies R-DISC-02 in code. Waves B and C do NOT — 3 archetypes each (2 for B once
+    B-seed skips without a seed) against a floor of 5 with >=1 orthogonal PER WAVE.
+
+    This is pinned rather than fixed because it is a contradiction between two authored contracts:
+    rule-registry.yaml says "each wave", while references/discovery-brief-templates.md — which
+    BRIEF_ARCHETYPES is pinned to — makes B and C deliberately narrow follow-ups, and MIN_FRAMINGS'
+    own comment reads "Wave A breadth". Resolving it is a design call. The test exists so the gap
+    cannot quietly close or quietly widen; update it deliberately when GAPS.md is settled.
+    """
+    from research import discovery as disc
+    from research.planner import WAVE_ARCHETYPES, StubJudge, wave_briefs
+
+    orthogonal = {"contrarian-seed", "adjacent-field"}
+    cells = {w: disc.framing_diversity(
+        wave_briefs(w, residual=None, params={"target_domain": "T"}, judge=StubJudge()))
+        for w in WAVE_ARCHETYPES}
+
+    assert cells["A"] >= disc.MIN_FRAMINGS
+    assert orthogonal & {b.framing for b in
+                         wave_briefs("A", None, {"target_domain": "T"}, StubJudge())}
+    assert cells["B"] < disc.MIN_FRAMINGS and cells["C"] < disc.MIN_FRAMINGS, (
+        "B/C now meet the floor — the GAPS.md contradiction was resolved; update this test")
+
+
+def test_campaign_log_records_the_cap_it_actually_ran_under():
+    """`waves` is configurable and defaults to three, but the log recorded MAX_WAVES=4 — so every
+    unsaturated run reported terminal 'max_waves' after 3 of 4, describing a cap never reached.
+    R-DISC-03 checks exactly that correspondence, and had no dispatch entry to catch it with."""
+    from checks.discovery import saturation_terminal
+    from research.planner import front_load_campaign
+
+    result = front_load_campaign(
+        "retrieval-augmented generation",
+        {"target_domain": "retrieval-augmented generation", "seed": "J. Doe"},
+        snapshot_dir=SNAPSHOT)
+    assert result.log.max_waves == min(3, discovery.MAX_WAVES)
+    assert "terminal 'max_waves'" not in " ".join(saturation_terminal(result.log))
+
+
+def test_backend_verdicts_survive_lead_extraction():
+    """A verifying backend marks a lead it could not FETCH as `dropped`. extract_leads used to
+    rebuild source leads from url+type alone, so that verdict vanished and the lead was frozen into
+    the snapshot as `accepted` — a 404 laundered into a real source. Measured on a live campaign:
+    124 leads, every one 'accepted', none with a fetched title. The judge may downgrade a lead; it
+    must never upgrade one the fetcher already rejected (R-DISC-01: a lead is a pointer)."""
+    from research.planner import StubJudge
+
+    sources = [
+        {"url": "https://real.example/a", "type": "docs", "status": "accepted",
+         "fetched_title": "A", "retrieved_at": "2026-01-01"},
+        {"url": "https://fake.example/b", "type": "blog", "status": "dropped",
+         "dropped_reason": "HTTPError: 404"},
+    ]
+    payload = StubJudge().extract_leads("report body", sources, brief(wave="A"))
+    by_url = {s["url"]: s for s in payload["source_leads"]}
+    assert by_url["https://real.example/a"]["status"] == "accepted"
+    assert by_url["https://fake.example/b"]["status"] == "dropped"
+    assert by_url["https://fake.example/b"]["dropped_reason"].startswith("HTTPError")
+    assert by_url["https://real.example/a"]["fetched_title"] == "A"
+
+
+def test_a_dropped_lead_is_not_resurrected_by_triage():
+    """Triage runs after extraction; a lead the fetcher rejected must not come back accepted."""
+    from research.planner import StubJudge, triage_leads
+
+    def _status(lead):
+        return [x.status for x in triage_leads(discovery.cluster_leads([lead]), {}, StubJudge())]
+
+    assert _status(sl("sl-1", "https://fake.example/b", status="dropped",
+                      dropped_reason="HTTPError: 404")) == ["dropped"]
+
+    # a user seed that will not load is still not evidence — R-DISC-06 asks for seeds to be
+    # consulted and grounded, not asserted past what they can support
+    assert _status(sl("sl-2", "https://fake.example/seed", status="dropped",
+                      dropped_reason="HTTPError: 404", provenance_origin="user")) == ["dropped"]
+
+    # a lead the JUDGE dropped (no fetch verdict) still follows the normal triage path
+    assert _status(sl("sl-3", "https://real.example/c", status="dropped")) == ["accepted"]

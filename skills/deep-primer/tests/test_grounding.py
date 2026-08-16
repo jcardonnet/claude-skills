@@ -5,6 +5,11 @@ becomes provenance when its quote is found verbatim in a document we actually fe
 else here — corroboration, recency, coverage, curation — is the deterministic machinery that turns
 fetched pages into a ledger the primer can be held to.
 """
+import os
+import subprocess
+import sys
+from pathlib import Path
+
 import pytest
 
 from checks import ledger as ledger_checks
@@ -347,7 +352,87 @@ def test_outline_seed_honors_user_structure_in_order():
     assert sum(len(s["concepts"]) for s in seed) == len(cm.concepts)
 
 
-def test_outline_seed_assignment_is_deterministic():
-    cm = curate.curate_concept_map(_curation_ledger())
-    params = {"user_structure": ["Chunking recall", "Reranking behaviour"]}
-    assert curate.outline_seed(cm, params) == curate.outline_seed(cm, params)
+# --- the live fetcher (Stage G seam) -----------------------------------------
+# Everything here is hermetic. The network path is deliberately NOT tested: a test that depends on
+# what a remote host served today is a flake, and the whole reason `freeze_corpus` exists is so the
+# network is touched once and replayed thereafter.
+
+def test_html_to_text_strips_chrome_and_keeps_prose():
+    from research.http_fetcher import html_to_text
+    text = html_to_text(
+        "<html><head><title>T</title><style>p{color:red}</style></head>"
+        "<body><nav>skip me</nav><p>Chunking bounds recall.</p>"
+        "<script>ignored()</script><footer>also skip</footer></body></html>")
+    assert "Chunking bounds recall." in text
+    assert "ignored()" not in text and "color:red" not in text
+    assert "skip me" not in text and "also skip" not in text
+
+
+def test_fetcher_refuses_non_http_schemes_without_touching_the_network():
+    """A lead is an untrusted pointer (R-DISC-01). file:// would read the local disk and present it
+    as a fetched source, which is the firewall failing open in the worst possible direction."""
+    from research.http_fetcher import HttpFetcher
+    fetcher = HttpFetcher()
+    assert fetcher("file:///etc/passwd") is None
+    assert "unsupported scheme" in fetcher.refused["file:///etc/passwd"]
+
+
+def test_freeze_corpus_roundtrips_through_replayfetcher(tmp_path):
+    """Fetch live once, freeze, replay forever — the property eval's reproducibility rests on.
+    source_id and content_hash must survive, since the ledger keys claims by them."""
+    from research.http_fetcher import freeze_corpus
+    original = Document(url="https://example.org/a/", text="Chunking bounds recall.\nSecond line.",
+                        title="A", retrieved_at="2026-01-01")
+    replay = ReplayFetcher(corpus_dir=freeze_corpus([original], tmp_path / "corpus"))
+    back = replay("https://example.org/a/")
+    assert back is not None
+    assert back.text == original.text
+    assert back.source_id == original.source_id
+    assert back.content_hash == original.content_hash
+
+
+_DETERMINISM_PROBE = """
+import json, sys
+sys.path.insert(0, sys.argv[1])
+from ir.schema import Claim, Source, SourceLedger
+from research import curate
+
+ledger = SourceLedger(sources=[
+    Source(source_id="s-a", claims=[
+        Claim(claim_id="C1", text="chunking bounds achievable retrieval recall", quote="q"),
+        Claim(claim_id="C2", text="achievable retrieval recall is bounded by chunking", quote="q"),
+    ]),
+    Source(source_id="s-b", claims=[
+        Claim(claim_id="C3", text="rerankers reorder candidate documents", quote="q",
+              contested=True, contradicts=["C1"]),
+    ]),
+])
+cm = curate.curate_concept_map(ledger)
+seed = curate.outline_seed(cm, {"user_structure": ["Chunking recall", "Reranking behaviour"]})
+print(json.dumps({"concepts": [c.concept_id for c in cm.concepts], "seed": seed}, sort_keys=True))
+"""
+
+
+def _curation_chain_under_hashseed(seed: str) -> str:
+    """Run ledger -> concept-map -> outline-seed in a FRESH interpreter at a given PYTHONHASHSEED."""
+    scripts = str(Path(__file__).resolve().parents[1] / "scripts")
+    proc = subprocess.run(
+        [sys.executable, "-c", _DETERMINISM_PROBE, scripts],
+        capture_output=True, text=True, check=True,
+        env={**os.environ, "PYTHONHASHSEED": seed},
+    )
+    return proc.stdout.strip()
+
+
+def test_curation_chain_is_deterministic_across_hash_seeds():
+    """Determinism here is load-bearing, not tidiness: R-DISC-04 / R-CONV-02 require the escalate
+    loop to terminate reproducibly, so the same ledger must always yield the same outline seed.
+
+    This used to assert `outline_seed(cm, p) == outline_seed(cm, p)` — the same expression on both
+    sides. That can only fail if the function mutates global state, and is blind to the failure it
+    was written to catch: set/dict iteration order over strings is stable WITHIN a process and
+    varies only with PYTHONHASHSEED, so two calls in one interpreter always agree even when the
+    chain is order-dependent. Separate interpreters at different seeds are what actually probes it.
+    """
+    outputs = {_curation_chain_under_hashseed(s) for s in ("0", "1", "524287")}
+    assert len(outputs) == 1, "curation chain varied with PYTHONHASHSEED:\n" + "\n".join(sorted(outputs))

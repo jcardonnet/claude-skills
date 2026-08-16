@@ -1,0 +1,59 @@
+# Source ledger for spec-02, built from a REAL grounding run.
+# Every quote below was verified verbatim against a page actually fetched by
+# research/http_fetcher.py (R-DISC-01), and every quote is <=15 words (R-GROUND-01).
+# Regenerate: fetch the urls, then re-verify with Document.contains().
+sources:
+- source_id: s-tgg
+  url: https://arxiv.org/abs/2002.12428
+  title: '[2002.12428] TGGLines: A Robust Topological Graph Guided Line Segment Detector
+    for Low Quality Binary Images'
+  retrieved_at: '2026-08-16'
+  source_type: primary_paper
+  claims:
+  - claim_id: C-lead-1
+    text: Graph-guided detection stores segment connectivity, which is what turns
+      loose strokes into a traceable leader.
+    quote: organizes the segments with a line segment connectivity graph
+  - claim_id: C-lead-2
+    text: Conventional detectors return unlinked strokes, so one kinked leader arrives
+      as several unrelated fragments.
+    quote: other line detectors only retain a collection of loose line segments
+  - claim_id: C-lead-3
+    text: The method targets the binary, scan-degraded regime a scanned parts catalogue
+      actually lives in.
+    quote: line segment detection in low quality binary images
+- source_id: s-elsed
+  url: https://arxiv.org/abs/2108.03144
+  title: '[2108.03144] ELSED: Enhanced Line SEgment Drawing'
+  retrieved_at: '2026-08-16'
+  source_type: primary_paper
+  claims:
+  - claim_id: C-lead-4
+    text: Segment growing spans the small breaks that dotted and hatch-crossed leaders
+      introduce.
+    quote: connects gradient-aligned pixels in presence of small discontinuities
+- source_id: s-letr
+  url: https://arxiv.org/abs/2101.01909
+  title: '[2101.01909] Line Segment Detection Using Transformers without Edges'
+  retrieved_at: '2026-08-16'
+  source_type: primary_paper
+  claims:
+  - claim_id: C-lead-5
+    text: Transformer detectors drop the junction and region heuristics a classical
+      pipeline retunes per drawing.
+    quote: post-processing and heuristics-guided intermediate processing (edge/junction/region
+      detection) free
+- source_id: s-sam
+  url: https://arxiv.org/abs/2304.02643
+  title: '[2304.02643] Segment Anything'
+  retrieved_at: '2026-08-16'
+  source_type: primary_paper
+  claims:
+  - claim_id: C-seg-1
+    text: A promptable segmenter consumes a point prompt, and a resolved callout anchor
+      is already one.
+    quote: The model is designed and trained to be promptable
+  - claim_id: C-seg-2
+    text: Zero-shot transfer removes per-catalogue training; it does not establish
+      that masks are required.
+    quote: transfer zero-shot to new image distributions and tasks

@@ -1,0 +1,1622 @@
+topic_leads: []
+source_leads:
+- id: sl-A-A2-0
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  - source-authority
+  report_ids:
+  - A-A2
+  - A-A4
+  url: https://www.tandfonline.com/doi/full/10.1080/08839514.2024.2406712
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2305.00264
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://dl.acm.org/doi/10.1145/3606692
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2305.14218
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2502.04389
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2604.02486
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2404.12734
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.mdpi.com/2224-2708/11/4/63
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/abs/2409.19672
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-17
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  - source-authority
+  report_ids:
+  - A-A2
+  - A-A4
+  url: https://arxiv.org/pdf/2601.13299
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2411.13929v2
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://academic.oup.com/jcde/article/9/4/1298/6611631
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2002.12428
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0957417421007661
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2503.22346v1
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2412.04243
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-23
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2607.02853
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2602.10138
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-25
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2603.06865
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-26
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2603.25761v1
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-27
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/abs/2505.01530
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-28
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2501.00321v2
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-29
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://aps.autodesk.com/automation-apis
+  type: vendor
+  supports: []
+- id: sl-A-A2-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2302.01881
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-30
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2505.07864v1
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-31
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://ai-2-ase.github.io/papers/4__AAAI_2025_WS__Text_Only_Training_VLMs.pdf
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-32
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2604.14927v2
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2411.18011
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2411.11409
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2312.03015
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2509.06784v3
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2401.15266
+  type: primary_paper
+  supports: []
+- id: sl-A-A2-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2606.15886
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/facebookresearch/sam2
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2408.00714
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-10
+  support_count: 3
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - recency-frontier
+  - source-authority
+  report_ids:
+  - A-A3
+  - A-A4
+  - A-A5
+  url: https://www.s1000d.org
+  type: standard
+  supports: []
+- id: sl-A-A3-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://huggingface.co
+  type: docs
+  supports: []
+- id: sl-A-A3-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/Tencent-Hunyuan/Hunyuan3D-Part
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2509.06784
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2507.21493
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/html/2602.19171v2
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2607.04119
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2411.14347
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2412.02193
+  type: primary_paper
+  supports: []
+- id: sl-A-A3-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://openaccess.thecvf.com/content/CVPR2024/papers/Xiao_Florence-2_Advancing_a_Unified_Representation_for_a_Variety_of_Vision_Tasks_CVPR_2024_paper.pdf
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://cdn.standards.iteh.ai/samples/69129/38e651842df746fd990d29679e3c2e98/ISO-128-2-2020.pdf
+  type: standard
+  supports: []
+- id: sl-A-A4-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://cadsetterout.com/drawing-standards/technical-drawing-standards-leader-lines/
+  type: docs
+  supports: []
+- id: sl-A-A4-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2212.14232
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2401.17904
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2603.25168
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2504.04085
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2509.11720
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2501.17887
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2507.09861
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.mdpi.com/2075-1702/11/8/802
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.mdpi.com/2076-3417/13/15/8816
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.iso.org/standard/43883.html
+  type: standard
+  supports: []
+- id: sl-A-A4-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12089597/
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://motenv.wordpress.com/2024/09/19/identification-numbers-and-parts-lists-in-technical-and-engineering-drawings/
+  type: blog
+  supports: []
+- id: sl-A-A4-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://skybrary.aero/articles/illustrated-parts-catalogue-ipc
+  type: docs
+  supports: []
+- id: sl-A-A4-23
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.wilson-publications.co.uk/illustrated-parts-manuals/
+  type: docs
+  supports: []
+- id: sl-A-A4-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.docsie.io/blog/glossary/annotated-screenshots/
+  type: blog
+  supports: []
+- id: sl-A-A4-25
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2604.07691
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-26
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://docs.ultralytics.com/models/sam
+  type: docs
+  supports: []
+- id: sl-A-A4-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://datamission.co.uk/s1000d/
+  type: docs
+  supports: []
+- id: sl-A-A4-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11086207/
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.researchgate.net/publication/343692878_The_Computer_Vision-based_Tolerancing_Callout_Detection_Model
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://link.springer.com/chapter/10.1007/978-3-030-86198-8_6
+  type: primary_paper
+  supports: []
+- id: sl-A-A4-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://link.springer.com/10.1007/978-3-032-09700-2_19
+  type: primary_paper
+  supports: []
+- id: sl-A-A5-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.iso.org/standard/70649.html
+  type: standard
+  supports: []
+- id: sl-A-A5-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.iso.org/standard/70634.html
+  type: standard
+  supports: []
+- id: sl-A-A5-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/abs/2107.14941
+  type: primary_paper
+  supports: []
+- id: sl-A-A5-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/abs/1512.02325
+  type: primary_paper
+  supports: []
+- id: sl-A-A5-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/abs/2004.14197
+  type: primary_paper
+  supports: []
+- id: sl-A-A5-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://qwenlm.github.io/blog/qwen-vl-plus/
+  type: blog
+  supports: []
+- id: sl-A-A5-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://github.com/THUDM/ChatGLM-6B
+  type: docs
+  supports: []
+- id: sl-A-A5-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://docs.mistral.ai/capabilities/vision/
+  type: docs
+  supports: []
+- id: sl-A-A5-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.iso.org/standard/77039.html
+  type: standard
+  supports: []
+- id: sl-A-A5-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://conorpp.github.io/detecting-lines-on-technical-drawings/
+  type: blog
+  supports: []
+- id: sl-A-A5-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://en.wikipedia.org/wiki/Technical_illustration
+  type: docs
+  supports: []
+- id: sl-A-A5-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.w3.org/WAI/WCAG22/Understanding/
+  type: standard
+  supports: []
+- id: sl-A-A5-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821600
+  type: docs
+  supports: []
+- id: sl-A-A5-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.iso.org/standard/45168.html
+  type: standard
+  supports: []
+- id: sl-A-A5-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://docs.ultralytics.com/models/yolov11/
+  type: docs
+  supports: []
+- id: sl-A-A5-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://huggingface.co/microsoft/layoutlmv3-base
+  type: docs
+  supports: []
+- id: sl-A-A5-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.7/doc/doc_en/technical_innovation_en.md
+  type: docs
+  supports: []
+- id: sl-A-A5-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.oasis-open.org/committees/dita/
+  type: standard
+  supports: []
+- id: sl-A-A5-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.omg.org/spec/UML/2.5.1/
+  type: standard
+  supports: []
+- id: sl-A-A6-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://github.com/OfficeDev/office-ui-fabric-core/issues/631
+  type: primary_paper
+  supports: []
+- id: sl-A-A6-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://adhoc.team/2023/06/28/become-an-accessibility-champion-by-using-simple-mockup-annotations/
+  type: docs
+  supports: []
+- id: sl-A-A6-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12626568/
+  type: primary_paper
+  supports: []
+- id: sl-A-A6-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://sodevelopment.medium.com/from-yolo-to-sam-the-evolution-of-object-detection-and-segmentation-d324786ca510
+  type: blog
+  supports: []
+- id: sl-A-A6-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://labelyourdata.com/articles/best-image-segmentation-models
+  type: docs
+  supports: []
+- id: sl-A-A6-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.researchgate.net/publication/385921060_Zero-Shot_Automatic_Annotation_and_Instance_Segmentation_using_LLM-Generated_Datasets_Eliminating_Field_Imaging_and_Manual_Annotation_for_Deep_Learning_Model_Development
+  type: primary_paper
+  supports: []
+- id: sl-A-A6-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://dl.acm.org/doi/fullHtml/10.1145/3677182.3677237
+  type: primary_paper
+  supports: []
+- id: sl-A-A6-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://webaim.org/techniques/screenreader/
+  type: standard
+  supports: []
+- id: sl-A-A6-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2410.05579
+  type: primary_paper
+  supports: []
+- id: sl-A-A6-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.nngroup.com/articles/minimize-cognitive-load/
+  type: docs
+  supports: []
+- id: sl-A-A6-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2411.11285
+  type: primary_paper
+  supports: []
+- id: sl-A-A6-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.linkedin.com/advice/0/what-benefits-challenges-using-exploded-views
+  type: blog
+  supports: []
+- id: sl-A-A6-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://latitude.so/blog/automated-labeling-vs-manual-annotation/
+  type: blog
+  supports: []
+- id: sl-A-A6-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://cleverx.com/blog/automated-data-labeling-in-2025-how-to-deploy-ai-assisted-automation-without-losing-quality
+  type: blog
+  supports: []
+- id: sl-A-A6-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/html/2510.09586v1
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/abs/2304.02015
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/abs/1703.06870
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/abs/1912.03718
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/abs/1912.03881
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/abs/2406.18723
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://research.ibm.com/publications/docling-document-intelligence-library
+  type: docs
+  supports: []
+- id: sl-B-B-dive-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/abs/1905.04270
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/abs/1507.05717
+  type: primary_paper
+  supports: []
+- id: sl-B-B-dive-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://ieeexplore.ieee.org/document/4587566
+  type: standard
+  supports: []
+- id: sl-C-C-omission-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.asme.org/products/codes-standards/y14-5-2018-dimensioning-and-tolerancing
+  type: standard
+  supports: []
+- id: sl-C-C-omission-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.iso.org/standard/39905
+  type: standard
+  supports: []
+- id: sl-C-C-omission-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://blog.roboflow.com/document-ai/
+  type: blog
+  supports: []
+- id: sl-C-C-omission-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.w3.org/TR/annotation-model/
+  type: standard
+  supports: []
+- id: sl-C-C-omission-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.dod.gov/pubs/foi/logistics/supply/mil-std-1388-1a.pdf
+  type: standard
+  supports: []
+- id: sl-C-C-omission-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://github.com/facebookresearch/segment-anything
+  type: docs
+  supports: []
+- id: sl-C-C-omission-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://pytesseract.readthedocs.io/
+  type: docs
+  supports: []
+- id: sl-C-C-omission-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://github.com/PaddlePaddle/PaddleOCR
+  type: docs
+  supports: []
+- id: sl-C-C-omission-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://pdfplumber.readthedocs.io/
+  type: docs
+  supports: []
+- id: sl-C-C-omission-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://huggingface.co/blog/vision_transformers
+  type: blog
+  supports: []
+- id: sl-C-C-omission-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2010.05826
+  type: primary_paper
+  supports: []
+- id: sl-C-C-omission-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2304.02643
+  type: primary_paper
+  supports: []
