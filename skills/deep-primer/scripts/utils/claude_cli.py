@@ -17,7 +17,7 @@ import json
 import re
 import subprocess
 import tempfile
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 _FENCE_RE = re.compile(r"^\s*```(?:json)?\s*|\s*```\s*$")
 
@@ -83,6 +83,28 @@ def extract_json(text: str) -> dict:
 
 
 @dataclass
+class Budget:
+    """A spend ceiling shared by several callers.
+
+    Needed because `--gating-model` builds TWO CLI callers (one per model) and giving each the full
+    `--cost-cap` meant a declared $9 ceiling could spend $18. A cap the user sets once is a cap on
+    the RUN, not on each participant that happens to exist inside it.
+    """
+
+    cost_cap_usd: float = 5.0
+    spend_usd: float = 0.0
+    calls: int = 0
+
+    def charge(self, usd: float) -> None:
+        self.spend_usd += usd
+        self.calls += 1
+        if self.spend_usd > self.cost_cap_usd:
+            raise CliBudgetExceeded(
+                f"cost cap hit: ${self.spend_usd:.2f} > ${self.cost_cap_usd:.2f} after "
+                f"{self.calls} calls — raise the cap to continue")
+
+
+@dataclass
 class ClaudeCli:
     """A cost-capped `claude -p` caller.
 
@@ -95,9 +117,19 @@ class ClaudeCli:
     # and one call exceeding the ceiling used to abort an otherwise-complete 45-minute run.
     timeout_s: int = 420
     cost_cap_usd: float = 5.0
+    # Pass a shared Budget when several callers must respect ONE ceiling (see --gating-model).
+    budget: Budget | None = None
 
-    spend_usd: float = field(default=0.0, init=False)
-    calls: int = field(default=0, init=False)
+    def __post_init__(self) -> None:
+        self.budget = self.budget or Budget(cost_cap_usd=self.cost_cap_usd)
+
+    @property
+    def spend_usd(self) -> float:
+        return self.budget.spend_usd
+
+    @property
+    def calls(self) -> int:
+        return self.budget.calls
 
     def __call__(self, instruction: str) -> dict:
         """Run one call and return the parsed CLI envelope. Raises CliUnavailable on any failure."""
@@ -123,12 +155,7 @@ class ClaudeCli:
         except json.JSONDecodeError as exc:
             raise CliUnavailable(f"CLI envelope was not JSON: {proc.stdout[:200]}") from exc
 
-        self.spend_usd += float(envelope.get("total_cost_usd") or 0.0)
-        self.calls += 1
-        if self.spend_usd > self.cost_cap_usd:
-            raise CliBudgetExceeded(
-                f"cost cap hit: ${self.spend_usd:.2f} > ${self.cost_cap_usd:.2f} after "
-                f"{self.calls} calls — raise the cap to continue")
+        self.budget.charge(float(envelope.get("total_cost_usd") or 0.0))
         if envelope.get("is_error"):
             raise CliUnavailable(f"CLI reported an error: {str(envelope.get('result'))[:200]}")
         return envelope

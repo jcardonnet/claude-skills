@@ -436,3 +436,40 @@ def test_curation_chain_is_deterministic_across_hash_seeds():
     """
     outputs = {_curation_chain_under_hashseed(s) for s in ("0", "1", "524287")}
     assert len(outputs) == 1, "curation chain varied with PYTHONHASHSEED:\n" + "\n".join(sorted(outputs))
+
+
+def test_robots_is_rechecked_after_a_redirect(monkeypatch):
+    """robots was checked against the URL we ASKED for, but urllib follows redirects silently — so a
+    301 onto a disallowed path was fetched and kept. The redirect target is the page actually
+    stored, so it is the one the permission has to cover."""
+    from research.http_fetcher import HttpFetcher
+
+    fetcher = HttpFetcher()
+    allowed_calls = []
+
+    def _allowed(url):
+        allowed_calls.append(url)
+        return "/private/" not in url
+
+    monkeypatch.setattr(fetcher, "_allowed", _allowed)
+
+    class _Response:
+        headers = {"Content-Type": "text/html"}
+
+        def read(self, _n):
+            return b"<html><body><p>secret</p></body></html>"
+
+        def geturl(self):
+            return "https://example.org/private/page"
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_exc):
+            return False
+
+    monkeypatch.setattr("urllib.request.urlopen", lambda *_a, **_k: _Response())
+
+    assert fetcher("https://example.org/public/page") is None
+    assert "redirect" in fetcher.refused["https://example.org/public/page"]
+    assert allowed_calls == ["https://example.org/public/page", "https://example.org/private/page"]

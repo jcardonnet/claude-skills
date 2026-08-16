@@ -404,11 +404,21 @@ def coverage_gate(exercised: set[str], results: list[dict], rubric_path: Path = 
     Three ways to fail: a tier drops below its declared floor, a deterministic rule goes dark with
     no attributable reason, or a spec fails for a reason that is not the documented offline gap.
 
-    `partial` (a `--spec`-narrowed run) suspends the FLOORS only. A floor counts rules exercised
-    across every spec, so comparing it against one spec's coverage would fail for the wrong reason —
-    and a gate that cries wolf on a routine single-spec run is a gate someone switches off. The
-    other two checks stay armed: a silent skip and a real spec failure are local facts, still true
-    when only one spec ran.
+    `partial` (a `--spec`-narrowed run) suspends the FLOORS and the silent-skip sweep. Both are
+    statements about coverage across the whole spec set, and neither survives narrowing:
+
+      - a floor counts rules exercised across every spec, so comparing it to one spec's coverage
+        fails for the wrong reason;
+      - `_why_unexercised` classifies by rule KIND, not by whether this run could have reached the
+        rule. A deterministic rule that spec-01 exercises and spec-02 does not would be reported as
+        a silent skip under `--spec spec-02` — a fabricated defect. It does not fire today only
+        because the two specs happen to exercise identical hard_lint sets, which is luck, not
+        design, and stops being true the moment a spec's IR lacks a role.
+
+    Only `spec_failures` stays armed, because those genuinely are local facts: a rule that FAILED,
+    or a citation threshold missed, is true regardless of what else ran. A gate that cries wolf on a
+    routine single-spec run is a gate someone switches off, so the narrowed form must be quiet about
+    everything it cannot actually know.
     """
     rules = registry_rules()
     rubric = yaml.safe_load(rubric_path.read_text(encoding="utf-8")) or {}
@@ -419,8 +429,9 @@ def coverage_gate(exercised: set[str], results: list[dict], rubric_path: Path = 
         {"tier": tier, "floor": floor, "exercised": by_tier.get(tier, {}).get("exercised", 0)}
         for tier, floor in sorted(floors.items())
         if by_tier.get(tier, {}).get("exercised", 0) < floor]
-    silent = sorted(r["id"] for r in rules
-                    if r["id"] not in exercised and _why_unexercised(r["id"], rules) == SILENT_SKIP)
+    silent = [] if partial else sorted(
+        r["id"] for r in rules
+        if r["id"] not in exercised and _why_unexercised(r["id"], rules) == SILENT_SKIP)
     spec_failures = _spec_strict_failures(results, rules)
     return {
         "scope": "partial" if partial else "full",
@@ -510,8 +521,9 @@ def _print_gate(gate: dict) -> None:
     for sf in gate["spec_failures"]:
         print(f"  {sf['spec']} failed strictly: {'; '.join(sf['reasons'])}")
     if not gate["floors_enforced"]:
-        print("  coverage floors NOT enforced: --spec narrowed the run, and a floor counts rules "
-              "across every spec")
+        print("  coverage checks NOT enforced: --spec narrowed the run. Floors and silent-skip "
+              "detection are both statements about the whole spec set; only real spec failures "
+              "are still checked. Run without --spec for the full gate.")
     print(f"coverage gate: {'PASS' if gate['passed'] else 'FAIL'}"
           + ("" if gate["passed"] else " (use --strict to make this exit non-zero)"))
 

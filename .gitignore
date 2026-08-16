@@ -8,3 +8,4 @@ CAPABILITIES.md
 run-manifest.json
 .DS_Store
 .specstory/
+.claude/

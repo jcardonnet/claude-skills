@@ -113,6 +113,13 @@ class HttpFetcher:
             self.refused[url] = f"body exceeded {self.max_bytes} bytes"
             return None
 
+        # robots was checked against the URL we ASKED for; urllib follows redirects silently, so a
+        # 301 to a disallowed path would otherwise be fetched and kept. The redirect target is the
+        # page actually retrieved and stored, so it is the one the permission has to cover.
+        if final_url != url and not self._allowed(final_url):
+            self.refused[url] = f"redirected to {final_url}, disallowed by robots.txt"
+            return None
+
         body = raw.decode("utf-8", errors="replace")
         text = html_to_text(body) if "html" in (content_type or "html") else body
         if not text.strip():

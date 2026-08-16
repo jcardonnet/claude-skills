@@ -144,13 +144,14 @@ class ClaudeCliJudge:
     timeout_s: int = 420
     cost_cap_usd: float = 5.0
     max_attempts: int = 2
+    budget: object | None = None
 
     _cli: ClaudeCli = field(init=False)
     _document_text: str = field(default="", init=False)
 
     def __post_init__(self) -> None:
         self._cli = ClaudeCli(model=self.model, timeout_s=self.timeout_s,
-                              cost_cap_usd=self.cost_cap_usd)
+                              cost_cap_usd=self.cost_cap_usd, budget=self.budget)
         self._document_text = _judge_document_view(self.ir)
 
     @property

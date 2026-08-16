@@ -282,10 +282,12 @@ def main(argv: list[str] | None = None) -> int:
     cli_judge = gating_cli_judge = None
     if args.judge == "claude":
         from critics.claude_judge import ClaudeCliJudge
-        cli_judge = ClaudeCliJudge(ir, model=args.model, cost_cap_usd=args.cost_cap)
+        from utils.claude_cli import Budget
+        # ONE budget across both judges: --cost-cap is a ceiling on the run, not on each model
+        budget = Budget(cost_cap_usd=args.cost_cap)
+        cli_judge = ClaudeCliJudge(ir, model=args.model, budget=budget)
         if args.gating_model and args.gating_model != args.model:
-            gating_cli_judge = ClaudeCliJudge(ir, model=args.gating_model,
-                                              cost_cap_usd=args.cost_cap)
+            gating_cli_judge = ClaudeCliJudge(ir, model=args.gating_model, budget=budget)
     judge: Judge = cli_judge or StubJudge()
 
     only = {r.strip() for r in args.rules.split(",") if r.strip()} if args.rules else None

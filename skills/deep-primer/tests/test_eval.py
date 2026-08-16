@@ -313,3 +313,33 @@ def test_a_stale_critic_report_is_not_counted_as_coverage(tmp_path):
             {"rule_id": "R-PROSE-02", "block_id": "b1", "verdict": "pass"}]}],
     }), encoding="utf-8")
     assert _tier_soft_critic({"critic_report": fresh, "ir": ir})["rules_exercised"] == ["R-PROSE-02"]
+
+
+def test_a_narrowed_run_cannot_fabricate_a_silent_skip():
+    """`_why_unexercised` classifies by rule KIND, not by whether this run could reach the rule, so
+    a deterministic rule that spec-01 exercises and spec-02 does not would be reported as a silent
+    skip under `--spec spec-02` — a defect invented by narrowing. It does not fire today only
+    because the two specs happen to exercise identical hard_lint sets, which is luck, not design."""
+    hard_lint = [r["id"] for r in registry_rules() if r["enforcement"] == "hard_lint"]
+    exercised = set(registry_rule_ids()) - {hard_lint[0]}      # one deterministic rule goes dark
+
+    full = coverage_gate(exercised, [], partial=False)
+    assert full["silent_skips"] == [hard_lint[0]], "a full run must still catch a dark rule"
+
+    narrowed = coverage_gate(exercised, [], partial=True)
+    assert narrowed["silent_skips"] == []
+    assert narrowed["passed"], "a narrowed run must not invent a silent skip"
+
+
+def test_a_narrowed_run_still_reports_real_spec_failures():
+    """Suspending the coverage checks must not disarm the gate entirely: a rule that FAILED is a
+    local fact, true no matter which specs ran."""
+    results = [{
+        "id": "spec-x", "status": "scored",
+        "hard_lints": {"blocking": True},
+        "model_verified": {"status": "skipped"},
+        "expected_must_pass_report": {"failed": ["R-GROUND-01"], "not_exercised": []},
+    }]
+    gate = coverage_gate(set(registry_rule_ids()), results, partial=True)
+    assert not gate["passed"]
+    assert gate["spec_failures"] and gate["spec_failures"][0]["spec"] == "spec-x"

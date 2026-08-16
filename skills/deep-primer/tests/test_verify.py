@@ -174,3 +174,22 @@ def test_extract_json_tolerates_packaging_but_not_absence():
     for bad in ("", "no json here at all", '{"unterminated": '):
         with pytest.raises(CliUnavailable):
             extract_json(bad)
+
+
+def test_a_shared_budget_caps_the_run_not_each_caller():
+    """`--gating-model` builds TWO CLI callers, one per model. Giving each the full --cost-cap meant
+    a declared $9 ceiling could spend $18: a cap the user sets once is a cap on the RUN."""
+    from utils.claude_cli import Budget, ClaudeCli, CliBudgetExceeded
+
+    shared = Budget(cost_cap_usd=1.0)
+    fast, strong = ClaudeCli(model="haiku", budget=shared), ClaudeCli(model="sonnet", budget=shared)
+
+    shared.charge(0.6)
+    with pytest.raises(CliBudgetExceeded, match=r"\$1\.20"):
+        shared.charge(0.6)
+    assert fast.spend_usd == strong.spend_usd == 1.2
+    assert fast.calls == strong.calls == 2
+
+    # and an unshared caller still gets its own ceiling
+    solo = ClaudeCli(cost_cap_usd=1.0)
+    assert solo.spend_usd == 0.0 and solo.budget is not shared
