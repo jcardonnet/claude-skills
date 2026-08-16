@@ -72,7 +72,10 @@ def test_resolves_to_ledger_flags_unledgered_source_id():
 
 def test_thresholds_loaded_from_rubric():
     th = load_thresholds()
-    assert th == {"recall": 0.75, "precision": 0.90}
+    # the verified_* pair is what --strict gates on; the legacy pair is kept for the pre-partition
+    # report shape and mixes declared synthesis with claimed grounding
+    assert th == {"recall": 0.75, "precision": 0.90,
+                  "verified_recall": 0.95, "verified_precision": 0.90}
 
 
 def test_clean_primer_passes():
@@ -274,3 +277,71 @@ def test_votes_are_forced_odd_so_a_ballot_cannot_tie():
     assert ClaudeEntailmentJudge(votes=2).votes == 3
     assert ClaudeEntailmentJudge(votes=4).votes == 5
     assert ClaudeEntailmentJudge(votes=1).votes == 1
+
+
+# --- per-unit entailment for composite blocks --------------------------------
+
+def test_a_card_is_entailed_per_row_not_as_one_blob():
+    """A card is seven typed rows and R-GROUND-01 caps a quote at 15 words, so no quote can entail
+    the concatenation — every card in spec-01 failed for that structural reason rather than because
+    its citation was bad. A citation supports the block when it entails what the block ASSERTS."""
+    from ir.schema import Block, CardRows
+
+    card = Block(block_id="c", role="card", claim_ids=["C1"], rows=CardRows(
+        idea="Chunking is the retrieval unit and bounds recall.",
+        home_anchor="Like a B-tree index, but for nearest rather than equal.",
+        whats_new_vs_renamed="Granularity is renamed; the embedding scope is new.",
+        reach_for_when="Reach for smaller chunks when queries target specific facts.",
+        skip_when="Skip re-chunking when the failure is ordering rather than recall.",
+        key_exemplar="A 200-token window over a heading-split corpus.",
+        confidence="settled for the recall bound"))
+
+    units = card.entailment_units
+    assert units == ["Chunking is the retrieval unit and bounds recall.",
+                     "A 200-token window over a heading-split corpus."]
+    # the framing rows are deliberately absent — no source states an author's skip-condition
+    joined = " ".join(units)
+    for framing in ("B-tree", "Skip re-chunking", "Granularity is renamed", "settled"):
+        assert framing not in joined
+
+
+def test_a_simple_block_is_unchanged_by_the_unit_split():
+    from ir.schema import Block
+
+    b = Block(block_id="b", role="body", text="Chunking bounds recall.", claim_ids=["C1"])
+    assert b.entailment_units == ["Chunking bounds recall."]
+
+
+def test_a_recall_block_is_entailed_on_its_answers():
+    from ir.schema import Block, RecallItem
+
+    b = Block(block_id="r", role="recall", claim_ids=["C1"], items=[
+        RecallItem(question="What caps recall?", answer="The chunk boundary does."),
+        RecallItem(question="And then?", answer="Reranking cannot recover it.")])
+    assert b.entailment_units == ["The chunk boundary does.", "Reranking cannot recover it."]
+
+
+def test_per_unit_scoring_rescues_a_card_a_blob_comparison_would_fail():
+    """The regression this fixes: the quote entails the card's `idea` exactly, but is swamped when
+    compared against all seven rows joined."""
+    from ir.schema import Block, CardRows, Claim, DocumentIR, Section, Source, SourceLedger
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    quote = "chunking is the retrieval unit and bounds recall"
+    card = Block(block_id="card", role="card", concept="c", claim_ids=["C1"], provenance="verified",
+                 rows=CardRows(
+                     idea="Chunking is the retrieval unit and bounds recall.",
+                     home_anchor="Like a SQL B-tree index but for nearest instead of equal, "
+                                 "which is a different traversal entirely.",
+                     whats_new_vs_renamed="Granularity is renamed rather than new here.",
+                     reach_for_when="Reach for smaller chunks when queries target specific facts.",
+                     skip_when="Skip re-chunking when the failure is ordering rather than recall.",
+                     key_exemplar="A 200-token window.",
+                     confidence="settled"))
+    ir = DocumentIR(sections=[Section(block_id="s", title="T", concept="c", blocks=[card])])
+    ledger = SourceLedger(sources=[Source(source_id="s1", claims=[
+        Claim(claim_id="C1", text=quote, quote=quote)])])
+
+    report = evaluate(ir, ledger, backend=LexicalEntailment())
+    assert report["verified_recall"] == 1.0, "the quote entails the card's idea row exactly"

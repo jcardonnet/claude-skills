@@ -212,8 +212,10 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         "verified_precision": report["verified_precision"],
         "inferred_share": report["inferred_share"],
         "thresholds": thresholds,
-        "meets_recall": report["recall"] >= thresholds["recall"],
-        "meets_precision": report["precision"] >= thresholds["precision"],
+        # gated on the VERIFIED pair: the overall numbers count a block the author honestly
+        # declared `inferred` against them, so a primer is penalised for labelling truthfully
+        "meets_recall": report["verified_recall"] >= thresholds["verified_recall"],
+        "meets_precision": report["verified_precision"] >= thresholds["verified_precision"],
         "unresolved_citations": len(report["resolves_to_ledger"]["violations"]),
         "counts": report["counts"],
     }
@@ -446,8 +448,9 @@ def _spec_strict_failures(results: list[dict], rules: list[dict]) -> list[dict]:
         # refuses to trust would be incoherent, and would make --strict permanently red offline.
         if (mv.get("status") == "scored" and mv.get("backend") != "lexical"
                 and not (mv.get("meets_recall") and mv.get("meets_precision"))):
-            reasons.append(f"citation quality below threshold "
-                           f"(recall={mv['recall']} precision={mv['precision']}, "
+            reasons.append(f"verified-citation quality below threshold "
+                           f"(verified_recall={mv.get('verified_recall')} "
+                           f"verified_precision={mv.get('verified_precision')}, "
                            f"backend={mv.get('backend')})")
         silent = [rid for rid in expected["not_exercised"]
                   if _why_unexercised(rid, rules) == SILENT_SKIP]

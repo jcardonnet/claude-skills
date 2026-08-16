@@ -24,7 +24,7 @@ Expected on a clean checkout (measured at handoff):
 
 | Command | Expected |
 |---|---|
-| `make test` | `318 passed, 0 skipped` |
+| `make test` | `322 passed, 0 skipped` |
 | `make validate` | `OK — 1 skill(s) valid (lockstep in sync), 2 skipped` |
 | `make lint` | **not reproducible; not in CI** — see §4. Was `All checks passed!` only against the container's ruff |
 | `make eval` | 2/6 specs scored, enforcement coverage **79/79 (100%)**, thresholds **refused** (see §4) |
@@ -404,7 +404,7 @@ two were about the primer:
 
 CI now installs spaCy + `en_core_web_md` (~50MB) so the native path is exercised. Deliberately not
 the `[nlp]` extra, which pulls fastcoref → torch for a coref feature that is off by default.
-**`make test` is now 318 passed, 0 skipped.**
+**`make test` is now 322 passed, 0 skipped.**
 
 **A real 3-wave campaign ran live, and the discovery checks had never been dispatched at all.**
 11 briefs against spec-02's topic, 124 source leads, snapshot frozen. Two things fell out:
@@ -463,27 +463,35 @@ is genuinely blocked rather than deferred. Specs 02–06 still have no artifacts
 authoring five complete compliant primers, which is the generation pipeline's job, not a fixture
 edit — the eval still has exactly one data point and that remains its biggest weakness.
 
-**Citation thresholds: still TODO, now for a specific reason.** The full evidence is in
-`eval-rubric.yaml`; the short version is that three separate things were wrong and two are fixed.
+**Citation thresholds: SETTLED, on `verified_recall: 0.95` / `verified_precision: 0.90`.**
 
-The metric counted `inferred` blocks in the same denominator as `verified` ones, so a primer that
-labels its synthesis HONESTLY scored identically to one that fabricates citations — spec-02 reads
-0.15 overall and 1/2 on the blocks it actually claims are grounded, with the other 11 declared
-synthesis. `evaluate()` now reports `verified_recall`, `verified_precision` and `inferred_share`
-separately; a threshold belongs on the first, and the third is a composition signal, not a
-citation-quality one.
+Getting there meant fixing the metric three times, because every early reading was measuring the
+instrument rather than the primer. `inferred` blocks sat in the same denominator as `verified`
+ones, so honest labelling scored identically to fabrication. Cards were compared against `""`,
+since their content is typed rows and the code took `text or caption` — the same defect the critic
+seam had, in a second module, now fixed once on the schema as `Block.readable_text`. And a card is
+seven rows against a <=15-word quote cap, so nothing could entail the concatenation and every card
+failed structurally; entailment now runs per claim-bearing ROW via `Block.entailment_units`, which
+took spec-01 from 2/7 to 4/7 — the two blocks that flipped are exactly the two cards.
 
-It also scored card blocks against an EMPTY string — `text or caption`, when a card's content is
-its typed rows. That is the same defect the critic seam had, made independently in a second
-module, so the canonical answer now lives on the schema as `Block.readable_text` and both callers
-use it.
+Final calibration (sonnet, `--entailment-votes 3`, per-unit; 3 split ballots in 32 pairs, ~9%):
 
-What remains is genuine: the judge is unstable (haiku split 7 of 38 ballots under majority-of-3;
-sonnet 1 of 11 — calibrate on sonnet with `--entailment-votes 3`), and **the unit is wrong for
-composite blocks**. A card is seven typed rows and R-GROUND-01 caps a quote at 15 words, so one
-quote cannot entail all seven — `skip_when` is the author's operational judgement, not something a
-source asserts. spec-01's cards fail structurally, not because their citations are bad. Entailment
-wants to run per-row. That is the next real piece of work here.
+| spec | verified_recall | verified_precision | inferred_share |
+|---|---|---|---|
+| spec-01 | 0.57 (4/7) | 0.50 | 0.00 |
+| spec-02 | 0.00 (0/2) | 0.00 | 0.85 |
+
+The floor is deliberately NOT fitted to those numbers — `min-0.05` would put the bar under the
+worst artifact, a gate that cannot fail. It is set from principle: a block declaring itself
+`verified` that its own citation does not entail is a defect. **Both artifacts fail it, and that is
+the correct result.** spec-01 over-cites on `matrix-chunking`, `body-chunk-size` and
+`toulmin-reranking` — a general quote attached to a specific claim it does not support. spec-02
+labels `body-leader-breaks` and `fig-anchor` `verified` when neither entails; they belong with the
+other eleven as `inferred`. Fix the artifacts, do not lower the bar.
+
+`--strict` now gates on the verified pair. The legacy `citation_recall`/`citation_precision` stay
+for the pre-partition report shape and gate nothing, because mixing declared synthesis with
+claimed grounding makes no value of them meaningful.
 
 **What the ratchet now pins:** `hard_lint: 32`, `model_verified: 3`, `soft_critic: 35`, `human: 9` — **79/79, every rule in the registry exercised.**
 

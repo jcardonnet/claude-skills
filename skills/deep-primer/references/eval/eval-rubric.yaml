@@ -7,31 +7,36 @@ model_verified:    # scripts/verify/* (citation recall/precision; chunk self-con
   weight: 1.0
   source: verify-report.json
   thresholds:
-    # STILL TODO, and the reason is now specific rather than "not enough data".
+    # SETTLED, on the `verified_*` pair — see the note below for why not the overall numbers.
     #
-    # Measured with verify/claude_entailment.py (sonnet, majority-of-3, ~$4/run):
-    #     spec-01  verified_recall 0.29 (2/7)   verified_precision 0.25   inferred_share 0.00
-    #     spec-02  verified_recall 0.50 (1/2)   inferred_share 0.85
-    # propose_thresholds() offers min-0.05 on the overall numbers. DO NOT take it: flooring at the
-    # worst artifact makes a bar that cannot fail — the ratchet running backwards.
+    # Getting here took fixing the metric three times, because every early reading was measuring
+    # the instrument rather than the primer:
+    #   - `inferred` blocks sat in the same denominator as `verified` ones, so honest labelling
+    #     scored identically to fabrication;
+    #   - cards were compared against "" (their content is typed rows, not `text`);
+    #   - a card is seven rows against a <=15-word quote cap, so nothing could entail the
+    #     concatenation and every card failed structurally. Entailment now runs per claim-bearing
+    #     ROW, which took spec-01 from 2/7 to 4/7 — the two blocks that flipped are exactly the
+    #     two cards.
     #
-    # Three things have to land before a number here means anything:
+    # Final calibration (sonnet, --entailment-votes 3, per-unit; 3 split ballots in 32 pairs, ~9%):
+    #     spec-01  verified_recall 0.57 (4/7)   verified_precision 0.50   inferred_share 0.00
+    #     spec-02  verified_recall 0.00 (0/2)   verified_precision 0.00   inferred_share 0.85
     #
-    #  1. JUDGE STABILITY. Two runs over identical artifacts gave spec-01 4/7 then 3/7. Under
-    #     majority-of-3 haiku still split 7 of 38 ballots (~18%); sonnet split 1 of 11 (~9%). A
-    #     floor fitted to a judge that moves like that measures the judge. Calibrate on sonnet with
-    #     --entailment-votes 3, never on a single haiku pass.
-    #  2. THE UNIT IS WRONG FOR COMPOSITE BLOCKS. A card is seven typed rows — idea, home_anchor,
-    #     reach_for_when, skip_when, ... — and R-GROUND-01 caps a quote at 15 words. One quote
-    #     cannot entail all seven, and `skip_when` is the author's operational judgement rather than
-    #     something a source asserts. spec-01's cards fail for that structural reason, not because
-    #     their citations are bad. Entailment wants to run per-ROW (or per-assertion), not per-block.
-    #  3. MORE THAN TWO SPECS, and at least one from a real generation rather than a fixture.
+    # The floor below is deliberately NOT fitted to those observations. min-0.05 would put the bar
+    # under the worst artifact — a gate that cannot fail. It is set from PRINCIPLE: a block that
+    # declares itself `verified` and is not entailed by its own citation is a defect, so the bar is
+    # near-total. Both current artifacts fail it, and that is the correct result, not a mis-set bar:
+    #   - spec-01 over-cites on matrix-chunking, body-chunk-size and toulmin-reranking — a general
+    #     quote attached to a specific claim it does not support;
+    #   - spec-02 labels body-leader-breaks and fig-anchor `verified` when neither entails; they
+    #     should be `inferred` like the other eleven.
+    # Fix the artifacts, do not lower the bar.
+    verified_recall: 0.95
+    verified_precision: 0.90
     #
-    # When those hold, gate `verified_recall` — not the overall number, which conflates declared
-    # synthesis with claimed grounding — and anchor to principle: a block asserting `verified` whose
-    # citation does not entail it is a defect, so the target is ~0.95. If real primers cannot reach
-    # that, the gap is the finding; do not lower the bar to meet them.
+    # The legacy pair stays for the pre-partition report shape and is NOT what --strict gates on.
+    # It mixes declared synthesis with claimed grounding, so no value of it means anything.
     citation_recall: 0.75      # TODO: tune against real runs (registry budgets)
     citation_precision: 0.90   # TODO
 human_overlay:     # spot-checked, calibrates the soft critics

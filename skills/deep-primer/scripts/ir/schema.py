@@ -188,6 +188,35 @@ class Block(BaseModel):
             return "\n".join(f"Q: {i.question}\nA: {i.answer}" for i in self.items)
         return self.text or self.caption or ""
 
+    # Rows that assert something about the WORLD, as opposed to authorial framing. A card's other
+    # rows are deliberately not here: `home_anchor` is a cross-domain mapping the author constructs
+    # for this reader, `whats_new_vs_renamed` is their synthesis, `reach_for_when` / `skip_when` are
+    # operational judgement (R-CARD-03 requires them precisely because no source states them), and
+    # `confidence` is an epistemic label. Asking a source quote to entail those is a category error.
+    _CLAIM_BEARING_ROWS = ("idea", "key_exemplar")
+
+    @property
+    def entailment_units(self) -> list[str]:
+        """The units a citation may be asked to support — the fix for composite blocks.
+
+        A card is seven typed rows and R-GROUND-01 caps a quote at 15 words, so no single quote can
+        entail the concatenation; every card in spec-01 failed for that structural reason rather
+        than because its citation was bad. Scoring against the claim-bearing rows separately asks
+        the question the citation can actually answer: does this quote support what the block
+        ASSERTS? A block is supported when a cited quote entails any one of these.
+
+        Simple blocks return their prose unchanged, so nothing about them changes.
+        """
+        if self.rows is not None:
+            dumped = self.rows.model_dump(exclude_none=True)
+            units = [str(dumped[k]).strip() for k in self._CLAIM_BEARING_ROWS
+                     if str(dumped.get(k) or "").strip()]
+            return units or [self.readable_text]
+        if self.items:
+            # a recall item's ANSWER is the assertion; the question is a prompt
+            return [i.answer.strip() for i in self.items if i.answer.strip()] or [self.readable_text]
+        return [self.readable_text] if self.readable_text else []
+
 
 class Subsection(BaseModel):
     """An h3 subsection. Carries exactly one sub-sum — a `summary` block — per R-SUMM-02 /

@@ -33,7 +33,8 @@ from ir.schema import DocumentIR, SourceLedger  # noqa: E402
 from verify._entailment import Entailment, resolve_backend  # noqa: E402
 
 DEFAULT_RUBRIC = Path(__file__).resolve().parents[2] / "references" / "eval" / "eval-rubric.yaml"
-_FALLBACK_THRESHOLDS = {"recall": 0.75, "precision": 0.90}
+_FALLBACK_THRESHOLDS = {"recall": 0.75, "precision": 0.90,
+                        "verified_recall": 0.95, "verified_precision": 0.90}
 
 
 def load_thresholds(rubric_path: str | Path = DEFAULT_RUBRIC) -> dict[str, float]:
@@ -43,6 +44,12 @@ def load_thresholds(rubric_path: str | Path = DEFAULT_RUBRIC) -> dict[str, float
         return {
             "recall": float(th.get("citation_recall", _FALLBACK_THRESHOLDS["recall"])),
             "precision": float(th.get("citation_precision", _FALLBACK_THRESHOLDS["precision"])),
+            # what --strict actually gates on; the legacy pair mixes declared synthesis with
+            # claimed grounding, so no value of it is meaningful
+            "verified_recall": float(th.get("verified_recall",
+                                            _FALLBACK_THRESHOLDS["verified_recall"])),
+            "verified_precision": float(th.get("verified_precision",
+                                               _FALLBACK_THRESHOLDS["verified_precision"])),
         }
     except (OSError, ValueError, TypeError):
         return dict(_FALLBACK_THRESHOLDS)
@@ -94,20 +101,25 @@ def evaluate(
     for b in ir.flatten_blocks():
         if not b.claim_ids:
             continue
-        # NOT `b.text or b.caption` — a card's content is its typed rows, so that form
-        # asked the entailment judge whether a quote supports "" and it correctly said no.
+        # Per-UNIT, not per-block. A card is seven typed rows against a <=15-word quote cap
+        # (R-GROUND-01), so nothing could entail the concatenation and every card failed
+        # structurally. `entailment_units` returns the rows that assert something about the world;
+        # a citation supports the block when it entails any one of them. Simple blocks yield their
+        # prose unchanged, so their scoring is untouched.
+        units = b.entailment_units
         statement = b.readable_text
         resolvable = [cid for cid in b.claim_ids if cid in cidx]
         block_supported = False
         for cid in resolvable:
             quote, sid = cidx[cid]
-            ok = backend.supports(quote, statement)
+            ok = any(backend.supports(quote, unit) for unit in units)
             cite_total += 1
             cite_support += int(ok)
             block_supported = block_supported or ok
             per_citation.append({
                 "block_id": b.block_id, "claim_id": cid, "source_id": sid,
                 "supports": ok, "quote": quote, "statement": statement,
+                "units": len(units),
             })
         if resolvable:  # a block with no resolvable claim is an R-GROUND-01 failure, not a recall sample
             factual += 1
