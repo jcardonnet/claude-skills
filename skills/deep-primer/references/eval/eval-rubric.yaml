@@ -34,9 +34,9 @@ human_overlay:     # spot-checked, calibrates the soft critics
 # Counts, not fractions: the registry grows. A fractional floor weakens itself every time a rule is
 # added, so the gate would quietly loosen exactly when the surface got larger.
 coverage_floor:
-  hard_lint: 31       # 31/32 — only R-CONV-01 left, and it needs a real drafting loop. Deliberately
-                      # NOT manufactured: run_convergence_loop with a stub judge would emit a valid
-                      # log from a judge that never looked, which is the stub-critic problem again.
+  hard_lint: 32       # 32/32. R-CONV-01 was the last one dark, and was NOT closed by handing
+                      # run_convergence_loop the scripted judge — that replays findings it was told
+                      # in advance. research/claude_structure_judge.py judges the real map instead.
   model_verified: 3   # 3/3 — R-PROJ-04 was dark until the gate caught it; keep it that way
   soft_critic: 35     # 35/35 — was 2/35 until the tier got a real judge; never let it slide back
   human: 9            # 9/9 — NOT a review pass. Every one of these turned out to assert

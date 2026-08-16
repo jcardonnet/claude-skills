@@ -23,6 +23,13 @@ artifact:
   discovery_log: tests/fixtures/spec02/discovery-log.yaml
   discovery_leads: tests/fixtures/spec02/discovery-leads.yaml
   briefs: tests/fixtures/spec02/briefs.yaml
+  # A REAL convergence run over the concept map above, judged by
+  # research/claude_structure_judge.py — not ScriptedStructureJudge, which was the only
+  # implementation in the tree and replays findings it was told in advance. The model was
+  # asked whether the map has a structural problem and said no, so the loop terminated
+  # `coherent` through the documented no-further-finding exit. R-CONV-01 checks that a
+  # valid terminal state was reached; now it checks a real one.
+  convergence_log: tests/fixtures/spec02/convergence-log.yaml
 expect:
   must_pass: [R-ARCH-03, R-CARD-03, R-ART-03, R-ART-04, R-EVID-03, R-PROJ-05]
   watch: [G1_home_equals_target, G2_reference_case_vs_worked_example, G6_user_structure_override]

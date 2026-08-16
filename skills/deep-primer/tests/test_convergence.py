@@ -267,3 +267,76 @@ def test_lint_requires_a_rendered_block_for_a_contested_regime():
     log = _log(terminal_regime="contested", terminal_decision="render-contested")
     empty_ir = DocumentIR(sections=[Section(block_id="s1", title="t")])
     assert any("no role=contested block" in p for p in conv_checks.terminal_state(log, empty_ir))
+
+
+# --- the real structure judge (the third model seam) -------------------------
+# ScriptedStructureJudge was the only implementation in the tree, and it replays findings it was
+# told in advance — so R-CONV-01 could only ever be exercised against a judge that knew the answer.
+# These pin the division of labour R-CONV-02 states verbatim: the model decides WHAT changes, this
+# code applies it. Letting a model emit a whole ConceptMap would hand it the deterministic half too,
+# and silently make Delta_struct a function of how verbose the model felt.
+
+def _judge(payload):
+    from research.claude_structure_judge import ClaudeStructureJudge
+
+    judge = ClaudeStructureJudge.__new__(ClaudeStructureJudge)
+    judge.params, judge.scans = {}, []
+    judge.cli = type("_Cli", (), {"result_json": staticmethod(lambda _i: payload),
+                                  "calls": 0, "spend_usd": 0.0})()
+    return judge
+
+
+def _map():
+    from ir.schema import Concept, ConceptMap
+
+    return ConceptMap(concepts=[
+        Concept(concept_id="c1", canonical_term="leader tracing", aliases=["callout association"],
+                claim_ids=["C1"], source_ids=["s1"]),
+        Concept(concept_id="c2", canonical_term="anchor seeding", claim_ids=["C2"], source_ids=["s2"]),
+    ])
+
+
+def test_a_merge_is_applied_deterministically_not_by_the_model():
+    """The model names `merge c1 c2`; the fold itself — union the evidence, keep the survivor's
+    identity, preserve ordering — is arithmetic, so Delta_struct depends on the map alone."""
+    judge = _judge({"structural": True, "kind": "merge", "concept_ids": ["c1", "c2"],
+                    "finding": "these are one concept"})
+    cmap = _map()
+    finding = judge.scan_for_structural(cmap, {})
+    assert finding and finding["kind"] == "merge"
+
+    merged = judge.implied_edits(finding, cmap)
+    assert [c.concept_id for c in merged.concepts] == ["c1"]
+    survivor = merged.concepts[0]
+    assert survivor.claim_ids == ["C1", "C2"]          # evidence unioned, never dropped
+    assert survivor.source_ids == ["s1", "s2"]
+    assert "anchor seeding" in survivor.aliases        # the folded term survives as an alias
+
+
+def test_an_unknown_concept_id_cannot_drive_an_edit():
+    """A hallucinated id must not restructure the map — it would silently delete real concepts."""
+    judge = _judge({"structural": True, "kind": "merge", "concept_ids": ["c1", "does-not-exist"],
+                    "finding": "x"})
+    assert judge.scan_for_structural(_map(), {}) is None
+
+
+def test_a_depth_finding_is_not_a_structural_one():
+    judge = _judge({"structural": False, "kind": "none", "concept_ids": [], "finding": ""})
+    assert judge.scan_for_structural(_map(), {}) is None
+
+
+def test_an_unreachable_judge_settles_rather_than_inventing_a_finding():
+    """An outage must not trigger a re-grounding cycle. 'No structural finding observed' is the
+    honest reading of silence; a fabricated finding costs a whole campaign."""
+    from research.claude_structure_judge import ClaudeStructureJudge
+    from utils.claude_cli import CliUnavailable
+
+    judge = ClaudeStructureJudge.__new__(ClaudeStructureJudge)
+    judge.params, judge.scans = {}, []
+
+    def _boom(_instruction):
+        raise CliUnavailable("simulated outage")
+
+    judge.cli = type("_Cli", (), {"result_json": staticmethod(_boom)})()
+    assert judge.scan_for_structural(_map(), {}) is None
+    assert "error" in judge.scans[0]

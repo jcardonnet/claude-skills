@@ -24,10 +24,10 @@ Expected on a clean checkout (measured at handoff):
 
 | Command | Expected |
 |---|---|
-| `make test` | `310 passed, 0 skipped` |
+| `make test` | `314 passed, 0 skipped` |
 | `make validate` | `OK — 1 skill(s) valid (lockstep in sync), 2 skipped` |
 | `make lint` | **not reproducible; not in CI** — see §4. Was `All checks passed!` only against the container's ruff |
-| `make eval` | 2/6 specs scored, enforcement coverage **78/79 (99%)**, thresholds **refused** (see §4) |
+| `make eval` | 2/6 specs scored, enforcement coverage **79/79 (100%)**, thresholds **refused** (see §4) |
 | `eval.py --strict` | exit **0** — the coverage ratchet holds (§8) |
 | `make bundle` | `bundled 1/1 skill(s)` |
 | strict lint (below) | `clean — fail=0 warn=0 pass=22 skip=0` |
@@ -404,7 +404,7 @@ two were about the primer:
 
 CI now installs spaCy + `en_core_web_md` (~50MB) so the native path is exercised. Deliberately not
 the `[nlp]` extra, which pulls fastcoref → torch for a coref feature that is off by default.
-**`make test` is now 310 passed, 0 skipped.**
+**`make test` is now 314 passed, 0 skipped.**
 
 **A real 3-wave campaign ran live, and the discovery checks had never been dispatched at all.**
 11 briefs against spec-02's topic, 124 source leads, snapshot frozen. Two things fell out:
@@ -463,7 +463,9 @@ is genuinely blocked rather than deferred. Specs 02–06 still have no artifacts
 authoring five complete compliant primers, which is the generation pipeline's job, not a fixture
 edit — the eval still has exactly one data point and that remains its biggest weakness.
 
-**What the ratchet now pins:** `hard_lint: 31`, `model_verified: 3`, `soft_critic: 35`, `human: 9` — **78/79**.
+**What the ratchet now pins:** `hard_lint: 32`, `model_verified: 3`, `soft_critic: 35`, `human: 9` — **79/79, every rule in the registry exercised.**
+
+`R-CONV-01` was the last one dark, and it was NOT closed by handing `run_convergence_loop` the `ScriptedStructureJudge` — that replays findings it was told in advance, which is the stub-critic problem wearing a third hat. `research/claude_structure_judge.py` is a real `StructureJudge`, and it splits the work exactly the way R-CONV-02 states: the model decides whether a finding is structural and WHICH edit it implies (named as an operation over concept ids), while merge/split/rename are applied here deterministically. Letting a model emit a whole ConceptMap would hand it the deterministic half too and make `Delta_struct` a function of how verbose the model felt. Run against spec-02's real concept map it judged the two concepts structurally sound, so the loop terminated `coherent` through the documented no-further-finding exit — one genuine judgement, $0.06.
 
 The `human` tier went 0/9 to 9/9 without a review pass, because it was never a review tier. Read together, not one of the nine is about a generated primer: `R-REJECT-01..05` are prohibitions on the pipeline's own design (no E-Prime, no surprisal target, no MECE gate, no RST auto-restructure, critics never score holistically) and `R-PROJ-01`/`R-CONV-02`/`R-DISC-01`/`R-DISC-04` are architecture invariants about what is deterministic versus model-judged. All nine are assertions about THIS CODEBASE, so `checks/conformance.py` checks them against the source tree — AST purity analysis, a holistic-question sweep over the generated prompts, renderer signatures, and the firewall asserted by running it. `R-REJECT-05` makes the point: its directive calls itself "the primary guard" and it was already enforced by `_validate_verdict`; the registry just never said so.
 
