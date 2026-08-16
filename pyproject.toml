@@ -3,12 +3,18 @@ name = "skills-monorepo"
 version = "0.1.0"
 description = "Personal Claude skills monorepo (deep-primer + others). Dev workspace; skills are bundled self-contained for deployment."
 requires-python = ">=3.11"
-dependencies = ["pyyaml>=6", "pydantic>=2", "beautifulsoup4>=4.12", "lxml>=5", "jinja2>=3"]
+dependencies = [
+    "pyyaml>=6.0.3",
+    "pydantic>=2.13.4",
+    "beautifulsoup4>=4.15.0",
+    "lxml>=6.1.1",
+    "jinja2>=3.1.6",
+]
 
 [project.optional-dependencies]
-nlp = ["spacy>=3.7", "fastcoref>=2.1"]     # given->new coref (R-PROSE-01); probe availability, fallback if absent
+nlp = ["spacy>=3.8.15", "fastcoref>=2.1.6"]  # given->new coref (R-PROSE-01); probe availability, fallback if absent
 verify = []                                  # NLI/MiniCheck for citation entailment (R-GROUND-02/03) — see Prompt 3 for options
-dev = ["pytest>=8", "ruff>=0.5"]
+dev = ["pytest>=9.1.1", "ruff>=0.16.3"]
 
 # This is a dev *workspace*, not an importable library: skill scripts are run per-skill
 # (registry check refs like `checks/structure_coverage.py::...`), and shared/ is vendored
@@ -20,3 +26,104 @@ py-modules = []
 
 # Skill scripts import from a per-skill `scripts/` package (paths match registry check refs:
 # checks/*, verify/*, render/*, ir/*). shared/ is DEV-ONLY and is vendored into each skill at bundle time.
+[tool.ruff]
+# Match the frozen source repo's line length so lifted modules stay byte-clean (modulo the
+# sanctioned import rewrites) and genuine semantic drift isn't buried in reformatting noise.
+line-length = 100
+target-version = "py313"
+# Ruff 0.16 formats Python code blocks inside Markdown BY DEFAULT (a documented 0.16.0 breaking
+# change). Every file it wanted to rewrite here was a dated plan, spec, or record under `docs/` --
+# 26 of them, ~9.5k lines, and zero source files. Those documents are a historical record of what
+# was decided when, and their illustrative snippets are deliberately terse; reformatting them
+# creates reviewer noise and edits history to no benefit. This is the exclusion ruff's own
+# formatter documentation prescribes for exactly that case. Prose in `docs/` is checked by
+# `just lint-prose` instead, and Python UNDER `docs/` (the writing-guide tooling) is still
+# formatted and linted normally because this pattern only matches `.md`.
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+# Fold the high-signal pylint / bandit / bugbear-class checks into the existing ruff gate.
+# Ruff was previously running defaults only (E/F); these families add real-bug (B), security
+# (S), simplify (SIM), comprehension (C4), modernisation (UP), ruff-native (RUF), and pylint
+# convention/error/warning (PLC/PLE/PLW) coverage without adding a second tool.
+#   - The pylint *refactor / complexity* metrics (PLR: magic-value, too-many-args/branches/…)
+#     are deliberately kept OUT of the persistent gate -- they are noisy on a mature codebase
+#     and are advisory, not pass/fail. Run them on demand:  uv run ruff check --select PLR src
+#   - isort (I) is likewise omitted so lifted modules stay byte-clean against the frozen source
+#     (see the line-length note above); import *architecture* is enforced by import-linter, not
+#     by import sorting.
+select = [
+    "E", "W", "F", "UP", "B", "BLE", "C4", "SIM", "S", "RUF", "PLC", "PLE", "PLW",
+    # Preventive rule families: enabled to fail immediately when these bug classes appear.
+    # A=builtin shadowing; ASYNC=blocking-in-async; DTZ=naive datetime; FLY=str-join;
+    # G/LOG=logging misuse; ICN=import conventions; ISC=implicit str concat (missing-comma bug);
+    # NPY=numpy pitfalls; PGH=blanket noqa/type-ignore (enforces the coded-suppression
+    # discipline); PIE=misc; RSE=raise statements; SLOT=__slots__; T10=leftover debugger;
+    # YTT=sys.version misuse.
+    "A", "ASYNC", "DTZ", "FLY", "G", "ICN", "ISC", "LOG", "NPY", "PGH", "PIE", "RSE",
+    "SLOT", "T10", "YTT",
+    # Small-residue families fixed/labeled at adoption: FURB (modernisation), PERF
+    # (comprehension/extend rewrites), RET (return-flow), SLF (private access; tests exempt,
+    # the one sanctioned src caller carries a noqa).
+    "FURB", "PERF", "RET", "SLF",
+    # C901: cyclomatic complexity, gate at 10. Pre-existing hotspots carry per-function
+    # noqas (see `just advisory` for the live report); NEW code is held to the threshold.
+    "C901",
+    # TRY (minus TRY003, below): exception-handling smells. Remaining intentional cases
+    # carry contract-specific noqa explanations at their call sites.
+    "TRY",
+    # Preview cherry-picks (explicit-preview-rules below keeps everything else stable):
+    # PLR1702 deeply nested, RUF029 async-without-await,
+    # RUF031 tuple-in-subscript parens, RUF052 misleading dummy names.
+    # ISC004 implicit-concat-in-collection (the missing-comma bug class) is listed alongside them
+    # but is NO LONGER a preview rule -- ruff 0.16.0 stabilized it. It stays named here because
+    # this select list is explicit rather than default-derived, so dropping the name would disable
+    # the rule. Behavior did not change at stabilization.
+    "PLR1702", "RUF029", "RUF031", "RUF052", "ISC004",
+    # Considered and deliberately NOT enabled:
+    #   ERA001: conflicts with prose design comments containing code-like fragments.
+    #   TRY003/EM101/EM102: would impose a repository-wide exception-message style change;
+    #     the enabled TRY rules retain behavior-affecting exception checks.
+    #   FBT, PT018, D, PTH, ANN, N: churn and opinion outweigh signal here.
+]
+# Preview mode is on ONLY to admit the explicitly-selected preview rules above;
+# explicit-preview-rules pins every non-listed rule (and rule behavior) to stable.
+preview = true
+explicit-preview-rules = true
+ignore = [
+    "E501",     # line width is the formatter's job; long strings/URLs/tables must not fail the gate
+    "TRY003",   # message-in-raise is house style here; the rest of TRY stays active
+    "S101",     # `assert` is used for internal invariants in src and as the assertion mechanism in tests
+    "S324",     # every sha1 here is non-crypto content-addressing (short deterministic IDs), never security
+    "S603",     # subprocess-without-shell fires on the *safe* list-form call; not actionable
+    "S607",     # partial-path exec: `uv` / `parts-extractor` are invoked by name on purpose
+    "PLC0415",  # import-outside-top-level: deliberate lazy imports of heavy/optional deps (cv2, docling, torch)
+    "PLW2901",  # redefined-loop-name: the "normalise the loop variable in place" idiom is intentional
+    "RUF001", "RUF002", "RUF003",  # ambiguous-unicode: the → × − glyphs are intentional domain notation
+    "RUF005",   # collection-literal concatenation: stylistic, low signal
+    "RUF046",   # unnecessary int() cast: defensive casts are intentional and the offered fix is unsafe
+    "C408",     # dict(a=1, …) kwarg form is a deliberate readability choice here (see the basedpyright note)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "S105", "S106", "S107",  # "token" is domain vocabulary (a text token), never a credential
+    "S108",     # hardcoded /tmp paths are ephemeral test fixtures
+    "S311",     # non-crypto random is fine for generating test data
+    "PLW1510",  # test subprocess calls assert on the result explicitly; `check=` is not required
+    "RUF059",   # intentionally-unused tuple unpacks in tests
+    "B017",     # a few negative tests deliberately assert `pytest.raises(Exception)`
+    "B905",     # zip over controlled fixture data; strictness is asserted by the test body
+    "RUF043",   # regex metacharacters in `pytest.raises(match=…)` patterns are intentional here
+    "SLF001",   # tests exercise private helpers directly by design
+]
+
+[tool.ruff.lint.mccabe]
+# Complexity gate for NEW code; pre-existing hotspots carry per-function noqas with
+# rationale. Ratchet: prefer refactoring a noqa'd function over raising this number.
+max-complexity = 10
+
+[tool.ruff.lint.flake8-bugbear]
+# Typer/Click build their option & argument markers by calling a helper in the parameter
+# default -- the standard idiom, not a mutable-default bug (mirrors the Lab's FastAPI whitelist).
+extend-immutable-calls = ["typer.Option", "typer.Argument"]
