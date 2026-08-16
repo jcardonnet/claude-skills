@@ -39,4 +39,8 @@ coverage_floor:
                       # log from a judge that never looked, which is the stub-critic problem again.
   model_verified: 3   # 3/3 — R-PROJ-04 was dark until the gate caught it; keep it that way
   soft_critic: 35     # 35/35 — was 2/35 until the tier got a real judge; never let it slide back
-  human: 0            # 9 maintainer-judgment rules; a real number requires a review pass to exist
+  human: 9            # 9/9 — NOT a review pass. Every one of these turned out to assert
+                      # something about the CODEBASE (four prohibitions, five architecture
+                      # invariants), so checks/conformance.py checks them against the source
+                      # tree. Each check is proved falsifiable by a negative test; 9/9 on a
+                      # clean tree is otherwise indistinguishable from nine tautologies.

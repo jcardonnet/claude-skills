@@ -149,6 +149,16 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
                                                  if f["status"] == "fail"]}
             out["rules_exercised"] += [f["rule_id"] for f in snap["findings"]]
 
+    # Repo conformance: the nine rules the registry files under `human`. They are not about a
+    # generated primer at all — every one asserts something about THIS CODEBASE — so they run once
+    # per spec regardless of which artifacts exist. See checks/conformance.py.
+    from checks.conformance import run_conformance_pass
+    conf = run_conformance_pass()
+    out["conformance_pass"] = {"counts": conf["counts"],
+                               "failures": [f["detail"] for f in conf["findings"]
+                                            if f["status"] == "fail"]}
+    out["rules_exercised"] += [f["rule_id"] for f in conf["findings"]]
+
     if paths.get("ir"):
         from render.check_alignment import check_alignment
         from render.render_html import render_html
