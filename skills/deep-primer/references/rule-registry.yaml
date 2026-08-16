@@ -931,12 +931,12 @@ rules:
 
   - id: R-DISC-02
     title: "Framing diversity per wave"
-    directive: "Each discovery wave runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), with >=1 deliberately orthogonal framing (contrarian / adjacent-field) per wave; inter-run novelty is measured and redundant archetypes pruned."
+    directive: "The BREADTH wave (A) runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), including >=1 deliberately orthogonal framing (contrarian / adjacent-field). Later waves are targeted follow-ups and carry no floor, but every wave's briefs must occupy DISTINCT cells; inter-run novelty is measured and redundant archetypes pruned."
     priority: MUST
     enforcement: hard_lint
-    check: {type: script, ref: "checks/discovery.py::framing_diversity", input: discovery-log, detail: "each wave's brief manifest covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal"}
+    check: {type: script, ref: "checks/discovery.py::framing_diversity", input: discovery-log, detail: "wave A covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal; every wave's briefs occupy distinct cells"}
     phase: [1]
-    counters: "Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost."
+    counters: "Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost. Scoped to wave A (G10): forcing the floor onto a narrow follow-up wave would manufacture exactly that padding."
     evidence_grade: convergent_craft
     evidence_ref: "design (diversity is the lever; blind-spot decorrelation)"
 

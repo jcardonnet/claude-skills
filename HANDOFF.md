@@ -24,10 +24,10 @@ Expected on a clean checkout (measured at handoff):
 
 | Command | Expected |
 |---|---|
-| `make test` | `272 passed, 6 skipped` — all 6 skips are "spaCy model unavailable" |
+| `make test` | `297 passed, 0 skipped` |
 | `make validate` | `OK — 1 skill(s) valid (lockstep in sync), 2 skipped` |
 | `make lint` | **not reproducible; not in CI** — see §4. Was `All checks passed!` only against the container's ruff |
-| `make eval` | 1/6 specs scored, enforcement coverage **65/79 (82%)**, thresholds **refused** (see §4) |
+| `make eval` | 2/6 specs scored, enforcement coverage **69/79 (87%)**, thresholds **refused** (see §4) |
 | `eval.py --strict` | exit **0** — the coverage ratchet holds (§8) |
 | `make bundle` | `bundled 1/1 skill(s)` |
 | strict lint (below) | `clean — fail=0 warn=0 pass=22 skip=0` |
@@ -404,7 +404,7 @@ two were about the primer:
 
 CI now installs spaCy + `en_core_web_md` (~50MB) so the native path is exercised. Deliberately not
 the `[nlp]` extra, which pulls fastcoref → torch for a coref feature that is off by default.
-**`make test` is now 286 passed, 0 skipped.**
+**`make test` is now 297 passed, 0 skipped.**
 
 **A real 3-wave campaign ran live, and the discovery checks had never been dispatched at all.**
 11 briefs against spec-02's topic, 124 source leads, snapshot frozen. Two things fell out:
@@ -463,6 +463,8 @@ is genuinely blocked rather than deferred. Specs 02–06 still have no artifacts
 authoring five complete compliant primers, which is the generation pipeline's job, not a fixture
 edit — the eval still has exactly one data point and that remains its biggest weakness.
 
-**What the ratchet now pins:** `hard_lint: 27`, `model_verified: 3`, `soft_critic: 35`, `human: 0`.
+**What the ratchet now pins:** `hard_lint: 31`, `model_verified: 3`, `soft_critic: 35`, `human: 0` — 69/79.
+
+G10 is resolved (R-DISC-02 scoped to the breadth wave), which unblocked wiring the campaign artifacts into eval: the discovery passes had existed since Stage B but no spec had ever handed them an artifact, so R-DISC-02/03/05/06 sat permanently in the "needs a campaign artifact" bucket. The only deterministic rule still dark is **R-CONV-01**, and deliberately so — `run_convergence_loop` would emit a valid-looking log driven by a stub judge that never looked at anything, which is the stub-critic problem wearing a different hat. It needs a real drafting loop. The other nine are the `human` tier, which needs a person, not a script.
 The five dark `hard_lint` rules are the DISC/CONV pair that needs Stage G artifacts; the nine
 `human` rules need a person. Those two numbers are the honest remaining gap — 65/79.

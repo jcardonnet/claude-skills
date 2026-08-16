@@ -408,29 +408,37 @@ def test_backend_returns_an_empty_wave_rather_than_inventing_one():
     assert "No report" in report
 
 
-def test_wave_a_meets_the_framing_floor_and_b_c_are_the_open_gap():
-    """Wave A satisfies R-DISC-02 in code. Waves B and C do NOT — 3 archetypes each (2 for B once
-    B-seed skips without a seed) against a floor of 5 with >=1 orthogonal PER WAVE.
+def test_the_framing_floor_governs_the_breadth_wave_and_later_waves_stay_distinct():
+    """G10, resolved. R-DISC-02 used to demand the floor of EVERY wave, which no campaign could
+    satisfy: WAVE_ARCHETYPES gives B three archetypes (two once B-seed skips) and C three.
 
-    This is pinned rather than fixed because it is a contradiction between two authored contracts:
-    rule-registry.yaml says "each wave", while references/discovery-brief-templates.md — which
-    BRIEF_ARCHETYPES is pinned to — makes B and C deliberately narrow follow-ups, and MIN_FRAMINGS'
-    own comment reads "Wave A breadth". Resolving it is a design call. The test exists so the gap
-    cannot quietly close or quietly widen; update it deliberately when GAPS.md is settled.
+    Scoped to the breadth wave, because three artifacts said so — MIN_FRAMINGS' own comment ("Wave A
+    breadth"), discovery-brief-templates.md (B and C are deliberately narrow, and that document is
+    pinned by a test), and the rule's own `counters`: "cosmetically-different briefs pay Nx tokens
+    for 1x recall" is an argument about the broad sweep. Forcing five cells onto a targeted
+    follow-up would manufacture precisely that padding.
+
+    What every wave still owes is DISTINCTNESS — duplicate cells are cosmetic in any wave.
     """
     from research import discovery as disc
     from research.planner import WAVE_ARCHETYPES, StubJudge, wave_briefs
 
-    orthogonal = {"contrarian-seed", "adjacent-field"}
-    cells = {w: disc.framing_diversity(
-        wave_briefs(w, residual=None, params={"target_domain": "T"}, judge=StubJudge()))
-        for w in WAVE_ARCHETYPES}
+    params = {"target_domain": "T"}
+    briefs = {w: wave_briefs(w, residual=None, params=params, judge=StubJudge())
+              for w in WAVE_ARCHETYPES}
 
-    assert cells["A"] >= disc.MIN_FRAMINGS
-    assert orthogonal & {b.framing for b in
-                         wave_briefs("A", None, {"target_domain": "T"}, StubJudge())}
-    assert cells["B"] < disc.MIN_FRAMINGS and cells["C"] < disc.MIN_FRAMINGS, (
-        "B/C now meet the floor — the GAPS.md contradiction was resolved; update this test")
+    # the breadth wave carries the floor and the orthogonal framing
+    assert disc.BREADTH_WAVE == "A"
+    assert disc.framing_diversity(briefs["A"]) >= disc.MIN_FRAMINGS
+    assert disc.orthogonal_count(briefs["A"]) >= 1
+
+    # later waves are narrower BY DESIGN, but never duplicate a cell
+    for wave in ("B", "C"):
+        assert disc.framing_diversity(briefs[wave]) < disc.MIN_FRAMINGS, (
+            f"wave {wave} now meets the breadth floor — if that was intentional, the templates "
+            f"document and this test both need updating")
+        assert disc.framing_diversity(briefs[wave]) == len(briefs[wave]), (
+            f"wave {wave} has duplicate framing cells")
 
 
 def test_campaign_log_records_the_cap_it_actually_ran_under():

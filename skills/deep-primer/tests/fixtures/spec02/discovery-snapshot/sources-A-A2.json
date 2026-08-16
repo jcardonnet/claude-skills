@@ -1,0 +1,508 @@
+[
+  {
+    "id": "A-A2-s1",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/08839514.2024.2406712",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Few-shot symbol detection in engineering drawings; notes annotation scarcity for connecting elements",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A2-s2",
+    "url": "https://arxiv.org/pdf/2305.00264",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Comprehensive review of line segment detection methods; taxonomies of classical and deep approaches with failure modes",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s3",
+    "url": "https://arxiv.org/pdf/2002.12428",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "TGGLines: line detection for low-quality binary images; targets scanned document degradation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s4",
+    "url": "https://arxiv.org/pdf/2302.01881",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "IKEA-Manual dataset: exploded-view part segmentation benchmark; 102 objects with manual annotation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s5",
+    "url": "https://arxiv.org/pdf/2411.18011",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Manual-PA: 3D part assembly from instruction diagrams; reveals annotator disagreement on part boundaries",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s6",
+    "url": "https://arxiv.org/pdf/2411.11409",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "IKEA Manuals at Work: 34,441 annotated frames; part segmentation evaluation in video-to-manual alignment",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s7",
+    "url": "https://arxiv.org/pdf/2312.03015",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "PartSLIP++: 3D part segmentation; acknowledges part instance size and proximity challenges",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s8",
+    "url": "https://arxiv.org/html/2509.06784v3",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "P3-SAM: native 3D part segmentation; extends SAM to 3D; shows 2D projection loss of boundary information",
+    "fetched_title": "P3-SAM: Native 3D Part Segmentation",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s9",
+    "url": "https://arxiv.org/pdf/2401.15266",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "SAM-based instance segmentation for damage detection; documents SAM failure modes on tree-like and low-contrast objects",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s10",
+    "url": "https://arxiv.org/pdf/2606.15886",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Text region detection in historical astronomical diagrams: 948 diagrams; 30% inter-annotator disagreement on reading dir",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s11",
+    "url": "https://dl.acm.org/doi/10.1145/3606692",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Document image quality assessment survey; catalogues degradation types (warping, blur, show-through) in parts catalogues",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A2-s12",
+    "url": "https://arxiv.org/pdf/2305.14218",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "DUBLIN: multimodal document understanding; shows Donut fails on parts catalogues due to non-rigid layout structures",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s13",
+    "url": "https://arxiv.org/pdf/2502.04389",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "VLM challenges in diagram understanding; 18% error rate on label-to-part correspondence even with XML structure",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s14",
+    "url": "https://arxiv.org/pdf/2604.02486",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "VLMs ignore spatial detail; systematic bias toward semantic anchors breaks parts catalogue understanding",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s15",
+    "url": "https://arxiv.org/pdf/2404.12734",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Mixed text recognition: handwritten+printed catalogues; 10\u201315% accuracy gap between print-style and cursive",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s16",
+    "url": "https://www.mdpi.com/2224-2708/11/4/63",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Semantic segmentation for mixed-text OCR; pipeline degrades performance on degraded catalogue images",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s17",
+    "url": "https://arxiv.org/abs/2409.19672",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Layout reading order as ordering relations; establishes reading order as open problem for scattered diagram regions",
+    "fetched_title": "[2409.19672] Modeling Layout Reading Order as Ordering Relations for Visually-rich Document Understanding",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s18",
+    "url": "https://arxiv.org/pdf/2601.13299",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Enginuity: 50K engineering diagrams; reveals 25+ point drop in relationship extraction vs. symbol detection",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s19",
+    "url": "https://arxiv.org/html/2411.13929v2",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "P&ID digitization from engineering diagrams; symbol detection to graphs; industrial-scale case study",
+    "fetched_title": "From Engineering Diagrams to Graphs: Digitizing P&IDs with Transformers",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s20",
+    "url": "https://academic.oup.com/jcde/article/9/4/1298/6611631",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "End-to-end P&ID digitization at industrial scale; establishes baseline for symbol and relationship recognition",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s21",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0957417421007661",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Deep learning for high-density P&ID recognition; symbol spotting vs. relationship extraction failure modes",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s22",
+    "url": "https://arxiv.org/html/2503.22346v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "ArchCAD-400K: 400K architectural CAD diagrams; panoptic symbol spotting benchmark and baseline methods",
+    "fetched_title": "ArchCAD-400K: An Open Large-Scale Architectural CAD Dataset and New Baseline for Panoptic Symbol Spotting",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s23",
+    "url": "https://arxiv.org/pdf/2412.04243",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Quantifying segmentation foundation model limits: tree-like and low-contrast object challenges",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s24",
+    "url": "https://arxiv.org/pdf/2607.02853",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Prior bias in VLMs on UML diagram interpretation; bias toward semantic understanding over spatial reasoning",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s25",
+    "url": "https://arxiv.org/pdf/2602.10138",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Multimodal fusion for chart understanding; survey of MLLM approaches to diagram tasks",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s26",
+    "url": "https://arxiv.org/html/2603.06865",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Inter-annotator agreement metrics for NLP; directly applicable to diagram annotation consensus measurement",
+    "fetched_title": "Counting on Consensus: Selecting the Right Inter-annotator Agreement Metric for NLP Annotation and Evaluation",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s27",
+    "url": "https://arxiv.org/html/2603.25761v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "OCR evaluation metrics survey; invisibility of historical document challenges in parts catalogues",
+    "fetched_title": "A Survey of OCR Evaluation Methods and Metrics and the Invisibility of Historical Documents",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s28",
+    "url": "https://arxiv.org/abs/2505.01530",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Automated parsing of engineering drawings for structured information; extraction vs. relationship problems",
+    "fetched_title": "[2505.01530] Automated Parsing of Engineering Drawings for Structured Information Extraction Using a Fine-tuned Document Understanding Transformer",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s29",
+    "url": "https://arxiv.org/html/2501.00321v2",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "OCRBench v2: benchmark for visual text localization; large multimodal model evaluation on diagram text",
+    "fetched_title": "OCRBench v2: An Improved Benchmark for Evaluating Large Multimodal Models on Visual Text Localization and Reasoning",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s30",
+    "url": "https://aps.autodesk.com/automation-apis",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Autodesk Platform Services: CAD annotation API; generation-only, no reverse extraction capability",
+    "fetched_title": "Automation APIs | Autodesk Platform Services",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s31",
+    "url": "https://arxiv.org/html/2505.07864v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Arrow-guided VLM: flowchart understanding via arrow encoding; direction and relationship inference",
+    "fetched_title": "Arrow-Guided VLM: Enhancing Flowchart Understanding via Arrow Direction Encoding",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A2-s32",
+    "url": "https://ai-2-ase.github.io/papers/4__AAAI_2025_WS__Text_Only_Training_VLMs.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Fine-grained visual understanding in VLMs via text-only training; improves spatial reasoning",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s33",
+    "url": "https://arxiv.org/html/2604.14927v2",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "STEP-Parts: geometric partitioning of CAD boundary representations; large-scale CAD processing",
+    "fetched_title": "STEP-Parts: Geometric Partitioning of Boundary Representations for Large-Scale CAD Processing",
+    "retrieved_at": "2026-08-16"
+  }
+]

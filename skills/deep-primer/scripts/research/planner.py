@@ -82,15 +82,11 @@ BRIEF_ARCHETYPES: dict[str, tuple] = {
                               "Sources a primer on {topic} cites: {sources}. What authoritative sources are NOT in this list?"),
 }
 
-# NOTE (open gap, see GAPS.md): waves B and C emit 3 archetypes each — 2 for B once B-seed skips
-# without a seed — while R-DISC-02 requires ">= MIN_FRAMINGS (5) distinct cells ... with >=1
-# orthogonal framing PER WAVE". Wiring `checks/discovery.py::framing_diversity` into lint.py made
-# that visible for the first time: it had no dispatch entry, so the rule recorded `skip`, and skip
-# does not block. `wave_briefs` still claims the invariant is "guaranteed HERE, in code"; it is not.
-# Deliberately NOT resolved here: the archetype set is pinned to references/discovery-brief-
-# templates.md by test_brief_archetypes_match_the_template_document, and that document makes B and C
-# narrow targeted follow-ups on purpose. Either the rule means Wave A (as MIN_FRAMINGS' own comment
-# says, "Wave A breadth") or B and C need widening — a design call, not a lint fix.
+# R-DISC-02's framing floor governs the BREADTH wave only (G10, resolved). B and C are deliberately
+# narrow follow-ups — pinned to references/discovery-brief-templates.md by
+# test_brief_archetypes_match_the_template_document — and forcing five cells onto a targeted wave
+# would manufacture the very padding the rule exists to prevent. Every wave still owes DISTINCT
+# cells, which `wave_briefs` does guarantee here in code.
 WAVE_ARCHETYPES = {
     "A": ["A1", "A2", "A3", "A4", "A5", "A6"],
     "B": ["B-dive", "B-conflict", "B-seed"],
@@ -186,9 +182,10 @@ def wave_briefs(wave: str, residual: list | None = None, params: dict | None = N
                 judge: Judge | None = None) -> list[ResearchBrief]:
     """Emit a wave's brief ensemble from the archetypes.
 
-    The R-DISC-02 invariant (>= MIN_FRAMINGS distinct cells, >=1 orthogonal) is guaranteed HERE,
-    in code, because it is a MUST lint — a model asked to "be diverse" reliably produces
-    cosmetically-different briefs that share a blind spot. The model's contribution is wording.
+    The R-DISC-02 invariant is guaranteed HERE, in code, because it is a MUST lint — a model asked
+    to "be diverse" reliably produces cosmetically-different briefs that share a blind spot. The
+    model's contribution is wording. Scoped per G10: the BREADTH wave gets >= MIN_FRAMINGS distinct
+    cells including >=1 orthogonal; every wave gets DISTINCT cells.
     """
     params = params or {}
     topic = params.get("target_domain", "{topic}")

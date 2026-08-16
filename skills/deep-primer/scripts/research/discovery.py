@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from ir.schema import Lead, ResearchBrief  # noqa: E402
 
 # --- config: starting defaults; tune against discovery-log over real runs ---
+BREADTH_WAVE = "A"            # the sweep R-DISC-02's framing floor governs (G10)
 MIN_FRAMINGS = 5              # Wave A breadth (distinct diversity-matrix cells)
 SATURATION_THRESHOLD = 0.15   # stop a campaign when novel_fraction < this
 MAX_WAVES = 4                 # hard cap on waves

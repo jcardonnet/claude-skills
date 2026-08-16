@@ -640,9 +640,9 @@ Discovery output enters the pipeline only as leads: an accepted topic-lead becom
 
 #### R-DISC-02 — Framing diversity per wave
 `MUST` · `hard_lint` · *convergent_craft*  
-Each discovery wave runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), with >=1 deliberately orthogonal framing (contrarian / adjacent-field) per wave; inter-run novelty is measured and redundant archetypes pruned.  
-- **Check (hard lint):** `checks/discovery.py::framing_diversity` — each wave's brief manifest covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal
-- **Counters:** Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost.
+The BREADTH wave (A) runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), including >=1 deliberately orthogonal framing (contrarian / adjacent-field). Later waves are targeted follow-ups and carry no floor, but every wave's briefs must occupy DISTINCT cells; inter-run novelty is measured and redundant archetypes pruned.  
+- **Check (hard lint):** `checks/discovery.py::framing_diversity` — wave A covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal; every wave's briefs occupy distinct cells
+- **Counters:** Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost. Scoped to wave A (G10): forcing the floor onto a narrow follow-up wave would manufacture exactly that padding.
 - **Phase:** 1 · **Evidence:** design (diversity is the lever; blind-spot decorrelation)
 
 #### R-DISC-03 — Saturation-gated termination

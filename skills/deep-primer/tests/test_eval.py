@@ -148,8 +148,13 @@ def test_coverage_gate_passes_on_the_shipped_artifacts():
 
 
 def test_coverage_gate_fails_when_a_tier_regresses():
-    """The ratchet's whole job: dropping a rule below the declared floor must fail, not just print."""
-    report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
+    """The ratchet's whole job: dropping a rule below the declared floor must fail, not just print.
+
+    Baselines against the FULL spec set, not a narrowed run — a floor counts rules exercised across
+    every spec, and no single spec reaches it (spec-01 has no campaign artifacts, spec-02 has no
+    critic report). Narrowing here is what made this test fail when the hard_lint floor rose.
+    """
+    report = run_eval(SPEC_DIR, SKILL_ROOT)
     exercised = set(registry_rule_ids()) - set(report["enforcement_coverage"]["unexercised"])
     assert coverage_gate(exercised, [])["passed"], "baseline must be green before thinning it"
 

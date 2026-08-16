@@ -1,0 +1,160 @@
+[
+  {
+    "id": "B-B-dive-s1",
+    "url": "https://arxiv.org/abs/2304.02015",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Segment Anything (SAM) foundational model for zero-shot part segmentation",
+    "fetched_title": "[2304.02015] How well do Large Language Models perform in Arithmetic tasks?",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s2",
+    "url": "https://arxiv.org/abs/1703.06870",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Mask R-CNN baseline instance segmentation architecture for parts",
+    "fetched_title": "[1703.06870] Mask R-CNN",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s3",
+    "url": "https://arxiv.org/abs/1912.03718",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "CondInst conditional instance segmentation; applicable to thin-line leader detection",
+    "fetched_title": "[1912.03718] Improved Covariance Matrix Estimator using Shrinkage Transformation and Random Matrix Theory",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s4",
+    "url": "https://arxiv.org/abs/1912.03881",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "LayoutLM document layout understanding for text-region spatial binding",
+    "fetched_title": "[1912.03881] The proton radius: From a puzzle to precision",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s5",
+    "url": "https://arxiv.org/abs/1912.03881",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "LayoutLMv2 language-vision pretraining for document analysis",
+    "fetched_title": "[1912.03881] The proton radius: From a puzzle to precision",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s6",
+    "url": "https://arxiv.org/abs/2406.18723",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Docling open-source document AI system; handles technical PDFs",
+    "fetched_title": "[2406.18723] The local structure, electronic and optical properties of Pb(Mg$_{1/3}$Nb$_{2/3}$)O$_3$-PbTiO$_3$: first-principles study",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s7",
+    "url": "https://research.ibm.com/publications/docling-document-intelligence-library",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "IBM Docling 2.0 release (Oct 2024) with layout-aware extraction",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "B-B-dive-s8",
+    "url": "https://arxiv.org/abs/1905.04270",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "PaddleOCR high-performance text detection; reference for callout OCR",
+    "fetched_title": "[1905.04270] Interpreting and Evaluating Neural Network Robustness",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s9",
+    "url": "https://arxiv.org/abs/1507.05717",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Faster R-CNN region proposal networks; foundational for object detection pipelines",
+    "fetched_title": "[1507.05717] An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "B-B-dive-s10",
+    "url": "https://ieeexplore.ieee.org/document/4587566",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Probabilistic Hough Transform for line detection in technical drawings",
+    "dropped_reason": "fetched but empty after text extraction"
+  }
+]

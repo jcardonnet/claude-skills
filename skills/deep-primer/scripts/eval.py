@@ -33,13 +33,24 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import yaml  # noqa: E402
 
-from ir.schema import ConceptMap, ConvergenceLog, DocumentIR, SourceLedger  # noqa: E402
+from ir.schema import (  # noqa: E402
+    ConceptMap,
+    ConvergenceLog,
+    DiscoveryLeads,
+    DiscoveryLog,
+    DocumentIR,
+    ResearchBrief,
+    SourceLedger,
+)
 from lint import (  # noqa: E402
     lint_files,
     run_convergence_pass,
+    run_discovery_leads_pass,
+    run_discovery_log_pass,
     run_html_pass,
     run_ledger_pass,
     run_llm_md_pass,
+    run_snapshot_pass,
 )
 from verify._entailment import resolve_backend  # noqa: E402
 from verify.citation_quality import evaluate as verify_citations  # noqa: E402
@@ -55,6 +66,13 @@ _ARTIFACT_FILES = {
     "ledger": "source-ledger.yaml",
     "convergence_log": "convergence-log.yaml",
     "critic_report": "critic-report.json",
+    # The campaign's own audit trail. These four rules (R-DISC-02/03/05/06 + R-CONV-01) are
+    # deterministic and were implemented in Stage B, but eval had no way to reach them: it never
+    # resolved a discovery artifact, so they sat permanently in the "needs a discovery campaign
+    # artifact" bucket and counted as an explained gap rather than an unmet one.
+    "discovery_log": "discovery-log.yaml",
+    "discovery_leads": "discovery-leads.yaml",
+    "briefs": "briefs.yaml",
 }
 
 
@@ -79,7 +97,7 @@ def resolve_artifacts(spec: dict, root: Path = SKILL_ROOT) -> dict[str, Path]:
     return {k: d / name for k, name in _ARTIFACT_FILES.items() if (d / name).is_file()}
 
 
-def _tier_hard_lints(paths: dict[str, Path]) -> dict:
+def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) -> dict:
     report = lint_files(paths["ir"], paths.get("concept_map"), paths.get("ledger"))
     out = {
         "blocking": report["blocking"],
@@ -102,6 +120,34 @@ def _tier_hard_lints(paths: dict[str, Path]) -> dict:
         out["convergence_pass"] = {"counts": conv["counts"],
                                    "failures": [f["detail"] for f in conv["findings"] if f["status"] == "fail"]}
         out["rules_exercised"] += [f["rule_id"] for f in conv["findings"]]
+
+    # The campaign passes. Each runs only when its artifact exists, so a spec with no campaign still
+    # reports those rules as an artifact gap rather than a silent skip.
+    if paths.get("discovery_log") and paths.get("briefs"):
+        raw = yaml.safe_load(paths["briefs"].read_text(encoding="utf-8"))
+        briefs = [ResearchBrief(**b) for b in (raw if isinstance(raw, list) else raw.get("briefs", []))]
+        disc = run_discovery_log_pass(DiscoveryLog.from_yaml(paths["discovery_log"]), briefs)
+        out["discovery_log_pass"] = {"counts": disc["counts"],
+                                     "failures": [f["detail"] for f in disc["findings"]
+                                                  if f["status"] == "fail"]}
+        out["rules_exercised"] += [f["rule_id"] for f in disc["findings"]]
+
+    if paths.get("discovery_leads"):
+        leads = DiscoveryLeads.from_yaml(paths["discovery_leads"])
+        seeds = (spec_params or {}).get("seed_sources", [])
+        led = run_discovery_leads_pass(leads, seeds)
+        out["discovery_leads_pass"] = {"counts": led["counts"],
+                                       "failures": [f["detail"] for f in led["findings"]
+                                                    if f["status"] == "fail"]}
+        out["rules_exercised"] += [f["rule_id"] for f in led["findings"]]
+
+        snapshot_dir = paths["discovery_leads"].parent / "discovery-snapshot"
+        if snapshot_dir.is_dir():
+            snap = run_snapshot_pass(leads, snapshot_dir)
+            out["snapshot_pass"] = {"counts": snap["counts"],
+                                    "failures": [f["detail"] for f in snap["findings"]
+                                                 if f["status"] == "fail"]}
+            out["rules_exercised"] += [f["rule_id"] for f in snap["findings"]]
 
     if paths.get("ir"):
         from render.check_alignment import check_alignment
@@ -274,7 +320,7 @@ def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC,
         result["detail"] = "no artifact — run the pipeline for this spec, or point `artifact:` at one"
         return result
 
-    hard = _tier_hard_lints(paths)
+    hard = _tier_hard_lints(paths, spec.get("parameters"))
     model = _tier_model_verified(paths, rubric_path, backend)
     critics = _tier_soft_critic(paths)
     human = _tier_human(spec)

@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ir.schema import DiscoveryLeads, DiscoveryLog, ResearchBrief  # noqa: E402
 from research.discovery import (  # noqa: E402
+    BREADTH_WAVE,
     MAX_WAVES,
     MIN_FRAMINGS,
     framing_diversity as _cells,
@@ -27,7 +28,21 @@ _VALID_TERMINALS = {"saturated", "max_waves"}
 
 
 def framing_diversity(discovery_log: DiscoveryLog, briefs: list[ResearchBrief]) -> list[str]:
-    """R-DISC-02: each wave spans >= MIN_FRAMINGS distinct matrix cells, >=1 of them orthogonal."""
+    """R-DISC-02: the BREADTH wave spans >= MIN_FRAMINGS cells with >=1 orthogonal; every wave's
+    briefs occupy distinct cells.
+
+    G10 resolved. This used to demand the full floor of EVERY wave, which no campaign could ever
+    satisfy — `WAVE_ARCHETYPES` gives B three archetypes (two once `B-seed` skips without a seed)
+    and C three. Three artifacts said the floor was about the breadth wave: `MIN_FRAMINGS`' own
+    comment ("Wave A breadth"), `discovery-brief-templates.md` (which makes B and C deliberately
+    NARROW follow-ups, and is pinned by a test), and the rule's own `counters` —
+    "cosmetically-different briefs pay Nx tokens for 1x recall". That last one is the argument: it
+    is about the broad sweep, where decorrelating the ensemble is the entire job. Forcing five cells
+    onto a targeted follow-up would MANUFACTURE the waste the rule exists to prevent.
+
+    What every wave still owes is distinctness — duplicate cells are cosmetic padding in any wave —
+    and a `framing_cells` count in the log that matches the manifest.
+    """
     problems: list[str] = []
     by_wave: dict[str, list[ResearchBrief]] = {}
     for b in briefs:
@@ -40,15 +55,20 @@ def framing_diversity(discovery_log: DiscoveryLog, briefs: list[ResearchBrief]) 
                             f"but no brief manifest was supplied")
             continue
         cells = _cells(wave_briefs)
-        if cells < MIN_FRAMINGS:
-            problems.append(f"wave {record.wave}: {cells} distinct framing cell(s) (< {MIN_FRAMINGS}); "
-                            f"cosmetically-different briefs pay Nx tokens for 1x recall")
+        if record.wave == BREADTH_WAVE:
+            if cells < MIN_FRAMINGS:
+                problems.append(f"wave {record.wave} (breadth): {cells} distinct framing cell(s) "
+                                f"(< {MIN_FRAMINGS}); cosmetically-different briefs pay Nx tokens "
+                                f"for 1x recall")
+            if orthogonal_count(wave_briefs) < 1:
+                problems.append(f"wave {record.wave} (breadth): no orthogonal framing (contrarian / "
+                                f"adjacent-field); the ensemble's blind spots stay correlated")
+        elif cells < len(wave_briefs):
+            problems.append(f"wave {record.wave}: {len(wave_briefs)} brief(s) occupy only {cells} "
+                            f"distinct cell(s) — duplicate framings are cosmetic padding")
         if record.framing_cells != cells:
             problems.append(f"wave {record.wave}: discovery-log claims {record.framing_cells} "
                             f"framing cells, the brief manifest has {cells}")
-        if orthogonal_count(wave_briefs) < 1:
-            problems.append(f"wave {record.wave}: no orthogonal framing (contrarian / adjacent-field); "
-                            f"the ensemble's blind spots stay correlated")
     return problems
 
 

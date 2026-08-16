@@ -1,0 +1,192 @@
+[
+  {
+    "id": "A-A3-s1",
+    "url": "https://github.com/facebookresearch/sam2",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "SAM2 official repository with model weights, Aug 2024",
+    "fetched_title": "GitHub - facebookresearch/sam2: The repository provides code for running inference with the Meta Segment Anything Model 2 (SAM 2), links for downloading the trained model checkpoints, and example notebooks that show how to use the model. \u00b7 GitHub",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s2",
+    "url": "https://arxiv.org/abs/2408.00714",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "SAM2 arXiv preprint: core 3D segmentation foundation",
+    "fetched_title": "[2408.00714] SAM 2: Segment Anything in Images and Videos",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s3",
+    "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-Part",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "P3-SAM official repository for 3D part segmentation",
+    "fetched_title": "GitHub - Tencent-Hunyuan/Hunyuan3D-Part: Hunyuan 3D Part Segmentation and Generation Pipeline \u00b7 GitHub",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s4",
+    "url": "https://arxiv.org/abs/2509.06784",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "P3-SAM arXiv Sept 2025: native 3D part instance segmentation",
+    "fetched_title": "[2509.06784] P3-SAM: Native 3D Part Segmentation",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s5",
+    "url": "https://arxiv.org/abs/2507.21493",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "BANG arXiv July 2025: generative exploded-view decomposition",
+    "fetched_title": "[2507.21493] BANG: Dividing 3D Assets via Generative Exploded Dynamics",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s6",
+    "url": "https://arxiv.org/html/2602.19171v2",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "HistCAD Feb 2025: constraint-aware CAD dataset, 170k sequences",
+    "fetched_title": "HistCAD: A Constraint-Aware Parametric History-Based CAD Representation, Dataset, and Benchmark with Industrial Complexity",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s7",
+    "url": "https://arxiv.org/abs/2607.04119",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "SOV-CAD July 2025: orthographic-view-guided CAD reconstruction",
+    "fetched_title": "[2607.04119] SOV-CAD: Stepwise Orthographic Views Guided CAD Modeling Sequence Reconstruction",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s8",
+    "url": "https://arxiv.org/abs/2411.14347",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "DINO-X May 2025: open-world object detection for parts",
+    "fetched_title": "[2411.14347] DINO-X: A Unified Vision Model for Open-World Object Detection and Understanding",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s9",
+    "url": "https://arxiv.org/abs/2412.02193",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "LayoutVLM Dec 2024: layout-aware vision-language for technical diagrams",
+    "fetched_title": "[2412.02193] LayoutVLM: Differentiable Optimization of 3D Layout via Vision-Language Models",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A3-s10",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Xiao_Florence-2_Advancing_a_Unified_Representation_for_a_Variety_of_Vision_Tasks_CVPR_2024_paper.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Florence-2 CVPR 2024: lightweight multi-task vision model for OCR/detection",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A3-s11",
+    "url": "https://www.s1000d.org",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "S1000D Issue 6.0 Sept 2024: SVG for interactive technical illustrations",
+    "dropped_reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.s1000d.org'. (_ssl.c:1028)>"
+  },
+  {
+    "id": "A-A3-s12",
+    "url": "https://huggingface.co",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "HuggingFace Transformers: UDOP, SAM2, Florence-2 integration (March 2024+)",
+    "fetched_title": "Hugging Face \u2013 The AI community building the future.",
+    "retrieved_at": "2026-08-16"
+  }
+]

@@ -1,0 +1,186 @@
+[
+  {
+    "id": "C-C-omission-s1",
+    "url": "https://www.asme.org/products/codes-standards/y14-5-2018-dimensioning-and-tolerancing",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "ASME Y14.5-2018 baseline for technical drawing callouts and leader lines",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "C-C-omission-s2",
+    "url": "https://www.iso.org/standard/39905",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "ISO 1101 annotation conventions across orthogonal projections",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s3",
+    "url": "https://www.dod.gov/pubs/foi/logistics/supply/mil-std-1388-1a.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "MIL-STD-1388-1A part hierarchy and catalogue structure for aerospace/defense",
+    "dropped_reason": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "id": "C-C-omission-s4",
+    "url": "https://github.com/facebookresearch/segment-anything",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "SAM v2.1 (Sep 2024): foundational for component segmentation in exploded views",
+    "fetched_title": "GitHub - facebookresearch/segment-anything: The repository provides code for running inference with the SegmentAnything Model (SAM), links for downloading the trained model checkpoints, and example notebooks that show how to use the model. \u00b7 GitHub",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "C-C-omission-s5",
+    "url": "https://pytesseract.readthedocs.io/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "PyTesseract 0.3.13 (latest): de facto OCR for technical document callout text extraction",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s6",
+    "url": "https://github.com/PaddlePaddle/PaddleOCR",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "PaddleOCR 2.7.1.3 (Jan 2025): superior to Tesseract for thin-line and small-text extraction",
+    "fetched_title": "GitHub - PaddlePaddle/PaddleOCR: Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages. \u00b7 GitHub",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "C-C-omission-s7",
+    "url": "https://pdfplumber.readthedocs.io/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "pdfplumber 0.11.2 (latest): leader-line tracing and callout-text association in PDF pipelines",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s8",
+    "url": "https://huggingface.co/blog/vision_transformers",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Vision Transformers (ViT) for callout region detection in structured documents",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "C-C-omission-s9",
+    "url": "https://arxiv.org/abs/2010.05826",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Dosovitskiy et al. 'An Image is Worth 16x16 Words': foundational ViT work for component detection",
+    "fetched_title": "[2010.05826] Some refinements of numerical radius inequalities",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "C-C-omission-s10",
+    "url": "https://arxiv.org/abs/2304.02643",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Kirillov et al. 'Segment Anything': zero-shot segmentation for document regions and parts",
+    "fetched_title": "[2304.02643] Segment Anything",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "C-C-omission-s11",
+    "url": "https://blog.roboflow.com/document-ai/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Roboflow document-AI best practices: OCR failure modes for technical callouts with practical fixes",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "C-C-omission-s12",
+    "url": "https://www.w3.org/TR/annotation-model/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "W3C Web Annotation Data Model: standardizes callout and pointer metadata for web-native systems",
+    "dropped_reason": "disallowed by robots.txt"
+  }
+]
