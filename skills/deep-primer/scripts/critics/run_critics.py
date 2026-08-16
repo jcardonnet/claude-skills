@@ -30,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import yaml  # noqa: E402
 
+from critics._errors import JudgeUnavailable  # noqa: E402
 from ir.schema import Block, DocumentIR  # noqa: E402
 
 CRITIC_DIR = Path(__file__).resolve().parents[2] / "references" / "critic-prompts"
@@ -71,8 +72,29 @@ class BlockView:
     text: str | None = None
 
 
+def _block_text(b: Block) -> str | None:
+    """What a critic actually reads for this block.
+
+    A card's content IS its typed rows and a recall block's IS its three Q&A items — neither sets
+    `text`. Handing a judge `text or caption` therefore presented every card and recall block as
+    EMPTY, and the first live judge run duly failed R-SUMM-04 on a card with "Card block contains no
+    text": a defect manufactured by this seam, not found in the primer. Four soft_critic rules
+    (R-CARD-01, R-CARD-03, R-RECALL-02, R-SUMM-04) target exactly those roles, so the tier could
+    never have judged them honestly. Rendering the structured fields keeps the typed rows machine-
+    checkable (R-CARD-02) while still giving the critic something to read.
+    """
+    if b.rows is not None:
+        rows = b.rows.model_dump(exclude_none=True)
+        return "\n".join(f"{k}: {v}" for k, v in rows.items() if v not in ("", [], {}))
+    if b.items:
+        return "\n".join(f"Q: {i.question}\nA: {i.answer}"
+                         + ("  [cross-domain]" if i.cross_domain else "") for i in b.items)
+    return b.text or b.caption
+
+
 def _view(b: Block) -> BlockView:
-    return BlockView(b.block_id, b.role.value, b.concept, b.mode.value if b.mode else None, b.text or b.caption)
+    return BlockView(b.block_id, b.role.value, b.concept, b.mode.value if b.mode else None,
+                     _block_text(b))
 
 
 _DOC_VIEW = BlockView(DOCUMENT, DOCUMENT)
@@ -140,35 +162,64 @@ def load_passes(critic_dir: Path = CRITIC_DIR) -> list[tuple[str, list[str], str
     return out
 
 
+def _ir_digest(ir_path: Path) -> str:
+    """Digest of the IR a report was judged against — content addressing, never security."""
+    import hashlib
+    return hashlib.sha256(Path(ir_path).read_bytes(), usedforsecurity=False).hexdigest()
+
+
 def _gating_rules(registry_path: Path = DEFAULT_REGISTRY) -> set[str]:
     rules = yaml.safe_load(Path(registry_path).read_text(encoding="utf-8")).get("rules", [])
     return {r["id"] for r in rules if r.get("priority") == "MUST"}
 
 
 def run_pass(pass_name: str, rule_ids: list[str], prompt: str, ir: DocumentIR, judge: Judge,
-             gating: set[str]) -> list[dict]:
+             gating: set[str], gating_judge: Judge | None = None) -> list[dict]:
     verdicts: list[dict] = []
     for rid in rule_ids:
         for bv in applicable_blocks(rid, ir):
-            r1 = judge(pass_name, prompt, rid, bv, 1)
-            verdict = r1.verdict
-            if rid in gating:  # test-retest gating items
-                r2 = judge(pass_name, prompt, rid, bv, 2)
-                if r2.verdict != r1.verdict:
-                    verdict = "unstable"
+            # An unreachable judge must not discard every judgement already made — the first live
+            # run lost ~100 of them to a single timeout. The item is recorded as 'error', never
+            # coerced to 'pass': a judge that failed to answer has not cleared the rule, and quietly
+            # passing it is the exact failure this registry exists to prevent. Note the narrow
+            # catch — a non-binary verdict (ValueError from _validate_verdict) still propagates.
+            try:
+                # Gating (MUST) rules go to `gating_judge` when one is supplied. Measured on this
+                # fixture, haiku returned 6/21 unstable verdicts on gating items (29% — a coin flip
+                # on rules that BLOCK) against sonnet's 1/21, and haiku also hard-FAILED two items
+                # sonnet passed. Test-retest exists for gating rules precisely because they block;
+                # spending the better model exactly there is the cheap half of the fix.
+                active = gating_judge if (gating_judge and rid in gating) else judge
+                r1 = active(pass_name, prompt, rid, bv, 1)
+                verdict = r1.verdict
+                if rid in gating:  # test-retest gating items
+                    r2 = active(pass_name, prompt, rid, bv, 2)
+                    if r2.verdict != r1.verdict:
+                        verdict = "unstable"
+                evidence, span = r1.evidence, r1.span
+            except (JudgeUnavailable, OSError, TimeoutError) as exc:
+                verdict, evidence, span = "error", f"{type(exc).__name__}: {exc}"[:300], None
             verdicts.append({"rule_id": rid, "block_id": bv.block_id, "verdict": verdict,
-                             "evidence": r1.evidence, "span": r1.span})
+                             "evidence": evidence, "span": span})
     return verdicts
 
 
 def run_critics(ir: DocumentIR, judge: Judge | None = None, critic_dir: Path = CRITIC_DIR,
-                registry_path: Path = DEFAULT_REGISTRY) -> dict:
+                registry_path: Path = DEFAULT_REGISTRY, only: set[str] | None = None,
+                gating_judge: Judge | None = None) -> dict:
     judge = judge or StubJudge()
     gating = _gating_rules(registry_path)
     passes_out = []
-    counts = {"pass": 0, "fail": 0, "unstable": 0}
-    for pass_name, rule_ids, prompt in load_passes(critic_dir):
-        verdicts = run_pass(pass_name, rule_ids, prompt, ir, judge, gating)
+    counts = {"pass": 0, "fail": 0, "unstable": 0, "error": 0}
+    for pass_name, all_rule_ids, prompt in load_passes(critic_dir):
+        # `only` narrows the run to specific rules. The pass PROMPT is still sent whole — a rule's
+        # verdict depends on the calibration notes and sibling rules around it, so trimming the
+        # prompt to match would change what is being measured. This is for re-judging a handful of
+        # rules (a calibration sweep, an unstable item) without paying for all 114 calls.
+        rule_ids = [r for r in all_rule_ids if only is None or r in only]
+        if not rule_ids:
+            continue
+        verdicts = run_pass(pass_name, rule_ids, prompt, ir, judge, gating, gating_judge)
         for v in verdicts:
             counts[v["verdict"]] = counts.get(v["verdict"], 0) + 1
         passes_out.append({"pass": pass_name, "rules": rule_ids, "verdicts": verdicts})
@@ -178,6 +229,8 @@ def run_critics(ir: DocumentIR, judge: Judge | None = None, critic_dir: Path = C
         "blocking": counts.get("fail", 0) > 0,
         "unstable_items": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
                            if v["verdict"] == "unstable"],
+        "errored_items": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
+                          if v["verdict"] == "error"],
     }
 
 
@@ -209,12 +262,60 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--critic-dir", default=str(CRITIC_DIR))
     ap.add_argument("--registry", default=str(DEFAULT_REGISTRY))
     ap.add_argument("--out", default="critic-report.json")
+    ap.add_argument("--judge", choices=("stub", "claude"), default="stub",
+                    help="'stub' is a structural dry run (no model). 'claude' runs the real scoped "
+                         "binary judge via the local claude CLI — one call per (rule, block).")
+    ap.add_argument("--model", default="haiku", help="model for --judge claude (a binary verdict "
+                                                     "does not need a frontier model)")
+    ap.add_argument("--cost-cap", type=float, default=5.0,
+                    help="abort once cumulative spend passes this many USD")
+    ap.add_argument("--gating-model", help="model for MUST-priority (gating) rules; defaults to "
+                                           "--model. Measured on the reference fixture, haiku gave "
+                                           "6/21 unstable verdicts on gating items vs sonnet's 1/21 "
+                                           "— a coin flip on the rules that actually block.")
+    ap.add_argument("--rules", help="comma-separated rule ids to judge (default: all). The pass "
+                                    "prompt is still sent whole, so a narrowed run measures the "
+                                    "same thing a full one does — for calibration sweeps.")
     args = ap.parse_args(argv)
-    # No model is wired at the CLI (agent-orchestrated): the stub judge produces a structural dry run.
-    report = run_critics(DocumentIR.from_yaml(args.ir), StubJudge(), Path(args.critic_dir), Path(args.registry))
+
+    ir = DocumentIR.from_yaml(args.ir)
+    cli_judge = gating_cli_judge = None
+    if args.judge == "claude":
+        from critics.claude_judge import ClaudeCliJudge
+        cli_judge = ClaudeCliJudge(ir, model=args.model, cost_cap_usd=args.cost_cap)
+        if args.gating_model and args.gating_model != args.model:
+            gating_cli_judge = ClaudeCliJudge(ir, model=args.gating_model,
+                                              cost_cap_usd=args.cost_cap)
+    judge: Judge = cli_judge or StubJudge()
+
+    only = {r.strip() for r in args.rules.split(",") if r.strip()} if args.rules else None
+    report = run_critics(ir, judge, Path(args.critic_dir), Path(args.registry), only,
+                         gating_cli_judge)
+    # A stub run exercises the dispatch wiring and NOTHING else. Stamp which judge produced this, or
+    # the artifact is indistinguishable from a real run that happened to find nothing — which is the
+    # silent-skip failure the whole registry is built to avoid.
+    # Stamp WHAT was judged. A frozen critic report is replayed as coverage by eval, and an IR that
+    # has changed since means those verdicts describe a different document — silently. Editing two
+    # sentences of the reference fixture was enough to make a $18 report stale with nothing to show
+    # it. The digest lets eval detect that instead of crediting judgements of prose that is gone.
+    report["ir_sha256"] = _ir_digest(Path(args.ir))
+    if cli_judge is None:
+        report["judge"] = {"kind": "stub", "exercised_rules": False}
+    else:
+        calls = cli_judge.calls + (gating_cli_judge.calls if gating_cli_judge else 0)
+        spend = cli_judge.spend_usd + (gating_cli_judge.spend_usd if gating_cli_judge else 0.0)
+        report["judge"] = {"kind": "claude", "model": args.model, "calls": calls,
+                           "spend_usd": round(spend, 4), "exercised_rules": True}
+        if gating_cli_judge is not None:
+            report["judge"]["gating_model"] = args.gating_model
     Path(args.out).write_text(json.dumps(report, indent=2), encoding="utf-8")
     c = report["counts"]
-    print(f"{len(report['passes'])} passes — pass={c['pass']} fail={c['fail']} unstable={c['unstable']} -> {args.out}")
+    print(f"{len(report['passes'])} passes — pass={c['pass']} fail={c['fail']} "
+          f"unstable={c['unstable']} error={c.get('error', 0)} -> {args.out}")
+    if cli_judge is not None:
+        stamp = report["judge"]
+        gating_note = f" (gating: {args.gating_model})" if gating_cli_judge else ""
+        print(f"judge: {args.model}{gating_note}, {stamp['calls']} calls, ${stamp['spend_usd']:.2f}")
     return 1 if report["blocking"] else 0
 
 

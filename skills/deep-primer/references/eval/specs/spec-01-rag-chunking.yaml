@@ -13,6 +13,22 @@ artifact:
   ir: tests/fixtures/document-ir.full.yaml
   concept_map: tests/fixtures/concept-map.full.yaml
   ledger: tests/fixtures/source-ledger.full.yaml
+  # A real critic run over the IR above — 114 scoped binary judgements, no stub. This is what moves
+  # the soft_critic tier off 2/35; the tier was fully wired from Stage A and simply never judged.
+  # Frozen for the same reason the discovery snapshot is: eval must score the same verdicts every
+  # time, not whatever a judge decided that morning.
+  #
+  # Judged with haiku on the advisory rules and SONNET on the gating (MUST) tier, because a
+  # calibration sweep measured haiku at 6/21 unstable on gating items — a coin flip on rules that
+  # block — against sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. The tiered run
+  # bears that out: unstable dropped 6 -> 1. Regenerate with
+  #   scripts/critics/run_critics.py <ir> --judge claude --gating-model sonnet --out <here>
+  # (113 calls, ~$18, ~50 min).
+  #
+  # The report carries `ir_sha256` of the IR it judged, and eval REFUSES to credit it as coverage
+  # if that no longer matches — a frozen report whose IR has moved on describes a document that no
+  # longer exists. Editing two sentences of this fixture was enough to invalidate a full run.
+  critic_report: tests/fixtures/critic-report.full.json
 expect:
   must_pass: [R-ARCH-03, R-SCENT-01, R-CARD-01, R-MV-01, R-GROUND-01, R-PROJ-02]
   notes: "bridge from IR/db background; decision matrix on chunkers; mask-free analogue not relevant here"
