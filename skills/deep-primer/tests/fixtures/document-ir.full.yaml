@@ -85,7 +85,7 @@ sections:
             mode: failure
             concept: chunking
             heading: "Where fixed windows sever context"
-            text: "A fixed window severs whatever straddles its boundary. Tables suffer worst from such a window: the header row lands in one chunk, the data rows in another. Neither chunk is then answerable alone, and that failure stays invisible at index time. The failure surfaces only as unexplained recall loss, which is why the split deserves measurement before the embedder does."
+            text: "A fixed window severs whatever straddles its boundary. Such a window hurts tables worst: the header row lands in one chunk, the data rows in another. Neither chunk is then answerable alone, and that failure stays invisible at index time. The failure surfaces only as unexplained recall loss, which is why the split deserves measurement before the embedder does."
             claim_ids: [C-chunk-1]
             provenance: verified
             source_ids: [s-chunk]
@@ -119,7 +119,7 @@ sections:
         role: toulmin
         concept: reranking
         mode: tradeoff
-        text: "When top-k precision dominates tail latency, reach for a cross-encoder reranker. Qualifier: the gain shrinks as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight."
+        text: "When top-k precision dominates tail latency, reach for a cross-encoder reranker. Qualifier: that reranker earns less as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight."
         claim_ids: [C-rerank-1, C-rerank-2]
         provenance: verified
         source_ids: [s-rerank]

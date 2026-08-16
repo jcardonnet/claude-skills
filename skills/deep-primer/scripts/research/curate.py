@@ -53,7 +53,13 @@ class StubCurator:
         counts: Counter = Counter()
         for t in claim_texts:
             counts.update(_tokens(t))
-        top = [w for w, _ in counts.most_common(2)]
+        # Explicit alphabetical tiebreak, NOT Counter.most_common. `_tokens` returns a frozenset, so
+        # keys land in the Counter in hash order; short claims make nearly every count a tie, and
+        # most_common resolves ties by insertion order — which varies with PYTHONHASHSEED. That
+        # leaked into canonical_term and therefore concept_id, so one ledger produced different
+        # concept-maps in different processes, breaking the reproducibility R-DISC-04 / R-CONV-02
+        # rest on. Same (-count, key) idiom as assign_section below and outline_seed.
+        top = [w for w, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:2]]
         return (" ".join(top) or "concept"), []
 
     def home_anchor(self, canonical_term: str, claim_texts: list[str], params: dict) -> tuple[str, str]:
