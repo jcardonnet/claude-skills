@@ -143,9 +143,32 @@ def load_passes(critic_dir: Path = CRITIC_DIR) -> list[tuple[str, list[str], str
 
 
 def _ir_digest(ir_path: Path) -> str:
-    """Digest of the IR a report was judged against — content addressing, never security."""
+    """Digest of what the CRITICS SEE in an IR — content addressing, never security.
+
+    Not the raw file. The guard exists to stop a frozen report being credited against an IR it did
+    not judge, so it must key on the judged surface: `BlockView` carries block_id, role, concept,
+    mode and readable_text, and `_judge_document_view` adds the section headings. It does NOT carry
+    provenance, claim_ids or source_ids.
+
+    Hashing the bytes conflated "the document changed" with "the file changed". Relabelling three
+    blocks `verified` -> `inferred` — a grounding correction the critics cannot see — invalidated a
+    $17 run and dropped the soft_critic tier from 35 to 2, which is a false staleness report and
+    exactly the kind of thing that teaches people to delete the guard. A comment edit would have
+    done the same.
+    """
     import hashlib
-    return hashlib.sha256(Path(ir_path).read_bytes(), usedforsecurity=False).hexdigest()
+    import json as _json
+
+    from ir.schema import DocumentIR
+
+    ir = DocumentIR.from_yaml(ir_path)
+    surface = {
+        "sections": [s.title for s in ir.sections],
+        "blocks": [[b.block_id, b.role.value, b.concept, b.mode.value if b.mode else None,
+                    b.readable_text] for b in ir.flatten_blocks()],
+    }
+    payload = _json.dumps(surface, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    return hashlib.sha256(payload, usedforsecurity=False).hexdigest()
 
 
 def _gating_rules(registry_path: Path = DEFAULT_REGISTRY) -> set[str]:

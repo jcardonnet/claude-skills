@@ -609,7 +609,7 @@
     }
   ],
   "errored_items": [],
-  "ir_sha256": "e114186cc80d5395b5fdec49c3b9f31946974c42fa50af6b658ee7139dec05a6",
+  "ir_sha256": "9ec8026ce5a57e9094aa7c60fdecb5effe70d904758b84536b79c3f5a40f207b",
   "judge": {
     "kind": "claude",
     "model": "haiku",
@@ -617,5 +617,6 @@
     "spend_usd": 17.8482,
     "exercised_rules": true,
     "gating_model": "sonnet"
-  }
+  },
+  "ir_sha256_note": "re-stamped when the digest moved from raw file bytes to the JUDGED SURFACE (block views + section headings). Verified equal across the provenance relabel by digesting the pre-edit IR from git, so these verdicts still describe this document. previous byte-digest: e114186cc80d"
 }

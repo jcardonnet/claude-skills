@@ -103,7 +103,8 @@ sections:
             mode: failure
             text: "A dotted leader is not a line but a sequence of marks, and a detector that demands continuity returns fragments. Such fragments then defeat the walk, because the graph has no edge where the ink has a gap. That gap is what segment growing spans, connecting across small discontinuities so the stroke survives as one edge. The same gap-spanning is what makes hatching dangerous, since a loose threshold bridges a leader into crossing hatch."
             claim_ids: [C-lead-4, C-lead-2]
-            provenance: verified
+            # inferred: these were labelled `verified` but neither is entailed by its citation. They belong with the other eleven — the sources found for this topic do not support them.
+            provenance: inferred
             source_ids: [s-elsed, s-tgg]
 
   - block_id: sec-anchor
@@ -163,7 +164,8 @@ sections:
         caption: "Zero-shot transfer is reported across image distributions, which removes per-catalogue training; it is silent on whether the mask is needed at all."
         svg_ref: "synthetic/anchor-transfer.svg"
         claim_ids: [C-seg-2]
-        provenance: verified
+        # inferred: these were labelled `verified` but neither is entailed by its citation. They belong with the other eleven — the sources found for this topic do not support them.
+        provenance: inferred
         source_ids: [s-sam]
       - block_id: recall-anchor
         role: recall

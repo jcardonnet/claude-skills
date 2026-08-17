@@ -35,6 +35,18 @@ model_verified:    # scripts/verify/* (citation recall/precision; chunk self-con
     verified_recall: 0.95
     verified_precision: 0.90
     #
+    # The counterpart, and the reason it is needed: verified_recall is VACUOUS for a primer with no
+    # verified blocks — nothing claims to be grounded, so nothing can fail. spec-02 is exactly that
+    # after its correction (13 claim-bearing blocks, all `inferred`), and it would otherwise sail
+    # through a grounding gate by declining to claim any grounding at all.
+    #
+    # This is the one number here set by judgement rather than principle, so it is the one to
+    # revisit as specs accumulate. The reasoning: a primer needs a grounded SPINE. spec-01 keeps its
+    # ledes and cards verified (4/7 = 0.43 inferred) while its matrix, body elaboration and Toulmin
+    # argumentation are synthesis — that shape is what a compliant primer looks like. 0.60 admits it
+    # with headroom and still fails a primer that is entirely synthesis.
+    max_inferred_share: 0.60
+    #
     # The legacy pair stays for the pre-partition report shape and is NOT what --strict gates on.
     # It mixes declared synthesis with claimed grounding, so no value of it means anything.
     citation_recall: 0.75      # TODO: tune against real runs (registry budgets)

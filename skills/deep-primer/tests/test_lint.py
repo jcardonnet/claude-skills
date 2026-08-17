@@ -176,6 +176,26 @@ def test_spec02_primer_is_lint_clean_and_honestly_grounded(fixtures):
     assert report["coverage"]["unenforced_musts"] == []
 
     ir = DocumentIR.from_yaml(spec02 / "document-ir.yaml")
-    provenances = {b.provenance.value for b in ir.flatten_blocks() if b.provenance}
-    assert "inferred" in provenances, "the synthesis blocks must not claim to be verified"
-    assert "verified" in provenances, "the directly-quoted blocks should still say so"
+    claim_blocks = [b for b in ir.flatten_blocks() if b.claim_ids]
+    provenances = {b.provenance.value for b in claim_blocks if b.provenance}
+
+    # EVERY claim-bearing block here is `inferred`, and that is the corrected state, not a
+    # regression. Two were originally `verified`; per-row entailment on sonnet (votes=3) showed
+    # neither is entailed by its own citation, so they joined the other eleven. A primer whose
+    # sources genuinely do not support it should say exactly that.
+    assert provenances == {"inferred"}, (
+        f"expected every claim-bearing block to be inferred, got {sorted(provenances)}")
+    assert len(claim_blocks) == 13
+
+    # Which makes `verified_recall` vacuous here — nothing claims to be verified, so nothing can
+    # fail. `inferred_share` carries the finding instead, at 1.00: this primer is entirely
+    # synthesis. Honest, and simultaneously the signal that the topic was under-sourced.
+    from ir.schema import SourceLedger
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    scored = evaluate(ir, SourceLedger.from_yaml(spec02 / "source-ledger.yaml"),
+                      backend=LexicalEntailment())
+    assert scored["inferred_share"] == 1.0
+    assert scored["counts"]["verified_statements"] == 0
+    assert scored["verified_recall"] == 1.0, "vacuously true — this is why inferred_share is gated"

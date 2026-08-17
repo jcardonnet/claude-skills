@@ -49,7 +49,8 @@ sections:
         concept: chunking
         text: "Baseline: split at headings. Fixed windows buy simplicity at the cost of severed context; semantic splits buy coherence at the cost of build time."
         claim_ids: [C-chunk-1]
-        provenance: verified
+        # inferred, not verified: entailment (sonnet, votes=3, per-row) says the cited quote does not support this block's assertion. The matrix's baseline recommendation, the table-specific elaboration and the Toulmin claim/qualifier/rebuttal are all synthesis GROUNDED IN the source rather than stated by it — which is exactly what `inferred` means.
+        provenance: inferred
         source_ids: [s-chunk]
       - block_id: checklist-chunking
         role: matrix
@@ -87,7 +88,8 @@ sections:
             heading: "Where fixed windows sever context"
             text: "A fixed window severs whatever straddles its boundary. Such a window hurts tables worst: the header row lands in one chunk, the data rows in another. Neither chunk is then answerable alone, and that failure stays invisible at index time. The failure surfaces only as unexplained recall loss, which is why the split deserves measurement before the embedder does."
             claim_ids: [C-chunk-1]
-            provenance: verified
+            # inferred, not verified: entailment (sonnet, votes=3, per-row) says the cited quote does not support this block's assertion. The matrix's baseline recommendation, the table-specific elaboration and the Toulmin claim/qualifier/rebuttal are all synthesis GROUNDED IN the source rather than stated by it — which is exactly what `inferred` means.
+            provenance: inferred
             source_ids: [s-chunk]
 
   - block_id: sec-reranking
@@ -121,7 +123,8 @@ sections:
         mode: tradeoff
         text: "When top-k precision dominates tail latency, reach for a cross-encoder reranker. Qualifier: that reranker earns less as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight."
         claim_ids: [C-rerank-1, C-rerank-2]
-        provenance: verified
+        # inferred, not verified: entailment (sonnet, votes=3, per-row) says the cited quote does not support this block's assertion. The matrix's baseline recommendation, the table-specific elaboration and the Toulmin claim/qualifier/rebuttal are all synthesis GROUNDED IN the source rather than stated by it — which is exactly what `inferred` means.
+        provenance: inferred
         source_ids: [s-rerank]
       - block_id: failures-reranking
         role: matrix

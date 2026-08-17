@@ -34,7 +34,8 @@ from verify._entailment import Entailment, resolve_backend  # noqa: E402
 
 DEFAULT_RUBRIC = Path(__file__).resolve().parents[2] / "references" / "eval" / "eval-rubric.yaml"
 _FALLBACK_THRESHOLDS = {"recall": 0.75, "precision": 0.90,
-                        "verified_recall": 0.95, "verified_precision": 0.90}
+                        "verified_recall": 0.95, "verified_precision": 0.90,
+                        "max_inferred_share": 0.60}
 
 
 def load_thresholds(rubric_path: str | Path = DEFAULT_RUBRIC) -> dict[str, float]:
@@ -50,6 +51,9 @@ def load_thresholds(rubric_path: str | Path = DEFAULT_RUBRIC) -> dict[str, float
                                             _FALLBACK_THRESHOLDS["verified_recall"])),
             "verified_precision": float(th.get("verified_precision",
                                                _FALLBACK_THRESHOLDS["verified_precision"])),
+            # without this, verified_recall is vacuous for a primer that declares nothing verified
+            "max_inferred_share": float(th.get("max_inferred_share",
+                                               _FALLBACK_THRESHOLDS["max_inferred_share"])),
         }
     except (OSError, ValueError, TypeError):
         return dict(_FALLBACK_THRESHOLDS)

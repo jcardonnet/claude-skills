@@ -75,7 +75,8 @@ def test_thresholds_loaded_from_rubric():
     # the verified_* pair is what --strict gates on; the legacy pair is kept for the pre-partition
     # report shape and mixes declared synthesis with claimed grounding
     assert th == {"recall": 0.75, "precision": 0.90,
-                  "verified_recall": 0.95, "verified_precision": 0.90}
+                  "verified_recall": 0.95, "verified_precision": 0.90,
+                  "max_inferred_share": 0.60}
 
 
 def test_clean_primer_passes():

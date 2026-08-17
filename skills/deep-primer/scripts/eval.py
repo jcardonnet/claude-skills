@@ -216,6 +216,9 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         # declared `inferred` against them, so a primer is penalised for labelling truthfully
         "meets_recall": report["verified_recall"] >= thresholds["verified_recall"],
         "meets_precision": report["verified_precision"] >= thresholds["verified_precision"],
+        # a primer that declares NOTHING verified passes the two above vacuously; composition is
+        # what catches it, and being entirely synthesis is a real finding about the sourcing
+        "meets_composition": report["inferred_share"] <= thresholds["max_inferred_share"],
         "unresolved_citations": len(report["resolves_to_ledger"]["violations"]),
         "counts": report["counts"],
     }
@@ -292,11 +295,18 @@ _ARTIFACT_TIERS = {"discovery-log": "needs a discovery campaign artifact",
 
 
 def _ir_digest(ir_path: Path | None) -> str | None:
-    """Digest of an IR file — content addressing, never security. Mirrors run_critics._ir_digest."""
-    import hashlib
+    """Delegate to the ONE digest, in run_critics, which is also what stamps the report.
+
+    This used to be a second implementation whose docstring said it "mirrors
+    run_critics._ir_digest" — and then it didn't. When the stamp moved from raw file bytes to the
+    judged surface, only one copy moved, so every frozen report read as stale and the soft_critic
+    tier silently fell from 35 to 2. A comment is not a mechanism; a shared definition is.
+    """
+    from critics.run_critics import _ir_digest as digest
+
     if not ir_path or not Path(ir_path).is_file():
         return None
-    return hashlib.sha256(Path(ir_path).read_bytes(), usedforsecurity=False).hexdigest()
+    return digest(Path(ir_path))
 
 
 SILENT_SKIP = "DETERMINISTIC RULE NOT EXERCISED — investigate (silent-skip class)"
@@ -447,10 +457,12 @@ def _spec_strict_failures(results: list[dict], rules: list[dict]) -> list[dict]:
         # propose_thresholds() refuses to derive a floor from it. Failing on the same numbers it
         # refuses to trust would be incoherent, and would make --strict permanently red offline.
         if (mv.get("status") == "scored" and mv.get("backend") != "lexical"
-                and not (mv.get("meets_recall") and mv.get("meets_precision"))):
+                and not (mv.get("meets_recall") and mv.get("meets_precision")
+                         and mv.get("meets_composition", True))):
             reasons.append(f"verified-citation quality below threshold "
                            f"(verified_recall={mv.get('verified_recall')} "
-                           f"verified_precision={mv.get('verified_precision')}, "
+                           f"verified_precision={mv.get('verified_precision')} "
+                           f"inferred_share={mv.get('inferred_share')}, "
                            f"backend={mv.get('backend')})")
         silent = [rid for rid in expected["not_exercised"]
                   if _why_unexercised(rid, rules) == SILENT_SKIP]

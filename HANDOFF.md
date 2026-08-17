@@ -493,6 +493,26 @@ other eleven as `inferred`. Fix the artifacts, do not lower the bar.
 for the pre-partition report shape and gate nothing, because mixing declared synthesis with
 claimed grounding makes no value of them meaningful.
 
+**The artifacts were fixed rather than the bar lowered.** spec-01's `matrix-chunking`,
+`body-chunk-size` and `toulmin-reranking` now carry `provenance: inferred`: a matrix's baseline
+recommendation, a table-specific elaboration and a Toulmin claim/qualifier/rebuttal are synthesis
+GROUNDED IN a source rather than stated by it, which is what `inferred` means. spec-02's
+`body-leader-breaks` and `fig-anchor` joined its other eleven for the same reason. spec-01 keeps a
+verified spine (its ledes and cards, 4/7); spec-02 has none, which is the honest verdict on a topic
+whose sources did not support it.
+
+That exposed a vacuum: `verified_recall` cannot fail for a primer that declares NOTHING verified,
+so spec-02 would have passed a grounding gate by declining to claim any grounding. `max_inferred_share: 0.60` closes it — the one number here set by judgement rather than principle,
+and so the one to revisit as specs accumulate.
+
+**Two more shared-definition bugs surfaced while doing it, both the same shape as `readable_text`.**
+`eval.py` carried a second `_ir_digest` whose docstring said it "mirrors run_critics._ir_digest" —
+and then didn't: when the stamp moved, one copy moved and the soft_critic tier silently fell from
+35 to 2. And the digest itself hashed raw file BYTES, so relabelling three provenance lines — which
+the critics cannot see, since `BlockView` carries no provenance — invalidated a $17 run. It now
+digests the judged SURFACE (block views + section headings), verified equal across the relabel by
+digesting the pre-edit IR out of git. A comment is not a mechanism.
+
 **What the ratchet now pins:** `hard_lint: 32`, `model_verified: 3`, `soft_critic: 35`, `human: 9` — **79/79, every rule in the registry exercised.**
 
 `R-CONV-01` was the last one dark, and it was NOT closed by handing `run_convergence_loop` the `ScriptedStructureJudge` — that replays findings it was told in advance, which is the stub-critic problem wearing a third hat. `research/claude_structure_judge.py` is a real `StructureJudge`, and it splits the work exactly the way R-CONV-02 states: the model decides whether a finding is structural and WHICH edit it implies (named as an operation over concept ids), while merge/split/rename are applied here deterministically. Letting a model emit a whole ConceptMap would hand it the deterministic half too and make `Delta_struct` a function of how verbose the model felt. Run against spec-02's real concept map it judged the two concepts structurally sound, so the loop terminated `coherent` through the documented no-further-finding exit — one genuine judgement, $0.06.
