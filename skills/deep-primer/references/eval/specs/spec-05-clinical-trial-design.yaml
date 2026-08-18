@@ -7,6 +7,17 @@ parameters:
   seniority_band: staff_plus
   length_budget: 5000
   outputs: [html]
+# A hand-built REFERENCE artifact, in the same spirit as spec-01's — not a real generation.
+# Its sources are openly synthetic (`example.org`, fictional authors) because this fixture exercises
+# STRUCTURE: it is what lets this spec's deterministic rules run against a document shaped the way
+# the spec describes. It makes no grounding claim, and it is deliberately distinguishable at a glance
+# from spec-02's ledger, which came from a real campaign with verbatim-verified quotes.
+# The soft_critic rules in `expect.must_pass` still need a judge run; offline they report as the
+# documented judge gap rather than as a pass.
+artifact:
+  ir: tests/fixtures/spec05/document-ir.yaml
+  concept_map: tests/fixtures/spec05/concept-map.yaml
+  ledger: tests/fixtures/spec05/source-ledger.yaml
 expect:
   must_pass: [R-ARCH-03, R-CARD-01, R-XREF-01, R-EVID-01, R-ART-03, R-MV-01]
   watch: [standards_compliance_perspective, non_software_vocabulary]

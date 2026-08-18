@@ -376,6 +376,39 @@ def test_an_all_sonnet_run_is_trusted_to_gate_and_an_all_haiku_one_is_not():
     assert unstamped == []
 
 
+def test_seed_sources_reach_the_seed_handling_check():
+    """`seed_sources` is a TOP-LEVEL spec key — spec-04 declares it beside `parameters`, as the
+    contract shows — and eval read it out of `parameters`. So it resolved to `[]` on every run, and
+    R-DISC-06's `seed_handling` had only ever been checked against an empty seed list: a MUST rule
+    whose entire subject was absent, reported as a pass.
+
+    Found by an agent authoring the fixture that was supposed to exercise it."""
+    spec = next(s for s in load_specs(SPEC_DIR) if s["id"] == "spec-04-seeded-vector-index")
+    assert spec.get("seed_sources"), "the spec must declare seeds for this test to mean anything"
+    assert "seed_sources" not in spec["parameters"], "and NOT under parameters — that was the bug"
+
+    report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-04-seeded-vector-index")
+    hard = report["results"][0]["hard_lints"]
+    assert "discovery_leads_pass" in hard
+    assert "R-DISC-06" in hard["rules_exercised"]
+
+
+def test_every_shipped_spec_now_scores():
+    """specs 03-06 had no artifact, so four of six reported `not_generated` — which the harness is
+    careful to distinguish from a pass, but which also meant four spec SHAPES (a small budget, user
+    seeds, a NON-SOFTWARE domain, a user-supplied structure) never had their deterministic rules run
+    against anything."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT)
+    statuses = {r["id"]: r["status"] for r in report["results"]}
+    assert all(v == "scored" for v in statuses.values()), statuses
+    assert len(statuses) >= 6
+
+    # and every one lints clean — the artifacts are compliant, not merely present
+    for r in report["results"]:
+        assert r["hard_lints"]["counts"].get("fail", 0) == 0, r["id"]
+        assert r["hard_lints"]["unenforced_musts"] == [], r["id"]
+
+
 def test_judge_health_is_counted_per_spec_not_cumulatively():
     """`run_eval` builds ONE entailment backend and hands it to every spec, so its `unresolved` list
     is a running total — spec-02 reported spec-01's failures plus its own, and `propose_thresholds`

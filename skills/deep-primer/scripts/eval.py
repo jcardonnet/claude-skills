@@ -166,7 +166,8 @@ def _unenforced(pass_report: dict) -> list[str]:
     return list((pass_report.get("coverage") or {}).get("unenforced_musts") or [])
 
 
-def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) -> dict:
+def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None,
+                     spec: dict | None = None) -> dict:
     report = lint_files(paths["ir"], paths.get("concept_map"), paths.get("ledger"))
     out = {
         "blocking": report["blocking"],
@@ -211,7 +212,12 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
 
     if paths.get("discovery_leads"):
         leads = DiscoveryLeads.from_yaml(paths["discovery_leads"])
-        seeds = (spec_params or {}).get("seed_sources", [])
+        # `seed_sources` is a TOP-LEVEL spec key, not a parameter — spec-04 declares it beside
+        # `parameters`, exactly as the contract shows. Reading it out of `parameters` resolved it to
+        # `[]` on every run, so `seed_handling` (R-DISC-06) has only ever been checked against an
+        # empty seed list: a MUST rule whose whole subject was absent, reported as a pass. Found by
+        # an agent authoring the fixture that was supposed to exercise it.
+        seeds = (spec or {}).get("seed_sources") or (spec_params or {}).get("seed_sources", [])
         led = run_discovery_leads_pass(leads, seeds)
         out["discovery_leads_pass"] = {"counts": led["counts"],
                                        "failures": [f["detail"] for f in led["findings"]
@@ -461,7 +467,7 @@ def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC,
         result["detail"] = "no artifact — run the pipeline for this spec, or point `artifact:` at one"
         return result
 
-    hard = _tier_hard_lints(paths, spec.get("parameters"))
+    hard = _tier_hard_lints(paths, spec.get("parameters"), spec)
     model = _tier_model_verified(paths, rubric_path, backend)
     critics = _tier_soft_critic(paths)
     human = _tier_human(spec)

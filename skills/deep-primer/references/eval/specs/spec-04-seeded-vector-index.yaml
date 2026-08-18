@@ -10,6 +10,18 @@ parameters:
 seed_sources:
   - {kind: url, ref: "https://example.org/hnsw-paper", note: "user-supplied"}
   - {kind: author, ref: "Y. Malkov", note: "survey their work"}
+# A hand-built REFERENCE artifact, in the same spirit as spec-01's — not a real generation.
+# Its sources are openly synthetic (`example.org`, fictional authors) because this fixture exercises
+# STRUCTURE: it is what lets this spec's deterministic rules run against a document shaped the way
+# the spec describes. It makes no grounding claim, and it is deliberately distinguishable at a glance
+# from spec-02's ledger, which came from a real campaign with verbatim-verified quotes.
+# The soft_critic rules in `expect.must_pass` still need a judge run; offline they report as the
+# documented judge gap rather than as a pass.
+artifact:
+  ir: tests/fixtures/spec04/document-ir.yaml
+  concept_map: tests/fixtures/spec04/concept-map.yaml
+  ledger: tests/fixtures/spec04/source-ledger.yaml
+  discovery_leads: tests/fixtures/spec04/discovery-leads.yaml
 expect:
   must_pass: [R-DISC-06, R-GROUND-01, R-GROUND-05, R-EVID-03]
   watch: [seed_not_dropped, seed_not_promoted_past_evidence]
