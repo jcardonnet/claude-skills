@@ -145,29 +145,31 @@ def load_passes(critic_dir: Path = CRITIC_DIR) -> list[tuple[str, list[str], str
 def _ir_digest(ir_path: Path) -> str:
     """Digest of what the CRITICS SEE in an IR — content addressing, never security.
 
-    Not the raw file. The guard exists to stop a frozen report being credited against an IR it did
-    not judge, so it must key on the judged surface: `BlockView` carries block_id, role, concept,
-    mode and readable_text, and `_judge_document_view` adds the section headings. It does NOT carry
-    provenance, claim_ids or source_ids.
+    Not the raw file. Hashing bytes conflated "the document changed" with "the file changed":
+    relabelling three blocks `verified` -> `inferred` invalidated a $17 run and dropped the
+    soft_critic tier from 35 to 2, a false staleness report and exactly the kind of thing that
+    teaches people to delete the guard. A comment edit would have done the same.
 
-    Hashing the bytes conflated "the document changed" with "the file changed". Relabelling three
-    blocks `verified` -> `inferred` — a grounding correction the critics cannot see — invalidated a
-    $17 run and dropped the soft_critic tier from 35 to 2, which is a false staleness report and
-    exactly the kind of thing that teaches people to delete the guard. A comment edit would have
-    done the same.
+    And not a hand-written summary of the judged surface either, which is what replaced it. That
+    version recorded `[block_id, role, concept, mode, readable_text]` plus section titles and
+    asserted in its own docstring that the judge sees no provenance or source_ids — while
+    `claude_judge._judge_document_view` builds the document unit out of `render_llm_md`, which
+    prints `provenance:` into every block heading and a `Sources: [...]` line beneath it. Summary
+    and surface had already drifted, so the very relabelling described above changed what every
+    document-level critic read and moved this digest not at all: the guard was blind in exactly the
+    direction it had been re-tuned to be blind in, and now sensitive nowhere it needed to be.
+
+    `judged_surface` IS the surface, assembled by the helpers the judge itself calls. Imported
+    lazily because claude_judge imports this module.
     """
     import hashlib
     import json as _json
 
+    from critics.claude_judge import judged_surface
     from ir.schema import DocumentIR
 
-    ir = DocumentIR.from_yaml(ir_path)
-    surface = {
-        "sections": [s.title for s in ir.sections],
-        "blocks": [[b.block_id, b.role.value, b.concept, b.mode.value if b.mode else None,
-                    b.readable_text] for b in ir.flatten_blocks()],
-    }
-    payload = _json.dumps(surface, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    payload = _json.dumps(judged_surface(DocumentIR.from_yaml(ir_path)),
+                          sort_keys=True, ensure_ascii=False).encode("utf-8")
     return hashlib.sha256(payload, usedforsecurity=False).hexdigest()
 
 

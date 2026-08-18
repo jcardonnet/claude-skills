@@ -46,8 +46,42 @@ def test_deterministic_resolution_flags_unledgered_marker(fixtures):
     assert "C99" in markers
 
 
-def test_blocking_when_below_threshold(fixtures):
-    assert _report(fixtures)["blocking"] is True
+def test_blocking_on_the_proxy_is_ledger_resolution_only(fixtures):
+    """Renamed because it no longer proves what it said. On the lexical proxy the entailment
+    thresholds do not gate — word overlap between a <=15-word quote and a required paraphrase is not
+    evidence, which is why `propose_thresholds` refuses to fit a floor to it — so what blocks here is
+    the unresolved C99 marker, a deterministic R-GROUND-01 MUST that binds on any backend.
+
+    The old name claimed a threshold verdict this fixture never produced, and the assertion passed
+    either way."""
+    r = _report(fixtures)
+    assert r["blocking"] is True
+    assert r["resolves_to_ledger"]["ok"] is False
+
+    # strip the one unresolvable marker and the proxy's own low scores block nothing
+    ir = DocumentIR.from_yaml(fixtures / "verify-ir.yaml")
+    ir.sections[0].blocks = [b for b in ir.sections[0].blocks if b.claim_ids != ["C99"]]
+    ledger = SourceLedger.from_yaml(fixtures / "verify-ledger.yaml")
+    proxy = evaluate(ir, ledger, backend=LexicalEntailment(), thresholds=load_thresholds())
+    assert proxy["verified_recall"] < proxy["thresholds"]["verified_recall"]
+    assert proxy["blocking"] is False
+
+
+def test_a_real_backend_blocks_on_the_settled_thresholds(fixtures):
+    """The half the CLI never had: below the verified pair on a backend worth trusting, it blocks.
+    It used to block on the LEGACY pair instead — the one eval-rubric.yaml carries as an unfitted
+    TODO and load_thresholds() describes as meaningless."""
+    ir = DocumentIR.from_yaml(fixtures / "verify-ir.yaml")
+    ir.sections[0].blocks = [b for b in ir.sections[0].blocks if b.claim_ids != ["C99"]]
+    ledger = SourceLedger.from_yaml(fixtures / "verify-ledger.yaml")
+    strict = evaluate(ir, ledger, backend=resolve_backend("claude", judge_fn=lambda _p, _h: False),
+                      thresholds=load_thresholds())
+    assert strict["resolves_to_ledger"]["ok"] is True
+    assert strict["blocking"] is True
+
+    lenient = evaluate(ir, ledger, backend=resolve_backend("claude", judge_fn=lambda _p, _h: True),
+                       thresholds=load_thresholds())
+    assert lenient["blocking"] is False
 
 
 def test_resolves_to_ledger_unit(fixtures):
@@ -281,6 +315,53 @@ def _ledger_supporting(text="chunking bounds recall"):
 
     return SourceLedger(sources=[Source(source_id="s1", claims=[
         Claim(claim_id="C1", text=text, quote=text)])])
+
+
+def test_labelling_everything_unverified_does_not_clear_the_gate():
+    """`verified | inferred` is not exhaustive — `Provenance` also has `unverified`, and a block may
+    carry claim_ids with no tag at all. Both fell between the buckets every threshold reads, so a
+    primer could clear all three at once by grounding nothing and admitting it."""
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    for label in ("unverified", None):
+        r = evaluate(_ir_with([label, label]), _ledger_supporting(), backend=LexicalEntailment())
+        # the vacuous readings are still reported, and still vacuous
+        assert r["verified_recall"] == 1.0 and r["verified_precision"] == 1.0
+        assert r["inferred_share"] == 0.0
+        # ...but composition now measures the whole population, so nothing is hidden
+        assert r["ungrounded_share"] == 1.0
+        assert r["counts"]["untagged_or_unverified_statements"] == 2
+
+
+def test_a_primer_that_cites_nothing_is_unscoreable_not_clean():
+    """With no claim-bearing block every ratio reports its PASSING value by vacuous truth, so an
+    empty artifact cleared R-GROUND-02/03 outright."""
+    from ir.schema import Block, DocumentIR, Section
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    ir = DocumentIR(sections=[Section(block_id="s", title="T", blocks=[
+        Block(block_id="b", role="body", text="a sentence citing nothing")])])
+    r = evaluate(ir, _ledger_supporting(), backend=LexicalEntailment())
+    assert r["recall"] == 1.0 and r["precision"] == 1.0 and r["verified_recall"] == 1.0
+    assert r["scoreable"] is False
+    assert r["counts"]["factual_statements"] == 0
+
+
+def test_the_two_citation_gates_are_one_function():
+    """`score_spec` checked recall+precision on ANY backend and dropped `meets_composition` — the
+    guard that exists because the other two are vacuous — while `_spec_strict_failures` twenty lines
+    away checked all three and only on a real backend. Two judgements, already disagreeing."""
+    from eval import _citation_shortfall
+
+    proxy = {"status": "scored", "backend": "lexical", "meets_recall": False,
+             "meets_precision": False, "meets_composition": False}
+    assert _citation_shortfall(proxy) is None, "the proxy's numbers gate nothing"
+
+    real = {**proxy, "backend": "nli", "meets_recall": True, "meets_precision": True}
+    assert _citation_shortfall(real), "composition alone must be able to fail a spec"
+    assert _citation_shortfall({**real, "meets_composition": True}) is None
 
 
 def test_inferred_blocks_are_scored_separately_from_verified_ones():

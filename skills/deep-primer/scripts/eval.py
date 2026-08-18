@@ -111,6 +111,33 @@ def _exercised(findings: list[dict]) -> list[str]:
     return [f["rule_id"] for f in findings if f["status"] != "skip"]
 
 
+def _citation_shortfall(mv: dict) -> str | None:
+    """Why citation quality fails this spec, or None if it does not — the ONE such judgement.
+
+    There were two, and they had already come apart. `score_spec` checked `meets_recall and
+    meets_precision`, dropping `meets_composition` — the very guard added because the other two are
+    vacuous for a primer that declares nothing verified — and applied them on ANY backend, including
+    the lexical proxy the same file refuses to derive a threshold from. So `passed` was simultaneously
+    too lenient (no composition guard) and too strict (proxy numbers), and disagreed with the strict
+    gate twenty lines away.
+
+    Only gate on a backend whose numbers mean something. The proxy scores word overlap between a
+    <=15-word quote and a block R-GROUND-01 requires to be a PARAPHRASE, so a low score there is
+    compliance rather than a defect — which is exactly why `propose_thresholds` refuses to derive a
+    floor from it. Failing on numbers the harness will not trust would be incoherent and would make
+    every offline run red.
+    """
+    if mv.get("status") != "scored" or mv.get("backend") == "lexical":
+        return None
+    if mv.get("meets_recall") and mv.get("meets_precision") and mv.get("meets_composition", True):
+        return None
+    return (f"verified-citation quality below threshold "
+            f"(verified_recall={mv.get('verified_recall')} "
+            f"verified_precision={mv.get('verified_precision')} "
+            f"ungrounded_share={mv.get('ungrounded_share')}, "
+            f"scoreable={mv.get('scoreable')}, backend={mv.get('backend')})")
+
+
 def _unenforced(pass_report: dict) -> list[str]:
     """MUST rules the pass dispatched to nothing. `run_artifact_pass` already computes this; the
     eval gate simply never read it, so only the IR pass had the backstop `lint.py --strict` gives."""
@@ -242,14 +269,23 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         "verified_recall": report["verified_recall"],
         "verified_precision": report["verified_precision"],
         "inferred_share": report["inferred_share"],
+        "ungrounded_share": report["ungrounded_share"],
+        "scoreable": report["scoreable"],
         "thresholds": thresholds,
         # gated on the VERIFIED pair: the overall numbers count a block the author honestly
         # declared `inferred` against them, so a primer is penalised for labelling truthfully
         "meets_recall": report["verified_recall"] >= thresholds["verified_recall"],
         "meets_precision": report["verified_precision"] >= thresholds["verified_precision"],
-        # a primer that declares NOTHING verified passes the two above vacuously; composition is
-        # what catches it, and being entirely synthesis is a real finding about the sourcing
-        "meets_composition": report["inferred_share"] <= thresholds["max_inferred_share"],
+        # A primer that declares NOTHING verified passes the two above vacuously; composition is
+        # what catches it, and being entirely synthesis is a real finding about the sourcing.
+        #
+        # Against `ungrounded_share`, not `inferred_share`: `verified | inferred` leaves out
+        # `unverified` and untagged blocks, so labelling everything `unverified` used to clear all
+        # three thresholds at once. And `scoreable` because with no claim-bearing block at all every
+        # ratio reports its passing value by vacuous truth — an unscoreable primer is not a clean
+        # one. Identical on both shipped artifacts, where every block is verified or inferred.
+        "meets_composition": (report["scoreable"]
+                              and report["ungrounded_share"] <= thresholds["max_inferred_share"]),
         "unresolved_citations": len(report["resolves_to_ledger"]["violations"]),
         "counts": report["counts"],
     }
@@ -425,10 +461,12 @@ def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC,
     })
 
     # a spec passes only if nothing blocked, no expected rule failed, every expected rule actually
-    # ran, and — when it could be scored — citation quality cleared both thresholds
-    model_ok = model.get("status") != "scored" or (model.get("meets_recall") and model.get("meets_precision"))
+    # ran, and — when it could be scored on a backend worth trusting — citation quality cleared
+    # every threshold. `_citation_shortfall` is that judgement; see its docstring for why it is one
+    # function rather than the two that had already drifted apart here.
     result["passed"] = bool(
-        not hard["blocking"] and not failed_expected and not unexercised and model_ok)
+        not hard["blocking"] and not failed_expected and not unexercised
+        and not _citation_shortfall(model))
     return result
 
 
@@ -503,19 +541,9 @@ def _spec_strict_failures(results: list[dict], rules: list[dict]) -> list[dict]:
                            f"{', '.join(chunks['dangling_failures'])}")
         if (chunks.get("backend") not in (None, "lexical")) and not chunks.get("ok", True):
             reasons.append(f"R-PROJ-04: chunk self-containment failed on {chunks.get('failures')}")
-        # Only gate citation quality on a backend whose numbers mean something. The lexical proxy
-        # scores word overlap between a <=15-word quote and a block R-GROUND-01 requires to be a
-        # PARAPHRASE, so a low score there is compliance, not a defect — which is exactly why
-        # propose_thresholds() refuses to derive a floor from it. Failing on the same numbers it
-        # refuses to trust would be incoherent, and would make --strict permanently red offline.
-        if (mv.get("status") == "scored" and mv.get("backend") != "lexical"
-                and not (mv.get("meets_recall") and mv.get("meets_precision")
-                         and mv.get("meets_composition", True))):
-            reasons.append(f"verified-citation quality below threshold "
-                           f"(verified_recall={mv.get('verified_recall')} "
-                           f"verified_precision={mv.get('verified_precision')} "
-                           f"inferred_share={mv.get('inferred_share')}, "
-                           f"backend={mv.get('backend')})")
+        # Same judgement `score_spec` makes, from the same function, so the two cannot drift again.
+        if shortfall := _citation_shortfall(mv):
+            reasons.append(shortfall)
         silent = [rid for rid in expected["not_exercised"]
                   if _why_unexercised(rid, rules) == SILENT_SKIP]
         if silent:

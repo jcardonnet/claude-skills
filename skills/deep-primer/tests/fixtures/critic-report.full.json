@@ -609,7 +609,7 @@
     }
   ],
   "errored_items": [],
-  "ir_sha256": "9ec8026ce5a57e9094aa7c60fdecb5effe70d904758b84536b79c3f5a40f207b",
+  "ir_sha256": "25b15ce8c47ddd1c2e182cbf138755d0c4f888e6cd051714d26320a8f3cc67c2",
   "judge": {
     "kind": "claude",
     "model": "haiku",

@@ -32,7 +32,7 @@ import json
 from dataclasses import dataclass, field
 
 from critics._errors import JudgeUnavailable
-from critics.run_critics import DOCUMENT, BlockView, JudgeResult, _validate_verdict
+from critics.run_critics import DOCUMENT, BlockView, JudgeResult, _validate_verdict, _view
 from ir.schema import DocumentIR
 from utils.claude_cli import ClaudeCli, CliBudgetExceeded, CliUnavailable, strip_fence
 
@@ -106,6 +106,36 @@ def _judge_document_view(ir: DocumentIR) -> str:
             + "\n\nBLOCKS (the distilled projection):\n" + render_llm_md(ir))
 
 
+_NO_TEXT = "(this block carries no text)"
+
+
+def unit_text(block: BlockView, document_text: str) -> str:
+    """The text a critic is shown for one unit."""
+    return document_text if block.block_id == DOCUMENT else (block.text or _NO_TEXT)
+
+
+def judged_surface(ir: DocumentIR) -> list[list[str]]:
+    """Everything a critic can be shown for this IR — identity fields and text, per unit.
+
+    `run_critics._ir_digest` hashes THIS rather than reconstructing an approximation of it, which is
+    what it used to do. The reconstruction and the real surface had already drifted: it recorded
+    `[block_id, role, concept, mode, readable_text]` plus section titles and its docstring asserted
+    the judge sees no provenance or source_ids — but the document view is built from
+    `render_llm_md`, which prints `provenance:` into every block heading and a `Sources: [...]` line
+    under it. Relabelling a block verified -> inferred therefore changed what every document-level
+    critic read and left the digest unmoved, so a frozen report stayed "fresh" for a document it no
+    longer described. Deriving the digest from the surface makes that impossible rather than
+    documented.
+    """
+    doc = _judge_document_view(ir)
+    units = [[DOCUMENT, DOCUMENT, "-", "-", doc]]
+    for b in ir.flatten_blocks():
+        bv = _view(b)
+        units.append([bv.block_id, bv.role, bv.concept or "-", bv.mode or "-",
+                      unit_text(bv, doc)])
+    return units
+
+
 class JudgeError(JudgeUnavailable):
     """The CLI failed or could not be parsed, and retrying will not help.
 
@@ -163,9 +193,7 @@ class ClaudeCliJudge:
         return self._cli.spend_usd
 
     def _unit_text(self, block: BlockView) -> str:
-        if block.block_id == DOCUMENT:
-            return self._document_text
-        return block.text or "(this block carries no text)"
+        return unit_text(block, self._document_text)
 
     def _invoke(self, instruction: str) -> dict:
         """Delegate to the shared CLI caller, re-raising in this module's taxonomy.

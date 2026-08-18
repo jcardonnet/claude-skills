@@ -411,6 +411,31 @@ def test_a_stale_critic_report_is_not_counted_as_coverage(tmp_path):
     assert _tier_soft_critic({"critic_report": fresh, "ir": ir})["rules_exercised"] == ["R-PROSE-02"]
 
 
+def test_the_staleness_digest_sees_every_edit_the_critics_see(tmp_path):
+    """The guard hand-reconstructed the judged surface and the two had drifted. It recorded no
+    provenance and no source_ids — and said so in its docstring — while `_judge_document_view`
+    builds the document unit from `render_llm_md`, which prints `provenance:` into every block
+    heading and a `Sources: [...]` line under it. So the one edit the guard was re-tuned around,
+    relabelling a block `verified` -> `inferred`, changed what every document-level critic read and
+    left the digest exactly where it was."""
+    from eval import _ir_digest
+
+    src = SKILL_ROOT / "tests" / "fixtures" / "document-ir.full.yaml"
+    base = _ir_digest(src)
+    text = src.read_text(encoding="utf-8")
+
+    def digest_of(mutation: str) -> str:
+        p = tmp_path / "ir.yaml"
+        p.write_text(mutation, encoding="utf-8")
+        return _ir_digest(p)
+
+    assert "provenance: verified" in text and "source_ids:" in text
+    assert digest_of(text.replace("provenance: verified", "provenance: inferred", 1)) != base
+    assert digest_of(text.replace("source_ids: [", "source_ids: [ghost-src, ", 1)) != base
+    # ...and the property it was re-tuned FOR still holds: a comment is not a document change
+    assert digest_of(text + "\n# a trailing comment the critics never see\n") == base
+
+
 def test_a_narrowed_run_cannot_fabricate_a_silent_skip():
     """`_why_unexercised` classifies by rule KIND, not by whether this run could reach the rule, so
     a deterministic rule that spec-01 exercises and spec-02 does not would be reported as a silent

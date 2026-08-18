@@ -158,7 +158,39 @@ def evaluate(
     verified_precision = v_cite_support / len(v_cites) if v_cites else 1.0
     inferred_share = len(inferred) / factual if factual else 0.0
 
-    blocking = bool(resolves) or recall < thresholds["recall"] or precision < thresholds["precision"]
+    # `verified | inferred` is NOT an exhaustive partition. `Provenance` also has `unverified`, and
+    # a block may carry claim_ids with no provenance tag at all — both fall between the two buckets,
+    # and all three settled thresholds are keyed on one of them. A primer that labels every
+    # claim-bearing block `unverified` therefore scores verified_recall 1.0 (vacuous — nothing
+    # claims grounding, so nothing can fail), verified_precision 1.0 and inferred_share 0.00,
+    # clearing the whole gate while grounding nothing. `max_inferred_share` exists to stop exactly
+    # that, so it has to be measured against the WHOLE population rather than one bucket of it.
+    #
+    # On both shipped artifacts every claim-bearing block is verified or inferred, so this is
+    # numerically identical to inferred_share today (spec-01 0.43, spec-02 0.85) and the calibrated
+    # threshold keeps its meaning. `inferred_share` stays in the report: "declared synthesis" and
+    # "not grounded" are different facts and the rubric's reasoning is about the first.
+    ungrounded_share = (factual - len(verified)) / factual if factual else 0.0
+
+    # With `factual == 0` every ratio above reports its PASSING value by vacuous truth, so a primer
+    # that cites nothing at all clears R-GROUND-02/03 outright. That is not a clean primer, it is an
+    # unscoreable one, and a gate has to be able to tell the two apart.
+    scoreable = factual > 0
+
+    # R-GROUND-01 is deterministic and MUST — an unresolved marker is the anti-fabrication floor and
+    # blocks on any backend. The entailment-derived thresholds are a different matter twice over.
+    #
+    # They used to be the LEGACY `recall`/`precision` pair, which this file's own threshold loader
+    # describes as mixing declared synthesis with claimed grounding so that "no value of it is
+    # meaningful", and which eval-rubric.yaml carries as an unfitted TODO. The standalone CLI was
+    # the only consumer still blocking on it, and it blocked on ANY backend — including the lexical
+    # proxy, whose low scores are what a COMPLIANT primer produces.
+    blocking = bool(resolves)
+    if backend.name != "lexical":
+        blocking = blocking or not scoreable \
+            or verified_recall < thresholds["verified_recall"] \
+            or verified_precision < thresholds["verified_precision"] \
+            or ungrounded_share > thresholds["max_inferred_share"]
 
     return {
         "backend": backend.name,
@@ -168,12 +200,15 @@ def evaluate(
         "verified_recall": round(verified_recall, 4),
         "verified_precision": round(verified_precision, 4),
         "inferred_share": round(inferred_share, 4),
+        "ungrounded_share": round(ungrounded_share, 4),
+        "scoreable": scoreable,
         "thresholds": thresholds,
         "counts": {"factual_statements": factual, "supported_statements": supported,
                    "citations": cite_total, "supporting_citations": cite_support,
                    "verified_statements": len(verified), "verified_supported": v_supported,
                    "verified_citations": len(v_cites), "verified_supporting": v_cite_support,
-                   "inferred_statements": len(inferred)},
+                   "inferred_statements": len(inferred),
+                   "untagged_or_unverified_statements": factual - len(verified) - len(inferred)},
         "per_statement": per_statement,
         "per_citation": per_citation,
         "blocking": blocking,
@@ -207,9 +242,16 @@ def main(argv: list[str] | None = None) -> int:
     Path(args.out).write_text(json.dumps(report, indent=2), encoding="utf-8")
 
     r = report
-    print(f"{'BLOCKING' if r['blocking'] else 'clean'} — recall={r['recall']} (>= {r['thresholds']['recall']}) "
-          f"precision={r['precision']} (>= {r['thresholds']['precision']}) "
+    th = r["thresholds"]
+    print(f"{'BLOCKING' if r['blocking'] else 'clean'} — "
+          f"verified_recall={r['verified_recall']} (>= {th['verified_recall']}) "
+          f"verified_precision={r['verified_precision']} (>= {th['verified_precision']}) "
+          f"ungrounded_share={r['ungrounded_share']} (<= {th['max_inferred_share']}) "
+          f"scoreable={r['scoreable']} "
           f"unresolved={len(r['resolves_to_ledger']['violations'])} backend={r['backend']} -> {args.out}")
+    if r["backend"] == "lexical":
+        print("  (lexical proxy: entailment thresholds are NOT gated — word overlap against a "
+              "required paraphrase is not evidence; only ledger resolution blocks here)")
     for v in r["resolves_to_ledger"]["violations"]:
         print(f"  [unresolved] {v['block_id']}: {v['detail']}")
     for c in r["per_citation"]:
