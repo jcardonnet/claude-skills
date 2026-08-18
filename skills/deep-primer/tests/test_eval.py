@@ -163,6 +163,35 @@ def test_rubric_thresholds_are_still_the_documented_todos():
 # `enforcement_coverage` was reported from Prompt 7 onward but nothing ever failed on it. These pin
 # the gate that closed that: coverage is now a ratchet, not a readout.
 
+def test_the_frozen_critic_report_is_stale_and_says_so():
+    """It was judged against document-ir.full.yaml as of 49764e0. `f80ff65` then relabelled three
+    blocks `verified` -> `inferred`, and `_judge_document_view` prints provenance into every block
+    heading — so three lines of the surface every document-level critic reads are different now, and
+    provenance is exactly what R-EVID-01 judges.
+
+    The report was kept credited by a digest deliberately made blind to provenance, on the stated
+    grounds that this was "a grounding correction the critics cannot see". They can see it. Stamping
+    the digest of the document actually judged is what makes the guard tell the truth, and the truth
+    is that 33 of the 35 soft_critic rules were being credited from a run of a different document."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
+    critics = report["results"][0]["soft_critic"]
+    assert critics["status"] == "stale"
+    assert critics["rules_exercised"] == []
+    assert "judged against a different IR" in critics["reason"]
+
+    tiers = report["enforcement_coverage"]["by_enforcement"]
+    assert tiers["soft_critic"]["exercised"] == 2, "only the two lint-reachable ones survive"
+
+
+def test_the_coverage_gate_reports_the_soft_critic_shortfall():
+    """The ratchet's whole purpose. The floor stays at 35 — lowering it to match a stale report is
+    precisely the silent erosion it exists to catch — so the gate is red until a re-judge."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT)
+    gate = report["coverage_gate"]
+    assert not gate["passed"]
+    assert any(s["tier"] == "soft_critic" and s["floor"] == 35 for s in gate["shortfalls"]), gate
+
+
 def test_the_shipped_artifact_fails_only_on_its_two_known_critic_musts():
     """Renamed from `..._passes_on_the_shipped_artifacts`, because it no longer does — and that is
     the gate working, not the gate breaking.
@@ -182,12 +211,17 @@ def test_the_shipped_artifact_fails_only_on_its_two_known_critic_musts():
     changing, something else moved."""
     report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
     gate = report["coverage_gate"]
-    assert not gate["silent_skips"] and not gate["shortfalls"]
+    assert not gate["silent_skips"]
 
-    reasons = [reason for f in gate["spec_failures"] for reason in f["reasons"]]
-    assert len(reasons) == 1, reasons
-    assert "critic MUST failure(s): R-ARCH-01, R-EVID-01" in reasons[0]
-    assert not gate["passed"]
+    # The two critic MUSTs are no longer REPORTED, because the report carrying them is stale and no
+    # longer credited — R-ARCH-01 and R-EVID-01 are real and come back the moment it is re-judged.
+    # Both facts point at the same remedy, which is why GAPS G11 bundles them.
+    critics = report["results"][0]["soft_critic"]
+    assert critics["status"] == "stale"
+    assert not [r for f in gate["spec_failures"] for r in f["reasons"] if "critic MUST" in r]
+    # A narrowed run suspends the FLOORS by design, so this one is quiet; the full run is where the
+    # soft_critic shortfall is asserted (test_the_coverage_gate_reports_the_soft_critic_shortfall).
+    assert gate["scope"] == "partial"
 
 
 def test_the_gate_is_green_once_the_critic_musts_are_cleared():
@@ -208,7 +242,10 @@ def test_coverage_gate_fails_when_a_tier_regresses():
     """
     report = run_eval(SPEC_DIR, SKILL_ROOT)
     exercised = set(registry_rule_ids()) - set(report["enforcement_coverage"]["unexercised"])
-    assert coverage_gate(exercised, [])["passed"], "baseline must be green before thinning it"
+    # The soft_critic tier is legitimately short while the frozen report is stale, so the baseline
+    # is measured on the HARD_LINT tier alone — which is what this test is about.
+    baseline = coverage_gate(exercised, [])
+    assert not any(s["tier"] == "hard_lint" for s in baseline["shortfalls"]), baseline
 
     hard_lint_ids = {r["id"] for r in registry_rules() if r["enforcement"] == "hard_lint"}
     thinned = exercised - {min(exercised & hard_lint_ids)}

@@ -609,7 +609,7 @@
     }
   ],
   "errored_items": [],
-  "ir_sha256": "25b15ce8c47ddd1c2e182cbf138755d0c4f888e6cd051714d26320a8f3cc67c2",
+  "ir_sha256": "d687218e1f1cfa60c0e3b3e2b1a6dddb00b7a7d6db306c712769193da731dbc5",
   "judge": {
     "kind": "claude",
     "model": "haiku",
@@ -618,5 +618,5 @@
     "exercised_rules": true,
     "gating_model": "sonnet"
   },
-  "ir_sha256_note": "re-stamped when the digest moved from raw file bytes to the JUDGED SURFACE (block views + section headings). Verified equal across the provenance relabel by digesting the pre-edit IR from git, so these verdicts still describe this document. previous byte-digest: e114186cc80d"
+  "ir_sha256_note": "The digest of the document these verdicts were ACTUALLY judged against \u2014 document-ir.full.yaml as of commit 49764e0, identified by matching the original byte-stamp e114186cc80d. It deliberately does NOT match the IR at HEAD, so the staleness guard reports `stale` and this report is not credited as coverage. That is correct: f80ff65 relabelled matrix-chunking, body-chunk-size and toulmin-reranking from provenance `verified` to `inferred` AFTER the run, and _judge_document_view prints provenance into every block heading, so three lines of the surface every document-level critic reads are different now. Provenance is exactly what R-EVID-01 judges. An earlier revision stamped the HEAD digest instead, justified by digesting the pre-edit IR under the THEN-CURRENT definition and finding it equal \u2014 but that definition had been made provenance-blind on purpose, so the check was circular: it asked whether the document had changed using a measure built to be blind to the only change that had happened. Clearing this needs a re-judge, not a re-stamp, and it belongs in the same pass as GAPS G11."
 }
