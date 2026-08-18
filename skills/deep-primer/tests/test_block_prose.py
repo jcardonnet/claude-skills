@@ -140,7 +140,7 @@ def test_a_contested_block_says_something():
     assert "Masks are required for reliable linkage." in con.readable_text
     assert "school A" in con.readable_text
     assert con.entailment_units, "a contested block's framings are what it puts on the page"
-    assert any("Masks are required" in u for u in con.entailment_units)
+    assert any("Masks are required" in u.text for u in con.entailment_units)
 
 
 # --- R-XREF-02: phantom cross-references ------------------------------------

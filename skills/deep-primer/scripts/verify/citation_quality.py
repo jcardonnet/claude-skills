@@ -113,17 +113,25 @@ def evaluate(
         units = b.entailment_units
         statement = b.readable_text
         resolvable = [cid for cid in b.claim_ids if cid in cidx]
+        undeclared = [u for u in units if not u.claim_ids]
         block_supported = False
         for cid in resolvable:
             quote, sid = cidx[cid]
-            ok = any(backend.supports(quote, unit) for unit in units)
+            # Only the units this claim was actually cited FOR. Testing every claim against every
+            # unit is what let a general quote be credited through a row it has nothing to do with
+            # — the over-citation eval-rubric.yaml records on spec-01, invisible to the metric that
+            # was supposed to catch it, because `claim_ids` says what a block cites and never what
+            # for. A block with no declared attribution falls back to all of its units, which is
+            # every artifact written before `row_claims` existed.
+            targets = [u for u in units if cid in u.claim_ids] or undeclared
+            ok = any(backend.supports(quote, u.text) for u in targets)
             cite_total += 1
             cite_support += int(ok)
             block_supported = block_supported or ok
             per_citation.append({
                 "block_id": b.block_id, "claim_id": cid, "source_id": sid,
                 "supports": ok, "quote": quote, "statement": statement,
-                "units": len(units),
+                "units": len(units), "units_cited_for": [u.text for u in targets],
             })
         if resolvable:  # a block with no resolvable claim is an R-GROUND-01 failure, not a recall sample
             factual += 1

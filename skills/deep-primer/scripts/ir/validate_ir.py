@@ -59,9 +59,33 @@ def validate_document(
     # 5. role-scoped fields sit on the role that owns them
     for b in leaves:
         for field, owner in (("rows", "card"), ("items", "recall"),
-                             ("artifact_kind", "matrix"), ("framings", "contested")):
+                             ("artifact_kind", "matrix"), ("framings", "contested"),
+                             ("row_claims", "card")):
             if getattr(b, field) is not None and b.role.value != owner:
                 errors.append(f"{b.block_id}: {field!r} is only valid on role={owner!r}, got {b.role.value!r}")
+
+    # 5b. per-unit citation attribution is well-formed. The block-level `claim_ids` stays the
+    # authoritative "what this block cites" — it is what the HTML projection prints and what
+    # R-GROUND-01 resolves against the ledger — so a row citing outside it would be a marker no
+    # resolution check ever sees.
+    for b in leaves:
+        for row, cids in (b.row_claims or {}).items():
+            if b.rows is None or row not in type(b.rows).model_fields:
+                errors.append(f"{b.block_id}: row_claims names {row!r}, which is not a card row")
+            for cid in cids:
+                if cid not in b.claim_ids:
+                    errors.append(f"{b.block_id}: row_claims[{row!r}] cites {cid!r}, which is not "
+                                  f"in the block's claim_ids")
+        for n, item in enumerate(b.items or []):
+            for cid in item.claim_ids:
+                if cid not in b.claim_ids:
+                    errors.append(f"{b.block_id}: recall item {n} cites {cid!r}, which is not in "
+                                  f"the block's claim_ids")
+        for f in b.framings or []:
+            for cid in f.claim_ids:
+                if cid not in b.claim_ids:
+                    errors.append(f"{b.block_id}: framing {f.label!r} cites {cid!r}, which is not "
+                                  f"in the block's claim_ids")
 
     # 2. claim_ids resolve to the ledger
     if ledger is not None:

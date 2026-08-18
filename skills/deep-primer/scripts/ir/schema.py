@@ -112,6 +112,9 @@ class Framing(BaseModel):
     summary: str | None = None
     applies_when: str | None = None
     source_ids: list[str] = Field(default_factory=list)
+    # Which of the block's claims support THIS framing — a school of thought is attributed to the
+    # sources that hold it, not to the block as a whole. Optional; see `Block.row_claims`.
+    claim_ids: list[str] = Field(default_factory=list)
 
 
 class CardRows(BaseModel):
@@ -144,6 +147,21 @@ class RecallItem(BaseModel):
     question: str
     answer: str
     cross_domain: bool = False
+    # Which of the block's claims support THIS answer. Optional; see `Block.row_claims`.
+    claim_ids: list[str] = Field(default_factory=list)
+
+
+class EntailmentUnit(BaseModel):
+    """One thing a block ASSERTS, plus the claims cited for it.
+
+    `claim_ids` empty means the author declared no per-unit attribution, and the consumer falls back
+    to the block's whole citation list — the behaviour before attribution existed.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    text: str
+    claim_ids: list[str] = Field(default_factory=list)
 
 
 class Block(BaseModel):
@@ -168,6 +186,18 @@ class Block(BaseModel):
     rows: CardRows | None = None                 # only on role=card (R-CARD-02)
     items: list[RecallItem] | None = None        # only on role=recall (R-RECALL-01)
     artifact_kind: ArtifactKind | None = None    # only on role=matrix (R-ART-01)
+    # Which of `claim_ids` supports WHICH row — `{"idea": ["C1"], "key_exemplar": ["C7"]}`.
+    #
+    # `claim_ids` says what a block cites and never what for, so every claim was tested against
+    # every claim-bearing row: a general quote cited for a specific claim could be credited through
+    # a row it has nothing to do with, which is the over-citation eval-rubric.yaml records on
+    # spec-01 and the metric could not see. Optional — a block that declares nothing keeps the
+    # every-claim-against-every-row behaviour, so adding this re-scores no existing artifact.
+    #
+    # Lives on the Block rather than inside `rows`: CardRows has extra="allow", so putting it there
+    # would fold citation bookkeeping into `readable_text` — which the judged surface is hashed from
+    # (critics/run_critics._ir_digest), staling a real judged run over a metadata edit.
+    row_claims: dict[str, list[str]] | None = None   # only on role=card
 
     @property
     def readable_text(self) -> str:
@@ -234,32 +264,43 @@ class Block(BaseModel):
     _CLAIM_BEARING_ROWS = ("idea", "key_exemplar")
 
     @property
-    def entailment_units(self) -> list[str]:
-        """The units a citation may be asked to support — the fix for composite blocks.
+    def entailment_units(self) -> list[EntailmentUnit]:
+        """The units a citation may be asked to support, each with the claims cited FOR it.
 
         A card is seven typed rows and R-GROUND-01 caps a quote at 15 words, so no single quote can
         entail the concatenation; every card in spec-01 failed for that structural reason rather
         than because its citation was bad. Scoring against the claim-bearing rows separately asks
         the question the citation can actually answer: does this quote support what the block
-        ASSERTS? A block is supported when a cited quote entails any one of these.
+        ASSERTS?
 
-        Simple blocks return their prose unchanged, so nothing about them changes.
+        Each unit also carries its own `claim_ids` when the author declared them, which is the
+        second half. Without attribution every claim was tested against every unit, so a quote cited
+        for one row could be credited through another — approximate in exactly the direction that
+        flatters. A unit with an EMPTY claim list is undeclared, and the consumer falls back to the
+        block's whole citation list for it, which is the behaviour every existing artifact gets.
+
+        Simple blocks return their prose unchanged.
         """
         if self.rows is not None:
             dumped = self.rows.model_dump(exclude_none=True)
-            units = [str(dumped[k]).strip() for k in self._CLAIM_BEARING_ROWS
-                     if str(dumped.get(k) or "").strip()]
-            return units or [self.readable_text]
+            declared = self.row_claims or {}
+            units = [EntailmentUnit(text=str(dumped[k]).strip(),
+                                    claim_ids=list(declared.get(k) or []))
+                     for k in self._CLAIM_BEARING_ROWS if str(dumped.get(k) or "").strip()]
+            return units or [EntailmentUnit(text=self.readable_text)]
         if self.items:
             # a recall item's ANSWER is the assertion; the question is a prompt
-            return [i.answer.strip() for i in self.items if i.answer.strip()] or [self.readable_text]
+            units = [EntailmentUnit(text=i.answer.strip(), claim_ids=list(i.claim_ids))
+                     for i in self.items if i.answer.strip()]
+            return units or [EntailmentUnit(text=self.readable_text)]
         if self.framings:
             # Presented-not-asserted still puts each framing's summary on the page, and `Framing`
-            # carries its own `source_ids` precisely so a school of thought can be attributed. The
+            # carries its own attribution precisely so a school of thought can be traced. The
             # `applies_when` clause is the author's operational judgement, so it stays out for the
             # same reason a card's `reach_for_when` does.
-            return [s for f in self.framings if (s := (f.summary or "").strip())]
-        return [self.readable_text] if self.readable_text else []
+            return [EntailmentUnit(text=s, claim_ids=list(f.claim_ids))
+                    for f in self.framings if (s := (f.summary or "").strip())]
+        return [EntailmentUnit(text=self.readable_text)] if self.readable_text else []
 
 
 class Subsection(BaseModel):

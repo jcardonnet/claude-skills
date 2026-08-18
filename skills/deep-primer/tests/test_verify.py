@@ -443,7 +443,7 @@ def test_a_card_is_entailed_per_row_not_as_one_blob():
         key_exemplar="A 200-token window over a heading-split corpus.",
         confidence="settled for the recall bound"))
 
-    units = card.entailment_units
+    units = [u.text for u in card.entailment_units]
     assert units == ["Chunking is the retrieval unit and bounds recall.",
                      "A 200-token window over a heading-split corpus."]
     # the framing rows are deliberately absent — no source states an author's skip-condition
@@ -456,7 +456,7 @@ def test_a_simple_block_is_unchanged_by_the_unit_split():
     from ir.schema import Block
 
     b = Block(block_id="b", role="body", text="Chunking bounds recall.", claim_ids=["C1"])
-    assert b.entailment_units == ["Chunking bounds recall."]
+    assert [u.text for u in b.entailment_units] == ["Chunking bounds recall."]
 
 
 def test_a_recall_block_is_entailed_on_its_answers():
@@ -465,7 +465,8 @@ def test_a_recall_block_is_entailed_on_its_answers():
     b = Block(block_id="r", role="recall", claim_ids=["C1"], items=[
         RecallItem(question="What caps recall?", answer="The chunk boundary does."),
         RecallItem(question="And then?", answer="Reranking cannot recover it.")])
-    assert b.entailment_units == ["The chunk boundary does.", "Reranking cannot recover it."]
+    assert [u.text for u in b.entailment_units] == ["The chunk boundary does.",
+                                                    "Reranking cannot recover it."]
 
 
 def test_per_unit_scoring_rescues_a_card_a_blob_comparison_would_fail():

@@ -164,18 +164,35 @@ sections:                                  # h2
         role: card
         concept: mask-free-linkage
         mode: mental_model
-        claim_ids: [C1]
+        claim_ids: [C1, C7]
         rows: {idea: "...", home_anchor: "...", whats_new_vs_renamed: "...",
                reach_for_when: "...", skip_when: "...", key_exemplar: "...", confidence: "..."}
+        row_claims: {idea: [C1], key_exemplar: [C7]}   # OPTIONAL — which claim supports which row
       - {block_id: rec-maskfree,    role: toulmin, text: "...", claim_ids: [C1,C7], provenance: verified, source_ids: ["<...>"]}
       - {block_id: mtx-maskfree,    role: matrix,  artifact_kind: decision_matrix, text: "..."}
       - {block_id: fig-maskfree,    role: figure,  mode: tradeoff, caption: "Figure 3: ...", svg_ref: "assets/..."}
       - block_id: recall-maskfree                  # pedagogical → dropped whole in llm_md
         role: recall
         items:                                     # exactly 3 (R-RECALL-01); >=1 cross_domain (R-RECALL-02)
-          - {question: "...", answer: "...", cross_domain: true}
+          - {question: "...", answer: "...", cross_domain: true, claim_ids: [C1]}
           - {question: "...", answer: "..."}
           - {question: "...", answer: "..."}
+```
+
+### Per-unit citation attribution (optional)
+`claim_ids` on a block says WHICH claims it cites and never WHAT FOR, so the verifier tested every
+claim against every claim-bearing row: a general quote cited for a specific claim could be credited
+through a row it has nothing to do with. That is the over-citation `eval-rubric.yaml` records on
+spec-01, and the metric meant to catch it could not see it.
+
+Three optional fields say what for — `row_claims` on a card, `claim_ids` on a recall item, and
+`claim_ids` on a contested framing. Each must be a **subset of the block's `claim_ids`**, which
+stays the authoritative citation list (it is what the HTML projection prints and what R-GROUND-01
+resolves against the ledger). A block that declares nothing keeps the every-claim-against-every-row
+behaviour, so adding attribution re-scores no existing artifact; a claim attributed to no unit at
+all is scored as decorative, which is what it is.
+
+```yaml
     subsections:                           # h3 — each carries exactly ONE `summary` block (the sub-sum)
       - block_id: sub-leaders
         title: "Leader geometry resolves attribution where pixels cannot"
