@@ -211,6 +211,41 @@ def test_an_advisory_failure_does_not_block(fixtures):
     assert {f["rule_id"] for f in strict["blocking_failures"]} == {"R-CARD-01"}
 
 
+def test_a_hit_ceiling_stops_the_critic_run_rather_than_erroring_every_item(fixtures):
+    """`run_pass` contains `JudgeUnavailable` per item ON PURPOSE — one bad call must not discard a
+    45-minute run. `claude_judge._invoke` used to translate `CliBudgetExceeded` into `JudgeError`,
+    which subclasses it, so the ceiling landed in exactly that containment: the run kept calling,
+    kept paying, and stamped every remaining (rule, block) as verdict "error".
+
+    Making `CliBudgetExceeded` a sibling of `CliUnavailable` fixed the research, entailment and
+    structure-judge seams. This one had re-created the swallow by hand, one layer up."""
+    from utils.claude_cli import CliBudgetExceeded
+
+    class _CeilingJudge:
+        calls = 0
+
+        def __call__(self, pass_name, prompt, rule_id, block, attempt):
+            type(self).calls += 1
+            raise CliBudgetExceeded("cost cap hit: $9.10 > $9.00 after 114 calls")
+
+    judge = _CeilingJudge()
+    with pytest.raises(CliBudgetExceeded):
+        run_critics(_ir(fixtures), judge)
+    assert judge.calls == 1, "the run must stop on the first refusal, not walk the whole registry"
+
+
+def test_an_ordinary_judge_outage_is_still_contained_per_item(fixtures):
+    """The other half — without it the fix above would just be "abort on anything"."""
+    from critics._errors import JudgeUnavailable
+
+    class _Flaky:
+        def __call__(self, pass_name, prompt, rule_id, block, attempt):
+            raise JudgeUnavailable("simulated per-item outage")
+
+    report = run_critics(_ir(fixtures), _Flaky())
+    assert report["counts"]["error"] > 1, "a per-item outage must not stop the run"
+
+
 def test_a_shared_budget_is_not_counted_once_per_judge():
     """`--gating-model` builds two judges against ONE Budget — that is what makes --cost-cap a
     ceiling on the run — and `calls`/`spend_usd` read straight through to it. Summing the two

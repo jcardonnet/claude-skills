@@ -34,7 +34,7 @@ from dataclasses import dataclass, field
 from critics._errors import JudgeUnavailable
 from critics.run_critics import DOCUMENT, BlockView, JudgeResult, _validate_verdict, _view
 from ir.schema import DocumentIR
-from utils.claude_cli import ClaudeCli, CliBudgetExceeded, CliUnavailable, strip_fence
+from utils.claude_cli import ClaudeCli, CliUnavailable, strip_fence
 
 _INSTRUCTION = """\
 You are a scoped binary critic. Judge ONE rule against ONE unit of text. Nothing else.
@@ -200,11 +200,18 @@ class ClaudeCliJudge:
 
         The split matters: a blown budget must NOT be retried (retrying is what blows it further),
         while a timeout or transport hiccup should be.
+
+        `CliBudgetExceeded` is deliberately NOT translated. It used to become a `JudgeError`, which
+        subclasses `JudgeUnavailable`, which `run_pass` catches per item and records as verdict
+        "error" before moving to the next (rule, block) — so the run carried on calling and paying,
+        and every remaining item was stamped as a judge failure. Making `CliBudgetExceeded` a
+        sibling of `CliUnavailable` fixed the research, entailment and structure-judge seams; this
+        one re-created the swallow by hand one layer up.
+
+        A blown ceiling is a RUN-level abort. Only per-item failures belong in this taxonomy.
         """
         try:
             return self._cli(instruction)
-        except CliBudgetExceeded as exc:
-            raise JudgeError(str(exc)) from exc
         except CliUnavailable as exc:
             raise JudgeTransient(str(exc)) from exc
 

@@ -298,8 +298,14 @@ class Block(BaseModel):
             # carries its own attribution precisely so a school of thought can be traced. The
             # `applies_when` clause is the author's operational judgement, so it stays out for the
             # same reason a card's `reach_for_when` does.
-            return [EntailmentUnit(text=s, claim_ids=list(f.claim_ids))
-                    for f in self.framings if (s := (f.summary or "").strip())]
+            # `or [readable_text]` like every other branch. Without it a contested block whose
+            # framings carry labels but no `summary` yielded NO units at all, and `any([])` is
+            # False — so every citation on it scored non-supporting, with no fallback to say what
+            # the block does put on the page. The two composite branches above have always had
+            # this guard; the branch added later did not.
+            units = [EntailmentUnit(text=s, claim_ids=list(f.claim_ids))
+                     for f in self.framings if (s := (f.summary or "").strip())]
+            return units or ([EntailmentUnit(text=self.readable_text)] if self.readable_text else [])
         return [EntailmentUnit(text=self.readable_text)] if self.readable_text else []
 
 

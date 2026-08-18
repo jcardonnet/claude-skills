@@ -178,12 +178,28 @@ def evaluate(
     # numerically identical to inferred_share today (spec-01 0.43, spec-02 0.85) and the calibrated
     # threshold keeps its meaning. `inferred_share` stays in the report: "declared synthesis" and
     # "not grounded" are different facts and the rubric's reasoning is about the first.
-    ungrounded_share = (factual - len(verified)) / factual if factual else 0.0
+    # Composition's denominator is `factual` — blocks with a RESOLVABLE citation — which by itself
+    # rewards deleting citations: strip the claim_ids off a weak block and it leaves the denominator
+    # entirely, improving the score. Blocks that DECLARE a grounding status and cite nothing close
+    # that: they assert something about their own groundedness, so they belong in the population the
+    # composition threshold is about.
+    #
+    # Deliberately NOT every uncited block. spec-01's uncited blocks are figures, checklists,
+    # decision aids, recall Q&A and sub-sums — apparatus, not sourced claims — and counting those
+    # would fail the artifact eval-rubric.yaml holds up as "what a compliant primer looks like".
+    # Neither shipped artifact has an uncited block carrying provenance, so this is a no-op on both
+    # and the calibrated 0.60 keeps its meaning.
+    declared_uncited = [b for b in ir.flatten_blocks()
+                        if b.provenance and b.entailment_units
+                        and not any(c in cidx for c in b.claim_ids)]
+    composition_total = factual + len(declared_uncited)
+    ungrounded_share = ((composition_total - len(verified)) / composition_total
+                        if composition_total else 0.0)
 
-    # With `factual == 0` every ratio above reports its PASSING value by vacuous truth, so a primer
-    # that cites nothing at all clears R-GROUND-02/03 outright. That is not a clean primer, it is an
-    # unscoreable one, and a gate has to be able to tell the two apart.
-    scoreable = factual > 0
+    # With nothing to score, every ratio above reports its PASSING value by vacuous truth, so a
+    # primer that cites nothing at all clears R-GROUND-02/03 outright. That is not a clean primer,
+    # it is an unscoreable one, and a gate has to be able to tell the two apart.
+    scoreable = composition_total > 0
 
     # R-GROUND-01 is deterministic and MUST — an unresolved marker is the anti-fabrication floor and
     # blocks on any backend. The entailment-derived thresholds are a different matter twice over.

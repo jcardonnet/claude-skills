@@ -418,6 +418,50 @@ def test_composition_gates_on_every_backend_because_no_backend_computes_it():
         assert "1.0" in shortfall
 
 
+def test_deleting_citations_does_not_improve_the_composition_score():
+    """The denominator was `factual` — blocks with a RESOLVABLE citation — so stripping claim_ids
+    off a weak block removed it from the population and RAISED the score. A block that declares a
+    grounding status and cites nothing now counts, because it asserts something about its own
+    groundedness.
+
+    Deliberately not every uncited block: spec-01's are figures, checklists, decision aids, recall
+    Q&A and sub-sums — apparatus, not sourced claims — and counting those would fail the artifact
+    the rubric holds up as compliant."""
+    from ir.schema import Block, Claim, DocumentIR, Section, Source, SourceLedger
+    from verify.citation_quality import evaluate, load_thresholds
+
+    ledger = SourceLedger(sources=[Source(source_id="s", claims=[
+        Claim(claim_id="C1", text="x", quote="alpha beta gamma")])])
+
+    def doc(n_verified, n_declared_uncited):
+        blocks = [Block(block_id=f"v{i}", role="body", text="alpha beta gamma", claim_ids=["C1"],
+                        provenance="verified", source_ids=["s"]) for i in range(n_verified)]
+        blocks += [Block(block_id=f"d{i}", role="body", text="a flat assertion",
+                         provenance="inferred") for i in range(n_declared_uncited)]
+        return DocumentIR(sections=[Section(block_id="s", title="T", blocks=blocks)])
+
+    th = load_thresholds()
+    clean = evaluate(doc(1, 0), ledger, backend=LexicalEntailment(), thresholds=th)
+    assert clean["ungrounded_share"] == 0.0 and clean["blocking"] is False
+
+    eroded = evaluate(doc(1, 20), ledger, backend=LexicalEntailment(), thresholds=th)
+    assert eroded["ungrounded_share"] > 0.9, "20 uncited assertions must not read as 0% ungrounded"
+    assert eroded["blocking"] is True
+
+
+def test_a_contested_block_with_unsummarised_framings_still_yields_a_unit():
+    """Every other composite branch falls back to `readable_text` when it produces nothing. The
+    framings branch did not, so a contested block whose framings carry labels but no `summary` gave
+    zero units — and `any([])` is False, so every citation on it scored non-supporting with nothing
+    to say what the block puts on the page."""
+    from ir.schema import Block, Framing
+
+    b = Block(block_id="con", role="contested", claim_ids=["C1"], framings=[
+        Framing(label="school A", applies_when="dense overlap"), Framing(label="school B")])
+    assert b.entailment_units, "a block with readable_text must never yield zero units"
+    assert "school A" in b.entailment_units[0].text
+
+
 def test_the_composition_guard_binds_the_shipped_artifacts_on_the_offline_backend():
     """End-to-end on the real fixtures, since the unit test above could pass on a mock alone.
     spec-01 is 4/7 verified and clears the cap; spec-02 grounds nothing and must not."""

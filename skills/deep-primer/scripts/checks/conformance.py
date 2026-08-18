@@ -89,9 +89,19 @@ def deterministic_modules_stay_pure(modules: dict | None = None) -> list[str]:
                     if root not in _PURE_IMPORTS:
                         problems.append(f"{rule_id}: {path.name} imports {alias.name!r}, which is "
                                         f"not on the pure-import allowlist")
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                root = node.module.split(".")[0]
-                if root not in _PURE_IMPORTS:
+            elif isinstance(node, ast.ImportFrom):
+                # A RELATIVE import has no `module` when it is bare — `from . import claude_backend`
+                # parses as level=1, module=None — so guarding on `node.module` skipped it entirely
+                # and the single most natural way to reach an impure sibling walked straight through
+                # an allowlist written to stop exactly that. These modules use absolute imports
+                # throughout (`scripts/` is the import root), so any relative import is both
+                # unnecessary and unvettable: it names a sibling of a package full of model callers.
+                if node.level:
+                    names = ", ".join(a.name for a in node.names)
+                    problems.append(f"{rule_id}: {path.name} uses a relative import "
+                                    f"({'.' * node.level}{node.module or ''} -> {names}); the pure "
+                                    f"modules import absolutely so every target can be checked")
+                elif node.module and node.module.split(".")[0] not in _PURE_IMPORTS:
                     problems.append(f"{rule_id}: {path.name} imports from {node.module!r}, which is "
                                     f"not on the pure-import allowlist")
             elif isinstance(node, ast.Call):
@@ -104,7 +114,7 @@ def deterministic_modules_stay_pure(modules: dict | None = None) -> list[str]:
 # Where R-REJECT-01..04 look. The scan used to read `checks/` alone, which says nothing about the
 # other five directories — surprisal as an editing target would most naturally land in render/ or
 # critics/, and an MECE gate in verify/, and neither was ever opened.
-REJECT_SCAN_DIRS = ("checks", "verify", "critics", "render", "ir", "utils")
+REJECT_SCAN_DIRS = ("checks", "verify", "critics", "render", "ir", "utils", "research")
 
 _HOLISTIC = re.compile(r"\b(how good|is this good|overall quality|score .*\b(1|0)-\s*\d|"
                        r"rate .* out of|thoroughness|on a scale)\b", re.IGNORECASE)
