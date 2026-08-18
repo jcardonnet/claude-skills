@@ -1,0 +1,48 @@
+# Concept-map for spec-03-observability-tracing. Three concepts, each realized in >=3 modes so
+# R-MV-01 passes. Salience is what R-ARCH-06 expects depth to follow: context propagation is the
+# load-bearing concept and carries a subsection; attribute cardinality is a mention-plus-aid.
+#
+# Every home_anchor resolves to a technique the reader ALREADY owns from backend services or
+# relational databases — a transaction id, a slow-query log, an index's distinct-value count —
+# never to the tracing concept restated (R-XREF-04).
+concepts:
+  - concept_id: context-propagation
+    canonical_term: "context propagation"
+    aliases: ["trace context"]
+    home_anchor: "the transaction id threaded through one unit of work"
+    fidelity_boundary: "breaks where the id must cross a process boundary it does not control, which a database transaction never has to do"
+    epistemic_status: settled
+    salience: 0.95
+    representation_modes:
+      - {mode: mental_model, block_ref: card-propagation}
+      - {mode: tradeoff, block_ref: matrix-propagation}
+      - {mode: architecture, block_ref: fig-propagation}
+      - {mode: failure, block_ref: body-prop-queue}
+    source_ids: [s-ctx]
+    claim_ids: [C-ctx-1, C-ctx-2]
+  - concept_id: tail-based-sampling
+    canonical_term: "tail-based sampling"
+    aliases: ["tail sampling"]
+    home_anchor: "the slow-query log that records a statement only past a duration threshold"
+    fidelity_boundary: "breaks because the threshold is evaluated over many processes at once, so the deciding component must hold state it did not produce"
+    epistemic_status: contested
+    salience: 0.7
+    representation_modes:
+      - {mode: mental_model, block_ref: card-sampling}
+      - {mode: tradeoff, block_ref: toulmin-sampling}
+      - {mode: failure, block_ref: failures-sampling}
+    source_ids: [s-samp]
+    claim_ids: [C-samp-1, C-samp-2]
+  - concept_id: attribute-cardinality
+    canonical_term: "attribute cardinality"
+    aliases: ["label cardinality"]
+    home_anchor: "the distinct-value count you weigh before indexing a column"
+    fidelity_boundary: "breaks because a span's key set is open — one request can mint a key the schema never declared"
+    epistemic_status: settled
+    salience: 0.45
+    representation_modes:
+      - {mode: mental_model, block_ref: card-cardinality}
+      - {mode: tradeoff, block_ref: aid-cardinality}
+      - {mode: cost, block_ref: fig-cardinality}
+    source_ids: [s-card]
+    claim_ids: [C-card-1]

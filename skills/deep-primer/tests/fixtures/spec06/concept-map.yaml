@@ -1,0 +1,63 @@
+# Concept-map for spec-06-user-structured-eval. One concept per user-structure entry, each realized
+# in >=3 modes so R-MV-01 passes. Every home_anchor resolves to an ADJACENT technique a mid/senior
+# ML engineer already owns — never the concept restated, which is what R-XREF-04 catches.
+concepts:
+  - concept_id: failure-attribution
+    canonical_term: "failure attribution"
+    aliases: ["stage-wise scoring"]
+    home_anchor: "ablating one stage of a training pipeline to see which stage owns the loss"
+    fidelity_boundary: "breaks because the two stages need different ground truth — passage labels, then answer labels — not one held-out set"
+    epistemic_status: settled
+    salience: 0.9
+    representation_modes:
+      - {mode: mental_model, block_ref: card-attrib}
+      - {mode: tradeoff, block_ref: matrix-attrib}
+      - {mode: architecture, block_ref: fig-attrib}
+      - {mode: failure, block_ref: body-attrib-recall}
+      - {mode: cost, block_ref: body-attrib-labels}
+    source_ids: [s-attrib]
+    claim_ids: [C-attr-1, C-attr-2, C-attr-3]
+
+  - concept_id: faithfulness
+    canonical_term: "faithfulness"
+    aliases: ["groundedness"]
+    home_anchor: "reporting precision and recall separately rather than collapsing them into accuracy"
+    fidelity_boundary: "breaks because the reference is retrieved context that changes per query, not a fixed held-out label"
+    epistemic_status: contested
+    salience: 0.85
+    representation_modes:
+      - {mode: mental_model, block_ref: card-faith}
+      - {mode: failure, block_ref: matrix-faith}
+      - {mode: tradeoff, block_ref: toulmin-faith}
+      - {mode: benchmark, block_ref: fig-faith}
+    source_ids: [s-metric]
+    claim_ids: [C-faith-1, C-faith-2, C-faith-3]
+
+  - concept_id: judge-calibration
+    canonical_term: "judge calibration"
+    aliases: ["judge validation"]
+    home_anchor: "held-out validation of a classifier against human labels before it gates anything"
+    fidelity_boundary: "breaks because the classifier here is a prompt, so a one-line edit ships a new model with no version bump"
+    epistemic_status: contested
+    salience: 0.7
+    representation_modes:
+      - {mode: mental_model, block_ref: card-judge}
+      - {mode: cost, block_ref: matrix-judge}
+      - {mode: benchmark, block_ref: fig-judge}
+      - {mode: failure, block_ref: body-judge-prompt}
+    source_ids: [s-judge]
+    claim_ids: [C-judge-1, C-judge-2, C-judge-3]
+
+  - concept_id: eval-set-drift
+    canonical_term: "eval set drift"
+    aliases: ["benchmark decay"]
+    home_anchor: "training-serving skew, where the feature distribution moves after the model is fit"
+    fidelity_boundary: "breaks because the labels are pointers into the corpus, so an ingest can delete the label rather than shift it"
+    epistemic_status: contested
+    salience: 0.55
+    representation_modes:
+      - {mode: mental_model, block_ref: card-drift}
+      - {mode: historical, block_ref: fig-drift}
+      - {mode: failure, block_ref: body-drift-pointer}
+    source_ids: [s-drift]
+    claim_ids: [C-drift-1, C-drift-2, C-drift-3]

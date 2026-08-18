@@ -1,0 +1,122 @@
+# Discovery-leads for spec-04-seeded-vector-index — the artifact R-DISC-06 (seed_handling) reads.
+#
+# SYNTHETIC, like the rest of this fixture: every URL is example.org / example.com and no lead
+# points at a real page. What it exercises is the seed contract, in all three of its parts:
+#
+#   consulted   — the url seed `https://example.org/hnsw-paper` is present as an accepted
+#                 source_lead with provenance_origin: user, and the author directive "Y. Malkov"
+#                 seeded a targeted brief whose topic_lead is likewise marked user.
+#   exempt      — `sl-marketing` shows what triage-drop looks like (low salience, no support,
+#                 status: dropped). The seed carries a comparable singleton profile and is NOT
+#                 dropped; that asymmetry IS the rule.
+#   still graded — the seed keeps support_count 1 rather than being promoted. Its strong claim
+#                 (C-graph-2) is contested in the ledger and renders through `contested-graph`.
+#
+# report_ids name reports in a frozen discovery-snapshot/ (R-DISC-05). No snapshot directory ships
+# with this fixture, so the snapshot pass does not run here; the ids record the linkage the real
+# campaign would freeze.
+topic_leads:
+  # The author directive. kind=author seeds a BRIEF, not a source, so the topic it surfaced is what
+  # carries provenance_origin: user back into the plan.
+  - id: tl-seed-author
+    concept: "graph construction parameters and their effect on reachable recall"
+    why: "author-directive seed: survey this author's work on navigable graph indexes"
+    support_count: 1
+    novelty: 0.4
+    salience: high
+    status: accepted
+    provenance_origin: user
+    surfaced_by: [seed-author]
+    report_ids: [B-seed-1]
+  - id: tl-memory-ceiling
+    concept: "index choice conditioned on a resident-memory ceiling"
+    why: "three framings independently framed the choice as memory-bound rather than index-bound"
+    support_count: 3
+    novelty: 0.8
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [debates, source-authority, adjacent-field]
+    report_ids: [A-1, A-3, A-5]
+  - id: tl-recall-drift
+    concept: "recall drift under incremental insertion"
+    why: "surfaced only under the contrarian framing, which is what routes it to the contested view"
+    support_count: 2
+    novelty: 0.7
+    salience: medium
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [contrarian-seed, by-failure-mode]
+    report_ids: [A-2, C-1]
+  - id: tl-gpu-bruteforce
+    concept: "GPU-resident exhaustive scan as an index replacement"
+    why: "one framing only, and out of scope for a CPU-served corpus"
+    support_count: 1
+    novelty: 0.9
+    salience: low
+    status: dropped
+    provenance_origin: discovered
+    surfaced_by: [latest-release]
+    report_ids: [A-4]
+
+source_leads:
+  # THE URL SEED. Accepted on the user's authority (exempt from the salience gate), marked user,
+  # and graded like anything else: support_count 1, one framing, one report.
+  - id: sl-seed-hnsw
+    url: "https://example.org/hnsw-paper"
+    type: primary_paper
+    support_count: 1
+    novelty: 0.3
+    salience: high
+    status: accepted
+    provenance_origin: user
+    surfaced_by: [seed-url]
+    supports: [tl-seed-author, tl-memory-ceiling]
+    report_ids: [B-seed-1]
+  - id: sl-survey
+    url: "https://example.org/ann-index-survey"
+    type: primary_paper
+    support_count: 3
+    novelty: 0.6
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [debates, source-authority, adjacent-field]
+    supports: [tl-memory-ceiling, tl-recall-drift]
+    report_ids: [A-1, A-3]
+  - id: sl-vendor-bench
+    url: "https://example.org/vendor-ann-benchmark"
+    type: vendor
+    support_count: 1
+    novelty: 0.5
+    salience: medium
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [latest-release]
+    supports: [tl-memory-ceiling]
+    report_ids: [A-5]
+  # The independent replication R-EVID-03 wants standing beside the vendor number above.
+  - id: sl-independent-bench
+    url: "https://example.org/independent-ann-bench"
+    type: primary_paper
+    support_count: 2
+    novelty: 0.7
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [contrarian-seed, by-failure-mode]
+    supports: [tl-memory-ceiling, tl-recall-drift]
+    report_ids: [A-2, C-1]
+  # Triage-drop, shown for contrast: a discovered singleton with no support and low salience goes.
+  # The seed above has a comparable profile and stays.
+  - id: sl-marketing
+    url: "https://example.com/vector-database-launch-post"
+    type: vendor
+    support_count: 0
+    novelty: 0.2
+    salience: low
+    status: dropped
+    provenance_origin: discovered
+    surfaced_by: [latest-release]
+    supports: []
+    report_ids: [A-4]

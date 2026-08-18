@@ -1,0 +1,292 @@
+# Document IR for spec-04-seeded-vector-index — the seed_sources stress case (R-DISC-06).
+#
+# The reader lives in classical IR: they already own posting lists, skip pointers, static pruning
+# and segment merges. Nothing here re-teaches those; every home_anchor spends them.
+#
+# Every source this cites is SYNTHETIC (see source-ledger.yaml). The artifact exercises structure
+# and the seed contract; it makes no grounding claim about approximate nearest-neighbour search.
+#
+# What is unusual about this IR: `contested-graph` is a `role: contested` block. The user's URL seed
+# says the graph index wins everywhere; the discovered consensus says the frontier is
+# memory-conditional. A seed is authoritative for inclusion and not for truth, so the disagreement
+# is PRESENTED as two framings rather than resolved into an assertion.
+meta:
+  parameters:
+    home_domain: [classical IR]
+    target_domain: "approximate nearest-neighbour index selection"
+    seniority_band: mid_senior
+    # The SPEC asks for 4000 words; this is the compact reference realisation of the same contract,
+    # so meta records the budget it was actually drafted to (R-ARCH-06 bands off this number). Same
+    # convention as document-ir.full.yaml (260 against a 6000-word spec) and spec-02 (430 / 8000).
+    length_budget: 700
+    outputs: [html, llm_md]
+    seed_sources:
+      - {kind: url, ref: "https://example.org/hnsw-paper", note: "user-supplied"}
+      - {kind: author, ref: "Y. Malkov", note: "survey their work"}
+  ledger_snapshot: [s-seed, s-survey, s-vendor, s-bench]
+  model_versions: {generator: test-fixture, verifier: lexical}
+  generated_at: "2026-08-18T00:00:00Z"
+
+sections:
+  - block_id: sec-graph
+    title: "A graph walk buys sublinear probes and pays for them in resident memory"
+    concept: graph-index
+    blocks:
+      - block_id: lede-graph
+        role: lede
+        text: "A graph index answers a query with a walk over neighbours, so probe count grows with the logarithm of corpus size. That walk is approximate, and a neighbour it never visits is lost."
+        claim_ids: [C-graph-1]
+        provenance: verified
+        source_ids: [s-seed]
+      - block_id: card-graph
+        role: card
+        concept: graph-index
+        mode: mental_model
+        claim_ids: [C-graph-1]
+        provenance: verified
+        source_ids: [s-seed]
+        # per-row attribution: the seed's probe bound is what the idea and the exemplar assert. The
+        # contested claim is NOT cited here — `confidence` is an epistemic label, not an assertion,
+        # and the disagreement itself renders in `contested-graph`.
+        row_claims:
+          idea: [C-graph-1]
+          key_exemplar: [C-graph-1]
+        rows:
+          idea: "Search is a walk over a neighbour graph, so probe count grows with the logarithm of corpus size."
+          home_anchor: "Skip pointers on a posting list: coarse hops first, fine ones once you are near the answer."
+          whats_new_vs_renamed: "Hopping is renamed, not new; what is new is that the hop is approximate and can strand a true neighbour."
+          reach_for_when: "Reach for it when the whole vector set stays resident and high recall is the requirement."
+          skip_when: "Skip it when memory is the binding constraint, or when the corpus turns over faster than it rebuilds."
+          key_exemplar: "A hierarchical proximity graph whose top layer holds a few hundred entry points."
+          confidence: "settled for the probe bound; contested for whether it wins under a memory ceiling"
+      # The seed conflict, presented rather than resolved (R-DISC-06). A contested block carries no
+      # prose of its own — its content IS the framings, each attributed to the sources that hold it.
+      - block_id: contested-graph
+        role: contested
+        concept: graph-index
+        mode: tradeoff
+        claim_ids: [C-graph-2, C-quant-2]
+        provenance: verified
+        source_ids: [s-seed, s-survey]
+        framings:
+          - label: "the frontier is index-shaped"
+            summary: "The user-supplied seed holds that a graph index dominates the recall-latency frontier at every corpus scale."
+            applies_when: "Memory is elastic and the vectors stay resident whole."
+            source_ids: [s-seed]
+            claim_ids: [C-graph-2]
+          - label: "the frontier is memory-conditional"
+            summary: "The discovered sources hold that under a fixed memory ceiling a quantized partition overtakes the graph index."
+            applies_when: "A resident footprint is capped by hardware or by budget."
+            source_ids: [s-survey, s-bench]
+            claim_ids: [C-quant-2]
+      - block_id: checklist-graph
+        role: matrix
+        artifact_kind: checklist
+        concept: graph-index
+        # No claim_ids: a diagnostic checklist is operational judgement, not something a source
+        # states. Citing one here would be decorative (same convention as spec-01's checklist).
+        text: "Measure recall@10 against an exact scan on real query traffic, not on the vectors the index was built from. Confirm the resident footprint fits the smallest node you will actually deploy on. Check that a rebuild path exists before insertion volume forces one."
+      - block_id: fig-graph
+        role: figure
+        concept: graph-index
+        mode: architecture
+        caption: "Figure 1: the walk descends from a sparse top layer into a dense base layer, so every region it fails to enter holds candidates the ranking will never see."
+        svg_ref: "synthetic/graph-walk.svg"
+        claim_ids: [C-graph-1]
+        # inferred, not verified: the seed states the probe bound, not this consequence of it.
+        provenance: inferred
+        source_ids: [s-seed]
+      - block_id: recall-graph
+        role: recall
+        concept: graph-index
+        items:
+          - question: "Recall@10 sits at 0.7 and widening the candidate list moves it to 0.71 while latency doubles. What does that pattern say about the walk?"
+            answer: "The walk is stopping in a region that does not contain the true neighbour, so more candidates from the same region buy nothing; the entry point or the graph degree is the knob, not the list."
+          - question: "Skip pointers on a posting list are also a hop structure. Where does that intuition stop paying?"
+            answer: "Skip pointers are exact — they change how fast you reach a document, never whether you reach it. A graph hop can leave a true neighbour unreachable, so the structure changes the answer and not only the cost."
+            cross_domain: true
+          - question: "Your seed source says this index wins at every scale. What would you need to measure before repeating that?"
+            answer: "The resident footprint at your corpus size against the memory you actually have; the claim is unconditional and the disagreement in the literature is entirely about that condition."
+
+    subsections:
+      - block_id: sub-graph-entry
+        title: "The entry point decides which neighbours are reachable at all"
+        concept: graph-index
+        blocks:
+          - block_id: subsum-graph-entry
+            role: summary
+            text: "A walk can only rank what it reaches, so a poor entry point removes candidates the ranking never sees."
+            claim_ids: [C-graph-1]
+            provenance: inferred
+            source_ids: [s-seed]
+          - block_id: body-graph-entry
+            role: body
+            concept: graph-index
+            mode: failure
+            heading: "Where the walk loses a true neighbour"
+            text: "A greedy walk stops at a local minimum, which is a node whose neighbours all sit farther from the query. That minimum is invisible from inside the walk, because the walk only ever compares the neighbours it has already reached. The walk reaches more neighbours only when the candidate list grows, and that list is the one dial between recall and latency. Latency then rises with every extra candidate, so the dial has a ceiling that hardware sets rather than data."
+            claim_ids: [C-graph-1]
+            provenance: inferred
+            source_ids: [s-seed]
+          - block_id: body-graph-degree
+            role: body
+            concept: graph-index
+            mode: failure
+            heading: "Why degree is a memory decision wearing a recall costume"
+            text: "Graph degree fixes how many neighbours each node stores, and that number multiplies straight into the resident footprint. The footprint is what the memory ceiling constrains, so degree is spent before any query runs. A query then inherits whatever connectivity the budget allowed, which is why recall is often decided at build time. Build time is also when the entry layer is chosen, and the same budget pays for both."
+            claim_ids: [C-graph-2, C-quant-2]
+            provenance: inferred
+            source_ids: [s-seed, s-survey]
+
+  - block_id: sec-quantize
+    title: "Quantization moves the loss from which vectors you see to how well you rank them"
+    concept: quantized-partition
+    blocks:
+      - block_id: lede-quantize
+        role: lede
+        text: "A quantized partition keeps every vector but stores each as a short code, so residency falls and the distance becomes an estimate. That estimate is what a rerank over full vectors repairs."
+        claim_ids: [C-quant-1]
+        provenance: verified
+        source_ids: [s-survey]
+      - block_id: card-quantize
+        role: card
+        concept: quantized-partition
+        mode: mental_model
+        claim_ids: [C-quant-1]
+        provenance: verified
+        source_ids: [s-survey]
+        row_claims:
+          idea: [C-quant-1]
+          key_exemplar: [C-quant-1]
+        rows:
+          idea: "A quantized partition keeps every vector as a short code, so memory falls and the distance blurs."
+          home_anchor: "Static index pruning: a lossy summary answers most queries and the full postings stay as the fallback."
+          whats_new_vs_renamed: "The lossy summary is renamed; what is new is that nothing is deleted, so the loss appears as reordering."
+          reach_for_when: "Reach for it when the resident footprint is capped and a rerank stage is affordable."
+          skip_when: "Skip it when the corpus already fits in memory and rerank latency has no budget left."
+          key_exemplar: "A coarse quantizer over a few thousand cells, with each residual kept as a short code."
+          confidence: "settled for the memory saving; contested for where it overtakes a graph walk"
+      - block_id: matrix-quantize
+        role: matrix
+        artifact_kind: decision_matrix
+        concept: quantized-partition
+        mode: cost
+        text: "Baseline: a quantized partition sized so the codes stay resident. A graph index buys probe count at full residency; an exact scan buys certainty at linear cost. Take the partition when the footprint is capped, the graph when it is not, and the scan only while the corpus is small enough that linear is cheap."
+        claim_ids: [C-quant-1, C-quant-2, C-graph-2]
+        provenance: inferred
+        source_ids: [s-survey, s-seed]
+      - block_id: aid-quantize
+        role: matrix
+        artifact_kind: decision_aid
+        concept: quantized-partition
+        # No claim_ids, for the same reason as `checklist-graph`: a decision aid is a procedure the
+        # author owes the reader, and no source states it.
+        text: "Start from the memory ceiling, not from the index name. Divide the ceiling by corpus size to get bytes per vector, and let that number choose the code width. If the width that fits still clears your recall floor after rerank, the partition is settled; if it does not, the ceiling is the thing to renegotiate."
+      - block_id: fig-quantize
+        role: figure
+        concept: quantized-partition
+        mode: benchmark
+        caption: "Figure 2: the vendor curve and an independent replication agree on recall and disagree on latency by roughly a factor of two, so the operating point moves with who measured it."
+        svg_ref: "synthetic/quantize-operating-point.svg"
+        claim_ids: [C-perf-1, C-perf-2]
+        # inferred, not verified: each source states its own number; the disagreement between them
+        # is this document's synthesis, which is exactly what `inferred` means.
+        provenance: inferred
+        source_ids: [s-vendor, s-bench]
+      - block_id: recall-quantize
+        role: recall
+        concept: quantized-partition
+        items:
+          - question: "A vendor page reports one latency and an independent replication reports twice it, at the same recall. What do you carry forward into a capacity plan?"
+            answer: "The independent number as the planning figure and the vendor number as the ceiling, because the gap is a measurement-condition difference you cannot reproduce from either page alone."
+          - question: "Static index pruning discards postings you judged unlikely to matter. What is the analogous loss here, and why is it harder to notice?"
+            answer: "Nothing is discarded — the distance is distorted instead, so the loss is a reordering. A pruned posting is absent and countable; a reordered candidate is present and looks like a correct answer."
+            cross_domain: true
+          - question: "Rerank fixes blurred distances. Under what condition does adding it change nothing?"
+            answer: "When the true neighbour has already fallen out of the candidate set, since rerank reorders the set it is given and cannot recover a vector that never entered it."
+
+    subsections:
+      - block_id: sub-quantize-rerank
+        title: "A rerank stage decides whether blurred distances ever cost you an answer"
+        concept: quantized-partition
+        blocks:
+          - block_id: subsum-quantize-rerank
+            role: summary
+            text: "Blurred distances only cost accuracy where the final ordering is read, so a rerank over full vectors buys most of it back."
+            claim_ids: [C-quant-1]
+            provenance: inferred
+            source_ids: [s-survey]
+          - block_id: body-quantize-rerank
+            role: body
+            concept: quantized-partition
+            mode: failure
+            heading: "Where the estimate and the truth disagree"
+            text: "A short code answers with an estimated distance, and that estimate can reorder two vectors that are genuinely close. That estimate is harmless while the true neighbour stays inside the candidate set, and fatal once it falls out. The candidate set is therefore the quantity to watch, not the estimate itself. That set is measured against an exact scan, which is the only reference the estimate can be scored against."
+            claim_ids: [C-quant-1]
+            provenance: inferred
+            source_ids: [s-survey]
+
+  - block_id: sec-churn
+    title: "Churn retires an index choice sooner than recall does"
+    concept: index-churn
+    blocks:
+      - block_id: lede-churn
+        role: lede
+        text: "Index churn decides how long an index stays correct, because a rebuild changes which neighbours are reachable and measured recall moves with them."
+        claim_ids: [C-churn-1]
+        provenance: verified
+        source_ids: [s-survey]
+      - block_id: card-churn
+        role: card
+        concept: index-churn
+        mode: mental_model
+        claim_ids: [C-churn-1]
+        provenance: verified
+        source_ids: [s-survey]
+        row_claims:
+          idea: [C-churn-1]
+        rows:
+          idea: "A rebuild moves recall by changing which neighbours are reachable, not by changing the data."
+          home_anchor: "A segment merge policy: writes pile up cheaply until a merge pays the accumulated debt down."
+          whats_new_vs_renamed: "Deferred maintenance is renamed; what is new is that the deferred work changes answers, not only speed."
+          reach_for_when: "Reach for a triggered rebuild when write volume is steady and a recall floor is contractual."
+          skip_when: "Skip rebuilds on a static corpus, where an index has no shelf life to expire."
+          key_exemplar: "A rebuild fired by measured recall drift rather than by elapsed time."
+          confidence: "settled that drift happens; contested for how much insertion volume it takes"
+      - block_id: toulmin-churn
+        role: toulmin
+        concept: index-churn
+        mode: tradeoff
+        text: "Because insertion degrades reachability, a write-heavy corpus needs a rebuild schedule rather than a one-time build. Qualifier: the schedule earns nothing while measured recall stays above the floor. Rebuttal: on a corpus that turns over hourly, the rebuild never finishes before the next batch invalidates it."
+        claim_ids: [C-churn-1, C-churn-2]
+        provenance: inferred
+        source_ids: [s-survey, s-bench]
+      - block_id: failures-churn
+        role: matrix
+        artifact_kind: failure_catalog
+        concept: index-churn
+        mode: failure
+        text: "Silent drift: recall falls with insertion volume and nothing in the serving path reports it. Rebuild storm: the rebuild is fired by a clock and lands during peak traffic. Frozen benchmark: the acceptance number was measured on the build-day index and never taken again."
+        claim_ids: [C-churn-2]
+        provenance: inferred
+        source_ids: [s-bench]
+      - block_id: fig-churn
+        role: figure
+        concept: index-churn
+        mode: benchmark
+        caption: "Figure 3: incremental insertion degrades recall until the index is rebuilt, so an index has a shelf life denominated in writes."
+        svg_ref: "synthetic/churn-sawtooth.svg"
+        claim_ids: [C-churn-2]
+        provenance: verified
+        source_ids: [s-bench]
+      - block_id: recall-churn
+        role: recall
+        concept: index-churn
+        items:
+          - question: "Recall was accepted at 0.92 on build day and a complaint arrives six weeks later with no code change shipped. What is your first measurement?"
+            answer: "Re-run the acceptance query set against an exact scan on today's index; if recall has fallen while the query set is unchanged, insertion volume moved it and the index is past its shelf life."
+          - question: "You already run a segment merge policy. Which part of that intuition transfers, and which part misleads?"
+            answer: "Deferring work and paying it down in batches transfers. What misleads is that a merge is lossless — it costs latency, never answers — while a deferred rebuild is silently costing recall the whole time."
+            cross_domain: true
+          - question: "Why is a nightly rebuild on a fixed clock a weaker policy than a triggered one?"
+            answer: "The clock is uncorrelated with write volume, so it rebuilds a quiet index for nothing and leaves a busy one below the floor for most of the day."

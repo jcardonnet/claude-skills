@@ -1,0 +1,86 @@
+# Source-ledger for spec-03-observability-tracing.
+#
+# THESE SOURCES ARE SYNTHETIC. Every url is example.org and every author/venue is obviously
+# fictional, exactly as in tests/fixtures/source-ledger.full.yaml. This fixture exercises IR
+# STRUCTURE; it asserts nothing about the literature and must never be read as a grounding claim.
+# (Contrast tests/fixtures/spec02/source-ledger.yaml, which was built from a real campaign.)
+#
+# Quotes are <=15 words (R-GROUND-01 discipline) and lexically close to the statements they
+# support, so the offline lexical entailment proxy resolves them.
+sources:
+  - source_id: s-ctx
+    url: "https://example.org/trace-context-hops"
+    title: "Where distributed traces truncate"
+    authors: ["C. Fictitious"]
+    venue: "Example Symposium"
+    date: "2025-04-10"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee11"
+    claims:
+      - claim_id: C-ctx-1
+        text: "a trace truncates at the first hop that drops the propagated context"
+        quote: "a trace truncates at the first hop dropping context"
+        location: "p.3 / §2"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-samp]
+      - claim_id: C-ctx-2
+        text: "an asynchronous hop loses the parent link unless context is serialized into the message"
+        quote: "queue hops lose the parent link unless context rides the message"
+        location: "p.6 / §4.2"
+        confidence: high
+  - source_id: s-samp
+    url: "https://example.org/tail-sampling-collector"
+    title: "What a tail sampler keeps, and what it costs to keep it"
+    authors: ["D. Placeholder"]
+    venue: "Example Workshop"
+    date: "2025-11-02"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee12"
+    claims:
+      - claim_id: C-samp-1
+        text: "tail-based sampling decides after the trace completes, so it keeps errors and slow traces"
+        quote: "tail-based sampling decides after completion, keeping errors and slow traces"
+        location: "p.2 / §1.3"
+        confidence: high
+      # one half of the C-card-2 disagreement; contested/contradicts are symmetric so the conflict
+      # is visible from either source (R-GROUND-05)
+      - claim_id: C-samp-2
+        text: "the collector buffers every span of an in-flight trace, so memory scales with concurrency"
+        quote: "the collector buffers every in-flight span, so memory scales with concurrency"
+        location: "p.5 / §3"
+        confidence: medium
+        contested: true
+        contradicts: [C-card-2]
+  - source_id: s-card
+    url: "https://example.com/cardinality-cost-note"
+    title: "Attribute cardinality as the cost driver"
+    authors: ["E. Anonymous", "F. Nonexistent"]
+    venue: "Example Journal"
+    date: "2026-01-20"
+    type: docs
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee13"
+    claims:
+      - claim_id: C-card-1
+        text: "storage and query cost track distinct attribute combinations rather than span count"
+        quote: "cost tracks distinct attribute combinations, not span count"
+        location: "§2, table 1"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-samp]
+      - claim_id: C-card-2
+        text: "collector memory is rarely the binding constraint once traces shard by trace id"
+        quote: "collector memory rarely binds once traces shard by trace id"
+        location: "§5"
+        confidence: low
+        contested: true
+        contradicts: [C-samp-2]

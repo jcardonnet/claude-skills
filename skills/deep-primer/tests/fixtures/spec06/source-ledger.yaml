@@ -1,0 +1,137 @@
+# Source-ledger for spec-06-user-structured-eval.
+#
+# THESE SOURCES ARE SYNTHETIC, exactly as in tests/fixtures/source-ledger.full.yaml: every URL is on
+# example.org and every author/venue is obviously fictional. This artifact exercises STRUCTURE
+# (R-ARCH-07 + R-SCENT-01 coexisting through Section.maps_to); it asserts nothing about the
+# literature and must never be mistaken for tests/fixtures/spec02/source-ledger.yaml, whose quotes
+# were verified verbatim against pages actually fetched over the network.
+#
+# Quotes are <=15 words (R-GROUND-01 discipline) and lexically close to the statements they
+# support, so the offline lexical entailment proxy resolves them.
+sources:
+  - source_id: s-attrib
+    url: "https://example.org/stagewise-rag-eval"
+    title: "Stage-wise scoring of retrieval-augmented pipelines"
+    authors: ["E. Ablator"]
+    venue: "Example Symposium"
+    date: "2025-04-10"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee11"
+    claims:
+      - claim_id: C-attr-1
+        text: "one aggregate score averages retrieval failure and generation failure into a single number"
+        quote: "one aggregate score averages retrieval and generation failure into a number"
+        location: "p.2 / §1"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-metric]
+      - claim_id: C-attr-2
+        text: "retrieval and generation are scored against separate ground truth"
+        quote: "score retrieval and generation against separate ground truth"
+        location: "p.5 / §3.2"
+        confidence: high
+      - claim_id: C-attr-3
+        text: "recall@k needs no generator, so retrieval is measurable on its own"
+        quote: "recall@k needs no generator and is measured on its own"
+        location: "p.6 / §4"
+        confidence: medium
+      # the other side of the C-drift-3 disagreement; contested/contradicts are symmetric so the
+      # conflict is visible from either source (R-GROUND-05)
+      - claim_id: C-attr-4
+        text: "re-labelling a sampled slice each ingest keeps a frozen eval set usable"
+        quote: "re-labelling a sampled slice each ingest keeps the set usable"
+        location: "p.8 / §5.1"
+        confidence: medium
+        contested: true
+        contradicts: [C-drift-3]
+
+  - source_id: s-metric
+    url: "https://example.org/separable-answer-axes"
+    title: "Faithfulness and answer relevance as separable axes"
+    authors: ["F. Metricson"]
+    venue: "Example Conf"
+    date: "2025-06-02"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee12"
+    claims:
+      - claim_id: C-faith-1
+        text: "faithfulness asks whether an answer is entailed; relevance asks whether it addresses the question"
+        quote: "faithfulness asks whether the answer is entailed; relevance asks whether it addresses the question"
+        location: "p.3 / §2"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-attrib]
+      - claim_id: C-faith-2
+        text: "faithfulness stops discriminating once retrieval precision is high"
+        quote: "faithfulness stops discriminating once retrieval precision is high"
+        location: "p.7 / §4.3"
+        confidence: medium
+      - claim_id: C-faith-3
+        text: "a binary faithfulness label discards the partially supported answer"
+        quote: "a binary faithfulness label discards the partially supported answer"
+        location: "p.9 / §5"
+        confidence: high
+
+  - source_id: s-judge
+    url: "https://example.org/judge-agreement-study"
+    title: "Agreement between model judges and human raters"
+    authors: ["G. Rater"]
+    venue: "Example Workshop"
+    date: "2025-10-20"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee13"
+    claims:
+      - claim_id: C-judge-1
+        text: "a model judge is a classifier with its own true positive and true negative rates"
+        quote: "a model judge is a classifier with true positive and negative rates"
+        location: "p.2 / §1.2"
+        confidence: high
+      - claim_id: C-judge-2
+        text: "a raw judge rate is corrected using the judge's measured error rates"
+        quote: "correct the raw judge rate using its measured error rates"
+        location: "p.6 / §4"
+        confidence: high
+      - claim_id: C-judge-3
+        text: "editing a judge prompt invalidates the calibration measured against the previous prompt"
+        quote: "editing the judge prompt invalidates the calibration measured before it"
+        location: "p.8 / §5.2"
+        confidence: medium
+
+  - source_id: s-drift
+    url: "https://example.org/frozen-eval-set-decay"
+    title: "How a frozen eval set decays under corpus change"
+    authors: ["H. Curator"]
+    venue: "Example Journal"
+    date: "2026-01-15"
+    type: primary_paper
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee14"
+    claims:
+      - claim_id: C-drift-1
+        text: "a frozen eval set decays as the corpus it was labelled against changes"
+        quote: "a frozen eval set decays as its labelled corpus changes"
+        location: "p.1 / §1"
+        confidence: high
+      - claim_id: C-drift-2
+        text: "relevance labels point at passage identifiers that an ingest can orphan"
+        quote: "relevance labels point at passage identifiers an ingest can orphan"
+        location: "p.4 / §3"
+        confidence: high
+      - claim_id: C-drift-3
+        text: "no settled refresh cadence for a labelled eval set has been established"
+        quote: "no settled refresh cadence for a labelled eval set exists"
+        location: "p.11 / §7"
+        confidence: low
+        contested: true
+        contradicts: [C-attr-4]

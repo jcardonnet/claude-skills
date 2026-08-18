@@ -321,9 +321,14 @@ def main(argv: list[str] | None = None) -> int:
     else:
         # Read the shared Budget ONCE. Both judges are constructed against the same `budget` object
         # — that is what makes --cost-cap a ceiling on the run rather than on each model — and
-        # `ClaudeCli.calls` / `.spend_usd` are properties that read straight through to it. Adding
-        # them together therefore reported exactly double: the committed report's "114 calls, $18"
-        # is 57 calls and $9. Every cost figure quoted from a --gating-model run was 2x.
+        # `ClaudeCli.calls` / `.spend_usd` are properties reading straight through to it, so adding
+        # them together reports exactly double.
+        #
+        # This does NOT mean the committed critic-report.full.json is doubled; an earlier version of
+        # this comment claimed it was, and that was wrong. That report predates the shared Budget
+        # (it was judged at 97ab26e; Budget arrived at 976db04), so its two judges had independent
+        # counters and summing them was correct. Its `calls: 113` is odd, which settles it — a
+        # double count is n + n. The bug's window was 976db04..abf363c, and no report was made in it.
         calls, spend = cli_judge.calls, cli_judge.spend_usd
         report["judge"] = {"kind": "claude", "model": args.model, "calls": calls,
                            "spend_usd": round(spend, 4), "exercised_rules": True}

@@ -128,15 +128,29 @@ def _citation_shortfall(mv: dict) -> str | None:
     floor from it. Failing on numbers the harness will not trust would be incoherent and would make
     every offline run red.
     """
-    if mv.get("status") != "scored" or mv.get("backend") == "lexical":
+    if mv.get("status") != "scored":
         return None
-    if mv.get("meets_recall") and mv.get("meets_precision") and mv.get("meets_composition", True):
+
+    # Composition and scoreability are computed from provenance tags and claim counts — no
+    # entailment backend is involved — so they gate on ANY backend, exactly like R-PROJ-04's
+    # deterministic half. Putting them behind the proxy bypass (which the first version of this
+    # function did) made the guard unreachable in the only configuration that runs offline and in
+    # CI, and spec-02 sails through it at ungrounded_share 1.00 against a 0.60 cap.
+    if not mv.get("meets_composition", True):
+        return (f"composition below threshold "
+                f"(ungrounded_share={mv.get('ungrounded_share')} "
+                f"> max_inferred_share={(mv.get('thresholds') or {}).get('max_inferred_share')}, "
+                f"scoreable={mv.get('scoreable')}) — a primer that grounds nothing")
+
+    # The entailment pair is the only part the proxy cannot speak to.
+    if mv.get("backend") == "lexical":
+        return None
+    if mv.get("meets_recall") and mv.get("meets_precision"):
         return None
     return (f"verified-citation quality below threshold "
             f"(verified_recall={mv.get('verified_recall')} "
-            f"verified_precision={mv.get('verified_precision')} "
-            f"ungrounded_share={mv.get('ungrounded_share')}, "
-            f"scoreable={mv.get('scoreable')}, backend={mv.get('backend')})")
+            f"verified_precision={mv.get('verified_precision')}, "
+            f"backend={mv.get('backend')})")
 
 
 def _unenforced(pass_report: dict) -> list[str]:

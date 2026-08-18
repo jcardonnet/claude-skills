@@ -193,12 +193,26 @@ def evaluate(
     # meaningful", and which eval-rubric.yaml carries as an unfitted TODO. The standalone CLI was
     # the only consumer still blocking on it, and it blocked on ANY backend — including the lexical
     # proxy, whose low scores are what a COMPLIANT primer produces.
-    blocking = bool(resolves)
+    # Split by what the measurement DEPENDS ON, not by which function is asking.
+    #
+    # `resolves`, `scoreable` and `ungrounded_share` are computed from provenance tags and resolvable
+    # claim_ids. No `backend.supports()` call is involved, so they mean exactly the same thing on
+    # every backend and gate unconditionally. Only `verified_recall` / `verified_precision` are
+    # entailment-derived, and only those are meaningless on the lexical proxy — it scores word
+    # overlap between a <=15-word quote and a block R-GROUND-01 requires to be a PARAPHRASE.
+    #
+    # Putting composition behind the proxy bypass made the guard unreachable in the one configuration
+    # this repo actually runs offline and in CI, which is where it was needed: spec-02 is 13
+    # claim-bearing blocks, ALL `inferred`, ungrounded_share 1.00 against a 0.60 cap that
+    # eval-rubric.yaml says exists precisely to "fail a primer that is entirely synthesis" — and it
+    # passed clean. The same batch got this right for R-PROJ-04, whose deterministic
+    # dangling-anaphora half gates on any backend while its entailment half waits for a real one.
+    blocking = (bool(resolves) or not scoreable
+                or ungrounded_share > thresholds["max_inferred_share"])
     if backend.name != "lexical":
-        blocking = blocking or not scoreable \
+        blocking = blocking \
             or verified_recall < thresholds["verified_recall"] \
-            or verified_precision < thresholds["verified_precision"] \
-            or ungrounded_share > thresholds["max_inferred_share"]
+            or verified_precision < thresholds["verified_precision"]
 
     return {
         "backend": backend.name,

@@ -1,0 +1,50 @@
+# Concept-map for spec-05-clinical-trial-design. Each concept is realized in >=3 distinct modes
+# across the IR so R-MV-01 passes, and each home_anchor names an ADJACENT technique the applied
+# statistician already owns rather than the concept restated (R-XREF-04).
+concepts:
+  - concept_id: alpha-spending
+    canonical_term: "alpha spending function"
+    aliases: ["error spending"]
+    home_anchor: "a multiple-comparison budget split across contrasts declared before the data"
+    fidelity_boundary: "breaks because the looks are nested in time and share patients, so the tests are correlated rather than independent"
+    epistemic_status: settled
+    salience: 0.9
+    representation_modes:
+      - {mode: mental_model, block_ref: card-alpha}
+      - {mode: tradeoff, block_ref: matrix-alpha}
+      - {mode: cost, block_ref: toulmin-alpha}
+      - {mode: architecture, block_ref: fig-alpha}
+      - {mode: failure, block_ref: body-alpha-pre}
+    source_ids: [s-spend, s-guide]
+    claim_ids: [C-spend-1, C-spend-2, C-guide-1, C-guide-2]
+
+  - concept_id: sample-size-reestimation
+    canonical_term: "sample-size re-estimation"
+    aliases: ["SSR"]
+    home_anchor: "a power calculation redone on a pilot's variance estimate"
+    fidelity_boundary: "breaks because the pilot data are this trial's own data, so the estimate feeds back into the test that will be reported"
+    epistemic_status: contested
+    salience: 0.75
+    representation_modes:
+      - {mode: mental_model, block_ref: card-ssr}
+      - {mode: tradeoff, block_ref: toulmin-ssr}
+      - {mode: failure, block_ref: failures-ssr}
+      - {mode: benchmark, block_ref: fig-ssr}
+      - {mode: architecture, block_ref: body-ssr}
+    source_ids: [s-ssr, s-spend]
+    claim_ids: [C-ssr-1, C-ssr-2, C-ssr-3, C-spend-3]
+
+  - concept_id: futility-boundary
+    canonical_term: "futility boundary"
+    aliases: ["nonbinding stop"]
+    home_anchor: "the acceptance region of a sequential probability ratio test"
+    fidelity_boundary: "breaks because crossing the region is advisory here, so a charter and a committee decide rather than the arithmetic"
+    epistemic_status: contested
+    salience: 0.55
+    representation_modes:
+      - {mode: mental_model, block_ref: card-futility}
+      - {mode: tradeoff, block_ref: aid-futility}
+      - {mode: failure, block_ref: body-futility}
+      - {mode: historical, block_ref: body-futility-limits}
+    source_ids: [s-futile]
+    claim_ids: [C-futile-1, C-futile-2, C-futile-3]

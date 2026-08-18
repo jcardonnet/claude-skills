@@ -3,6 +3,8 @@
 Done-condition: on a fixture with one unsupported and one decorative citation, recall/precision
 reflect them, and deterministic resolution flags the unledgered marker.
 """
+from pathlib import Path
+
 import pytest
 
 from ir.schema import DocumentIR, SourceLedger
@@ -14,6 +16,8 @@ from verify.citation_quality import (
     verify_files,
 )
 from verify._entailment import LexicalEntailment, resolve_backend
+
+SKILL_ROOT = Path(__file__).resolve().parents[1]
 
 
 def _report(fixtures):
@@ -247,6 +251,35 @@ class _CeilingCli:
     __call__ = result_text = result_json = _boom
 
 
+def test_a_judgement_call_carries_no_tool_schemas():
+    """Every `claude -p` is a COLD session and re-pays the whole Claude Code preamble — system prompt
+    plus every tool schema, MCP servers included — before reading the instruction. Measured on a
+    10-token question: ~37,800 preamble tokens with the default tool set, ~15,900 with none. A critic
+    run is 113 calls asking for one binary word each, so that is ~2.5M tokens recoverable for free.
+
+    Omitting the flag does NOT mean "no tools"; it means the DEFAULT set. The empty `--tools` is what
+    makes it explicit."""
+    from utils.claude_cli import ClaudeCli
+
+    argv = ClaudeCli()._argv("judge this")
+    assert "--tools" in argv and argv[argv.index("--tools") + 1] == ""
+    assert "--allowedTools" not in argv
+
+
+def test_the_research_backend_is_the_one_caller_that_gets_tools():
+    """A brief cannot be answered without retrieval, and a default-constructed caller has no tools —
+    which would leave the backend answering from training data and returning URLs it recalls rather
+    than URLs it read. `--permission-mode` matters too: non-interactively there is nobody to ask, so
+    without it the CLI searches, cannot fetch, and gives up."""
+    from research.claude_backend import ClaudeResearchBackend
+
+    argv = ClaudeResearchBackend(verify_urls=False).cli._argv("run this brief")
+    assert argv[argv.index("--allowedTools") + 1:argv.index("--allowedTools") + 3] == \
+        ["WebSearch", "WebFetch"]
+    assert argv[argv.index("--permission-mode") + 1] == "bypassPermissions"
+    assert "--tools" not in argv
+
+
 def test_a_hit_ceiling_is_not_catchable_as_an_ordinary_outage():
     """`CliBudgetExceeded` used to subclass `CliUnavailable`, so every caller written to absorb a
     per-item outage absorbed the run's ceiling too and the campaign carried on spending. The cap
@@ -355,13 +388,55 @@ def test_the_two_citation_gates_are_one_function():
     away checked all three and only on a real backend. Two judgements, already disagreeing."""
     from eval import _citation_shortfall
 
-    proxy = {"status": "scored", "backend": "lexical", "meets_recall": False,
-             "meets_precision": False, "meets_composition": False}
-    assert _citation_shortfall(proxy) is None, "the proxy's numbers gate nothing"
+    ok = {"status": "scored", "backend": "lexical", "meets_recall": True,
+          "meets_precision": True, "meets_composition": True}
+    assert _citation_shortfall(ok) is None
 
-    real = {**proxy, "backend": "nli", "meets_recall": True, "meets_precision": True}
-    assert _citation_shortfall(real), "composition alone must be able to fail a spec"
-    assert _citation_shortfall({**real, "meets_composition": True}) is None
+    # the ENTAILMENT pair is what the proxy cannot speak to, and only that pair
+    proxy = {**ok, "meets_recall": False, "meets_precision": False}
+    assert _citation_shortfall(proxy) is None, "proxy entailment numbers gate nothing"
+    assert _citation_shortfall({**proxy, "backend": "nli"}), "a real backend gates them"
+
+
+def test_composition_gates_on_every_backend_because_no_backend_computes_it():
+    """The split is by what the measurement DEPENDS ON, not by which function asks.
+    `ungrounded_share` and `scoreable` come from provenance tags and claim counts — no
+    `backend.supports()` call is involved — so they mean the same thing everywhere.
+
+    The first version of this gate put them behind the proxy bypass, which made the guard
+    unreachable in the only configuration that runs offline and in CI. That is where it was needed:
+    spec-02 is 13 claim-bearing blocks, ALL `inferred`, ungrounded_share 1.00 against a 0.60 cap
+    eval-rubric.yaml says exists to "fail a primer that is entirely synthesis" — and it passed."""
+    from eval import _citation_shortfall
+
+    for backend in ("lexical", "nli", "claude"):
+        mv = {"status": "scored", "backend": backend, "meets_recall": True,
+              "meets_precision": True, "meets_composition": False, "ungrounded_share": 1.0,
+              "scoreable": True, "thresholds": {"max_inferred_share": 0.6}}
+        shortfall = _citation_shortfall(mv)
+        assert shortfall and "composition" in shortfall, f"{backend} let composition through"
+        assert "1.0" in shortfall
+
+
+def test_the_composition_guard_binds_the_shipped_artifacts_on_the_offline_backend():
+    """End-to-end on the real fixtures, since the unit test above could pass on a mock alone.
+    spec-01 is 4/7 verified and clears the cap; spec-02 grounds nothing and must not."""
+    from ir.schema import DocumentIR, SourceLedger
+    from verify.citation_quality import evaluate, load_thresholds
+
+    root = SKILL_ROOT / "tests" / "fixtures"
+    one = evaluate(DocumentIR.from_yaml(root / "document-ir.full.yaml"),
+                   SourceLedger.from_yaml(root / "source-ledger.full.yaml"),
+                   backend=LexicalEntailment(), thresholds=load_thresholds())
+    assert one["ungrounded_share"] == pytest.approx(3 / 7, abs=1e-3)
+    assert one["blocking"] is False, "a primer with a grounded spine must still pass offline"
+
+    two = evaluate(DocumentIR.from_yaml(root / "spec02" / "document-ir.yaml"),
+                   SourceLedger.from_yaml(root / "spec02" / "source-ledger.yaml"),
+                   backend=LexicalEntailment(), thresholds=load_thresholds())
+    assert two["counts"]["verified_statements"] == 0
+    assert two["ungrounded_share"] == 1.0
+    assert two["blocking"] is True, "an artifact that grounds nothing must not read as clean"
 
 
 def test_inferred_blocks_are_scored_separately_from_verified_ones():

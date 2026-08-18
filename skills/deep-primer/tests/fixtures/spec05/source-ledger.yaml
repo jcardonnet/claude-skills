@@ -1,0 +1,128 @@
+# Source-ledger for spec-05-clinical-trial-design.
+#
+# SYNTHETIC BY CONSTRUCTION, and deliberately so. Every url is example.org and every author/venue
+# is obviously fictional — the same convention as tests/fixtures/source-ledger.full.yaml, and the
+# opposite of tests/fixtures/spec02/source-ledger.yaml, whose sources were fetched over the network
+# and quote-verified verbatim. This ledger asserts nothing about the world; it exists so the
+# STRUCTURE of a non-software primer can be exercised end to end.
+#
+# Quotes are <=15 words (R-GROUND-01) and lexically close to the statements they support, so the
+# offline lexical entailment proxy can resolve them. C-spend-3 and C-ssr-3 are a symmetric
+# contested pair (R-GROUND-05): the disagreement is visible from either source.
+sources:
+  - source_id: s-spend
+    url: "https://example.org/error-spending-across-looks"
+    title: "Error spending across interim analyses"
+    authors: ["A. Statistician"]
+    venue: "Example Biostatistics Review"
+    date: "2025-01-20"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-17T00:00:00Z"
+    content_hash: "beef0501"
+    claims:
+      - claim_id: C-spend-1
+        text: "each interim analysis consumes part of one fixed error budget"
+        quote: "each interim analysis consumes part of one fixed error budget"
+        location: "p.3 / §2"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-guide]
+      - claim_id: C-spend-2
+        text: "the spending shape decides how much error the final analysis keeps"
+        quote: "the spending shape decides how much error the final analysis keeps"
+        location: "p.6 / §4"
+        confidence: high
+      # the dissenting half of the C-ssr-3 disagreement; contested/contradicts are symmetric so the
+      # conflict is visible from either source (R-GROUND-05)
+      - claim_id: C-spend-3
+        text: "unblinded re-estimation is worth its loss when variance assumptions are weak"
+        quote: "unblinded re-estimation is worth its loss when variance assumptions are weak"
+        location: "p.11 / §7"
+        confidence: medium
+        contested: true
+        contradicts: [C-ssr-3]
+
+  - source_id: s-guide
+    url: "https://example.org/adaptive-design-prespecification-standard"
+    title: "Pre-specification requirements for adaptive designs"
+    authors: ["D. Regulator"]
+    venue: "Example Regulatory Standard"
+    date: "2025-04-30"
+    type: standard
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-17T00:00:00Z"
+    content_hash: "beef0502"
+    claims:
+      - claim_id: C-guide-1
+        text: "an adaptation absent from the protocol has no bounded error rate"
+        quote: "an adaptation absent from the protocol has no bounded error rate"
+        location: "§3.1"
+        confidence: high
+      - claim_id: C-guide-2
+        text: "unblinded interim data belong to an independent monitoring committee"
+        quote: "unblinded interim data belong to an independent monitoring committee"
+        location: "§5.2"
+        confidence: high
+
+  - source_id: s-ssr
+    url: "https://example.org/blinded-versus-unblinded-reestimation"
+    title: "Blinded and unblinded sample-size re-estimation compared"
+    authors: ["B. Trialist"]
+    venue: "Example Trials Journal"
+    date: "2025-06-12"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-17T00:00:00Z"
+    content_hash: "beef0503"
+    claims:
+      - claim_id: C-ssr-1
+        text: "blinded re-estimation leaves the error rate essentially intact"
+        quote: "blinded re-estimation leaves the error rate essentially intact"
+        location: "p.4 / §3.2"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-spend]
+      - claim_id: C-ssr-2
+        text: "unblinded re-estimation inflates the error rate without a combination test"
+        quote: "unblinded re-estimation inflates the error rate without a combination test"
+        location: "p.5 / §3.4"
+        confidence: high
+      - claim_id: C-ssr-3
+        text: "unblinded re-estimation rarely repays the efficiency it gives up"
+        quote: "unblinded re-estimation rarely repays the efficiency it gives up"
+        location: "p.9 / §6"
+        confidence: medium
+        contested: true
+        contradicts: [C-spend-3]
+
+  - source_id: s-futile
+    url: "https://example.org/nonbinding-futility-audit"
+    title: "What nonbinding futility boundaries actually stop"
+    authors: ["C. Reviewer"]
+    venue: "Example Methods Workshop"
+    date: "2025-09-08"
+    type: primary_paper
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-17T00:00:00Z"
+    content_hash: "beef0504"
+    claims:
+      - claim_id: C-futile-1
+        text: "ignoring a nonbinding futility boundary lowers power but never the error rate"
+        quote: "ignoring a nonbinding futility boundary lowers power, never the error rate"
+        location: "p.2 / §1.3"
+        confidence: high
+      - claim_id: C-futile-2
+        text: "trials continuing past futility expose patients to an inferior arm"
+        quote: "trials continuing past futility expose patients to an inferior arm"
+        location: "p.7 / §4"
+        confidence: medium
+      - claim_id: C-futile-3
+        text: "an interim endpoint that mispredicts the final one defeats stopping rules"
+        quote: "an interim endpoint that mispredicts the final one defeats stopping rules"
+        location: "p.10 / §6"
+        confidence: medium

@@ -1,0 +1,140 @@
+# Source-ledger for spec-04-seeded-vector-index.
+#
+# EVERY SOURCE HERE IS SYNTHETIC. The URLs are example.org, the authors and venues are invented, and
+# the content hashes are placeholders. This fixture exercises the ledger CONTRACT — provenance
+# origin, corroboration, conflict, recency, quote discipline — and asserts nothing about the world.
+# It is deliberately not built the way spec-02's ledger was (real pages, verbatim-verified quotes);
+# nothing in this file should ever be mistaken for evidence.
+#
+# Quotes are <=15 words (R-GROUND-01) and lexically close to the statements they support, so the
+# offline lexical entailment proxy resolves them.
+#
+# s-seed is the user's URL seed (R-DISC-06): provenance_origin=user on the source AND on its claims.
+# It is consulted and grounded like any other source, exempt from triage-drop, and still
+# corroboration-graded — C-graph-1 is corroborated, C-graph-2 is contested by the discovered
+# consensus and routes to the contested rendering rather than being asserted.
+sources:
+  - source_id: s-seed
+    url: "https://example.org/hnsw-paper"
+    title: "A navigable graph index for approximate search"
+    authors: ["M. Fictional"]
+    venue: "Example Symposium"
+    date: "2024-06-01"
+    type: primary_paper
+    credibility: high
+    provenance_origin: user
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee11"
+    claims:
+      - claim_id: C-graph-1
+        text: "a walk over neighbours makes probe count grow with the logarithm of corpus size"
+        quote: "a walk over neighbours, so probe count grows with the logarithm of corpus size"
+        location: "p.3 / §2"
+        confidence: high
+        provenance_origin: user
+        corroboration_count: 2
+        corroborated_by: [s-survey]
+      # The seed's strong claim, and the one the discovered consensus rejects. A seed is
+      # authoritative for INCLUSION, never for truth: this stays contested + singly-supported and
+      # renders through `contested-graph`, not as a settled assertion (R-DISC-06).
+      - claim_id: C-graph-2
+        text: "a graph index dominates the recall-latency frontier at every corpus scale"
+        quote: "the graph index dominates the recall-latency frontier at every scale"
+        location: "p.9 / §6"
+        confidence: medium
+        provenance_origin: user
+        corroboration_count: 1
+        contested: true
+        contradicts: [C-quant-2]
+
+  - source_id: s-survey
+    url: "https://example.org/ann-index-survey"
+    title: "Index families for approximate nearest-neighbour search"
+    authors: ["R. Nonesuch"]
+    venue: "Example Review"
+    date: "2025-11-01"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee12"
+    claims:
+      - claim_id: C-quant-1
+        text: "a quantized partition keeps every vector but stores each as a short code, which shrinks the resident footprint"
+        quote: "a quantized partition keeps every vector but stores each as a short code"
+        location: "p.5 / §3.1"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-bench]
+      # the other side of the seed's C-graph-2; contested/contradicts are symmetric, so the conflict
+      # is visible from either source (R-GROUND-05)
+      - claim_id: C-quant-2
+        text: "under a fixed memory ceiling the quantized partition overtakes the graph index"
+        quote: "under a memory ceiling the quantized partition overtakes the graph"
+        location: "p.11 / §5.2"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-bench]
+        contested: true
+        contradicts: [C-graph-2]
+      - claim_id: C-churn-1
+        text: "a rebuild changes which neighbours are reachable, so measured recall moves without any change to the corpus"
+        quote: "a rebuild changes which neighbours are reachable, so measured recall moves"
+        location: "p.14 / §7"
+        confidence: medium
+        corroboration_count: 2
+        corroborated_by: [s-bench]
+
+  - source_id: s-vendor
+    url: "https://example.org/vendor-ann-benchmark"
+    title: "Benchmark note for an example vector service"
+    authors: ["Example Vector Systems"]
+    venue: "Example Vendor Blog"
+    date: "2026-02-01"
+    type: vendor
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee13"
+    claims:
+      # A vendor performance claim: carries as_of_date because it names a version-shaped number
+      # (R-GROUND-04/05), and is NOT allowed to stand alone — R-EVID-03 wants an independent
+      # non-vendor measurement beside it, which is C-perf-2.
+      - claim_id: C-perf-1
+        text: "the service sustains 0.95 recall@10 at 3.2 ms median latency"
+        quote: "0.95 recall@10 at 3.2 ms median latency"
+        location: "§ results table"
+        confidence: medium
+        as_of_date: "2026-02-01"
+        corroboration_count: 1
+        contested: true
+        contradicts: [C-perf-2]
+
+  - source_id: s-bench
+    url: "https://example.org/independent-ann-bench"
+    title: "An independent replication of published index benchmarks"
+    authors: ["D. Placeholder"]
+    venue: "Example Workshop"
+    date: "2026-05-01"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-18T00:00:00Z"
+    content_hash: "c0ffee14"
+    claims:
+      - claim_id: C-perf-2
+        text: "an independent replication holds the recall but measures roughly twice the median latency"
+        quote: "replication holds recall but measures twice the median latency"
+        location: "p.6 / table 2"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-survey]
+        contested: true
+        contradicts: [C-perf-1]
+      - claim_id: C-churn-2
+        text: "incremental insertion degrades recall until the index is rebuilt"
+        quote: "incremental insertion degrades recall until the index is rebuilt"
+        location: "p.8 / §4.3"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [s-survey]

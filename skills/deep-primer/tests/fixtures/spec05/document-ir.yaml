@@ -1,0 +1,295 @@
+# Document IR for spec-05-clinical-trial-design — the NON-SOFTWARE reference artifact.
+#
+# The registry's rules are domain-independent by design; this is the primer that has to prove it.
+# Nothing here is a pipeline, a service or a version: the vocabulary is interim analysis, alpha
+# spending, sample-size re-estimation, futility boundaries and regulatory pre-specification, and
+# the same seven card rows, four operational artifacts and three-per-section recall items carry it.
+#
+# Sources are SYNTHETIC and openly so (example.org, fictional authors/venues) — see
+# source-ledger.yaml. This artifact exercises structure; it makes no grounding claim.
+meta:
+  parameters:
+    home_domain: [applied statistics, experimental design]
+    target_domain: "adaptive clinical trial design and its regulatory constraints"
+    seniority_band: staff_plus
+    # The SPEC asks for 5000 words; this is the compact reference realisation of the same contract,
+    # so meta records the budget it was actually drafted to (R-ARCH-06 bands off this number).
+    # Same convention as document-ir.full.yaml (260 against 6000) and spec02 (430 against 8000).
+    length_budget: 920
+    outputs: [html]
+  ledger_snapshot: [s-spend, s-guide, s-ssr, s-futile]
+  model_versions: {generator: reference-artifact, verifier: lexical}
+  generated_at: "2026-08-18T00:00:00Z"
+
+sections:
+  - block_id: sec-alpha
+    title: "Every interim look spends error you cannot earn back"
+    concept: alpha-spending
+    blocks:
+      - block_id: lede-alpha
+        role: lede
+        text: "An adaptive design buys the right to change a running trial, and an adaptation absent from the protocol has no bounded error rate."
+        claim_ids: [C-guide-1]
+        provenance: verified
+        source_ids: [s-guide]
+      - block_id: card-alpha
+        role: card
+        concept: alpha-spending
+        mode: mental_model
+        claim_ids: [C-spend-1, C-spend-2]
+        provenance: verified
+        source_ids: [s-spend]
+        row_claims:
+          idea: [C-spend-1]
+          key_exemplar: [C-spend-2]
+        rows:
+          idea: "Each interim analysis consumes part of one fixed error budget, and the alpha spending function decides which part."
+          home_anchor: "Like a multiple-comparison budget split across contrasts you declared before seeing the data."
+          whats_new_vs_renamed: "Multiplicity is renamed, not new; new is that the comparisons arrive in time order and share patients, so they are correlated."
+          reach_for_when: "Reach for a spending function when the number or timing of the looks may still move."
+          skip_when: "Skip it for a fixed-sample analysis where no interim result will ever be read."
+          key_exemplar: "A spending shape that leaves almost the whole error budget for the final analysis."
+          confidence: "settled for the error arithmetic; contested for which spending shape to prefer"
+      - block_id: matrix-alpha
+        role: matrix
+        artifact_kind: decision_matrix
+        concept: alpha-spending
+        mode: tradeoff
+        text: "Criteria: error spent before the final look, patient exposure on an inferior arm, and the maximum sample size the sponsor must fund. Baseline: an O'Brien-Fleming-shaped spending function with two interim looks. A Pocock-shaped function buys earlier stopping and pays for it with a larger maximum sample size. A Haybittle-Peto rule buys a final critical value almost unchanged from fixed-sample, and pays for it by almost never stopping early. Recommendation: keep the baseline unless the sponsor can name a decision that an early stop would actually change."
+        claim_ids: [C-spend-2]
+        # inferred, not verified: the criteria, the named baseline and the recommendation are
+        # synthesis GROUNDED IN the source rather than stated by it.
+        provenance: inferred
+        source_ids: [s-spend]
+      - block_id: toulmin-alpha
+        role: toulmin
+        concept: alpha-spending
+        mode: cost
+        text: "Claim: keep almost the whole error budget for the final analysis. Data: the budget spent before that analysis is what raises the final critical value. Warrant: error spent early is unavailable later, so an early boundary is paid for in sample size. Qualifier: the boundary holds its value only while the treatment effect is genuinely uncertain. Rebuttal: the same boundary costs patients when a large early effect is plausible and the drug is life-saving."
+        claim_ids: [C-spend-1, C-spend-2]
+        # inferred: the qualifier and the rebuttal are the author's operational judgement, which is
+        # exactly what a Toulmin structure is for and exactly what no quote can entail.
+        provenance: inferred
+        source_ids: [s-spend]
+      - block_id: checklist-alpha
+        role: matrix
+        artifact_kind: checklist
+        text: "Confirm the protocol fixes the number and timing of every interim look. Verify the spending function was chosen before any unblinding. Check that a maximum sample size is stated rather than implied. Recompute the final critical value from the information fractions actually observed. Confirm the monitoring committee charter predates the first look. Record every deviation from the planned look schedule, including looks not taken."
+        claim_ids: [C-guide-1, C-guide-2]
+        provenance: inferred
+        source_ids: [s-guide]
+      - block_id: fig-alpha
+        role: figure
+        concept: alpha-spending
+        mode: architecture
+        caption: "Figure 1: one error budget enters at the left and is drawn down look by look, so the final analysis inherits only what the earlier looks left behind."
+        svg_ref: "synthetic/error-spending.svg"
+        claim_ids: [C-spend-1]
+        # inferred: the diagram RENDERS the cited claim rather than restating it
+        provenance: inferred
+        source_ids: [s-spend]
+      - block_id: recall-alpha
+        role: recall
+        concept: alpha-spending
+        items:
+          - question: "Your team wants a third interim look after the second has already been read. What has been spent, and what has to give?"
+            answer: "Error already spent cannot be recovered, so the extra look is funded out of the final analysis and the maximum sample size rises."
+          - question: "You already correct for multiplicity across contrasts declared in advance. What carries over to interim looks, and what does not?"
+            answer: "The budget arithmetic carries over. Independence does not, because the later looks reuse the earlier patients and the tests are correlated."
+            cross_domain: true
+          - question: "A protocol says interim analyses will be performed as required. Why is that sentence fatal?"
+            answer: "An unspecified number of looks has no bounded error rate, so no nominal false-positive level can be claimed at the end."
+
+    subsections:
+      - block_id: sub-alpha-pre
+        title: "A boundary the regulator has not seen in advance is not a boundary"
+        concept: alpha-spending
+        blocks:
+          - block_id: subsum-alpha-pre
+            role: summary
+            text: "A boundary becomes regulatory only when the protocol has it in advance, and an unlisted adaptation has no bounded error rate."
+            claim_ids: [C-guide-1]
+            provenance: verified
+            source_ids: [s-guide]
+          - block_id: body-alpha-pre
+            role: body
+            concept: alpha-spending
+            mode: failure
+            heading: "Where an unplanned adaptation destroys the error argument"
+            text: "A boundary earns its error control by being fixed before the data speak. That control is unavailable to an adaptation chosen after an interim result has been read. The adaptation cannot be rescued by later modelling, however careful the model is. Modelling cannot substitute for a firewall, and the firewall here is organisational. The firewall gives unblinded interim data to an independent monitoring committee, and denies it to the sponsor. That committee is the part sponsors erode first under commercial pressure."
+            claim_ids: [C-guide-1, C-guide-2]
+            # inferred: the firewall argument is synthesis across both cited claims, and a six-sentence
+            # block is longer than any 15-word quote can entail.
+            provenance: inferred
+            source_ids: [s-guide]
+
+  - block_id: sec-ssr
+    title: "Blinded re-estimation is nearly free; the unblinded kind must be paid for"
+    concept: sample-size-reestimation
+    blocks:
+      - block_id: lede-ssr
+        role: lede
+        text: "Blinded re-estimation buys a corrected sample size and leaves the error rate essentially intact."
+        claim_ids: [C-ssr-1]
+        provenance: verified
+        source_ids: [s-ssr]
+      - block_id: card-ssr
+        role: card
+        concept: sample-size-reestimation
+        mode: mental_model
+        claim_ids: [C-ssr-1, C-ssr-2]
+        provenance: verified
+        source_ids: [s-ssr]
+        row_claims:
+          idea: [C-ssr-1]
+          key_exemplar: [C-ssr-2]
+        rows:
+          idea: "Sample-size re-estimation reads the variance again in flight; blinded, it leaves the error rate essentially intact."
+          home_anchor: "Like redoing a power calculation on a pilot's variance estimate, except the pilot is this trial."
+          whats_new_vs_renamed: "The power calculation is renamed, not new; new is that its input comes from the running trial and can feed back into the test."
+          reach_for_when: "Reach for the blinded form whenever the assumed variance rests on thin external data."
+          skip_when: "Skip the unblinded form unless a combination test is already fixed in the protocol."
+          key_exemplar: "A combination test carrying the unblinded re-estimation, without which the error rate inflates."
+          confidence: "settled for the blinded case; contested for whether the unblinded case repays its penalty"
+      - block_id: toulmin-ssr
+        role: toulmin
+        concept: sample-size-reestimation
+        mode: tradeoff
+        text: "Claim: re-estimate the sample size from the pooled variance, and keep unblinded re-estimation as an exception. Data: the pooled variance can be recomputed blind, and the error rate stays essentially intact. Warrant: a variance that is blind to the treatment effect cannot leak which arm is winning. Qualifier: the variance has to be a genuine nuisance parameter for that to hold. Rebuttal: that parameter is exactly what a dissenting camp distrusts, and it spends the unblinded penalty to avoid relying on it."
+        claim_ids: [C-ssr-1, C-ssr-2, C-ssr-3, C-spend-3]
+        # inferred: the rebuttal presents the contested pair C-ssr-3 / C-spend-3 rather than
+        # asserting either side, so no single quote entails the block.
+        provenance: inferred
+        source_ids: [s-ssr, s-spend]
+      - block_id: failures-ssr
+        role: matrix
+        artifact_kind: failure_catalog
+        concept: sample-size-reestimation
+        mode: failure
+        text: "Unblinded peek without a combination test: the conventional statistic no longer controls the error rate, and no later adjustment recovers it. Uncapped re-estimation: a rule with no stated maximum lets a small observed effect drive enrolment upward without limit. Nuisance in name only: re-estimating on a parameter entangled with the treatment effect leaks that effect back into the design. Protocol drift: the rule is written after the interim data were seen, which returns the trial to the unbounded case."
+        claim_ids: [C-ssr-2, C-guide-1]
+        provenance: inferred
+        source_ids: [s-ssr, s-guide]
+      - block_id: fig-ssr
+        role: figure
+        concept: sample-size-reestimation
+        mode: benchmark
+        caption: "Figure 2: power against assumed variance, with the blinded and unblinded curves separating only where the original variance guess was badly wrong."
+        svg_ref: "synthetic/reestimation-power.svg"
+        claim_ids: [C-ssr-1]
+        provenance: inferred
+        source_ids: [s-ssr]
+      - block_id: recall-ssr
+        role: recall
+        concept: sample-size-reestimation
+        items:
+          - question: "The observed pooled variance is double the planned value at the halfway look. What may you change, and under what constraint?"
+            answer: "Enrolment may rise to the maximum the protocol already fixed, provided the re-estimation stayed blind to allocation."
+          - question: "You would normally rerun a power calculation on a pilot study. Why is reusing this trial's own data different?"
+            answer: "The pilot data are the trial data, so the estimate feeds back into the very test that will be reported."
+            cross_domain: true
+          - question: "A sponsor proposes re-estimating on an unblinded interim effect estimate. What must accompany that proposal?"
+            answer: "A combination test fixed in advance, plus a firewall keeping the sponsor away from the unblinded data."
+
+    subsections:
+      - block_id: sub-ssr-blinded
+        title: "Why pooling the arms is what makes the re-read cheap"
+        concept: sample-size-reestimation
+        blocks:
+          - block_id: subsum-ssr
+            role: summary
+            text: "Pooling the arms is what leaves the error rate essentially intact under blinded re-estimation."
+            claim_ids: [C-ssr-1]
+            provenance: verified
+            source_ids: [s-ssr]
+          - block_id: body-ssr
+            role: body
+            concept: sample-size-reestimation
+            mode: architecture
+            heading: "What the pooled estimate can and cannot see"
+            text: "A trial is sized on a variance nobody has measured yet. The pooled variance is computed across both arms at once, with no allocation applied. That variance cannot separate a treatment difference from ordinary noise. The same variance is therefore uninformative about which arm did better, and the error rate survives intact. The rate survives because nothing in the re-estimation depends on the allocation."
+            claim_ids: [C-ssr-1]
+            # inferred: the mechanism is the author's explanation of WHY the cited result holds
+            provenance: inferred
+            source_ids: [s-ssr]
+
+  - block_id: sec-futility
+    title: "A futility boundary protects patients only if someone is obliged to stop"
+    concept: futility-boundary
+    blocks:
+      - block_id: lede-futility
+        role: lede
+        text: "A trial continuing past futility exposes patients to an inferior arm, and a nonbinding boundary obliges nobody to stop."
+        claim_ids: [C-futile-2]
+        provenance: verified
+        source_ids: [s-futile]
+      - block_id: card-futility
+        role: card
+        concept: futility-boundary
+        mode: mental_model
+        claim_ids: [C-futile-1, C-futile-2]
+        provenance: verified
+        source_ids: [s-futile]
+        row_claims:
+          idea: [C-futile-2]
+          key_exemplar: [C-futile-1]
+        rows:
+          idea: "The boundary marks the point past which continuing exposes patients to an inferior arm for nothing."
+          home_anchor: "Like the acceptance region of a sequential probability ratio test, drawn before the first observation."
+          whats_new_vs_renamed: "The stopping region is renamed, not new; new is that crossing it is advisory, so a committee rather than the arithmetic decides."
+          reach_for_when: "Reach for one whenever an inferior arm carries real burden for the patients on it."
+          skip_when: "Skip it when the endpoint matures so late that no interim look could inform the decision."
+          key_exemplar: "A nonbinding futility boundary whose charter names who may ignore it, since ignoring it lowers power but never the error rate."
+          confidence: "settled that ignoring it cannot inflate error; contested whether such boundaries are honoured in practice"
+      - block_id: aid-futility
+        role: matrix
+        artifact_kind: decision_aid
+        concept: futility-boundary
+        mode: tradeoff
+        text: "Ask who may overrule the boundary, and write the answer into the charter before the first look. If the committee alone may overrule, a nonbinding boundary behaves like a binding one and the patients get the protection. If the sponsor may overrule after seeing unblinded data, treat the boundary as decoration and size the trial as though it were absent. Speculative, not evidenced: no source in this ledger measures how often such a boundary is honoured, so the last rule is a judgement rather than a finding."
+        claim_ids: [C-futile-1, C-guide-2]
+        provenance: inferred
+        source_ids: [s-futile, s-guide]
+      - block_id: body-futility
+        role: body
+        concept: futility-boundary
+        mode: failure
+        heading: "The error rate is protected; the patients are not"
+        text: "The statistical case for a nonbinding boundary is that ignoring it can only lose power. The lost power is the sponsor's to spend, so the error rate stays protected either way. That rate is not the thing patients need protected, and the two are routinely confused. Patients need the boundary to be acted on, which is a governance question rather than a statistical one."
+        claim_ids: [C-futile-1, C-futile-2]
+        # inferred: the governance conclusion is the author's, drawn from the two cited results
+        provenance: inferred
+        source_ids: [s-futile]
+      - block_id: recall-futility
+        role: recall
+        concept: futility-boundary
+        items:
+          - question: "A trial crosses its futility boundary and the sponsor continues. What happened to the error rate, and what happened to the patients?"
+            answer: "The error rate is untouched, because ignoring the boundary only loses power. The patients keep accruing on an arm already judged futile."
+          - question: "In sequential testing you would stop at the acceptance region. Why does that analogue not settle the decision here?"
+            answer: "The region is advisory rather than absorbing, so a charter and a committee decide, not the arithmetic."
+            cross_domain: true
+          - question: "Which single document tells you whether a futility boundary is real?"
+            answer: "The monitoring committee charter, because it names who may overrule the boundary and on what grounds."
+
+    subsections:
+      - block_id: sub-futility-limits
+        title: "Where this framing breaks down: a boundary is only as good as its endpoint"
+        concept: futility-boundary
+        blocks:
+          - block_id: subsum-futility-limits
+            role: summary
+            text: "An interim endpoint that mispredicts the final one defeats every stopping rule in this primer, which is its weakest joint."
+            claim_ids: [C-futile-3]
+            provenance: verified
+            source_ids: [s-futile]
+          - block_id: body-futility-limits
+            role: body
+            concept: futility-boundary
+            mode: historical
+            heading: "The methods were built for endpoints that mature quickly"
+            text: "Group-sequential methods were built for an endpoint that matures quickly. Such an endpoint lets an interim look estimate the same quantity the final analysis will report. A slow endpoint breaks that correspondence, because the interim look sees a surrogate instead. The surrogate can move in the right direction while the endpoint does not, and no spending function detects that."
+            claim_ids: [C-futile-3]
+            # inferred: the surrogate-endpoint history is context around the cited result
+            provenance: inferred
+            source_ids: [s-futile]

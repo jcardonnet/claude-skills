@@ -64,9 +64,23 @@ class ClaudeResearchBackend:
 
     name = "claude-cli"
 
+    #: The tools a research brief cannot be answered without. Default-constructed `ClaudeCli` runs
+    #: with NO tools, which is right for a binary judge and catastrophic here: the model answers the
+    #: brief from training data and returns URLs it recalls rather than URLs it read.
+    #:
+    #: The previous conclusion — that `claude -p` cannot search in this environment — was drawn from
+    #: `usage.server_tool_use.web_search_requests` staying at 0. That counter tracks the SERVER-side
+    #: API web_search tool; Claude Code's WebSearch and WebFetch are client-side and never increment
+    #: it, so the number could not have moved whatever happened. Measured against the actual tool_use
+    #: stream instead: with these two tools and a permission mode, `claude -p` searches, fetches, and
+    #: returns live content; without them it searches, fails to fetch, and gives up.
+    RESEARCH_TOOLS = ("WebSearch", "WebFetch")
+
     def __init__(self, cli: ClaudeCli | None = None, fetcher: HttpFetcher | None = None, *,
                  model: str = "haiku", cost_cap_usd: float = 5.0, verify_urls: bool = True) -> None:
-        self.cli = cli or ClaudeCli(model=model, cost_cap_usd=cost_cap_usd)
+        self.cli = cli or ClaudeCli(model=model, cost_cap_usd=cost_cap_usd,
+                                    allowed_tools=self.RESEARCH_TOOLS,
+                                    permission_mode="bypassPermissions")
         self.fetcher = fetcher or HttpFetcher()
         self.verify_urls = verify_urls
         self.documents: list = []       # what actually fetched — hand to freeze_corpus()

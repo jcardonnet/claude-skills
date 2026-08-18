@@ -137,8 +137,36 @@ class ClaudeCli:
     # Pass a shared Budget when several callers must respect ONE ceiling (see --gating-model).
     budget: Budget | None = None
 
+    # Which Claude Code tools this caller may use. `()` — the default — means NONE, and that is a
+    # cost decision, not a safety one.
+    #
+    # Every `claude -p` is a COLD session: it re-pays the whole Claude Code preamble (system prompt
+    # plus every tool schema, including any MCP servers configured on the machine) before it reads a
+    # word of the instruction. Measured on a 10-token question: ~37,800 preamble tokens with the
+    # default tool set, ~15,900 with none — a ~58% saving on EVERY call. A critic run is 113 calls
+    # asking for one binary word each, so the preamble, not the judgement, is the bill: ~4M input
+    # tokens of boilerplate either way, and half of it recoverable for free.
+    #
+    # A caller that genuinely needs tools says so — see `research/claude_backend.py`, which needs
+    # WebSearch and WebFetch to retrieve anything at all.
+    allowed_tools: tuple[str, ...] = ()
+    # `bypassPermissions` is required for a non-interactive run to actually USE a tool it is given;
+    # without it the CLI has no one to ask. Only meaningful when `allowed_tools` is non-empty.
+    permission_mode: str | None = None
+
     def __post_init__(self) -> None:
         self.budget = self.budget or Budget(cost_cap_usd=self.cost_cap_usd)
+
+    def _argv(self, instruction: str) -> list[str]:
+        argv = ["claude", "-p", instruction, "--model", self.model, "--output-format", "json"]
+        if self.allowed_tools:
+            argv += ["--allowedTools", *self.allowed_tools]
+            argv += ["--permission-mode", self.permission_mode or "bypassPermissions"]
+        else:
+            # An explicit empty tool set. Omitting the flag does NOT mean "no tools" — it means the
+            # default set, schemas and all.
+            argv += ["--tools", ""]
+        return argv
 
     @property
     def spend_usd(self) -> float:
@@ -155,8 +183,7 @@ class ClaudeCli:
             # context into every call — irrelevant to the judgement, and paid for each time.
             with tempfile.TemporaryDirectory() as neutral_cwd:
                 proc = subprocess.run(
-                    ["claude", "-p", instruction, "--model", self.model,
-                     "--output-format", "json"],
+                    self._argv(instruction),
                     capture_output=True, text=True, timeout=self.timeout_s, cwd=neutral_cwd,
                     check=False,
                 )

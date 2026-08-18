@@ -1,0 +1,55 @@
+# Concept-map for spec-04-seeded-vector-index (document-ir.yaml in this directory).
+#
+# Three concepts, each realized in >=3 distinct modes so R-MV-01 passes. Every home_anchor names an
+# ADJACENT technique the classical-IR reader already owns — skip pointers, static pruning, segment
+# merges — never the target concept restated (R-XREF-04).
+#
+# `contested: true` is not decoration: the graph-index section carries a `role: contested` block,
+# because the user's URL seed and the discovered consensus disagree about where the recall-latency
+# frontier lives. The structure is presented, not asserted (R-DISC-06).
+contested: true
+concepts:
+  - concept_id: graph-index
+    canonical_term: "graph index"
+    aliases: ["proximity graph", "HNSW"]
+    home_anchor: "skip pointers on a posting list, coarse hops first and fine ones near the answer"
+    fidelity_boundary: "breaks because skip pointers never lose a document, while a walk can strand a true neighbour in a region it never enters"
+    epistemic_status: contested
+    salience: 0.9
+    representation_modes:
+      - {mode: mental_model, block_ref: card-graph}
+      - {mode: tradeoff, block_ref: contested-graph}
+      - {mode: architecture, block_ref: fig-graph}
+      - {mode: failure, block_ref: body-graph-entry}
+    source_ids: [s-seed, s-survey]
+    claim_ids: [C-graph-1, C-graph-2]
+
+  - concept_id: quantized-partition
+    canonical_term: "quantized partition"
+    aliases: ["coarse quantizer", "IVF-PQ"]
+    home_anchor: "static index pruning, where a lossy summary answers most queries and the full postings are the fallback"
+    fidelity_boundary: "breaks because pruning deletes postings outright, while quantization keeps every vector and distorts its distance, so the loss surfaces as reordering rather than absence"
+    epistemic_status: settled
+    salience: 0.8
+    representation_modes:
+      - {mode: mental_model, block_ref: card-quantize}
+      - {mode: cost, block_ref: matrix-quantize}
+      - {mode: benchmark, block_ref: fig-quantize}
+      - {mode: failure, block_ref: body-quantize-rerank}
+    source_ids: [s-survey, s-vendor, s-bench]
+    claim_ids: [C-quant-1, C-quant-2, C-perf-1, C-perf-2]
+
+  - concept_id: index-churn
+    canonical_term: "index churn"
+    aliases: ["rebuild cadence"]
+    home_anchor: "a segment merge policy, where writes accumulate until a merge pays them down"
+    fidelity_boundary: "breaks because a merge rewrites postings losslessly, while a rebuild changes which neighbours are reachable, so measured recall moves when the corpus did not"
+    epistemic_status: contested
+    salience: 0.6
+    representation_modes:
+      - {mode: mental_model, block_ref: card-churn}
+      - {mode: tradeoff, block_ref: toulmin-churn}
+      - {mode: failure, block_ref: failures-churn}
+      - {mode: benchmark, block_ref: fig-churn}
+    source_ids: [s-survey, s-bench]
+    claim_ids: [C-churn-1, C-churn-2]
