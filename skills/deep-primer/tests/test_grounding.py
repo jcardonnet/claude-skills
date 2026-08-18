@@ -438,6 +438,68 @@ def test_curation_chain_is_deterministic_across_hash_seeds():
     assert len(outputs) == 1, "curation chain varied with PYTHONHASHSEED:\n" + "\n".join(sorted(outputs))
 
 
+def _robots_fetcher(monkeypatch, outcome):
+    """An HttpFetcher whose robots.txt request produces `outcome` — an exception, or a body."""
+    import urllib.request
+
+    from research.http_fetcher import HttpFetcher
+
+    calls = {}
+
+    class _Response:
+        def read(self, _n=None):
+            return outcome if isinstance(outcome, bytes) else b""
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_exc):
+            return False
+
+    def _urlopen(request, timeout=None, **_k):
+        calls["timeout"] = timeout
+        calls["url"] = getattr(request, "full_url", request)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return _Response()
+
+    monkeypatch.setattr(urllib.request, "urlopen", _urlopen)
+    return HttpFetcher(), calls
+
+
+def _http_error(code, reason):
+    import urllib.error
+
+    return urllib.error.HTTPError("https://example.org/robots.txt", code, reason, {}, None)
+
+
+def test_the_robots_fetch_is_bounded_by_the_same_timeout_as_the_page(monkeypatch):
+    """`RobotFileParser.read()` calls urlopen with NO timeout, so `timeout_s` governed the page
+    fetch and nothing governed this one — a single unresponsive origin hung the campaign."""
+    fetcher, calls = _robots_fetcher(monkeypatch, b"User-agent: *\nAllow: /\n")
+    assert fetcher._allowed("https://example.org/page") is True
+    assert calls["url"] == "https://example.org/robots.txt"
+    assert calls["timeout"] == fetcher.timeout_s
+
+
+@pytest.mark.parametrize("label,make_outcome,expected", [
+    # RFC 9309 §2.3.1: "unavailable" means assume complete disallow. All three read as ALLOW before.
+    ("a network failure", lambda: __import__("urllib.error", fromlist=["x"]).URLError("no route"), False),
+    ("a server error", lambda: _http_error(503, "Service Unavailable"), False),
+    ("an access refusal", lambda: _http_error(403, "Forbidden"), False),
+    # ...while a 404 genuinely means no rules were published, so everything is permitted
+    ("no robots.txt at all", lambda: _http_error(404, "Not Found"), True),
+    ("an explicit allow", lambda: b"User-agent: *\nAllow: /\n", True),
+    ("an explicit disallow", lambda: b"User-agent: *\nDisallow: /\n", False),
+])
+def test_an_undeterminable_robots_txt_denies_rather_than_permits(label, make_outcome, expected,
+                                                                 monkeypatch):
+    """The check exists to keep the crawler polite, and it resolved every failure — timeout, reset,
+    5xx, decode error — to "not a prohibition", then cached that per origin for the whole run."""
+    fetcher, _ = _robots_fetcher(monkeypatch, make_outcome())
+    assert fetcher._allowed("https://example.org/page") is expected, label
+
+
 def test_robots_is_rechecked_after_a_redirect(monkeypatch):
     """robots was checked against the URL we ASKED for, but urllib follows redirects silently — so a
     301 onto a disallowed path was fetched and kept. The redirect target is the page actually

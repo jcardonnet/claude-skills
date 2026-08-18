@@ -228,10 +228,20 @@ def run_critics(ir: DocumentIR, judge: Judge | None = None, critic_dir: Path = C
         for v in verdicts:
             counts[v["verdict"]] = counts.get(v["verdict"], 0) + 1
         passes_out.append({"pass": pass_name, "rules": rule_ids, "verdicts": verdicts})
+    # Blocking derives from PRIORITY, not from enforcement or from the mere existence of a failure.
+    # MUST blocks; SHOULD and MAY warn. This read `any fail`, so a MAY-priority critic rule — an
+    # advisory judgement, on a tier the registry deliberately calls soft — exited the pass non-zero
+    # and would fail CI. `gating` is already the MUST set; it was computed for test-retest and not
+    # consulted here.
+    blocking_failures = [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
+                         if v["verdict"] == "fail" and v["rule_id"] in gating]
     return {
         "passes": passes_out,
         "counts": counts,
-        "blocking": counts.get("fail", 0) > 0,
+        "blocking": bool(blocking_failures),
+        "blocking_failures": blocking_failures,
+        "advisory_failures": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
+                              if v["verdict"] == "fail" and v["rule_id"] not in gating],
         "unstable_items": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
                            if v["verdict"] == "unstable"],
         "errored_items": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
@@ -309,8 +319,12 @@ def main(argv: list[str] | None = None) -> int:
     if cli_judge is None:
         report["judge"] = {"kind": "stub", "exercised_rules": False}
     else:
-        calls = cli_judge.calls + (gating_cli_judge.calls if gating_cli_judge else 0)
-        spend = cli_judge.spend_usd + (gating_cli_judge.spend_usd if gating_cli_judge else 0.0)
+        # Read the shared Budget ONCE. Both judges are constructed against the same `budget` object
+        # — that is what makes --cost-cap a ceiling on the run rather than on each model — and
+        # `ClaudeCli.calls` / `.spend_usd` are properties that read straight through to it. Adding
+        # them together therefore reported exactly double: the committed report's "114 calls, $18"
+        # is 57 calls and $9. Every cost figure quoted from a --gating-model run was 2x.
+        calls, spend = cli_judge.calls, cli_judge.spend_usd
         report["judge"] = {"kind": "claude", "model": args.model, "calls": calls,
                            "spend_usd": round(spend, 4), "exercised_rules": True}
         if gating_cli_judge is not None:

@@ -69,21 +69,50 @@ class HttpFetcher:
         self.refused: dict[str, str] = {}          # url -> why it produced no Document
         self._robots: dict[str, urllib.robotparser.RobotFileParser | None] = {}
 
+    def _read_robots(self, origin: str) -> urllib.robotparser.RobotFileParser | None:
+        """Fetch and parse an origin's robots.txt. `None` means "could not determine" — deny.
+
+        Not `RobotFileParser.read()`, which is what this used. That method calls `urlopen` with no
+        timeout argument, so `timeout_s` governed the page fetch and nothing at all governed the
+        robots fetch: a single unresponsive origin hung the campaign indefinitely.
+
+        Outcomes follow RFC 9309 §2.3.1 instead of collapsing to "allow". A 4xx means no rules were
+        published, so everything is permitted; 401/403 means access is refused, which is itself a
+        prohibition; 5xx or an unreachable host means UNAVAILABLE, which the RFC says to treat as
+        complete disallow. The old handler mapped every one of those — a timeout, a connection
+        reset, a decode error — to "not a prohibition", cached it per origin for the rest of the
+        run, and fetched away. Failing open on the check that exists to keep the crawler polite is
+        the wrong direction, and `refused[url]` records the reason either way.
+        """
+        parser = urllib.robotparser.RobotFileParser()
+        robots_url = f"{origin}/robots.txt"
+        parser.set_url(robots_url)
+        request = urllib.request.Request(robots_url, headers={"User-Agent": self.user_agent})
+        try:
+            with urllib.request.urlopen(request, timeout=self.timeout_s) as response:  # noqa: S310
+                body = response.read(self.max_bytes)
+        except urllib.error.HTTPError as exc:
+            if exc.code in (401, 403):
+                parser.disallow_all = True
+                return parser
+            if 400 <= exc.code < 500:
+                parser.allow_all = True          # nothing published => no restrictions
+                return parser
+            return None                          # 5xx: unavailable => complete disallow
+        except (urllib.error.URLError, OSError, ValueError):
+            return None                          # unreachable => unavailable => complete disallow
+        parser.parse(body.decode("utf-8", errors="replace").splitlines())
+        return parser
+
     def _allowed(self, url: str) -> bool:
         if not self.obey_robots:
             return True
         parts = urllib.parse.urlsplit(url)
         origin = f"{parts.scheme}://{parts.netloc}"
         if origin not in self._robots:
-            parser = urllib.robotparser.RobotFileParser()
-            parser.set_url(f"{origin}/robots.txt")
-            try:
-                parser.read()
-            except (urllib.error.URLError, OSError, ValueError):
-                parser = None  # unreachable robots.txt is not a prohibition
-            self._robots[origin] = parser
+            self._robots[origin] = self._read_robots(origin)
         parser = self._robots[origin]
-        return True if parser is None else parser.can_fetch(self.user_agent, url)
+        return False if parser is None else parser.can_fetch(self.user_agent, url)
 
     def __call__(self, url: str) -> Document | None:
         parts = urllib.parse.urlsplit(url)

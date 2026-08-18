@@ -42,6 +42,7 @@ from ir.schema import (  # noqa: E402
     ResearchBrief,
     SourceLedger,
 )
+from critics.run_critics import _gating_rules  # noqa: E402
 from lint import (  # noqa: E402
     lint_files,
     run_convergence_pass,
@@ -338,6 +339,8 @@ def _tier_soft_critic(paths: dict[str, Path]) -> dict:
     if not judge.get("exercised_rules"):
         return {"status": "stub_only", "judge": judge, "rules_exercised": [],
                 "reason": "critic report came from the stub judge; not counted as coverage"}
+    failed_set = {v["rule_id"] for v in verdicts if v["verdict"] == "fail"}
+    failed = sorted(failed_set)
     return {
         "status": "scored",
         "judge": judge,
@@ -346,9 +349,21 @@ def _tier_soft_critic(paths: dict[str, Path]) -> dict:
         # stub. A rule with at least one real verdict did run, so it counts.
         "rules_exercised": sorted({v["rule_id"] for v in verdicts if v["verdict"] != "error"}),
         "counts": report.get("counts", {}),
-        "failed": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "fail"}),
+        "failed": failed,
+        # Critic failures on MUST-priority rules. The gate only ever looked at `expect.must_pass`,
+        # which is a spec's curated list of rules it wants exercised — six of them for spec-01 — not
+        # a statement about the registry's MUST set. A critic MUST failure outside that list was
+        # invisible to every gate, which is the soft tier's version of the silent skip.
+        "must_failed": sorted(failed_set & _gating_rules()),
         "unstable": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "unstable"}),
         "errored": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "error"}),
+        # Whether this report's MUST verdicts are trustworthy enough to BLOCK on — the same
+        # principle already applied to the lexical proxy below. A calibration sweep measured haiku
+        # at 6/21 unstable on gating items (29% — a coin flip on rules that block) against sonnet's
+        # 1/21, with two haiku hard-FAILs that sonnet passed. Gating on a judge that unstable would
+        # be failing the primer for the judge's variance. A run with `--gating-model` routed its
+        # MUST items to the better model, and those verdicts do gate.
+        "gating_judge": judge.get("gating_model"),
     }
 
 
@@ -544,6 +559,15 @@ def _spec_strict_failures(results: list[dict], rules: list[dict]) -> list[dict]:
         # Same judgement `score_spec` makes, from the same function, so the two cannot drift again.
         if shortfall := _citation_shortfall(mv):
             reasons.append(shortfall)
+        # Critic failures on MUST rules, which no gate looked at: `expect.must_pass` is a spec's
+        # curated list of rules to exercise, not the registry's MUST set. Gated on the same
+        # principle as the citation numbers — only on a measurement worth trusting. haiku split 29%
+        # of gating ballots against sonnet's 5% and hard-FAILED two items sonnet passed, so a
+        # haiku-judged report is REPORTED here and does not block; a `--gating-model` run does.
+        critics = r.get("soft_critic") or {}
+        if critics.get("must_failed") and critics.get("gating_judge"):
+            reasons.append(f"critic MUST failure(s): {', '.join(critics['must_failed'])} "
+                           f"(gating judge: {critics['gating_judge']})")
         silent = [rid for rid in expected["not_exercised"]
                   if _why_unexercised(rid, rules) == SILENT_SKIP]
         if silent:

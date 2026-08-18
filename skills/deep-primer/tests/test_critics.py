@@ -189,6 +189,44 @@ def test_fail_verdict_blocks(fixtures):
     assert card_fails and report["blocking"] is True
 
 
+def test_an_advisory_failure_does_not_block(fixtures):
+    """Blocking derives from PRIORITY, not from the existence of a failure. R-SCENT-02 is SHOULD, so
+    it warns; this read `any fail` and exited a critic pass non-zero — failing CI — on an advisory
+    judgement from the tier the registry deliberately calls soft."""
+    def responder(pass_, rule, block, attempt):
+        return ("fail", "heading is a topic label") if rule == "R-SCENT-02" else ("pass", "ok")
+
+    report = run_critics(_ir(fixtures), StubJudge(responder=responder))
+    assert report["counts"]["fail"] > 0, "the fixture must actually produce the failure"
+    assert report["blocking"] is False
+    assert {f["rule_id"] for f in report["advisory_failures"]} == {"R-SCENT-02"}
+    assert report["blocking_failures"] == []
+
+    # ...and the MUST half still blocks, so this is not a blanket downgrade
+    def must_fail(pass_, rule, block, attempt):
+        return ("fail", "card reads as a teaser") if rule == "R-CARD-01" else ("pass", "ok")
+
+    strict = run_critics(_ir(fixtures), StubJudge(responder=must_fail))
+    assert strict["blocking"] is True
+    assert {f["rule_id"] for f in strict["blocking_failures"]} == {"R-CARD-01"}
+
+
+def test_a_shared_budget_is_not_counted_once_per_judge():
+    """`--gating-model` builds two judges against ONE Budget — that is what makes --cost-cap a
+    ceiling on the run — and `calls`/`spend_usd` read straight through to it. Summing the two
+    reported exactly double, so every cost figure quoted from a gated run was 2x."""
+    from utils.claude_cli import Budget, ClaudeCli
+
+    shared = Budget(cost_cap_usd=100.0)
+    fast, strong = ClaudeCli(model="haiku", budget=shared), ClaudeCli(model="sonnet", budget=shared)
+    shared.charge(3.0)
+    shared.charge(6.0)
+
+    assert fast.calls == strong.calls == shared.calls == 2
+    assert fast.spend_usd == strong.spend_usd == shared.spend_usd == 9.0
+    assert fast.calls + strong.calls != shared.calls, "the doubling this guards against"
+
+
 # --- test-retest -------------------------------------------------------------
 
 def test_gating_item_unstable_on_disagreement(fixtures):
