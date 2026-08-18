@@ -179,14 +179,52 @@ class Block(BaseModel):
         `citation_quality` asked an entailment judge whether a quote supports "" — which it correctly
         answered no, silently costing two of spec-01's seven blocks their citation credit.
 
-        Anything needing a block's prose should call this rather than reaching for `.text`.
+        Anything needing a block's prose should call this rather than reaching for `.text` — and
+        anything SCANNING that prose for a pattern should call `prose_segments`, which is the same
+        content without the labels this adds.
         """
         if self.rows is not None:
             rows = self.rows.model_dump(exclude_none=True)
             return "\n".join(f"{k}: {v}" for k, v in rows.items() if v not in ("", [], {}))
         if self.items:
             return "\n".join(f"Q: {i.question}\nA: {i.answer}" for i in self.items)
+        if self.framings:
+            # The third composite role, and the one that stayed broken: a contested block's content
+            # IS its framings and it sets no `text`, so this fell through and returned "". Its
+            # citations were therefore unsupportable (`any([])` is False, so every quote scored as
+            # non-supporting), and `run_critics._ir_digest` — which hashes this string — could not
+            # see the framings change at all, leaving a frozen critic report credited against a
+            # document that had been rewritten underneath it.
+            return "\n".join(
+                f"framing {f.label}: {f.summary or ''}".rstrip()
+                + (f"\napplies when: {f.applies_when}" if f.applies_when else "")
+                for f in self.framings)
         return self.text or self.caption or ""
+
+    @property
+    def prose_segments(self) -> list[str]:
+        """Every span of AUTHORED PROSE in this block, without the structural labels.
+
+        The scanning counterpart to `readable_text`, and deliberately not the same string.
+        `readable_text` labels its parts (`idea: ...`) so a judge can see which row it is reading,
+        and `run_critics._ir_digest` hashes exactly that — so its shape is pinned by a frozen run
+        and cannot be bent to suit a scanner. A scanner must not inherit those labels either: a
+        concept canonically termed "confidence" would otherwise read as established in every
+        document that contains any card at all.
+
+        Checks that search prose for a pattern — a phantom cross-reference, a footnote marker, a
+        term's surface form — must iterate this. Reaching for `.text` is what silently exempted all
+        three composite roles, none of which set it.
+        """
+        if self.rows is not None:
+            dumped = self.rows.model_dump(exclude_none=True)
+            return [s for s in (str(v).strip() for v in dumped.values()) if s]
+        if self.items:
+            return [s for i in self.items for s in (i.question.strip(), i.answer.strip()) if s]
+        if self.framings:
+            return [s for f in self.framings
+                    for s in ((f.summary or "").strip(), (f.applies_when or "").strip()) if s]
+        return [s for s in ((self.text or "").strip(), (self.caption or "").strip()) if s]
 
     # Rows that assert something about the WORLD, as opposed to authorial framing. A card's other
     # rows are deliberately not here: `home_anchor` is a cross-domain mapping the author constructs
@@ -215,6 +253,12 @@ class Block(BaseModel):
         if self.items:
             # a recall item's ANSWER is the assertion; the question is a prompt
             return [i.answer.strip() for i in self.items if i.answer.strip()] or [self.readable_text]
+        if self.framings:
+            # Presented-not-asserted still puts each framing's summary on the page, and `Framing`
+            # carries its own `source_ids` precisely so a school of thought can be attributed. The
+            # `applies_when` clause is the author's operational judgement, so it stays out for the
+            # same reason a card's `reach_for_when` does.
+            return [s for f in self.framings if (s := (f.summary or "").strip())]
         return [self.readable_text] if self.readable_text else []
 
 

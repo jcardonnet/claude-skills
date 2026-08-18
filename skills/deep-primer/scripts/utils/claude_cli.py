@@ -23,11 +23,28 @@ _FENCE_RE = re.compile(r"^\s*```(?:json)?\s*|\s*```\s*$")
 
 
 class CliUnavailable(RuntimeError):
-    """The CLI could not be run, timed out, or returned something unusable."""
+    """The CLI could not be run, timed out, or returned something unusable.
+
+    A PER-ITEM failure. Callers legitimately absorb it: an unreachable model on one brief is a
+    reportable empty result, not a reason to discard the other twenty.
+    """
 
 
-class CliBudgetExceeded(CliUnavailable):
-    """The accumulated spend passed the declared cap; the run stops rather than continuing."""
+class CliBudgetExceeded(RuntimeError):
+    """The accumulated spend passed the declared cap; the run stops rather than continuing.
+
+    Deliberately NOT a subclass of `CliUnavailable`, which it used to be. Every caller that wrote
+    `except CliUnavailable` to absorb a per-item outage was silently absorbing this too — so a run
+    that hit its ceiling did not stop. It kept calling, kept paying, and scored each further call as
+    a failure, which is worse than stopping because the damage is rule-shaped and looks like a
+    finding: an exhausted budget scores every remaining citation "not supported"
+    (verify/claude_entailment.py), and terminates the convergence loop as `coherent` on a judge that
+    never answered (research/claude_structure_judge.py).
+
+    This module's docstring already promised the ceiling "aborts rather than discovering the bill
+    afterwards". Not inheriting from `CliUnavailable` is what makes that true rather than merely
+    stated — a sibling type cannot be caught by an `except` clause aimed at ordinary transients.
+    """
 
 
 def strip_fence(text: str) -> str:

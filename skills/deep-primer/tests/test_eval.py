@@ -220,6 +220,97 @@ def test_lexical_backend_does_not_trip_the_citation_gate():
     assert len(failures) == 1 and "citation quality" in failures[0]["reasons"][0]
 
 
+# --- the two verdicts that were computed and read by no gate ------------------
+
+def _scored(**tiers) -> list[dict]:
+    """A minimal `scored` result with every gate quiet, so each test turns exactly one knob."""
+    base = {
+        "id": "spec-x", "status": "scored",
+        "hard_lints": {"blocking": False, "unenforced_musts": []},
+        "model_verified": {"status": "scored", "backend": "lexical",
+                           "chunk_selfcontained": {"ok": True, "backend": "lexical",
+                                                   "failures": [], "dangling_failures": []}},
+        "expected_must_pass_report": {"failed": [], "not_exercised": []},
+    }
+    for tier, patch in tiers.items():
+        base[tier] = {**base[tier], **patch}
+    return [base]
+
+
+def test_the_baseline_scored_result_trips_no_gate():
+    """Guards the three tests below: if this ever fails they stop proving what they claim."""
+    assert _spec_strict_failures(_scored(), registry_rules()) == []
+
+
+def test_a_must_rule_that_dispatches_to_nothing_fails_the_strict_gate():
+    """`run_artifact_pass` has computed `unenforced_musts` since Stage A and only `lint.py --strict`
+    ever read it — for the IR pass alone. A MUST rule in one of the six non-IR passes pointing at a
+    check that does not exist scored 100% coverage and exited 0."""
+    failures = _spec_strict_failures(
+        _scored(hard_lints={"unenforced_musts": ["R-FAKE-99"]}), registry_rules())
+    assert len(failures) == 1
+    assert "R-FAKE-99" in failures[0]["reasons"][0]
+    assert "dispatched to no implementation" in failures[0]["reasons"][0]
+
+
+def test_a_dangling_anaphora_in_a_projected_chunk_fails_the_strict_gate():
+    """R-PROJ-04 is MUST. Its verdict was written into the report and read by no gate, so the rule
+    was credited 3/3 model_verified coverage while failing. The dangling-anaphora half is a
+    deterministic regex verdict, so unlike the entailment numbers it gates on any backend."""
+    failures = _spec_strict_failures(
+        _scored(model_verified={"chunk_selfcontained": {
+            "ok": False, "backend": "lexical",
+            "failures": ["card-x"], "dangling_failures": ["card-x"]}}),
+        registry_rules())
+    assert len(failures) == 1 and "R-PROJ-04" in failures[0]["reasons"][0]
+
+
+def test_the_lexical_proxy_never_gates_the_entailment_half_of_r_proj_04():
+    """Same reasoning as the citation thresholds: word overlap against a required paraphrase is not
+    evidence, so gating on it would leave --strict permanently red offline."""
+    quiet = _spec_strict_failures(
+        _scored(model_verified={"chunk_selfcontained": {
+            "ok": False, "backend": "lexical",
+            "failures": ["body-x"], "dangling_failures": []}}),
+        registry_rules())
+    assert quiet == []
+
+    loud = _spec_strict_failures(
+        _scored(model_verified={"chunk_selfcontained": {
+            "ok": False, "backend": "nli",
+            "failures": ["body-x"], "dangling_failures": []}}),
+        registry_rules())
+    assert len(loud) == 1 and "chunk self-containment" in loud[0]["reasons"][0]
+
+
+def test_a_skip_is_not_credited_as_coverage(tmp_path):
+    """The mechanism under the gate: a registry rule whose `check.ref` names no implementation must
+    not appear in `rules_exercised`. It used to, which is how the ratchet came to be blind to the
+    one defect class it exists to detect."""
+    from eval import _exercised, _unenforced
+    from ir.schema import SourceLedger
+    from lint import run_ledger_pass
+
+    registry = yaml.safe_load((SKILL_ROOT / "references" / "rule-registry.yaml").read_text())
+    registry["rules"].append({
+        "id": "R-FAKE-99", "namespace": "GROUND", "priority": "MUST", "enforcement": "hard_lint",
+        "directive": "a rule nobody implemented", "rationale": "-", "counters": "-",
+        "check": {"ref": "checks/nonexistent.py::never_written", "input": "ledger",
+                  "detail": "never implemented"},
+    })
+    path = tmp_path / "rule-registry.yaml"
+    path.write_text(yaml.safe_dump(registry, sort_keys=False), encoding="utf-8")
+
+    ledger = SourceLedger.from_yaml(SKILL_ROOT / "tests" / "fixtures" / "source-ledger.full.yaml")
+    report = run_ledger_pass(ledger, registry_path=path)
+
+    assert report["counts"].get("skip") == 1
+    assert "R-FAKE-99" not in _exercised(report["findings"])
+    assert _unenforced(report) == ["R-FAKE-99"]
+    # the rules that DO dispatch are still credited — the filter is not a blanket refusal
+    assert _exercised(report["findings"])
+
+
 # --- the run manifest (Stage F) ----------------------------------------------
 
 def test_manifest_resumes_at_the_first_incomplete_phase():

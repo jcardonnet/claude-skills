@@ -15,16 +15,23 @@ from __future__ import annotations
 
 import re
 
-from checks._base import LintContext, Violation
+from checks._base import CheckNotApplicable, LintContext, Violation
 
 
 def _doc_text(ctx: LintContext) -> str:
+    """Every surface form the document actually puts in front of a reader.
+
+    Two blind spots used to live here and both bit in the damaging direction. Walking `sec.blocks`
+    never descended into an h3, so an alias used in a subsection went unreported; and reading
+    `b.text`/`b.caption` skipped the three composite roles, so a canonical term ESTABLISHED in a
+    card read as "never appears" and (B) reported a violation the document does not commit.
+    `flatten_blocks` + `prose_segments` is what "the prose" means (R-PROJ-01).
+    """
     parts: list[str] = []
     for sec in ctx.ir.sections:
         parts.append(sec.title or "")
-        for b in sec.blocks:
-            parts.append(b.text or "")
-            parts.append(b.caption or "")
+        parts.extend(sub.title or "" for sub in sec.subsections)
+    parts.extend(seg for b in ctx.ir.flatten_blocks() for seg in b.prose_segments)
     return "\n".join(parts)
 
 
@@ -38,7 +45,7 @@ def _contains_phrase(text_lower: str, phrase: str) -> bool:
 def canonical_terms(ctx: LintContext) -> list[Violation]:
     cm = ctx.concept_map
     if cm is None:
-        return []
+        raise CheckNotApplicable("R-VOCAB-01 needs a concept-map; none was supplied")
     out: list[Violation] = []
 
     # (A) canonical terms unique across concepts
@@ -76,7 +83,7 @@ def home_anchor_distinct(ctx: LintContext) -> list[Violation]:
     """
     cm = ctx.concept_map
     if cm is None:
-        return []
+        raise CheckNotApplicable("R-XREF-04 needs a concept-map; none was supplied")
 
     out: list[Violation] = []
     for c in cm.concepts:

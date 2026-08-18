@@ -17,7 +17,7 @@ from checks import (
     univocity_terms,
     xrefs,
 )
-from checks._base import LintContext, nlp_available
+from checks._base import CheckNotApplicable, LintContext, nlp_available
 from ir.schema import Block, Concept, ConceptMap, DocumentIR, Section
 
 
@@ -459,8 +459,14 @@ def test_home_anchor_distinct_flags_alias_restatement():
     assert out
 
 
-def test_home_anchor_distinct_silent_without_concept_map():
-    assert univocity_terms.home_anchor_distinct(ctx(doc())) == []
+def test_concept_map_checks_declare_they_did_not_run_rather_than_passing():
+    """These used to return `[]` with no concept-map, and the dispatcher records `[]` as a PASS — so
+    an IR-only lint reported three MUST rules (R-VOCAB-01, R-XREF-04, R-MV-01) as satisfied and
+    credited them as coverage. `[]` has to keep meaning "I looked and found nothing"."""
+    for check in (univocity_terms.home_anchor_distinct, univocity_terms.canonical_terms,
+                  multiview_concepts.modes_per_concept):
+        with pytest.raises(CheckNotApplicable):
+            check(ctx(doc()))
 
 
 # --- G6: user-specified structure is authoritative (R-ARCH-07) ---------------

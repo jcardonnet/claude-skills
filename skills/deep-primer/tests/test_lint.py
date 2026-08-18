@@ -40,11 +40,28 @@ def test_report_record_shape(fixtures):
 def test_every_dispatched_ir_check_is_implemented(fixtures):
     """The regression guard for the Stage-A gap: an unimplemented check reports 'skip', which is
     non-blocking, so the report reads clean while the rule goes unenforced. Six MUST rules stayed
-    dark that way. No IR-targeting check may be unimplemented."""
-    report = lint_files(fixtures / "document-ir.yaml")
+    dark that way. No IR-targeting check may be unimplemented.
+
+    Handed the companion artifacts on purpose. This used to pass the IR alone and still assert zero
+    skips — which held only because four cross-artifact checks returned `[]` when they had nothing
+    to check, so "unimplemented" and "never given a concept-map" were indistinguishable and the test
+    could not see the difference it was written to police."""
+    report = lint_files(fixtures / "document-ir.yaml",
+                        fixtures / "concept-map.yaml", fixtures / "source-ledger.yaml")
     assert report["coverage"]["rules_skipped"] == []
     assert report["coverage"]["unenforced_musts"] == []
     assert report["counts"].get("skip", 0) == 0
+
+
+def test_an_ir_only_lint_reports_its_cross_artifact_rules_as_unenforced(fixtures):
+    """The other half, and the defect: with no ledger and no concept-map those four MUST rules did
+    not run, yet reported `pass`. A partial lint has to say so — `unenforced_musts` is what
+    `lint.py --strict` and (now) the eval gate read."""
+    report = lint_files(fixtures / "document-ir.yaml")
+    assert set(report["coverage"]["unenforced_musts"]) == {
+        "R-GROUND-01", "R-VOCAB-01", "R-XREF-04", "R-MV-01"}
+    passed = {f["rule_id"] for f in report["findings"] if f["status"] == "pass"}
+    assert passed.isdisjoint({"R-GROUND-01", "R-VOCAB-01", "R-XREF-04", "R-MV-01"})
 
 
 def test_also_hard_lint_companion_is_dispatched(fixtures):

@@ -41,7 +41,7 @@ from checks import (  # noqa: E402
 from checks import convergence as convergence_checks  # noqa: E402
 from checks import discovery as discovery_checks  # noqa: E402
 from checks import ledger as ledger_checks  # noqa: E402
-from checks._base import LintContext, Violation  # noqa: E402
+from checks._base import CheckNotApplicable, LintContext, Violation  # noqa: E402
 from ir.schema import ConceptMap, DocumentIR, SourceLedger  # noqa: E402
 from render import render_llm_md as md_checks  # noqa: E402
 from utils import parse_primer  # noqa: E402
@@ -51,10 +51,13 @@ from verify import citation_quality  # noqa: E402
 def _resolves_to_ledger(ctx: LintContext) -> list[Violation]:
     """R-GROUND-01 adapter. The deterministic half of citation quality lives under verify/ next
     to the model_verified halves, but it reads the IR + ledger with no model in the loop and the
-    registry marks it hard_lint — so it runs in this pass. No ledger supplied => nothing to
-    resolve against, which is a caller error rather than a document violation."""
+    registry marks it hard_lint — so it runs in this pass.
+
+    No ledger supplied means the check did not run. It used to return [] — indistinguishable in the
+    report from "every marker resolved" — so an IR-only lint reported this MUST rule as satisfied
+    and credited it as coverage."""
     if ctx.ledger is None:
-        return []
+        raise CheckNotApplicable("R-GROUND-01 needs a source-ledger; none was supplied")
     return [Violation(v["block_id"], v["detail"])
             for v in citation_quality.resolves_to_ledger(ctx.ir, ctx.ledger)]
 
@@ -151,7 +154,12 @@ def _run_ref(rule: dict, ref: str, ctx: LintContext) -> list[dict]:
     fn = CHECKS.get(ref)
     if fn is None:
         return [_record(rule, ref, None, "skip", "not implemented in this stage (IR/HTML or later prompt)")]
-    violations = fn(ctx)
+    try:
+        violations = fn(ctx)
+    except CheckNotApplicable as exc:
+        # "I was handed nothing to check" is a SKIP, not a pass. Returning [] here made an IR-only
+        # lint report four MUST rules as satisfied: R-GROUND-01, R-VOCAB-01, R-XREF-04, R-MV-01.
+        return [_record(rule, ref, None, "skip", str(exc))]
     if not violations:
         return [_record(rule, ref, None, "pass", "ok")]
     return [_record(rule, ref, v.block_id, _status_for(rule, v.force_status), v.detail) for v in violations]
@@ -233,7 +241,11 @@ def run_artifact_pass(artifact, input_tag: str, registry_path: str | Path = DEFA
         if fn is None:
             findings.append(_record(rule, ref, None, "skip", "not implemented"))
             continue
-        problems = fn(artifact)
+        try:
+            problems = fn(artifact)
+        except CheckNotApplicable as exc:
+            findings.append(_record(rule, ref, None, "skip", str(exc)))
+            continue
         if not problems:
             findings.append(_record(rule, ref, None, "pass", "ok"))
         else:

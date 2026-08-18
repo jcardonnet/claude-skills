@@ -86,33 +86,74 @@ def _distill_contested(b: Block, referent: str) -> str:
         srcs = f"Sources: [{', '.join(f.source_ids)}]" if f.source_ids else "Sources: [none yet — inferred]"
         chunks.append(
             f"## [block: {b.block_id}]   framing: {f.label}   provenance: {prov}\n"
-            f"Framing: {deanaphorize(f.summary or '', referent)}{applies}\n{srcs}"
+            f"Framing: {_framing_prose(f, referent)}{applies}\n{srcs}"
         )
     return "\n\n".join(chunks)
 
 
-def _distill_card(b: Block, referent: str) -> str:
+def referent_for(sec, b: Block, referents: dict[str, str]) -> str:
+    """The canonical term a bare anaphor in this block resolves to — the block's own concept, else
+    its container's, else the section title's head noun. One definition so the verifier resolves the
+    same referent the producer used."""
+    return referents.get(b.concept or sec.concept or "", None) or sec.title.split(",")[0]
+
+
+def _framing_prose(f, referent: str) -> str:
+    """What a contested block's framing contributes as prose. Shared by the renderer and the
+    verifier so a change to one cannot leave the other checking something else."""
+    return deanaphorize(f.summary or "", referent)
+
+
+def _card_md_parts(b: Block, referent: str) -> list[tuple[str, str]]:
     """R-PROJ-03: keep the card's information content, drop the advance-organizer *hook*.
 
     The home-domain analogue is pedagogy for a human reader, so it is demoted rather than kept as
     the opener; what survives is the operational core — the idea, what is genuinely new, and the
     reach-for/skip pair, which is decision content an LLM needs.
+
+    Returned as (label, prose) pairs rather than finished lines so `distilled_segments` can hand the
+    verifier the PROSE alone. Checking the labelled blob would defeat the check it feeds: a leading
+    anaphor is anchored at `^`, and `Claim: This bounds recall` does not start with `This`.
     """
     r = b.rows
     if r is None:
-        return f"Claim: {deanaphorize(b.text or '', referent)}"
-    lines = [f"Claim: {deanaphorize(r.idea, referent)}"]
+        return [("Claim", deanaphorize(b.text or "", referent))]
+    parts = [("Claim", deanaphorize(r.idea, referent))]
     if (r.whats_new_vs_renamed or "").strip():
-        lines.append(f"New-vs-renamed: {deanaphorize(r.whats_new_vs_renamed, referent)}")
-    lines.append(f"Reach-for-it-when: {deanaphorize(r.reach_for_when, referent)}")
-    lines.append(f"Skip-it-when: {deanaphorize(r.skip_when, referent)}")
+        parts.append(("New-vs-renamed", deanaphorize(r.whats_new_vs_renamed, referent)))
+    parts.append(("Reach-for-it-when", deanaphorize(r.reach_for_when, referent)))
+    parts.append(("Skip-it-when", deanaphorize(r.skip_when, referent)))
     if (r.confidence or "").strip():
-        lines.append(f"Confidence: {r.confidence}")
-    return "\n".join(lines)
+        parts.append(("Confidence", r.confidence))
+    return parts
+
+
+def _distill_card(b: Block, referent: str) -> str:
+    return "\n".join(f"{label}: {prose}" for label, prose in _card_md_parts(b, referent))
+
+
+def distilled_segments(sec, b: Block, referents: dict[str, str]) -> list[str]:
+    """Each span of prose this projection emits for `b`, de-anaphorized, without its label.
+
+    The single definition of "what the LLM-MD says about this block". `verify/chunk_selfcontained.py`
+    reads it rather than re-deriving the answer from `b.text`, which is the mistake that made
+    R-PROJ-04 unfalsifiable: a card sets no `text`, so the verifier inspected the empty string —
+    finding no dangling anaphora in it (the check could not fail) while asking an entailment judge
+    whether "" supports the block's citation (it could not pass).
+    """
+    referent = referent_for(sec, b, referents)
+    role = b.role.value
+    if role == "contested":
+        return [s for f in (b.framings or []) if (s := _framing_prose(f, referent))]
+    if role == "figure":
+        return [s] if (s := deanaphorize(b.caption or "", referent)) else []
+    if role == "card":
+        return [prose for _, prose in _card_md_parts(b, referent) if prose.strip()]
+    return [s] if (s := deanaphorize(b.text or "", referent)) else []
 
 
 def _distill(sec, b: Block, referents: dict[str, str]) -> str:
-    referent = referents.get(b.concept or sec.concept or "", None) or sec.title.split(",")[0]
+    referent = referent_for(sec, b, referents)
     if b.role.value == "contested":
         return _distill_contested(b, referent)
     head = (f"## [block: {b.block_id}]   concept: {b.concept or sec.concept or '-'}   "
@@ -120,7 +161,10 @@ def _distill(sec, b: Block, referents: dict[str, str]) -> str:
     if b.artifact_kind:
         head += f"   artifact: {b.artifact_kind.value}"
     if b.role.value == "figure":
-        body = f"Figure: {b.caption or ''}".rstrip()          # R-PROJ-06: caption only, SVG dropped
+        # R-PROJ-06: caption only, SVG dropped. De-anaphorized like every other chunk — a caption
+        # opening "This shows the layered graph" is exactly the dangling reference R-PROJ-04 exists
+        # to remove, and the verifier was already de-anaphorizing it before comparing.
+        body = f"Figure: {deanaphorize(b.caption or '', referent)}".rstrip()
     elif b.role.value == "card":
         body = _distill_card(b, referent)
     else:

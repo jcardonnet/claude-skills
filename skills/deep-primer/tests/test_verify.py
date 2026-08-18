@@ -199,6 +199,71 @@ def test_a_shared_budget_caps_the_run_not_each_caller():
     assert solo.spend_usd == 0.0 and solo.budget is not shared
 
 
+class _CeilingCli:
+    """Stand-in for ClaudeCli whose every entry point has already blown the run's ceiling."""
+
+    model = "haiku"
+    calls = 114
+    spend_usd = 9.10
+
+    def _boom(self, _instruction):
+        from utils.claude_cli import CliBudgetExceeded
+        raise CliBudgetExceeded("cost cap hit: $9.10 > $9.00 after 114 calls")
+
+    __call__ = result_text = result_json = _boom
+
+
+def test_a_hit_ceiling_is_not_catchable_as_an_ordinary_outage():
+    """`CliBudgetExceeded` used to subclass `CliUnavailable`, so every caller written to absorb a
+    per-item outage absorbed the run's ceiling too and the campaign carried on spending. The cap
+    aborts only if its type cannot be caught by an `except` clause aimed at transients."""
+    from utils.claude_cli import CliBudgetExceeded, CliUnavailable
+
+    assert not issubclass(CliBudgetExceeded, CliUnavailable)
+    with pytest.raises(CliBudgetExceeded):
+        try:
+            raise CliBudgetExceeded("cost cap hit")
+        except CliUnavailable:                       # the shape every seam below writes
+            pytest.fail("a per-item handler swallowed the run's spend ceiling")
+
+
+def test_the_entailment_seam_stops_instead_of_scoring_the_rest_unsupported():
+    """Absorbing an outage here is deliberate — an unverifiable citation has not been shown
+    supported. Absorbing the CEILING means the remaining citations all score `not supported` and
+    the primer is blamed for the bill."""
+    from utils.claude_cli import CliBudgetExceeded
+    from verify.claude_entailment import ClaudeEntailmentJudge
+
+    with pytest.raises(CliBudgetExceeded):
+        ClaudeEntailmentJudge(cli=_CeilingCli())("a premise about chunking", "a hypothesis")
+
+
+def test_the_structure_judge_seam_stops_instead_of_settling_the_loop():
+    """The damaging one: `None` from this judge means "no structural finding", which is the answer
+    that TERMINATES the convergence loop as `coherent`. On a hit ceiling that is a settled verdict
+    from a judge that never answered."""
+    from ir.schema import Concept, ConceptMap
+    from research.claude_structure_judge import ClaudeStructureJudge
+    from utils.claude_cli import CliBudgetExceeded
+
+    cm = ConceptMap(concepts=[Concept(concept_id="c", canonical_term="C", home_anchor="h")])
+    with pytest.raises(CliBudgetExceeded):
+        ClaudeStructureJudge(cli=_CeilingCli()).scan_for_structural(cm, {"target_domain": "d"})
+
+
+def test_the_research_backend_seam_stops_instead_of_reporting_an_empty_wave():
+    """An empty wave is a real outcome, and it is also what saturation looks like: a ceiling hit
+    mid-campaign would otherwise read as "nothing new was found" and freeze the snapshot."""
+    from research.claude_backend import ClaudeResearchBackend
+    from research.planner import ResearchBrief
+    from utils.claude_cli import CliBudgetExceeded
+
+    brief = ResearchBrief(wave="A", framing="structure", questions=["q"], brief_id="A-test")
+    backend = ClaudeResearchBackend(cli=_CeilingCli(), verify_urls=False)
+    with pytest.raises(CliBudgetExceeded):
+        backend(brief)
+
+
 # --- the provenance partition ------------------------------------------------
 
 def _ir_with(provenances):

@@ -97,6 +97,26 @@ def resolve_artifacts(spec: dict, root: Path = SKILL_ROOT) -> dict[str, Path]:
     return {k: d / name for k, name in _ARTIFACT_FILES.items() if (d / name).is_file()}
 
 
+def _exercised(findings: list[dict]) -> list[str]:
+    """The rule_ids a pass actually EXERCISED — everything except a `skip`.
+
+    A `skip` finding means the rule's `check.ref` matched no implementation, which is exactly the
+    defect the coverage ratchet exists to catch. Crediting it made the gate blind to its own
+    subject: appending a MUST rule pointing at `checks/nonexistent.py::never_written` took coverage
+    to 80/80 and `--strict` still exited 0.
+
+    One definition rather than eight call sites, because eight is how the filter goes missing from
+    the ninth.
+    """
+    return [f["rule_id"] for f in findings if f["status"] != "skip"]
+
+
+def _unenforced(pass_report: dict) -> list[str]:
+    """MUST rules the pass dispatched to nothing. `run_artifact_pass` already computes this; the
+    eval gate simply never read it, so only the IR pass had the backstop `lint.py --strict` gives."""
+    return list((pass_report.get("coverage") or {}).get("unenforced_musts") or [])
+
+
 def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) -> dict:
     report = lint_files(paths["ir"], paths.get("concept_map"), paths.get("ledger"))
     out = {
@@ -106,7 +126,9 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
         "failures": [{"rule_id": f["rule_id"], "detail": f["detail"]}
                      for f in report["findings"] if f["status"] == "fail"],
         "warnings": sorted({f["rule_id"] for f in report["findings"] if f["status"] == "warn"}),
-        "rules_exercised": sorted({f["rule_id"] for f in report["findings"]}),
+        "rules_exercised": sorted(_exercised(report["findings"])),
+        # Every MUST that dispatched to nothing, from EVERY pass — not just the IR one.
+        "unenforced_musts": _unenforced(report),
     }
 
     # the artifact passes, each only when its artifact exists
@@ -114,12 +136,14 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
         led = run_ledger_pass(SourceLedger.from_yaml(paths["ledger"]))
         out["ledger_pass"] = {"counts": led["counts"],
                               "failures": [f["detail"] for f in led["findings"] if f["status"] == "fail"]}
-        out["rules_exercised"] += [f["rule_id"] for f in led["findings"]]
+        out["rules_exercised"] += _exercised(led["findings"])
+        out["unenforced_musts"] += _unenforced(led)
     if paths.get("convergence_log"):
         conv = run_convergence_pass(ConvergenceLog.from_yaml(paths["convergence_log"]))
         out["convergence_pass"] = {"counts": conv["counts"],
                                    "failures": [f["detail"] for f in conv["findings"] if f["status"] == "fail"]}
-        out["rules_exercised"] += [f["rule_id"] for f in conv["findings"]]
+        out["rules_exercised"] += _exercised(conv["findings"])
+        out["unenforced_musts"] += _unenforced(conv)
 
     # The campaign passes. Each runs only when its artifact exists, so a spec with no campaign still
     # reports those rules as an artifact gap rather than a silent skip.
@@ -130,7 +154,8 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
         out["discovery_log_pass"] = {"counts": disc["counts"],
                                      "failures": [f["detail"] for f in disc["findings"]
                                                   if f["status"] == "fail"]}
-        out["rules_exercised"] += [f["rule_id"] for f in disc["findings"]]
+        out["rules_exercised"] += _exercised(disc["findings"])
+        out["unenforced_musts"] += _unenforced(disc)
 
     if paths.get("discovery_leads"):
         leads = DiscoveryLeads.from_yaml(paths["discovery_leads"])
@@ -139,7 +164,8 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
         out["discovery_leads_pass"] = {"counts": led["counts"],
                                        "failures": [f["detail"] for f in led["findings"]
                                                     if f["status"] == "fail"]}
-        out["rules_exercised"] += [f["rule_id"] for f in led["findings"]]
+        out["rules_exercised"] += _exercised(led["findings"])
+        out["unenforced_musts"] += _unenforced(led)
 
         snapshot_dir = paths["discovery_leads"].parent / "discovery-snapshot"
         if snapshot_dir.is_dir():
@@ -147,7 +173,8 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
             out["snapshot_pass"] = {"counts": snap["counts"],
                                     "failures": [f["detail"] for f in snap["findings"]
                                                  if f["status"] == "fail"]}
-            out["rules_exercised"] += [f["rule_id"] for f in snap["findings"]]
+            out["rules_exercised"] += _exercised(snap["findings"])
+            out["unenforced_musts"] += _unenforced(snap)
 
     # Repo conformance: the nine rules the registry files under `human`. They are not about a
     # generated primer at all — every one asserts something about THIS CODEBASE — so they run once
@@ -157,7 +184,8 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
     out["conformance_pass"] = {"counts": conf["counts"],
                                "failures": [f["detail"] for f in conf["findings"]
                                             if f["status"] == "fail"]}
-    out["rules_exercised"] += [f["rule_id"] for f in conf["findings"]]
+    out["rules_exercised"] += _exercised(conf["findings"])
+    out["unenforced_musts"] += _unenforced(conf)
 
     if paths.get("ir"):
         from render.check_alignment import check_alignment
@@ -170,7 +198,8 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
         htm = run_html_pass(html)
         out["html_pass"] = {"counts": htm["counts"],
                             "failures": [f["detail"] for f in htm["findings"] if f["status"] == "fail"]}
-        out["rules_exercised"] += [f["rule_id"] for f in htm["findings"]]
+        out["rules_exercised"] += _exercised(htm["findings"])
+        out["unenforced_musts"] += _unenforced(htm)
 
         # R-PROJ-02 is deterministic (a set comparison over block-ids), so eval can exercise it
         # for real rather than leaving it to a critic
@@ -183,13 +212,15 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
         mdp = run_llm_md_pass(md, ir)
         out["llm_md_pass"] = {"counts": mdp["counts"],
                               "failures": [f["detail"] for f in mdp["findings"] if f["status"] == "fail"]}
-        out["rules_exercised"] += [f["rule_id"] for f in mdp["findings"]]
+        out["rules_exercised"] += _exercised(mdp["findings"])
+        out["unenforced_musts"] += _unenforced(mdp)
         if not align["ok"]:
             out["failures"].append({"rule_id": "R-PROJ-02",
                                     "detail": f"projection block-ids misaligned: {align}"})
             out["blocking"] = True
 
     out["rules_exercised"] = sorted(set(out["rules_exercised"]))
+    out["unenforced_musts"] = sorted(set(out["unenforced_musts"]))
     return out
 
 
@@ -235,6 +266,10 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         "backend": chunks["backend"],
         "blocks": len(chunks["verdicts"]),
         "failures": chunks["failures"],
+        # The half `_spec_strict_failures` can gate on regardless of backend. Reported here rather
+        # than recomputed there: this verdict was written into the report and read by no gate at
+        # all, which credited R-PROJ-04 as 3/3 model_verified coverage while it was failing.
+        "dangling_failures": chunks["dangling_failures"],
     }
     return out
 
@@ -451,6 +486,23 @@ def _spec_strict_failures(results: list[dict], rules: list[dict]) -> list[dict]:
             reasons.append("blocking lint failure")
         if expected["failed"]:
             reasons.append(f"expected rule(s) FAILED: {', '.join(expected['failed'])}")
+        # A MUST that dispatched to no implementation, in ANY pass. `run_artifact_pass` has always
+        # computed this; only the IR pass had a reader (`lint.py --strict`), so a MUST rule pointing
+        # at a non-existent check in one of the six non-IR passes was invisible here.
+        if hard.get("unenforced_musts"):
+            reasons.append("MUST rule(s) dispatched to no implementation: "
+                           f"{', '.join(hard['unenforced_musts'])}")
+        # R-PROJ-04 is MUST and model_verified. Its verifier ran, its verdict was written into the
+        # report, and no gate ever read it — the rule was credited 3/3 in coverage while failing.
+        # Same backend caveat as the citation numbers below: the lexical proxy's entailment half is
+        # not meaningful, but the DANGLING-ANAPHORA half is deterministic on any backend, so it
+        # gates unconditionally and the entailment half joins it on a real backend.
+        chunks = hard.get("chunk_selfcontained") or mv.get("chunk_selfcontained") or {}
+        if chunks.get("dangling_failures"):
+            reasons.append("R-PROJ-04: dangling anaphora in projected chunk(s): "
+                           f"{', '.join(chunks['dangling_failures'])}")
+        if (chunks.get("backend") not in (None, "lexical")) and not chunks.get("ok", True):
+            reasons.append(f"R-PROJ-04: chunk self-containment failed on {chunks.get('failures')}")
         # Only gate citation quality on a backend whose numbers mean something. The lexical proxy
         # scores word overlap between a <=15-word quote and a block R-GROUND-01 requires to be a
         # PARAPHRASE, so a low score there is compliance, not a defect — which is exactly why
