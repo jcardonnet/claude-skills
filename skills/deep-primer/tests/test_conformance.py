@@ -11,6 +11,8 @@ load-bearing tests here are the NEGATIVE ones: each check is fed a deliberately 
 must catch it. Without those, the coverage this module adds would be a lie.
 """
 
+from pathlib import Path
+
 import pytest
 
 from checks.conformance import (
@@ -196,3 +198,28 @@ def test_the_firewall_check_actually_exercises_the_firewall():
 
 def test_swap_and_average_stays_out_of_the_pointwise_path():
     assert swap_and_average_is_pairwise_only() == []
+
+
+# --- the stub inventory ------------------------------------------------------
+#
+# Not a registry rule; a claim CLAUDE.md makes about this tree. It used to say the scripts and the
+# eval harness "are stubs that raise NotImplementedError", which stopped being true stages ago and
+# stayed on the page — orientation a fresh agent reads first, describing a repo that no longer
+# exists. Correcting the sentence is not enough on its own: the same drift can happen in the other
+# direction, where a module is quietly reduced to a stub and nothing says so. So the inventory is
+# pinned. `kb.py` is the one deliberate deferral (V2 Mixedbread source KB); anything else raising
+# NotImplementedError at import is either a regression or a decision that belongs in the docs.
+
+_ALLOWED_STUBS = {"scripts/research/kb.py"}
+
+
+def test_the_only_deliberate_stub_is_the_deferred_source_kb():
+    root = Path(__file__).resolve().parents[1]
+    found = {
+        str(p.relative_to(root)).replace("\\", "/")
+        for p in (root / "scripts").rglob("*.py")
+        if "NotImplementedError" in p.read_text(encoding="utf-8")
+    }
+    assert found == _ALLOWED_STUBS, (
+        "the stub inventory moved — update CLAUDE.md and this set together, or restore the module"
+    )

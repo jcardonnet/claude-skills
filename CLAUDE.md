@@ -1,6 +1,6 @@
 # CLAUDE.md — orientation for Claude Code
 
-This is a personal **skills monorepo**. The active skill is `skills/deep-primer/` — a registry-driven, multi-pass, source-grounded **primer generator**. Its design contracts are done; **Stage 6 is implementation** (the `scripts/`, `assets/`, and eval harness are stubs that raise `NotImplementedError`). Work through `CLAUDE_CODE_PROMPTS.md` in order.
+This is a personal **skills monorepo**. The active skill is `skills/deep-primer/` — a registry-driven, multi-pass, source-grounded **primer generator**. **Stage 6 is built**: the design contracts, `scripts/`, `assets/` and the eval harness are all implemented and under test. `CLAUDE_CODE_PROMPTS.md` is the record of how it was built, not a to-do list — read `HANDOFF.md` for the current state and `GAPS.md` for what is still open. The one deliberate stub left is `scripts/research/kb.py` (a V2 Mixedbread-backed source KB); any *other* `NotImplementedError` is a regression.
 
 ## Architecture in three lines
 - **IR-first:** drafting emits a canonical **document IR** (`skills/deep-primer/references/artifact-schemas.md`). HTML and the distilled LLM-MD are *projections* rendered from it; lints and critics read the IR; both projections share block-ids.
