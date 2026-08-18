@@ -10,11 +10,25 @@ meta:
     home_domain: [classical IR, databases]
     target_domain: retrieval-augmented generation
     seniority_band: staff_plus
-    length_budget: 260
+    length_budget: 300
     outputs: [html, llm_md]
   ledger_snapshot: [s-chunk, s-rerank]
   model_versions: {generator: test-fixture, verifier: lexical}
   generated_at: "2026-08-11T00:00:00Z"
+
+# R-ARCH-01 (MUST): the scope contract, before the first h2. It belongs to no section — every
+# section must carry lede + card + recall (R-CONSIST-01), and front matter has no business
+# carrying any of them — which is why the IR gained `front_matter` rather than a seventh section.
+# No provenance tag: this is editorial framing, not an assertion about the world, so it stays out
+# of the citation-composition population for the same reason the figures and checklists do.
+#
+# It cannot open "This primer is for ...": R-PROJ-04 forbids a distilled chunk from leading on a bare
+# demonstrative, and `deanaphorize` repairs that by substituting the SECTION's canonical term — which
+# front matter has none of, so the repair is unavailable here and the opening must stand alone.
+front_matter:
+  - block_id: scope-and-decisions
+    role: body
+    text: "Staff-plus engineers with classical IR and database instincts are the audience this primer expects, now that retrieval sits in front of a generator. The primer covers two stages only: how a corpus is split, and how the candidates it yields are ranked. It leaves out the embedding model, the index itself, and evaluation — that boundary was a decision, not an omission. Two further decisions shaped the material inside it. The first decision makes recall a ceiling, so splitting comes before ranking. The second decision spends depth on two concepts rather than surveying five."
 
 sections:
   - block_id: sec-chunking
@@ -34,6 +48,10 @@ sections:
         claim_ids: [C-chunk-1]
         provenance: verified
         source_ids: [s-chunk]
+        # what the quote is cited FOR: the idea row. Undeclared, it was also credited through
+        # `key_exemplar` ("A 2k-token page split at headings"), which no source states.
+        row_claims:
+          idea: [C-chunk-1]
         rows:
           idea: "The chunk is the retrieval unit, and it bounds recall."
           home_anchor: "Like choosing a row-versus-page granularity for a database index."
@@ -109,6 +127,8 @@ sections:
         claim_ids: [C-rerank-1]
         provenance: verified
         source_ids: [s-rerank]
+        row_claims:
+          idea: [C-rerank-1]
         rows:
           idea: "A cheap recall stage hands candidates to an expensive precision stage."
           home_anchor: "The cheap-filter-then-expensive-sort shape of a SQL query planner."
@@ -135,12 +155,14 @@ sections:
       - block_id: aid-reranking
         role: matrix
         artifact_kind: decision_aid
-        text: "If recall@k is below 0.8, fix retrieval first. Above 0.8 with ordering complaints, add a reranker and cap candidates at 100."
+        # R-EVID-01: speculation must not wear the grammar of fact. The thresholds are operational
+        # judgement, not a measured finding, and the block cites nothing — so it says so.
+        text: "Operational heuristic, not a settled finding: below roughly 0.8 recall@k, fix retrieval first. Above it, with ordering complaints, add a reranker. Treat 100 candidates as a starting point to tune, not a measured optimum."
       - block_id: fig-reranking
         role: figure
         concept: reranking
         mode: benchmark
-        caption: "Figure 2: precision climbs with candidate count while latency climbs faster, so the useful range ends early."
+        caption: "Figure 2 (illustrative shape, not measured data): precision climbs with candidate count while latency climbs faster, so the useful range ends early."
         svg_ref: "assets/reranking.svg"
       - block_id: recall-reranking
         role: recall

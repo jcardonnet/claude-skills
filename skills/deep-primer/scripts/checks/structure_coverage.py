@@ -61,7 +61,11 @@ def length_budget(ctx: LintContext) -> list[Violation]:
     section_words = [
         sum(n_words(b.text) + n_words(b.caption) for b in sec.all_blocks()) for sec in ctx.ir.sections
     ]
-    total = sum(section_words)
+    # Front matter is prose on the page, so it spends the budget; but it is not a section, so it
+    # must stay out of the uniformity statistic below — a scope-and-decisions opening is expected
+    # to be shorter than a section, and folding it in would drag the CV up and read as salience.
+    front_words = sum(n_words(b.text) + n_words(b.caption) for b in ctx.ir.front_matter)
+    total = sum(section_words) + front_words
 
     budget = ctx.length_budget()
     if budget:

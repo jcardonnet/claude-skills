@@ -99,6 +99,8 @@ def _judge_document_view(ir: DocumentIR) -> str:
     seen: list[str] = []
     outline: list[str] = []
     for sec, _block in kept_blocks(ir):
+        if sec is None:
+            continue  # front matter precedes the first h2; it contributes no outline entry
         if sec.title not in seen:
             seen.append(sec.title)
             outline.append(f"{len(seen)}. {sec.title}")

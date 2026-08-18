@@ -354,6 +354,17 @@ class DocumentIR(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     meta: IRMeta = Field(default_factory=IRMeta)
+    # The scope-and-decisions opening (R-ARCH-01): intended reader, what is in and out of scope, and
+    # the two or three editorial decisions that shaped the primer. It precedes the first h2 and
+    # belongs to no section, which is why it cannot live in `sections`: `layer_coverage` requires
+    # every section to carry lede + card + recall, and front matter has no business carrying any of
+    # them. Before this field the IR had NOWHERE to put the content a MUST rule demands, so R-ARCH-01
+    # was a rule the artifact could not satisfy however it was written.
+    #
+    # It is ordinary document prose, so it flows through `flatten_blocks()` and is linted, projected
+    # and judged exactly like a section block. Putting it in `meta` instead would have rendered it
+    # while exempting it from every prose check — unlinted text on the page.
+    front_matter: list[Block] = Field(default_factory=list)
     sections: list[Section] = Field(default_factory=list)
 
     @classmethod
@@ -364,11 +375,11 @@ class DocumentIR(BaseModel):
         """All leaf blocks in document order, recursing into subsections (the round-trip /
         projection unit). Every consumer — lints, both renderers, verify, critics — reads the
         document through this method, so subsection content is visible everywhere by construction."""
-        return [b for sec in self.sections for b in sec.all_blocks()]
+        return [*self.front_matter, *(b for sec in self.sections for b in sec.all_blocks())]
 
     def all_block_ids(self) -> list[str]:
         """Every block_id in the document — section and subsection containers *and* leaf blocks."""
-        ids: list[str] = []
+        ids: list[str] = [b.block_id for b in self.front_matter]
         for sec in self.sections:
             ids.append(sec.block_id)
             ids.extend(b.block_id for b in sec.blocks)

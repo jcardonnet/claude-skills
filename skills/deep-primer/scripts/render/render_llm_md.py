@@ -57,7 +57,13 @@ def kept_blocks(ir: DocumentIR):
 
     Recurses into subsections via Section.all_blocks(): a subsection block that rendered into the
     HTML but never reached the MD would break block-id alignment (R-PROJ-02).
+
+    The scope-and-decisions front matter (R-ARCH-01) is yielded first with `sec=None` — it renders
+    into the HTML, so omitting it here would break that same alignment.
     """
+    for b in ir.front_matter:
+        if b.role.value not in DROPPED_ROLES:
+            yield None, b
     for sec in ir.sections:
         for b in sec.all_blocks():
             if b.role.value not in DROPPED_ROLES:
@@ -93,8 +99,15 @@ def _distill_contested(b: Block, referent: str) -> str:
 def referent_for(sec, b: Block, referents: dict[str, str]) -> str:
     """The canonical term a bare anaphor in this block resolves to — the block's own concept, else
     its container's, else the section title's head noun. One definition so the verifier resolves the
-    same referent the producer used."""
-    return referents.get(b.concept or sec.concept or "", None) or sec.title.split(",")[0]
+    same referent the producer used.
+
+    Front matter has no container (`sec is None`) and therefore no fallback referent: it precedes
+    every concept the document establishes. `deanaphorize` then leaves a leading anaphor standing
+    rather than substituting a wrong one, and verify/chunk_selfcontained.py reports it — the honest
+    outcome for prose that opens a document by pointing back at something.
+    """
+    named = referents.get(b.concept or (sec.concept if sec is not None else None) or "")
+    return named or (sec.title.split(",")[0] if sec is not None else "")
 
 
 def _framing_md_parts(f, referent: str) -> list[tuple[str, str]]:
@@ -165,7 +178,8 @@ def _distill(sec, b: Block, referents: dict[str, str]) -> str:
     referent = referent_for(sec, b, referents)
     if b.role.value == "contested":
         return _distill_contested(b, referent)
-    head = (f"## [block: {b.block_id}]   concept: {b.concept or sec.concept or '-'}   "
+    sec_concept = sec.concept if sec is not None else None
+    head = (f"## [block: {b.block_id}]   concept: {b.concept or sec_concept or '-'}   "
             f"mode: {b.mode.value if b.mode else '-'}   provenance: {b.provenance.value if b.provenance else '-'}")
     if b.artifact_kind:
         head += f"   artifact: {b.artifact_kind.value}"
@@ -181,7 +195,13 @@ def _distill(sec, b: Block, referents: dict[str, str]) -> str:
     return f"{head}\n{body}\n{_sources_line(b)}"
 
 
-def _front_matter(ir: DocumentIR, concept_map: ConceptMap | None) -> str:
+def _yaml_index(ir: DocumentIR, concept_map: ConceptMap | None) -> str:
+    """The projection's YAML header (the concept-map as a glossary).
+
+    Named for what it is rather than "front matter": `DocumentIR.front_matter` is the
+    scope-and-decisions PROSE (R-ARCH-01), which reaches this projection as ordinary `## [block:]`
+    chunks. Two unrelated things under one name is how a renderer starts emitting one for the other.
+    """
     if concept_map:
         concepts = [{"id": c.concept_id, "canonical_term": c.canonical_term, "aliases": c.aliases,
                      "home_anchor": c.home_anchor, "fidelity_boundary": c.fidelity_boundary}
@@ -203,7 +223,7 @@ def _front_matter(ir: DocumentIR, concept_map: ConceptMap | None) -> str:
 def render_llm_md(ir: DocumentIR, concept_map: ConceptMap | None = None) -> str:
     referents = _referent_map(concept_map)
     chunks = [_distill(sec, b, referents) for sec, b in kept_blocks(ir)]
-    return _front_matter(ir, concept_map) + "\n\n" + "\n\n".join(chunks) + "\n"
+    return _yaml_index(ir, concept_map) + "\n\n" + "\n\n".join(chunks) + "\n"
 
 
 # --- the `llm_md` pass: deterministic checks over the rendered projection -----

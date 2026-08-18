@@ -10,6 +10,7 @@ from pathlib import Path
 import yaml
 
 from eval import (
+    _ir_digest,
     _spec_strict_failures,
     _tier_soft_critic,
     _why_unexercised,
@@ -289,6 +290,43 @@ def test_a_real_critic_report_scores_and_credits_the_tier(tmp_path):
     assert tier["status"] == "scored"
     assert tier["rules_exercised"] == ["R-PROSE-02"]
     assert tier["failed"] == ["R-PROSE-02"]
+
+
+def _stamped(path: Path, digest: str) -> Path:
+    report = json.loads(path.read_text(encoding="utf-8"))
+    report["ir_sha256"] = digest
+    path.write_text(json.dumps(report), encoding="utf-8")
+    return path
+
+
+_FULL_IR = SKILL_ROOT / "tests" / "fixtures" / "document-ir.full.yaml"
+
+
+def test_a_report_judged_against_another_ir_is_not_credited(tmp_path):
+    """The guard that once cost 33 rules of credit, pinned on a fixture of its own.
+
+    `critic-report.full.json` was for a while judged against an older `document-ir.full.yaml` and
+    stayed credited because the digest had been made blind to provenance, on the stated grounds that
+    this was "a grounding correction the critics cannot see". They can see it: `_judge_document_view`
+    builds the document unit from `render_llm_md`, which prints `provenance:` into every block
+    heading. The shipped report is now judged against the shipped IR, so this asserts the mechanism
+    on a SYNTHETIC mismatch — asserting it on the artifact is what would make the guard un-failable
+    the moment the artifact was re-judged, which is the shape this repo keeps finding."""
+    report = _stamped(_critic_report(tmp_path / "old.json", exercised=True, verdict="pass"), "0" * 64)
+    tier = _tier_soft_critic({"critic_report": report, "ir": _FULL_IR})
+    assert tier["status"] == "stale"
+    assert tier["rules_exercised"] == []
+    assert "judged against a different IR" in tier["reason"]
+
+
+def test_a_report_stamped_with_the_current_digest_is_credited(tmp_path):
+    """The paired positive. Without it the guard could go stale-always — every report rejected, the
+    soft_critic tier permanently 0, and nothing in the suite able to tell that from working."""
+    report = _stamped(_critic_report(tmp_path / "fresh.json", exercised=True, verdict="pass"),
+                      _ir_digest(_FULL_IR))
+    tier = _tier_soft_critic({"critic_report": report, "ir": _FULL_IR})
+    assert tier["status"] == "scored"
+    assert tier["rules_exercised"] == ["R-PROSE-02"]
 
 
 def test_lexical_backend_does_not_trip_the_citation_gate():

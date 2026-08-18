@@ -205,7 +205,14 @@ def render_html(
     if concept_map is not None and concept_map.contested:
         banner = ('<aside class="contested-banner" role="note">Competing organizing views: this '
                   'primer presents its structure as contested, not asserted.</aside>\n')
-    sections_html = banner + "\n".join(_section_html(sec, fn_index) for sec in ir.sections)
+    # R-ARCH-01: the scope-and-decisions opening renders before the first h2. A <header>, not a
+    # <section>, because the template auto-builds nav and the depth-fold from `h2`/`h3` inside a
+    # `section` — front matter carries neither, and giving it a container that implies both would
+    # put an empty rung in the TOC.
+    front_html = "\n".join(_block_html(b, fn_index) for b in ir.front_matter)
+    if front_html:
+        front_html = f'<header class="front-matter">\n{front_html}\n</header>\n'
+    sections_html = front_html + banner + "\n".join(_section_html(sec, fn_index) for sec in ir.sections)
     refs_html = _references_html(fn_index)
     doc_title = title or (ir.sections[0].title if ir.sections else "Primer")
 

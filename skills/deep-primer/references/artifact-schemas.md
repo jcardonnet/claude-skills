@@ -153,6 +153,8 @@ Under IR-first, Phase 3 emits a structured **document IR**, not HTML. Lints, cri
 ```yaml
 # document-ir.yaml (canonical)
 meta: {parameters, ledger_snapshot, model_versions, generated_at}
+front_matter:                              # prose BEFORE the first h2 — belongs to no section
+  - {block_id: scope-and-decisions, role: body, text: "..."}
 sections:                                  # h2
   - block_id: sec-maskfree
     title: "Pixel masks are usually wasted work for BOM linkage"
@@ -211,6 +213,25 @@ top-level outline (`R-ARCH-07`): every entry is realized by exactly one section,
 mapping is declared rather than inferred from headings, because copying the user's labels verbatim
 would collide with `R-SCENT-01` — so the heading stays a predictive claim and `maps_to` records
 which entry it realizes. The concept-map still drives depth *within* each section.
+
+**`front_matter` — the opening that belongs to no section.** `R-ARCH-01` (MUST) requires the primer
+to open on a scope-and-decisions contract: who it is for, what is in and out of scope, and which
+editorial decisions shaped it. That prose precedes the first h2, so it is not section content — and
+it cannot be modelled as one. `R-CONSIST-01` requires *every* section to carry a lede, a card and a
+recall block, and a scope contract has no business carrying any of them; a seventh section would
+either fail that rule or pad the document with apparatus nobody asked for. Nor can it live in `meta`,
+which is parameters rather than prose: prose parked there renders to the page while every prose lint
+walks `sections` and never sees it — a MUST rule the artifact could satisfy on the page and fail in
+the IR at the same time.
+
+So the IR carries a top-level `front_matter: list[Block]`. `flatten_blocks()` yields it first, which
+is what puts it in front of every lint, both renderers and the critics without each of them
+learning about it. Consumers that reason about *placement* rather than content do have to handle it:
+`render_html` emits it as a `<header class="front-matter">` (never a `<section>`, or nav and the
+depth-fold would pick it up), the LLM-MD projection carries it with a `None` section referent, the
+judge's outline skips it, and `length_budget` spends its words against the budget while keeping them
+out of the section-uniformity statistic — a scope opening is *expected* to be shorter than a
+section, and folding it in would read as salience.
 
 **Three levels, and why h4 is not one of them.** h2 is a `section`, h3 a `subsection`; **h4 is a
 `heading` attribute on a body block, never a container**. `R-ARCH-05` requires h4 to stay out of
