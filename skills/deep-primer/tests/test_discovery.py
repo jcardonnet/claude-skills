@@ -426,6 +426,39 @@ def test_backend_drops_urls_that_do_not_fetch(tmp_path):
     assert backend.dropped[0]["dropped_reason"].startswith("HTTPError")
 
 
+def test_a_redirected_lead_points_at_the_url_the_corpus_is_keyed_by():
+    """`Document.url` is the POST-redirect URL — the page actually fetched, and the key the frozen
+    corpus is written under — while the lead kept the URL we asked for. So a source verified live
+    resolved to nothing on replay: the campaign passes, and re-running it offline cannot find the
+    evidence it just proved."""
+    from types import SimpleNamespace
+
+    from ir.schema import ResearchBrief
+    from research.claude_backend import ClaudeResearchBackend
+
+    class _Cli:
+        calls = 0
+        spend_usd = 0.0
+
+        def result_json(self, _instruction):
+            return {"report": "body", "sources": [
+                {"url": "http://old.example/a", "type": "docs", "why": "x"}]}
+
+    class _Fetcher:
+        name = "stub"
+        refused: dict = {}
+
+        def __call__(self, _url):
+            return SimpleNamespace(url="https://new.example/a", title="A",
+                                   retrieved_at="2026-01-01", text="body")
+
+    backend = ClaudeResearchBackend(cli=_Cli(), fetcher=_Fetcher())
+    _report, leads = backend(ResearchBrief(wave="A", framing="mechanism", questions=["q?"]))
+
+    assert leads[0]["url"] == "https://new.example/a" == backend.documents[0].url
+    assert leads[0]["requested_url"] == "http://old.example/a"   # kept for the audit trail
+
+
 def test_backend_returns_an_empty_wave_rather_than_inventing_one():
     from ir.schema import ResearchBrief
     from research.claude_backend import ClaudeResearchBackend

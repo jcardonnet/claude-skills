@@ -584,6 +584,10 @@ class ConvergenceLog(BaseModel):
     cycles: list[CycleRecord] = Field(default_factory=list)
     terminal_regime: Literal["converged", "contested", "chaotic", "coherent"] | None = None
     terminal_decision: str | None = None
+    # Scans the structure judge could not complete. `None` from the judge means "no structural
+    # finding", which is what terminates the loop as `coherent` — so an outage settles it, and used
+    # to do so leaving the log indistinguishable from a judge that looked and found nothing.
+    judge_errors: list[str] = Field(default_factory=list)
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> ConvergenceLog:

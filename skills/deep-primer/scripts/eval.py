@@ -167,7 +167,10 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None) ->
         out["rules_exercised"] += _exercised(led["findings"])
         out["unenforced_musts"] += _unenforced(led)
     if paths.get("convergence_log"):
-        conv = run_convergence_pass(ConvergenceLog.from_yaml(paths["convergence_log"]))
+        # The IR too: R-CONV-01's contested clause checks that a contested trajectory was
+        # RENDERED, and it cannot be checked from the log alone.
+        conv = run_convergence_pass(ConvergenceLog.from_yaml(paths["convergence_log"]),
+                                    DocumentIR.from_yaml(paths["ir"]) if paths.get("ir") else None)
         out["convergence_pass"] = {"counts": conv["counts"],
                                    "failures": [f["detail"] for f in conv["findings"] if f["status"] == "fail"]}
         out["rules_exercised"] += _exercised(conv["findings"])
@@ -288,6 +291,8 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         "meets_composition": (report["scoreable"]
                               and report["ungrounded_share"] <= thresholds["max_inferred_share"]),
         "unresolved_citations": len(report["resolves_to_ledger"]["violations"]),
+        # judge health, not primer health — see propose_thresholds
+        "backend_unresolved": report["backend_unresolved"],
         "counts": report["counts"],
     }
 
@@ -662,16 +667,25 @@ def propose_thresholds(report: dict) -> dict:
     meaningless, and writing it into eval-rubric.yaml would silently disable the check.
     """
     recalls, precisions, backends = [], [], set()
+    v_recalls, v_precisions, ungrounded, unresolved = [], [], [], 0
     for r in report["results"]:
         mv = r.get("model_verified") or {}
         if mv.get("status") == "scored":
             recalls.append(mv["recall"])
             precisions.append(mv["precision"])
+            v_recalls.append(mv["verified_recall"])
+            v_precisions.append(mv["verified_precision"])
+            ungrounded.append(mv["ungrounded_share"])
+            unresolved += mv.get("backend_unresolved", 0)
             backends.add(mv.get("backend"))
     if not recalls:
         return {"status": "insufficient_data", "scored_specs": 0}
 
     observed = {"recall_min": min(recalls), "precision_min": min(precisions),
+                "verified_recall_min": min(v_recalls),
+                "verified_precision_min": min(v_precisions),
+                "ungrounded_share_max": max(ungrounded),
+                "judge_unresolved": unresolved,
                 "backends": sorted(b for b in backends if b)}
     if backends <= {"lexical"}:
         return {
@@ -681,14 +695,34 @@ def propose_thresholds(report: dict) -> dict:
             "reason": ("scored only with the offline lexical proxy, which measures word overlap "
                        "between a short quote and a paraphrased block — low scores are what a "
                        "COMPLIANT primer produces. Re-run with --backend nli or claude before "
-                       "setting citation_recall / citation_precision."),
+                       "setting the citation thresholds."),
+        }
+    # A judge that did not answer scores every pair NOT SUPPORTED — correct per citation, ruinous in
+    # aggregate. An outage, or a cost cap hit mid-run, drives recall toward zero, and this function
+    # would fit a floor to that and write it into eval-rubric.yaml: a threshold that cannot fail,
+    # derived from blaming the primer for the judge's silence. The refusal above already states the
+    # principle — do not calibrate against a measurement you do not trust.
+    if unresolved:
+        return {
+            "status": "refused",
+            "scored_specs": len(recalls),
+            "observed": observed,
+            "reason": (f"the judge left {unresolved} (premise, hypothesis) pair(s) unanswered — an "
+                       f"outage, a hedge, or a hit cost cap. Every one scored as NOT SUPPORTED, so "
+                       f"these numbers measure the judge, not the primer. Re-run once it answers."),
         }
     return {
         "status": "proposed",
         "scored_specs": len(recalls),
         "observed": observed,
-        "citation_recall": max(0.0, round(min(recalls) - 0.05, 2)),
-        "citation_precision": max(0.0, round(min(precisions) - 0.05, 2)),
+        # The SETTLED trio — the three `--strict` actually gates on. This proposed only the legacy
+        # `citation_recall` / `citation_precision` pair, which `load_thresholds` describes as mixing
+        # declared synthesis with claimed grounding so that no value of it means anything, and which
+        # no gate consults. The one number eval-rubric.yaml explicitly asks to have fitted as specs
+        # accumulate is max_inferred_share, and it was not among them.
+        "verified_recall": max(0.0, round(min(v_recalls) - 0.05, 2)),
+        "verified_precision": max(0.0, round(min(v_precisions) - 0.05, 2)),
+        "max_inferred_share": min(1.0, round(max(ungrounded) + 0.05, 2)),
         "caveat": "a floor from the artifacts present; re-calibrate against real generations (Stage G)",
     }
 

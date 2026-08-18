@@ -194,6 +194,11 @@ def evaluate(
 
     return {
         "backend": backend.name,
+        # How many (premise, hypothesis) pairs the judge could not answer. Every one of them scored
+        # as NOT SUPPORTED, so without this number a total judge outage is indistinguishable from a
+        # primer whose every citation is decorative — and the second reading is the one that gets
+        # written into a threshold.
+        "backend_unresolved": len(list(getattr(backend, "unresolved", []) or [])),
         "resolves_to_ledger": {"ok": not resolves, "violations": resolves},
         "recall": round(recall, 4),
         "precision": round(precision, 4),

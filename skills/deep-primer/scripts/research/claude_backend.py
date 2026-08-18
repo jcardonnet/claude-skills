@@ -112,6 +112,14 @@ class ClaudeResearchBackend:
                     self.dropped.append(lead)
                 else:
                     self.documents.append(doc)
+                    if doc.url != lead["url"]:
+                        # `Document.url` is the POST-redirect URL — the page actually fetched, and
+                        # the key the frozen corpus is written under. A lead holding the URL we
+                        # ASKED for therefore resolves to nothing on replay, so a source verified
+                        # live becomes unfetchable the moment the campaign is re-run offline. The
+                        # requested URL stays for the audit trail; the lead points at what exists.
+                        lead["requested_url"] = lead["url"]
+                        lead["url"] = doc.url
                     lead["fetched_title"] = doc.title
                     lead["retrieved_at"] = doc.retrieved_at
             leads.append(lead)

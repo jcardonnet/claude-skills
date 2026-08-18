@@ -104,8 +104,11 @@ LEDGER_CHECKS = {
 }
 
 # The `convergence-log` pass: run after the drafting<->structure loop terminates (R-CONV-01).
+# Takes a PAIR, like llm_md. R-CONV-01's contested clause — "a contested trajectory must actually
+# be RENDERED, not just recorded" — reads the IR, and `terminal_state`'s `ir` parameter defaulted to
+# None on the only dispatched path, so that half of the rule was unreachable from every caller.
 CONVERGENCE_CHECKS = {
-    "checks/convergence.py::terminal_state": convergence_checks.terminal_state,
+    "checks/convergence.py::terminal_state": lambda p: convergence_checks.terminal_state(*p),
 }
 
 # The `llm_md` pass. Artifact is the tuple (markdown, DocumentIR) — the roles a block-id belongs
@@ -277,9 +280,13 @@ def run_ledger_pass(ledger, registry_path: str | Path = DEFAULT_REGISTRY) -> dic
     return run_artifact_pass(ledger, "ledger", registry_path)
 
 
-def run_convergence_pass(log, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
-    """The `convergence-log` pass (R-CONV-01), run once the escalate loop terminates."""
-    return run_artifact_pass(log, "convergence-log", registry_path)
+def run_convergence_pass(log, ir=None, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:
+    """The `convergence-log` pass (R-CONV-01), run once the escalate loop terminates.
+
+    Takes the IR as well: a `contested` terminal regime has to be RENDERED, not merely recorded, and
+    that clause cannot be checked from the log alone.
+    """
+    return run_artifact_pass((log, ir), "convergence-log", registry_path)
 
 
 def run_llm_md_pass(md: str, ir, registry_path: str | Path = DEFAULT_REGISTRY) -> dict:

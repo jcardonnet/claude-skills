@@ -490,8 +490,16 @@ def run_convergence_loop(initial_map: ConceptMap, judge: StructureJudge,
         records.append(CycleRecord(cycle=cycle, c_k=None, rho=None, tau=convergence.tau(cycle),
                                    finding="terminal", decision="stop"))
 
+    # A judge that could not answer returns None, which this loop reads as "no structural finding"
+    # and settles as `coherent`. Absorbing the outage is deliberate — inventing a finding would
+    # trigger a re-grounding cycle on the strength of a timeout — but it was also SILENT: the judge
+    # recorded the error on itself and nothing ever read it, so the audit trail showed a clean
+    # coherent termination from a judge that never spoke. R-CONV-01 reads this log; give it the
+    # fact.
+    judge_errors = [s["error"] for s in getattr(judge, "scans", []) if isinstance(s, dict) and s.get("error")]
     log = ConvergenceLog(k_max=convergence.K_MAX, cycles=records, terminal_regime=regime,
-                         terminal_decision=_TERMINAL_DECISION[regime])
+                         terminal_decision=_TERMINAL_DECISION[regime],
+                         judge_errors=judge_errors)
 
     block = None
     if regime == "contested":

@@ -60,6 +60,17 @@ def terminal_state(convergence_log: ConvergenceLog | dict, ir: DocumentIR | None
     elif log.cycles[-1].decision != "stop":
         problems.append(f"final cycle decision is {log.cycles[-1].decision!r}, expected 'stop'")
 
+    # A `coherent` terminal means the judge looked and found nothing. It is ALSO what the loop
+    # records when the judge could not answer at all: `scan_for_structural` returns None on an
+    # outage, deliberately, because inventing a finding would trigger a re-grounding cycle on the
+    # strength of a timeout. Two opposite facts producing one log entry — so the log now carries the
+    # errors, and the rule refuses to credit a termination resting on them.
+    if log.terminal_regime == "coherent" and getattr(log, "judge_errors", None):
+        problems.append(
+            f"terminal_regime 'coherent' but the structure judge failed {len(log.judge_errors)} "
+            f"scan(s): {log.judge_errors[0][:120]} — a judge that did not answer has not found "
+            f"the map coherent")
+
     # a contested trajectory must actually be RENDERED, not just recorded
     if log.terminal_regime == "contested" and ir is not None:
         has_block = any(b.role.value == "contested" for b in ir.flatten_blocks())

@@ -269,6 +269,44 @@ def test_lint_requires_a_rendered_block_for_a_contested_regime():
     assert any("no role=contested block" in p for p in conv_checks.terminal_state(log, empty_ir))
 
 
+def test_a_coherent_terminal_from_a_judge_that_never_answered_is_flagged():
+    """`scan_for_structural` returns None on an outage — deliberately, since inventing a finding
+    would trigger a re-grounding cycle on the strength of a timeout — and None is exactly what ends
+    the loop as `coherent`. So "the judge looked and found nothing" and "the judge never answered"
+    wrote the identical log, and R-CONV-01 credited the second as the first."""
+    clean = _log(terminal_regime="coherent", terminal_decision="draft")
+    assert conv_checks.terminal_state(clean) == []
+
+    outage = _log(terminal_regime="coherent", terminal_decision="draft",
+                  judge_errors=["CliUnavailable: claude CLI exceeded 420s"])
+    problems = conv_checks.terminal_state(outage)
+    assert any("did not answer" in p for p in problems)
+
+
+def test_the_contested_clause_is_reachable_from_the_dispatched_path():
+    """The test above calls the check DIRECTLY and hands it an IR. The dispatcher did not: it
+    invoked `terminal_state(log)` and the `ir` parameter defaulted to None, so this clause of
+    R-CONV-01 was unreachable from every caller that actually runs. A check tested in isolation and
+    dead in practice is what testing around the dispatcher buys."""
+    from ir.schema import Block, Framing
+    from lint import run_convergence_pass
+
+    log = _log(terminal_regime="contested", terminal_decision="render-contested")
+    empty_ir = DocumentIR(sections=[Section(block_id="s1", title="t")])
+    report = run_convergence_pass(log, empty_ir)
+    assert report["blocking"] is True
+    assert any("no role=contested block" in f["detail"] for f in report["findings"])
+
+    rendered = DocumentIR(sections=[Section(block_id="s1", title="t", blocks=[
+        Block(block_id="con", role="contested",
+              framings=[Framing(label="school A", summary="masks are required"),
+                        Framing(label="school B", summary="anchors suffice")])])])
+    assert run_convergence_pass(log, rendered)["blocking"] is False
+
+    # ...and with no IR at all the clause simply does not apply; it must not fabricate a violation
+    assert run_convergence_pass(log)["blocking"] is False
+
+
 # --- the real structure judge (the third model seam) -------------------------
 # ScriptedStructureJudge was the only implementation in the tree, and it replays findings it was
 # told in advance — so R-CONV-01 could only ever be exercised against a judge that knew the answer.

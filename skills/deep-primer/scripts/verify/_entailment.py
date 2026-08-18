@@ -88,6 +88,19 @@ class CallableEntailment:
     def supports(self, premise: str, hypothesis: str) -> bool:
         return bool(self._fn(premise, hypothesis))
 
+    @property
+    def unresolved(self) -> list[str]:
+        """Pairs the judge could not answer — an outage, a hedge, malformed JSON.
+
+        Forwarded from the wrapped judge, because each of those scores as NOT SUPPORTED. That is
+        the right call per citation (one the verifier could not check has not been shown to support
+        anything) and catastrophic in aggregate: a run whose judge answered nothing produces recall
+        near zero, and `propose_thresholds` would fit a floor to it and write that into
+        eval-rubric.yaml. This count is what lets a caller tell "the primer scored badly" apart from
+        "the judge never answered".
+        """
+        return list(getattr(self._fn, "unresolved", []) or [])
+
 
 def resolve_backend(name: str = "auto", judge_fn: Callable[[str, str], bool] | None = None) -> Entailment:
     """Select a backend per CAPABILITIES.md. 'auto' resolves to the offline lexical proxy."""

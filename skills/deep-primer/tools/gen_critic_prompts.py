@@ -27,6 +27,22 @@ MEMBERS = {
  'figures':                 soft_by_pass.get('figures', []),
 }
 
+# MEMBERS is keyed on six hard-coded pass names, each read out of `soft_by_pass` with a `.get(...,
+# [])` default — so a soft_critic rule whose `check.pass` is not one of those six lands in no
+# prompt, is never sent to a judge, and produces no verdict. The registry says the rule is enforced
+# by the critic tier and the critic tier has never heard of it.
+_soft = {r['id'] for r in reg['rules'] if r['enforcement'] == 'soft_critic'}
+_assigned = [rid for ids in MEMBERS.values() for rid in ids]
+_orphans = sorted(_soft - set(_assigned))
+if _orphans:
+    raise SystemExit(
+        f"gen_critic_prompts: soft_critic rule(s) {_orphans} have a check.pass that no prompt "
+        f"claims, so they would never be judged. Known passes: {sorted(MEMBERS)}. Fix the rule's "
+        f"check.pass or add it to a group, then re-run tools/build.sh.")
+_dupes = sorted({rid for rid in _assigned if _assigned.count(rid) > 1})
+if _dupes:
+    raise SystemExit(f"gen_critic_prompts: rule(s) {_dupes} appear in more than one pass.")
+
 PASS_TITLE = {
  'structure-architecture': 'Structure — architecture & navigation',
  'structure-fieldguide':   'Structure — field-guide layer & artifacts',

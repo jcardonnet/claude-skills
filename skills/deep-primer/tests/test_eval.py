@@ -110,12 +110,35 @@ def test_thresholds_are_refused_when_only_the_lexical_proxy_scored():
     assert "citation_recall" not in proposal
 
 
-def test_thresholds_are_proposed_from_a_real_backend():
-    fake = {"results": [{"model_verified": {"status": "scored", "backend": "nli",
-                                            "recall": 0.9, "precision": 0.95}}]}
-    proposal = propose_thresholds(fake)
+def _scored_mv(**over):
+    base = {"status": "scored", "backend": "nli", "recall": 0.9, "precision": 0.95,
+            "verified_recall": 0.9, "verified_precision": 0.95, "ungrounded_share": 0.4,
+            "backend_unresolved": 0}
+    return {"results": [{"model_verified": {**base, **over}}]}
+
+
+def test_thresholds_are_proposed_for_the_pair_that_actually_gates():
+    """It proposed only `citation_recall` / `citation_precision` — the legacy pair `load_thresholds`
+    calls meaningless and no gate consults — while `max_inferred_share`, the one number
+    eval-rubric.yaml explicitly asks to have fitted as specs accumulate, was not among them."""
+    proposal = propose_thresholds(_scored_mv())
     assert proposal["status"] == "proposed"
-    assert proposal["citation_recall"] == 0.85 and proposal["citation_precision"] == 0.9
+    assert proposal["verified_recall"] == 0.85
+    assert proposal["verified_precision"] == 0.9
+    assert proposal["max_inferred_share"] == 0.45
+
+
+def test_no_threshold_is_proposed_from_a_judge_that_did_not_answer():
+    """An unanswered pair scores NOT SUPPORTED — right per citation, ruinous in aggregate. An
+    outage, or a cost cap hit mid-run, drives recall toward zero, and a floor fitted to that goes
+    into eval-rubric.yaml as a threshold that cannot fail, derived from blaming the primer for the
+    judge's silence."""
+    proposal = propose_thresholds(_scored_mv(verified_recall=0.0, verified_precision=0.0,
+                                             backend_unresolved=39))
+    assert proposal["status"] == "refused"
+    assert "unanswered" in proposal["reason"]
+    assert proposal["observed"]["judge_unresolved"] == 39
+    assert "verified_recall" not in proposal
 
 
 def test_rubric_thresholds_are_still_the_documented_todos():
