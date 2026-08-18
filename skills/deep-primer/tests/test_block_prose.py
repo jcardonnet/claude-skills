@@ -219,3 +219,25 @@ def test_mv01_still_fails_when_the_modes_are_genuinely_absent():
         subsections=[Subsection(block_id="sub", title="Detail", blocks=[
             Block(block_id="b2", role="body", concept="hnsw", mode="architecture", text=_FILL)])])])
     assert any("hnsw" in v.detail for v in multiview_concepts.modes_per_concept(_ctx(ir)))
+
+
+# --- R-GROUND-04: version tokens (the seventh consumer) -----------------------
+
+@pytest.mark.parametrize("build", PLACEMENTS)
+def test_a_version_token_is_flagged_in_every_placement(build):
+    """`version_freshness` read `b.text`/`b.caption`, so a version token written into a card row —
+    "reach for it on 2.4+" is exactly the kind of thing a card row says — could not be flagged. The
+    same family as the six consumers already moved off `.text`, found one review later."""
+    from checks import recency_versions
+
+    ir = build("Use the v2.4 collector, which changed the default sampler.")
+    violations = recency_versions.version_freshness(_ctx(ir))
+    assert any("v2.4" in v.detail for v in violations), "version token went unflagged"
+
+
+@pytest.mark.parametrize("build", PLACEMENTS)
+def test_prose_without_a_version_token_stays_quiet(build):
+    from checks import recency_versions
+
+    ir = build("The collector changed its default sampler, which surprised everyone.")
+    assert recency_versions.version_freshness(_ctx(ir)) == []

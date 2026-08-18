@@ -20,9 +20,11 @@ _VER_RE = re.compile(r"\bv\d+(?:\.\d+)+\b|\b\d+\.\d+\.\d+\b", re.IGNORECASE)
 def version_freshness(ctx: LintContext) -> list[Violation]:
     out: list[Violation] = []
     for b in ctx.ir.flatten_blocks():
-        for field in (b.text, b.caption):
-            if not field:
-                continue
+        # `prose_segments`, not `text`/`caption`: those are None for a card, a recall block and a
+        # contested block, so a version token written into a card row — "reach for it on 2.4+" is
+        # exactly the kind of thing a card row says — could not be flagged. Same family as the six
+        # consumers already moved off `.text`.
+        for field in b.prose_segments:
             for tok in sorted({m.group(0) for m in _VER_RE.finditer(field)}):
                 out.append(Violation(
                     b.block_id,

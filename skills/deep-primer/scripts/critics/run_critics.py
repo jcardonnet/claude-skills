@@ -332,8 +332,12 @@ def main(argv: list[str] | None = None) -> int:
         calls, spend = cli_judge.calls, cli_judge.spend_usd
         report["judge"] = {"kind": "claude", "model": args.model, "calls": calls,
                            "spend_usd": round(spend, 4), "exercised_rules": True}
-        if gating_cli_judge is not None:
-            report["judge"]["gating_model"] = args.gating_model
+        # Which model judged the GATING (MUST) items — always recorded, whether or not a second
+        # judge was built. `--gating-model sonnet --model sonnet` builds no second judge (they are
+        # the same model), and stamping only in that branch left the STRONGEST configuration
+        # unstamped, so a consumer keying on the field read "everything on sonnet" as less
+        # trustworthy than "haiku with sonnet gating".
+        report["judge"]["gating_model"] = args.gating_model or args.model
     Path(args.out).write_text(json.dumps(report, indent=2), encoding="utf-8")
     c = report["counts"]
     print(f"{len(report['passes'])} passes — pass={c['pass']} fail={c['fail']} "

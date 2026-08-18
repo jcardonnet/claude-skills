@@ -320,6 +320,7 @@ def _scored(**tiers) -> list[dict]:
                            "chunk_selfcontained": {"ok": True, "backend": "lexical",
                                                    "failures": [], "dangling_failures": []}},
         "expected_must_pass_report": {"failed": [], "not_exercised": []},
+        "soft_critic": {"status": "scored", "must_failed": [], "gating_judge": None},
     }
     for tier, patch in tiers.items():
         base[tier] = {**base[tier], **patch}
@@ -352,6 +353,40 @@ def test_a_dangling_anaphora_in_a_projected_chunk_fails_the_strict_gate():
             "failures": ["card-x"], "dangling_failures": ["card-x"]}}),
         registry_rules())
     assert len(failures) == 1 and "R-PROJ-04" in failures[0]["reasons"][0]
+
+
+def test_an_all_sonnet_run_is_trusted_to_gate_and_an_all_haiku_one_is_not():
+    """`run_critics` builds no SECOND judge when `--gating-model` equals `--model`, and the stamp
+    used to be written only in that branch — so the STRONGEST configuration (everything on sonnet)
+    came through unstamped, and a gate keying on presence read it as less trustworthy than "haiku
+    with sonnet gating". The stamp now records whichever model judged the MUST items, and the gate
+    keys on WHICH model, for the measured reason: haiku split 29% of gating ballots to sonnet's 5%."""
+    must_failed = {"must_failed": ["R-ARCH-01"]}
+
+    strong = _spec_strict_failures(
+        _scored(soft_critic={**must_failed, "gating_judge": "sonnet"}), registry_rules())
+    assert len(strong) == 1 and "R-ARCH-01" in strong[0]["reasons"][0]
+
+    weak = _spec_strict_failures(
+        _scored(soft_critic={**must_failed, "gating_judge": "haiku"}), registry_rules())
+    assert weak == [], "haiku's gating verdicts are reported, not blocking"
+
+    unstamped = _spec_strict_failures(
+        _scored(soft_critic={**must_failed, "gating_judge": None}), registry_rules())
+    assert unstamped == []
+
+
+def test_judge_health_is_counted_per_spec_not_cumulatively():
+    """`run_eval` builds ONE entailment backend and hands it to every spec, so its `unresolved` list
+    is a running total — spec-02 reported spec-01's failures plus its own, and `propose_thresholds`
+    then summed those already-cumulative numbers."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT)
+    counts = [(r["id"], (r.get("model_verified") or {}).get("backend_unresolved"))
+              for r in report["results"]
+              if (r.get("model_verified") or {}).get("status") == "scored"]
+    assert counts, "at least one spec must be scored for this to mean anything"
+    assert all(c == 0 for _, c in counts), counts     # the lexical proxy never fails to answer
+    assert propose_thresholds(report)["observed"]["judge_unresolved"] == 0
 
 
 def test_the_lexical_proxy_never_gates_the_entailment_half_of_r_proj_04():

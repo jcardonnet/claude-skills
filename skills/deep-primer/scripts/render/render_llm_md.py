@@ -82,11 +82,10 @@ def _distill_contested(b: Block, referent: str) -> str:
     prov = b.provenance.value if b.provenance else "-"
     chunks = []
     for f in b.framings or []:
-        applies = f"\nReach-for-it-when: {f.applies_when}" if f.applies_when else ""
+        body = "\n".join(f"{label}: {prose}" for label, prose in _framing_md_parts(f, referent))
         srcs = f"Sources: [{', '.join(f.source_ids)}]" if f.source_ids else "Sources: [none yet — inferred]"
         chunks.append(
-            f"## [block: {b.block_id}]   framing: {f.label}   provenance: {prov}\n"
-            f"Framing: {_framing_prose(f, referent)}{applies}\n{srcs}"
+            f"## [block: {b.block_id}]   framing: {f.label}   provenance: {prov}\n{body}\n{srcs}"
         )
     return "\n\n".join(chunks)
 
@@ -98,10 +97,19 @@ def referent_for(sec, b: Block, referents: dict[str, str]) -> str:
     return referents.get(b.concept or sec.concept or "", None) or sec.title.split(",")[0]
 
 
-def _framing_prose(f, referent: str) -> str:
-    """What a contested block's framing contributes as prose. Shared by the renderer and the
-    verifier so a change to one cannot leave the other checking something else."""
-    return deanaphorize(f.summary or "", referent)
+def _framing_md_parts(f, referent: str) -> list[tuple[str, str]]:
+    """(label, prose) pairs a contested framing contributes. Shared by the renderer and the verifier
+    so a change to one cannot leave the other checking something else.
+
+    `applies_when` is here because the projection EMITS it. It used to be interpolated raw — the one
+    span in a contested block that never passed through `deanaphorize` — while `distilled_segments`
+    excluded it, so R-PROJ-04 could not see the only part of the block that actually leaks a
+    dangling reference. Rendered un-repaired and verified not at all.
+    """
+    parts = [("Framing", deanaphorize(f.summary or "", referent))]
+    if (f.applies_when or "").strip():
+        parts.append(("Reach-for-it-when", deanaphorize(f.applies_when, referent)))
+    return [(label, prose) for label, prose in parts if prose.strip()]
 
 
 def _card_md_parts(b: Block, referent: str) -> list[tuple[str, str]]:
@@ -144,7 +152,8 @@ def distilled_segments(sec, b: Block, referents: dict[str, str]) -> list[str]:
     referent = referent_for(sec, b, referents)
     role = b.role.value
     if role == "contested":
-        return [s for f in (b.framings or []) if (s := _framing_prose(f, referent))]
+        return [prose for f in (b.framings or [])
+                for _label, prose in _framing_md_parts(f, referent)]
     if role == "figure":
         return [s] if (s := deanaphorize(b.caption or "", referent)) else []
     if role == "card":
@@ -228,8 +237,16 @@ def no_svg(artifact) -> list[str]:
     problems: list[str] = []
     if "<svg" in md.lower():
         problems.append("SVG markup present in the llm_md projection (token noise, R-PROJ-06)")
-    for b in ir.flatten_blocks():
-        if b.role.value == "figure" and b.caption and b.caption not in md:
+    # Compare against the caption AS PROJECTED, not the raw one. Captions are de-anaphorized like
+    # every other chunk — a caption opening "This shows the layered graph" is exactly the dangling
+    # reference R-PROJ-04 exists to remove — so a raw-substring test reports "caption dropped" for
+    # any caption the repair actually touched: a false failure, and one that would push an author to
+    # write captions the repair leaves alone.
+    referents = _referent_map(None)
+    for sec, b in kept_blocks(ir):
+        if b.role.value != "figure" or not b.caption:
+            continue
+        if not any(seg and seg in md for seg in distilled_segments(sec, b, referents)):
             problems.append(f"{b.block_id}: figure caption dropped from the md projection")
     return problems
 

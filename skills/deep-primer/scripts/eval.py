@@ -112,6 +112,13 @@ def _exercised(findings: list[dict]) -> list[str]:
     return [f["rule_id"] for f in findings if f["status"] != "skip"]
 
 
+# Models whose MUST verdicts are not trustworthy enough to BLOCK on — the same principle already
+# applied to the lexical proxy: only gate on a measurement worth trusting. A calibration sweep
+# measured haiku at 6/21 unstable on gating items (29% — a coin flip on rules that block) against
+# sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. Its verdicts are still REPORTED.
+_UNTRUSTED_GATING = {"haiku", None}
+
+
 def _citation_shortfall(mv: dict) -> str | None:
     """Why citation quality fails this spec, or None if it does not — the ONE such judgement.
 
@@ -276,6 +283,10 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
     thresholds = load_thresholds(rubric_path)
     ir = DocumentIR.from_yaml(paths["ir"])
     ledger = SourceLedger.from_yaml(paths["ledger"])
+    # `run_eval` builds ONE backend and hands it to every spec, so its `unresolved` list is a running
+    # total: spec-02 was reporting spec-01's failures plus its own, and `propose_thresholds` then
+    # summed those already-cumulative numbers. Take the delta so each spec reports its own.
+    _unresolved_before = len(list(getattr(backend, "unresolved", []) or []))
     report = verify_citations(ir, ledger, backend=backend, thresholds=thresholds)
     out = {
         "status": "scored",
@@ -305,8 +316,8 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         "meets_composition": (report["scoreable"]
                               and report["ungrounded_share"] <= thresholds["max_inferred_share"]),
         "unresolved_citations": len(report["resolves_to_ledger"]["violations"]),
-        # judge health, not primer health — see propose_thresholds
-        "backend_unresolved": report["backend_unresolved"],
+        # judge health, not primer health — see propose_thresholds. Per-spec, not cumulative.
+        "backend_unresolved": max(0, report["backend_unresolved"] - _unresolved_before),
         "counts": report["counts"],
     }
 
@@ -376,13 +387,11 @@ def _tier_soft_critic(paths: dict[str, Path]) -> dict:
         "must_failed": sorted(failed_set & _gating_rules()),
         "unstable": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "unstable"}),
         "errored": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "error"}),
-        # Whether this report's MUST verdicts are trustworthy enough to BLOCK on — the same
-        # principle already applied to the lexical proxy below. A calibration sweep measured haiku
-        # at 6/21 unstable on gating items (29% — a coin flip on rules that block) against sonnet's
-        # 1/21, with two haiku hard-FAILs that sonnet passed. Gating on a judge that unstable would
-        # be failing the primer for the judge's variance. A run with `--gating-model` routed its
-        # MUST items to the better model, and those verdicts do gate.
-        "gating_judge": judge.get("gating_model"),
+        # Which model judged the MUST items. `run_critics` records this whether or not a SECOND
+        # judge was built — `--gating-model sonnet --model sonnet` builds none, and stamping only in
+        # that branch left the strongest configuration unstamped, so a consumer keying on presence
+        # read "everything on sonnet" as less trustworthy than "haiku with sonnet gating".
+        "gating_judge": judge.get("gating_model") or judge.get("model"),
     }
 
 
@@ -584,7 +593,7 @@ def _spec_strict_failures(results: list[dict], rules: list[dict]) -> list[dict]:
         # of gating ballots against sonnet's 5% and hard-FAILED two items sonnet passed, so a
         # haiku-judged report is REPORTED here and does not block; a `--gating-model` run does.
         critics = r.get("soft_critic") or {}
-        if critics.get("must_failed") and critics.get("gating_judge"):
+        if critics.get("must_failed") and critics.get("gating_judge") not in _UNTRUSTED_GATING:
             reasons.append(f"critic MUST failure(s): {', '.join(critics['must_failed'])} "
                            f"(gating judge: {critics['gating_judge']})")
         silent = [rid for rid in expected["not_exercised"]
