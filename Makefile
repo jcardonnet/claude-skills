@@ -9,8 +9,11 @@ probe:                 ## record optional-dependency availability
 	python skills/deep-primer/scripts/probe_env.py
 test:                  ## unit tests
 	python -m pytest -q
-lint:                  ## ruff over the skill sources
-	python -m ruff check skills/deep-primer/scripts skills/deep-primer/tests
+lint:                  ## ruff over the skill sources and the repo-level tests
+# `tools/` is deliberately absent: validate_skill.py is the working-minimal version and
+# bundle.py is still a stub, and between them they carry 16 findings that are noise until
+# Stage 6 rewrites both. Add them here once they are real.
+	python -m ruff check skills/deep-primer/scripts skills/deep-primer/tests tests
 eval:                  ## run the deep-primer eval harness
 	python skills/deep-primer/scripts/eval.py
 bundle:                ## emit each skill as a self-contained, deployable folder

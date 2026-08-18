@@ -30,7 +30,10 @@ py-modules = []
 # Match the frozen source repo's line length so lifted modules stay byte-clean (modulo the
 # sanctioned import rewrites) and genuine semantic drift isn't buried in reformatting noise.
 line-length = 100
-target-version = "py313"
+# Pinned to the floor in `requires-python`, not above it. At py313 ruff offers rewrites that are
+# syntax errors on 3.11, which is the version this package still declares support for; a lint
+# gate must not be able to suggest code the declared runtime cannot parse.
+target-version = "py311"
 # Ruff 0.16 formats Python code blocks inside Markdown BY DEFAULT (a documented 0.16.0 breaking
 # change). Every file it wanted to rewrite here was a dated plan, spec, or record under `docs/` --
 # 26 of them, ~9.5k lines, and zero source files. Those documents are a historical record of what
@@ -106,7 +109,11 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = [
+# `**/tests/**`, not `tests/**`. Ruff matches these globs against the path as given, and this
+# repo's tests live at `skills/<skill>/tests/**` — the bare `tests/**` key matched a top-level
+# directory that does not exist here, so all nine exemptions below were inert and the nine rules
+# they name were live on every test file. Verified with `ruff check --stdin-filename`.
+"**/tests/**" = [
     "S105", "S106", "S107",  # "token" is domain vocabulary (a text token), never a credential
     "S108",     # hardcoded /tmp paths are ephemeral test fixtures
     "S311",     # non-crypto random is fine for generating test data
