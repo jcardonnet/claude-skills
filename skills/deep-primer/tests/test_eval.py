@@ -659,3 +659,38 @@ def test_a_narrowed_run_still_reports_real_spec_failures():
     gate = coverage_gate(set(registry_rule_ids()), results, partial=True)
     assert not gate["passed"]
     assert gate["spec_failures"] and gate["spec_failures"][0]["spec"] == "spec-x"
+
+
+# --- G13: the composition failure on the shipped spec-02 artifact -------------
+#
+# `test_composition_gates_on_every_backend_because_no_backend_computes_it` (test_verify.py) proves
+# the GUARD works, on a synthetic dict. Nothing pinned what the guard actually says about the
+# shipped artifact, so either resolution of GAPS G13 — relabelling spec-02's blocks `verified`, or
+# moving `max_inferred_share` — could land silently and read as "the eval went green". It should not
+# be possible to clear a recorded gap by accident. This fails whichever way it is resolved, which is
+# the point: resolving G13 means editing this pin on purpose and saying so in GAPS.md.
+
+def test_spec_02_grounds_nothing_and_the_composition_gate_says_so():
+    """All 13 claim-bearing blocks are `provenance: inferred`, so `ungrounded_share` is 1.00 against
+    a 0.60 cap. Defensible on inspection — every source is a home-domain technique paper and every
+    block's conclusion is a transfer no source states — but spec-02 is deliberately the `home ~=
+    target` cross-domain case (G1), so a global cap fails the flagship spec by construction.
+    GAPS G13 is that decision; this is its pin."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-02-callout-extraction")
+    mv = report["results"][0]["model_verified"]
+    assert mv["status"] == "scored"
+    assert mv["ungrounded_share"] == 1.0, "spec-02 is entirely synthesis — see GAPS G13"
+    assert mv["scoreable"] is True, "unscoreable and ungrounded are different failures"
+    assert mv["meets_composition"] is False
+    assert mv["thresholds"]["max_inferred_share"] == 0.60
+
+
+def test_no_other_spec_is_entirely_ungrounded():
+    """The companion, and the reason G13 reads as an artifact/threshold question rather than a
+    harness bug: spec-02 is the only outlier. The rest run 0.43-0.60 — and spec-03 sits EXACTLY at
+    the cap, passing only on `<=`, so there is no headroom to absorb a threshold move either."""
+    report = run_eval(SPEC_DIR, SKILL_ROOT)
+    shares = {r["id"]: r["model_verified"]["ungrounded_share"]
+              for r in report["results"] if r["model_verified"].get("status") == "scored"}
+    assert shares.pop("spec-02-callout-extraction") == 1.0
+    assert shares and max(shares.values()) <= 0.60, shares
