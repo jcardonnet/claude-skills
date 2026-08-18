@@ -306,13 +306,23 @@ def front_load_campaign(topic: str, params: dict | None = None, snapshot_dir: st
         clusters = discovery.cluster_leads([*accepted, *fresh])
         accepted = triage_leads(clusters, params, judge, all_briefs)
 
-        saturated = novel_fraction < discovery.SATURATION_THRESHOLD
+        # A wave that returned NO leads has not saturated, it has failed, and those need different
+        # labels. `novel_fraction` is 0/0 there, and reporting it as 0.0 put it below any threshold:
+        # a dead research backend — every brief erroring, or every URL failing verification — stops
+        # the campaign on wave A, freezes an empty snapshot, and writes `saturated` in the log. Zero
+        # leads read as zero NEW leads, which is the most reassuring possible word for a total
+        # retrieval outage. Not hypothetical: `claude -p` does not search in this environment.
+        exhausted = not fresh
+        saturated = bool(fresh) and novel_fraction < discovery.SATURATION_THRESHOLD
         records.append(WaveRecord(
             wave=wave, briefs=len(briefs), framing_cells=discovery.framing_diversity(briefs),
             leads_total=len(fresh), leads_new=len(novel),
             novel_fraction=round(novel_fraction, 4),
-            decision="stop" if saturated else "continue",
+            decision="stop" if (saturated or exhausted) else "continue",
         ))
+        if exhausted:
+            terminal = "no_leads"
+            break
         if saturated:
             terminal = "saturated"
             break

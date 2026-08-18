@@ -24,7 +24,9 @@ from research.discovery import (  # noqa: E402
     orthogonal_count,
 )
 
-_VALID_TERMINALS = {"saturated", "max_waves"}
+# `no_leads` is a third outcome, not a flavour of saturation: a wave that returned nothing has a
+# 0/0 novel_fraction, and calling that 0.0 made a dead research backend report `saturated`.
+_VALID_TERMINALS = {"saturated", "max_waves", "no_leads"}
 
 
 def framing_diversity(discovery_log: DiscoveryLog, briefs: list[ResearchBrief]) -> list[str]:
@@ -95,6 +97,16 @@ def saturation_terminal(discovery_log: DiscoveryLog) -> list[str]:
             problems.append(
                 f"terminal 'saturated' but the final wave's novel_fraction {last.novel_fraction} "
                 f">= threshold {discovery_log.saturation_threshold}")
+        # Saturation is a statement about a corpus that ran dry, so it requires a wave that actually
+        # retrieved something. With `leads_total == 0` the novel_fraction above is a 0/0 dressed as
+        # 0.0, which clears the comparison for the wrong reason and hides a dead backend.
+        if discovery_log.terminal == "saturated" and last.leads_total == 0:
+            problems.append(
+                "terminal 'saturated' but the final wave returned no leads at all; a campaign that "
+                "retrieved nothing has not exhausted the corpus — expected terminal 'no_leads'")
+        if discovery_log.terminal == "no_leads" and last.leads_total:
+            problems.append(
+                f"terminal 'no_leads' but the final wave returned {last.leads_total} lead(s)")
         if discovery_log.terminal == "max_waves" and len(discovery_log.waves) < cap:
             problems.append(f"terminal 'max_waves' but only {len(discovery_log.waves)} of {cap} waves ran")
     return problems

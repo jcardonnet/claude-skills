@@ -172,11 +172,19 @@ def novel_leads(leads: Iterable[Lead], accepted: Iterable[Lead], backend: Simila
 
     Deduping within the wave matters: six briefs surfacing one idea is one new lead, and counting
     it six times would keep novel_fraction high and the campaign running past saturation.
+
+    Sorted by id first, because thresholded similarity is not transitive and this dedup is greedy.
+    Given A~B, B~C and A!~C — three ordinary near-neighbours, not a contrived case — the input order
+    [A,B,C] keeps two leads and [B,A,C] keeps one. That is a 2x swing in `novelty`, which is compared
+    against SATURATION_THRESHOLD to decide whether the campaign stops, and `fresh` arrives in
+    whatever order the briefs happened to return. R-DISC-04 is the claim that this decision is
+    reproducible; canonicalising the walk makes the result a function of the SET of leads rather
+    than of the sequence. Callers take the count, not the order.
     """
     backend = backend or resolve_similarity()
     known = list(accepted)
     out: list[Lead] = []
-    for lead in leads:
+    for lead in sorted(leads, key=lambda x: x.id):
         if not any(same_lead(lead, k, backend, threshold) for k in [*known, *out]):
             out.append(lead)
     return out

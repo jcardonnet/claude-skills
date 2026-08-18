@@ -103,6 +103,42 @@ def test_novelty_dedupes_within_the_wave():
     assert discovery.novelty(fresh, []) == pytest.approx(1 / 6)
 
 
+def test_novelty_does_not_depend_on_the_order_the_briefs_returned():
+    """The dedup is greedy and thresholded similarity is not transitive, so with A~B, B~C and A!~C
+    the walk order changed the answer: [A,B,C] kept two leads, [B,A,C] kept one. A 2x swing in
+    `novelty`, which is compared against SATURATION_THRESHOLD to decide whether the campaign stops —
+    and `fresh` arrives in whatever order the briefs happened to come back in. R-DISC-04 is the
+    claim that this decision is reproducible."""
+    import itertools
+
+    sim = discovery.resolve_similarity()
+    a = tl("A", "leader line tracing for callouts")
+    b = tl("B", "leader line tracing")
+    c = tl("C", "line tracing")
+    assert discovery.same_lead(a, b, sim) and discovery.same_lead(b, c, sim)
+    assert not discovery.same_lead(a, c, sim), "this trio must be non-transitive to prove anything"
+
+    answers = {len(discovery.novel_leads(perm, [])) for perm in itertools.permutations([a, b, c])}
+    assert len(answers) == 1, f"input order changed the novelty count: {answers}"
+
+
+def test_a_wave_that_returned_nothing_is_not_saturation():
+    """`novel_fraction` is 0/0 for an empty wave, and reporting it as 0.0 put it below any threshold
+    — so a dead research backend stopped the campaign on wave A, froze an empty snapshot, and wrote
+    the most reassuring word available into the log."""
+    log = DiscoveryLog(max_waves=3, saturation_threshold=0.15, terminal="saturated", waves=[
+        {"wave": "A", "briefs": 5, "framing_cells": 5, "leads_total": 0, "leads_new": 0,
+         "novel_fraction": 0.0, "decision": "stop"}])
+    assert any("no leads at all" in p for p in disc_checks.saturation_terminal(log))
+
+    log.terminal = "no_leads"
+    assert disc_checks.saturation_terminal(log) == []
+
+    # ...and the new label is not a free pass either: a wave that DID retrieve cannot claim it
+    log.waves[-1].leads_total = 4
+    assert any("returned 4 lead(s)" in p for p in disc_checks.saturation_terminal(log))
+
+
 def test_saturation_reads_the_latest_wave():
     log = {"saturation_threshold": 0.15,
            "waves": [{"novel_fraction": 0.9}, {"novel_fraction": 0.1}]}

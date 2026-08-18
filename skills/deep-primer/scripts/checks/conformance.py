@@ -45,8 +45,27 @@ _PURE_MODULES = {
     "R-CONV-02": SCRIPTS / "research" / "convergence.py",
     "R-DISC-04": SCRIPTS / "research" / "discovery.py",
 }
-_IMPURE_CALLS = {"now", "today", "utcnow", "random", "randint", "shuffle", "choice", "uuid4", "time"}
-_IMPURE_IMPORTS = {"random", "secrets", "uuid"}
+# An ALLOWLIST, because the denylist it replaces could not detect a single impurity this repo is
+# actually capable of. `_IMPURE_IMPORTS` was {random, secrets, uuid}: it named neither `time` nor
+# `datetime` nor `os` nor `subprocess`, and — the part that matters — it named none of the modules
+# that call a model. Importing `utils.claude_cli` and calling `ClaudeCli(...)("...")` from inside a
+# pure function passed this guard 9/9 clean, which is precisely what R-CONV-02 / R-DISC-04 forbid.
+# Aliasing walked through it as well: `import time as t` was never `random`.
+#
+# A denylist must anticipate the violation. An allowlist must anticipate the legitimate need, and
+# there are five: both modules import re, sys, pathlib, typing and ir.schema. Extend this set
+# deliberately, with a reason.
+_PURE_IMPORTS = {
+    "__future__", "re", "sys", "pathlib", "typing",
+    "dataclasses", "collections", "itertools", "functools", "math", "enum",
+    "ir",           # the IR schema: pydantic models, no I/O
+}
+
+# Second layer, for impurity that arrives without an import. `hash` is here because the builtin is
+# salted per process (PYTHONHASHSEED) and this repo has already shipped that bug once, in
+# `concept_id` — where the test meant to catch it asserted `f(x) == f(x)` inside one process.
+_IMPURE_CALLS = {"now", "today", "utcnow", "random", "randint", "shuffle", "choice", "uuid4",
+                 "time", "monotonic", "perf_counter", "getenv", "urandom", "hash", "input"}
 
 
 def deterministic_modules_stay_pure(modules: dict | None = None) -> list[str]:
@@ -60,23 +79,59 @@ def deterministic_modules_stay_pure(modules: dict | None = None) -> list[str]:
             problems.append(f"{rule_id}: {path.name} is missing; the purity claim cannot be checked")
             continue
         tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        # ast.walk reaches imports nested inside functions too, so a lazy `import time` or a
+        # function-local `from utils.claude_cli import ClaudeCli` is caught alongside the top-level
+        # ones. The alias is irrelevant — the allowlist is keyed on the real module name.
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):
                 for alias in node.names:
-                    if alias.name.split(".")[0] in _IMPURE_IMPORTS:
-                        problems.append(f"{rule_id}: {path.name} imports {alias.name!r}")
+                    root = alias.name.split(".")[0]
+                    if root not in _PURE_IMPORTS:
+                        problems.append(f"{rule_id}: {path.name} imports {alias.name!r}, which is "
+                                        f"not on the pure-import allowlist")
             elif isinstance(node, ast.ImportFrom) and node.module:
                 root = node.module.split(".")[0]
-                if root in _IMPURE_IMPORTS:
-                    problems.append(f"{rule_id}: {path.name} imports from {node.module!r}")
-                if "judge" in node.module.lower() or root == "critics":
-                    problems.append(f"{rule_id}: {path.name} imports a judge ({node.module!r}); "
-                                    f"the model-judged half belongs in planner.py")
+                if root not in _PURE_IMPORTS:
+                    problems.append(f"{rule_id}: {path.name} imports from {node.module!r}, which is "
+                                    f"not on the pure-import allowlist")
             elif isinstance(node, ast.Call):
                 name = getattr(node.func, "attr", None) or getattr(node.func, "id", None)
                 if name in _IMPURE_CALLS:
                     problems.append(f"{rule_id}: {path.name} calls {name}() — non-deterministic")
     return problems
+
+
+# Where R-REJECT-01..04 look. The scan used to read `checks/` alone, which says nothing about the
+# other five directories — surprisal as an editing target would most naturally land in render/ or
+# critics/, and an MECE gate in verify/, and neither was ever opened.
+REJECT_SCAN_DIRS = ("checks", "verify", "critics", "render", "ir", "utils")
+
+_HOLISTIC = re.compile(r"\b(how good|is this good|overall quality|score .*\b(1|0)-\s*\d|"
+                       r"rate .* out of|thoroughness|on a scale)\b", re.IGNORECASE)
+# A negation scopes to its clause, so that is where it is looked for.
+_NEGATION = re.compile(r"\b(never|not|no|avoid\w*|prohibit\w*|forbid\w*|instead of|rather than)\b",
+                       re.IGNORECASE)
+_CLAUSE_END = re.compile(r"[.;:]\s")
+
+
+def _asks_holistically(line: str) -> bool:
+    """Does this prompt line ASK for a holistic judgement, as opposed to forbidding one?
+
+    Every generated prompt quotes the prohibition in its discipline block ("**Never** score holistic
+    'quality', 'thoroughness', or 'how good'"), so the phrases have to be exempt when negated. The
+    exemption used to be "skip the whole line if it contains 'never', 'prohibited', or `not `" —
+    and `not ` is common enough in ordinary English that a line could carry a real holistic
+    instruction and an unrelated `not` and be waved through. It disabled the detector on the most
+    likely real phrasing rather than on the quotation it was aimed at.
+
+    A negation governs its clause, not the paragraph, so that is the window: the text from the last
+    clause boundary up to the match.
+    """
+    for m in _HOLISTIC.finditer(line):
+        clause = _CLAUSE_END.split(line[:m.start()])[-1]
+        if not _NEGATION.search(clause):
+            return True
+    return False
 
 
 def critics_are_binary_only(prompt_dir: Path | None = None) -> list[str]:
@@ -97,14 +152,9 @@ def critics_are_binary_only(prompt_dir: Path | None = None) -> list[str]:
     except ValueError:
         pass
 
-    holistic = re.compile(r"\b(how good|is this good|overall quality|score .*\b(1|0)-\s*\d|"
-                          r"rate .* out of|thoroughness|on a scale)\b", re.IGNORECASE)
     for prompt in sorted((prompt_dir or SKILL_ROOT / "references" / "critic-prompts").glob("*.md")):
         for n, line in enumerate(prompt.read_text(encoding="utf-8").splitlines(), start=1):
-            # the prohibition itself is quoted in every prompt's discipline block; skip those
-            if "never" in line.lower() or "prohibited" in line.lower() or "not " in line.lower():
-                continue
-            if holistic.search(line):
+            if _asks_holistically(line):
                 problems.append(f"R-REJECT-05: {prompt.name}:{n} asks a holistic question: "
                                 f"{line.strip()[:80]}")
     return problems
@@ -137,9 +187,9 @@ def no_rejected_techniques_are_implemented(check_dir: Path | None = None) -> lis
         "R-REJECT-04": (re.compile(r"\brst\b(?!\s*=)", re.IGNORECASE), "RST auto-restructuring"),
     }
     problems: list[str] = []
-    check_dir = check_dir or SCRIPTS / "checks"
+    roots = [check_dir] if check_dir else [SCRIPTS / d for d in REJECT_SCAN_DIRS]
     for rule_id, (pattern, label) in banned.items():
-        for path in sorted(check_dir.glob("*.py")):
+        for path in sorted(p for root in roots if root.is_dir() for p in root.glob("*.py")):
             if path.name == "conformance.py":       # this module names all four to forbid them
                 continue
             for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):

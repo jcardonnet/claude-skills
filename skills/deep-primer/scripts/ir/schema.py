@@ -548,7 +548,11 @@ class DiscoveryLog(BaseModel):
     max_waves: int
     saturation_threshold: float
     waves: list[WaveRecord] = Field(default_factory=list)
-    terminal: Literal["saturated", "max_waves"] | None = None
+    # `no_leads` is a THIRD outcome, not a flavour of saturation. A wave returning nothing makes
+    # novel_fraction a 0/0 that used to be reported as 0.0 — below any threshold — so a dead
+    # research backend stopped the campaign on wave A, froze an empty snapshot, and labelled it
+    # `saturated`: the most reassuring possible word for a total retrieval outage.
+    terminal: Literal["saturated", "max_waves", "no_leads"] | None = None
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> DiscoveryLog:
