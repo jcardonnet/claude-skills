@@ -1,9 +1,9 @@
 # HANDOFF — resuming deep-primer work in a local session
 
-Written at the end of a Claude Code **web** session that implemented `PLAN.md` Stages A–F.
-Branch **`claude/deep-primer-skill-review-n3egin`**, PR **#1** (draft), 8 commits, tree clean,
-everything pushed. Read `PLAN.md` for the full stage-by-stage rationale; this file is the
-what-you-need-to-start.
+Written at the end of a Claude Code **web** session that implemented `PLAN.md` Stages A–F, and
+extended by two local sessions since (§8, §9). Branch **`claude/deep-primer-skill-review-n3egin`**,
+PR **#1** (draft), 17 commits on `f80ff65`. Read `PLAN.md` for the full stage-by-stage rationale;
+this file is the what-you-need-to-start. **§1 is the current state; §9 is the most recent work.**
 
 ---
 
@@ -24,12 +24,12 @@ Expected on a clean checkout (measured at handoff):
 
 | Command | Expected |
 |---|---|
-| `make test` | `322 passed, 0 skipped` |
+| `make test` | `475 passed, 0 skipped` (~1m45s; longer if `make eval` runs alongside it) |
 | `make validate` | `OK — 1 skill(s) valid (lockstep in sync), 2 skipped` |
-| `make lint` | **not reproducible; not in CI** — see §4. Was `All checks passed!` only against the container's ruff |
-| `make eval` | 2/6 specs scored, enforcement coverage **79/79 (100%)**, thresholds **refused** (see §4) |
-| `eval.py --strict` | exit **0** — the coverage ratchet holds (§8) |
-| `make bundle` | `bundled 1/1 skill(s)` |
+| `make lint` | **136 errors** — all pre-existing, none from the recent work. It is ruff over `scripts/`, `tests/` and repo `tests/`, with `tools/` deliberately excluded (see the Makefile comment). Not in CI. A number *above* 136 is the signal |
+| `make eval` | **6/6 specs scored**, enforcement coverage **79/79 (100%)** — every tier at 100%: hard_lint 32/32, model_verified 3/3, soft_critic 35/35, human 9/9. Thresholds still **refused** on the lexical proxy (see §4) |
+| `eval.py --strict` | exit **1**, for exactly two reasons, both recorded: spec-01 `critic MUST failure(s): R-SUMM-01` (**GAPS G14** — judge drift, not an artifact defect) and spec-02 `composition below threshold (ungrounded_share=1.0 > max_inferred_share=0.6)` (**GAPS G13**). Any *third* reason is a regression |
+| `make bundle` | `deep-primer: 84 files -> dist/deep-primer, bundled 1/1` |
 | strict lint (below) | `clean — fail=0 warn=0 pass=22 skip=0` |
 
 ```bash
@@ -59,9 +59,16 @@ Registry: **79 rules** — 32 `hard_lint`, 35 `soft_critic`, 3 `model_verified`,
 | F (Prompt 8) | done | `--check-build`, CI path-filtering + gates, `run_manifest.py` |
 | **G (live run)** | **seams built, one brief run live** | `HttpFetcher`, `ClaudeResearchBackend` and the Claude entailment backend all exist and have run against the network. What remains is a full multi-wave campaign and a generated primer. See §5 |
 | H (local session) | done | Coverage ratchet (`eval.py --strict`), the critic tier's first real judge, determinism fix, Sonar security half. See §8 |
+| **H2 (second local session)** | **done** | Two adversarial review rounds (55 findings), the artifact fixes for `R-ARCH-01`/`R-EVID-01`, and the re-judge that took coverage 46/79 → **79/79**. Opened G14. See §9 |
 
-`GAPS.md` has **no OPEN gap**. The only remaining `NotImplementedError` in the tree is
-`scripts/research/kb.py` — a deliberate V2 deferral (Mixedbread-backed source KB).
+`GAPS.md` has **two OPEN gaps, G13 and G14**, and they are the two reasons `eval.py --strict` exits
+1. Neither is an engineering problem and neither is cleared by spending: **G13** is a decision about
+the composition bound and what spec-02 is allowed to claim, **G14** about how much a MUST verdict
+from a stochastic judge is worth. Both are surfaced rather than applied — read them before touching
+the reference artifact. (G11 and G12 were the other two and are RESOLVED; see §8.)
+
+The only remaining `NotImplementedError` in the tree is `scripts/research/kb.py` — a deliberate V2
+deferral (Mixedbread-backed source KB).
 
 ---
 
@@ -100,10 +107,13 @@ tiebreak, the idiom `assign_section` and `outline_seed` already used.
 
 ## 4. Live landmines / non-obvious decisions
 
-- **`make eval` reports FAIL for spec-01, and that is correct.** Two expected `soft_critic` rules
-  (`R-ARCH-03`, `R-CARD-01`) need a judge model, so they are *not exercised*, and an unexercised
-  expected rule is deliberately not a pass. The report classifies why (judge gap vs missing artifact
-  vs a real silent skip) — check `not_exercised_reason` before assuming a bug.
+- **`make eval` reports FAIL for spec-01, but no longer for the reason written here.** It used to be
+  that two expected `soft_critic` rules (`R-ARCH-03`, `R-CARD-01`) needed a judge model, so they were
+  *not exercised* — and an unexercised expected rule is deliberately not a pass. Both are judged and
+  passing now, and spec-01 clears its whole `expect.must_pass` list. The one thing still failing it
+  is `R-SUMM-01 [lede-reranking]`, which is **GAPS G14** — judge drift across runs on byte-identical
+  input, not a defect in the artifact. The `not_exercised_reason` classifier (judge gap vs missing
+  artifact vs a real silent skip) is still the first thing to read before assuming a bug.
 - **Citation thresholds are deliberately still TODO.** Scored with the offline lexical backend,
   spec-01 shows recall 0.14 / precision 0.13 — those are what a *compliant* primer produces, because
   the proxy measures word overlap between a ≤15-word quote and a block `R-GROUND-01` requires to be a
@@ -154,14 +164,27 @@ tiebreak, the idiom `assign_section` and `outline_seed` already used.
   Rating **A** requires clearing *all* 16, so the gate stays red until someone with a Sonar login
   dismisses them. `build-validate-bundle` has been green on every commit.
 
-- **`make lint` is not reproducible, and is not in CI.** `pyproject.toml` declared `ruff>=0.5` with
+- **`make lint` is reproducible now, and is still not in CI.** It used not to be: `pyproject.toml` declared `ruff>=0.5` with
   no `[tool.ruff]` config at all, so the outcome depended on whichever ruff happened to be installed:
   `All checks passed!` under the container's older narrow default, 92 findings under ruff 0.16
   (whose defaults are far broader and no longer enable `E402`, orphaning all 48 `# noqa: E402`).
-  A `[tool.ruff]` block now exists in the working tree. Two things in it to check before trusting it:
-  `per-file-ignores` keys on `"tests/**"`, which does **not** match this repo's tests at
-  `skills/deep-primer/tests/**` — verified with `--stdin-filename`, so all nine test exemptions are
-  currently inert — and `target-version = "py313"` against `requires-python = ">=3.11"`.
+  A `[tool.ruff]` block now exists. Both things this paragraph flagged for checking were real and
+  are **fixed** (`49e0e08`): `per-file-ignores` keyed on `"tests/**"`, which matches nothing here —
+  the tests live at `skills/deep-primer/tests/**`, so all nine exemptions were inert and the nine
+  rules they name were live on every test file (145 → 136 findings once keyed on `**/tests/**`,
+  exactly the nine `SLF001`); and `target-version = "py313"` against `requires-python = ">=3.11"`,
+  now `py311`, which produced no finding delta but could have offered rewrites the declared floor
+  cannot parse. Both are pinned by `tests/test_lint_config.py`, which asks ruff itself via
+  `--stdin-filename` rather than re-implementing globset matching, and fails when either setting is
+  reverted. Those pins sit at the repo root, not inside the skill: a bundled skill must not reach up
+  to a repo-level file.
+
+  `make lint` still reports **136 pre-existing findings** and is still not in CI. They are dominated
+  by 52 `RUF100` (the orphaned `# noqa: E402`), 24 `PERF401`, 8 `BLE001`, 8 `C901`, 8 `UP042`. The
+  target covers `skills/deep-primer/{scripts,tests}` and the repo-level `tests/`; `tools/` is
+  deliberately excluded, with a comment in the Makefile saying why — `validate_skill.py` is the
+  working-minimal version and `bundle.py` is a stub, and between them they carry 16 findings that
+  are noise until Stage 6 rewrites both.
 
 ---
 
@@ -231,28 +254,37 @@ Everything it needs is in place and exercised offline against frozen artifacts:
 
 ## 6. Suggested first actions locally
 
-1. **Run `/code-review` over `origin/main..HEAD`.** An adversarial review workflow was launched near
-   the end of the session and stopped before finishing, so Stages A–F have had **no independent
-   review pass** — only my own verification as I went. That did catch six real bugs (doubled template
-   render; the MD projection dropping subsection blocks; URL over-clustering in lead dedup; a
-   version regex that missed lowercase names like `pgvector`; a rename counted as a structural
-   reorder; cwd-dependent tests), which suggests a fresh pass is worth the time.
-2. Open the SonarCloud dashboard and dismiss the 16 remaining vulnerabilities (§4). The code half is
-   done; nothing else can move that gate without a Sonar login.
-3. If you want the eval to mean something, do Stage G (§5) — until then the model_verified tier is
+1. ~~**Run `/code-review` over `origin/main..HEAD`.**~~ **Done, twice.** Two independent adversarial
+   rounds: 39 confirmed findings on the branch, then 16 confirmed on my own fixes to those (5 high).
+   All 55 addressed. The second round is the instructive one — it found that I had put the
+   composition guard behind the lexical bypass where it could not fail, and re-stamped the critic
+   digest on a circular proof. `git log f80ff65..HEAD` carries the reasoning per commit.
+2. ~~Open the SonarCloud dashboard and dismiss the 16 remaining vulnerabilities (§4).~~
+   **Out of scope — explicitly deprioritised.** The gate is red and stays red; nothing can move it
+   without a Sonar login, and the finding in §4 reads as a false positive on inspection.
+3. **Settle G13 and G14 — they are the only two things between `--strict` and exit 0.** Neither is
+   an engineering task and neither is cleared by spending. **G13** asks what spec-02 is allowed to
+   claim when its sources ground nothing (`ungrounded_share=1.0` against a `0.6` bound that was set
+   by judgement, not principle). **G14** asks what a MUST verdict from a stochastic judge is worth,
+   given one flipped across two runs on byte-identical input. `GAPS.md` states three options for
+   G14; both are surfaced rather than applied, on purpose.
+4. If you want the eval to mean something, do Stage G (§5) — until then the model_verified tier is
    scored by a proxy that cannot support a threshold. The grounding half is now live-capable; what
    remains is a real campaign `Backend`.
-4. **Raise the `soft_critic` coverage floor.** `eval-rubric.yaml`'s `coverage_floor` is a ratchet
-   pinned to what the offline run actually achieves. The critic tier can now be judged for real
-   (§8), so once a critic report is committed as a spec artifact, that floor should rise with it —
-   the ratchet is only worth anything if it is tightened after each genuine gain.
-5. Decide what the `human` tier *is*. All 9 rules are unexercised, including the five `MUST_NOT`
-   `R-REJECT-*` criteria. Either they are a checklist someone actually runs at review time — in
-   which case they need a slot in the workflow — or they are aspirational and should say so.
-6. Consider whether 79 rules is the right number. 32/79 have ever been exercised and the largest
-   tier sat at 6% until this session. Some rules may be better retired than implemented;
-   `evidence-map.md` is where to test which have earned their place.
-7. Optional: `scripts/research/kb.py` (V2 Mixedbread KB) is the only stub left.
+5. ~~**Raise the `soft_critic` coverage floor.**~~ **Done — it is 35, i.e. the whole tier.** A real
+   judged critic report is committed as spec-01's artifact and every one of the 35 is exercised
+   against it. The floor was raised to match the gain and then held there through a period when the
+   honest reading was 2/35, which is the only test of a ratchet that means anything.
+6. **Decide what the `human` tier *is*.** Still open, and now sharper: `checks/conformance.py` checks
+   all nine against the source tree and they pass 9/9, so the tier is no longer *unexercised* — but
+   the registry still files them under `human`, which says a person judges them. Either the
+   conformance check is the real enforcement and they should be reclassified, or it is a proxy and
+   the nine need a slot in the review workflow. Deliberately left as the maintainer's call.
+7. **Consider whether 79 rules is the right number.** Every one is now exercised (79/79), so the
+   question is no longer "which are implementable" but "which have earned their place" — which is
+   the harder version. `evidence-map.md` is where each rule states its warrant, and it is the right
+   place to test that claim rule by rule.
+8. Optional: `scripts/research/kb.py` (V2 Mixedbread KB) is the only stub left.
 
 ---
 
@@ -306,10 +338,11 @@ like a passing one. `model_verified` is now 3/3.
 **The critic tier got a real judge, and coverage went 32/79 → 65/79 (82%).** `soft_critic` moved
 **2/35 → 35/35**. `critics/claude_judge.py` implements the `Judge` seam against the local `claude`
 CLI — one scoped call per (rule, block), never batched, `{pass, fail}` only, hard USD cap.
-`run_critics --judge claude` replaces the hardcoded `StubJudge`. The committed run is 114 haiku
-judgements, $5.15, `pass=51 fail=16 unstable=6 error=0`, frozen at
+`run_critics --judge claude` replaces the hardcoded `StubJudge`. That first committed run *was* 114
+haiku judgements, $5.15, `pass=51 fail=16 unstable=6 error=0`, frozen at
 `tests/fixtures/critic-report.full.json` and wired into spec-01 — frozen for the same reason the
-discovery snapshot is, so eval scores the same verdicts every time.
+discovery snapshot is, so eval scores the same verdicts every time. It has been superseded twice
+since; **§9 holds the figures for the report that ships today.**
 
 Two safety properties: reports are stamped with which judge produced them, and `eval.py` refuses to
 credit a stub report as coverage. A stub returns `pass` for all 73 pairs without reading a word, so
@@ -357,8 +390,9 @@ looking at as a rule, not a model choice.
 `run_critics --gating-model sonnet` routes MUST-priority rules to a stronger judge while leaving the
 rest on haiku (80 gating calls, 33 non-gating). Gating rules already get test-retest precisely
 because they block; spending the better model exactly there is the cheap half of the fix. **The
-committed report is now that tiered run** — 113 calls, $17.85, `pass=56 fail=16 unstable=1 error=0`.
-Unstable 6 → 1 is the whole point.
+report committed at the end of that session was that tiered run** — 113 calls, $17.85,
+`pass=56 fail=16 unstable=1 error=0`. Unstable 6 → 1 is the whole point. That report was later found
+to have judged a *superseded* IR and has been re-judged; the shipping figures are in **§9**.
 
 **Frozen reports now record what they judged.** `ir_sha256` is stamped into every report, and
 `_tier_soft_critic` refuses to credit one whose digest no longer matches the spec's IR. This is not
@@ -404,7 +438,7 @@ two were about the primer:
 
 CI now installs spaCy + `en_core_web_md` (~50MB) so the native path is exercised. Deliberately not
 the `[nlp]` extra, which pulls fastcoref → torch for a coref feature that is off by default.
-**`make test` is now 322 passed, 0 skipped.**
+**`make test` went to 322 passed, 0 skipped** at that point (475 today — §1).
 
 **A real 3-wave campaign ran live, and the discovery checks had never been dispatched at all.**
 11 briefs against spec-02's topic, 124 source leads, snapshot frozen. Two things fell out:
@@ -445,7 +479,7 @@ of a literature. Saturation only means something once the backend genuinely retr
 Sources found by web search, fetched over the network by `HttpFetcher`, every ledger quote verified
 verbatim against the fetched body at ≤15 words. One candidate was rejected at 16 words, which is the
 cap working rather than a nuisance. `tests/fixtures/spec02/` holds the IR, concept map and ledger;
-`make eval` reports **2/6 scored**.
+`make eval` reported **2/6 scored** at that point (6/6 today — §1).
 
 The instructive part is what scoring it revealed. It lints clean — `fail=0 warn=0 pass=22 skip=0` —
 but the real entailment backend returned **recall 0.15 / precision 0.10**, against spec-01's
@@ -522,5 +556,87 @@ The `human` tier went 0/9 to 9/9 without a review pass, because it was never a r
 The registry still classifies them `human` — reclassifying is yours, and the pass deliberately does not route through `run_artifact_pass` (which filters to `hard_lint`), so the rules bind either way. Every check carries a NEGATIVE test proving it fails on a violating tree; 9/9 on a clean repo is otherwise indistinguishable from nine tautologies, which is the trap this project has now fallen into twice.
 
 G10 is resolved (R-DISC-02 scoped to the breadth wave), which unblocked wiring the campaign artifacts into eval: the discovery passes had existed since Stage B but no spec had ever handed them an artifact, so R-DISC-02/03/05/06 sat permanently in the "needs a campaign artifact" bucket. The only deterministic rule still dark is **R-CONV-01**, and deliberately so — `run_convergence_loop` would emit a valid-looking log driven by a stub judge that never looked at anything, which is the stub-critic problem wearing a different hat. It needs a real drafting loop. The other nine are the `human` tier, which needs a person, not a script.
-The five dark `hard_lint` rules are the DISC/CONV pair that needs Stage G artifacts; the nine
-`human` rules need a person. Those two numbers are the honest remaining gap — 65/79.
+
+---
+
+## 9. Stage H, second local session — the re-judge, and what it cost to find out
+
+§8's session ended believing coverage was 79/79. It was not. This session's whole content is that
+one number being wrong, what it took to make it true, and the one thing it uncovered that is still
+open.
+
+**G12: the frozen report had judged a document that no longer existed.** `critic-report.full.json`
+was produced against `document-ir.full.yaml` as of `49764e0`; `f80ff65` then relabelled three blocks
+`verified` → `inferred` and kept the report credited by making the staleness digest blind to
+provenance, on the stated grounds that critics "cannot see" it. **They can.** The document unit is
+built by `render_llm_md`, which prints `provenance:` into every block heading — so three lines of
+the surface every document-level critic reads were different, and provenance is precisely what
+`R-EVID-01` judges. The honest reading was `soft_critic` **2/35**, total coverage **46/79**.
+
+The tempting fix was to lower the floor from 35 to 2 and call the tier green. That is the exact
+silent erosion the ratchet exists to catch, so the floor stayed and the report was re-judged.
+
+**G11: with the report credited again, three MUST failures appeared that no gate could previously
+see.** `expect.must_pass` is a spec's *curated* list of rules it wants exercised (six, for spec-01) —
+not a statement about the registry's MUST set — so a critic failure on any other MUST rule was
+invisible. Two were real defects and were fixed in the artifact (`c0c3477`), which is what
+`eval-rubric.yaml` instructs:
+
+  - **`R-ARCH-01`** — the primer opened on a claim, with no scope-and-decisions block. The IR now has
+    a slot for one and spec-01 uses it: a place to say what the primer is *not* about.
+  - **`R-EVID-01`** — `aid-reranking` / `fig-reranking` stated precise thresholds (recall@k 0.8, 100
+    candidates) as flat fact under `Sources: [none yet — inferred]`, with no epistemic tag. Both are
+    now tagged as the estimates they are.
+
+Both now PASS, and so do `R-EXPERT-02`, `R-EXPERT-03` and `R-FIG-02[fig-reranking]`. **Coverage
+46/79 → 79/79, every tier at 100%.**
+
+**The re-judge itself: 119 calls, $11.89-equivalent, ~40 minutes**, haiku advisory + sonnet gating,
+`pass=64 fail=12 unstable=1 error=0` — 77 scoped binary verdicts (calls exceed verdicts because
+gating rules are judged twice). Installed verbatim, no hand-edits.
+
+That is **5% more calls for 33% less spend** than the run it replaced ($17.85 → $11.89), and the
+difference is the `--tools ""` default on `ClaudeCli` showing up as a number. Every `claude -p` is a
+cold session re-paying the harness preamble — ~37.8k tokens with the default tool set against ~15.9k
+with none — and a critic judging a block of text needs no tools. On a MAX subscription the binding
+constraint is rate limit, not dollars, so this is the measurement that matters.
+
+**G14 is what the re-judge uncovered, and it is open.** One MUST still fails on spec-01:
+`R-SUMM-01 [lede-reranking]`. It is **not** an artifact defect. That block's text is byte-identical
+across the two judged runs, and for a block-scoped rule the judged unit is only the block's
+`readable_text` plus its metadata — so the two prompts were byte-identical too. Sonnet returned
+*opposite* verdicts, each internally test-retest-**agreeing**:
+
+> run 1 — "Complete claim about reranking's limit, not a topic announcement" → pass
+> run 2 — "States a fact/limitation, not a defended claim/thesis" → fail
+
+The test-retest control in `run_pass` is **within-run only**; it structurally cannot see drift
+*between* runs. Editing the lede to chase this would be optimising against noise — it already
+satisfies the rule's own written contrast pair — and would stale a fresh $11.89 run. So it is
+surfaced as **G14** with three options (re-judge across sessions / treat a cross-run flip as
+`unstable` / accept single-verdict gating and record the flake rate) and deliberately not applied.
+Measured drift so far is 1 rule in 77 verdicts across two runs — too small a sample to pick from.
+
+**The load-bearing claim in that diagnosis is asserted by a mechanism, not by this paragraph.**
+`test_a_block_scoped_judgement_cannot_see_the_rest_of_the_document` in `test_critics.py` mutates a
+*sibling* lede exactly the way the last report was staled (a `verified` → `inferred` relabel plus a
+text change) and asserts the `R-SUMM-01 [lede-reranking]` instruction is byte-identical across it,
+while the document-scoped `R-ARCH-01` instruction must **differ**. That second half is what stops the
+test being un-failable: a `unit_text` returning `""` for everything would pass the first half alone.
+Both assertions were mutation-verified to fail when they should.
+
+**Three tests in `test_eval.py` were rewritten**, because they had been pinning the *broken* state —
+"the frozen report is stale and says so", "the coverage gate reports the shortfall", "the artifact
+fails on its two known critic MUSTs". Each now pins the fixed state, and the last one pins the shape
+rather than the outcome: the two real failures must stay gone, and the flaky one must stay **alone**.
+A fourth rule appearing there, or `R-ARCH-01`/`R-EVID-01` returning without the artifact changing,
+means something moved. The staleness *guard* keeps independent coverage on synthetic fixtures where
+it can still fail.
+
+**Where that leaves `--strict`:** exit **1**, for two reasons, both recorded and both decisions
+rather than bugs — **G13** (spec-02's composition bound) and **G14** (above). §1's table spells out
+the exact strings; a third reason is a regression.
+
+One footnote worth keeping: `GAPS.md` had blank lines *inside* its status table, and GFM ends a table
+at the first blank line — so G11–G14 had been rendering as literal pipe-text rather than rows. Fixed
+while editing it.

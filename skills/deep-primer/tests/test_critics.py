@@ -342,3 +342,47 @@ def test_gating_rules_route_to_the_gating_judge(fixtures):
     run_critics(ir, _judge("main"))
     assert seen["gating"] == 0 and seen["main"] > 0
     assert report["counts"]["error"] == 0
+
+
+def test_a_block_scoped_judgement_cannot_see_the_rest_of_the_document(fixtures, tmp_path):
+    """GAPS G14's load-bearing fact. `R-SUMM-01 [lede-reranking]` passed in one judged run and
+    failed in the next with that block's text byte-identical between them, and the diagnosis —
+    judge drift, not an artifact defect — rests entirely on the two PROMPTS having been identical
+    too. That is a property of the code, so it is asserted here rather than asserted in prose.
+
+    A block-scoped rule's instruction is built from `block_id/role/concept/mode` and the block's own
+    `readable_text`. Nothing else in the IR reaches it, so editing any other block leaves it byte
+    for byte the same. The mutation used is the one that actually staled the last report (a
+    `verified` -> `inferred` relabel plus a text change), and it lands on the SIBLING lede so the
+    unchanged neighbour is as close as the document allows.
+
+    The document-scoped half is what stops this from being un-failable: `_DOC_VIEW` carries no text,
+    so the judge substitutes the whole rendered projection, and there the same edit MUST show up.
+    Without that assertion a `_unit_text` that returned "" for everything would pass the first half.
+    """
+    import yaml
+    from critics.claude_judge import ClaudeCliJudge
+
+    def _instruction_for(ir_path, rule_id, block_id):
+        ir = DocumentIR.from_yaml(ir_path)
+        judge = ClaudeCliJudge(ir)
+        seen = []
+        judge._cli = lambda text: (seen.append(text),
+                                   {"result": '{"verdict": "pass", "evidence": "-"}'})[1]
+        block = next(b for b in applicable_blocks(rule_id, ir) if b.block_id == block_id)
+        judge("summary", "<pass prompt>", rule_id, block, 1)
+        return seen[0]
+
+    original = fixtures / "document-ir.full.yaml"
+    raw = yaml.safe_load(original.read_text(encoding="utf-8"))
+    edited = [b for s in raw["sections"] for b in s["blocks"] if b["block_id"] == "lede-chunking"]
+    assert len(edited) == 1, "fixture drifted: the sibling lede this test mutates is gone"
+    edited[0]["text"] = "Chunking decides what retrieval can ever return."
+    edited[0]["provenance"] = "inferred"
+    mutated = tmp_path / "document-ir.mutated.yaml"
+    mutated.write_text(yaml.safe_dump(raw, sort_keys=False), encoding="utf-8")
+
+    assert (_instruction_for(original, "R-SUMM-01", "lede-reranking")
+            == _instruction_for(mutated, "R-SUMM-01", "lede-reranking"))
+    assert (_instruction_for(original, "R-ARCH-01", "document")
+            != _instruction_for(mutated, "R-ARCH-01", "document"))

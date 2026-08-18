@@ -13,8 +13,8 @@ artifact:
   ir: tests/fixtures/document-ir.full.yaml
   concept_map: tests/fixtures/concept-map.full.yaml
   ledger: tests/fixtures/source-ledger.full.yaml
-  # A real critic run over the IR above — 114 scoped binary judgements, no stub. This is what moves
-  # the soft_critic tier off 2/35; the tier was fully wired from Stage A and simply never judged.
+  # A real critic run over the IR above — 77 scoped binary verdicts, no stub. This is what carries
+  # the soft_critic tier at 35/35; the tier was fully wired from Stage A and simply never judged.
   # Frozen for the same reason the discovery snapshot is: eval must score the same verdicts every
   # time, not whatever a judge decided that morning.
   #
@@ -23,11 +23,19 @@ artifact:
   # block — against sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. The tiered run
   # bears that out: unstable dropped 6 -> 1. Regenerate with
   #   scripts/critics/run_critics.py <ir> --judge claude --gating-model sonnet --out <here>
-  # (113 calls, ~$18, ~50 min).
+  # (119 calls, ~$11.89-equivalent, ~40 min — gating rules are judged twice, hence calls > verdicts).
+  #
+  # That is 5% MORE calls than the run it replaced for 33% LESS spend ($17.85 -> $11.89), which is
+  # the `--tools ""` default on ClaudeCli showing up as a number: every `claude -p` is a cold session
+  # re-paying the harness preamble, ~37.8k tokens with the default tool set against ~15.9k with none,
+  # and a critic judging a block of text needs no tools at all.
   #
   # The report carries `ir_sha256` of the IR it judged, and eval REFUSES to credit it as coverage
   # if that no longer matches — a frozen report whose IR has moved on describes a document that no
-  # longer exists. Editing two sentences of this fixture was enough to invalidate a full run.
+  # longer exists. That guard fired for real: the previous report was judged before `f80ff65`
+  # relabelled three blocks `verified` -> `inferred`, the document unit every document-scoped critic
+  # reads prints `provenance:` into each block heading, and 33 of 35 rules were being credited from a
+  # run of a different document. This report is stamped with the digest of the IR beside it.
   critic_report: tests/fixtures/critic-report.full.json
 expect:
   must_pass: [R-ARCH-03, R-SCENT-01, R-CARD-01, R-MV-01, R-GROUND-01, R-PROJ-02]

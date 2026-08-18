@@ -26,6 +26,7 @@ from eval import (
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 SPEC_DIR = SKILL_ROOT / "references" / "eval" / "specs"
+FIXTURES = SKILL_ROOT / "tests" / "fixtures"
 
 
 def test_every_shipped_spec_parses_and_declares_parameters():
@@ -164,70 +165,86 @@ def test_rubric_thresholds_are_still_the_documented_todos():
 # `enforcement_coverage` was reported from Prompt 7 onward but nothing ever failed on it. These pin
 # the gate that closed that: coverage is now a ratchet, not a readout.
 
-def test_the_frozen_critic_report_is_stale_and_says_so():
-    """It was judged against document-ir.full.yaml as of 49764e0. `f80ff65` then relabelled three
-    blocks `verified` -> `inferred`, and `_judge_document_view` prints provenance into every block
-    heading — so three lines of the surface every document-level critic reads are different now, and
-    provenance is exactly what R-EVID-01 judges.
+def test_the_frozen_critic_report_judged_the_ir_that_ships_beside_it():
+    """GAPS G12, closed. The shipped report was for a long time judged against `document-ir.full.yaml`
+    as of 49764e0, while `f80ff65` had since relabelled three blocks `verified` -> `inferred`;
+    `_judge_document_view` prints provenance into every block heading, so three lines of the surface
+    every document-level critic reads were different, and provenance is exactly what R-EVID-01
+    judges. 33 of the 35 soft_critic rules were being credited from a run of a different document.
 
-    The report was kept credited by a digest deliberately made blind to provenance, on the stated
-    grounds that this was "a grounding correction the critics cannot see". They can see it. Stamping
-    the digest of the document actually judged is what makes the guard tell the truth, and the truth
-    is that 33 of the 35 soft_critic rules were being credited from a run of a different document."""
+    Re-judged (119 calls, $11.89, ~40 min) against the IR at HEAD, so the stamp now matches and the
+    tier is credited honestly. The *guard* is still pinned, on synthetic fixtures where it can still
+    fail — `test_a_report_judged_against_another_ir_is_not_credited` and its paired positive. This
+    one pins the artifact: if the IR is edited again without a re-judge, the digest moves and the
+    first assertion goes red rather than the tier quietly reverting to 2/35."""
     report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
     critics = report["results"][0]["soft_critic"]
-    assert critics["status"] == "stale"
-    assert critics["rules_exercised"] == []
-    assert "judged against a different IR" in critics["reason"]
+    assert critics["status"] == "scored", critics.get("reason")
+
+    shipped = json.loads((FIXTURES / "critic-report.full.json").read_text(encoding="utf-8"))
+    assert shipped["ir_sha256"] == _ir_digest(_FULL_IR)
 
     tiers = report["enforcement_coverage"]["by_enforcement"]
-    assert tiers["soft_critic"]["exercised"] == 2, "only the two lint-reachable ones survive"
+    assert tiers["soft_critic"] == {"total": 35, "exercised": 35, "unexercised": [], "fraction": 1.0}
 
 
-def test_the_coverage_gate_reports_the_soft_critic_shortfall():
-    """The ratchet's whole purpose. The floor stays at 35 — lowering it to match a stale report is
-    precisely the silent erosion it exists to catch — so the gate is red until a re-judge."""
+def test_every_tier_meets_a_floor_that_was_never_lowered_to_meet_it():
+    """The ratchet's whole purpose. While the frozen report was stale the honest reading was
+    soft_critic 2/35, and the tempting fix was to lower the floor to 2 — precisely the silent erosion
+    the ratchet exists to catch. The floor stayed at 35 and the report was re-judged instead, so this
+    now asserts both halves: no shortfall on any tier, AND the floors still at their declared values.
+
+    The floors are spelled out rather than read back from the rubric: comparing the rubric to itself
+    would pass at any value, which is the un-failable shape this suite keeps having to remove."""
     report = run_eval(SPEC_DIR, SKILL_ROOT)
     gate = report["coverage_gate"]
-    assert not gate["passed"]
-    assert any(s["tier"] == "soft_critic" and s["floor"] == 35 for s in gate["shortfalls"]), gate
+    assert gate["shortfalls"] == [], gate
+    assert gate["floors"] == {"hard_lint": 32, "model_verified": 3, "soft_critic": 35, "human": 9}
+    assert gate["floors_enforced"] and gate["scope"] == "full"
+
+    tiers = report["enforcement_coverage"]["by_enforcement"]
+    assert [t for t in tiers.values() if t["fraction"] != 1.0] == [], tiers
 
 
-def test_the_shipped_artifact_fails_only_on_its_two_known_critic_musts():
-    """Renamed from `..._passes_on_the_shipped_artifacts`, because it no longer does — and that is
-    the gate working, not the gate breaking.
+def test_the_shipped_artifact_fails_only_on_the_one_critic_must_left():
+    """GAPS G11, closed; G14, opened. `expect.must_pass` is a spec's curated list of rules it wants
+    exercised (six, for spec-01), not a statement about the registry's MUST set, so a critic failure
+    on any other MUST rule was invisible to every gate. Three showed up once the report was
+    credited. Two were real defects in the artifact and are fixed:
 
-    `expect.must_pass` is a spec's curated list of rules it wants exercised (six, for spec-01), not
-    a statement about the registry's MUST set, so a critic failure on any other MUST rule was
-    invisible to every gate. Two are real, and both were judged by SONNET on the gating tier, so
-    they are not haiku variance:
+      R-ARCH-01  the primer opened on a claim, with no scope-and-decisions block
+      R-EVID-01  `aid-reranking`/`fig-reranking` stated precise thresholds (recall@k 0.8, 100
+                 candidates) as flat fact under `Sources: [none yet — inferred]`, no epistemic tag
 
-      R-ARCH-01  the primer opens on a claim, with no scope-and-decisions block
-      R-EVID-01  `aid-reranking` and `fig-reranking` state precise thresholds (recall@k 0.8, 100
-                 candidates) as flat fact, `Sources: [none yet — inferred]`, no epistemic tag
+    The third, R-SUMM-01 on `lede-reranking`, is NOT an artifact defect — it is judge variance, and
+    the reason G14 exists. That block's text is byte-identical across the two judged runs, and for a
+    block-scoped rule the judged unit is only the block's `readable_text` plus its metadata, so the
+    two prompts were byte-identical too. Sonnet returned test-retest-AGREEING but opposite verdicts:
+    "Complete claim about reranking's limit, not a topic announcement" then "States a fact/limitation,
+    not a defended claim/thesis". The within-run retest control cannot see drift between runs.
 
-    Clearing them means editing the IR, which moves the digest and stales a real $18 judged run, so
-    the artifact fix and the re-judge have to land together. Until then this pins the exact shape of
-    the failure — if a THIRD rule appears here, or one of these two vanishes without the artifact
-    changing, something else moved."""
+    Editing the lede to chase it would be optimising against noise — it already satisfies the rule's
+    own written contrast pair — and would stale a fresh $11.89 run. So this pins the shape instead:
+    the two real ones must stay gone, and the flaky one must stay ALONE. A fourth rule appearing
+    here, or R-ARCH-01/R-EVID-01 returning without the artifact changing, means something moved."""
     report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
     gate = report["coverage_gate"]
     assert not gate["silent_skips"]
 
-    # The two critic MUSTs are no longer REPORTED, because the report carrying them is stale and no
-    # longer credited — R-ARCH-01 and R-EVID-01 are real and come back the moment it is re-judged.
-    # Both facts point at the same remedy, which is why GAPS G11 bundles them.
     critics = report["results"][0]["soft_critic"]
-    assert critics["status"] == "stale"
-    assert not [r for f in gate["spec_failures"] for r in f["reasons"] if "critic MUST" in r]
-    # A narrowed run suspends the FLOORS by design, so this one is quiet; the full run is where the
-    # soft_critic shortfall is asserted (test_the_coverage_gate_reports_the_soft_critic_shortfall).
+    assert critics["status"] == "scored", critics.get("reason")
+    assert "R-ARCH-01" not in critics["must_failed"]
+    assert "R-EVID-01" not in critics["must_failed"]
+    assert critics["must_failed"] == ["R-SUMM-01"], "see GAPS G14 before editing the lede"
+    # A narrowed run suspends the FLOORS by design; the full run is where they are asserted
+    # (test_every_tier_meets_a_floor_that_was_never_lowered_to_meet_it).
     assert gate["scope"] == "partial"
 
 
-def test_the_gate_is_green_once_the_critic_musts_are_cleared():
+def test_the_gate_is_green_once_the_last_critic_must_is_cleared():
     """The paired positive, so the test above is pinning a real condition rather than a permanent
-    red: with those two verdicts passing, every other gate on the shipped artifact is quiet."""
+    red: with the one remaining verdict passing, every other gate on the shipped artifact is quiet.
+    That isolates R-SUMM-01 (GAPS G14) as the single thing standing between spec-01 and green."""
     report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-01-rag-chunking")
     result = report["results"][0]
     result["soft_critic"]["must_failed"] = []
@@ -243,8 +260,9 @@ def test_coverage_gate_fails_when_a_tier_regresses():
     """
     report = run_eval(SPEC_DIR, SKILL_ROOT)
     exercised = set(registry_rule_ids()) - set(report["enforcement_coverage"]["unexercised"])
-    # The soft_critic tier is legitimately short while the frozen report is stale, so the baseline
-    # is measured on the HARD_LINT tier alone — which is what this test is about.
+    # Measured on the HARD_LINT tier alone, which is what this test is about: thinning one rule from
+    # one tier must be enough to fail the gate, whatever the other three tiers happen to be sitting
+    # at. Scoping it this way is why the test kept working when soft_critic went 2/35 -> 35/35.
     baseline = coverage_gate(exercised, [])
     assert not any(s["tier"] == "hard_lint" for s in baseline["shortfalls"]), baseline
 
@@ -299,7 +317,7 @@ def _stamped(path: Path, digest: str) -> Path:
     return path
 
 
-_FULL_IR = SKILL_ROOT / "tests" / "fixtures" / "document-ir.full.yaml"
+_FULL_IR = FIXTURES / "document-ir.full.yaml"
 
 
 def test_a_report_judged_against_another_ir_is_not_credited(tmp_path):

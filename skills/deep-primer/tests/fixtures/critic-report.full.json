@@ -9,87 +9,94 @@
       "verdicts": [
         {
           "rule_id": "R-PROSE-01",
+          "block_id": "scope-and-decisions",
+          "verdict": "pass",
+          "evidence": "Subjects chain: primer\u2192it(primer)\u2192decision\u2192two decisions\u2192first decision\u2192second decision, each picking up prior sentence's given info",
+          "span": "that boundary was a decision, not an omission. Two further decisions shaped the material inside it."
+        },
+        {
+          "rule_id": "R-PROSE-01",
           "block_id": "lede-chunking",
           "verdict": "pass",
-          "evidence": "Single causal chain: chunking\u2192split\u2192recall\u2192embedder linked by 'so' and 'no matter how', not disconnected assertions",
-          "span": "so a bad split caps recall no matter how good the embedder is"
+          "evidence": "Single-sentence lede chains 'chunking' to consequence 'caps recall'; one subject, no disconnected assertions",
+          "span": "Chunking is the unit of retrieval, so a bad split caps recall no matter how good the embedder is."
         },
         {
           "rule_id": "R-PROSE-01",
           "block_id": "card-chunking",
           "verdict": "pass",
-          "evidence": "Fields thread one subject (chunk/granularity/unit/recall) given->new across idea, home_anchor, whats_new, reach_for_when, skip_when, confidence.",
-          "span": "the unit is also the embedding scope"
+          "evidence": "Fields chain topically: chunk\u2192granularity\u2192renamed granularity\u2192chunks\u2192re-chunking/recall\u2192size, not disconnected new subjects each line",
+          "span": "Granularity is renamed, not new"
         },
         {
           "rule_id": "R-PROSE-01",
           "block_id": "subsum-chunk-size",
           "verdict": "pass",
-          "evidence": "Single compound sentence contrasting two chunking approaches via parallel structure, not a sequence of disconnected new-subject sentences.",
+          "evidence": "Two clauses contrast fixed windows vs heading splits via parallel structure, not disconnected new subjects each sentence",
           "span": "Fixed windows are cheap and structure-blind; heading splits cost a parse and keep the author's own boundaries."
         },
         {
           "rule_id": "R-PROSE-01",
           "block_id": "body-chunk-size",
           "verdict": "pass",
-          "evidence": "Subject chains: window\u2192such a window\u2192chunk/tables\u2192neither chunk/that failure\u2192the failure, no unmoored new-subject sentences",
-          "span": "Such a window hurts tables worst"
+          "evidence": "Each subject (window, chunk, failure, split) is picked up from the immediately prior sentence.",
+          "span": "Neither chunk is then answerable alone, and that failure stays invisible at index time. The failure surfaces"
         },
         {
           "rule_id": "R-PROSE-01",
           "block_id": "lede-reranking",
           "verdict": "pass",
-          "evidence": "Single sentence with one subject (Reranking) coordinated via 'but', not disconnected new-subject sentences",
-          "span": "Reranking improves ordering but cannot recover a document retrieval never returned."
+          "evidence": "Single-sentence block; no multi-sentence subject sequence to fail given-new flow",
+          "span": null
         },
         {
           "rule_id": "R-PROSE-01",
           "block_id": "card-reranking",
           "verdict": "pass",
-          "evidence": "Fields chain: 'two-stage shape' carries from home_anchor into whats_new_vs_renamed; 'cross-encoder' carries into key_exemplar. No disconnected new-subject-per-sentence pattern.",
-          "span": "The two-stage shape is renamed"
+          "evidence": "Fields chain via callback: 'it' refers to reranking (idea), 'cross-encoder' introduced in whats_new reappears in key_exemplar",
+          "span": "the cross-encoder scoring a query-document pair is new"
         },
         {
           "rule_id": "R-PROSE-01",
           "block_id": "toulmin-reranking",
           "verdict": "pass",
-          "evidence": "S2 opens with 'that reranker' and S3 closes on 'the reranker', chaining the given entity across all three sentences with new predicates each time",
+          "evidence": "Each sentence carries forward 'reranker' as given subject, adding new predicate (earns less / becomes dead weight)",
           "span": "that reranker earns less as retrieval precision rises"
         },
         {
           "rule_id": "R-SUMM-04",
           "block_id": "lede-chunking",
           "verdict": "pass",
-          "evidence": "Lede states a complete, self-contained claim without referencing deeper content like 'see below'.",
-          "span": null
+          "evidence": "Lede states retrieval-unit/recall causal claim self-contained, no reference to deeper layer",
+          "span": "Chunking is the unit of retrieval, so a bad split caps recall no matter how good the embedder is."
         },
         {
           "rule_id": "R-SUMM-04",
           "block_id": "card-chunking",
           "verdict": "pass",
-          "evidence": "Card names analogue, anchor, what's-new, reach/skip conditions, exemplar, and confidence with no forward reference to a deeper layer",
+          "evidence": "Card defines analogue, what's-new, reach/skip criteria, exemplar without pointing to a deeper layer",
           "span": null
         },
         {
           "rule_id": "R-SUMM-04",
           "block_id": "subsum-chunk-size",
           "verdict": "pass",
-          "evidence": "Comparison is complete in itself (cost/benefit for both fixed windows and heading splits), no reference to deeper content",
-          "span": null
+          "evidence": "Contrasts two chunking approaches with self-contained tradeoffs (cheap/structure-blind vs parse cost/boundary preservation), no forward reference to deeper layer",
+          "span": "Fixed windows are cheap and structure-blind; heading splits cost a parse and keep the author's own boundaries."
         },
         {
           "rule_id": "R-SUMM-04",
           "block_id": "lede-reranking",
           "verdict": "pass",
-          "evidence": "Lede states a complete claim (reranking's limit) with no reference to deeper content like 'see below'.",
+          "evidence": "Self-contained claim about reranking's limit relative to retrieval; no reference to deeper content required",
           "span": "Reranking improves ordering but cannot recover a document retrieval never returned."
         },
         {
           "rule_id": "R-SUMM-04",
           "block_id": "card-reranking",
           "verdict": "pass",
-          "evidence": "Card names analogue (SQL query planner), states what's new (cross-encoder pair scoring), gives reach/skip/exemplar/confidence with no forward reference to a deeper layer.",
-          "span": "The cheap-filter-then-expensive-sort shape of a SQL query planner."
+          "evidence": "Card defines idea, anchor, what's-new, and exemplar inline; no reference to deeper/external content like 'see below'.",
+          "span": "The two-stage shape is renamed; the cross-encoder scoring a query-document pair is new."
         }
       ]
     },
@@ -105,22 +112,22 @@
           "rule_id": "R-ART-03",
           "block_id": "toulmin-reranking",
           "verdict": "pass",
-          "evidence": "Explicit 'Qualifier:' (earns less as precision rises) and 'Rebuttal:' (high-QPS per-pair cost dominates) both present.",
-          "span": "Qualifier: that reranker earns less as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight."
+          "evidence": "Contains explicit 'Qualifier:' and 'Rebuttal:' labeled clauses stating conditions and failure case",
+          "span": "Qualifier: that reranker earns less as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates"
         },
         {
           "rule_id": "R-EVID-01",
           "block_id": "document",
-          "verdict": "fail",
-          "evidence": "aid-reranking and fig-reranking give precise thresholds/figures (0.8 recall@k, 100 candidates) as flat fact despite 'Sources: [none yet \u2014 inferred]', with no settled/contested/speculative tag",
-          "span": "If recall@k is below 0.8, fix retrieval first. Above 0.8 with ordering complaints, add a reranker and cap candidates at 100."
+          "verdict": "pass",
+          "evidence": "Confidence fields explicitly tag settled vs contested claims (e.g. 'settled for ordering gains; contested for end-task gains'), and speculative artifacts are flagged inline ('not a settled finding', 'illustrative shape, not measured data').",
+          "span": "Confidence: settled for ordering gains; contested for end-task gains"
         },
         {
           "rule_id": "R-EVID-03",
           "block_id": "document",
           "verdict": "fail",
-          "evidence": "Performance thresholds (recall@k 0.8, cap 100 candidates) marked 'inferred' with no sources; other claims cite [s-chunk], [s-rerank] without demonstrating independence from vendor sources.",
-          "span": "Sources: [none yet \u2014 inferred]"
+          "evidence": "Performance claims (reranker improves ordering, per-pair cost scales with candidate count, 0.8 recall@k threshold) either cite unnamed sources without vendor-independence verification or lack sources entirely, marked only 'inferred'; illustrative figure explicitly marked 'not measured data'",
+          "span": "Sources: [s-rerank], Sources: [none yet \u2014 inferred], Figure 2 (illustrative shape, not measured data)"
         }
       ]
     },
@@ -140,133 +147,147 @@
           "rule_id": "R-PARAM-02",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "No step-by-step worked example on primary layer; content uses cards, tradeoff matrices, failure catalogs, and decision aids instead of walkthroughs",
-          "span": "Baseline: split at headings. Fixed windows buy simplicity at the cost of severed context; semantic splits buy coherence at the cost of build time."
+          "evidence": "No step-by-step worked example; content uses cards, decision matrices, checklists as verification points, not tutorial walkthroughs, matching staff-plus audience.",
+          "span": "Measure recall@k on real queries. Confirm no chunk severs a table. Verify the rebuild path exists."
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "scope-and-decisions",
+          "verdict": "pass",
+          "evidence": "No unqualified praise; decisions framed as trade-offs, e.g. 'spends depth on two concepts rather than surveying five'",
+          "span": "spends depth on two concepts rather than surveying five"
         },
         {
           "rule_id": "R-PROSE-02",
           "block_id": "lede-chunking",
           "verdict": "pass",
-          "evidence": "Cost named directly: bad chunking 'caps recall no matter how good the embedder is' \u2014 not unqualified praise",
+          "evidence": "Names a specific cost (recall capped) as consequence of bad splitting, not unqualified praise",
           "span": "a bad split caps recall no matter how good the embedder is"
         },
         {
           "rule_id": "R-PROSE-02",
           "block_id": "card-chunking",
           "verdict": "pass",
-          "evidence": "No merit claims or praise language present; card uses neutral descriptive statements (bounds recall, reach/skip conditions) without unqualified endorsement.",
+          "evidence": "No unqualified praise present; guidance is conditional (reach_for_when/skip_when), not merit claims lacking cost",
           "span": null
         },
         {
           "rule_id": "R-PROSE-02",
           "block_id": "subsum-chunk-size",
           "verdict": "pass",
-          "evidence": "States cost of each option (cheap but structure-blind vs. parse cost) rather than unqualified praise",
-          "span": "Fixed windows are cheap and structure-blind; heading splits cost a parse and keep the author's own boundaries."
+          "evidence": "Names cost for each option: fixed windows 'structure-blind', heading splits 'cost a parse'",
+          "span": "cheap and structure-blind; heading splits cost a parse"
         },
         {
           "rule_id": "R-PROSE-02",
           "block_id": "body-chunk-size",
           "verdict": "pass",
-          "evidence": "Names cost (unanswerable chunks, invisible failure) not unqualified praise; no merit claim to check",
-          "span": "Neither chunk is then answerable alone, and that failure stays invisible at index time"
+          "evidence": "Text describes a failure mode with no merit claims or praise to frame as trade-offs; rule inapplicable",
+          "span": null
         },
         {
           "rule_id": "R-PROSE-02",
           "block_id": "lede-reranking",
           "verdict": "pass",
-          "evidence": "States a limitation (reranking cannot recover missed retrieval) rather than unqualified praise; no merit claim needs cost-framing.",
+          "evidence": "Names a limit (reranking cannot recover missed retrieval), not unqualified praise",
           "span": "cannot recover a document retrieval never returned"
         },
         {
           "rule_id": "R-PROSE-02",
           "block_id": "card-reranking",
           "verdict": "pass",
-          "evidence": "reach_for_when/skip_when names cost (latency budget) against benefit (precision); no unqualified praise",
-          "span": "Skip it under a 100ms p99 budget, or when the failure is recall rather than ordering."
+          "evidence": "reach_for_when names precision vs latency tradeoff; skip_when names p99 budget cost; no unqualified praise",
+          "span": "Reach for it when top-k precision matters more than tail latency."
         },
         {
           "rule_id": "R-PROSE-02",
           "block_id": "toulmin-reranking",
           "verdict": "pass",
-          "evidence": "Both claims are qualified with cost conditions: reranker 'earns less as retrieval precision rises' and becomes 'dead weight' under high-QPS latency cost.",
-          "span": "Qualifier: that reranker earns less as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight."
+          "evidence": "Claims name explicit costs: 'earns less as retrieval precision rises' and 'per-pair cost dominates and the reranker becomes dead weight'",
+          "span": "the reranker becomes dead weight"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "scope-and-decisions",
+          "verdict": "pass",
+          "evidence": "Text makes clear, weighted decisions (recall ceiling, depth on 2 vs 5 concepts) without hedging or forced symmetry; no over-symmetrization or forced balance of alternatives.",
+          "span": "that boundary was a decision, not an omission. Two further decisions shaped the material inside it. The first decision makes recall a ceiling, so splitting comes before ranking. The second decision spends depth on two concepts rather than surveying five."
         },
         {
           "rule_id": "R-PROSE-06",
           "block_id": "lede-chunking",
           "verdict": "pass",
-          "evidence": "Text asserts asymmetric causal claim (bad splits cap recall regardless of embedder quality), not hedged or symmetrized.",
+          "evidence": "Takes clear asymmetric position: chunking is the limiting factor ('caps recall no matter how good the embedder is'), unhedged, no forced symmetry.",
           "span": "a bad split caps recall no matter how good the embedder is"
         },
         {
           "rule_id": "R-PROSE-06",
           "block_id": "card-chunking",
           "verdict": "pass",
-          "evidence": "reach_for_when/skip_when fields provide leverage-weighted guidance (smaller chunks for specific facts; skip when ordering fails) rather than over-symmetrizing or hedging",
+          "evidence": "Text takes asymmetric positions ('reach for smaller chunks when queries target specific facts'; 'skip re-chunking when failure is ordering') without hedging; confidence asymmetrically weighted (settled vs contested).",
           "span": "Reach for smaller chunks when queries target specific facts. Skip re-chunking when the failure is ordering rather than recall."
         },
         {
           "rule_id": "R-PROSE-06",
           "block_id": "subsum-chunk-size",
           "verdict": "fail",
-          "evidence": "Text presents both options symmetrically without leverage-weighted recommendation; no default or preference stated",
+          "evidence": "Presents two options with balanced tradeoffs but omits leverage-weighted stance: no 'prefer X' or qualified exception tied to substantive choice.",
           "span": "Fixed windows are cheap and structure-blind; heading splits cost a parse and keep the author's own boundaries."
         },
         {
           "rule_id": "R-PROSE-06",
           "block_id": "body-chunk-size",
           "verdict": "pass",
-          "evidence": "Asserts weighted position (fixed windows 'hurt tables worst') with specific mechanism and consequence; no hedging or forced symmetry.",
-          "span": "Such a window hurts tables worst: the header row lands in one chunk, the data rows in another."
+          "evidence": "Takes asymmetric weighted position on fixed-window chunking failure; names concrete cost (invisible recall loss); no hedging or forced pro/con parity.",
+          "span": "Such a window hurts tables worst: the header row lands in one chunk, the data rows in another. Neither chunk is then answerable alone, and that failure stays invisible at index time."
         },
         {
           "rule_id": "R-PROSE-06",
           "block_id": "lede-reranking",
           "verdict": "pass",
-          "evidence": "Strong primary claim 'improves ordering' with specific factual boundary condition; asymmetric weighting, no hedging.",
+          "evidence": "States asymmetric position (benefit + hard constraint) without hedging; leverage-weighted, not false symmetry",
           "span": "Reranking improves ordering but cannot recover a document retrieval never returned."
         },
         {
           "rule_id": "R-PROSE-06",
           "block_id": "card-reranking",
           "verdict": "pass",
-          "evidence": "Takes weighted positions: 'Reach for it when top-k precision matters more than tail latency' and 'Skip it under a 100ms p99 budget' are directional calls, not over-symmetrized or hedged.",
+          "evidence": "reach_for_when/skip_when name concrete trade-offs (precision vs. latency, recall vs. ordering) without hedging or forced symmetry; confidence clause is asymmetric",
           "span": "Reach for it when top-k precision matters more than tail latency. Skip it under a 100ms p99 budget, or when the failure is recall rather than ordering."
         },
         {
           "rule_id": "R-PROSE-06",
           "block_id": "toulmin-reranking",
           "verdict": "pass",
-          "evidence": "Opinionated primary claim ('reach for') with asymmetric qualifier and rebuttal naming concrete costs (lost precision gains, QPS-path weight) rather than forced parity.",
-          "span": "reach for a cross-encoder reranker... that reranker earns less as retrieval precision rises... on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight"
+          "evidence": "Clear directive with conditional scope ('when top-k precision dominates') and asymmetric qualifier/rebuttal naming failure modes, not forced symmetry or hedging.",
+          "span": "reach for a cross-encoder reranker... earns less as... becomes dead weight"
         },
         {
           "rule_id": "R-EXPERT-01",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "No sequential 'first/then/next' steps; checklist and decision-aid blocks are verification/conditional heuristics, not procedural walkthroughs",
-          "span": "If recall@k is below 0.8, fix retrieval first. Above 0.8 with ordering complaints, add a reranker and cap candidates at 100."
+          "evidence": "All blocks use contrast/tradeoff/failure framing (matrix-chunking, toulmin-reranking, aid-reranking); no numbered install/setup steps",
+          "span": "Baseline: split at headings. Fixed windows buy simplicity at the cost of severed context; semantic splits buy coherence at the cost of build time."
         },
         {
           "rule_id": "R-EXPERT-03",
           "block_id": "document",
-          "verdict": "fail",
-          "evidence": "Claims stated as general principles without explicit grounding to supplied figures; e.g., 'A fixed window severs whatever straddles its boundary' not anchored to Figure 1 details",
-          "span": "body-chunk-size block and lede-chunking lack 'as shown in Figure' or similar grounding to reference material"
+          "verdict": "pass",
+          "evidence": "No reference_case field in block metadata; rule's conditional gate is not triggered.",
+          "span": null
         },
         {
           "rule_id": "R-EXPERT-02",
           "block_id": "document",
-          "verdict": "fail",
-          "evidence": "body-chunk-size block provides detailed scaffolding on chunking failure modes inline without explicit prerequisite gate or skip-if-familiar pointer",
-          "span": "A fixed window severs whatever straddles its boundary. Such a window hurts tables worst: the header row lands in one chunk, the data rows in another. Neither chunk is then answerable alone, and that failure stays invisible at index time."
+          "verdict": "pass",
+          "evidence": "Scope block explicitly declares staff-plus audience; body content assumes IR/database expertise throughout without inline remedial scaffolding. No step-by-step procedures or beginner definitions on primary surface.",
+          "span": "Staff-plus engineers with classical IR and database instincts are the audience this primer expects"
         },
         {
           "rule_id": "R-DEPTH-03",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "Both sections have similar substantive weight (core retrieval concepts with tradeoffs and failure modes); apparatus is consistent and proportionate (lede + card + tradeoff structure + failure analysis + figure + prescriptive aid per section), not quota-filling.",
+          "evidence": "Apparatus scales to substance: each section (chunking, reranking) has moderate depth\u2014multiple trade-offs, operational heuristics, failure modes\u2014warranting lede, card, structured reasoning (matrix/toulmin), operational guidance, figure, and concrete grounding. No inflation of apparatus in thin sectio",
           "span": null
         }
       ]
@@ -284,57 +305,57 @@
           "rule_id": "R-FIG-01",
           "block_id": "fig-chunking",
           "verdict": "pass",
-          "evidence": "Caption states a conclusion: recall is bounded at the split step and later stages inherit that ceiling",
+          "evidence": "Caption states a claim: recall is bounded at split step, later stages inherit ceiling",
           "span": "recall is bounded at the split step, so every later stage inherits that ceiling"
         },
         {
           "rule_id": "R-FIG-01",
           "block_id": "fig-reranking",
           "verdict": "pass",
-          "evidence": "Caption states a claim: precision climbs, latency climbs faster, useful range ends early",
+          "evidence": "Caption states a conclusion: latency climbs faster than precision, so useful range ends early",
           "span": "precision climbs with candidate count while latency climbs faster, so the useful range ends early"
         },
         {
           "rule_id": "R-FIG-02",
           "block_id": "fig-chunking",
           "verdict": "fail",
-          "evidence": "No figure visual content provided; caption alone insufficient to evaluate visual emphasis or shared vocabulary",
+          "evidence": "Cannot verify visual emphasis without the actual figure rendering; rule requires visual inspection not available",
           "span": null
         },
         {
           "rule_id": "R-FIG-02",
           "block_id": "fig-reranking",
-          "verdict": "fail",
-          "evidence": "Visual emphasis and shared vocabulary unverifiable without viewing the actual figure.",
-          "span": null
+          "verdict": "pass",
+          "evidence": "Caption frames one conclusion ('useful range ends early') suggesting singular visual emphasis on divergence region, not ad hoc multi-emphasis.",
+          "span": "so the useful range ends early"
         },
         {
           "rule_id": "R-FIG-03",
           "block_id": "fig-chunking",
           "verdict": "fail",
-          "evidence": "Cannot verify label-referent adjacency from caption text alone; visual figure layout required for spatial-contiguity assessment.",
+          "evidence": "Figure visualization not provided; cannot verify label spatial adjacency.",
           "span": null
         },
         {
           "rule_id": "R-FIG-03",
           "block_id": "fig-reranking",
           "verdict": "pass",
-          "evidence": "R-FIG-03 requires visual layout analysis; caption text alone insufficient for spatial contiguity judgment",
+          "evidence": "Clear identification of metrics and findings suggests labels are properly adjacent to their referents.",
           "span": null
         },
         {
           "rule_id": "R-FIG-05",
           "block_id": "fig-chunking",
           "verdict": "pass",
-          "evidence": "Figure depicts single architectural concept (recall bottleneck at split step), not a comparison; R-FIG-05 applies only when comparisons are present",
+          "evidence": "Architecture figure describing a constraint, not comparing alternatives; R-FIG-05 applies only to comparative figures",
           "span": null
         },
         {
           "rule_id": "R-FIG-05",
           "block_id": "fig-reranking",
           "verdict": "fail",
-          "evidence": "Caption indicates precision and latency shown together in single composite plot, not as separate small multiples.",
-          "span": "precision climbs with candidate count while latency climbs faster"
+          "evidence": "Single composite figure combines precision and latency comparison rather than using separate small multiples.",
+          "span": "Figure 2 (illustrative shape, not measured data): precision climbs with candidate count while latency climbs faster"
         }
       ]
     },
@@ -355,64 +376,64 @@
         {
           "rule_id": "R-ARCH-01",
           "block_id": "document",
-          "verdict": "fail",
-          "evidence": "Front matter has only title/generated_at/concepts; document opens directly with lede-chunking claim, no audience/scope/decisions block",
-          "span": "## [block: lede-chunking]   concept: chunking   mode: -   provenance: verified\nClaim: Chunking is the unit of retrieval"
+          "verdict": "pass",
+          "evidence": "scope-and-decisions block states audience, scope boundaries, and two editorial decisions before content blocks",
+          "span": "Staff-plus engineers with classical IR and database instincts are the audience this primer expects"
         },
         {
           "rule_id": "R-ARCH-03",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "First block (lede-chunking) opens with the claim itself, not a topic label: \"Chunking is the unit of retrieval, so a bad split caps recall no matter how good the embedder is.\"",
-          "span": "Chunking is the unit of retrieval, so a bad split caps recall no matter how good the embedder is."
+          "evidence": "First paragraph states 'The first decision makes recall a ceiling, so splitting comes before ranking' \u2014 a substantive claim, not mere topic-labeling.",
+          "span": "The first decision makes recall a ceiling, so splitting comes before ranking."
         },
         {
           "rule_id": "R-ARCH-04",
           "block_id": "document",
           "verdict": "fail",
-          "evidence": "Document lacks >=2 explicitly goal-tuned reading paths with audience notes; content organized linearly by concept (chunking, then reranking) without audience-specific routing guidance.",
-          "span": null
+          "evidence": "Scope-and-decisions identifies single audience; no document-level reading paths documented for different goals; linear two-section organization only.",
+          "span": "Staff-plus engineers with classical IR and database instincts are the audience this primer expects"
         },
         {
           "rule_id": "R-SCENT-01",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "Both headings are specific claims ('Chunking caps recall before the embedder ever runs'; 'A reranker buys ordering, and only when recall is already there'), not generic labels; together they convey the document's gist.",
-          "span": "Chunking caps recall before the embedder ever runs"
+          "evidence": "Headings 'Chunking caps recall before the embedder ever runs' and 'A reranker buys ordering, and only when recall is already there' are claim-bearing, not generic labels",
+          "span": "A reranker buys ordering, and only when recall is already there"
         },
         {
           "rule_id": "R-SCENT-02",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "Both headings are declarative claim-statements with parallel logical structure: [concept] [achieves outcome] [with constraint/qualifier].",
+          "evidence": "Both headings follow parallel structure: [Subject] [transitive verb] [object] + [adverbial scope clause]. 'Chunking caps recall before...' and 'A reranker buys ordering, and only when...' maintain grammatical parallelism.",
           "span": null
         },
         {
           "rule_id": "R-DEPTH-01",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "card-chunking and card-reranking each give explicit Reach-for-it-when/Skip-it-when decision triggers usable without descending to matrix/aid/checklist blocks",
-          "span": "Reach for it when top-k precision matters more than tail latency. Skip it under a 100ms p99 budget, or when the failure is recall rather than ordering."
+          "evidence": "Both cards give concrete reach-for-it/skip-it triggers ('skip under 100ms p99 budget', 'skip re-chunking when failure is ordering') at L1 itself",
+          "span": "Skip it under a 100ms p99 budget, or when the failure is recall rather than ordering."
         },
         {
           "rule_id": "R-XREF-01",
           "block_id": "document",
-          "verdict": "unstable",
-          "evidence": "No home-domain/cross-domain analogy appears anywhere; card-chunking and card-reranking open with in-domain claims, not an analogue from a different field",
-          "span": "Claim: The chunk is the retrieval unit, and it bounds recall."
+          "verdict": "pass",
+          "evidence": "card-chunking's New-vs-renamed ('Granularity is renamed, not new...') and card-reranking's ('two-stage shape is renamed...') sit directly in the card, not relegated below it",
+          "span": "New-vs-renamed: Granularity is renamed, not new; what is new is that the unit is also the embedding scope."
         },
         {
           "rule_id": "R-XREF-03",
           "block_id": "document",
           "verdict": "fail",
-          "evidence": "Chunking-reranking dependency stated implicitly within blocks (e.g., 'fix retrieval first', 'when the failure is recall') but no explicit cross-references between concept sections shown.",
-          "span": "If recall@k is below 0.8, fix retrieval first. Above 0.8 with ordering complaints, add a reranker"
+          "evidence": "Chunking-reranking dependency stated implicitly in skip-when guidance and operational heuristics but no explicit cross-references link the blocks showing their causal relationship",
+          "span": "below roughly 0.8 recall@k, fix retrieval first. Above it, with ordering complaints, add a reranker"
         },
         {
           "rule_id": "R-VOCAB-02",
           "block_id": "document",
           "verdict": "fail",
-          "evidence": "Latency cliff named in failures-reranking but not invoked in toulmin-reranking; chunking boundary-severance failure described but unnamed as reusable handle",
+          "evidence": "Failure modes named in failures-reranking (Confident-irrelevance, Latency cliff) are not referenced or reused as consistent handles in card, toulmin, or decision_aid blocks; chunking boundary severance issue described in body-chunk-size but not named as a reusable handle.",
           "span": null
         }
       ]
@@ -438,185 +459,291 @@
           "rule_id": "R-CARD-01",
           "block_id": "card-chunking",
           "verdict": "pass",
-          "evidence": "home_anchor gives DB row-vs-page granularity analogue + whats_new_vs_renamed bridges prior knowledge, not a restated summary",
+          "evidence": "home_anchor gives database index granularity analogue; whats_new_vs_renamed separates renamed from new, not a content restatement",
           "span": "Like choosing a row-versus-page granularity for a database index."
         },
         {
           "rule_id": "R-CARD-01",
           "block_id": "card-reranking",
           "verdict": "pass",
-          "evidence": "home_anchor names SQL query planner's cheap-filter-then-expensive-sort shape as analogue; whats_new_vs_renamed separates renamed vs new, matching the PASS exemplar structure",
+          "evidence": "home_anchor gives SQL query planner analogue; whats_new_vs_renamed isolates the cross-encoder as new, not a restatement",
           "span": "The cheap-filter-then-expensive-sort shape of a SQL query planner."
         },
         {
           "rule_id": "R-CARD-03",
           "block_id": "card-chunking",
           "verdict": "pass",
-          "evidence": "skip_when gives a specific diagnostic condition ('failure is ordering rather than recall'), not a vague catch-all",
+          "evidence": "skip_when names specific diagnostic: skip re-chunking when failure is ordering, not recall",
           "span": "Skip re-chunking when the failure is ordering rather than recall."
         },
         {
           "rule_id": "R-CARD-03",
           "block_id": "card-reranking",
           "verdict": "pass",
-          "evidence": "skip_when gives specific conditions: 'Skip it under a 100ms p99 budget, or when the failure is recall rather than ordering.'",
+          "evidence": "skip_when gives specific threshold '100ms p99 budget' and specific failure mode 'recall rather than ordering', not just a use-condition",
           "span": "Skip it under a 100ms p99 budget, or when the failure is recall rather than ordering."
         },
         {
           "rule_id": "R-SUMM-01",
           "block_id": "lede-chunking",
           "verdict": "pass",
-          "evidence": "Lede is a complete claim ('Chunking is the unit of retrieval... caps recall'), not a topic label",
-          "span": "Chunking is the unit of retrieval, so a bad split caps recall no matter how good the embedder is."
+          "evidence": "States a claim ('a bad split caps recall no matter how good the embedder is'), not a topic announcement",
+          "span": "so a bad split caps recall no matter how good the embedder is"
         },
         {
           "rule_id": "R-SUMM-01",
           "block_id": "lede-reranking",
-          "verdict": "pass",
-          "evidence": "Complete claim about reranking's limit, not a topic announcement",
+          "verdict": "fail",
+          "evidence": "States a fact/limitation, not a defended claim/thesis; reads as a definitional statement rather than a position",
           "span": "Reranking improves ordering but cannot recover a document retrieval never returned."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "scope-and-decisions",
+          "verdict": "pass",
+          "evidence": "Entire block uses flowing prose; causal relationships naturally expressed (e.g., 'recall a ceiling, so splitting comes before ranking') rather than fragmented into bullets.",
+          "span": "The first decision makes recall a ceiling, so splitting comes before ranking."
         },
         {
           "rule_id": "R-PROSE-03",
           "block_id": "lede-chunking",
           "verdict": "pass",
-          "evidence": "Reasoning carried in single cohesive prose sentence; no bullet fragmentation.",
-          "span": "Chunking is the unit of retrieval, so a bad split caps recall no matter how good the embedder is."
+          "evidence": "Reasoning expressed in prose with causal connector; no bullet fragmentation.",
+          "span": "so a bad split caps recall no matter how good the embedder is"
         },
         {
           "rule_id": "R-PROSE-03",
           "block_id": "card-chunking",
           "verdict": "pass",
-          "evidence": "All reasoning fields (home_anchor, reach_for_when, skip_when, whats_new_vs_renamed, confidence) are written as prose clauses and sentences, not fragmented into bullets.",
+          "evidence": "All reasoning delivered as prose statements within fields; no bulleted fragmentation of reasoning.",
           "span": null
         },
         {
           "rule_id": "R-PROSE-03",
           "block_id": "subsum-chunk-size",
           "verdict": "pass",
-          "evidence": "Reasoning delivered as connected prose sentence with contrasts ('cheap and structure-blind' vs 'cost a parse'), no bullet fragmentation.",
+          "evidence": "Single sentence carries reasoning via prose (semicolon-linked clauses) without bullet fragmentation.",
           "span": "Fixed windows are cheap and structure-blind; heading splits cost a parse and keep the author's own boundaries."
         },
         {
           "rule_id": "R-PROSE-03",
           "block_id": "body-chunk-size",
           "verdict": "pass",
-          "evidence": "Entire block is continuous prose with causal reasoning; no bullet fragmentation; logical flow preserved from problem through mechanism to consequence.",
-          "span": null
+          "evidence": "Reasoning flows through connected prose sentences building logically from observation (window severing) through example (table headers) to consequence (invisible failure) to prescription (measurement). No bullet fragmentation.",
+          "span": "A fixed window severs whatever straddles its boundary. Such a window hurts tables worst: the header row lands in one chunk, the data rows in another. Neither chunk is then answerable alone, and that failure stays invisible at index time."
         },
         {
           "rule_id": "R-PROSE-03",
           "block_id": "lede-reranking",
           "verdict": "pass",
-          "evidence": "Lede presented as single complete sentence in prose, not fragmented into bullets.",
+          "evidence": "Lede is a single prose sentence; reasoning is not fragmented into bullets.",
           "span": "Reranking improves ordering but cannot recover a document retrieval never returned."
         },
         {
           "rule_id": "R-PROSE-03",
           "block_id": "card-reranking",
           "verdict": "pass",
-          "evidence": "All field content uses prose sentences, not bullet-fragmented lists.",
-          "span": null
+          "evidence": "All reasoning content (idea, reach_for_when, skip_when, whats_new_vs_renamed) is prose sentences/phrases with no bullet-point fragmentation.",
+          "span": "Reach for it when top-k precision matters more than tail latency; skip it under a 100ms p99 budget, or when the failure is recall rather than ordering."
         },
         {
           "rule_id": "R-PROSE-03",
           "block_id": "toulmin-reranking",
           "verdict": "pass",
-          "evidence": "Block presents reasoning in prose sentences with Toulmin labels (Qualifier:, Rebuttal:), not fragmented bullets; each claim is a complete sentence",
+          "evidence": "Reasoning carried in four connected prose sentences; no bullet fragmentation despite Toulmin labels (Qualifier, Rebuttal) embedded in text.",
           "span": "When top-k precision dominates tail latency, reach for a cross-encoder reranker. Qualifier: that reranker earns less as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight."
         },
         {
           "rule_id": "R-RECALL-02",
           "block_id": "recall-chunking",
           "verdict": "pass",
-          "evidence": "All 3 Qs require generation/reasoning (recall@10 scenario, index analogy, wrong-fix judgment); Q2 explicitly marked cross-domain",
+          "evidence": "All 3 questions require generation/reasoning about scenarios (recall@10 diagnosis, wrong-fix judgment); Q2 is a cross-domain mapping to database indexes.",
           "span": "In a database index, what plays the role the chunk plays here?"
         },
         {
           "rule_id": "R-RECALL-02",
           "block_id": "recall-reranking",
           "verdict": "pass",
-          "evidence": "All 3 Qs require generation/application (scenario diagnosis, cross-domain mapping, mechanism reasoning), not recognition trivia; Q2 explicitly cross-domain",
+          "evidence": "All 3 require generation (scenario decision, mechanism mapping, causal why); Q2 is cross-domain query-planner mapping",
           "span": "What does a query planner's cheap-filter stage correspond to here?"
         },
         {
           "rule_id": "R-ART-02",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "Checklist has 3 action-verb items (Measure, Confirm, Verify) targeting high-frequency failures, action-first, well under 9-item limit, not a glossary.",
+          "evidence": "Checklist has 3 action-verb items (Measure, Confirm, Verify) targeting high-frequency failures: recall measurement, table-severing, rebuild readiness. Disciplined, actionable, under 9 items, not glossary-like.",
           "span": "Measure recall@k on real queries. Confirm no chunk severs a table. Verify the rebuild path exists."
         },
         {
           "rule_id": "R-ART-04",
           "block_id": "document",
           "verdict": "fail",
-          "evidence": "Matrix describes tradeoff dimensions (simplicity vs coherence, severed context vs build time) but does not name explicit decision rules disambiguating when to choose each option.",
+          "evidence": "Names baseline ('split at headings') but lacks recommendations per scenario; presents tradeoffs without disambiguating which to choose when",
           "span": "Fixed windows buy simplicity at the cost of severed context; semantic splits buy coherence at the cost of build time."
         },
         {
           "rule_id": "R-ART-05",
           "block_id": "document",
           "verdict": "fail",
-          "evidence": "Chunking mechanism documented via decision matrix + checklist; reranking via Toulmin argumentation + failures catalog + decision aid; supporting structures are non-uniform.",
-          "span": "matrix-chunking vs toulmin-reranking; checklist-chunking vs failures-reranking"
+          "evidence": "Cards use Claim + Reach/Skip structure; matrices use tradeoff comparisons; failures use failure modes. Not uniform input/mechanism/assumption/when.",
+          "span": null
         },
         {
           "rule_id": "R-EVID-02",
           "block_id": "document",
           "verdict": "fail",
-          "evidence": "Limitations scattered across card confidence notes and toulmin rebuttals, but no dedicated 'honest-limits section' explicitly framing where the primer's thesis breaks down.",
+          "evidence": "No block describes a dedicated section where the primer's thesis breaks down; scope decisions and technique limitations do not constitute an honest-limits section.",
           "span": null
         },
         {
           "rule_id": "R-XREF-04",
           "block_id": "document",
-          "verdict": "pass",
-          "evidence": "Both cards' New-vs-renamed fields name distinct prior concepts ('Granularity', 'two-stage shape') rather than restating chunking/reranking by name.",
+          "verdict": "unstable",
+          "evidence": "Card anchors are 'granularity' and 'two-stage shape' (DB/IR instincts), distinct from the targets 'chunking' and 'reranking', not same-word restatements.",
           "span": "Granularity is renamed, not new"
         },
         {
           "rule_id": "R-ART-06",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "No further-reading section or artifact present in document; rule does not apply.",
+          "evidence": "No further-reading artifact blocks present in document; rule does not apply.",
           "span": null
         },
         {
           "rule_id": "R-MV-01",
           "block_id": "document",
           "verdict": "pass",
-          "evidence": "chunking spans mental_model/tradeoff/architecture/failure with distinct content (unit-bounds-recall vs pipeline-position vs table-severing case); reranking spans mental_model/tradeoff/failure/benchmark similarly non-redundant",
-          "span": "recall is bounded at the split step, so every later stage inherits that ceiling"
+          "evidence": "Both concepts have >=3 distinct representation modes with genuinely different content: chunking has mental_model (unit definition), tradeoff (fixed vs semantic splits), architecture (pipeline ceiling), and failure (table-severing example); reranking has mental_model (two-stage shape), tradeoff/argum",
+          "span": "Fixed windows buy simplicity at the cost of severed context; semantic splits buy coherence at the cost of build time."
         }
       ]
     }
   ],
   "counts": {
-    "pass": 56,
-    "fail": 16,
+    "pass": 64,
+    "fail": 12,
     "unstable": 1,
     "error": 0
   },
   "blocking": true,
-  "unstable_items": [
+  "blocking_failures": [
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-reranking",
+      "verdict": "fail",
+      "evidence": "States a fact/limitation, not a defended claim/thesis; reads as a definitional statement rather than a position",
+      "span": "Reranking improves ordering but cannot recover a document retrieval never returned."
+    }
+  ],
+  "advisory_failures": [
+    {
+      "pass": "evidence-grounding",
+      "rule_id": "R-EVID-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Performance claims (reranker improves ordering, per-pair cost scales with candidate count, 0.8 recall@k threshold) either cite unnamed sources without vendor-independence verification or lack sources entirely, marked only 'inferred'; illustrative figure explicitly marked 'not measured data'",
+      "span": "Sources: [s-rerank], Sources: [none yet \u2014 inferred], Figure 2 (illustrative shape, not measured data)"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "subsum-chunk-size",
+      "verdict": "fail",
+      "evidence": "Presents two options with balanced tradeoffs but omits leverage-weighted stance: no 'prefer X' or qualified exception tied to substantive choice.",
+      "span": "Fixed windows are cheap and structure-blind; heading splits cost a parse and keep the author's own boundaries."
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-chunking",
+      "verdict": "fail",
+      "evidence": "Cannot verify visual emphasis without the actual figure rendering; rule requires visual inspection not available",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-03",
+      "block_id": "fig-chunking",
+      "verdict": "fail",
+      "evidence": "Figure visualization not provided; cannot verify label spatial adjacency.",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-05",
+      "block_id": "fig-reranking",
+      "verdict": "fail",
+      "evidence": "Single composite figure combines precision and latency comparison rather than using separate small multiples.",
+      "span": "Figure 2 (illustrative shape, not measured data): precision climbs with candidate count while latency climbs faster"
+    },
     {
       "pass": "structure-architecture",
-      "rule_id": "R-XREF-01",
+      "rule_id": "R-ARCH-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Scope-and-decisions identifies single audience; no document-level reading paths documented for different goals; linear two-section organization only.",
+      "span": "Staff-plus engineers with classical IR and database instincts are the audience this primer expects"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Chunking-reranking dependency stated implicitly in skip-when guidance and operational heuristics but no explicit cross-references link the blocks showing their causal relationship",
+      "span": "below roughly 0.8 recall@k, fix retrieval first. Above it, with ordering complaints, add a reranker"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-VOCAB-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Failure modes named in failures-reranking (Confident-irrelevance, Latency cliff) are not referenced or reused as consistent handles in card, toulmin, or decision_aid blocks; chunking boundary severance issue described in body-chunk-size but not named as a reusable handle.",
+      "span": null
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Names baseline ('split at headings') but lacks recommendations per scenario; presents tradeoffs without disambiguating which to choose when",
+      "span": "Fixed windows buy simplicity at the cost of severed context; semantic splits buy coherence at the cost of build time."
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-05",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Cards use Claim + Reach/Skip structure; matrices use tradeoff comparisons; failures use failure modes. Not uniform input/mechanism/assumption/when.",
+      "span": null
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-EVID-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "No block describes a dedicated section where the primer's thesis breaks down; scope decisions and technique limitations do not constitute an honest-limits section.",
+      "span": null
+    }
+  ],
+  "unstable_items": [
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-XREF-04",
       "block_id": "document",
       "verdict": "unstable",
-      "evidence": "No home-domain/cross-domain analogy appears anywhere; card-chunking and card-reranking open with in-domain claims, not an analogue from a different field",
-      "span": "Claim: The chunk is the retrieval unit, and it bounds recall."
+      "evidence": "Card anchors are 'granularity' and 'two-stage shape' (DB/IR instincts), distinct from the targets 'chunking' and 'reranking', not same-word restatements.",
+      "span": "Granularity is renamed, not new"
     }
   ],
   "errored_items": [],
-  "ir_sha256": "d687218e1f1cfa60c0e3b3e2b1a6dddb00b7a7d6db306c712769193da731dbc5",
+  "ir_sha256": "2519975416edd64986cc3bfb5087360153f31c41fbd2ae936e23dcf46379512c",
   "judge": {
     "kind": "claude",
     "model": "haiku",
-    "calls": 113,
-    "spend_usd": 17.8482,
+    "calls": 119,
+    "spend_usd": 11.8888,
     "exercised_rules": true,
     "gating_model": "sonnet"
-  },
-  "ir_sha256_note": "The digest of the document these verdicts were ACTUALLY judged against \u2014 document-ir.full.yaml as of commit 49764e0, identified by matching the original byte-stamp e114186cc80d. It deliberately does NOT match the IR at HEAD, so the staleness guard reports `stale` and this report is not credited as coverage. That is correct: f80ff65 relabelled matrix-chunking, body-chunk-size and toulmin-reranking from provenance `verified` to `inferred` AFTER the run, and _judge_document_view prints provenance into every block heading, so three lines of the surface every document-level critic reads are different now. Provenance is exactly what R-EVID-01 judges. An earlier revision stamped the HEAD digest instead, justified by digesting the pre-edit IR under the THEN-CURRENT definition and finding it equal \u2014 but that definition had been made provenance-blind on purpose, so the check was circular: it asked whether the document had changed using a measure built to be blind to the only change that had happened. Clearing this needs a re-judge, not a re-stamp, and it belongs in the same pass as GAPS G11."
+  }
 }
