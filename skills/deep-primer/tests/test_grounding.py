@@ -192,6 +192,31 @@ def test_fetch_source_leads_skips_dropped_and_carries_seed_origin():
     assert result.documents[0].provenance_origin == "user"
 
 
+def test_fetch_source_leads_carries_the_lead_type_without_overwriting_a_fetched_one():
+    """Discovery's classification survives the fetch, but never overrides what the fetcher derived.
+
+    `claim_extractor` copies `doc.source_type` into `Source.type`, and
+    `coverage.vendor_independence` counts sources whose type is not a vendor one. When the lead's
+    type was dropped here, every source reached both untyped: the critics lost the signal, and the
+    vendor check passed because nothing looked like a vendor.
+    """
+    leads = DiscoveryLeads(source_leads=[
+        SourceLead(id="sl-1", url="https://a.org", type="standard"),
+        SourceLead(id="sl-2", url="https://b.org", type="vendor"),
+        SourceLead(id="sl-3", url="https://c.org"),
+    ])
+    fetcher = ReplayFetcher({
+        "https://a.org": doc(url="https://a.org"),
+        "https://b.org": doc(url="https://b.org", source_type="docs"),
+        "https://c.org": doc(url="https://c.org"),
+    })
+    result = fetch_source_leads(leads, fetcher)
+    by_url = {d.url: d.source_type for d in result.documents}
+    assert by_url["https://a.org"] == "standard"   # lead type fills the gap
+    assert by_url["https://b.org"] == "docs"       # fetcher-derived type wins
+    assert by_url["https://c.org"] is None         # neither knew; stays honest
+
+
 def test_unfetchable_lead_is_recorded_not_silently_dropped():
     leads = DiscoveryLeads(source_leads=[SourceLead(id="sl-1", url="https://gone.org")])
     result = fetch_source_leads(leads, ReplayFetcher({}))

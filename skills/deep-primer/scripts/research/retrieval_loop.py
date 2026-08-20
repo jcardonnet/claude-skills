@@ -137,6 +137,13 @@ def fetch_source_leads(leads: DiscoveryLeads, fetcher: Fetcher) -> RetrievalResu
 
     Seed-derived leads carry provenance_origin=user through to the document, so the ledger can
     record where a claim came from without treating the seed as pre-trusted (R-DISC-06).
+
+    A lead's `type` is carried across too, and the fetcher wins when it managed to derive one.
+    Discovery classifies a source (docs / standard / vendor / blog / primary_paper) from context the
+    fetched body no longer has, and two consumers need that classification: `claim_extractor` writes
+    it to `Source.type` for the source-quality critics, and `coverage.vendor_independence` counts
+    non-vendor sources per question. Losing it here silently reported every source as untyped, which
+    made that coverage check pass for the wrong reason.
     """
     result = RetrievalResult()
     for lead in leads.source_leads:
@@ -147,6 +154,7 @@ def fetch_source_leads(leads: DiscoveryLeads, fetcher: Fetcher) -> RetrievalResu
             result.unresolved.append(lead.url)
             continue
         doc.provenance_origin = lead.provenance_origin
+        doc.source_type = doc.source_type or lead.type
         doc.served_questions = list(lead.supports)
         result.documents.append(doc)
     return result
