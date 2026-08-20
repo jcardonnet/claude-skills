@@ -535,3 +535,89 @@ def test_robots_is_rechecked_after_a_redirect(monkeypatch):
     assert fetcher("https://example.org/public/page") is None
     assert "redirect" in fetcher.refused["https://example.org/public/page"]
     assert allowed_calls == ["https://example.org/public/page", "https://example.org/private/page"]
+
+
+# --- the model half of the grounding loop (ClaudeClaimExtractor) -------------
+# Hermetic: the CLI is stubbed. What is pinned here is the division of labour — the extractor
+# PROPOSES and never verifies, so the gate stays the single place a quote is checked. Until this
+# module existed the only Extractor in the tree scanned for `CLAIM:` lines, which no fetched page
+# contains, so every offline ledger was hand-authored or empty.
+
+def _stub_extractor(payloads):
+    from research.claude_claim_extractor import ClaudeClaimExtractor
+
+    class _Cli:
+        calls = 0
+        spend_usd = 0.0
+
+        def __init__(self):
+            self.seen = []
+
+        def result_json(self, instruction):
+            self.seen.append(instruction)
+            return payloads[min(len(self.seen) - 1, len(payloads) - 1)]
+
+    return ClaudeClaimExtractor(cli=_Cli())
+
+
+def test_extractor_proposes_without_verifying_so_the_gate_stays_the_only_check():
+    """A fabricated quote must reach `anchor_claims` and die there, not be filtered upstream.
+
+    Two gates that can disagree is worse than one gate that cannot: if the extractor also checked,
+    a bug in either check would be invisible from the other side.
+    """
+    doc = Document(url="https://example.org/a", text="Spans carry a start and an end timestamp.")
+    extractor = _stub_extractor([{"claims": [
+        {"text": "real", "quote": "Spans carry a start", "confidence": "high"},
+        {"text": "invented", "quote": "spans are free", "confidence": "high"},
+    ]}])
+
+    proposals = extractor(doc)
+    assert len(proposals) == 2                      # the extractor passed BOTH through
+
+    kept, rejected = anchor_claims(proposals, doc)
+    assert [c.text for c in kept] == ["real"]
+    assert "quote not found" in rejected[0]
+
+
+def test_location_is_measured_not_asked_for():
+    """A model asked where a quote sits answers plausibly. The offset is a fact about the text."""
+    doc = Document(url="https://example.org/a", text="Alpha beta.\n\nGamma delta epsilon.")
+    extractor = _stub_extractor([{"claims": [
+        {"text": "found", "quote": "Gamma delta", "location": "line 500"},
+        {"text": "absent", "quote": "not present here", "location": "line 1"},
+    ]}])
+
+    by_text = {p["text"]: p["location"] for p in extractor(doc)}
+    assert by_text["found"] == "char 12 of 32 (normalized)"   # normalized: the blank line is one space
+    # None, not a guess: the gate is about to reject this one, and a location on a rejected claim
+    # would be a coordinate into a document that does not contain it.
+    assert by_text["absent"] is None
+
+
+def test_a_long_document_is_chunked_and_the_chunking_is_bounded():
+    from research.claude_claim_extractor import CHUNK_CHARS, MAX_CHUNKS, _chunks
+
+    body = "\n\n".join(["paragraph " + "x" * 500] * 200)
+    chunks = _chunks(body)
+    assert len(chunks) == MAX_CHUNKS                       # bounded, not exhaustive
+    assert all(len(c) <= CHUNK_CHARS for c in chunks)
+    assert "".join(c.replace(" ", "") for c in chunks).count("paragraph") == sum(
+        c.count("paragraph") for c in chunks)              # no overlap: no claim counted twice
+
+
+def test_an_extraction_failure_is_a_document_with_no_claims_not_a_dead_run():
+    from research.claude_claim_extractor import ClaudeClaimExtractor
+    from utils.claude_cli import CliUnavailable
+
+    class _DeadCli:
+        calls = 0
+        spend_usd = 0.0
+
+        def result_json(self, _instruction):
+            raise CliUnavailable("simulated outage")
+
+    extractor = ClaudeClaimExtractor(cli=_DeadCli())
+    doc = Document(url="https://example.org/a", text="Spans carry a timestamp.")
+    assert extractor(doc) == []
+    assert "simulated outage" in extractor.errors[0]       # recorded, not swallowed
