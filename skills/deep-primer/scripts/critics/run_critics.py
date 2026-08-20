@@ -6,10 +6,11 @@ Implements: R-REJECT-05 + the soft_critic rules
 For each pass (references/critic-prompts/*.md) this feeds the pass prompt + the applicable IR
 blocks to a judge and collects BINARY verdicts keyed by rule_id + block_id. Discipline (R-REJECT-05):
 
-  - Verdicts are strictly {pass, fail, unstable}. There is no numeric/holistic score anywhere, and
+  - Verdicts are strictly {pass, fail}. There is no numeric/holistic score anywhere, and
     `_validate_verdict` rejects anything else — holistic "is this good/thorough?" scoring is
     impossible by construction.
-  - Gating items (MUST-priority rules) are judged TWICE (test-retest); disagreement -> 'unstable'.
+  - Gating items (MUST-priority rules) are still judged TWICE, but the FIRST verdict decides and
+    the second is only recorded (`retest`, `flipped`). See `run_pass`.
   - Swap-and-average is implemented ONLY in `compare_revisions` (a pairwise call), never pointwise.
 
 The judge is pluggable: the offline/test default is a deterministic stub; production wires a scoped
@@ -36,7 +37,7 @@ from ir.schema import Block, DocumentIR  # noqa: E402
 CRITIC_DIR = Path(__file__).resolve().parents[2] / "references" / "critic-prompts"
 DEFAULT_REGISTRY = Path(__file__).resolve().parents[2] / "references" / "rule-registry.yaml"
 
-_VALID_VERDICTS = {"pass", "fail"}  # what a judge may return; 'unstable' is assigned by test-retest
+_VALID_VERDICTS = {"pass", "fail"}  # the only two outcomes anywhere — see `run_pass` on retest
 _RULE_HEADING_RE = re.compile(r"^####\s+(R-[A-Z]+-\d+)\b", re.MULTILINE)
 
 DOCUMENT = "document"
@@ -178,34 +179,56 @@ def _gating_rules(registry_path: Path = DEFAULT_REGISTRY) -> set[str]:
     return {r["id"] for r in rules if r.get("priority") == "MUST"}
 
 
+def _retest(pass_name: str, prompt: str, rid: str, bv: BlockView, judge: Judge, gating: set[str],
+            gating_judge: Judge | None, first: str) -> dict:
+    """Ask a gating item a second time and RECORD the answer. It does not change the verdict.
+
+    Test-retest used to collapse a disagreement into 'unstable', which sounds prudent and is not:
+    the item then blocks nothing and clears nothing, so the rule silently stops gating for exactly
+    the documents it is least sure about. Worse, the control was within-run only. Two judged runs
+    over a byte-identical block — hence a byte-identical prompt, asserted by
+    `test_a_block_scoped_judgement_cannot_see_the_rest_of_the_document` — returned opposite verdicts
+    on R-SUMM-01, each internally retest-AGREEING. A control that cannot see the drift it exists to
+    catch is not measuring stability; it is sampling it once and calling that a decision.
+
+    So the first verdict gates, always, and the second becomes a measurement: `flake_rate` over a
+    run says how much any single verdict is worth. Spend is unchanged — the same two calls — but a
+    number that accumulates across runs replaces a veto that fired on n=2.
+    """
+    try:
+        active = gating_judge if (gating_judge and rid in gating) else judge
+        second = active(pass_name, prompt, rid, bv, 2).verdict
+    except (JudgeUnavailable, OSError, TimeoutError) as exc:
+        # The probe failing costs the measurement, not the verdict — that one is already in hand.
+        return {"retest": None, "flipped": None, "retest_error": f"{type(exc).__name__}: {exc}"[:200]}
+    return {"retest": second, "flipped": second != first}
+
+
 def run_pass(pass_name: str, rule_ids: list[str], prompt: str, ir: DocumentIR, judge: Judge,
              gating: set[str], gating_judge: Judge | None = None) -> list[dict]:
     verdicts: list[dict] = []
     for rid in rule_ids:
         for bv in applicable_blocks(rid, ir):
-            # An unreachable judge must not discard every judgement already made — the first live
-            # run lost ~100 of them to a single timeout. The item is recorded as 'error', never
-            # coerced to 'pass': a judge that failed to answer has not cleared the rule, and quietly
-            # passing it is the exact failure this registry exists to prevent. Note the narrow
-            # catch — a non-binary verdict (ValueError from _validate_verdict) still propagates.
+            item = {"rule_id": rid, "block_id": bv.block_id}
             try:
                 # Gating (MUST) rules go to `gating_judge` when one is supplied. Measured on this
-                # fixture, haiku returned 6/21 unstable verdicts on gating items (29% — a coin flip
-                # on rules that BLOCK) against sonnet's 1/21, and haiku also hard-FAILED two items
-                # sonnet passed. Test-retest exists for gating rules precisely because they block;
-                # spending the better model exactly there is the cheap half of the fix.
+                # fixture, haiku disagreed with itself on 6/21 gating items (29% — a coin flip on
+                # rules that BLOCK) against sonnet's 1/21, and haiku also hard-FAILED two items
+                # sonnet passed. Spending the better model exactly where items block is the cheap
+                # half of the fix, and it is why the second call is still worth making.
                 active = gating_judge if (gating_judge and rid in gating) else judge
                 r1 = active(pass_name, prompt, rid, bv, 1)
-                verdict = r1.verdict
-                if rid in gating:  # test-retest gating items
-                    r2 = active(pass_name, prompt, rid, bv, 2)
-                    if r2.verdict != r1.verdict:
-                        verdict = "unstable"
-                evidence, span = r1.evidence, r1.span
+                item.update(verdict=r1.verdict, evidence=r1.evidence, span=r1.span)
             except (JudgeUnavailable, OSError, TimeoutError) as exc:
-                verdict, evidence, span = "error", f"{type(exc).__name__}: {exc}"[:300], None
-            verdicts.append({"rule_id": rid, "block_id": bv.block_id, "verdict": verdict,
-                             "evidence": evidence, "span": span})
+                # An unreachable judge must not discard every judgement already made — the first
+                # live run lost ~100 of them to one timeout. The item is recorded as 'error', never
+                # coerced to 'pass': a judge that failed to answer has not cleared the rule. Note
+                # the narrow catch — a non-binary verdict (ValueError) still propagates.
+                item.update(verdict="error", evidence=f"{type(exc).__name__}: {exc}"[:300], span=None)
+            if rid in gating and item["verdict"] != "error":
+                item.update(_retest(pass_name, prompt, rid, bv, judge, gating, gating_judge,
+                                    item["verdict"]))
+            verdicts.append(item)
     return verdicts
 
 
@@ -215,12 +238,12 @@ def run_critics(ir: DocumentIR, judge: Judge | None = None, critic_dir: Path = C
     judge = judge or StubJudge()
     gating = _gating_rules(registry_path)
     passes_out = []
-    counts = {"pass": 0, "fail": 0, "unstable": 0, "error": 0}
+    counts = {"pass": 0, "fail": 0, "error": 0}
     for pass_name, all_rule_ids, prompt in load_passes(critic_dir):
         # `only` narrows the run to specific rules. The pass PROMPT is still sent whole — a rule's
         # verdict depends on the calibration notes and sibling rules around it, so trimming the
         # prompt to match would change what is being measured. This is for re-judging a handful of
-        # rules (a calibration sweep, an unstable item) without paying for all 114 calls.
+        # rules (a calibration sweep, a flaky item) without paying for all 114 calls.
         rule_ids = [r for r in all_rule_ids if only is None or r in only]
         if not rule_ids:
             continue
@@ -242,10 +265,26 @@ def run_critics(ir: DocumentIR, judge: Judge | None = None, critic_dir: Path = C
         "blocking_failures": blocking_failures,
         "advisory_failures": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
                               if v["verdict"] == "fail" and v["rule_id"] not in gating],
-        "unstable_items": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
-                           if v["verdict"] == "unstable"],
         "errored_items": [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"]
                           if v["verdict"] == "error"],
+        **_flake(passes_out),
+    }
+
+
+def _flake(passes_out: list[dict]) -> dict:
+    """How often a gating verdict would have come out the other way, had we asked once more.
+
+    Reported with its denominator, not as a bare ratio: at n=1 retested item a "100% flake rate" and
+    a "1 in 1" are the same number and only one of them is honest about the sample. `retested` counts
+    gating items whose probe actually answered, so a run where the probe kept timing out reads as a
+    small sample rather than a stable one.
+    """
+    flagged = [{"pass": p["pass"], **v} for p in passes_out for v in p["verdicts"] if v.get("flipped")]
+    retested = sum(1 for p in passes_out for v in p["verdicts"] if v.get("flipped") is not None)
+    return {
+        "flake": {"retested": retested, "flipped": len(flagged),
+                  "flake_rate": round(len(flagged) / retested, 4) if retested else None},
+        "flaky_items": flagged,
     }
 
 
@@ -285,9 +324,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--cost-cap", type=float, default=5.0,
                     help="abort once cumulative spend passes this many USD")
     ap.add_argument("--gating-model", help="model for MUST-priority (gating) rules; defaults to "
-                                           "--model. Measured on the reference fixture, haiku gave "
-                                           "6/21 unstable verdicts on gating items vs sonnet's 1/21 "
-                                           "— a coin flip on the rules that actually block.")
+                                           "--model. Measured on the reference fixture, haiku "
+                                           "disagreed with itself on 6/21 gating items vs sonnet's "
+                                           "1/21 — a coin flip on the rules that actually block.")
     ap.add_argument("--rules", help="comma-separated rule ids to judge (default: all). The pass "
                                     "prompt is still sent whole, so a narrowed run measures the "
                                     "same thing a full one does — for calibration sweeps.")
@@ -340,8 +379,11 @@ def main(argv: list[str] | None = None) -> int:
         report["judge"]["gating_model"] = args.gating_model or args.model
     Path(args.out).write_text(json.dumps(report, indent=2), encoding="utf-8")
     c = report["counts"]
+    f_ = report["flake"]
     print(f"{len(report['passes'])} passes — pass={c['pass']} fail={c['fail']} "
-          f"unstable={c['unstable']} error={c.get('error', 0)} -> {args.out}")
+          f"error={c.get('error', 0)} -> {args.out}")
+    print(f"flake: {f_['flipped']}/{f_['retested']} gating verdicts flipped on retest "
+          f"(recorded, not gating)")
     if cli_judge is not None:
         stamp = report["judge"]
         gating_note = f" (gating: {args.gating_model})" if gating_cli_judge else ""

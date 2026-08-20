@@ -19,9 +19,12 @@ artifact:
   # time, not whatever a judge decided that morning.
   #
   # Judged with haiku on the advisory rules and SONNET on the gating (MUST) tier, because a
-  # calibration sweep measured haiku at 6/21 unstable on gating items — a coin flip on rules that
-  # block — against sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. The tiered run
-  # bears that out: unstable dropped 6 -> 1. Regenerate with
+  # calibration sweep measured haiku disagreeing with itself on 6/21 gating items — a coin flip on
+  # rules that block — against sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. The
+  # tiered run bears that out: self-disagreement dropped 6 -> 1. That run predates single-verdict
+  # gating, so its one disagreement is recorded as an 'unstable' verdict rather than a flip; it is
+  # left as judged, because re-judging a paid report to restate its schema buys nothing.
+  # Regenerate with
   #   scripts/critics/run_critics.py <ir> --judge claude --gating-model sonnet --out <here>
   # (119 calls, ~$11.89-equivalent, ~40 min — gating rules are judged twice, hence calls > verdicts).
   #

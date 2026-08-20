@@ -6,6 +6,7 @@ with holistic scoring impossible by construction.
 import pytest
 
 from critics.run_critics import (
+    JudgeUnavailable,
     ModelJudge,
     StubJudge,
     applicable_blocks,
@@ -149,7 +150,7 @@ def test_six_passes_with_binary_verdicts(fixtures):
     assert all_verdicts, "every pass should yield verdicts on this fixture"
     for v in all_verdicts:
         assert set(v) >= {"rule_id", "block_id", "verdict", "evidence"}
-        assert v["verdict"] in {"pass", "fail", "unstable"}  # binary (+ test-retest 'unstable') only
+        assert v["verdict"] in {"pass", "fail"}  # binary only — retest records, it does not vote
 
 
 def test_every_pass_has_at_least_one_verdict(fixtures):
@@ -262,26 +263,65 @@ def test_a_shared_budget_is_not_counted_once_per_judge():
     assert fast.calls + strong.calls != shared.calls, "the doubling this guards against"
 
 
-# --- test-retest -------------------------------------------------------------
+# --- test-retest: records, does not vote --------------------------------------
 
-def test_gating_item_unstable_on_disagreement(fixtures):
-    # R-CARD-01 is MUST (gating): flip the verdict between attempts -> 'unstable'
+def _flipper(target):
+    """A judge that answers `target` one way on attempt 1 and the other on attempt 2."""
     def responder(pass_, rule, block, attempt):
-        if rule == "R-CARD-01":
+        if rule == target:
             return ("pass", "x") if attempt == 1 else ("fail", "y")
         return ("pass", "ok")
+    return responder
+
+
+def test_the_first_verdict_gates_and_the_flip_is_only_recorded(fixtures):
+    """R-CARD-01 is MUST. It disagrees with itself, and it still clears the rule on verdict 1.
+
+    The retired behaviour collapsed this to 'unstable', which blocks nothing and clears nothing —
+    the rule stopped gating for exactly the documents it was least sure about.
+    """
+    report = run_critics(_ir(fixtures), StubJudge(responder=_flipper("R-CARD-01")))
+    card = [v for p in report["passes"] for v in p["verdicts"] if v["rule_id"] == "R-CARD-01"]
+
+    assert card and all(v["verdict"] == "pass" for v in card), "attempt 1 said pass; attempt 1 gates"
+    assert all(v["retest"] == "fail" and v["flipped"] for v in card)
+    assert not report["blocking"], "a flip is a measurement, not a blocking failure"
+    assert {i["rule_id"] for i in report["flaky_items"]} == {"R-CARD-01"}
+
+
+def test_the_flake_rate_is_reported_with_its_denominator(fixtures):
+    """A bare ratio at n=1 and a real instability read the same. `retested` is what separates them."""
+    report = run_critics(_ir(fixtures), StubJudge(responder=_flipper("R-CARD-01")))
+    flake = report["flake"]
+
+    assert flake["retested"] > flake["flipped"] > 0, "only the gating items are probed"
+    assert flake["flake_rate"] == round(flake["flipped"] / flake["retested"], 4)
+    steady = run_critics(_ir(fixtures), StubJudge())          # uniform 'pass', never disagrees
+    assert steady["flake"]["flipped"] == 0 and steady["flake"]["flake_rate"] == 0.0
+
+
+def test_a_failed_probe_costs_the_measurement_not_the_verdict(fixtures):
+    """The verdict is already in hand when the probe runs; losing the probe must not discard it."""
+    def responder(pass_, rule, block, attempt):
+        if attempt == 2:
+            raise JudgeUnavailable("probe timed out")
+        return ("pass", "ok")
     report = run_critics(_ir(fixtures), StubJudge(responder=responder))
-    unstable = [u for u in report["unstable_items"] if u["rule_id"] == "R-CARD-01"]
-    assert unstable, "a gating rule that disagrees across retest must be 'unstable'"
+    card = [v for p in report["passes"] for v in p["verdicts"] if v["rule_id"] == "R-CARD-01"]
+
+    assert card and all(v["verdict"] == "pass" for v in card), "not coerced to 'error'"
+    assert all(v["flipped"] is None for v in card)
+    assert report["flake"]["retested"] == 0, "an unanswered probe is not a measurement"
+    assert report["flake"]["flake_rate"] is None, "no denominator, no rate"
 
 
 def test_non_gating_item_not_retested(fixtures):
-    # R-SCENT-02 is SHOULD (not gating): only attempt 1 is used, so flipping never yields 'unstable'
-    def responder(pass_, rule, block, attempt):
-        return ("pass", "x") if attempt == 1 else ("fail", "y")
-    report = run_critics(_ir(fixtures), StubJudge(responder=responder))
+    """R-SCENT-02 is SHOULD: one call, no probe — the second model call is spent only where it
+    buys something, and a rule that does not block does not need a stability estimate."""
+    report = run_critics(_ir(fixtures), StubJudge(responder=_flipper("R-SCENT-02")))
     scent = [v for p in report["passes"] for v in p["verdicts"] if v["rule_id"] == "R-SCENT-02"]
     assert scent and all(v["verdict"] == "pass" for v in scent)
+    assert all("retest" not in v for v in scent)
 
 
 # --- prompt loading -----------------------------------------------------------

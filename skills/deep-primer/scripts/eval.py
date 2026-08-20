@@ -114,8 +114,10 @@ def _exercised(findings: list[dict]) -> list[str]:
 
 # Models whose MUST verdicts are not trustworthy enough to BLOCK on — the same principle already
 # applied to the lexical proxy: only gate on a measurement worth trusting. A calibration sweep
-# measured haiku at 6/21 unstable on gating items (29% — a coin flip on rules that block) against
-# sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. Its verdicts are still REPORTED.
+# measured haiku disagreeing with itself on 6/21 gating items (29% — a coin flip on rules that
+# block) against sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. That sweep predates
+# single-verdict gating, so those disagreements were scored as 'unstable'; today the same runs would
+# read as flake_rate 0.29 vs 0.05. Its verdicts are still REPORTED.
 _UNTRUSTED_GATING = {"haiku", None}
 
 
@@ -391,6 +393,13 @@ def _tier_soft_critic(paths: dict[str, Path]) -> dict:
         # a statement about the registry's MUST set. A critic MUST failure outside that list was
         # invisible to every gate, which is the soft tier's version of the silent skip.
         "must_failed": sorted(failed_set & _gating_rules()),
+        # How often a gating verdict flipped when asked a second time. The retest no longer
+        # decides anything (it used to collapse a disagreement to 'unstable'), so this travels as a
+        # confidence figure attached to the run rather than as a third outcome. `unstable` stays as
+        # a READER for reports frozen under the old control — new runs never emit that verdict, and
+        # re-judging a paid report to restate its schema would spend money to learn nothing.
+        "flake": report.get("flake", {}),
+        "flaky": sorted({v["rule_id"] for v in verdicts if v.get("flipped")}),
         "unstable": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "unstable"}),
         "errored": sorted({v["rule_id"] for v in verdicts if v["verdict"] == "error"}),
         # Which model judged the MUST items. `run_critics` records this whether or not a SECOND
@@ -485,9 +494,10 @@ def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC,
     exercised |= set(critics.get("rules_exercised") or [])
     expected = result["expected_must_pass"]
     unexercised = [r for r in expected if r not in exercised]
-    # a critic FAIL on an expected rule is a real failure, exactly like a lint fail. 'unstable' is
-    # not folded in: test-retest disagreement means the judge could not decide, which is a signal
-    # about the judge, and silently scoring it as a failure would blame the primer for that.
+    # a critic FAIL on an expected rule is a real failure, exactly like a lint fail. A recorded
+    # flip is not folded in: it says the judge is unsure, which is a fact about the judge, and
+    # scoring it as a failure would blame the primer for that. Legacy 'unstable' verdicts in a
+    # frozen report are likewise neither pass nor fail — that is what the outcome meant.
     failed_expected = sorted({f["rule_id"] for f in hard["failures"] if f["rule_id"] in expected}
                              | {r for r in (critics.get("failed") or []) if r in expected})
 
