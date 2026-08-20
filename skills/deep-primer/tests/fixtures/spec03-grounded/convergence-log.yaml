@@ -1,0 +1,24 @@
+k_max: 3
+cycles:
+- cycle: 0
+  c_k: null
+  rho: null
+  tau: 4.0
+  finding: initial
+  decision: draft
+- cycle: 1
+  c_k: 8.0
+  rho: null
+  tau: 6.0
+  finding: c56 and c57 are identical duplicate entries (cassandra-elasticsearch) with
+    no distinguishing attributes, merging into a single concept is necessary.
+  decision: escalate
+- cycle: 1
+  c_k: null
+  rho: null
+  tau: 6.0
+  finding: terminal
+  decision: stop
+terminal_regime: contested
+terminal_decision: render-contested
+judge_errors: []

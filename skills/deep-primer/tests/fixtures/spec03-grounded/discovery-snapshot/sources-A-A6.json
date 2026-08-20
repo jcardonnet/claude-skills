@@ -1,0 +1,322 @@
+[
+  {
+    "id": "A-A6-s1",
+    "url": "https://oneuptime.com/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Quantifies 7-42% CPU overhead from OpenTelemetry; reduction strategies",
+    "requested_url": "https://www.oneuptime.com/blog/post/2026-02-06-reduce-opentelemetry-performance-overhead-production/view",
+    "fetched_title": "OneUptime | Open-Source Observability & Incident Management",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s2",
+    "url": "https://oneuptime.com/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Benchmarks overhead across languages; automatic vs. manual instrumentation costs",
+    "requested_url": "https://www.oneuptime.com/blog/post/2026-02-06-benchmark-opentelemetry-sdk-overhead-go-java-python/view",
+    "fetched_title": "OneUptime | Open-Source Observability & Incident Management",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s3",
+    "url": "https://coroot.com/blog/opentelemetry-for-go-measuring-the-overhead/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Measures actual performance overhead of OTel in production",
+    "fetched_title": "OpenTelemetry for Go: measuring the overhead | Coroot Blog",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s4",
+    "url": "https://opentelemetry.io/blog/2023/perf-testing/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Official OpenTelemetry performance benchmarking documentation",
+    "fetched_title": "OTel component performance benchmarks | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s5",
+    "url": "https://coralogix.com/guides/observability/distributed-tracing/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Comprehensive guide on pros/cons and sampling trade-offs of distributed tracing",
+    "fetched_title": "Distributed Tracing: Concepts, Pros/Cons & Best Practices [2025 Guide] - Coralogix",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s6",
+    "url": "https://thenewstack.io/what-you-need-know-about-distributed-tracing-and-sampling/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Technical analysis of head vs. tail sampling and data loss issues",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A6-s7",
+    "url": "https://thenewstack.io/distributed-tracing-sampling-opentelemetry/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Skeptical analysis of sampling as fundamental limitation of tracing",
+    "fetched_title": "Sampling: the philosopher's stone of distributed tracing - The New Stack",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s8",
+    "url": "https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch01.html",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "O'Reilly textbook chapter on problems inherent to distributed tracing",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A6-s9",
+    "url": "https://arxiv.org/html/2406.06975",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Academic research on scalable sampling for distributed traces (TraceMesh)",
+    "fetched_title": "TraceMesh: Scalable and Streaming Sampling for Distributed Traces",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s10",
+    "url": "https://charity.spicytakes.org/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Charity Majors' published skepticism on observability 1.0 cost-value disconnect",
+    "fetched_title": "Charity Majors - Observability, engineering management, and the engineer-manager pendulum",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s11",
+    "url": "https://www.honeycomb.io/author/charity",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Charity Majors (leading observability vendor CTO) on cost vs. value problems",
+    "fetched_title": "Charity Majors - CTO at Honeycomb",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s12",
+    "url": "https://www.grepr.ai/blog/the-hidden-cost-in-observability",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Analysis of hidden costs in observability infrastructure and tracing",
+    "fetched_title": "How to Cut Observability Costs Without Losing Visibility | Grepr Blog",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s13",
+    "url": "https://www.elastic.co/blog/2026-observability-trends-costs-business-impact",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Elastic 2026 trends: cost control as primary observability concern",
+    "fetched_title": "Observability trends for 2026: Maturity, cost control, and driving business value | Elastic Blog",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s14",
+    "url": "https://www.polarsignals.com/blog/posts/2024/08/13/parca-opentelemetry-bright-future",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Continuous profiling (Polar Signals) as alternative observability signal",
+    "fetched_title": "Parca + OpenTelemetry = Bright Future | Polar Signals",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s15",
+    "url": "https://www.parca.dev/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Parca: open-source continuous profiling as tracing alternative",
+    "fetched_title": "Parca - Open Source infrastructure-wide continuous profiling",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s16",
+    "url": "https://uptrace.dev/tools/continuous-profiling-tools",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Comparison of continuous profiling tools as observability complement/alternative",
+    "fetched_title": "7 Continuous Profiling Tools to Boost Your Performance Insights | Uptrace",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s17",
+    "url": "https://chronosphere.io/learn/distributed-tracing-how-to-fix/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Industry analysis: 'What's wrong with distributed tracing today'",
+    "fetched_title": "Distributing Tracing: How to Fix | Chronosphere",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s18",
+    "url": "https://www.datadoghq.com/architecture/mastering-distributed-tracing-data-volume-challenges-and-datadogs-approach-to-efficient-sampling/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Datadog on data volume challenges and sampling complexity",
+    "fetched_title": "Mastering Distributed Tracing | Datadog",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s19",
+    "url": "https://last9.io/blog/challenges-of-distributed-tracing/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Comprehensive list of implementation and operational challenges in tracing",
+    "fetched_title": "Distributed Tracing 101: Definition, Working and Implementation | Last9",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A6-s20",
+    "url": "https://martinuke0.github.io/posts/2026-05-30-mastering-opentelemetry-context-propagation-implementation-header-standards-and-distributed-trace-continuity-across-microservices/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Deep analysis of context propagation complexity and overhead",
+    "fetched_title": "Mastering OpenTelemetry Context Propagation: Implementation, Header Standards, and Distributed Trace Continuity across Microservices | martinuke0's Blog",
+    "retrieved_at": "2026-08-20"
+  }
+]

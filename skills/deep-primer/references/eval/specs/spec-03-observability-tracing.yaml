@@ -7,11 +7,13 @@ parameters:
   seniority_band: mid_senior
   length_budget: 2500
   outputs: [html]
-# A hand-built REFERENCE artifact, in the same spirit as spec-01's — not a real generation.
-# Its sources are openly synthetic (`example.org`, fictional authors) because this fixture exercises
-# STRUCTURE: it is what lets this spec's deterministic rules run against a document shaped the way
-# the spec describes. It makes no grounding claim, and it is deliberately distinguishable at a glance
-# from spec-02's ledger, which came from a real campaign with verbatim-verified quotes.
+# A hand-built REFERENCE artifact, in the same spirit as spec-01's — the OUTLINE is authored, not
+# generated, because this fixture exercises STRUCTURE: it is what lets this spec's deterministic
+# rules run against a document shaped the way the spec describes.
+# Its SOURCES are real. A 2026-08-20 discovery/retrieval campaign (143 leads, 128 documents fetched,
+# 30 extracted, 271 claims kept) produced the ledger, and the claim-bearing blocks were re-drafted
+# against what it actually found, keeping the outline intact. Quotes are verbatim-verified, so this
+# fixture now makes the same grounding claim as spec-02's.
 # The soft_critic rules in `expect.must_pass` still need a judge run; offline they report as the
 # documented judge gap rather than as a pass.
 artifact:

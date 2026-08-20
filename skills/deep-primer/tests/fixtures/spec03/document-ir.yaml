@@ -7,15 +7,24 @@
 # rather than replicated per section, and no section manufactures a summary it does not need —
 # R-CONSIST-01 requires one only past ~400 body words, and none of these sections comes near it.
 #
-# Section lengths are deliberately non-uniform (roughly 211 / 113 / 78 counted words) so R-ARCH-06's
-# near-uniform padding heuristic stays quiet with real headroom rather than by a hair.
+# Section lengths are deliberately non-uniform so R-ARCH-06's near-uniform padding heuristic stays
+# quiet with real headroom rather than by a hair.
 #
 # The SPEC asks for 2500 words; this is the compact reference realisation of the same contract, so
 # meta records the budget it was actually drafted to — the length_budget check bands off that number
 # and off `text` + `caption` only. Same convention as document-ir.full.yaml (260 against a 6000-word
 # spec) and spec02/document-ir.yaml (430 against 8000).
 #
-# Sources are SYNTHETIC (example.org, fictional authors) — see source-ledger.yaml.
+# SOURCES ARE REAL (2026-08-20 campaign) — see source-ledger.yaml. Every block_id, role,
+# artifact_kind, mode, section title and concept id is unchanged from the structural fixture this
+# replaced; only the claim-bearing prose and its citations were re-drafted against what the campaign
+# actually found. Three blocks moved inferred -> verified because a real source states exactly what
+# they assert, which the old three-claim synthetic ledger could not support: [fig-propagation],
+# [failures-sampling] and [fig-cardinality]. That is what takes ungrounded_share from 0.60 to 0.40.
+#
+# The blocks still marked `inferred` are inferred by their nature, not by accident: a decision
+# matrix, a checklist, a sub-summary, an extended mechanism narrative and a Toulmin argument are
+# synthesis GROUNDED IN cited claims, not restatements of them.
 meta:
   parameters:
     home_domain: [backend services, relational databases]
@@ -23,9 +32,22 @@ meta:
     seniority_band: mid_senior
     length_budget: 400
     outputs: [html]
-  ledger_snapshot: [s-ctx, s-samp, s-card]
+  ledger_snapshot:
+    - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+    - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+    - a04e4429e1c16d429c3b26135ddd11a7341deef5
+    - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+    - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+    - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+    - e6b2e631449fefb10e505ee770c414f4f136462a
+    - 80b1f67ba2163d7cd2706a03842898479a051b64
+    - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+    - 36976b07dc28e845134e228893af52e30717adfe
+    - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+    - 841df5cd70826525d0f64183d6cd107385236948
+    - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
   model_versions: {generator: test-fixture, verifier: lexical}
-  generated_at: "2026-08-18T00:00:00Z"
+  generated_at: "2026-08-20T00:00:00Z"
 
 sections:
   # Highest salience: everything downstream inherits whatever propagation produced, so this is the
@@ -36,54 +58,57 @@ sections:
     blocks:
       - block_id: lede-propagation
         role: lede
-        text: "A trace truncates at the first hop that drops the propagated context, so instrumentation coverage matters more than any collector behind it."
-        claim_ids: [C-ctx-1]
+        text: "A trace is the path one request takes through an application, and it holds together only while every hop forwards the trace id."
+        claim_ids: [C-bd3da1a2-6, C-a04e4429-9]
         provenance: verified
-        source_ids: [s-ctx]
+        source_ids: [bd3da1a2855aa88a7bae89fbf1d3a205c89a95df, a04e4429e1c16d429c3b26135ddd11a7341deef5]
       - block_id: card-propagation
         role: card
         concept: context-propagation
         mode: mental_model
-        claim_ids: [C-ctx-1]
+        claim_ids: [C-877e19dc-2, C-a04e4429-5]
         provenance: verified
-        source_ids: [s-ctx]
+        source_ids: [877e19dce35fbd5cb39364df6f656dcf5a9ef056, a04e4429e1c16d429c3b26135ddd11a7341deef5]
         row_claims:
-          idea: [C-ctx-1]
+          idea: [C-877e19dc-2]
+          key_exemplar: [C-a04e4429-5]
         rows:
-          idea: "Context propagation is the thread that makes separate spans one trace."
+          idea: "Context propagation carries two identifiers with the request, a trace id and a span id, and nothing else is mandatory."
           home_anchor: "The transaction id you already thread through every statement in one unit of work."
           whats_new_vs_renamed: "Threading an id is renamed, not new; new is that the id must survive process boundaries and libraries you did not write."
           reach_for_when: "Reach for a propagation audit when traces arrive complete on some routes and truncated on others."
           skip_when: "Skip it when every span already shares one trace id and the gap is missing attributes instead."
-          key_exemplar: "A traceparent header copied onto an outbound request by framework middleware."
-          confidence: "settled for the truncation mechanism; contested for how much manual instrumentation remains unavoidable"
+          key_exemplar: "A B3 header whose sampled field is set to 1, which tells every later hop the trace was accepted."
+          confidence: "Settled: the mandatory fields come from the B3 propagation specification itself, not from a vendor."
       - block_id: matrix-propagation
         role: matrix
         artifact_kind: decision_matrix
         concept: context-propagation
         mode: tradeoff
-        text: "Baseline: propagate in framework middleware and let application code stay unaware. Manual propagation buys coverage inside odd transports at the cost of every future maintainer remembering it. An auto-instrumentation agent buys breadth at the cost of an opaque gap whenever a library it patches moves underneath it."
-        claim_ids: [C-ctx-1, C-ctx-2]
+        text: "Baseline: run W3C trace context everywhere and let middleware set it. Keeping B3 buys compatibility with an existing fleet, at the cost of a migration you still owe. Running both formats buys a safe transition window, at the cost of two header sets to read whenever a trace truncates."
+        claim_ids: [C-28ed2da2-6, C-877e19dc-7]
         # inferred, not verified: the baseline recommendation and the two cost clauses are synthesis
         # GROUNDED IN the cited claims rather than stated by them.
         provenance: inferred
-        source_ids: [s-ctx]
+        source_ids: [28ed2da2964b6fd6fb05e25509355db789fd1efd, 877e19dce35fbd5cb39364df6f656dcf5a9ef056]
       - block_id: checklist-propagation
         role: matrix
         artifact_kind: checklist
-        text: "Compare span counts per route against request counts. Confirm the outbound client copies the header. Check that queue producers serialize context into the message body. Re-run one known-slow route and count the hops that appear."
-        claim_ids: [C-ctx-2]
+        text: "Confirm the outbound client copies the trace headers. Check that queue producers put trace context into the message itself. Use the single-header b3 form on any JMS hop. Read the collector config for a filter that drops spans."
+        claim_ids: [C-a04e4429-15, C-28ed2da2-3, C-c33bab73-8]
         provenance: inferred
-        source_ids: [s-ctx]
+        source_ids: [a04e4429e1c16d429c3b26135ddd11a7341deef5, 28ed2da2964b6fd6fb05e25509355db789fd1efd, c33bab732ffdab0be4a4d077705eae94c77ddbb0]
       - block_id: fig-propagation
         role: figure
         concept: context-propagation
         mode: architecture
-        caption: "Figure 1: one dropped header splits a single trace into two roots, and neither root reports the real end-to-end latency."
+        # verified, not inferred: Jaeger's own documentation warns that dropping spans breaks
+        # traces, and the signals docs define a trace as the path of one request.
+        caption: "Figure 1: dropping spans at the collector breaks the trace they belonged to, so the surviving spans no longer describe one request."
         svg_ref: "synthetic/context-hops.svg"
-        claim_ids: [C-ctx-1]
-        provenance: inferred
-        source_ids: [s-ctx]
+        claim_ids: [C-c33bab73-8, C-bd3da1a2-6]
+        provenance: verified
+        source_ids: [c33bab732ffdab0be4a4d077705eae94c77ddbb0, bd3da1a2855aa88a7bae89fbf1d3a205c89a95df]
       - block_id: recall-propagation
         role: recall
         concept: context-propagation
@@ -103,19 +128,19 @@ sections:
         blocks:
           - block_id: subsum-prop-queue
             role: summary
-            text: "A synchronous hop loses context to a missing header; an asynchronous hop loses it to a message that carried none."
-            claim_ids: [C-ctx-2]
+            text: "A synchronous hop loses the trace id to a missing header; an asynchronous hop loses it to a message that carried none."
+            claim_ids: [C-28ed2da2-3]
             provenance: inferred
-            source_ids: [s-ctx]
+            source_ids: [28ed2da2964b6fd6fb05e25509355db789fd1efd]
           - block_id: body-prop-queue
             role: body
             concept: context-propagation
             mode: failure
             heading: "Where the orphaned root span comes from"
-            text: "A queue hop breaks the parent link whenever the producer leaves context out of the message. That hop then starts a second trace, and the consumer emits an orphaned root span. The orphaned span carries real latency, so the service dashboard stays green while the user waits. That span never rejoins its parent, and no query over the trace store recovers the link afterwards."
-            claim_ids: [C-ctx-2]
+            text: "A Kafka or gRPC hop moves work between services that never share a call stack. The producing service must put the trace context into the message metadata, because no header rides along on its own. When it does not, the consumer opens a span with no parent and starts a second trace. That orphaned span holds real latency, so the service dashboard stays green while the user waits. The service meets this once per format while migrating from B3 to W3C trace context, and a half-finished migration leaves older hops uncorrelated."
+            claim_ids: [C-28ed2da2-3, C-28ed2da2-4, C-28ed2da2-6]
             provenance: inferred
-            source_ids: [s-ctx]
+            source_ids: [28ed2da2964b6fd6fb05e25509355db789fd1efd]
 
   # Mid salience: a card, one argued tradeoff, one failure catalog. No figure, no subsection.
   - block_id: sec-sampling
@@ -124,53 +149,54 @@ sections:
     blocks:
       - block_id: lede-sampling
         role: lede
-        text: "Head sampling discards the errors before anyone knows they were errors, which is the whole reason tail-based sampling exists."
-        claim_ids: [C-samp-1]
+        text: "Head-based sampling makes its keep-or-drop decision at the beginning of a trace, before the first span is even complete."
+        claim_ids: [C-a9fc4c7a-2, C-80b1f67b-1]
         provenance: verified
-        source_ids: [s-samp]
+        source_ids: [a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c, 80b1f67ba2163d7cd2706a03842898479a051b64]
       - block_id: card-sampling
         role: card
         concept: tail-based-sampling
         mode: mental_model
-        claim_ids: [C-samp-1, C-samp-2]
+        claim_ids: [C-80b1f67b-3, C-a9fc4c7a-4]
         provenance: verified
-        source_ids: [s-samp]
+        source_ids: [80b1f67ba2163d7cd2706a03842898479a051b64, a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c]
         row_claims:
-          idea: [C-samp-1]
-          key_exemplar: [C-samp-2]
+          idea: [C-80b1f67b-3]
+          key_exemplar: [C-a9fc4c7a-4]
         rows:
-          idea: "The sampling decision waits until the trace is complete, so it can see the outcome."
+          idea: "Tail-based sampling moves the decision into the collector rather than the application SDK."
           home_anchor: "The slow-query log that records a statement only after it crosses a duration threshold."
           whats_new_vs_renamed: "Deciding after the fact is renamed, not new; new is that the decision spans many processes and no single one holds the answer."
           reach_for_when: "Reach for it when errors and p99 outliers are rare enough that uniform sampling loses them."
           skip_when: "Skip it when trace volume already fits the budget, since buffering adds a failure mode for nothing."
-          key_exemplar: "A collector holding every span of an in-flight trace until the root span closes."
-          confidence: "settled for what it keeps; contested for whether collector memory is the binding constraint"
+          key_exemplar: "A collector holding every span of a trace in memory until the decision is made."
+          confidence: "Settled for where the decision runs; the memory figures below come from one vendor's worked example."
       - block_id: toulmin-sampling
         role: toulmin
         concept: tail-based-sampling
         mode: tradeoff
-        text: "When error traces matter more than uniform coverage, reach for tail-based sampling at the collector. Qualifier: the collector can defer that decision only while every buffered trace fits memory. Rebuttal: under a burst the collector evicts in-flight traces, and the evicted traces are exactly the slow ones you wanted."
-        claim_ids: [C-samp-1, C-samp-2]
-        # inferred: the claim/qualifier/rebuttal shape is authored argument built on the two cited
-        # claims, not a restatement of either.
+        text: "When error traces matter more than uniform coverage, run tail-based sampling in the collector. Qualifier: the collector defers that decision only while every buffered trace fits in memory. That memory must hold every buffered trace for two or three times p99 latency. Rebuttal: that memory comes to roughly 2.4 GB in one vendor's worked example of a modest deployment. Under a burst, the traces evicted first are the slow ones you wanted to keep."
+        claim_ids: [C-a9fc4c7a-4, C-80b1f67b-4, C-80b1f67b-7]
+        # inferred: the claim/qualifier/rebuttal shape is authored argument built on the cited
+        # claims, not a restatement of any of them.
         provenance: inferred
-        source_ids: [s-samp]
+        source_ids: [a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c, 80b1f67ba2163d7cd2706a03842898479a051b64]
       - block_id: failures-sampling
         role: matrix
         artifact_kind: failure_catalog
         concept: tail-based-sampling
         mode: failure
-        text: "Memory cliff: a traffic burst fills the buffer and the collector drops in-flight traces indiscriminately. Late root: a trace whose root span closes after the buffer window is decided on partial evidence. Silent bias: keeping only errors leaves the retained latency distribution unrepresentative of production."
-        claim_ids: [C-samp-2]
-        provenance: inferred
-        source_ids: [s-samp]
+        # verified, not inferred: each entry is a documented failure mode, not a synthesised one.
+        text: "Split trace: spans of one trace reach different collector instances, and no instance ever sees the whole trace. Missing router: without load balancing by trace id, tail-based sampling in OpenTelemetry does not work at all. Memory pressure: every span of every in-flight trace is held in memory until the decision is made."
+        claim_ids: [C-a9fc4c7a-5, C-80b1f67b-6, C-a9fc4c7a-4]
+        provenance: verified
+        source_ids: [a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c, 80b1f67ba2163d7cd2706a03842898479a051b64]
       - block_id: recall-sampling
         role: recall
         concept: tail-based-sampling
         items:
           - question: "Error traces vanished after sampling dropped from every request to one in twenty. Which sampler are you running?"
-            answer: "A head sampler, which decides before the outcome is known and therefore retains an error only by luck."
+            answer: "A head-based sampler, which decides before the outcome is known and therefore retains an error only by luck."
           - question: "Your database already logs statements past a duration threshold. What does tail-based sampling add?"
             answer: "The threshold is evaluated across every service in one request, rather than per statement inside one engine."
             cross_domain: true
@@ -185,45 +211,48 @@ sections:
     blocks:
       - block_id: lede-cardinality
         role: lede
-        text: "Storage and query cost track distinct attribute combinations rather than span count, so one user-id attribute outgrows a tenfold traffic increase."
-        claim_ids: [C-card-1]
+        text: "Every distinct combination of name and label values is its own time series, so high attribute cardinality is what degrades metrics and logs."
+        claim_ids: [C-ed606ca4-2, C-841df5cd-1]
         provenance: verified
-        source_ids: [s-card]
+        source_ids: [ed606ca486ad9f76419e5ed22310a231c4ac01bf, 841df5cd70826525d0f64183d6cd107385236948]
       - block_id: card-cardinality
         role: card
         concept: attribute-cardinality
         mode: mental_model
-        claim_ids: [C-card-1]
+        claim_ids: [C-841df5cd-1, C-6c8aa937-3]
         provenance: verified
-        source_ids: [s-card]
+        source_ids: [841df5cd70826525d0f64183d6cd107385236948, 6c8aa937aa56de5954b9421375c0bf1716fe60ff]
         row_claims:
-          idea: [C-card-1]
+          idea: [C-841df5cd-1]
+          key_exemplar: [C-6c8aa937-3]
         rows:
-          idea: "Attribute cardinality, not span volume, sets what a trace store costs to hold and query."
+          idea: "Attribute cardinality is what makes metrics and logs degrade."
           home_anchor: "The distinct-value count you weigh before putting an index on a column."
           whats_new_vs_renamed: "Counting distinct values is renamed, not new; new is that the key set is open, so one request can mint a key nobody declared."
           reach_for_when: "Reach for a cardinality audit when the bill climbs while request volume stays flat."
           skip_when: "Skip it when spans carry only enumerated attributes such as route, status, and region."
-          key_exemplar: "A span attribute holding a raw user id on every request."
-          confidence: "settled for the cost driver; contested for where the practical ceiling sits"
+          key_exemplar: "Process pid and parent_pid attributes, which churn between instances and drive cardinality up."
+          confidence: "Settled: two independent specification threads raise the same cardinality problem."
       - block_id: aid-cardinality
         role: matrix
         artifact_kind: decision_aid
         concept: attribute-cardinality
         mode: tradeoff
-        text: "Ask what a query will group by. An attribute you group by earns its cardinality; an attribute you read only after a trace is already found belongs in the span body rather than the index."
-        claim_ids: [C-card-1]
+        text: "Ask what a query will group by. An attribute you group by earns its cardinality; an attribute read only after a trace is found belongs in the span body. Normalise dynamic path segments to a placeholder before they reach the metric name. An SDK limit caps one process, not the fleet behind it."
+        claim_ids: [C-ed606ca4-7, C-36976b07-8]
         provenance: inferred
-        source_ids: [s-card]
+        source_ids: [ed606ca486ad9f76419e5ed22310a231c4ac01bf, 36976b07dc28e845134e228893af52e30717adfe]
       - block_id: fig-cardinality
         role: figure
         concept: attribute-cardinality
         mode: cost
-        caption: "Figure 2: cost climbs with distinct attribute combinations while span volume stays flat, so the curve is driven by breadth rather than traffic."
+        # verified, not inferred: the overflow behaviour is stated outright by the OpenTelemetry
+        # cardinality-limits post — values survive, the attribute set does not.
+        caption: "Figure 2: past the limit, measurements land in one overflow data point, so the values survive but the attribute set does not."
         svg_ref: "synthetic/cardinality-cost.svg"
-        claim_ids: [C-card-1]
-        provenance: inferred
-        source_ids: [s-card]
+        claim_ids: [C-36976b07-9, C-36976b07-10]
+        provenance: verified
+        source_ids: [36976b07dc28e845134e228893af52e30717adfe]
       - block_id: recall-cardinality
         role: recall
         concept: attribute-cardinality

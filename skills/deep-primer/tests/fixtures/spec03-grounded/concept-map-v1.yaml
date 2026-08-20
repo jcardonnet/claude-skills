@@ -1,0 +1,3126 @@
+concepts:
+- concept_id: c1-cross-language-describes
+  canonical_term: cross-language describes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-1
+- concept_id: c2-docs-hosted
+  canonical_term: docs hosted
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-2
+- concept_id: c3-directory-located
+  canonical_term: directory located
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-3
+- concept_id: c4-every-held
+  canonical_term: every held
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-4
+- concept_id: c5-according-changes
+  canonical_term: according changes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-5
+- concept_id: c6-implement-implementations
+  canonical_term: implement implementations
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-6
+- concept_id: c7-apache-contributions
+  canonical_term: apache contributions
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-7
+- concept_id: c8-changes-layout
+  canonical_term: changes layout
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  claim_ids:
+  - C-2220e276-8
+- concept_id: c9-architecture-built
+  canonical_term: architecture built
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  claim_ids:
+  - C-226c9ebd-1
+- concept_id: c10-binaries-binary
+  canonical_term: binaries binary
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  claim_ids:
+  - C-226c9ebd-2
+- concept_id: c11-end-to-end-jaeger
+  canonical_term: end-to-end jaeger
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  claim_ids:
+  - C-226c9ebd-3
+- concept_id: c12-2026-deprecated
+  canonical_term: 2026 deprecated
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  claim_ids:
+  - C-226c9ebd-5
+- concept_id: c13-2025-december
+  canonical_term: 2025 december
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  claim_ids:
+  - C-226c9ebd-6
+- concept_id: c14-2025-359
+  canonical_term: 2025 359
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  claim_ids:
+  - C-226c9ebd-7
+- concept_id: c15-backend-clickhouse
+  canonical_term: backend clickhouse
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  claim_ids:
+  - C-226c9ebd-8
+- concept_id: c16-application-brave
+  canonical_term: application brave
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-1
+- concept_id: c17-distributed-fields
+  canonical_term: distributed fields
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-2
+- concept_id: c18-can-context
+  canonical_term: can context
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-3
+- concept_id: c19-application-communication
+  canonical_term: application communication
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-4
+- concept_id: c20-applications-automatic
+  canonical_term: applications automatic
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-5
+- concept_id: c21-avoid-breaking
+  canonical_term: avoid breaking
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-6
+- concept_id: c22-alternative-context
+  canonical_term: alternative context
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-7
+- concept_id: c23-2000-aggregation
+  canonical_term: 2000 aggregation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-1
+- concept_id: c24-attribute-cardinality
+  canonical_term: attribute cardinality
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-10
+- concept_id: c25-attribute-causes
+  canonical_term: attribute causes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-11
+- concept_id: c26-attributes-but
+  canonical_term: attributes but
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-2
+- concept_id: c27-attribute-compatibility
+  canonical_term: attribute compatibility
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-4
+- concept_id: c28-attribute-can
+  canonical_term: attribute can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-5
+- concept_id: c29-apply-asynchronous
+  canonical_term: apply asynchronous
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-6
+- concept_id: c30-attributes-instrumentation
+  canonical_term: attributes instrumentation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-7
+- concept_id: c31-across-backend
+  canonical_term: across backend
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-8
+- concept_id: c32-cardinality-data
+  canonical_term: cardinality data
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  claim_ids:
+  - C-36976b07-9
+- concept_id: c33-against-built
+  canonical_term: against built
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-1
+- concept_id: c34-container-ghcr
+  canonical_term: container ghcr
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-10
+- concept_id: c35-container-cosign
+  canonical_term: container cosign
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-11
+- concept_id: c36-actions-certificate
+  canonical_term: actions certificate
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-12
+- concept_id: c37-events-push
+  canonical_term: events push
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-13
+- concept_id: c38-files-open-telemetry
+  canonical_term: files open-telemetry
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-14
+- concept_id: c39-contrib-named
+  canonical_term: contrib named
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-15
+- concept_id: c40-container-content
+  canonical_term: container content
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-16
+- concept_id: c41-began-collector
+  canonical_term: began collector
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-17
+- concept_id: c42-apache-2-collector
+  canonical_term: apache-2 collector
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-18
+- concept_id: c43-all-approvers
+  canonical_term: all approvers
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-19
+- concept_id: c44-agent-can
+  canonical_term: agent can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-2
+- concept_id: c45-changes-code
+  canonical_term: changes code
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-3
+- concept_id: c46-after-collector
+  canonical_term: after collector
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-4
+- concept_id: c47-breaking-change
+  canonical_term: breaking change
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-5
+- concept_id: c48-binaries-built
+  canonical_term: binaries built
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-6
+- concept_id: c49-container-cosign
+  canonical_term: container cosign
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-7
+- concept_id: c50-collector-data
+  canonical_term: collector data
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-8
+- concept_id: c51-collector-exists
+  canonical_term: collector exists
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  claim_ids:
+  - C-49717491-9
+- concept_id: c52-2012-first
+  canonical_term: 2012 first
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-1
+- concept_id: c53-originally-twitter
+  canonical_term: originally twitter
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-50825277-10
+  - C-fd103bb1-1
+- concept_id: c54-client-jaeger
+  canonical_term: client jaeger
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-11
+- concept_id: c55-client-java
+  canonical_term: client java
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-12
+- concept_id: c56-cassandra-elasticsearch
+  canonical_term: cassandra elasticsearch
+  aliases:
+  - cassandra elasticsearch
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-50825277-13
+  - C-50825277-14
+  - C-50825277-8
+  - C-fd103bb1-4
+- concept_id: c58-both-compatible
+  canonical_term: both compatible
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-15
+- concept_id: c59-api-compatible
+  canonical_term: api compatible
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-16
+- concept_id: c60-jaeger-uber
+  canonical_term: jaeger uber
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-2
+  - C-50825277-9
+- concept_id: c61-2017-2019
+  canonical_term: 2017 2019
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-3
+- concept_id: c62-code-primarily
+  canonical_term: code primarily
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-4
+  - C-50825277-5
+- concept_id: c63-agents-before
+  canonical_term: agents before
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-6
+- concept_id: c64-applications-collectors
+  canonical_term: applications collectors
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  claim_ids:
+  - C-50825277-7
+- concept_id: c65-application-attributes
+  canonical_term: application attributes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+  claim_ids:
+  - C-6c8aa937-3
+- concept_id: c66-address-attributes
+  canonical_term: address attributes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+  claim_ids:
+  - C-6c8aa937-4
+- concept_id: c67-attribute-conventions
+  canonical_term: attribute conventions
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+  claim_ids:
+  - C-6c8aa937-5
+- concept_id: c68-application-attributes
+  canonical_term: application attributes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+  claim_ids:
+  - C-6c8aa937-6
+- concept_id: c69-cardinality-databases
+  canonical_term: cardinality databases
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+  claim_ids:
+  - C-6c8aa937-7
+- concept_id: c70-around-attribute
+  canonical_term: around attribute
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+  claim_ids:
+  - C-6c8aa937-8
+- concept_id: c71-equal-greater
+  canonical_term: equal greater
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-1
+- concept_id: c72-limited-p-value
+  canonical_term: limited p-value
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-10
+- concept_id: c73-conversion-decimal
+  canonical_term: conversion decimal
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-11
+- concept_id: c74-between-bidirectional
+  canonical_term: between bidirectional
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-12
+- concept_id: c75-implementations-prefer
+  canonical_term: implementations prefer
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-13
+- concept_id: c76-both-comparison
+  canonical_term: both comparison
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-14
+- concept_id: c77-extended-negotiations
+  canonical_term: extended negotiations
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-15
+- concept_id: c78-consistent-design
+  canonical_term: consistent design
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-16
+- concept_id: c79-all-must
+  canonical_term: all must
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-2
+- concept_id: c80-always-digits
+  canonical_term: always digits
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-4
+- concept_id: c81-but-leading
+  canonical_term: but leading
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-5
+- concept_id: c82-arithmetic-between
+  canonical_term: arithmetic between
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-7
+- concept_id: c83-chosen-downstream
+  canonical_term: chosen downstream
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-8
+- concept_id: c84-non-probabilistic-produces
+  canonical_term: non-probabilistic produces
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  claim_ids:
+  - C-7290a7dc-9
+- concept_id: c85-collects-information
+  canonical_term: collects information
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-1
+- concept_id: c86-collection-istio
+  canonical_term: collection istio
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-2
+- concept_id: c87-collection-istio
+  canonical_term: collection istio
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-3
+- concept_id: c88-applications-can
+  canonical_term: applications can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-4
+- concept_id: c89-can-istio
+  canonical_term: can istio
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-5
+- concept_id: c90-access-addons
+  canonical_term: access addons
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-6
+- concept_id: c91-api-includes
+  canonical_term: api includes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-7
+- concept_id: c92-categorized-kyverno
+  canonical_term: categorized kyverno
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7c890a26e7c2d52d855195c4274d951cca4f4ac2
+  claim_ids:
+  - C-7c890a26-1
+- concept_id: c93-achieve-approach
+  canonical_term: achieve approach
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 7c890a26e7c2d52d855195c4274d951cca4f4ac2
+  claim_ids:
+  - C-7c890a26-2
+- concept_id: c94-any-before
+  canonical_term: any before
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  claim_ids:
+  - C-80b1f67b-1
+- concept_id: c95-decisions-downstream
+  canonical_term: decisions downstream
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  claim_ids:
+  - C-80b1f67b-2
+- concept_id: c96-application-collector
+  canonical_term: application collector
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  claim_ids:
+  - C-80b1f67b-3
+- concept_id: c97-2-3-application's
+  canonical_term: 2-3 application's
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  claim_ids:
+  - C-80b1f67b-4
+- concept_id: c98-balancers-load
+  canonical_term: balancers load
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  claim_ids:
+  - C-80b1f67b-6
+- concept_id: c99-000-2kb
+  canonical_term: 000 2kb
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  claim_ids:
+  - C-80b1f67b-7
+- concept_id: c100-000-application
+  canonical_term: 000 application
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  claim_ids:
+  - C-80b1f67b-8
+- concept_id: c101-attribute-cardinality
+  canonical_term: attribute cardinality
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 841df5cd70826525d0f64183d6cd107385236948
+  claim_ids:
+  - C-841df5cd-1
+- concept_id: c102-address-cardinality
+  canonical_term: address cardinality
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 841df5cd70826525d0f64183d6cd107385236948
+  claim_ids:
+  - C-841df5cd-3
+- concept_id: c103-attributes-client
+  canonical_term: attributes client
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 841df5cd70826525d0f64183d6cd107385236948
+  claim_ids:
+  - C-841df5cd-4
+- concept_id: c104-efficient-encoding
+  canonical_term: efficient encoding
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+  claim_ids:
+  - C-877e19dc-1
+- concept_id: c105-fields-format
+  canonical_term: fields format
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+  claim_ids:
+  - C-877e19dc-2
+- concept_id: c106-debug-encoded
+  canonical_term: debug encoded
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+  claim_ids:
+  - C-877e19dc-3
+- concept_id: c107-conventions-follow
+  canonical_term: conventions follow
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+  claim_ids:
+  - C-877e19dc-5
+- concept_id: c108-antipattern-headers
+  canonical_term: antipattern headers
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+  claim_ids:
+  - C-877e19dc-6
+- concept_id: c109-caused-compatibility
+  canonical_term: caused compatibility
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+  claim_ids:
+  - C-877e19dc-7
+- concept_id: c110-client-conventions
+  canonical_term: client conventions
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-1
+- concept_id: c111-apis-genai
+  canonical_term: apis genai
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-2
+- concept_id: c112-already-instrumented-child
+  canonical_term: already-instrumented child
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-3
+- concept_id: c113-client-defines
+  canonical_term: client defines
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-4
+- concept_id: c114-allow-client
+  canonical_term: allow client
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-5
+- concept_id: c115-already-instrumented-client
+  canonical_term: already-instrumented client
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-7
+- concept_id: c116-author-client
+  canonical_term: author client
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-8
+- concept_id: c117-128-bit-64-bit
+  canonical_term: 128-bit 64-bit
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-1
+- concept_id: c118-characters-encoded
+  canonical_term: characters encoded
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-10
+- concept_id: c119-except-field
+  canonical_term: except field
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-11
+- concept_id: c120-format-jms
+  canonical_term: format jms
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-15
+- concept_id: c121-64-bit-exactly
+  canonical_term: 64-bit exactly
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-2
+  - C-a04e4429-3
+- concept_id: c122-apply-consistently
+  canonical_term: apply consistently
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-4
+- concept_id: c123-decision-encodes
+  canonical_term: decision encodes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-5
+  - C-a04e4429-6
+- concept_id: c124-debug-encoded
+  canonical_term: debug encoded
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-7
+- concept_id: c125-2018-encoding
+  canonical_term: 2018 encoding
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-8
+- concept_id: c126-headers-included
+  canonical_term: headers included
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-a04e4429-9
+- concept_id: c127-2022-github
+  canonical_term: 2022 github
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a11ddc88570adb99d1e15ac473a654ab215dd9fd
+  claim_ids:
+  - C-a11ddc88-1
+- concept_id: c128-corresponding-opentelemetry-python-contr
+  canonical_term: corresponding opentelemetry-python-contrib
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a11ddc88570adb99d1e15ac473a654ab215dd9fd
+  claim_ids:
+  - C-a11ddc88-2
+- concept_id: c129-incompatible-instrumented
+  canonical_term: incompatible instrumented
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a11ddc88570adb99d1e15ac473a654ab215dd9fd
+  claim_ids:
+  - C-a11ddc88-3
+- concept_id: c130-all-forcing
+  canonical_term: all forcing
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a11ddc88570adb99d1e15ac473a654ab215dd9fd
+  claim_ids:
+  - C-a11ddc88-4
+- concept_id: c131-all-current
+  canonical_term: all current
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a11ddc88570adb99d1e15ac473a654ab215dd9fd
+  claim_ids:
+  - C-a11ddc88-5
+- concept_id: c132-compatibility-each
+  canonical_term: compatibility each
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a11ddc88570adb99d1e15ac473a654ab215dd9fd
+  claim_ids:
+  - C-a11ddc88-6
+- concept_id: c133-alike-decisions
+  canonical_term: alike decisions
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  claim_ids:
+  - C-a9fc4c7a-1
+- concept_id: c134-before-complete
+  canonical_term: before complete
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  claim_ids:
+  - C-a9fc4c7a-2
+- concept_id: c135-all-buffering
+  canonical_term: all buffering
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  claim_ids:
+  - C-a9fc4c7a-4
+- concept_id: c136-all-belonging
+  canonical_term: all belonging
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  claim_ids:
+  - C-a9fc4c7a-5
+- concept_id: c137-all-collector
+  canonical_term: all collector
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  claim_ids:
+  - C-a9fc4c7a-6
+- concept_id: c138-across-any
+  canonical_term: across any
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  claim_ids:
+  - C-a9fc4c7a-7
+- concept_id: c139-before-both
+  canonical_term: before both
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  claim_ids:
+  - C-a9fc4c7a-8
+- concept_id: c140-contents-does
+  canonical_term: contents does
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-1
+- concept_id: c141-highly-available-horizontally-scalable
+  canonical_term: highly-available horizontally-scalable
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-2
+- concept_id: c142-delivers-instead
+  canonical_term: delivers instead
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-3
+- concept_id: c143-agent-alloy
+  canonical_term: agent alloy
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-4
+- concept_id: c144-grafana-has
+  canonical_term: grafana has
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-5
+- concept_id: c145-0-only-agpl-3
+  canonical_term: 0-only agpl-3
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-6
+- concept_id: c146-2026-chart
+  canonical_term: 2026 chart
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-7
+- concept_id: c147-auth_enabled-locally
+  canonical_term: auth_enabled locally
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-8
+- concept_id: c148-currently-progress
+  canonical_term: currently progress
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - b23a3dff596135e73bcb59da23321c53c5f3cf5b
+  claim_ids:
+  - C-b23a3dff-2
+- concept_id: c149-each-major
+  canonical_term: each major
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - b23a3dff596135e73bcb59da23321c53c5f3cf5b
+  claim_ids:
+  - C-b23a3dff-4
+- concept_id: c150-above-any
+  canonical_term: above any
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - b23a3dff596135e73bcb59da23321c53c5f3cf5b
+  claim_ids:
+  - C-b23a3dff-5
+- concept_id: c151-architecture-arm64
+  canonical_term: architecture arm64
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - b23a3dff596135e73bcb59da23321c53c5f3cf5b
+  claim_ids:
+  - C-b23a3dff-6
+- concept_id: c152-arm64-automated
+  canonical_term: arm64 automated
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - b23a3dff596135e73bcb59da23321c53c5f3cf5b
+  claim_ids:
+  - C-b23a3dff-7
+- concept_id: c153-api-backward-incompatible
+  canonical_term: api backward-incompatible
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-1
+- concept_id: c154-breaking-bumps
+  canonical_term: breaking bumps
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-10
+- concept_id: c155-across-all
+  canonical_term: across all
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-11
+  - C-ba1d8db8-14
+- concept_id: c156-after-api
+  canonical_term: after api
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-12
+- concept_id: c157-create-currently
+  canonical_term: create currently
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-13
+- concept_id: c158-deprecated-marked
+  canonical_term: deprecated marked
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-15
+- concept_id: c159-changes-make
+  canonical_term: changes make
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-16
+- concept_id: c160-against-api
+  canonical_term: against api
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-2
+- concept_id: c161-begin-development
+  canonical_term: begin development
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-3
+- concept_id: c162-breaking-changes
+  canonical_term: breaking changes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-4
+- concept_id: c163-against-dependencies
+  canonical_term: against dependencies
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-5
+- concept_id: c164-dependencies-established
+  canonical_term: dependencies established
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-6
+- concept_id: c165-api-before
+  canonical_term: api before
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-7
+- concept_id: c166-backward-compatibility
+  canonical_term: backward compatibility
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-8
+- concept_id: c167-clients-follow
+  canonical_term: clients follow
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-9
+- concept_id: c168-collects-data
+  canonical_term: collects data
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-1
+- concept_id: c169-framework-free
+  canonical_term: framework free
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-10
+- concept_id: c170-data-datadog
+  canonical_term: data datadog
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-11
+- concept_id: c171-allows-backends
+  canonical_term: allows backends
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-12
+- concept_id: c172-advanced-agent
+  canonical_term: advanced agent
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-13
+- concept_id: c173-datadog-faster
+  canonical_term: datadog faster
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-14
+- concept_id: c174-alternatives-can
+  canonical_term: alternatives can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-16
+- concept_id: c175-analyzes-collects
+  canonical_term: analyzes collects
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-2
+- concept_id: c176-erlang-including
+  canonical_term: erlang including
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-3
+- concept_id: c177-600-built-in
+  canonical_term: 600 built-in
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-4
+- concept_id: c178-alerting-capabilities
+  canonical_term: alerting capabilities
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-5
+  - C-bcea9415-9
+- concept_id: c179-costs-datadog
+  canonical_term: costs datadog
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-7
+- concept_id: c180-27001-certifications
+  canonical_term: 27001 certifications
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  claim_ids:
+  - C-bcea9415-8
+- concept_id: c181-activity-applications
+  canonical_term: activity applications
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+  claim_ids:
+  - C-bd3da1a2-2
+- concept_id: c182-baggage-currently
+  canonical_term: baggage currently
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+  claim_ids:
+  - C-bd3da1a2-3
+- concept_id: c183-code-level
+  canonical_term: code level
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+  claim_ids:
+  - C-bd3da1a2-5
+- concept_id: c184-application-path
+  canonical_term: application path
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+  claim_ids:
+  - C-bd3da1a2-6
+- concept_id: c185-captured-measurements
+  canonical_term: captured measurements
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+  claim_ids:
+  - C-bd3da1a2-7
+- concept_id: c186-baggage-between
+  canonical_term: baggage between
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+  claim_ids:
+  - C-bd3da1a2-8
+- concept_id: c187-binary-can
+  canonical_term: binary can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-1
+- concept_id: c188-can-collector
+  canonical_term: can collector
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-2
+- concept_id: c189-all-in-one-because
+  canonical_term: all-in-one because
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-3
+- concept_id: c190-cannot-data
+  canonical_term: cannot data
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-4
+- concept_id: c191-backend-badger
+  canonical_term: backend badger
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-6
+- concept_id: c192-collector-customized
+  canonical_term: collector customized
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-7
+- concept_id: c193-broken-cause
+  canonical_term: broken cause
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-8
+- concept_id: c194-cloud-based-datadog
+  canonical_term: cloud-based datadog
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-1
+- concept_id: c195-all-datadog
+  canonical_term: all datadog
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-10
+- concept_id: c196-backend-costs
+  canonical_term: backend costs
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-11
+- concept_id: c197-backend-but
+  canonical_term: backend but
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-12
+- concept_id: c198-datadog-duplication
+  canonical_term: datadog duplication
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-13
+- concept_id: c199-built-in-capabilities
+  canonical_term: built-in capabilities
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-2
+- concept_id: c200-analysis-capabilities
+  canonical_term: analysis capabilities
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-3
+- concept_id: c201-cloud-computing
+  canonical_term: cloud computing
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-4
+- concept_id: c202-active-after
+  canonical_term: active after
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-5
+- concept_id: c203-agents-collection
+  canonical_term: agents collection
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-6
+- concept_id: c204-backend-can
+  canonical_term: backend can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-7
+- concept_id: c205-adopted-data
+  canonical_term: adopted data
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-8
+- concept_id: c206-data-datadog
+  canonical_term: data datadog
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-c5bed158-9
+- concept_id: c207-built-originally
+  canonical_term: built originally
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-1
+- concept_id: c208-2012-created
+  canonical_term: 2012 created
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-2
+- concept_id: c209-2016-cloud
+  canonical_term: 2016 cloud
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-3
+- concept_id: c210-cncf's-first
+  canonical_term: cncf's first
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-4
+- concept_id: c211-collects-data
+  canonical_term: collects data
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-5
+- concept_id: c212-components-most
+  canonical_term: components most
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-6
+- concept_id: c213-autonomous-depend
+  canonical_term: autonomous depend
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-8
+- concept_id: c214-higher-jre
+  canonical_term: higher jre
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e442ace94b66955624c3753004ac523a2e890d39
+  claim_ids:
+  - C-e442ace9-1
+- concept_id: c215-core-java
+  canonical_term: core java
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e442ace94b66955624c3753004ac523a2e890d39
+  claim_ids:
+  - C-e442ace9-2
+- concept_id: c216-155-core
+  canonical_term: 155 core
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e442ace94b66955624c3753004ac523a2e890d39
+  claim_ids:
+  - C-e442ace9-3
+- concept_id: c217-against-component
+  canonical_term: against component
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - e442ace94b66955624c3753004ac523a2e890d39
+  claim_ids:
+  - C-e442ace9-4
+  - C-e442ace9-5
+- concept_id: c218-backends-build
+  canonical_term: backends build
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e442ace94b66955624c3753004ac523a2e890d39
+  claim_ids:
+  - C-e442ace9-6
+- concept_id: c219-java-last
+  canonical_term: java last
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e442ace94b66955624c3753004ac523a2e890d39
+  claim_ids:
+  - C-e442ace9-8
+- concept_id: c220-between-defines
+  canonical_term: between defines
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-1
+- concept_id: c221-downstream-error
+  canonical_term: downstream error
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-10
+- concept_id: c222-incoming-outgoing
+  canonical_term: incoming outgoing
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-11
+- concept_id: c223-after-aim
+  canonical_term: after aim
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-12
+- concept_id: c224-configured-downstream
+  canonical_term: configured downstream
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-13
+- concept_id: c225-56-bit-64-bit
+  canonical_term: 56-bit 64-bit
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-14
+- concept_id: c226-equal-greater
+  canonical_term: equal greater
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-15
+- concept_id: c227-adjusted-count
+  canonical_term: adjusted count
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-16
+- concept_id: c228-bytes-calculations
+  canonical_term: bytes calculations
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-2
+- concept_id: c229-defined-not
+  canonical_term: defined not
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-3
+- concept_id: c230-56-bit-derived
+  canonical_term: 56-bit derived
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-4
+- concept_id: c231-calculated-formula
+  canonical_term: calculated formula
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-5
+- concept_id: c232-adjusted-count
+  canonical_term: adjusted count
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-7
+- concept_id: c233-can-explicit
+  canonical_term: can explicit
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-8
+- concept_id: c234-applied-but
+  canonical_term: applied but
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-e6b2e631-9
+- concept_id: c235-all-memory
+  canonical_term: all memory
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-1
+- concept_id: c236-causes-dropped
+  canonical_term: causes dropped
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-10
+- concept_id: c237-attacks-cardinality
+  canonical_term: attacks cardinality
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-11
+- concept_id: c238-alert-can
+  canonical_term: alert can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-12
+- concept_id: c239-alert-alerts
+  canonical_term: alert alerts
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-13
+- concept_id: c240-access-approved
+  canonical_term: access approved
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-14
+- concept_id: c241-label-metrics
+  canonical_term: label metrics
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-15
+- concept_id: c242-batch-can
+  canonical_term: batch can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-16
+- concept_id: c243-combination-constitutes
+  canonical_term: combination constitutes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-2
+- concept_id: c244-authentication-default
+  canonical_term: authentication default
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-3
+- concept_id: c245-000-100
+  canonical_term: 000 100
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-5
+- concept_id: c246-configuration-global
+  canonical_term: configuration global
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-6
+- concept_id: c247-applications-bound
+  canonical_term: applications bound
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-7
+- concept_id: c248-acls-authentication
+  canonical_term: acls authentication
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-8
+- concept_id: c249-attacks-before
+  canonical_term: attacks before
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-9
+- concept_id: c250-both-configurable
+  canonical_term: both configurable
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-10
+- concept_id: c251-both-jaeger
+  canonical_term: both jaeger
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-11
+  - C-fd103bb1-8
+- concept_id: c252-better-charts
+  canonical_term: better charts
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-13
+- concept_id: c253-advanced-capabilities
+  canonical_term: advanced capabilities
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-14
+- concept_id: c254-cloud-native-compared
+  canonical_term: cloud-native compared
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-16
+- concept_id: c255-2017-cncf
+  canonical_term: 2017 cncf
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-2
+- concept_id: c256-backends-badger
+  canonical_term: backends badger
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-3
+- concept_id: c257-800-github
+  canonical_term: 800 github
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-5
+- concept_id: c258-jaeger-java
+  canonical_term: jaeger java
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-6
+- concept_id: c259-can-import
+  canonical_term: can import
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-7
+- concept_id: c260-both-can
+  canonical_term: both can
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5
+  representation_modes: []
+  source_ids:
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-fd103bb1-9
+cycle: 1
+contested: true

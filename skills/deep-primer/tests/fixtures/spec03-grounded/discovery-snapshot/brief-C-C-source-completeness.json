@@ -1,0 +1,18 @@
+{
+  "wave": "C",
+  "framing": "adjacent-field",
+  "angle": null,
+  "source_class": "primary",
+  "stance": null,
+  "questions": [
+    "Sources a primer on distributed tracing and the observability stack cites: . What authoritative sources are NOT in this list?"
+  ],
+  "instructions": [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs"
+  ],
+  "brief_id": "C-C-source-completeness",
+  "seed_ref": null
+}

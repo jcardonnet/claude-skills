@@ -9,3 +9,9 @@ run-manifest.json
 .DS_Store
 .specstory/
 .claude/
+
+# Fetched source bodies from grounding campaigns. The campaign METADATA (ledger, leads, briefs,
+# concept maps, campaign-run.json) is committed so provenance stays auditable; the corpus itself is
+# whole third-party pages we retrieved, and redistributing them is exactly what the ≤15-word quote
+# rule exists to avoid. Re-fetchable from the urls in source-ledger.yaml.
+skills/deep-primer/tests/fixtures/*-grounded/corpus/

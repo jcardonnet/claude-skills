@@ -1,0 +1,131 @@
+[
+  {
+    "id": "A-A4-s1",
+    "url": "https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Google's Dapper: seminal 2010 paper defining distributed tracing architecture",
+    "requested_url": "https://research.google.com/pubs/pub36356.html",
+    "fetched_title": "Dapper, a Large-Scale Distributed Systems Tracing Infrastructure",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A4-s2",
+    "url": "https://opentelemetry.io/docs/specs/otel/protocol/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "OpenTelemetry Protocol (OTLP) specification; vendor-neutral observability signal format",
+    "fetched_title": "OpenTelemetry Protocol | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A4-s3",
+    "url": "https://www.w3.org/TR/trace-context/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "W3C Trace Context standard for HTTP trace propagation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s4",
+    "url": "https://www.jaegertracing.io/docs/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Jaeger official documentation; CNCF reference implementation of OpenTelemetry/Zipkin",
+    "requested_url": "https://jaegertracing.io/docs/",
+    "fetched_title": "Documentation | Jaeger",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A4-s5",
+    "url": "https://zipkin.io/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Zipkin official site; reference implementation of distributed tracing principles",
+    "fetched_title": "OpenZipkin \u00b7 A distributed tracing system",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A4-s6",
+    "url": "https://opentelemetry.io/docs/specs/otel/overview/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "OpenTelemetry specification overview; industry standard for traces, metrics, logs",
+    "fetched_title": "Overview | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A4-s7",
+    "url": "https://www.cncf.io/blog/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "CNCF observability working group guidance and landscape updates",
+    "fetched_title": "Category: Blog | CNCF",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A4-s8",
+    "url": "https://grafana.com/docs/tempo/latest/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Grafana Tempo; modern trace storage and sampling reference implementation",
+    "fetched_title": "Grafana Tempo | Grafana Tempo documentation",
+    "retrieved_at": "2026-08-20"
+  }
+]

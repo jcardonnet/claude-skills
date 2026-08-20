@@ -1,0 +1,621 @@
+[
+  {
+    "id": "C-C-omission-s1",
+    "url": "https://www.apica.io/blog/what-is-distributed-tracing-how-it-works-and-best-practices/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "2026 distributed tracing guide; covers foundations, sampling basics, and platform comparison",
+    "fetched_title": "Distributed Tracing Guide 2026: How It Works & Best Practices | Apica",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s2",
+    "url": "https://opentelemetry.io/docs/concepts/observability-primer/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Official OpenTelemetry observability primer; foundation reference for coverage gaps analysis",
+    "fetched_title": "Observability primer | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s3",
+    "url": "https://uptrace.dev/comparisons/observability-tools-pricing",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "2026 observability pricing comparison; documents 7\u201312% of cloud cost benchmark and sampling ROI",
+    "fetched_title": "Observability Tools Pricing Comparison [2026] | Uptrace",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s4",
+    "url": "https://www.grepr.ai/blog/the-hidden-cost-in-observability",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Hidden costs in observability; trace volume growth and sampling trade-offs",
+    "fetched_title": "How to Cut Observability Costs Without Losing Visibility | Grepr Blog",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s5",
+    "url": "https://monitoringcost.com/observability-cost-as-percent-of-cloud",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Observability cost as percentage of cloud spend; 2026 enterprise cost benchmarks",
+    "fetched_title": "Observability Cost as % of Cloud Spend: 7-12% Median (2026) | MonitoringCost.com",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s6",
+    "url": "https://medium.com/@alokrahuldevops/day-107-sampling-strategies-in-opentelemetry-what-they-are-why-they-matter-and-why-ai-311ee7e9676a",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Sampling strategies in OpenTelemetry; foundational gap coverage",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-omission-s7",
+    "url": "https://opentelemetry.io/blog/2022/tail-sampling/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Tail-based sampling rationale; why it matters and implementation patterns",
+    "fetched_title": "Tail Sampling with OpenTelemetry: Why it\u2019s useful, how to do it, and what to consider | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s8",
+    "url": "https://oneuptime.com/blog/post/2026-01-25-tail-based-sampling-opentelemetry/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "How to implement tail-based sampling in OpenTelemetry; 2026 practical guide",
+    "fetched_title": "How to Implement Tail-Based Sampling in OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s9",
+    "url": "https://secureprivacy.ai/blog/gdpr-compliance-2026",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "GDPR compliance in 2026; regulatory context for tracing privacy gaps",
+    "fetched_title": "GDPR Compliance in 2026: The Complete Guide | Secure Privacy Blog",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s10",
+    "url": "https://www.tjc-group.com/blogs/data-privacy-in-2026-how-gdpr-compliance-landscape-is-evolving/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Data privacy evolution in 2026; GDPR enforcement trends and penalties",
+    "requested_url": "https://www.tjc-group.com/blogs/data-privacy-in-2026-how-gdpr-compliance-landscape-is-evolving",
+    "fetched_title": "Data privacy in 2026: How GDPR compliance landscape is evolving - TJC Group",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s11",
+    "url": "https://opentelemetry.io/blog/2025/go-auto-instrumentation-beta/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "OpenTelemetry Go auto-instrumentation beta; eBPF zero-code instrumentation announcement",
+    "fetched_title": "Announcing the Beta Release of OpenTelemetry Go Auto-Instrumentation using eBPF | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s12",
+    "url": "https://metoro.io/blog/top-ebpf-observability-tools",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Top 8 eBPF observability tools in 2026; eBPF ecosystem maturity",
+    "fetched_title": "Top 8 eBPF Observability Tools in 2026",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s13",
+    "url": "https://dev.to/linou518/ebpf-in-2026-the-kernel-revolution-powering-cloud-native-security-and-observability-22jd",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "eBPF in 2026; kernel-level observability as paradigm shift",
+    "fetched_title": "eBPF in 2026: The Kernel Revolution Powering Cloud-Native Security and Observability - DEV Community",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s14",
+    "url": "https://oneuptime.com/blog/post/2026-02-10-ebpf-with-opentelemetry-auto-instrumentation/view",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "eBPF with OpenTelemetry zero-code auto-instrumentation guide",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "C-C-omission-s15",
+    "url": "https://thenewstack.io/trace-based-testing-for-a-distributed-world/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Trace-based testing for distributed systems; testing methodology gap",
+    "fetched_title": "Trace-Based Testing for a Distributed World - The New Stack",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s16",
+    "url": "https://oneuptime.com/blog/post/2026-01-30-trace-based-testing-details/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Trace-based testing implementation details; 2026 practical guide",
+    "fetched_title": "How to Create Trace-Based Testing Details",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s17",
+    "url": "https://oneuptime.com/blog/post/2026-02-06-trace-based-testing-tracetest-opentelemetry-cicd/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Tracetest and OpenTelemetry in CI/CD; integration testing with traces",
+    "fetched_title": "How to Set Up Trace-Based Testing with Tracetest",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s18",
+    "url": "https://oneuptime.com/blog/post/2026-02-02-distributed-tracing-context-propagation/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Context propagation implementation; async system challenges",
+    "fetched_title": "How to Implement Distributed Tracing Context Propagation",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s19",
+    "url": "https://oneuptime.com/blog/post/2026-02-06-baggage-pass-business-context-across-service-boundaries/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Baggage for cross-service context; practical propagation patterns",
+    "fetched_title": "How to Use Baggage to Pass Business Context Across Service Boundaries",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s20",
+    "url": "https://oneuptime.com/blog/post/2026-02-06-otel-baggage-cross-cutting/view",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "OpenTelemetry baggage for cross-cutting concerns; context propagation use cases",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "C-C-omission-s21",
+    "url": "https://codelit.io/blog/distributed-tracing-context-propagation",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Trace context propagation standards (W3C, B3, Baggage); cross-service correlation",
+    "fetched_title": "Trace Context Propagation \u2014 W3C Headers, B3, Baggage, and Cross-Service Correlation | Codelit.io",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s22",
+    "url": "https://www.w3.org/TR/trace-context/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "W3C Trace Context specification; industry standard for context propagation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s23",
+    "url": "https://www.w3.org/TR/baggage/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "W3C Baggage specification; distributed context standard",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s24",
+    "url": "https://stackgen.com/blog/top-10-managed-open-source-observability-solutions-2026",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Managed observability solutions survey; operational burden trade-offs",
+    "fetched_title": "Top 10 Managed Open-Source Observability Solutions in 2026",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s25",
+    "url": "https://sreschool.com/blog/sidecar/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Sidecar deployment patterns; operational complexity of collectors",
+    "fetched_title": "What is Sidecar? Meaning, Architecture, Examples, Use Cases, and How to Measure It (2026 Guide) - SRE School",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s26",
+    "url": "https://www.sysdesai.com/learn/deployment-operations/sidecar-observability",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Sidecar observability deployment and operations patterns",
+    "fetched_title": "Sidecar for Observability \u2014 Deployment & Operations Patterns | SysDesAi",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s27",
+    "url": "https://fusion-reactor.com/blog/the-challenges-of-implementing-distributed-tracing-in-legacy-systems/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Challenges of tracing in legacy systems; monolith instrumentation gaps",
+    "fetched_title": "Implementing Distributed Tracing: Challenges and Strategies - FusionReactor Observability & APM",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s28",
+    "url": "https://medium.com/@platform.engineers/distributed-tracing-for-monoliths-gaining-visibility-into-application-behavior-4745cae566cc",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Distributed tracing for monoliths; legacy system visibility patterns",
+    "fetched_title": "Medium",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s29",
+    "url": "https://last9.io/blog/challenges-of-distributed-tracing/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Challenges of distributed tracing; legacy system integration pain",
+    "fetched_title": "Distributed Tracing 101: Definition, Working and Implementation | Last9",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s30",
+    "url": "https://openobserve.ai/blog/logs-traces-metrics-correlation/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Logs-traces-metrics correlation guide; unified observability data models",
+    "fetched_title": "Logs Traces Metrics Correlation: A Practical Guide for SREs",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s31",
+    "url": "https://www.atatus.com/blog/logging-traces-metrics-observability/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Complete 2026 guide to logs vs traces vs metrics; correlation frameworks",
+    "fetched_title": "Logs vs Metrics vs Traces: The Complete Observability Guide [2026]",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s32",
+    "url": "https://openobserve.ai/blog/full-stack-observability-logs-metrics-traces/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Full-stack observability connecting logs, metrics, traces; correlation workflows",
+    "fetched_title": "Full-Stack Observability: Connecting Logs, Metrics, and Traces",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s33",
+    "url": "https://www.dynatrace.com/news/blog/correlating-logs-and-traces-with-observability/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Correlating logs and traces; trace-log linkage patterns",
+    "fetched_title": "Correlating logs and traces with full-stack observability",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s34",
+    "url": "https://docs.datadoghq.com/serverless/aws_lambda/distributed_tracing/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Serverless distributed tracing; Lambda instrumentation guidance",
+    "fetched_title": null,
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s35",
+    "url": "https://buildfastwith.ai/ai-serverless-edge-computing",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Serverless and edge computing architecture; cold-start tracing constraints",
+    "dropped_reason": "HTTPError: HTTP Error 522: <none>"
+  },
+  {
+    "id": "C-C-omission-s36",
+    "url": "https://aws.amazon.com/lambda/edge/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "AWS Lambda@Edge; edge computing deployment model",
+    "fetched_title": "Edge Computing| CDN, Global Serverless Code, Distribution | AWS Lambda@Edge",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s37",
+    "url": "https://opentelemetry.io/docs/zero-code/obi/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "OpenTelemetry eBPF Instrumentation documentation; zero-code official reference",
+    "fetched_title": "OpenTelemetry eBPF Instrumentation | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s38",
+    "url": "https://oneuptime.com/blog/post/2026-02-06-w3c-baggage-propagation-opentelemetry/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "W3C baggage propagation in OpenTelemetry; standards compliance",
+    "fetched_title": "How to Configure W3C Baggage Propagation in OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-omission-s39",
+    "url": "https://docs.solace.com/Features/Distributed-Tracing/Distributed-Tracing-Context-Propagation.htm",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Context propagation fundamentals; messaging context preservation",
+    "fetched_title": "Context Propagation for Distributed Tracing",
+    "retrieved_at": "2026-08-20"
+  }
+]

@@ -1,0 +1,210 @@
+[
+  {
+    "id": "A-A1-s1",
+    "url": "https://github.com/open-telemetry/opentelemetry-specification",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Canonical OpenTelemetry specification defining signals, context propagation, API/SDK requirements across all languages.",
+    "fetched_title": "GitHub - open-telemetry/opentelemetry-specification: Specifications for OpenTelemetry \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s2",
+    "url": "https://opentelemetry.io/docs/concepts/signals/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "OTel official reference for signals architecture (traces, metrics, logs, profiles, baggage) and their independent lifecy",
+    "fetched_title": "Signals | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s3",
+    "url": "https://www.jaegertracing.io/docs/2.20/architecture/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Jaeger v2.20 architecture including distributed tracing, sampling strategies (probabilistic, rate-limiting), remote samp",
+    "fetched_title": "Architecture | Jaeger",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s4",
+    "url": "https://www.w3.org/TR/trace-context/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "W3C Trace Context standard HTTP header specification for context propagation across services.",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s5",
+    "url": "https://github.com/openzipkin/b3-propagation",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "B3 Propagation specification for Zipkin trace context format; legacy standard still widely used.",
+    "fetched_title": "GitHub - openzipkin/b3-propagation: Repository that describes and sometimes implements B3 propagation \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s6",
+    "url": "https://github.com/open-telemetry/opentelemetry-collector",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "OpenTelemetry Collector reference architecture: receivers, processors, exporters, pipelines for multi-backend telemetry ",
+    "fetched_title": "GitHub - open-telemetry/opentelemetry-collector: OpenTelemetry Collector \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s7",
+    "url": "https://prometheus.io/docs/introduction/overview/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Prometheus metrics architecture; time-series database foundational to observability stacks alongside tracing.",
+    "fetched_title": "Overview | Prometheus",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s8",
+    "url": "https://grafana.com/products/cloud/grafana/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Grafana v11.2.2 multi-signal visualization platform supporting traces, metrics, logs, profiles via plugin architecture.",
+    "requested_url": "https://grafana.com/grafana/",
+    "fetched_title": null,
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s9",
+    "url": "https://github.com/grafana/loki",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Loki v3.7.0 log aggregation design; label-based indexing, OpenTelemetry tracing migration, cost-efficient log storage pa",
+    "fetched_title": "GitHub - grafana/loki: Like Prometheus, but for logs. \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s10",
+    "url": "https://istio.io/latest/docs/tasks/observability/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Istio service mesh transparent instrumentation; automatic span generation at network layer without SDK changes.",
+    "fetched_title": "Istio / Observability",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s11",
+    "url": "https://github.com/open-telemetry/opentelemetry-go-instrumentation",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "eBPF-based auto-instrumentation for Go; zero-code tracing via kernel probes without application changes.",
+    "fetched_title": "GitHub - open-telemetry/opentelemetry-go-instrumentation: OpenTelemetry Auto Instrumentation using eBPF \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s12",
+    "url": "https://www.cncf.io/landscape/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "CNCF Cloud Native Landscape categorization of observability tools, vendors, and projects by layer and method.",
+    "fetched_title": "landscape | CNCF",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A1-s13",
+    "url": "https://github.com/openzipkin/zipkin",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Zipkin distributed tracing system; foundational OSS tracing backend predating OpenTelemetry unification.",
+    "fetched_title": "GitHub - openzipkin/zipkin: Zipkin is a distributed tracing system \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  }
+]
