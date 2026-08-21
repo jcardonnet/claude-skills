@@ -1,0 +1,1069 @@
+concepts:
+- concept_id: c1-Vector-embeddings
+  canonical_term: Vector embeddings
+  aliases:
+  - dense vectors
+  - numerical representations
+  home_anchor: tf-idf vector representation
+  fidelity_boundary: but embeddings capture semantic meaning from language models
+    rather than statistical term frequency
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - 18805c3f07376a12dcfac391705756cfabf57b83
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  claim_ids:
+  - C-6acafbcd-1
+  - C-6acafbcd-5
+  - C-18805c3f-3
+  - C-18805c3f-8
+  - C-613dad57-6
+- concept_id: c2-Distance-and-similarity-metrics
+  canonical_term: Distance and similarity metrics
+  aliases:
+  - vector similarity measures
+  - distance functions
+  home_anchor: cosine similarity in low-dimensional spaces
+  fidelity_boundary: but high-dimensional metrics exhibit different behavior than
+    term-based metrics
+  epistemic_status: settled
+  salience: 0.1739
+  representation_modes: []
+  source_ids:
+  - 18805c3f07376a12dcfac391705756cfabf57b83
+  - 372155712a8dc34ab3856938e8435c4de5f6cdfb
+  - 39cf6d018cf1a94c8f033f237a5cb59823340d62
+  - 47bfd7e89d54e4beecf0659bcbdc827277cb9382
+  - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  - 759cee4cb4317838783a7dadff82c279eac5b965
+  claim_ids:
+  - C-6acafbcd-2
+  - C-18805c3f-2
+  - C-37215571-3
+  - C-37215571-4
+  - C-39cf6d01-2
+  - C-39cf6d01-3
+  - C-47bfd7e8-11
+  - C-759cee4c-3
+- concept_id: c3-Hierarchical-navigable-graphs
+  canonical_term: Hierarchical navigable graphs
+  aliases:
+  - HNSW
+  - graph-based indexing
+  - multi-layered proximity graphs
+  - Hierarchical navigable small-world graph
+  - multi-layer graph
+  - navigable skiplist
+  - Hierarchical navigable small world
+  home_anchor: hierarchical clustering for document organization
+  fidelity_boundary: but HNSW uses randomized layer construction and greedy best-first
+    search rather than deterministic hierarchies
+  epistemic_status: settled
+  salience: 0.5652
+  representation_modes: []
+  source_ids:
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  - 759cee4cb4317838783a7dadff82c279eac5b965
+  - 9f25797951917c61969c66e225308666881d5cb2
+  - bd8592eb6a812be1898bc0a0bc9b32e186cb34be
+  - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  - ff6ccb3f465058cd1b740c5b6a1e4583736017f5
+  claim_ids:
+  - C-6acafbcd-6
+  - C-6acafbcd-7
+  - C-613dad57-1
+  - C-613dad57-2
+  - C-613dad57-5
+  - C-759cee4c-1
+  - C-759cee4c-2
+  - C-759cee4c-16
+  - C-9f257979-1
+  - C-9f257979-2
+  - C-9f257979-3
+  - C-9f257979-4
+  - C-9f257979-5
+  - C-9f257979-7
+  - C-9f257979-8
+  - C-bd8592eb-3
+  - C-dd839b84-10
+  - C-dd839b84-15
+  - C-e995dd02-1
+  - C-dd839b84-9
+  - C-dd839b84-11
+  - C-ff6ccb3f-1
+  - C-ff6ccb3f-2
+  - C-ff6ccb3f-3
+  - C-ff6ccb3f-7
+  - C-ff6ccb3f-8
+- concept_id: c4-Graph-index-update-penalties
+  canonical_term: Graph index update penalties
+  aliases:
+  - HNSW dynamic update costs
+  home_anchor: index rebuild costs during corpus modifications
+  fidelity_boundary: but graph structures suffer cascading reorganization and sometimes
+    require complete rebuilds, more severe than index remerging
+  epistemic_status: settled
+  salience: 0.0435
+  representation_modes: []
+  source_ids:
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  claim_ids:
+  - C-613dad57-3
+  - C-613dad57-4
+- concept_id: c5-Vector-quantization
+  canonical_term: Vector quantization
+  aliases:
+  - compression
+  - vector encoding
+  - product quantization
+  - lossy vector compression
+  - bit-width reduction
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.6087
+  representation_modes: []
+  source_ids:
+  - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+  - 372155712a8dc34ab3856938e8435c4de5f6cdfb
+  - 39cf6d018cf1a94c8f033f237a5cb59823340d62
+  - 3aecb3f165011485785454088d01fb0ab11477df
+  - 4d04c93cf5d3515cfaa16f4ec2d04fcbee4aee9e
+  - b43b68520a9614f47acf5967551fc04e8c45a9eb
+  claim_ids:
+  - C-2f7ae826-1
+  - C-2f7ae826-2
+  - C-2f7ae826-4
+  - C-2f7ae826-7
+  - C-2f7ae826-9
+  - C-2f7ae826-11
+  - C-2f7ae826-12
+  - C-2f7ae826-13
+  - C-2f7ae826-19
+  - C-37215571-1
+  - C-37215571-2
+  - C-39cf6d01-4
+  - C-39cf6d01-5
+  - C-3aecb3f1-13
+  - C-4d04c93c-2
+  - C-b43b6852-1
+  - C-b43b6852-2
+  - C-b43b6852-3
+  - C-b43b6852-6
+  - C-b43b6852-7
+  - C-b43b6852-12
+  - C-b43b6852-13
+  - C-b43b6852-14
+  - C-b43b6852-8
+  - C-b43b6852-9
+  - C-b43b6852-10
+  - C-b43b6852-15
+  - C-b43b6852-16
+- concept_id: c6-Deletion-and-tombstone-handling
+  canonical_term: Deletion and tombstone handling
+  aliases:
+  - point deletion
+  - cascading updates
+  home_anchor: tombstone-based deletion in mutable indexes
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  claim_ids:
+  - C-2f7ae826-5
+  - C-2f7ae826-6
+  - C-2f7ae826-8
+  - C-2f7ae826-23
+  - C-613dad57-8
+- concept_id: c7-Memory-disk-storage-hierarchy
+  canonical_term: Memory-disk storage hierarchy
+  aliases:
+  - tier management
+  - quantized in-memory with disk backup
+  home_anchor: two-level disk-memory index hierarchies
+  fidelity_boundary: but vector systems store compressed data in-memory and full precision
+    on disk, reversing typical IR practice
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+  - 3aecb3f165011485785454088d01fb0ab11477df
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  claim_ids:
+  - C-2f7ae826-3
+  - C-2f7ae826-14
+  - C-3aecb3f1-3
+  - C-613dad57-10
+  - C-613dad57-13
+- concept_id: c8-Metadata-filtering
+  canonical_term: Metadata filtering
+  aliases:
+  - attribute filtering
+  - predicate pushdown
+  home_anchor: boolean filtering on document attributes
+  fidelity_boundary: but filters on semantic search degrade quality and throughput,
+    whereas IR filters guarantee correctness at acceptable cost
+  epistemic_status: settled
+  salience: 0.1304
+  representation_modes: []
+  source_ids:
+  - 47bfd7e89d54e4beecf0659bcbdc827277cb9382
+  claim_ids:
+  - C-47bfd7e8-1
+  - C-47bfd7e8-5
+  - C-47bfd7e8-9
+  - C-47bfd7e8-12
+  - C-47bfd7e8-13
+  - C-47bfd7e8-14
+- concept_id: c9-Hybrid-search
+  canonical_term: Hybrid search
+  aliases:
+  - vector and keyword fusion
+  home_anchor: multi-signal ranking combination
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0435
+  representation_modes: []
+  source_ids:
+  - 18805c3f07376a12dcfac391705756cfabf57b83
+  - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  claim_ids:
+  - C-18805c3f-13
+  - C-6acafbcd-11
+- concept_id: c10-Text-preprocessing-for-embedding
+  canonical_term: Text preprocessing for embedding
+  aliases:
+  - text chunking
+  - semantic segmentation
+  home_anchor: document tokenization and parsing
+  fidelity_boundary: but semantic chunking preserves meaning across chunk boundaries,
+    unlike token-level segmentation
+  epistemic_status: settled
+  salience: 0.087
+  representation_modes: []
+  source_ids:
+  - 18805c3f07376a12dcfac391705756cfabf57b83
+  claim_ids:
+  - C-18805c3f-4
+  - C-18805c3f-5
+  - C-18805c3f-10
+  - C-18805c3f-11
+- concept_id: c11-Performance-benchmarking
+  canonical_term: Performance benchmarking
+  aliases:
+  - evaluation methodology
+  - throughput and latency measurement
+  home_anchor: precision, recall, and latency benchmarks
+  fidelity_boundary: but vector search inherently trades accuracy for speed, requiring
+    approximation quality metrics beyond traditional recall
+  epistemic_status: settled
+  salience: 0.3261
+  representation_modes: []
+  source_ids:
+  - 18805c3f07376a12dcfac391705756cfabf57b83
+  - 1cccda84c60ff5056677427e419f1e6e922c247b
+  - 3aecb3f165011485785454088d01fb0ab11477df
+  - 47bfd7e89d54e4beecf0659bcbdc827277cb9382
+  claim_ids:
+  - C-1cccda84-1
+  - C-1cccda84-2
+  - C-1cccda84-3
+  - C-1cccda84-4
+  - C-1cccda84-5
+  - C-1cccda84-6
+  - C-1cccda84-7
+  - C-1cccda84-8
+  - C-18805c3f-6
+  - C-18805c3f-7
+  - C-3aecb3f1-4
+  - C-47bfd7e8-2
+  - C-47bfd7e8-4
+  - C-47bfd7e8-6
+  - C-47bfd7e8-7
+- concept_id: c12-GPU-acceleration
+  canonical_term: GPU acceleration
+  aliases:
+  - hardware acceleration
+  - SIMD vectorization
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.2609
+  representation_modes: []
+  source_ids:
+  - 3aecb3f165011485785454088d01fb0ab11477df
+  - 476b75b3cd1c77abedb06305043625ecb558d35f
+  - 4d04c93cf5d3515cfaa16f4ec2d04fcbee4aee9e
+  claim_ids:
+  - C-3aecb3f1-6
+  - C-3aecb3f1-7
+  - C-3aecb3f1-8
+  - C-3aecb3f1-10
+  - C-3aecb3f1-11
+  - C-3aecb3f1-16
+  - C-476b75b3-1
+  - C-476b75b3-2
+  - C-476b75b3-3
+  - C-476b75b3-4
+  - C-476b75b3-6
+  - C-4d04c93c-8
+- concept_id: c13-Search-algorithm-variants
+  canonical_term: Search algorithm variants
+  aliases:
+  - epsilon search
+  - search modes
+  - pruning strategies
+  home_anchor: phrase queries and range search
+  fidelity_boundary: but vector search variants operate in continuous space where
+    epsilon-bounded and sparse searches have different guarantees than discrete term
+    search
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - 203c5c054a26abf9e99f0d70b152a31182ca5453
+  - 4d04c93cf5d3515cfaa16f4ec2d04fcbee4aee9e
+  - 74bf691b9f72af9c030d69183d1c3d54d5e58e65
+  - 759cee4cb4317838783a7dadff82c279eac5b965
+  claim_ids:
+  - C-74bf691b-7
+  - C-759cee4c-14
+  - C-759cee4c-15
+  - C-4d04c93c-6
+  - C-203c5c05-7
+- concept_id: c14-Immutable-index-structures
+  canonical_term: Immutable index structures
+  aliases:
+  - read-only indexes
+  - memory-mapped data structures
+  home_anchor: read-only merged index segments
+  fidelity_boundary: but memory-mapping for random access differs from traditional
+    streaming sequential access patterns
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - 74bf691b9f72af9c030d69183d1c3d54d5e58e65
+  claim_ids:
+  - C-74bf691b-2
+  - C-74bf691b-4
+  - C-74bf691b-1
+  - C-74bf691b-5
+  - C-74bf691b-8
+- concept_id: c15-Library-implementation-characteristics
+  canonical_term: Library implementation characteristics
+  aliases:
+  - platform support
+  - language bindings
+  - deployment models
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 18805c3f07376a12dcfac391705756cfabf57b83
+  - 203c5c054a26abf9e99f0d70b152a31182ca5453
+  - 372155712a8dc34ab3856938e8435c4de5f6cdfb
+  - 39cf6d018cf1a94c8f033f237a5cb59823340d62
+  - 3aecb3f165011485785454088d01fb0ab11477df
+  - 44ae660cd833e89bf23c53131b92c6a5348b8439
+  - 476b75b3cd1c77abedb06305043625ecb558d35f
+  - 4d04c93cf5d3515cfaa16f4ec2d04fcbee4aee9e
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  - 759cee4cb4317838783a7dadff82c279eac5b965
+  claim_ids:
+  - C-18805c3f-1
+  - C-18805c3f-9
+  - C-203c5c05-1
+  - C-203c5c05-2
+  - C-203c5c05-4
+  - C-203c5c05-5
+  - C-203c5c05-6
+  - C-203c5c05-8
+  - C-37215571-5
+  - C-37215571-6
+  - C-37215571-7
+  - C-39cf6d01-1
+  - C-39cf6d01-6
+  - C-39cf6d01-7
+  - C-39cf6d01-8
+  - C-3aecb3f1-1
+  - C-3aecb3f1-2
+  - C-3aecb3f1-9
+  - C-3aecb3f1-12
+  - C-3aecb3f1-14
+  - C-3aecb3f1-15
+  - C-44ae660c-1
+  - C-44ae660c-2
+  - C-44ae660c-4
+  - C-44ae660c-5
+  - C-44ae660c-7
+  - C-476b75b3-9
+  - C-476b75b3-10
+  - C-476b75b3-11
+  - C-4d04c93c-1
+  - C-4d04c93c-3
+  - C-4d04c93c-4
+  - C-4d04c93c-5
+  - C-4d04c93c-7
+  - C-6acafbcd-8
+  - C-6acafbcd-9
+  - C-6acafbcd-10
+  - C-6acafbcd-13
+  - C-6acafbcd-14
+  - C-6acafbcd-15
+  - C-6acafbcd-16
+  - C-613dad57-7
+  - C-613dad57-9
+  - C-759cee4c-11
+  - C-759cee4c-12
+  - C-759cee4c-13
+- concept_id: c16-Locality-sensitive-hashing
+  canonical_term: Locality-sensitive hashing
+  aliases:
+  - LSH
+  - hash-based approximate nearest neighbor
+  home_anchor: hash-based index structures
+  fidelity_boundary: IR hashing maps terms to buckets; LSH maps high-dimensional vectors
+    to distance-sensitive hash function families
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - be262c64a8e186555451a3043e31829e4586c269
+  claim_ids:
+  - C-be262c64-1
+  - C-be262c64-2
+  - C-be262c64-3
+  - C-be262c64-4
+  - C-be262c64-7
+- concept_id: c17-Disk-resident-approximate-index
+  canonical_term: Disk-resident approximate index
+  aliases:
+  - DiskANN
+  - Vamana
+  home_anchor: external-memory index structures
+  fidelity_boundary: external indexes manage disk I/O for sequential posting access;
+    disk graph indexes navigate neighborhoods via disk I/O traversal
+  epistemic_status: settled
+  salience: 0.3478
+  representation_modes: []
+  source_ids:
+  - ac53ff247c9bb6cff8306010de3e64282ac421cc
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  - f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
+  claim_ids:
+  - C-ac53ff24-1
+  - C-ac53ff24-2
+  - C-ac53ff24-3
+  - C-ac53ff24-4
+  - C-ac53ff24-5
+  - C-ac53ff24-6
+  - C-ac53ff24-7
+  - C-ac53ff24-8
+  - C-f8ce5bbf-1
+  - C-f8ce5bbf-2
+  - C-f8ce5bbf-3
+  - C-f8ce5bbf-4
+  - C-f8ce5bbf-5
+  - C-f8ce5bbf-7
+  - C-f8ce5bbf-8
+  - C-e995dd02-10
+- concept_id: c18-Log-structured-graph-index
+  canonical_term: Log-structured graph index
+  aliases:
+  - LSM-VEC
+  - write-optimized vector graph
+  home_anchor: write-optimized index structures
+  fidelity_boundary: write-optimized IR batches term postings chronologically; LSM
+    graphs batch edge updates across incremental merge levels
+  epistemic_status: settled
+  salience: 0.2609
+  representation_modes: []
+  source_ids:
+  - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+  claim_ids:
+  - C-dd839b84-1
+  - C-dd839b84-2
+  - C-dd839b84-4
+  - C-dd839b84-5
+  - C-dd839b84-6
+  - C-dd839b84-13
+  - C-dd839b84-17
+  - C-dd839b84-18
+  - C-dd839b84-21
+  - C-dd839b84-22
+  - C-dd839b84-23
+  - C-dd839b84-24
+- concept_id: c19-HNSW-hyperparameter-configuration
+  canonical_term: HNSW hyperparameter configuration
+  aliases:
+  - M parameter
+  - ef parameter
+  - neighbor connectivity tuning
+  home_anchor: query expansion parameter adjustment
+  fidelity_boundary: term expansion adds query terms; neighbor expansion adds proximity
+    connections
+  epistemic_status: settled
+  salience: 0.1304
+  representation_modes: []
+  source_ids:
+  - 759cee4cb4317838783a7dadff82c279eac5b965
+  - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-759cee4c-5
+  - C-759cee4c-6
+  - C-759cee4c-8
+  - C-86863bca-5
+  - C-86863bca-7
+  - C-e995dd02-21
+- concept_id: c20-Recall-latency-search-tradeoff
+  canonical_term: Recall-latency search tradeoff
+  aliases:
+  - recall degradation
+  - search complexity curve
+  home_anchor: precision-recall curve analysis
+  fidelity_boundary: IR curves are query-dependent; vector recall curves are corpus-size
+    and parameter-dependent
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-2
+  - C-e995dd02-4
+  - C-e995dd02-5
+  - C-e995dd02-12
+  - C-e995dd02-11
+- concept_id: c21-Incremental-indexing-support
+  canonical_term: Incremental indexing support
+  aliases:
+  - dynamic updates
+  - online index maintenance
+  home_anchor: batch versus online indexing
+  fidelity_boundary: batch IR rebuilds all postings; online vector indexing preserves
+    traversal connectivity during insertions
+  epistemic_status: settled
+  salience: 0.1087
+  representation_modes: []
+  source_ids:
+  - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-7
+  - C-e995dd02-9
+  - C-dd839b84-12
+  - C-dd839b84-3
+  - C-dd839b84-8
+- concept_id: c22-Approximate-search-semantics
+  canonical_term: Approximate search semantics
+  aliases:
+  - approximate indexing
+  - index recall gap
+  - tail recall monitoring
+  home_anchor: inexact matching
+  fidelity_boundary: IR inexact matching relaxes matching criteria; approximate ANN
+    accepts incomplete neighbor set
+  epistemic_status: settled
+  salience: 0.1522
+  representation_modes: []
+  source_ids:
+  - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  - bd8592eb6a812be1898bc0a0bc9b32e186cb34be
+  - cfcf72c6bedf4e5071a5fe2ec160ce7015642781
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-86863bca-8
+  - C-86863bca-10
+  - C-bd8592eb-2
+  - C-cfcf72c6-1
+  - C-e995dd02-19
+  - C-e995dd02-22
+  - C-e995dd02-24
+- concept_id: c23-Vector-storage-cost-model
+  canonical_term: Vector storage cost model
+  aliases:
+  - memory overhead
+  - byte accounting
+  - storage formula
+  home_anchor: index size calculation
+  fidelity_boundary: IR calculates posting list size; vector indexes account for dimensionality
+    and precision
+  epistemic_status: settled
+  salience: 0.1522
+  representation_modes: []
+  source_ids:
+  - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  - b43b68520a9614f47acf5967551fc04e8c45a9eb
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-86863bca-17
+  - C-86863bca-18
+  - C-86863bca-19
+  - C-86863bca-20
+  - C-b43b6852-5
+  - C-e995dd02-3
+  - C-e995dd02-17
+- concept_id: c24-pgvector-relational-type-system
+  canonical_term: pgvector relational type system
+  aliases:
+  - PostgreSQL vector extension
+  - vector type definitions
+  home_anchor: database field type definitions
+  fidelity_boundary: field types define storage; pgvector types define both storage
+    and indexing capacity
+  epistemic_status: settled
+  salience: 0.2826
+  representation_modes: []
+  source_ids:
+  - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  - bd8592eb6a812be1898bc0a0bc9b32e186cb34be
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-86863bca-1
+  - C-86863bca-2
+  - C-86863bca-3
+  - C-86863bca-4
+  - C-86863bca-12
+  - C-86863bca-13
+  - C-86863bca-15
+  - C-86863bca-21
+  - C-86863bca-22
+  - C-86863bca-23
+  - C-86863bca-24
+  - C-e995dd02-18
+  - C-bd8592eb-1
+- concept_id: c25-Benchmark-evaluation-infrastructure
+  canonical_term: Benchmark evaluation infrastructure
+  aliases:
+  - ann-benchmarks
+  - benchmark dataset
+  - evaluation methodology
+  home_anchor: evaluation collection and test methodology
+  fidelity_boundary: IR evaluation uses human relevance judgments; vector benchmarks
+    use pre-computed ground-truth neighborhoods
+  epistemic_status: settled
+  salience: 0.2609
+  representation_modes: []
+  source_ids:
+  - 91fd36d43954d90f33c4e2656ab28aafde5d154f
+  - cfcf72c6bedf4e5071a5fe2ec160ce7015642781
+  claim_ids:
+  - C-91fd36d4-1
+  - C-91fd36d4-2
+  - C-91fd36d4-3
+  - C-91fd36d4-4
+  - C-91fd36d4-5
+  - C-91fd36d4-6
+  - C-91fd36d4-7
+  - C-91fd36d4-8
+  - C-cfcf72c6-5
+  - C-cfcf72c6-6
+  - C-cfcf72c6-7
+  - C-cfcf72c6-8
+- concept_id: c26-HNSW-library-implementations
+  canonical_term: HNSW library implementations
+  aliases:
+  - hnswlib
+  - Voyager
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.1957
+  representation_modes: []
+  source_ids:
+  - 759cee4cb4317838783a7dadff82c279eac5b965
+  - e0aee0b29be86be7c30a0eeeb3c6b9fd5c72e9f1
+  claim_ids:
+  - C-759cee4c-7
+  - C-759cee4c-9
+  - C-e0aee0b2-1
+  - C-e0aee0b2-2
+  - C-e0aee0b2-3
+  - C-e0aee0b2-4
+  - C-e0aee0b2-6
+  - C-e0aee0b2-7
+  - C-e0aee0b2-8
+- concept_id: c27-Vector-search-platform-integration
+  canonical_term: Vector search platform integration
+  aliases:
+  - semantic caching
+  - hybrid retrieval
+  - in-database vector search
+  home_anchor: SQL extension architecture
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.2609
+  representation_modes: []
+  source_ids:
+  - b43b68520a9614f47acf5967551fc04e8c45a9eb
+  - bd8592eb6a812be1898bc0a0bc9b32e186cb34be
+  - fa7663f4a1b19501b54973cebefcdf741f9b1e08
+  claim_ids:
+  - C-b43b6852-4
+  - C-b43b6852-11
+  - C-bd8592eb-4
+  - C-bd8592eb-5
+  - C-bd8592eb-6
+  - C-bd8592eb-7
+  - C-bd8592eb-8
+  - C-bd8592eb-9
+  - C-fa7663f4-1
+  - C-fa7663f4-10
+  - C-fa7663f4-11
+  - C-fa7663f4-12
+- concept_id: c28-Non-metric-distance-function-behavior
+  canonical_term: Non-metric distance function behavior
+  aliases:
+  - inner product anomaly
+  home_anchor: distance metric properties
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 759cee4cb4317838783a7dadff82c279eac5b965
+  claim_ids:
+  - C-759cee4c-4
+- concept_id: c29-GPU-accelerated-index-construction
+  canonical_term: GPU-accelerated index construction
+  aliases:
+  - GPU indexing
+  - CAGRA
+  home_anchor: hardware-accelerated algorithms
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-14
+- concept_id: c30-Concurrent-write-support-constraints
+  canonical_term: Concurrent write support constraints
+  aliases:
+  - write concurrency limitations
+  home_anchor: transaction isolation levels
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-15
+- concept_id: c31-Production-vector-database-implementatio
+  canonical_term: Production vector database implementations
+  aliases:
+  - Qdrant ACORN
+  - Milvus Cardinal
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-23
+- concept_id: c32-Embedding-dimensionality-scaling-effects
+  canonical_term: Embedding dimensionality scaling effects
+  aliases:
+  - Dimensionality impact
+  - Query performance degradation
+  home_anchor: Vocabulary size impact on retrieval complexity
+  fidelity_boundary: Vocabulary growth in classical IR scales sublinearly with corpus
+    size, whereas embedding dimension effects on ANN latency degrade exponentially
+    regardless of corpus characteristics
+  epistemic_status: settled
+  salience: 0.1522
+  representation_modes: []
+  source_ids:
+  - ff6ccb3f465058cd1b740c5b6a1e4583736017f5
+  claim_ids:
+  - C-ff6ccb3f-4
+  - C-ff6ccb3f-5
+  - C-ff6ccb3f-6
+  - C-ff6ccb3f-9
+  - C-ff6ccb3f-10
+  - C-ff6ccb3f-11
+  - C-ff6ccb3f-16
+- concept_id: c33-Vector-index-operational-management
+  canonical_term: Vector index operational management
+  aliases:
+  - Index maintenance overhead
+  - Deployment optimization
+  home_anchor: Index rebalancing and incremental update strategies
+  fidelity_boundary: Keyword indices tolerate incremental updates with graceful performance
+    degradation, whereas vector indices require periodic full rebuilds to restore
+    recall quality
+  epistemic_status: settled
+  salience: 0.2174
+  representation_modes: []
+  source_ids:
+  - fa7663f4a1b19501b54973cebefcdf741f9b1e08
+  - ff6ccb3f465058cd1b740c5b6a1e4583736017f5
+  claim_ids:
+  - C-ff6ccb3f-12
+  - C-ff6ccb3f-13
+  - C-ff6ccb3f-14
+  - C-ff6ccb3f-15
+  - C-fa7663f4-3
+  - C-fa7663f4-4
+  - C-fa7663f4-5
+  - C-fa7663f4-6
+  - C-fa7663f4-8
+  - C-fa7663f4-9
+- concept_id: c34-Search-platform-ecosystem
+  canonical_term: Search platform ecosystem
+  aliases:
+  - OpenSearch capabilities
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.2391
+  representation_modes: []
+  source_ids:
+  - fa7663f4a1b19501b54973cebefcdf741f9b1e08
+  claim_ids:
+  - C-fa7663f4-2
+  - C-fa7663f4-14
+  - C-fa7663f4-15
+  - C-fa7663f4-16
+  - C-fa7663f4-17
+  - C-fa7663f4-18
+  - C-fa7663f4-19
+  - C-fa7663f4-21
+  - C-fa7663f4-22
+  - C-fa7663f4-23
+  - C-fa7663f4-24
+- concept_id: c35-centroids-reassigns
+  canonical_term: centroids reassigns
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+  claim_ids:
+  - C-2f7ae826-10
+- concept_id: c36-consistency-responses
+  canonical_term: consistency responses
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+  claim_ids:
+  - C-2f7ae826-16
+- concept_id: c37-zilliz-autoindex-pinecone-p2
+  canonical_term: zilliz-autoindex pinecone-p2
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 47bfd7e89d54e4beecf0659bcbdc827277cb9382
+  claim_ids:
+  - C-47bfd7e8-3
+- concept_id: c38-prioritize-throughput
+  canonical_term: prioritize throughput
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  claim_ids:
+  - C-613dad57-11
+- concept_id: c39-prioritize-throughput
+  canonical_term: prioritize throughput
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 613dad570d36d4196247c90261bc6ecf01d558a6
+  claim_ids:
+  - C-613dad57-12
+- concept_id: c40-significant-algorithms
+  canonical_term: significant algorithms
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  claim_ids:
+  - C-6acafbcd-3
+- concept_id: c41-large-scale-logarithmic
+  canonical_term: large-scale logarithmic
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  claim_ids:
+  - C-6acafbcd-4
+- concept_id: c42-default-indexes
+  canonical_term: default indexes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  claim_ids:
+  - C-86863bca-11
+- concept_id: c43-non-partitioned-terabytes
+  canonical_term: non-partitioned terabytes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  claim_ids:
+  - C-86863bca-14
+- concept_id: c44-approximate-available
+  canonical_term: approximate available
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  claim_ids:
+  - C-86863bca-9
+- concept_id: c45-open-source-outperforms
+  canonical_term: open-source outperforms
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - 9f25797951917c61969c66e225308666881d5cb2
+  claim_ids:
+  - C-9f257979-6
+- concept_id: c46-databases-becoming
+  canonical_term: databases becoming
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - bd8592eb6a812be1898bc0a0bc9b32e186cb34be
+  claim_ids:
+  - C-bd8592eb-10
+- concept_id: c47-submitted-february
+  canonical_term: submitted february
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - be262c64a8e186555451a3043e31829e4586c269
+  claim_ids:
+  - C-be262c64-5
+- concept_id: c48-classified-databases
+  canonical_term: classified databases
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - be262c64a8e186555451a3043e31829e4586c269
+  claim_ids:
+  - C-be262c64-6
+- concept_id: c49-high-dimensional-approximate
+  canonical_term: high-dimensional approximate
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+  claim_ids:
+  - C-dd839b84-14
+- concept_id: c50-algorithm-filtering
+  canonical_term: algorithm filtering
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-16
+- concept_id: c51-reindexed-indexes
+  canonical_term: reindexed indexes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-20
+- concept_id: c52-billion-diskann
+  canonical_term: billion diskann
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0217
+  representation_modes: []
+  source_ids:
+  - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  claim_ids:
+  - C-e995dd02-6
+cycle: null
+contested: false

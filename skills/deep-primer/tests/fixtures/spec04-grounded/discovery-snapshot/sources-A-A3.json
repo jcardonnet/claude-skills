@@ -1,0 +1,294 @@
+[
+  {
+    "id": "A-A3-s1",
+    "url": "https://arxiv.org/html/2603.06660v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Projection-augmented graph ANN approach for modern AI, 2026",
+    "fetched_title": "Approximate Nearest Neighbor Search for Modern AI:A Projection-Augmented Graph Approach",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s2",
+    "url": "https://github.com/erikbern/ann-benchmarks",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Reference ANN benchmarking suite tracking algorithm comparisons",
+    "fetched_title": "GitHub - erikbern/ann-benchmarks: Benchmarks of approximate nearest neighbor libraries in Python \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s3",
+    "url": "https://arxiv.org/pdf/2409.17424",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Big ANN NeurIPS competition results establishing 2025 baselines",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s4",
+    "url": "https://markaicode.com/benchmarks/faiss-production-benchmark-latency/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "May 2025 HNSW vs IVFFlat vs Flat latency benchmark",
+    "fetched_title": "FAISS IVF vs HNSW vs Flat: 10M Vector Latency Benchmark | Markaicode",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s5",
+    "url": "https://www.couchbase.com/blog/diskann/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "DiskANN explanation and production adoption context",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A3-s6",
+    "url": "https://medium.com/@ThinkingLoop/d3-4-vector-databases-in-2025-top-10-index-choices-benchmarked-1bbce68e1871",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "November 2025 vector database index selection survey",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A3-s7",
+    "url": "https://www.dbi-services.com/blog/pgvector-a-guide-for-dba-part-2-indexes-update-march-2026/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "March 2026 pgvector index guide with StreamingDiskANN addition",
+    "fetched_title": "dbi Blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s8",
+    "url": "https://github.com/pgvector/pgvector",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "pgvector repository tracking releases and version history",
+    "fetched_title": "GitHub - pgvector/pgvector: Open-source vector similarity search for Postgres \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s9",
+    "url": "https://github.com/microsoft/DiskANN",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "DiskANN source tracking Rust rewrite and active 2026 development",
+    "fetched_title": "GitHub - microsoft/DiskANN: A vector indexing library to bring fast, fresh and filtered search to your database \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s10",
+    "url": "https://arxiv.org/pdf/2606.22778",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "HAKARI-Bench: unified benchmarking framework for ANNS",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s11",
+    "url": "https://arxiv.org/pdf/2510.25401",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "DGAI: decoupled on-disk graph index for updates/queries",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s12",
+    "url": "https://arxiv.org/pdf/2605.11523",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "NAVIS: concurrent search/update on SSD with low overhead",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s13",
+    "url": "https://arxiv.org/pdf/2606.11789",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Efficient graph indexing for interval-aware vector search, 2025",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s14",
+    "url": "https://arxiv.org/pdf/2606.04522",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ANN Search: Recall What Matters\u2014metric design, 2025",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s15",
+    "url": "https://arxiv.org/pdf/2506.08276",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "LEANN: low-storage-overhead vector index, June 2025",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s16",
+    "url": "https://arxiv.org/pdf/2605.25521",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "CS-PQ: cache-friendly SIMD product quantization for ANNS",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s17",
+    "url": "https://arxiv.org/pdf/2512.09331",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "BatANN: distributed disk-based vector search throughput",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s18",
+    "url": "https://helios2.mi.parisdescartes.fr/~themisp/publications/sigmod25-gass.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Graph-Based Vector Search: experimental state-of-art evaluation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s19",
+    "url": "https://github.com/SimoneZeng/awesome-vector-ANN-search-papers",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Living repository of ANN search papers tracking 2025\u20132026 research",
+    "fetched_title": "GitHub - SimoneZeng/awesome-vector-ANN-search-papers: A list of papers in the field of approximate nearest neighbor search on high-dimensional vectors. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  }
+]

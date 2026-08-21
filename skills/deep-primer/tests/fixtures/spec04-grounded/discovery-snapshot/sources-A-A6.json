@@ -1,0 +1,312 @@
+[
+  {
+    "id": "A-A6-s1",
+    "url": "https://arxiv.org/pdf/2412.01940",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "VLDB 2024: flat graph without hierarchy achieves identical latency with less memory",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s2",
+    "url": "https://arxiv.org/pdf/2606.04522",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Empirical analysis of recall-satisfying configs; 2.73\u00d7 build-time overhead identified",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s3",
+    "url": "https://www.vldb.org/pvldb/vol18/p4337-zheng.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "VLDB 2024: disk-resident ANN design space; fundamental I/O vs. graph connectivity tension",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s4",
+    "url": "https://www.actian.com/blog/databases/how-to-evaluate-vector-databases-in-2026/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025 analysis: benchmarks misleading, metadata filtering 10\u00d7 bottleneck, legal restrictions on vendors",
+    "fetched_title": "Vector Database Benchmarks are Misleading: What Matters",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s5",
+    "url": "https://www.pinecone.io/blog/hnsw-not-enough/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2023 against-interest: HNSW has cascading deletes, hyperparameter drift, no recall guarantees",
+    "fetched_title": "Great Algorithms Are Not Enough | Pinecone",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s6",
+    "url": "https://www.elastic.co/search-labs/blog/vector-search-simd-optimization-simdvec/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024: SIMD linear scan 23-28 ns/op; 1.2-4\u00d7 speedups with prefetching on x86 AVX-512",
+    "fetched_title": "SIMD vector search: Elasticsearch simdvec's 6x speedup | Elasticsearch Labs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s7",
+    "url": "https://arxiv.org/pdf/2503.04422",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025: PDX layout makes linear scan 2.5-6.2\u00d7 faster than FAISS/Milvus/USearch",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s8",
+    "url": "https://alex-jacobs.com/posts/the-case-against-pgvector/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024: HNSW build 10+ GB RAM, hours; deletion cascades; bolted-on indexes fail at scale",
+    "fetched_title": "The Case Against pgvector | Alex Jacobs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s9",
+    "url": "https://arxiv.org/pdf/2407.07871",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024: HNSW performance unacceptable with real-time updates; points become unreachable",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s10",
+    "url": "https://blog.vectorchord.ai/why-hnsw-is-not-the-answer",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024: HNSW requires all data in RAM; disk-resident degrades sharply; incompatible with sequential I/O",
+    "fetched_title": "Why HNSW is Not the Answer to Vector Databases",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s11",
+    "url": "https://opensourceconnections.com/blog/2025/02/27/vector-search-navigating-recall-and-performance/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025: near-miss approximation errors <1% on LLM scoring, <1.2% on BERT; recall-robust applications",
+    "fetched_title": "Vector Search: Navigating Recall and Performance - OpenSource Connections",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s12",
+    "url": "https://yudhiesh.github.io/2025/05/09/the-achilles-heel-of-vector-search-filters/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025: metadata filtering 3-10\u00d7 overhead; category filters 3.3\u00d7, range filters 8\u00d7",
+    "fetched_title": "The Achilles Heel of Vector Search: Filters | Bits & Backprops",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s13",
+    "url": "https://arxiv.org/pdf/2402.04713",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024: hubness undermines entry point selection efficiency in high dimensions",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s14",
+    "url": "https://arxiv.org/pdf/2005.12065",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2020: LSH hash failures; collision probabilities non-independent, causing false negatives",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s15",
+    "url": "https://arxiv.org/pdf/2102.08942",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2021: LSH requires multiple hash tables (memory overhead); boundary problems cause missed points",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s16",
+    "url": "https://markaicode.com/benchmarks/faiss-production-benchmark-latency/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024: flat index recommended for <1M vectors; perfect recall usable; smaller datasets exact-sufficient",
+    "fetched_title": "FAISS IVF vs HNSW vs Flat: 10M Vector Latency Benchmark | Markaicode",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s17",
+    "url": "https://aws.amazon.com/blogs/database/running-pgvector-in-production-on-amazon-aurora-postgresql/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2023: Ring team brute-force scan on 100-200B embeddings; recall-critical workloads",
+    "fetched_title": "Running pgvector in production on Amazon Aurora PostgreSQL | AWS Database Blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s18",
+    "url": "https://arxiv.org/pdf/2605.15957",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024: single-query workloads; CPU brute-force + SSD indexes outperform graph-based ANN",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s19",
+    "url": "https://arxiv.org/pdf/2502.20812",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025: vector database testing roadmap; real-world conditions not in standard benchmarks",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s20",
+    "url": "https://www.topk.io/blog/20251201-topk-bench",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025: production-relevant benchmarking emphasis; end of misleading benchmark era",
+    "fetched_title": "TopK Bench: Benchmarking Real-World Vector Search | TopK",
+    "retrieved_at": "2026-08-21"
+  }
+]

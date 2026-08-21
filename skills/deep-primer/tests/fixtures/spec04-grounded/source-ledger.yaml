@@ -1,0 +1,4329 @@
+sources:
+- source_id: 9f25797951917c61969c66e225308666881d5cb2
+  url: https://arxiv.org/abs/1603.09320
+  title: '[1603.09320] Efficient and robust approximate nearest neighbor search using
+    Hierarchical Navigable Small World graphs'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 3ddfec8e1c29645c9404cdb4b6f8a7883dd0ee7f
+  claims:
+  - claim_id: C-9f257979-1
+    text: HNSW is based on navigable small world graphs with controllable hierarchy.
+    quote: navigable small world graphs with controllable hierarchy (Hierarchical
+      NSW, HNSW)
+    location: char 756 of 5054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9f257979-2
+    text: HNSW is fully graph-based and requires no additional search structures.
+    quote: fully graph-based, without any need for additional search structures
+    location: char 864 of 5054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9f257979-3
+    text: Layer assignment in HNSW uses random selection with exponentially decaying
+      probability.
+    quote: randomly with an exponentially decaying probability distribution
+    location: char 1254 of 5054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9f257979-4
+    text: HNSW search achieves logarithmic complexity scaling.
+    quote: allows a logarithmic complexity scaling
+    location: char 1634 of 5054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9f257979-5
+    text: HNSW uses a heuristic for proximity neighbor selection that improves performance.
+    quote: heuristic for selecting proximity graph neighbors significantly increases
+      performance
+    location: char 1702 of 5054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9f257979-6
+    text: HNSW outperforms prior open-source vector-only approaches.
+    quote: strongly outperform previous opensource state-of-the-art vector-only approaches
+    location: char 1944 of 5054 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9f257979-7
+    text: HNSW builds incrementally as a multi-layer structure.
+    quote: incrementally builds a multi-layer structure
+    location: char 1043 of 5054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9f257979-8
+    text: HNSW algorithm structure is similar to skip lists.
+    quote: Similarity of the algorithm to the skip list structure
+    location: char 2025 of 5054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 372155712a8dc34ab3856938e8435c4de5f6cdfb
+  url: https://github.com/NGT-labs/NGT
+  title: 'GitHub - NGT-labs/NGT: Nearest Neighbor Search with Neighborhood Graph and
+    Tree for High-dimensional Data · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 27e4943b865a1a5c76526f21d725233c6d43cc17
+  claims:
+  - claim_id: C-37215571-1
+    text: Product quantization became available as a data type for graph indices in
+      version 2.4.0.
+    quote: Product quantization is now available as a data type for graph indices.
+      (v2.4.0)
+    location: char 1386 of 8842 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-37215571-2
+    text: Scalar quantization became available as a data type for graph indices and
+      QBG in version 2.3.0.
+    quote: Scalar quantization is now available as a data type for graph indices and
+      QBG. (v2.3.0)
+    location: char 1478 of 8842 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-37215571-3
+    text: Inner product (dot product) distance became available in version 2.1.0.
+    quote: Inner product (or dot product) is now available. (v2.1.0)
+    location: char 1577 of 8842 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-37215571-4
+    text: 'NGT supports nine distance functions: L1, L2, Cosine similarity, Angular,
+      Hamming, Jaccard, Poincare, Lorentz, and Inner product.'
+    quote: 'Supported distance functions: L1, L2, Cosine similarity, Angular, Hamming,
+      Jaccard, Poincare, Lorentz, and Inner product'
+    location: char 3856 of 8842 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-37215571-5
+    text: 'NGT supports three data types: 4-byte floating point, 2-byte floating point,
+      and 1-byte unsigned integer.'
+    quote: 4 byte floating point number, 2 byte floating point number, and 1 byte
+      unsigned integer
+    location: char 3989 of 8842 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-37215571-6
+    text: QBG can handle billions of objects.
+    quote: QBG can handle billions of objects.
+    location: char 6121 of 8842 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-37215571-7
+    text: NGT graph-based method is supported on Linux and macOS.
+    quote: 'Supported operating systems: Linux and macOS'
+    location: char 3653 of 8842 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: be262c64a8e186555451a3043e31829e4586c269
+  url: https://arxiv.org/abs/2102.08942
+  title: '[2102.08942] A Survey on Locality Sensitive Hashing Algorithms and their
+    Applications'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: e146ac4e3930aa08deabc30c86bb143e2b97e14d
+  claims:
+  - claim_id: C-be262c64-1
+    text: LSH is one of the most popular techniques for approximate nearest neighbor
+      search in high-dimensional spaces
+    quote: Locality Sensitive Hashing (LSH) is one of the most popular techniques
+    location: char 704 of 3780 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-be262c64-2
+    text: LSH provides sub-linear query performance
+    quote: The main benefits of LSH are its sub-linear query performance
+    location: char 853 of 3780 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-be262c64-3
+    text: LSH provides theoretical guarantees on query accuracy
+    quote: theoretical guarantees on the query accuracy
+    location: char 919 of 3780 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-be262c64-4
+    text: Finding nearest neighbors in high-dimensional spaces is a fundamental operation
+    quote: Finding nearest neighbors in high-dimensional spaces is a fundamental operation
+    location: char 587 of 3780 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-be262c64-5
+    text: The paper was submitted on February 17, 2021
+    quote: Submitted on 17 Feb 2021
+    location: char 199 of 3780 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-be262c64-6
+    text: The paper is classified under Databases (cs.DB)
+    quote: 'Subjects: Databases (cs.DB)'
+    location: char 1200 of 3780 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-be262c64-7
+    text: The paper surveys state-of-the-art LSH and Distributed LSH techniques
+    quote: we provide a review of state-of-the-art LSH and Distributed LSH
+    location: char 987 of 3780 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 86863bca3ec4f858cc11dcf0b47f076f19a78def
+  url: https://github.com/pgvector/pgvector
+  title: 'GitHub - pgvector/pgvector: Open-source vector similarity search for Postgres
+    · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: f1d4ef1e921fbb4aa5a9fd6290b9bd5ec551e993
+  claims:
+  - claim_id: C-86863bca-1
+    text: pgvector extension requires PostgreSQL version 13 or later.
+    quote: supports Postgres 13+
+    location: char 1605 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-2
+    text: HNSW vector type is limited to 2,000 dimensions maximum.
+    quote: vector - up to 2,000 dimensions
+    location: char 6246 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-3
+    text: halfvec type supports up to 4,000 dimensions.
+    quote: halfvec - up to 4,000 dimensions
+    location: char 6278 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-4
+    text: Binary vector type (bit) supports up to 64,000 dimensions.
+    quote: bit - up to 64,000 dimensions
+    location: char 6311 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-5
+    text: The default HNSW m parameter (max connections per layer) is 16.
+    quote: m - the max number of connections per layer (16 by default)
+    location: char 6421 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 759cee4cb4317838783a7dadff82c279eac5b965
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-7
+    text: The default HNSW ef_search parameter for query candidate list size is 40.
+    quote: Specify the size of the dynamic candidate list for search (40 by default)
+    location: char 6798 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-8
+    text: Approximate indexes in pgvector return different query results than exact
+      search.
+    quote: you will see different results for queries after adding an approximate
+      index
+    location: char 5188 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-9
+    text: Iterative index scans for approximate indexes became available starting
+      in version 0.8.0
+    quote: Starting with 0.8.0, you can enable iterative index scans
+    location: char 12397 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-86863bca-10
+    text: Approximate indexes apply filtering after the index scan completes, reducing
+      result counts for filtered queries
+    quote: queries with filtering can return less results since filtering is applied
+      after
+    location: char 12295 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-11
+    text: HNSW indexes default to a maximum of 20,000 tuples to visit during a scan
+    quote: Specify the max number of tuples to visit (20,000 by default)
+    location: char 13820 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-12
+    text: Half-precision vector indexing supports indexing vectors up to 4,000 dimensions
+    quote: half-precision indexing to index up to 4,000 dimensions
+    location: char 20719 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-13
+    text: Binary quantization enables indexing vectors up to 64,000 dimensions
+    quote: binary quantization to index up to 64,000 dimensions
+    location: char 20778 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-14
+    text: Non-partitioned Postgres tables have a default storage limit of 32 terabytes
+    quote: A non-partitioned table has a limit of 32 TB by default
+    location: char 20351 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-15
+    text: pgvector uses write-ahead logging to enable replication and point-in-time
+      recovery
+    quote: pgvector uses the write-ahead log (WAL), which allows for replication
+    location: char 20518 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-17
+    text: Vector storage requires 4 bytes per dimension plus 8 bytes of overhead.
+    quote: Each vector takes 4 * dimensions + 8 bytes of storage.
+    location: char 24346 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-18
+    text: Half-vector storage requires 2 bytes per dimension plus 8 bytes of overhead.
+    quote: Each half vector takes 2 * dimensions + 8 bytes of storage.
+    location: char 25571 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-19
+    text: Bit-vector storage requires 1 byte per 8 dimensions plus 8 bytes of overhead.
+    quote: Each bit vector takes dimensions / 8 + 8 bytes of storage.
+    location: char 26851 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-20
+    text: Sparse-vector storage requires 8 bytes per non-zero element plus 16 bytes
+      of overhead.
+    quote: Each sparse vector takes 8 * non-zero elements + 16 bytes of storage.
+    location: char 27236 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-21
+    text: Vectors are limited to a maximum of 16,000 dimensions.
+    quote: Vectors can have up to 16,000 dimensions.
+    location: char 24559 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - b43b68520a9614f47acf5967551fc04e8c45a9eb
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-22
+    text: Sparse vectors are limited to 16,000 non-zero elements maximum.
+    quote: Sparse vectors can have up to 16,000 non-zero elements.
+    location: char 27431 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-23
+    text: NULL vectors and zero vectors for cosine distance are excluded from indexing.
+    quote: NULL vectors are not indexed (as well as zero vectors for cosine distance).
+    location: char 23792 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-86863bca-24
+    text: pgvector compiles with -march=native by default on some platforms, optimizing
+      for the build machine's CPU.
+    quote: By default, pgvector compiles with -march=native on some platforms for
+      best performance.
+    location: char 29274 of 34682 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: bd8592eb6a812be1898bc0a0bc9b32e186cb34be
+  url: https://redis.io/blog/vector-search-database-news-2026-guide/
+  title: 'Vector Search Database: News & 2026 Guide'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: d367919d8d8ce7bc102783f0e7add77fbe911154
+  claims:
+  - claim_id: C-bd8592eb-1
+    text: Modern embedding models commonly use 128 to 4096 dimensions.
+    quote: modern embedding representations commonly span 128 to 4096 dimensions
+    location: char 1719 of 12273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-2
+    text: Brute-force linear scan outperforms traditional tree-based indexes in high-dimensional
+      spaces due to the curse of dimensionality.
+    quote: brute-force linear scan often outperforms classic indexing methods
+    location: char 2380 of 12273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-3
+    text: HNSW algorithm uses multi-layer graphs where upper layers function as long-range
+      shortcuts.
+    quote: upper layers act as long-range shortcuts and use greedy traversal
+    location: char 2973 of 12273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-4
+    text: By 2028, 80% of GenAI applications are projected to run on existing data
+      management platforms rather than specialized vector databases.
+    quote: 80% of GenAI apps are projected to be built on existing data management
+      platforms
+    location: char 3775 of 12273 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-5
+    text: Semantic caching on Q&A workloads achieved cache hit rates up to 68.8%.
+    quote: one semantic cache measured hit rates of up to 68.8% across question-and-answer
+    location: char 6357 of 12273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-6
+    text: In a benchmark covering 23,088 queries, hybrid retrieval with RRF achieved
+      0.695 Recall@5 versus 0.587 for dense vector search alone.
+    quote: hybrid retrieval fused with Reciprocal Rank Fusion (RRF) reported 0.695
+      Recall@5 versus 0.587
+    location: char 7664 of 12273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-7
+    text: HubSpot operates semantic search across 20 billion vectors in production.
+    quote: HubSpot handling semantic search across 20 billion vectors
+    location: char 4744 of 12273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-8
+    text: LLMs tend to overlook information located in the middle section of long
+      contexts.
+    quote: LLMs also tend to overlook information in the middle of long contexts
+    location: char 6800 of 12273 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-9
+    text: Redis enables vector search to execute directly on data within Redis without
+      moving data to a separate system.
+    quote: Redis runs vector search where your data already lives
+    location: char 8678 of 12273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd8592eb-10
+    text: Vector search is shifting from being a database category to becoming a data
+      type feature within databases.
+    quote: Vector search is becoming a data type, not a database category
+    location: char 10589 of 12273 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+  url: https://weaviate.io/blog/vector-search-explained
+  title: Vector Search Explained | Weaviate
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 99ba78340c8c56020bb369f4c186c0933a5f1dcc
+  claims:
+  - claim_id: C-6acafbcd-1
+    text: Vector embeddings are numerical arrays that function as coordinates in high-dimensional
+      space.
+    quote: vector embeddings are an array of numbers
+    location: char 1564 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-2
+    text: Cosine similarity and Euclidean distance (L2 distance) are used as distance
+      metrics in vector search.
+    quote: cosine similarity and Euclidean distance (L2 distance)
+    location: char 1933 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-3
+    text: ANN algorithms sacrifice perfect accuracy for significant gains in search
+      speed.
+    quote: ANN algorithms may not return the true k nearest vectors, but they are
+      very efficient
+    location: char 7672 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-4
+    text: ANN algorithms achieve sublinear time complexity, such as logarithmic complexity,
+      on large-scale datasets.
+    quote: sublinear time, e.g. (poly)logarithmic complexity
+    location: char 7801 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-5
+    text: Vector embeddings are created by language models that learn to capture semantic
+      meaning in numerical form.
+    quote: Vector embeddings are generated by language models that learn to capture
+      the meaning and context
+    location: char 1122 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-6
+    text: Weaviate implements its ANN search algorithm using a custom version of Hierarchical
+      Navigable Small World graphs.
+    quote: The ANN algorithm that Weaviate uses is a custom implementation
+    location: char 9003 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-7
+    text: HNSW structures vectors as a hierarchical, multi-layered graph to enable
+      fast navigation during search.
+    quote: HNSW works by organizing vectors into a hierarchical, multi-layered graph
+      structure
+    location: char 9163 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 613dad570d36d4196247c90261bc6ecf01d558a6
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-8
+    text: Vector databases can search a dataset of 28 million documents and return
+      results in milliseconds.
+    quote: it only takes milliseconds in a dataset containing 28 million paragraphs
+    location: char 7133 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-9
+    text: Vector search works with multiple data types including text, images, audio,
+      and video.
+    quote: works with a variety of data types, including text, images, audio or video
+    location: char 14614 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-10
+    text: Multimodal vector search combines different data types in the same vector
+      space.
+    quote: combines different data types—like text, images, and audio—in the same
+      vector space
+    location: char 12818 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-11
+    text: Hybrid search combines vector search and keyword search in a single system.
+    quote: combines multiple search types, usually vector search and keyword search,
+      in a single system
+    location: char 13692 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-13
+    text: Vector indexing libraries store only vectors, not the original data objects.
+    quote: only store vectors, not the data objects they originate from
+    location: char 17247 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-14
+    text: Vector libraries require all data to be imported before querying.
+    quote: vector libraries often require all data to be imported before querying
+    location: char 17424 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-15
+    text: ANN algorithms trade a small amount of accuracy for significant speed gains.
+    quote: trade a small amount of accuracy for huge gains in speed
+    location: char 20233 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6acafbcd-16
+    text: RAG passes vector search results to LLMs to generate contextually relevant
+      responses.
+    quote: the similar results returned by the vector database are given to a large
+      language model
+    location: char 16553 of 21496 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 4d04c93cf5d3515cfaa16f4ec2d04fcbee4aee9e
+  url: https://github.com/qdrant/qdrant
+  title: 'GitHub - qdrant/qdrant: Qdrant - High-performance, massive-scale Vector
+    Database and Vector Search Engine for the next generation of AI. Also available
+    in the cloud https://cloud.qdrant.io/ · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 6150956a77c44e2e32caed9273a4fc5787e21e3f
+  claims:
+  - claim_id: C-4d04c93c-1
+    text: Qdrant is implemented in Rust.
+    quote: Qdrant is written in Rust 🦀, which makes it fast
+    location: char 1759 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4d04c93c-2
+    text: Qdrant quantization can reduce RAM usage by up to 97%.
+    quote: Built-in quantization cuts RAM usage by up to 97%
+    location: char 6731 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4d04c93c-3
+    text: Qdrant provides a REST API conforming to the OpenAPI 3.0 specification.
+    quote: Qdrant provides a REST API with an OpenAPI 3.0 specification
+    location: char 5683 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-4d04c93c-4
+    text: Qdrant offers a gRPC interface for searches.
+    quote: Qdrant also provides a gRPC interface
+    location: char 5921 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4d04c93c-5
+    text: Qdrant Edge runs embedded within the application process.
+    quote: Qdrant Edge runs inside the application process
+    location: char 3531 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4d04c93c-6
+    text: 'Qdrant supports three vector search modes: dense, sparse, and multivector.'
+    quote: Qdrant supports dense vectors for semantic similarity, sparse vectors for
+      full-text search, and multivector search
+    location: char 6009 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4d04c93c-7
+    text: Qdrant ensures data persistence through write-ahead logging with update
+      confirmation.
+    quote: ensures data persistence with update confirmation, even during power outages
+    location: char 7930 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4d04c93c-8
+    text: Qdrant supports GPU-accelerated indexing on NVIDIA and AMD hardware.
+    quote: for accelerated indexing, with support for NVIDIA and AMD GPUs
+    location: char 7744 of 10054 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 18805c3f07376a12dcfac391705756cfabf57b83
+  url: https://www.emergentmind.com/topics/chromadb
+  title: 'ChromaDB: Scalable Vector Database'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: b45b2be34c560e2242f233d293753a8befecea80
+  claims:
+  - claim_id: C-18805c3f-1
+    text: HNSW is the default vector indexing algorithm for ChromaDB Python SDK version
+      0.4.x
+    quote: index is the default for the ChromaDB Python SDK (v0.4.x)
+    location: char 3603 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-2
+    text: ChromaDB uses cosine distance as the similarity metric for vector matching
+    quote: ChromaDB uses cosine distance as its similarity metric
+    location: char 3809 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-3
+    text: The all-MiniLM-L6-v2 sentence-transformer model produces 384-dimensional
+      dense vectors
+    quote: produces dense 384-dimensional vectors
+    location: char 2170 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-4
+    text: ChromaDB applies standard chunking of 1,000-character blocks with 200-character
+      overlap
+    quote: 1,000-character blocks with a 200-character overlap
+    location: char 1950 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-5
+    text: Incremental ingestion reduces compute time by approximately 70% versus full
+      dataset reingestion
+    quote: reducing end-to-end compute time by approximately 70% compared to full
+      reingestion
+    location: char 2527 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-6
+    text: Pure vector search in ChromaDB averages 12 milliseconds latency per query
+      on a 16 GB CPU-only instance
+    quote: averages 12 ms per query on a 16 GB RAM, CPU-only instance
+    location: char 7718 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-7
+    text: ChromaDB supports throughput exceeding 40 queries per second per replica
+      instance
+    quote: supporting >40 queries per second per replica
+    location: char 7896 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-8
+    text: The all-mpnet-base-v2 sentence-transformer model yields 768-dimensional
+      embedding vectors
+    quote: all-mpnet-base-v2 yields 768-dimensional vectors
+    location: char 2883 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-9
+    text: ChromaDB is currently in beta status.
+    quote: (Beta)
+    location: char 11998 of 13256 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-10
+    text: ChromaDB includes preprocessing techniques within its data ingestion pipelines.
+    quote: What are the major preprocessing techniques used in ChromaDB's data ingestion
+      pipelines?
+    location: char 12343 of 13256 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-11
+    text: ChromaDB uses embedding models to maintain consistency between indexing
+      and querying operations.
+    quote: How does ChromaDB ensure consistency between indexing and querying using
+      embedding models?
+    location: char 12432 of 13256 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-18805c3f-13
+    text: ChromaDB integrates BM25 and vector search for hybrid retrieval.
+    quote: How does the integration of BM25 and vector search in ChromaDB improve
+      hybrid retrieval accuracy?
+    location: char 12613 of 13256 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 613dad570d36d4196247c90261bc6ecf01d558a6
+  url: https://www.pinecone.io/blog/hnsw-not-enough/
+  title: Great Algorithms Are Not Enough | Pinecone
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 415578452323bbeabae747507961d72f8cced7e2
+  claims:
+  - claim_id: C-613dad57-1
+    text: HNSW was designed to work with relatively static datasets
+    quote: HNSW was designed for relatively static datasets
+    location: char 3931 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-2
+    text: HNSW achieves fast search through its layered, hierarchical graph structure
+    quote: gets its speed from its layered, hierarchical, graph structure
+    location: char 3135 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 6acafbcdea8f3c04261014643cb7e30aa43da3f2
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-3
+    text: Frequent modifications to HNSW indexes cause substantial memory consumption
+      growth
+    quote: make frequent changes to a bolted-on HNSW index, its memory consumption
+      begins to grow
+    location: char 4172 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-4
+    text: Deleting vectors from HNSW indexes requires a complete rebuild of the entire
+      index
+    quote: you have to rebuild the entire index from the ground up
+    location: char 8519 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-5
+    text: HNSW graph indexes have sparse structures with some layers containing very
+      few nodes
+    quote: layered graph indexes like those built by HNSW is that these graphs are
+      sparse
+    location: char 8805 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-6
+    text: The msmarco-ada dataset used in testing contains 8.4 million vectors of
+      1536 dimensions
+    quote: Msmarco-ada contains 8.4M vectors of 1536 dimensions
+    location: char 5853 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-613dad57-7
+    text: Building a great vector database requires more than incorporating a single
+      great algorithm
+    quote: building a great vector database requires more than incorporating a great
+      algorithm
+    location: char 2512 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-8
+    text: Vector indexes use tombstones to mark deleted data without immediately freeing
+      memory
+    quote: vector indexes mark to-be-deleted data with something called a tombstone
+    location: char 9411 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-9
+    text: 'Pinecone offers two distinct index families: p-family and s-family'
+    quote: 'At Pinecone, there are two families of indexes: the p-family and the s-family.'
+    location: char 12505 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-10
+    text: P-family indexes store data in memory
+    quote: These indexes are both stored in-memory and are highly efficient.
+    location: char 12864 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-11
+    text: P1 indexes prioritize fast data updates with moderate throughput
+    quote: guarantee extremely fast data updates (data freshness) and moderate throughput
+      (p1)
+    location: char 12946 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-12
+    text: P2 indexes prioritize high throughput over update speed
+    quote: less-fast data updates and high throughput (p2)
+    location: char 13034 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-613dad57-13
+    text: S-family indexes store vectors on local SSD rather than in memory
+    quote: vectors themselves are stored and fetched from local SSD
+    location: char 13170 of 20010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
+  url: https://papers.nips.cc/paper_files/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html
+  title: 'DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single
+    Node'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: a51d6fb60be2b2a449ae5160affacf7f799fbe62
+  claims:
+  - claim_id: C-f8ce5bbf-1
+    text: DiskANN can index and search a billion-point database on a single workstation
+      using 64GB RAM and an SSD
+    quote: with just 64GB RAM and an inexpensive solid-state drive
+    location: char 519 of 1899 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f8ce5bbf-2
+    text: DiskANN serves more than 5000 queries per second on the SIFT1B dataset
+    quote: DiskANN serves > 5000 queries a second
+    location: char 840 of 1899 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - ac53ff247c9bb6cff8306010de3e64282ac421cc
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f8ce5bbf-3
+    text: DiskANN achieves mean query latency under 3 milliseconds on billion-point
+      search
+    quote: with < 3ms mean latency
+    location: char 879 of 1899 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f8ce5bbf-4
+    text: DiskANN achieves over 95% recall-at-1 metric on the SIFT1B dataset
+    quote: 95%+ 1-recall@1
+    location: char 907 of 1899 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f8ce5bbf-5
+    text: Competing algorithms like FAISS and IVFOADC plateau at approximately 50%
+      recall-at-1 on billion-point datasets
+    quote: FAISS and IVFOADC+G+P plateau at around 50% 1-recall@1
+    location: char 1033 of 1899 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - ac53ff247c9bb6cff8306010de3e64282ac421cc
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f8ce5bbf-7
+    text: Current approximate nearest neighbor search algorithms require storing indices
+      in main memory
+    quote: indices that must be stored in main memory
+    location: char 231 of 1899 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-f8ce5bbf-8
+    text: DiskANN introduces Vamana, a new graph-based approximate nearest neighbor
+      search index
+    quote: we introduce Vamana, a new graph-based ANNS index
+    location: char 1306 of 1899 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 759cee4cb4317838783a7dadff82c279eac5b965
+  url: https://github.com/nmslib/hnswlib
+  title: 'GitHub - nmslib/hnswlib: Header-only C++/python library for fast approximate
+    nearest neighbors · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: fdbe0d9f74dde006136db63f6b7139fa84158461
+  claims:
+  - claim_id: C-759cee4c-1
+    text: The M parameter has a default value of 16
+    quote: M = 16, ef_construction = 200
+    location: char 4092 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-2
+    text: The ef_construction parameter has a default value of 200
+    quote: ef_construction = 200
+    location: char 4100 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-3
+    text: Inner product distance is not a true metric
+    quote: Note that inner product is not an actual metric
+    location: char 3624 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-4
+    text: With inner product distance, an element can be closer to another element
+      than to itself
+    quote: An element can be closer to some other element than to itself
+    location: char 3673 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-5
+    text: The ef parameter controls the tradeoff between query speed and accuracy
+    quote: sets the query time accuracy/speed trade-off
+    location: char 5663 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-6
+    text: The M parameter defines the maximum number of outgoing connections in the
+      graph
+    quote: M defines tha maximum number of outgoing connections in the graph
+    location: char 4418 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-7
+    text: The add_items method is thread-safe with concurrent add_items calls but
+      not with knn_query
+    quote: Thread-safe with other add_items calls, but not with knn_query
+    location: char 5223 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-8
+    text: The ef parameter is not persisted when the index is saved
+    quote: Note that the parameter is currently not saved along with the index
+    location: char 5757 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-9
+    text: hnswlib is a header-only C++ and Python library for approximate nearest
+      neighbor search
+    quote: Header-only C++/python library for fast approximate nearest neighbors
+    location: char 25 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-11
+    text: The library supports multithreaded usage
+    quote: multithreaded usage
+    location: char 12680 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-12
+    text: hnswlib can be installed via the pip package manager
+    quote: pip install hnswlib
+    location: char 12935 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-13
+    text: Pull request contributions should be made against the develop branch
+    quote: Please make pull requests against the develop branch.
+    location: char 13004 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-14
+    text: The library supports filtering during search with boolean functions
+    quote: filtering during the search with a boolean function
+    location: char 8237 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-15
+    text: The library implements epsilon search functionality
+    quote: epsilon search
+    location: char 1659 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-759cee4c-16
+    text: Dynamic updates for HNSW are covered by US Patent 15/929,802
+    quote: US Patent 15/929,802
+    location: char 15989 of 16378 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: ac53ff247c9bb6cff8306010de3e64282ac421cc
+  url: https://www.microsoft.com/en-us/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/
+  title: 'DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single
+    Node - Microsoft Research'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 84c2cb80f619e4e8e2b2b16d971868f3f4474a9e
+  claims:
+  - claim_id: C-ac53ff24-1
+    text: DiskANN can index, store, and search a billion-point database on a single
+      workstation with 64GB RAM
+    quote: DiskANN that can index, store, and search a billion point database on a
+      single workstation
+    location: char 2143 of 4973 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ac53ff24-2
+    text: On SIFT1B dataset, DiskANN serves more than 5000 queries per second with
+      less than 3ms mean latency
+    quote: DiskANN serves > 5000 queries a second with < 3ms mean latency
+    location: char 2555 of 4973 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ac53ff24-3
+    text: On SIFT1B dataset, DiskANN achieves 95%+ 1-recall@1 on a 16-core machine
+    quote: 95%+ 1-recall@1 on a 16 core machine
+    location: char 2622 of 4973 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ac53ff24-4
+    text: FAISS and IVFOADC+G+P plateau at around 50% 1-recall@1 on SIFT1B with similar
+      memory footprint
+    quote: FAISS [18] and IVFOADC+G+P [8] plateau at around 50% 1-recall@1
+    location: char 2748 of 4973 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ac53ff24-5
+    text: In high-recall regime, DiskANN indexes 5-10x more points per node than HNSW
+      and NSG
+    quote: 5 − 10x more points per node compared to state-of-the-art graphbased methods
+      such as HNSW
+    location: char 2881 of 4973 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ac53ff24-6
+    text: DiskANN introduces Vamana, a new graph-based ANNS index
+    quote: introduce Vamana, a new graph-based ANNS index
+    location: char 3041 of 4973 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ac53ff24-7
+    text: Vamana is more versatile than existing graph-based indices even for in-memory
+      use
+    quote: more versatile than the existing graph indices even for in-memory indices
+    location: char 3096 of 4973 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ac53ff24-8
+    text: State-of-the-art ANNS algorithms before DiskANN required indices stored
+      in main memory for fast high-recall search
+    quote: indices that must be stored in main memory for fast high-recall search
+    location: char 1946 of 4973 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: e0aee0b29be86be7c30a0eeeb3c6b9fd5c72e9f1
+  url: https://engineering.atspotify.com/2023/10/introducing-voyager-spotifys-new-nearest-neighbor-search-library
+  title: 'Introducing Voyager: Spotify’s New Nearest-Neighbor Search Library | Spotify
+    Engineering'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 5b2077486d9b61410e2fcc40e08b26cc96e4ec10
+  claims:
+  - claim_id: C-e0aee0b2-1
+    text: Voyager achieves over 10x speedup compared to Annoy while maintaining the
+      same recall level.
+    quote: More than 10 times the speed of Annoy (at the same recall)
+    location: char 4314 of 6598 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0aee0b2-2
+    text: Voyager reduces memory consumption to one-quarter that of Annoy.
+    quote: Up to 4 times less memory usage than Annoy
+    location: char 4420 of 6598 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0aee0b2-3
+    text: Voyager consumes 16 times less memory than hnswlib during index creation.
+    quote: 16 times less memory usage versus hnswlib at index creation time
+    location: char 4849 of 6598 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0aee0b2-4
+    text: hnswlib provides a 10x speed improvement over Annoy.
+    quote: This library offers a tenfold speed increase over Annoy
+    location: char 2994 of 6598 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0aee0b2-6
+    text: Voyager was deployed to Spotify production systems starting in 2022.
+    quote: having been used by many teams at Spotify to serve production traffic since
+      2022
+    location: char 5279 of 6598 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0aee0b2-7
+    text: hnswlib had surpassed 700,000 monthly downloads at the time of this article.
+    quote: hnswlib already has more than 700,000 downloads every month
+    location: char 3537 of 6598 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0aee0b2-8
+    text: Voyager can provide up to 50% greater accuracy than Annoy at identical query
+      speed.
+    quote: or up to 50% more accuracy (at the same speed)
+    location: char 4373 of 6598 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: cfcf72c6bedf4e5071a5fe2ec160ce7015642781
+  url: https://ann-benchmarks.com/index.html
+  title: ANN-Benchmarks
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: b43682e4a6b64c3875e6045787d6146253bab195
+  claims:
+  - claim_id: C-cfcf72c6-1
+    text: The recall metric is defined as the fraction of true nearest neighbors found
+      on average over all queries.
+    quote: Recall (the fraction of true nearest neighbors found, on average over all
+      queries)
+    location: char 674 of 2292 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-cfcf72c6-5
+    text: Benchmarking results are split by distance measure and dataset.
+    quote: Results are split by distance measure and dataset
+    location: char 405 of 2292 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-cfcf72c6-6
+    text: The project's source code is available on GitHub at http://github.com/erikbern/ann-benchmarks/
+    quote: Please visit http://github.com/erikbern/ann-benchmarks/
+    location: char 173 of 2292 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-cfcf72c6-7
+    text: This website displays current benchmarking results for approximate nearest
+      neighbor algorithms.
+    quote: This website contains the current benchmarking results
+    location: char 117 of 2292 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-cfcf72c6-8
+    text: Users can contribute their own code and improvements via pull requests on
+      GitHub.
+    quote: Make a pull request on Github to add your own code or improvements
+    location: char 289 of 2292 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 91fd36d43954d90f33c4e2656ab28aafde5d154f
+  url: https://github.com/erikbern/ann-benchmarks
+  title: 'GitHub - erikbern/ann-benchmarks: Benchmarks of approximate nearest neighbor
+    libraries in Python · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 75e37d9bd6b70d43e254e947111a8d953d1f1a65
+  claims:
+  - claim_id: C-91fd36d4-1
+    text: The ann-benchmarks project is no longer actively maintained.
+    quote: ann-benchmarks is no longer actively maintained
+    location: char 1251 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-91fd36d4-2
+    text: The benchmark datasets are stored in HDF5 format.
+    quote: pre-generated datasets (in HDF5 format)
+    location: char 1796 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-91fd36d4-3
+    text: Installation has been tested with Python version 3.10.6.
+    quote: Python (tested with 3.10.6) and Docker
+    location: char 3919 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-91fd36d4-4
+    text: Running the full benchmark suite can take potentially days to complete.
+    quote: this can take an extremely long time, potentially days
+    location: char 4159 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-91fd36d4-5
+    text: Benchmarks execute on AWS r6i.16xlarge instances with parallelism set to
+      31.
+    quote: running all benchmarks on a r6i.16xlarge machine on AWS
+    location: char 3577 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-91fd36d4-6
+    text: All benchmarks enforce single-CPU execution with no multi-threading.
+    quote: All benchmarks are single-CPU
+    location: char 3684 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-91fd36d4-7
+    text: All datasets include ground truth data for the top-100 nearest neighbors.
+    quote: include ground truth data for the top-100 nearest neighbors
+    location: char 2620 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-91fd36d4-8
+    text: A batch mode is available that provides all queries to implementations at
+      once.
+    quote: A batch mode is available that provides all queries to the implementations
+      at once
+    location: char 6242 of 8133 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 1cccda84c60ff5056677427e419f1e6e922c247b
+  url: https://arxiv.org/abs/1807.05614
+  title: '[1807.05614] ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest
+    Neighbor Algorithms'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 6a81a131555f628ff308ff45bf3f92d84d0e02a9
+  claims:
+  - claim_id: C-1cccda84-1
+    text: ANN-Benchmarks is a tool for evaluating the performance of in-memory approximate
+      nearest neighbor algorithms
+    quote: a tool for evaluating the performance of in-memory approximate nearest
+      neighbor algorithms
+    location: char 679 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-1cccda84-2
+    text: The tool supports multiple integration methods for k-NN algorithms
+    quote: It supports several different ways of integrating $k$-NN algorithms
+    location: char 919 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-1cccda84-3
+    text: The configuration system automatically tests a range of parameter settings
+      for each algorithm
+    quote: its configuration system automatically tests a range of parameter settings
+      for each algorithm
+    location: char 992 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-1cccda84-4
+    text: Multiple quality measures can be used to compare algorithm performance
+    quote: Algorithms are compared with respect to many different (approximate) quality
+      measures
+    location: char 1087 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-1cccda84-5
+    text: The tool provides visualization in images, LaTeX plots, and interactive
+      websites
+    quote: can visualise these as images, $\LaTeX$ plots, and websites with interactive
+      plots
+    location: char 1241 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-1cccda84-6
+    text: Different k-NN search approaches achieve comparable quality-performance
+      tradeoffs
+    quote: very different approaches to $k$-NN search yield comparable quality-performance
+      trade-offs
+    location: char 1836 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-1cccda84-7
+    text: This paper is the full version of a SISAP 2017 conference paper
+    quote: Full version of the SISAP 2017 conference paper
+    location: char 1981 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-1cccda84-8
+    text: The system aims to provide a constantly updated overview of state-of-the-art
+      k-NN algorithms
+    quote: provide a constantly updated overview of the current state of the art of
+      $k$-NN algorithms
+    location: char 1348 of 4817 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: b43b68520a9614f47acf5967551fc04e8c45a9eb
+  url: https://aws.amazon.com/blogs/big-data/cost-optimized-vector-database-introduction-to-amazon-opensearch-service-quantization-techniques/
+  title: 'Cost Optimized Vector Database: Introduction to Amazon OpenSearch Service
+    quantization techniques | AWS Big Data Blog'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: f189edc075cce18197d68c9cb043470466630e10
+  claims:
+  - claim_id: C-b43b6852-1
+    text: Binary quantization enables a compression ratio of up to 32x
+    quote: enabling up to 32x compression during indexing
+    location: char 5247 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-2
+    text: Byte quantization reduces vector memory usage by 75%
+    quote: reducing memory usage by 75%
+    location: char 7217 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-3
+    text: FP16 quantization reduces vector memory usage by 50%
+    quote: reducing the memory usage by 50%
+    location: char 8673 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-4
+    text: OpenSearch k-NN supports vectors with up to 16,000 dimensions
+    quote: supports up to 16,000 dimensions per vector
+    location: char 2672 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 86863bca3ec4f858cc11dcf0b47f076f19a78def
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-5
+    text: HNSW memory consumption follows the formula 1.1 * (4 * d + 8 * m) * num_vectors
+      bytes
+    quote: 1.1 * (4 * d + 8 * m) * num_vectors bytes of memory
+    location: char 3383 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-6
+    text: Binary quantization in OpenSearch supports encoding vectors with 1, 2, or
+      4 bits per dimension
+    quote: encode each vector dimension using 1, 2, or 4 bits
+    location: char 5523 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-7
+    text: Product quantization can achieve compression ratios of up to 64x
+    quote: PQ can provide compression levels of up to 64x
+    location: char 10774 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-8
+    text: Product quantization training requires at least 256 documents in the training
+      index
+    quote: training index requires a minimum of 256 documents
+    location: char 11714 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-9
+    text: FAISS-HNSW vector quantization requires a code_size parameter of 8 and a
+      training dataset of at least 256 documents.
+    quote: FAISS-HNSW requires a code_size of 8 and a training dataset of at least
+      256
+    location: char 12196 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-10
+    text: In product quantization, the vector compression ratio is approximately m
+      * code_size bits.
+    quote: the vector is compressed roughly by m * code_size bits
+    location: char 13890 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-11
+    text: OpenSearch 2.17 supports both in_memory and on_disk modes for vector indexing.
+    quote: As of OpenSearch 2.17, the mode parameter can be set to either in_memory
+      or on_disk
+    location: char 14728 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-12
+    text: Binary quantization achieves 32x compression using 1-bit dimensions.
+    quote: '32x: Binary quantization (1-bit dimensions)'
+    location: char 15636 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-13
+    text: Byte and integer quantization achieves 4x compression using 8-bit dimensions.
+    quote: '4x: Byte and integer quantization (8-bit dimensions)'
+    location: char 15680 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-14
+    text: FP16 quantization achieves 2x compression using 16-bit dimensions.
+    quote: '2x: FP16 quantization (16-bit dimensions)'
+    location: char 15733 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-15
+    text: For 1 billion vectors, product quantization reduces memory consumption to
+      184.8 GB with HNSW.
+    quote: Compression techniques such as product quantization can reduce this to
+      184.8 GB
+    location: char 20250 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b43b6852-16
+    text: Product quantization provides up to 90 percent cost reduction compared to
+      uncompressed HNSW vector search.
+    quote: product quantization offers up to 90% cost reduction compared to the baseline
+      HNSW
+    location: char 22113 of 24612 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: fa7663f4a1b19501b54973cebefcdf741f9b1e08
+  url: https://opensearch.org/blog/opensearch-project-roadmap-2024-2025/
+  title: OpenSearch Project Roadmap 2024–2025 - OpenSearch
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 91dea76b3814dbd59d567dedfcc67f9aaf83ff17
+  claims:
+  - claim_id: C-fa7663f4-1
+    text: OpenSearch has more than 1,400 unique contributors working across its repositories.
+    quote: more than 1,400 unique contributors
+    location: char 700 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-2
+    text: OpenSearch development occurs across 110 or more public GitHub repositories.
+    quote: 110+ public GitHub repositories
+    location: char 751 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-3
+    text: Version 2.16 of OpenSearch introduced online batch inference support for
+      neural search.
+    quote: in version 2.16 we introduced online batch inference support
+    location: char 9784 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-4
+    text: Version 2.13 of OpenSearch included self-pretrained sparse encoders on Hugging
+      Face.
+    quote: The OpenSearch 2.13 release included self-pretrained sparse encoders
+    location: char 10957 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-5
+    text: Quantized vectors in OpenSearch can provide up to 32x compression and 70%
+      cost reduction.
+    quote: quantized vectors to provide up to 32x compression and a 70% cost reduction
+    location: char 7115 of 56651 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-6
+    text: GPU-accelerated k-NN index building offers 10-40x better price/performance
+      than CPU-based infrastructure.
+    quote: with a 10–40x better price/performance ratio compared to CPU-based infrastructure
+    location: char 7715 of 56651 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-8
+    text: OpenSearch's AutoTune feature recommends optimal hyperparameter values for
+      workloads based on metrics.
+    quote: AutoTune feature will recommend the optimal hyperparameter values for a
+      given workload
+    location: char 9089 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-9
+    text: OpenSearch provides out-of-the-box blueprints for Cohere and OpenAI embedding
+      models.
+    quote: OpenSearch already provides OOB blueprints for popular services such as
+      Cohere and OpenAI
+    location: char 12503 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-10
+    text: The ML connector certification program uses automated pipelines to approve
+      and distribute model blueprints.
+    quote: submit blueprints for their favorite models and have them verified and
+      approved through automated pipelines
+    location: char 12809 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-11
+    text: The OpenSearch Assistant Toolkit is designed to create AI-powered assistants
+      for OpenSearch Dashboards.
+    quote: The OpenSearch Assistant Toolkit helps create AI-powered assistants for
+      OpenSearch Dashboards
+    location: char 13160 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-12
+    text: OpenSearch plans to implement join support in the core query engine.
+    quote: The introduction of join support in the core engine will offer users
+    location: char 15623 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-14
+    text: OpenSearch plans to implement reciprocal rank fusion as a rank-based hybrid
+      search approach.
+    quote: OpenSearch plans to launch a rank-based approach called reciprocal rank
+      fusion
+    location: char 17717 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-15
+    text: OpenSearch has incorporated support for the OpenTelemetry Protocol to standardize
+      observability data transmission.
+    quote: OpenSearch has enhanced its observability features by incorporating support
+      for the OpenTelemetry Protocol (OTLP)
+    location: char 22884 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-16
+    text: OpenSearch Dashboards will operate as a standalone application independent
+      from the OpenSearch installation.
+    quote: OpenSearch Dashboards to run as a standalone application, independent from
+      the OpenSearch installation
+    location: char 20884 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-17
+    text: Apache Spark integration with OpenSearch can reduce storage costs by up
+      to 90%.
+    quote: potentially reducing storage costs by up to 90%
+    location: char 24918 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-18
+    text: Term query performance improved 100x from OpenSearch 1.0 to recent versions.
+    quote: 100x boost for term queries
+    location: char 31821 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-19
+    text: Text query performance improved 50% from OpenSearch 1.0 to recent versions.
+    quote: 50% improvement for text queries
+    location: char 31743 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-21
+    text: Security Analytics includes a prebuilt library of over 3,300 threat detection
+      rules.
+    quote: prebuilt library of over 3,300 threat detection rules
+    location: char 30193 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-22
+    text: OpenSearch logs template is configured with Zstd compression codec.
+    quote: logs template is configured with the Zstd compression codec
+    location: char 33072 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-23
+    text: Star Tree index is the first implementation of multi-field indexes in OpenSearch.
+    quote: first implementation of a multi-field index is available as a Star Tree
+      index
+    location: char 33355 of 56651 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fa7663f4-24
+    text: Data Prepper currently ingests signals via OpenTelemetry over gRPC and HTTP.
+    quote: primary means for ingesting these signals are through OpenTelemetry over
+      gRPC, HTTP
+    location: char 28667 of 56651 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 39cf6d018cf1a94c8f033f237a5cb59823340d62
+  url: https://github.com/facebookresearch/faiss
+  title: 'GitHub - facebookresearch/faiss: A library for efficient similarity search
+    and clustering of dense vectors. · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 7392a20dd2cce018cbf9a59f03a6d7ca39c7c46b
+  claims:
+  - claim_id: C-39cf6d01-1
+    text: Faiss is written in C++ with complete wrappers for Python and NumPy.
+    quote: Faiss is written in C++ with complete wrappers for Python/numpy
+    location: char 1653 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 3aecb3f165011485785454088d01fb0ab11477df
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-39cf6d01-2
+    text: Faiss compares vectors using L2 (Euclidean) distance or dot product.
+    quote: vectors can be compared with L2 (Euclidean) distances or dot products
+    location: char 2089 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-39cf6d01-3
+    text: Faiss supports cosine similarity by computing dot product on normalized
+      vectors.
+    quote: cosine similarity, since this is a dot product on normalized vectors
+    location: char 2313 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-39cf6d01-4
+    text: Some Faiss methods use only compressed vector representations without storing
+      original vectors.
+    quote: solely use a compressed representation of the vectors and do not require
+    location: char 2471 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-39cf6d01-5
+    text: Compressed quantization methods in Faiss can scale to billions of vectors
+      in main memory on a single server.
+    quote: scale to billions of vectors in main memory on a single server
+    location: char 2654 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-39cf6d01-6
+    text: Faiss GPU indexes can be used as drop-in replacements for CPU indexes.
+    quote: GPU indexes can be used a drop-in replacement for the CPU indexes
+    location: char 2935 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-39cf6d01-7
+    text: Faiss supports both single and multi-GPU usage.
+    quote: Both single and multi-GPU usage is supported
+    location: char 3191 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-39cf6d01-8
+    text: BLAS is the only dependency required to compile Faiss.
+    quote: only dependency is a BLAS implementation
+    location: char 3404 of 6925 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 44ae660cd833e89bf23c53131b92c6a5348b8439
+  url: https://arxiv.org/abs/2401.08281
+  title: '[2401.08281] The Faiss library'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 3e065ff7a5ae6842f927b52aba3141a5be6b5800
+  claims:
+  - claim_id: C-44ae660c-1
+    text: The Faiss library is dedicated to vector similarity search
+    quote: The Faiss library is dedicated to vector similarity search
+    location: char 876 of 4236 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-44ae660c-2
+    text: Faiss provides primitives for searching, clustering, compressing and transforming
+      vectors
+    quote: used to search, cluster, compress and transform vectors
+    location: char 1040 of 4236 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-44ae660c-4
+    text: Vector databases typically manage large collections of embedding vectors
+    quote: Vector databases typically manage large collections of embedding vectors
+    location: char 683 of 4236 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-44ae660c-5
+    text: The paper describes the trade-off space of vector search and design principles
+      of Faiss
+    quote: This paper describes the trade-off space of vector search and the design
+      principles of Faiss
+    location: char 1097 of 4236 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-44ae660c-7
+    text: The paper includes benchmarks of key features of the Faiss library
+    quote: We benchmark key features of the library
+    location: char 1255 of 4236 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 3aecb3f165011485785454088d01fb0ab11477df
+  url: https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/
+  title: 'Faiss: A library for efficient similarity search - Engineering at Meta'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 3f753b2c07cb2655f35cdfee0aab64637f7ebeaa
+  claims:
+  - claim_id: C-3aecb3f1-1
+    text: Faiss achieves 8.5x speedup over previously reported state-of-the-art billion-scale
+      similarity search.
+    quote: 8.5x faster than the previous reported state-of-the-art
+    location: char 455 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-2
+    text: Faiss constructed the first k-nearest-neighbor graph on 1 billion high-dimensional
+      vectors.
+    quote: first k-nearest-neighbor graph constructed on 1 billion high-dimensional
+      vectors
+    location: char 640 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-3
+    text: Disk-based storage is orders of magnitude slower than RAM for vector similarity
+      search.
+    quote: disk databases are orders of magnitude slower
+    location: char 5714 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - ff6ccb3f465058cd1b740c5b6a1e4583736017f5
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-4
+    text: A 2 millisecond query time on CPU achieves approximately 500 queries per
+      second throughput.
+    quote: 2 ms query time translates to 500 queries per second
+    location: char 9325 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-6
+    text: Pascal-class GPUs like the P100 achieve 20x speedup compared to Faiss CPU
+      implementations.
+    quote: Pascal-class hardware, like the P100, pushes this to 20x+
+    location: char 10364 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-7
+    text: A k-nearest-neighbor graph on 95 million images can be built in 35 minutes
+      on four Maxwell Titan X GPUs.
+    quote: in 35 minutes on four Maxwell Titan X GPUs
+    location: char 10640 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-8
+    text: A billion-vector k-nearest-neighbor graph on Deep1B can be constructed in
+      under 12 hours on four Maxwell Titan X GPUs.
+    quote: in under 12 hours on four Maxwell Titan X GPUs
+    location: char 10888 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-9
+    text: BLAS/LAPACK is the only mandatory software dependency for Faiss.
+    quote: BLAS/LAPACK is the only mandatory software dependency of Faiss.
+    location: char 12125 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-10
+    text: The Faiss GPU k-selection algorithm handles k values up to 1024.
+    quote: the fastest small k-selection algorithm (k <= 1024) known
+    location: char 12558 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-11
+    text: The Faiss GPU k-selection algorithm operates at up to 55 percent of peak
+      GPU memory bandwidth.
+    quote: operating at up to 55 percent of peak possible performance
+    location: char 12773 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-12
+    text: Faiss implements a dozen distinct index types.
+    quote: Faiss implements a dozen index types that are often compositions
+    location: char 15346 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-13
+    text: Float16 vector encoding provides speedup with almost no loss of accuracy.
+    quote: encoding vectors as float16 yields speedup with almost no loss of accuracy
+    location: char 13477 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-14
+    text: Faiss is implemented in C++ and provides Python bindings.
+    quote: Faiss is implemented in C++ and has bindings in Python
+    location: char 13709 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 39cf6d018cf1a94c8f033f237a5cb59823340d62
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-15
+    text: SIMD vectorization and popcount instructions accelerate vector distance
+      computations.
+    quote: SIMD vectorization and popcount are used to speed up distance computations
+    location: char 12197 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3aecb3f1-16
+    text: The Faiss GPU k-selection algorithm stores intermediate state entirely in
+      CPU registers.
+    quote: All intermediate state is kept entirely in registers, contributing to
+    location: char 12635 of 18109 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 74bf691b9f72af9c030d69183d1c3d54d5e58e65
+  url: https://github.com/spotify/annoy
+  title: 'GitHub - spotify/annoy: Approximate Nearest Neighbors in C++/Python optimized
+    for memory usage and loading/saving to disk · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: b97f1941a96893e7d1ebe9bbac360f780cd69493
+  claims:
+  - claim_id: C-74bf691b-1
+    text: Annoy is a C++ library with Python bindings for approximate nearest neighbor
+      search.
+    quote: C++ library with Python bindings to search for points in space
+    location: char 1241 of 11237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-74bf691b-2
+    text: Annoy creates read-only file-based data structures that are memory-mapped
+      into memory.
+    quote: large read-only file-based data structures that are mmapped into memory
+    location: char 1359 of 11237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-74bf691b-4
+    text: No items can be added to an Annoy index after the tree has been built.
+    quote: you can not add more items once the tree has been created
+    location: char 3419 of 11237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-74bf691b-5
+    text: Annoy only accepts non-negative integers as item identifiers.
+    quote: Right now it only accepts integers as identifiers for items
+    location: char 4127 of 11237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-74bf691b-7
+    text: Annoy builds index trees by selecting random hyperplanes at each intermediate
+      node.
+    quote: At every intermediate node in the tree, a random hyperplane is chosen
+    location: char 8488 of 11237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-74bf691b-8
+    text: The default search_k value in Annoy queries is n multiplied by n_trees.
+    quote: it will default to n * n_trees where n is the number
+    location: char 7299 of 11237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 83afbd53f52ef3121ede36bb63002f1fef3cacb3
+  url: https://pypi.org/project/annoy/
+  title: Client Challenge
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: bda1c1b1ceb63629ce96d923be16496304c7514e
+  claims: []
+- source_id: 203c5c054a26abf9e99f0d70b152a31182ca5453
+  url: https://github.com/google-research/google-research/tree/master/scann
+  title: google-research/scann at master · google-research/google-research · GitHub
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 9ec53c99fd912d834aeb69939464098404f72fdd
+  claims:
+  - claim_id: C-203c5c05-1
+    text: ScaNN supports Linux environments running Python versions 3.9 through 3.13
+    quote: ScaNN supports Linux environments running Python versions 3.9-3.13.
+    location: char 2598 of 5237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-203c5c05-2
+    text: X86 processor wheels require AVX and FMA instruction set support
+    quote: The x86 wheels require AVX and FMA instruction set support,
+    location: char 2818 of 5237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-203c5c05-4
+    text: ScaNN requires libstdc++ version 3.4.23 or above from the operating system
+    quote: ScaNN requires libstdc++ version 3.4.23 or above from the operating system.
+    location: char 2968 of 5237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-203c5c05-5
+    text: As of version 1.4.0, TensorFlow op bindings are no longer enabled by default
+      in ScaNN
+    quote: As of ScaNN 1.4.0, this functionality is no longer enabled by default,
+    location: char 3356 of 5237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-203c5c05-6
+    text: Building ScaNN from source requires Bazel version 7.x
+    quote: first install the build tool bazel (use version 7.x),
+    location: char 4172 of 5237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-203c5c05-7
+    text: ScaNN implementation includes search space pruning and quantization for
+      Maximum Inner Product Search
+    quote: includes search space pruning and quantization for Maximum Inner Product
+      Search
+    location: char 1219 of 5237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-203c5c05-8
+    text: ScaNN implementation is optimized for x86 processors with AVX support
+    quote: The implementation is optimized for x86 processors with AVX support.
+    location: char 1370 of 5237 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: ff6ccb3f465058cd1b740c5b6a1e4583736017f5
+  url: https://medium.com/@reliabledataengineering/the-vector-database-performance-lie-hnsw-vs-ivf-when-you-have-100m-embeddings-1d8ef5a0b6c6
+  title: Medium
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: ebce220fa809527326aebb23cc19aec0def9438f
+  claims:
+  - claim_id: C-ff6ccb3f-1
+    text: At 100M vectors with 1536-dimensional embeddings, HNSW index size reaches
+      approximately 860GB
+    quote: 'Index size: 860 GB (does NOT fit in RAM)'
+    location: char 2889 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-2
+    text: HNSW search complexity at scale is O(N^0.42) in practice, not the theoretical
+      O(log N)
+    quote: 'Observed complexity: O(N^0.42), not O(log N)'
+    location: char 6769 of 21321 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-3
+    text: HNSW achieves p50 query latency of 347ms at 100M vectors with 1536 dimensions
+    quote: 'Query p50: 347.1ms'
+    location: char 6690 of 21321 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-4
+    text: A performance wall occurs around 50M vectors with standard hardware configurations
+    quote: 'The wall: ~50M vectors with standard hardware'
+    location: char 3462 of 21321 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-5
+    text: IVF at 100M vectors with 20K clusters and nprobe=60 has 634ms latency and
+      76% recall
+    quote: 100M | 20K | 60 | 634ms | 76% | ❌ Unusable
+    location: char 9739 of 21321 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-6
+    text: A legal document startup with 1.1TB index and 768GB available RAM experienced
+      system thrashing with queries exceeding 40 seconds
+    quote: 'Index size: 1.1TB. Available RAM: 768GB. System thrashed. Queries took
+      40+ seconds.'
+    location: char 3707 of 21321 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-7
+    text: HNSW maintains approximately 18 hierarchical graph layers at 100M vectors
+    quote: 'At 100M vectors: ~18 layers, 1.6B edges'
+    location: char 4707 of 21321 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-8
+    text: HNSW insertion time for 100M vectors is approximately 72,000 seconds (20
+      hours)
+    quote: 'Insert time: 72,000s (20 hours!!)'
+    location: char 6656 of 21321 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-9
+    text: Query performance degrades exponentially as embedding dimensions increase
+    quote: Performance degrades exponentially with dimensions.
+    location: char 12260 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-10
+    text: Increasing embedding dimensions from 384 to 3072 results in 16.6x slower
+      query time at 50M vectors
+    quote: 'Query time: 389.4ms (16.6x slower)'
+    location: char 13141 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-11
+    text: Embedding dimension count has more performance impact than vector count
+      at scale
+    quote: Dimension count matters MORE than vector count!
+    location: char 13184 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-12
+    text: Vector database indices require full rebuild after updates to maintain query
+      performance
+    quote: Updates destroy index structure. Rebuild required.
+    location: char 13850 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-13
+    text: Continuous updates without index rebuilds caused production query latency
+      to increase from 34ms to 187ms over two weeks
+    quote: 'Query latency: 34ms → 187ms'
+    location: char 15077 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-14
+    text: Using too many database shards decreases performance instead of improving
+      it
+    quote: Over-sharding makes things WORSE, not better.
+    location: char 16848 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-15
+    text: The optimal number of shards for distributed vector search is 10 to 20
+    quote: 'Sweet spot: 10-20 shards'
+    location: char 17144 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff6ccb3f-16
+    text: Disk storage is approximately 10,000 times slower than RAM
+    quote: Disk is 10,000x slower than RAM
+    location: char 20280 of 21321 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 3aecb3f165011485785454088d01fb0ab11477df
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 476b75b3cd1c77abedb06305043625ecb558d35f
+  url: https://aws.amazon.com/blogs/big-data/build-billion-scale-vector-databases-in-under-an-hour-with-gpu-acceleration-on-amazon-opensearch-service/
+  title: Build billion-scale vector databases in under an hour with GPU acceleration
+    on Amazon OpenSearch Service | AWS Big Data Blog
+  authors: []
+  venue: null
+  date: null
+  type: vendor
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: e085cceb08c0360be260bd14eb24de5c3aaf2128
+  claims:
+  - claim_id: C-476b75b3-1
+    text: GPU-accelerated vector k-NN indexing on Amazon OpenSearch Service is generally
+      available.
+    quote: AWS recently announced the general availability of GPU-accelerated vector
+      (k-NN) indexing
+    location: char 269 of 12708 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-476b75b3-2
+    text: GPU acceleration requires OpenSearch Service version 3.1 or higher.
+    quote: enabling GPU-accelerated indexing on OpenSearch Service 3.1+ domains or
+      collections
+    location: char 2974 of 12708 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-476b75b3-3
+    text: GPU servers use NVIDIA cuVS to build HNSW graphs for vector indexing.
+    quote: GPU servers that run NVIDIA cuVS to build HNSW graphs
+    location: char 3228 of 12708 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-476b75b3-4
+    text: Performance benchmarks showed speed improvements between 6.4 and 13.8 times
+      faster than CPU-only indexing.
+    quote: Speed gains ranged from 6.4 to 13.8 times faster
+    location: char 5935 of 12708 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-476b75b3-6
+    text: GPU acceleration costs $0.24 per OpenSearch Compute Unit per hour.
+    quote: you simply pay-per-use through OpenSearch Compute Units (OCUs)
+    location: char 3818 of 12708 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-476b75b3-9
+    text: AWS OpenSearch introduced a new vector ingestion feature.
+    quote: our new vector ingestion feature
+    location: char 11998 of 12708 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-476b75b3-10
+    text: The vector ingestion feature simplifies vector ingestion and indexing.
+    quote: simplifies vector ingestion, indexing
+    location: char 12039 of 12708 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-476b75b3-11
+    text: The vector ingestion feature automates optimizations.
+    quote: automates optimizations
+    location: char 12082 of 12708 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+  url: https://ranjankumar.in/hnsw-vector-search-recall-production
+  title: HNSW Vector Search Recall Failures in Production | Ranjan Kumar
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: c96f911247edb32f83a193e12b55b39d3ee990e0
+  claims:
+  - claim_id: C-e995dd02-1
+    text: HNSW achieves logarithmic search complexity with recall consistently above
+      95% out of the box on standard benchmarks.
+    quote: logarithmic search complexity with recall consistently above 95% out of
+      the box on standard benchmarks
+    location: char 1783 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 9f25797951917c61969c66e225308666881d5cb2
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-2
+    text: HNSW recall degrades precisely on underrepresented neighborhoods in the
+      graph.
+    quote: degrades precisely on underrepresented neighborhoods in the graph
+    location: char 818 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-3
+    text: HNSW with 768-dimensional float32 vectors and M=40 connections costs approximately
+      3,232 bytes per vector.
+    quote: for 768-dimensional float32 vectors with M=40 connections, each vector
+      costs approximately 3,232 bytes
+    location: char 5438 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-4
+    text: Increasing HNSW recall from 0.8 to 0.95 increases latency by approximately
+      31%.
+    quote: going from 0.8 to 0.95 recall increases HNSW latency by roughly 31%
+    location: char 6009 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-5
+    text: HNSW latency can grow 3-5x when increasing recall from 0.95 to 0.99.
+    quote: at 0.95 to 0.99 recall - the curve steepens sharply and latency can grow
+      3-5x
+    location: char 6126 of 30461 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-6
+    text: DiskANN handles 1 billion vectors at 95% recall with 5ms latency on a single
+      node.
+    quote: 1 billion vectors at 95% recall with 5ms latency on a single node
+    location: char 6370 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-7
+    text: IVF indexes cannot add vectors without rebuilding cluster centroids.
+    quote: You cannot insert a vector into an IVF index without rebuilding the cluster
+      centroids
+    location: char 7604 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-9
+    text: HNSW is recommended as the default index for vector corpora under 50 million
+      vectors with active writes.
+    quote: Default for under 50M vectors with active writes
+    location: char 13074 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-10
+    text: DiskANN is the only algorithm achieving 95% recall at 5ms latency on billion-scale
+      vector corpora.
+    quote: It is the only algorithm that hits 95% recall at 5ms latency
+    location: char 16797 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-11
+    text: HNSW graph traversal creates disconnected regions when metadata filters
+      eliminate large portions of the corpus.
+    quote: HNSW graph traversal hits disconnected "islands" - regions of the graph
+      cut off
+    location: char 17553 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-12
+    text: Maintaining 0.95 recall at production scale can require 2-3 times higher
+      latency than testing benchmarks.
+    quote: The 0.95 recall target that looks comfortable in testing can require a
+      2-3x latency increase
+    location: char 18204 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-14
+    text: GPU-accelerated CAGRA builds via NVIDIA cuVS are 12 times faster than CPU
+      HNSW builds.
+    quote: GPU acceleration via cuVS enables CAGRA index builds 12x faster than CPU
+      HNSW
+    location: char 21190 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-15
+    text: Chroma's in-process mode does not support concurrent writes from multiple
+      processes.
+    quote: Its in-process mode does not support concurrent writes from multiple processes
+    location: char 23323 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-16
+    text: Qdrant's ACORN algorithm maintains recall under heavy metadata filtering
+      by adapting traversal strategy.
+    quote: ACORN algorithm handles this case specifically, maintaining recall under
+      heavy filtering
+    location: char 17853 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-17
+    text: HNSW index memory consumption is approximately 4.8 GB per 1 million vectors.
+    quote: ~4.8 GB per 1M vecs
+    location: char 24013 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-18
+    text: pgvector HNSW has a practical vector capacity ceiling of approximately 50
+      million vectors.
+    quote: ~50M vector ceiling
+    location: char 24104 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-19
+    text: Alert thresholds for tail vector recall should be set at or below 0.85.
+    quote: Alert threshold at tail recall < 0.85
+    location: char 24976 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-20
+    text: IVF-PQ indexes should be reindexed after every 20% of corpus growth.
+    quote: 'For IVF-PQ: after every 20% corpus update'
+    location: char 25748 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-21
+    text: The ef_search parameter should be tuned to a minimum of 64, or 128 for recall-critical
+      applications.
+    quote: Set ef_search higher than default from day one (64 minimum, 128 for recall-critical
+      applications)
+    location: char 26171 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-22
+    text: A system has crossed its Recall Horizon when tail recall drops 10 or more
+      points between 10% and 100% corpus size.
+    quote: If tail recall drops 10+ points from 10% to 100% corpus, you have crossed
+    location: char 25398 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-23
+    text: Qdrant ACORN and Milvus Cardinal are the two production-grade vector database
+      solutions supporting high-selectivity filtering in 2026.
+    quote: Qdrant's ACORN and Milvus's Cardinal are the two production-grade solutions
+      in 2026
+    location: char 26711 of 30461 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e995dd02-24
+    text: A 1% sample of production queries run against an exact index over a 1% corpus
+      sample serves as an early warning system for recall degradation.
+    quote: 1% of queries against an exact index over 1% corpus sample
+    location: char 25625 of 30461 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 47bfd7e89d54e4beecf0659bcbdc827277cb9382
+  url: https://yudhiesh.github.io/2025/05/09/the-achilles-heel-of-vector-search-filters/
+  title: 'The Achilles Heel of Vector Search: Filters | Bits & Backprops'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 6aeda860281906a10c730562d724a9baf34e0d40
+  claims:
+  - claim_id: C-47bfd7e8-1
+    text: Unlike traditional relational databases, adding filters to vector search
+      often slows it down rather than speeding it up.
+    quote: unlike a traditional RDBMS, adding a filter to a vector search often slows
+      it down
+    location: char 853 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-2
+    text: Pinecone achieves approximately 800 QPS unfiltered and 600 QPS with filtering
+      at 16 concurrent threads.
+    quote: At 16 threads, Pinecone hits ~800 QPS unfiltered and ~600 QPS filtered
+    location: char 2212 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-3
+    text: Integrated filtering systems like Pinecone-p2 and Zilliz-AUTOINDEX achieve
+      1.2 to 1.5 times higher throughput when a 10% selective filter is applied.
+    quote: Pinecone-p2 and Zilliz-AUTOINDEX each see a ~1.2×–1.5× throughput bump
+    location: char 2415 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-4
+    text: P95 tail latencies in vector searches remain below 100 milliseconds during
+      regular unfiltered searches.
+    quote: Tail latencies (P95) stay sub-100 ms in regular searches
+    location: char 2803 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-5
+    text: Pre-filtering guarantees correctness but degrades to near-linear brute-force
+      scanning when the filtered subset is large.
+    quote: Guarantees correctness, but if that subset is large you end up doing a
+      near-linear scan
+    location: char 3994 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-6
+    text: Faiss's optimized IVF-PQ and graph hybrid methods achieved 30 to 40k QPS
+      at 90% recall.
+    quote: Optimized methods (e.g. multi-level IVF-PQ, graph hybrids) reached 30–40
+      k QPS
+    location: char 8018 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-7
+    text: Pinecone reduced query latency from 79ms unfiltered to 57ms with a 50% selective
+      filter on 1.2M vectors.
+    quote: unfiltered queries averaged 79 ms a 50 % selective filter dropped latency
+      to 57 ms
+    location: char 8495 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-9
+    text: Filter fusion concatenates metadata as weighted dimensions to enable filtered
+      search in one pass without separate filtering logic.
+    quote: By concatenating metadata as weighted dimensions, off-the-shelf ANN can
+      perform filtered search in one pass
+    location: char 21376 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-11
+    text: Ranking by cosine similarity on normalized vectors is equivalent to ranking
+      by Euclidean distance.
+    quote: ranking by Cosine Similarity is equivalent to ranking by Euclidean distance
+    location: char 13489 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-12
+    text: High-cardinality metadata fields with thousands of unique values can bloat
+      embeddings and slow down ANN indexing.
+    quote: High-cardinality fields (thousands of unique values) can bloat vectors
+      and slow down ANN indexing
+    location: char 21877 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-13
+    text: One-hot encoding is infeasible for ordinal or continuous filter types like
+      dates and numeric ranges.
+    quote: Encoding ordinal or continuous filters (dates, numeric ranges) as one-hot
+      is infeasible
+    location: char 22237 of 23447 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-47bfd7e8-14
+    text: Metadata weight tuning presents a tradeoff between strict filtering and
+      preserving semantic relevance.
+    quote: Choosing the right metadata_weight is a trade‑off between strict filtering
+      and semantic relevance
+    location: char 22502 of 23447 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+  url: https://arxiv.org/html/2512.18335
+  title: Quantization for Vector Search under Streaming Updates
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 7c95bfbc2252066a21b4f1251cd305e49510a3e5
+  claims:
+  - claim_id: C-2f7ae826-1
+    text: Large-scale vector databases store quantized data in main memory for fast
+      access while keeping full-precision data on disk.
+    quote: store a quantized dataset in main memory for fast access, and full precision
+    location: char 546 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-2
+    text: State-of-the-art ANN quantization methods are data-dependent, limiting their
+      ability to handle point insertions and deletions.
+    quote: State-of-the-art ANN quantization methods are highly data-dependent, rendering
+      them unable
+    location: char 644 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-3
+    text: Vector datasets for large-scale search are typically too large or expensive
+      to store entirely in main memory.
+    quote: These datasets tend to be too large or too expensive to fit in main memory
+    location: char 2287 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-4
+    text: Product Quantization divides vector dimensions into subspaces and applies
+      k-means clustering within each subspace independently.
+    quote: partitions vector dimensions into subspaces, applies k-means clustering
+      within each subspace
+    location: char 4532 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-5
+    text: When a point is inserted or deleted, the coordinate-median of a dataset
+      shifts by at most one position.
+    quote: the coordinate-median of the dataset moves by at most one position
+    location: char 9508 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-6
+    text: Cascading point reassignments in a kd-tree during updates causes at most
+      one reassignment per tree node.
+    quote: the cascade of reassignments can lead to at most one reassignment per tree
+      node
+    location: char 10130 of 149211 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-7
+    text: Quantization methods that do not adapt to changing data distributions experience
+      declining search recall over time.
+    quote: recall drop as the stream progresses, due to their non-adaptability
+    location: char 11697 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-8
+    text: Prior work on memory-disk priority queues typically allowed logarithmic
+      consecutive disk I/O operations per update.
+    quote: has mostly allowed for a logarithmic number of consecutive I/Os
+    location: char 7271 of 149211 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-9
+    text: RebuildPQ achieves the highest recall immediately after index rebuild but
+      is too slow because it loads the entire dataset from disk to memory.
+    quote: achieves the highest recall immediately after an index rebuild, although
+      it is too slow
+    location: char 11994 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-10
+    text: DeDrift assigns new points to existing centroids until clusters grow too
+      large, then reassigns from the largest clusters to new clusters.
+    quote: continues to assign new points to existing centroids until clusters grow
+      too large
+    location: char 12431 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-11
+    text: DeDriftPQ has lower latency than RebuildPQ due to using more frugal disk
+      access.
+    quote: DeDriftPQ has lower latency than RebuildPQ due to its more frugal disk
+      access
+    location: char 12865 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-12
+    text: Disk-free quantization methods FrozenPQ, RaBitQ, and OnlinePQ have much
+      lower latency than DeDriftPQ.
+    quote: still much larger than the disk-free methods FrozenPQ, RaBitQ and OnlinePQ
+    location: char 12951 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-13
+    text: Large-scale vector databases typically store quantized vectors in main memory
+      and full-precision vectors in external storage.
+    quote: quantized vectors reside in main memory and full-precision vectors are
+      stored in external storage
+    location: char 13202 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-14
+    text: In the DySk model, query operations must run fully in-memory without any
+      disk access.
+    quote: must run fully in-memory, without disk access
+    location: char 20681 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-16
+    text: Dynamic consistency ensures that query responses after any update sequence
+      match those of a structure rebuilt from scratch.
+    quote: after every update, query responses match those of a structure built from
+      scratch
+    location: char 14496 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-19
+    text: Prior quantization results only applied to static datasets and could not
+      handle streaming point insertions and deletions.
+    quote: these results are for static quantization and do not support point insertions
+      and deletions
+    location: char 24535 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2f7ae826-23
+    text: Cascading effects from point reassignments in kd-tree updates are bounded
+      to at most one reassignment per tree node.
+    quote: this cascading effect can lead to at most one reassignment per tree node
+    location: char 31779 of 149211 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+  url: https://arxiv.org/html/2505.17152
+  title: 'LSM-VEC: A Large-Scale Disk-Based System for Dynamic Vector Search'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 336ea096ec8b71afe1054b2272538f4ba6d7e55f
+  claims:
+  - claim_id: C-dd839b84-1
+    text: LSM-VEC reduces memory footprint by over 66.2% compared to DiskANN.
+    quote: reduces memory footprint by over 66.2%
+    location: char 2158 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-2
+    text: LSM-VEC reduces average update latency by up to 2.6× compared to DiskANN.
+    quote: reduces average update latency by up to 2.6 ×
+    location: char 9155 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-3
+    text: SPFresh achieves only approximately 0.75 Recall@10 after initial index construction.
+    quote: SPFresh achieves only around 0.75 Recall 10@10
+    location: char 6361 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-4
+    text: LSM-VEC integrates hierarchical graph indexing with LSM-tree storage as
+      its core architecture.
+    quote: integrates hierarchical graph indexing with LSM-tree storage
+    location: char 1581 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-5
+    text: LSM-VEC uses a sampling-based probabilistic search strategy with adaptive
+      neighbor selection.
+    quote: sampling-based probabilistic search strategy with adaptive neighbor selection
+    location: char 1794 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-6
+    text: DiskANN relies on offline graph construction that limits efficiency with
+      dynamic updates.
+    quote: rely on offline graph construction
+    location: char 1099 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-8
+    text: SPFresh uses in-place updates to maintain its index structure during insertions
+      and deletions.
+    quote: SPFresh employs in-place updates to maintain its index structure
+    location: char 1345 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-9
+    text: HNSW achieves near-logarithmic search complexity with high recall performance.
+    quote: HNSW achieves near-logarithmic search complexity and high recall
+    location: char 13693 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-10
+    text: Empirically, less than 1% of HNSW nodes reside in layers above the bottom
+      layer.
+    quote: Empirically, less than 1% of all nodes reside above the bottom layer
+    location: char 23531 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 613dad570d36d4196247c90261bc6ecf01d558a6
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-11
+    text: HNSW's design assumes the entire graph structure resides in memory.
+    quote: HNSW assumes that the entire graph resides in RAM
+    location: char 13768 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-12
+    text: DiskANN is fundamentally a static index that cannot efficiently support
+      dynamic updates.
+    quote: it is fundamentally a static index
+    location: char 14777 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-13
+    text: Log-structured merge trees are inherently write-optimized for handling random
+      updates efficiently.
+    quote: LSM-trees are inherently write-optimized
+    location: char 18505 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-14
+    text: Graph-based approaches are the most effective for high-dimensional approximate
+      nearest neighbor search.
+    quote: graph-based approaches have emerged as the most effective for high-dimensional
+    location: char 13109 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-15
+    text: In HNSW, each vector is assigned a hierarchical level using an exponentially
+      decaying probability distribution.
+    quote: Each vector is assigned to a random maximum level based on an exponentially
+      decaying distribution
+    location: char 13396 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 9f25797951917c61969c66e225308666881d5cb2
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-17
+    text: Vectors are stored in a contiguous on-disk array sorted by their ID.
+    quote: All vectors are placed in a contiguous on-disk array, sorted by their corresponding
+      ID.
+    location: char 24098 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-18
+    text: Vector retrieval through offset computation provides constant-time access.
+    quote: allows constant-time retrieval via offset computation
+    location: char 24198 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-21
+    text: Graph edges are encoded as key-value pairs and persisted in the LSM-tree.
+    quote: edges are encoded as key-value pairs and inserted into the LSM-tree
+    location: char 26013 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-22
+    text: Deletion reconnects neighbors of the deleted node to preserve local graph
+      connectivity.
+    quote: performs a local neighbor relinking strategy for both in-memory and disk-resident
+      layers
+    location: char 27990 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-23
+    text: Search uses a sampling-based filtering strategy inspired by probabilistic
+      routing.
+    quote: sampling-based filtering strategy inspired by probabilistic routing
+    location: char 30744 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-dd839b84-24
+    text: Graph reordering improves disk I/O by clustering related vectors for physical
+      locality.
+    quote: adopts a graph reordering strategy to improve the physical locality of
+      vectors
+    location: char 35321 of 69375 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered

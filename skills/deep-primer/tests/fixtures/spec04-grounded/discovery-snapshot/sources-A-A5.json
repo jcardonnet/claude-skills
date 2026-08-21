@@ -1,0 +1,153 @@
+[
+  {
+    "id": "A-A5-s1",
+    "url": "https://arxiv.org/abs/1603.09320",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Foundational HNSW paper; shows small-world graph theory application to ANN",
+    "fetched_title": "[1603.09320] Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A5-s2",
+    "url": "https://arxiv.org/pdf/2006.11285",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Comprehensive LSH overview; demonstrates probabilistic hashing for similarity",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s3",
+    "url": "https://www.jmlr.org/papers/volume11/radovanovic10a/radovanovic10a.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Distance concentration in high dimensions; motivates approximate search",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s4",
+    "url": "https://15721.courses.cs.cmu.edu/spring2018/papers/08-oltpindexes1/pugh-skiplists-cacm1990.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Skip list design; analogous probabilistic layering to HNSW",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s5",
+    "url": "https://arxiv.org/pdf/2411.07396",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Dense retrieval survey; shows ANN as core IR technique; differentiates from lexical search",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s6",
+    "url": "https://arxiv.org/pdf/2605.25521",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Product quantization and vector compression techniques",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s7",
+    "url": "https://arxiv.org/pdf/2009.03820",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Metric learning fundamentals; upstream to ANN embeddings",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s8",
+    "url": "https://arxiv.org/pdf/1504.06654",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Word2Vec embeddings; demonstrates learned semantic spaces for ANN",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s9",
+    "url": "https://arxiv.org/pdf/1904.12787",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Graph neural networks; distinct from ANN despite shared embedding output",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s10",
+    "url": "https://arxiv.org/pdf/2304.02350",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Binary hashing and Hamming distance; compression technique for ANN",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  }
+]

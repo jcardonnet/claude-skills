@@ -1,0 +1,240 @@
+[
+  {
+    "id": "B-B-dive-s1",
+    "url": "https://arxiv.org/abs/1603.09320",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Original HNSW paper by Malkov & Yashunin; defines core algorithm, M/efSearch parameters, hierarchical structure",
+    "fetched_title": "[1603.09320] Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s2",
+    "url": "https://papers.neurips.cc/paper_files/paper/2022/file/fb44a668c2d4bc984e9d6ca261262cbb-Paper-Conference.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Graph Reordering for Cache-Efficient Near Neighbor Search; shows 40% latency improvement, mechanism of cache-miss optimi",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s3",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3231071/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Residual Vector Quantization theory; foundational analysis of residual error accumulation and monotonic error reduction",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "B-B-dive-s4",
+    "url": "https://arxiv.org/html/2404.00774v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "SOAR: Spilling with Orthogonality-Amplified Residuals; recent 2024 solution to residual gap in multi-index quantization",
+    "fetched_title": "SOAR: Improved Indexing for Approximate Nearest Neighbor Search",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s5",
+    "url": "https://arxiv.org/html/2509.15531v2",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Graph-Based ANN Revisited (Oct 2025); theoretical analysis, failure modes under non-uniform distributions, O(log n) boun",
+    "fetched_title": "Graph-Based Approximate Nearest Neighbor Search Revisited: Theoretical Analysis and Optimization",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s6",
+    "url": "https://github.com/facebookresearch/faiss/wiki/Guidelines-to-choose-an-index",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "FAISS index selection guidelines; practical decision rules by dataset size, memory constraints, hybrid strategies",
+    "fetched_title": "Guidelines to choose an index \u00b7 facebookresearch/faiss Wiki \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s7",
+    "url": "https://www.marqo.ai/blog/understanding-recall-in-hnsw-search",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "HNSW recall mechanisms, failure modes (local minima, recall variance by segment), parameter tuning analysis",
+    "fetched_title": "Ecommerce Search Performance at Scale",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s8",
+    "url": "https://github.com/facebookresearch/faiss/wiki/Faiss-indexes",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "FAISS index architecture reference; IVF, PQ, quantization methods, composite index specifications",
+    "fetched_title": "Faiss indexes \u00b7 facebookresearch/faiss Wiki \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s9",
+    "url": "https://engineering.fb.com/2025/05/08/data-infrastructure/accelerating-gpu-indexes-in-faiss-with-nvidia-cuvs/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Meta Engineering blog May 2025; NVIDIA cuVS v1.10.0 integration, GPU HNSW/IVF acceleration, CAGRA 12\u00d7 speedup",
+    "fetched_title": "Accelerating GPU indexes in Faiss with NVIDIA cuVS - Engineering at Meta",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s10",
+    "url": "https://github.com/erikbern/ann-benchmarks",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "ANN-Benchmarks; maintained benchmark harness (active Apr 2025), standard evaluation methodology, 18 datasets to 10M vect",
+    "fetched_title": "GitHub - erikbern/ann-benchmarks: Benchmarks of approximate nearest neighbor libraries in Python \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s11",
+    "url": "https://developer.nvidia.com/topics/ai/generative-ai/cuvs",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "NVIDIA cuVS official page; latest release v1.10.0+, Rust/Go/Java API support, GPU-accelerated vector search",
+    "requested_url": "https://developer.nvidia.com/cuvs",
+    "fetched_title": "cuVS | NVIDIA Developer",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s12",
+    "url": "https://www.pingcap.com/article/approximate-nearest-neighbor-ann-search-explained-ivf-vs-hnsw-vs-pq/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Comparative analysis: IVF ~0.89 recall, HNSW ~0.95 recall, LSH ~0.6; index selection tradeoffs",
+    "fetched_title": "Approximate Nearest Neighbor (ANN) Search Explained: IVF vs HNSW vs PQ | TiDB",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s13",
+    "url": "https://www.abhik.ai/concepts/embeddings/ann-comparison",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "HNSW vs IVF-PQ vs LSH comparison; use-case guidance, parameter tuning, production recommendations",
+    "fetched_title": "HNSW vs IVF-PQ vs LSH: Approximate Nearest Neighbor Algorithms Compared | Abhik Sarkar",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s14",
+    "url": "https://github.com/spotify/annoy",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Annoy library official repo; tree-based ANN implementation, memory-efficient indexing, PyPI distribution",
+    "fetched_title": "GitHub - spotify/annoy: Approximate Nearest Neighbors in C++/Python optimized for memory usage and loading/saving to disk \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s15",
+    "url": "https://arxiv.org/pdf/2602.21600",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "AQR-HNSW: density-aware quantization + multi-stage re-ranking; recent approach to reduce HNSW memory overhead",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  }
+]

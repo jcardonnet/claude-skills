@@ -1,0 +1,84 @@
+{
+  "spec": "spec-04-seeded-vector-index.yaml",
+  "topic": "approximate nearest-neighbour index selection",
+  "as_of": "2026-08-21",
+  "wall_clock_s": 1092.4,
+  "resumed_from": "ledger",
+  "discovery": {
+    "waves": [
+      {
+        "wave": "A",
+        "briefs": 6,
+        "framing_cells": 6,
+        "leads_total": 118,
+        "leads_new": 103,
+        "novel_fraction": 0.8729,
+        "decision": "continue"
+      },
+      {
+        "wave": "B",
+        "briefs": 2,
+        "framing_cells": 2,
+        "leads_total": 15,
+        "leads_new": 11,
+        "novel_fraction": 0.7333,
+        "decision": "continue"
+      },
+      {
+        "wave": "C",
+        "briefs": 3,
+        "framing_cells": 3,
+        "leads_total": 47,
+        "leads_new": 41,
+        "novel_fraction": 0.8723,
+        "decision": "stop"
+      }
+    ],
+    "terminal": "max_waves",
+    "briefs": 0,
+    "source_leads": 155,
+    "dropped_by_backend": 0
+  },
+  "retrieval": {
+    "documents_fetched": 0,
+    "documents_resolved": 0,
+    "documents_extracted": 0,
+    "max_docs": 30,
+    "unresolved": []
+  },
+  "grounding": {
+    "claims_kept": 333,
+    "claims_rejected": 0,
+    "corroborated": 20,
+    "extractor_errors": [],
+    "rejections": []
+  },
+  "concepts": 52,
+  "grouping": {
+    "gate_rejections": [
+      "group 5: home_anchor 'postings list compression for index size reduction' restates its own term 'Vector quantization' (R-XREF-04); dropped rather than shipped as a bridge",
+      "group 20: claim_id 'C-e995dd02-1' was already grouped; a claim belongs to at most one group",
+      "18 claim(s) were in no proposed group and became singletons"
+    ],
+    "grouper_notes": [
+      "333 claims exceeded 150 per call; grouped in 3 batches and reconciled by one merge pass",
+      "concept batch 1/3: retrying once after CliUnavailable: claude CLI exceeded 420s",
+      "merge pass reconciled 37 batch groups into 34"
+    ],
+    "grouper_errors": []
+  },
+  "convergence": {
+    "map_v0": "skills/deep-primer/tests/fixtures/spec04-grounded/concept-map-v0.yaml",
+    "log": "skills/deep-primer/tests/fixtures/spec04-grounded/convergence-log.yaml"
+  },
+  "calls": {
+    "research": 0,
+    "extract": 0,
+    "group": 4
+  },
+  "spend_usd": {
+    "research": 0.0,
+    "extract": 0.0,
+    "group": 0.4411
+  }
+}

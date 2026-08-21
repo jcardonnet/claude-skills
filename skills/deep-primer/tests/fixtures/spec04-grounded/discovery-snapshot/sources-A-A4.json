@@ -1,0 +1,437 @@
+[
+  {
+    "id": "A-A4-s1",
+    "url": "https://arxiv.org/abs/1603.09320",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Seminal HNSW paper by Malkov & Yashunin; foundational algorithm",
+    "fetched_title": "[1603.09320] Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s2",
+    "url": "https://inria.hal.science/inria-00514462v1/document",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Product Quantization for Nearest Neighbor Search, J\u00e9gou et al. 2011",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s3",
+    "url": "https://arxiv.org/pdf/2505.17810",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "VIBE: Vector Index Benchmark for Embeddings (2025), most current empirical evaluation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s4",
+    "url": "https://github.com/erikbern/ann-benchmarks",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "ANN-Benchmarks tool, long-running independent benchmark suite",
+    "fetched_title": "GitHub - erikbern/ann-benchmarks: Benchmarks of approximate nearest neighbor libraries in Python \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s5",
+    "url": "https://github.com/google-research/google-research/tree/master/scann",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "ScaNN official implementation by Google Research",
+    "fetched_title": "google-research/scann at master \u00b7 google-research/google-research \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s6",
+    "url": "https://github.com/facebookresearch/faiss/wiki",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Faiss documentation, v1.12.0 (Aug 2025) latest stable release",
+    "fetched_title": "Home \u00b7 facebookresearch/faiss Wiki \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s7",
+    "url": "https://ai.meta.com/tools/faiss/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Faiss official product page by Meta",
+    "fetched_title": "Faiss",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s8",
+    "url": "https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Original Faiss engineering blog post establishing motivation",
+    "fetched_title": "Faiss: A library for efficient similarity search - Engineering at Meta",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s9",
+    "url": "https://github.com/vector-index-bench/vibe",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "VIBE benchmark code and datasets repository",
+    "fetched_title": "GitHub - vector-index-bench/vibe: Vector Index Benchmark for Embeddings (VIBE) is an extensible benchmark for approximate nearest neighbor search methods, or vector indexes, using modern embedding datasets. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s10",
+    "url": "https://vector-index-bench.github.io/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "VIBE benchmark website with results and interactive evaluation",
+    "fetched_title": "VIBE: Vector Index Benchmark for Embeddings",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s11",
+    "url": "https://www.vldb.org/pvldb/vol18/p3951-mageirakos.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Cracking Vector Search Indexes, VLDB 2025, contemporary index selection work",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s12",
+    "url": "https://arxiv.org/pdf/2503.01823",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Cracking Vector Search Indexes preprint on index architecture tradeoffs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s13",
+    "url": "https://arxiv.org/pdf/2607.01283",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Scaling Laws for Grid-Based ANN Search, theoretical guidance",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s14",
+    "url": "https://learn.microsoft.com/en-us/sql/sql-server/ai/vectors?view=sql-server-ver17",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "SQL Server 2025 official vector search documentation",
+    "fetched_title": "Vector Search & Vector Index - SQL Server | Microsoft Learn",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s15",
+    "url": "https://blogs.oracle.com/database/indexing-guidelines-with-ai-vector-search",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Oracle database vector index guidelines (June 2025)",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s16",
+    "url": "https://medium.com/google-cloud/bigquery-vector-search-a-practitioners-guide-0f85b0d988f0",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "BigQuery vector search practitioner guide with selection criteria",
+    "fetched_title": "Medium",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s17",
+    "url": "https://www.genaiblueprints.com/topics/vector-search/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Databricks/Mosaic AI Vector Search guide (May 2026) on index selection",
+    "fetched_title": "Mosaic AI Vector Search (2026): Indexes, Embeddings, Hybrid Search, Cost | Databricks for Practitioners",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s18",
+    "url": "https://github.com/spotify/annoy/releases",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Annoy releases page for version history",
+    "fetched_title": "Releases \u00b7 spotify/annoy \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s19",
+    "url": "https://engineering.atspotify.com/2023/10/introducing-voyager-spotifys-new-nearest-neighbor-search-library",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Voyager announcement replacing Annoy with HNSW implementation",
+    "fetched_title": "Introducing Voyager: Spotify\u2019s New Nearest-Neighbor Search Library | Spotify Engineering",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s20",
+    "url": "https://arxiv.org/pdf/2508.16263",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Attribute Filtering in ANN Search, experimental study of index tradeoffs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s21",
+    "url": "https://arxiv.org/pdf/2508.15436",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Graph Reordering for GPU-Accelerated ANN Search, recent optimization",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s22",
+    "url": "https://arxiv.org/pdf/2512.06636",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Distribution-Aware Exploration for Adaptive HNSW, 2025 tuning research",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s23",
+    "url": "https://arxiv.org/pdf/1807.02962",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Learning to Index for Nearest Neighbor Search, learned index structures",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s24",
+    "url": "https://arxiv.org/pdf/2605.25521",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "CS-PQ: Cache-Friendly SIMD Product Quantization, quantization optimization",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s25",
+    "url": "https://dl.acm.org/doi/10.1145/2020408.2020578",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Fast locality-sensitive hashing, Andoni foundational LSH work",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A4-s26",
+    "url": "https://medium.com/@elisheba.t.anderson/choosing-the-right-vector-database-opensearch-vs-pinecone-vs-qdrant-vs-weaviate-vs-milvus-vs-037343926d7e",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Comprehensive vector database index selection comparison (2026)",
+    "fetched_title": "Medium",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s27",
+    "url": "https://milvus.io/ai-quick-reference/how-does-milvus-compare-to-other-vector-databases-like-pinecone-or-weaviate",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Milvus vendor guide on index selection across databases",
+    "dropped_reason": "HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nMoved Temporarily"
+  },
+  {
+    "id": "A-A4-s28",
+    "url": "https://unstructured.io/insights/vector-indexing-strategies-for-high-performance-ai-search",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Practitioner guide on indexing strategy selection criteria",
+    "fetched_title": "Indexing Strategies for Efficient Vector-Based Search Guide | Unstructured",
+    "retrieved_at": "2026-08-21"
+  }
+]

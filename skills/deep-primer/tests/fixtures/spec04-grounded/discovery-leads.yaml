@@ -1,0 +1,2387 @@
+topic_leads: []
+source_leads:
+- id: sl-A-A1-0
+  support_count: 4
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - source-authority
+  - structure
+  - theorist
+  report_ids:
+  - A-A1
+  - A-A4
+  - A-A5
+  - B-B-dive
+  url: https://arxiv.org/abs/1603.09320
+  type: primary_paper
+  supports: []
+  fetched_title: '[1603.09320] Efficient and robust approximate nearest neighbor search
+    using Hierarchical Navigable Small World graphs'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/NGT-labs/NGT
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - NGT-labs/NGT: Nearest Neighbor Search with Neighborhood
+    Graph and Tree for High-dimensional Data · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://arxiv.org/abs/2102.08942
+  type: primary_paper
+  supports: []
+  fetched_title: '[2102.08942] A Survey on Locality Sensitive Hashing Algorithms and
+    their Applications'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: http://infolab.stanford.edu/~bawa/Pub/similarity.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A1-12
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  - structure
+  report_ids:
+  - A-A1
+  - A-A3
+  url: https://github.com/pgvector/pgvector
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - pgvector/pgvector: Open-source vector similarity search
+    for Postgres · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://redis.io/blog/vector-search-database-news-2026-guide/
+  type: blog
+  supports: []
+  fetched_title: 'Vector Search Database: News & 2026 Guide'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://weaviate.io/blog/vector-search-explained
+  type: blog
+  supports: []
+  fetched_title: Vector Search Explained | Weaviate
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://milvus.io/
+  type: docs
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 302: The HTTP server returned a redirect
+    error that would lead to an infinite loop.
+
+    The last 30x error message was:
+
+    Moved Temporarily'
+- id: sl-A-A1-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/qdrant/qdrant
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - qdrant/qdrant: Qdrant - High-performance, massive-scale
+    Vector Database and Vector Search Engine for the next generation of AI. Also available
+    in the cloud https://cloud.qdrant.io/ · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://www.emergentmind.com/topics/chromadb
+  type: blog
+  supports: []
+  fetched_title: 'ChromaDB: Scalable Vector Database'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-18
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - structure
+  report_ids:
+  - A-A1
+  - A-A6
+  url: https://www.pinecone.io/blog/hnsw-not-enough/
+  type: blog
+  supports: []
+  fetched_title: Great Algorithms Are Not Enough | Pinecone
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://papers.nips.cc/paper_files/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html
+  type: primary_paper
+  supports: []
+  fetched_title: 'DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on
+    a Single Node'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/nmslib/hnswlib
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - nmslib/hnswlib: Header-only C++/python library for fast
+    approximate nearest neighbors · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://www.microsoft.com/en-us/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/
+  type: docs
+  supports: []
+  fetched_title: 'DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on
+    a Single Node - Microsoft Research'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-21
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  - structure
+  report_ids:
+  - A-A1
+  - A-A4
+  url: https://engineering.atspotify.com/2023/10/introducing-voyager-spotifys-new-nearest-neighbor-search-library
+  type: blog
+  supports: []
+  fetched_title: 'Introducing Voyager: Spotify’s New Nearest-Neighbor Search Library
+    | Spotify Engineering'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://ann-benchmarks.com/index.html
+  type: standard
+  supports: []
+  fetched_title: ANN-Benchmarks
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-23
+  support_count: 5
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - recency-frontier
+  - source-authority
+  - structure
+  - theorist
+  report_ids:
+  - A-A1
+  - A-A3
+  - A-A4
+  - B-B-dive
+  - C-C-disconfirm
+  url: https://github.com/erikbern/ann-benchmarks
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - erikbern/ann-benchmarks: Benchmarks of approximate nearest
+    neighbor libraries in Python · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://arxiv.org/abs/1807.05614
+  type: primary_paper
+  supports: []
+  fetched_title: '[1807.05614] ANN-Benchmarks: A Benchmarking Tool for Approximate
+    Nearest Neighbor Algorithms'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-25
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://dl.acm.org/doi/10.14778/3476249.3476255
+  type: primary_paper
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-A-A1-26
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://aws.amazon.com/blogs/big-data/cost-optimized-vector-database-introduction-to-amazon-opensearch-service-quantization-techniques/
+  type: blog
+  supports: []
+  fetched_title: 'Cost Optimized Vector Database: Introduction to Amazon OpenSearch
+    Service quantization techniques | AWS Big Data Blog'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-27
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://opensearch.org/blog/opensearch-project-roadmap-2024-2025/
+  type: blog
+  supports: []
+  fetched_title: OpenSearch Project Roadmap 2024–2025 - OpenSearch
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://ieeexplore.ieee.org/document/5432202/
+  type: primary_paper
+  supports: []
+  dropped_reason: fetched but empty after text extraction
+- id: sl-A-A1-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/facebookresearch/faiss
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - facebookresearch/faiss: A library for efficient similarity
+    search and clustering of dense vectors. · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://arxiv.org/abs/2401.08281
+  type: primary_paper
+  supports: []
+  fetched_title: '[2401.08281] The Faiss library'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-6
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  - structure
+  report_ids:
+  - A-A1
+  - A-A4
+  url: https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/
+  type: blog
+  supports: []
+  fetched_title: 'Faiss: A library for efficient similarity search - Engineering at
+    Meta'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-7
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  - theorist
+  report_ids:
+  - A-A1
+  - B-B-dive
+  url: https://github.com/spotify/annoy
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - spotify/annoy: Approximate Nearest Neighbors in C++/Python
+    optimized for memory usage and loading/saving to disk · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://pypi.org/project/annoy/
+  type: docs
+  supports: []
+  fetched_title: Client Challenge
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-9
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  - structure
+  report_ids:
+  - A-A1
+  - A-A4
+  url: https://github.com/google-research/google-research/tree/master/scann
+  type: docs
+  supports: []
+  fetched_title: google-research/scann at master · google-research/google-research
+    · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-0
+  support_count: 3
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - debates
+  - recency-frontier
+  report_ids:
+  - A-A2
+  - A-A3
+  - A-A6
+  url: https://arxiv.org/pdf/2606.04522
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://medium.com/@reliabledataengineering/the-vector-database-performance-lie-hnsw-vs-ivf-when-you-have-100m-embeddings-1d8ef5a0b6c6
+  type: blog
+  supports: []
+  fetched_title: Medium
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2403.12583
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://aws.amazon.com/blogs/big-data/build-billion-scale-vector-databases-in-under-an-hour-with-gpu-acceleration-on-amazon-opensearch-service/
+  type: vendor
+  supports: []
+  fetched_title: Build billion-scale vector databases in under an hour with GPU acceleration
+    on Amazon OpenSearch Service | AWS Big Data Blog
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.mdpi.com/2076-3417/15/19/10554
+  type: primary_paper
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-A-A2-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://ranjankumar.in/hnsw-vector-search-recall-production
+  type: blog
+  supports: []
+  fetched_title: HNSW Vector Search Recall Failures in Production | Ranjan Kumar
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: http://htor.inf.ethz.ch/publications/img/2025_iff_fanns_benchmark.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-4
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - debates
+  report_ids:
+  - A-A2
+  - A-A6
+  url: https://yudhiesh.github.io/2025/05/09/the-achilles-heel-of-vector-search-filters/
+  type: blog
+  supports: []
+  fetched_title: 'The Achilles Heel of Vector Search: Filters | Bits & Backprops'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2512.18335
+  type: primary_paper
+  supports: []
+  fetched_title: Quantization for Vector Search under Streaming Updates
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2505.17152
+  type: primary_paper
+  supports: []
+  fetched_title: 'LSM-VEC: A Large-Scale Disk-Based System for Dynamic Vector Search'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://milvus.io/ai-quick-reference/what-is-the-curse-of-dimensionality-and-how-does-it-affect-vector-search
+  type: docs
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 302: The HTTP server returned a redirect
+    error that would lead to an infinite loop.
+
+    The last 30x error message was:
+
+    Moved Temporarily'
+- id: sl-A-A2-8
+  support_count: 4
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - debates
+  - practitioner
+  - theorist
+  report_ids:
+  - A-A2
+  - B-B-dive
+  - C-C-disconfirm
+  - C-C-omission
+  url: https://www.abhik.ai/concepts/embeddings/ann-comparison
+  type: blog
+  supports: []
+  fetched_title: 'HNSW vs IVF-PQ vs LSH: Approximate Nearest Neighbor Algorithms Compared
+    | Abhik Sarkar'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.elastic.co/blog/understanding-ann
+  type: blog
+  supports: []
+  fetched_title: Understanding the approximate nearest neighbor (ANN) algorithm |
+    Elastic Blog
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/html/2603.06660v1
+  type: primary_paper
+  supports: []
+  fetched_title: Approximate Nearest Neighbor Search for Modern AI:A Projection-Augmented
+    Graph Approach
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/pdf/2510.25401
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/pdf/2605.11523
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/pdf/2606.11789
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/pdf/2506.08276
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-15
+  support_count: 3
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - recency-frontier
+  - source-authority
+  report_ids:
+  - A-A3
+  - A-A4
+  - A-A5
+  url: https://arxiv.org/pdf/2605.25521
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/pdf/2512.09331
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://helios2.mi.parisdescartes.fr/~themisp/publications/sigmod25-gass.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/SimoneZeng/awesome-vector-ANN-search-papers
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - SimoneZeng/awesome-vector-ANN-search-papers: A list of
+    papers in the field of approximate nearest neighbor search on high-dimensional
+    vectors. · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/pdf/2409.17424
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-3
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - recency-frontier
+  report_ids:
+  - A-A3
+  - A-A6
+  url: https://markaicode.com/benchmarks/faiss-production-benchmark-latency/
+  type: blog
+  supports: []
+  fetched_title: 'FAISS IVF vs HNSW vs Flat: 10M Vector Latency Benchmark | Markaicode'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://www.couchbase.com/blog/diskann/
+  type: blog
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-A-A3-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://medium.com/@ThinkingLoop/d3-4-vector-databases-in-2025-top-10-index-choices-benchmarked-1bbce68e1871
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-A-A3-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://www.dbi-services.com/blog/pgvector-a-guide-for-dba-part-2-indexes-update-march-2026/
+  type: blog
+  supports: []
+  fetched_title: dbi Blog
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-8
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - recency-frontier
+  report_ids:
+  - A-A3
+  - C-C-omission
+  url: https://github.com/microsoft/DiskANN
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - microsoft/DiskANN: A vector indexing library to bring fast,
+    fresh and filtered search to your database · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/pdf/2606.22778
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://inria.hal.science/inria-00514462v1/document
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.vldb.org/pvldb/vol18/p3951-mageirakos.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2503.01823
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2607.01283
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://learn.microsoft.com/en-us/sql/sql-server/ai/vectors?view=sql-server-ver17
+  type: docs
+  supports: []
+  fetched_title: Vector Search & Vector Index - SQL Server | Microsoft Learn
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://blogs.oracle.com/database/indexing-guidelines-with-ai-vector-search
+  type: docs
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-A-A4-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://medium.com/google-cloud/bigquery-vector-search-a-practitioners-guide-0f85b0d988f0
+  type: blog
+  supports: []
+  fetched_title: Medium
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.genaiblueprints.com/topics/vector-search/
+  type: blog
+  supports: []
+  fetched_title: 'Mosaic AI Vector Search (2026): Indexes, Embeddings, Hybrid Search,
+    Cost | Databricks for Practitioners'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://github.com/spotify/annoy/releases
+  type: docs
+  supports: []
+  fetched_title: Releases · spotify/annoy · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2508.16263
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2505.17810
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2508.15436
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2512.06636
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/1807.02962
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://dl.acm.org/doi/10.1145/2020408.2020578
+  type: primary_paper
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-A-A4-25
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://medium.com/@elisheba.t.anderson/choosing-the-right-vector-database-opensearch-vs-pinecone-vs-qdrant-vs-weaviate-vs-milvus-vs-037343926d7e
+  type: blog
+  supports: []
+  fetched_title: Medium
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-26
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://milvus.io/ai-quick-reference/how-does-milvus-compare-to-other-vector-databases-like-pinecone-or-weaviate
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 302: The HTTP server returned a redirect
+    error that would lead to an infinite loop.
+
+    The last 30x error message was:
+
+    Moved Temporarily'
+- id: sl-A-A4-27
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://unstructured.io/insights/vector-indexing-strategies-for-high-performance-ai-search
+  type: blog
+  supports: []
+  fetched_title: Indexing Strategies for Efficient Vector-Based Search Guide | Unstructured
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://github.com/facebookresearch/faiss/wiki
+  type: docs
+  supports: []
+  fetched_title: Home · facebookresearch/faiss Wiki · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://ai.meta.com/tools/faiss/
+  type: docs
+  supports: []
+  fetched_title: Faiss
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-8
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - source-authority
+  report_ids:
+  - A-A4
+  - C-C-disconfirm
+  url: https://github.com/vector-index-bench/vibe
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - vector-index-bench/vibe: Vector Index Benchmark for Embeddings
+    (VIBE) is an extensible benchmark for approximate nearest neighbor search methods,
+    or vector indexes, using modern embedding datasets. · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://vector-index-bench.github.io/
+  type: docs
+  supports: []
+  fetched_title: 'VIBE: Vector Index Benchmark for Embeddings'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A5-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2006.11285
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.jmlr.org/papers/volume11/radovanovic10a/radovanovic10a.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://15721.courses.cs.cmu.edu/spring2018/papers/08-oltpindexes1/pugh-skiplists-cacm1990.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2411.07396
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2009.03820
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/1504.06654
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/1904.12787
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2304.02350
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2412.01940
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://opensourceconnections.com/blog/2025/02/27/vector-search-navigating-recall-and-performance/
+  type: blog
+  supports: []
+  fetched_title: 'Vector Search: Navigating Recall and Performance - OpenSource Connections'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2402.04713
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2005.12065
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2102.08942
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://aws.amazon.com/blogs/database/running-pgvector-in-production-on-amazon-aurora-postgresql/
+  type: blog
+  supports: []
+  fetched_title: Running pgvector in production on Amazon Aurora PostgreSQL | AWS
+    Database Blog
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2605.15957
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2502.20812
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.topk.io/blog/20251201-topk-bench
+  type: blog
+  supports: []
+  fetched_title: 'TopK Bench: Benchmarking Real-World Vector Search | TopK'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.vldb.org/pvldb/vol18/p4337-zheng.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.actian.com/blog/databases/how-to-evaluate-vector-databases-in-2026/
+  type: blog
+  supports: []
+  fetched_title: 'Vector Database Benchmarks are Misleading: What Matters'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.elastic.co/search-labs/blog/vector-search-simd-optimization-simdvec/
+  type: vendor
+  supports: []
+  fetched_title: 'SIMD vector search: Elasticsearch simdvec''s 6x speedup | Elasticsearch
+    Labs'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2503.04422
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://alex-jacobs.com/posts/the-case-against-pgvector/
+  type: blog
+  supports: []
+  fetched_title: The Case Against pgvector | Alex Jacobs
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2407.07871
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://blog.vectorchord.ai/why-hnsw-is-not-the-answer
+  type: blog
+  supports: []
+  fetched_title: Why HNSW is Not the Answer to Vector Databases
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://papers.neurips.cc/paper_files/paper/2022/file/fb44a668c2d4bc984e9d6ca261262cbb-Paper-Conference.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://developer.nvidia.com/topics/ai/generative-ai/cuvs
+  type: vendor
+  supports: []
+  fetched_title: cuVS | NVIDIA Developer
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-11
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - theorist
+  report_ids:
+  - B-B-dive
+  - C-C-disconfirm
+  url: https://www.pingcap.com/article/approximate-nearest-neighbor-ann-search-explained-ivf-vs-hnsw-vs-pq/
+  type: blog
+  supports: []
+  fetched_title: 'Approximate Nearest Neighbor (ANN) Search Explained: IVF vs HNSW
+    vs PQ | TiDB'
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2602.21600
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3231071/
+  type: primary_paper
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-B-B-dive-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/html/2404.00774v1
+  type: primary_paper
+  supports: []
+  fetched_title: 'SOAR: Improved Indexing for Approximate Nearest Neighbor Search'
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/html/2509.15531v2
+  type: primary_paper
+  supports: []
+  fetched_title: 'Graph-Based Approximate Nearest Neighbor Search Revisited: Theoretical
+    Analysis and Optimization'
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://github.com/facebookresearch/faiss/wiki/Guidelines-to-choose-an-index
+  type: docs
+  supports: []
+  fetched_title: Guidelines to choose an index · facebookresearch/faiss Wiki · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://www.marqo.ai/blog/understanding-recall-in-hnsw-search
+  type: blog
+  supports: []
+  fetched_title: Ecommerce Search Performance at Scale
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://github.com/facebookresearch/faiss/wiki/Faiss-indexes
+  type: docs
+  supports: []
+  fetched_title: Faiss indexes · facebookresearch/faiss Wiki · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://engineering.fb.com/2025/05/08/data-infrastructure/accelerating-gpu-indexes-in-faiss-with-nvidia-cuvs/
+  type: vendor
+  supports: []
+  fetched_title: Accelerating GPU indexes in Faiss with NVIDIA cuVS - Engineering
+    at Meta
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2412.01940
+  type: primary_paper
+  supports: []
+  fetched_title: '[2412.01940] Down with the Hierarchy: The ''H'' in HNSW Stands for
+    "Hubs"'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2409.17424
+  type: primary_paper
+  supports: []
+  fetched_title: '[2409.17424] Results of the Big ANN: NeurIPS''23 competition'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2602.23999
+  type: primary_paper
+  supports: []
+  fetched_title: '[2602.23999] GPU-Native Approximate Nearest Neighbor Search with
+    IVF-RaBitQ: Fast Index Build and Search'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2101.12631
+  type: primary_paper
+  supports: []
+  fetched_title: '[2101.12631] A Comprehensive Survey and Experimental Comparison
+    of Graph-Based Approximate Nearest Neighbor Search'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://big-ann-benchmarks.com/
+  type: standard
+  supports: []
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes
+  type: vendor
+  supports: []
+  fetched_title: Understanding pod-based indexes - Pinecone Docs
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://docs.weaviate.io/weaviate/best-practices
+  type: vendor
+  supports: []
+  fetched_title: Best practices | Weaviate Documentation
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://milvus.io/docs/hnsw.md
+  type: vendor
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 302: The HTTP server returned a redirect
+    error that would lead to an infinite loop.
+
+    The last 30x error message was:
+
+    Moved Temporarily'
+- id: sl-C-C-disconfirm-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2410.05752
+  type: primary_paper
+  supports: []
+  fetched_title: '[2410.05752] Exploring the Meaningfulness of Nearest Neighbor Search
+    in High-Dimensional Space'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2602.15488
+  type: primary_paper
+  supports: []
+  fetched_title: '[2602.15488] Efficient Approximate Nearest Neighbor Search under
+    Multi-Attribute Range Filter'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2406.10938
+  type: primary_paper
+  supports: []
+  fetched_title: '[2406.10938] DET-LSH: A Locality-Sensitive Hashing Scheme with Dynamic
+    Encoding Tree for Approximate Nearest Neighbor Search'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2405.17813
+  type: primary_paper
+  supports: []
+  fetched_title: '[2405.17813] The Impacts of Data, Ordering, and Intrinsic Dimensionality
+    on Recall in Hierarchical Navigable Small Worlds'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://jmlr.org/papers/v25/23-0286.html
+  type: primary_paper
+  supports: []
+  fetched_title: A Multilabel Classification Framework for Approximate Nearest Neighbor
+    Search
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2505.17810
+  type: primary_paper
+  supports: []
+  fetched_title: '[2505.17810] VIBE: Vector Index Benchmark for Embeddings'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2409.06464
+  type: primary_paper
+  supports: []
+  fetched_title: '[2409.06464] Operational Advice for Dense and Sparse Retrievers:
+    HNSW, Flat, or Inverted Indexes?'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2407.07871
+  type: primary_paper
+  supports: []
+  fetched_title: '[2407.07871] Enhancing HNSW Index for Real-Time Updates: Addressing
+    Unreachable Points and Performance Degradation'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2505.07621
+  type: primary_paper
+  supports: []
+  fetched_title: '[2505.07621] Bang for the Buck: Vector Search on Cloud CPUs'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://tullie.ai/blog/approximate-nearest-neighbors-algorithms
+  type: blog
+  supports: []
+  fetched_title: A Comprehensive Guide to Approximate Nearest Neighbors Algorithms
+    | Tullie Murrell
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.premai.io/blog/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/
+  type: blog
+  supports: []
+  fetched_title: 'Hybrid Search for RAG: BM25, SPLADE, and Vector Search Combined'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2602.17914
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2606.14193
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://zilliz.com/blog/understand-consistency-models-for-vector-databases
+  type: blog
+  supports: []
+  fetched_title: Understanding Consistency Models for Vector Databases  - Zilliz blog
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://milvus.io/ai-quick-reference/what-are-the-different-types-of-consistency-models-in-distributed-databases
+  type: docs
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 302: The HTTP server returned a redirect
+    error that would lead to an infinite loop.
+
+    The last 30x error message was:
+
+    Moved Temporarily'
+- id: sl-C-C-omission-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2606.11690
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.digitalocean.com/blog/llm-inference-tradeoffs
+  type: blog
+  supports: []
+  fetched_title: 'The LLM Inference Trilemma: Throughput, Latency, Cost | DigitalOcean'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://mbrenndoerfer.com/writing/product-quantization-ann-search
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 404: Not Found'
+- id: sl-C-C-omission-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.aimadetools.com/blog/quantization-tradeoffs-production/
+  type: blog
+  supports: []
+  fetched_title: Quantization Trade-offs in Production — 4-bit vs 8-bit vs Full Precision
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://dev.to/gabrielanhaia/embedding-drift-detection-a-50-line-monitor-for-production-rag-15dl
+  type: blog
+  supports: []
+  fetched_title: 'Embedding Drift Detection: A 50-Line Monitor for Production RAG
+    - DEV Community'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://superlinked.com/blog/choosing-a-vector-database
+  type: blog
+  supports: []
+  fetched_title: A Practical Guide for Choosing a Vector Database | Superlinked Blog
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.evidentlyai.com/blog/embedding-drift-detection
+  type: blog
+  supports: []
+  fetched_title: 5 methods to detect drift in ML embeddings
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://medium.com/mlworks/ever-changing-embeddings-monitoring-drift-5b148c228192
+  type: blog
+  supports: []
+  fetched_title: Medium
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://pypi.org/project/faiss-cpu/
+  type: docs
+  supports: []
+  fetched_title: Client Challenge
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-23
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://milvus.io/docs/v2.6.x/release_notes.md
+  type: docs
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 302: The HTTP server returned a redirect
+    error that would lead to an infinite loop.
+
+    The last 30x error message was:
+
+    Moved Temporarily'
+- id: sl-C-C-omission-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://github.com/qdrant/qdrant/releases
+  type: docs
+  supports: []
+  fetched_title: Releases · qdrant/qdrant · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2411.00970
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2503.00402
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/html/2511.16681
+  type: primary_paper
+  supports: []
+  fetched_title: 'SPI: Query-Depth-Adaptive Indexing for Streaming RAG in Vector Databases'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2604.16402
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2401.11324
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/pdf/2605.16007
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://denser.ai/blog/hybrid-search-for-rag/
+  type: blog
+  supports: []
+  fetched_title: 'Hybrid Search for RAG: Combining BM25 and Dense Vector Search (2026
+    Guide)'
+  retrieved_at: '2026-08-21'
