@@ -705,6 +705,25 @@ def test_a_claim_nobody_grouped_becomes_a_singleton_not_a_deletion():
     assert "2 claim(s)" in rejected[0]
 
 
+def test_a_singleton_is_named_from_meaning_not_from_a_digit_that_sorts_first():
+    """The companion to the test above: keeping an unmerged claim is only honest if the concept it
+    becomes is *named* honestly.
+
+    Both strings are verbatim from the 2026-08-20 spec-03 ledger, and both really did produce the
+    concepts "000 application" and "600 built-in". "10,000" tokenizes to "10" and "000"; "10" is
+    below the length floor and "000" is not, and with a single claim every count ties at 1, so the
+    alphabetical tiebreak handed the concept its name from the inside of a number. canonical_term
+    is not cosmetic — it seeds concept_id, it is what R-VOCAB-01 checks for uniqueness, and
+    assign_section scores it against the user's structure, so a nonsense name mis-files the concept
+    as well as mis-labelling it.
+    """
+    name = curate.StubCurator().name_concept
+    assert name([("A microservices application handling 10,000 requests per second generates "
+                  "hundreds of thousands of spans per second.")])[0] == "microservices application"
+    assert name([("Datadog has 600 or more built-in integrations for services and "
+                  "platforms.")])[0] == "integrations platforms"
+
+
 def test_a_home_anchor_that_restates_its_own_concept_never_reaches_the_concept_map():
     """R-XREF-04, enforced where the anchor is admitted rather than only where it is audited.
 

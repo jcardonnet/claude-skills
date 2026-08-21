@@ -16,9 +16,12 @@
 # calling a thread `docs` or `blog` would be a worse lie than an absent value. No lint reads either
 # field — they feed the source-quality critics (R-EVID-02/03).
 #
-# Only TWO corroboration pairs are recorded, and both are cross-organisation. The campaign's own
-# corroborate() pass found 0 of 271 (it runs on the lexical similarity backend), so these were found
-# by reading. Several other pairs LOOK corroborating and are deliberately not marked: the two B3
+# Only TWO corroboration pairs are recorded, and both are cross-organisation. They were found by
+# reading, because the 2026-08-20 campaign's own corroborate() pass found 0 of 271: it ran on the
+# lexical similarity backend, which cannot see that two sources agree unless they agree in the same
+# words. That backend is now a fallback rather than the default (ClaudeCorroborationGrouper), and a
+# replay of this same ledger through the model path finds 17 — so treat the count below as what one
+# careful reader marked, not as the pipeline's ceiling. Several other pairs LOOK corroborating and are deliberately not marked: the two B3
 # claims live in the same repository, and the two load-balancing-exporter claims are both oneuptime
 # posts. Same-origin agreement is not corroboration (R-EVID-03).
 #

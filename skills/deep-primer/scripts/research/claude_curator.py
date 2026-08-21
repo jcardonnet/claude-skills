@@ -81,10 +81,17 @@ For each group return:
   "canonical_term": the one name this primer will use for the concept — 2-4 words, the field's own
       vocabulary, a noun phrase and not a description.
   "aliases": other names the sources use for the same thing. [] if there are none.
-  "home_anchor": the nearest ADJACENT technique from the reader's home domain that this concept can
-      be explained against. It must NOT restate the concept: "reranking" is not an anchor for
-      "cross-encoder reranking", and neither is any phrase containing the concept's own name. Use
-      "" when no honest adjacent anchor exists — an empty anchor is better than a circular one.
+  "home_anchor": the nearest ADJACENT technique from the reader's home domain ({home}) that this
+      concept can be explained against. NAME THE HOME TECHNIQUE AND NOTHING ELSE — 2 to 6 words, a
+      noun phrase, no verb, no "like ...", no comparison. It is the far end of the bridge, not the
+      bridge: the primer writes the comparison later, from this plus fidelity_boundary.
+      GOOD: "index cardinality on composite keys".  BAD: "Like relational databases managing key
+      combinations as index entries, Prometheus stores each metric-label pair as a time series".
+      It must contain NO word from {target} and no product or tool name from it — an anchor that
+      mentions the concept, its aliases, or any target-domain product is describing the target
+      instead of anchoring it, and will be rejected.
+      It must not restate the concept: "reranking" is not an anchor for "cross-encoder reranking".
+      Use "" when no honest adjacent anchor exists — an empty anchor is better than a circular one.
   "fidelity_boundary": one clause naming where that analogy stops being true. "" if home_anchor is "".
 
 Return RAW JSON and nothing else, no markdown fence:

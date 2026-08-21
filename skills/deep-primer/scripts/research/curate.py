@@ -62,14 +62,20 @@ class StubCurator:
         from research.discovery import _tokens
         counts: Counter = Counter()
         for t in claim_texts:
-            counts.update(_tokens(t))
-        # Explicit alphabetical tiebreak, NOT Counter.most_common. `_tokens` returns a frozenset, so
+            # A bare number is never a concept name. `_WORD_RE` splits "10,000" into "10" and "000";
+            # "10" dies on the length filter but "000" survives, and being all-digits it sorts ahead
+            # of every word. A one-claim group has no frequency signal to outvote it, which is how a
+            # real run produced the concepts "000 application" and "600 built-in".
+            counts.update(w for w in _tokens(t) if not w.isdigit())
+        # Explicit deterministic tiebreak, NOT Counter.most_common. `_tokens` returns a frozenset, so
         # keys land in the Counter in hash order; short claims make nearly every count a tie, and
         # most_common resolves ties by insertion order — which varies with PYTHONHASHSEED. That
         # leaked into canonical_term and therefore concept_id, so one ledger produced different
         # concept-maps in different processes, breaking the reproducibility R-DISC-04 / R-CONV-02
-        # rest on. Same (-count, key) idiom as assign_section below and outline_seed.
-        top = [w for w, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:2]]
+        # rest on. Length precedes the alphabetical key because among equally-frequent words the
+        # longer one carries more meaning ("microservices" over "and"-adjacent filler); `w` last
+        # keeps the order total, which is the property the reproducibility rules actually need.
+        top = [w for w, _ in sorted(counts.items(), key=lambda kv: (-kv[1], -len(kv[0]), kv[0]))[:2]]
         return (" ".join(top) or "concept"), []
 
     def home_anchor(self, canonical_term: str, claim_texts: list[str], params: dict) -> tuple[str, str]:
