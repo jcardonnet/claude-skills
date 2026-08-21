@@ -1,0 +1,375 @@
+[
+  {
+    "id": "C-C-disconfirm-s1",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "FDA Final Adaptive Design Guidance (December 2, 2019); foundational regulatory document",
+    "fetched_title": "Adaptive Design Clinical Trials for Drugs and Biologics Guidance for Industry | FDA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s2",
+    "url": "https://www.appliedclinicaltrialsonline.com/view/fda-issues-draft-guidance-advance-bayesian-methods-clinical-trials",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "FDA Draft Bayesian Methods Guidance (January 12, 2026); identifies prior misspecification concerns",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-disconfirm-s3",
+    "url": "https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "ICH E20 Guideline (Step 2b, June 25, 2025); ongoing regulatory harmonization on adaptive design",
+    "fetched_title": "ICH E20 adaptive designs for clinical trials - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s4",
+    "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/ich-e9-r1-addendum-estimands-and-sensitivity-analysis-clinical-trials-guideline-statistical-principles-clinical-trials-step-5_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "ICH E9(R1) Addendum (November 20, 2019); adds complexity rather than simplifying adaptive requirements",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s5",
+    "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-methodological-issues-confirmatory-clinical-trials-planned-adaptive-design_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "EMA Reflection Paper on Adaptive Designs (2017, reaffirmed); documents limited implementation experience",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s6",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12139198/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Value-adaptive clinical trial designs (2024); hedged language on empirical evidence for benefits",
+    "fetched_title": "Value-adaptive clinical trial designs for efficient delivery of publicly funded trials\u00a0-\u00a0a discussion of methods, case studies, opportunities and challenges - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s7",
+    "url": "https://link.springer.com/article/10.1186/s13561-021-00302-6",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Can adaptive trials solve productivity crisis? (2021); mixed results ProFHER vs HERO trials",
+    "requested_url": "https://healtheconomicsreview.biomedcentral.com/articles/10.1186/s13561-021-00302-6",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s8",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9036145/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "FOCUS4 trial lessons (2022); found adaptive designs require similar resources to traditional trials",
+    "fetched_title": "Experiences of running a stratified medicine adaptive platform trial: Challenges and lessons learned from 10 years of the FOCUS4 trial in metastatic colorectal cancer - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s9",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4660233/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Patient drift and response-adaptive randomization (2015); documents temporal bias mechanism",
+    "fetched_title": "Patient drift and response-adaptive randomisation: impact and solutions - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s10",
+    "url": "https://academic.oup.com/cid/article/71/11/3002/5813456",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Resist Temptation of Response-Adaptive Randomization (Proschan & Evans, 2020); editorial arguing against RAR",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s11",
+    "url": "https://www.medrxiv.org/content/10.1101/2022.07.13.22277596.full.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "COVID-19 pandemic surges and RAR bias (2022); demonstrates failure mode in real-world adaptive trials",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s12",
+    "url": "https://ojrd.biomedcentral.com/articles/10.1186/1750-1172-6-79",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Benefits, challenges and obstacles (2012); documents logistical complexity barriers",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s13",
+    "url": "https://orca.cardiff.ac.uk/id/eprint/141478/1/2105.08836.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Point estimation for adaptive trial designs (2021); shows effect estimates become biased",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s14",
+    "url": "https://arxiv.org/pdf/2211.15620",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Point estimation Part II guidance (2022); confirms bias in maximum likelihood estimates",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s15",
+    "url": "https://arxiv.org/html/2606.12015",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Precision-weighted bias in meta-analysis (2024); early stopping inflates effects in meta-analyses",
+    "fetched_title": "Introducing precision-weighted bias as a performance measure to inform the inclusion of adaptive designs in meta-analysis",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s16",
+    "url": "https://journals.sagepub.com/doi/10.1177/1740774514552110",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Seamless Phase IIB/III implementation challenges (2015); population bias from phase transition",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s17",
+    "url": "https://www.researchgate.net/publication/221826648_Type_I_error_rate_control_in_adaptive_designs_for_confirmatory_clinical_trials_with_treatment_selection_at_interim",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Type I error control with treatment selection (2010); pre-specification violations common",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s18",
+    "url": "https://www.researchgate.net/publication/49680409_Impacts_on_type_I_error_rate_with_inappropriate_use_of_learn_and_confirm_in_confirmatory_adaptive_design_trials",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Impacts of learn-and-confirm misuse (2010); implementation errors inflate Type I error",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s19",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4658715/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Meandering journey barriers survey (2015); lack of practical knowledge cited as adoption barrier",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-disconfirm-s20",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10739783/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Ethics of adaptive designs (2023); informed consent complexity and equipoise concerns",
+    "fetched_title": "Ethics of Adaptive Designs for Randomized Controlled Trials - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s21",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6540525/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Platform trial operational challenges (2020); management complexity documented",
+    "fetched_title": "This is a platform alteration: a trial management perspective on the operational aspects of adaptive and platform and umbrella protocols - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s22",
+    "url": "https://arxiv.org/html/2608.04335",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Bivariate prior specification (2024); Bayesian design specification challenges",
+    "fetched_title": "Bivariate Prior Specification for Bayesian Decision-Making in Early-Phase Clinical Trials",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s23",
+    "url": "https://arxiv.org/html/2506.07805v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Model misspecification in Bayesian designs (2025); robustness under specification errors",
+    "fetched_title": "Generalization Analysis for Bayesian Optimal Experiment Design under Model Misspecification",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s24",
+    "url": "https://www.drugdiscoverytrials.com/adopting-adaptive-designs-update/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Adopting adaptive designs update (2024\u20132025); industry reports persistent regulatory barriers",
+    "dropped_reason": "disallowed by robots.txt"
+  }
+]

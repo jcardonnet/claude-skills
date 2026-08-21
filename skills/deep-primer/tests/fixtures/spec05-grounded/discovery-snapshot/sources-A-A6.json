@@ -1,0 +1,598 @@
+[
+  {
+    "id": "A-A6-s1",
+    "url": "https://www.fda.gov/media/78495/download",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Federal regulatory guidance on Type I error control and statistical validity concerns",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s2",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4196072/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "EMA survey documenting 20% rejection rate and reasons: Type I error, bias, insufficient justification",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s3",
+    "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/ich-e20-guideline-adaptive-designs-clinical-trials-step-2b_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "First globally harmonized adaptive designs standard; June 2025 draft status; finalization 2026",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s4",
+    "url": "https://www.federalregister.gov/documents/2025/09/30/2025-18897/e20-adaptive-designs-for-clinical-trials-international-council-for-harmonisation-draft-guidance-for",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Federal Register notice on ICH E20 harmonization effort",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s5",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4851240/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Type I error inflation from unblinded secondary endpoint data reaching 6.2% vs nominal 2.5%",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s6",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4282114/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Type I error escalation in multiarmed trials with adaptive selection to 0.19+ without proper control",
+    "fetched_title": "Maximum type 1 error rate inflation in multiarmed clinical trials with adaptive interim sample size modifications - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s7",
+    "url": "https://arxiv.org/pdf/2512.10697",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Frequentist-Bayesian tensions in adaptive design interpretation; selection bias concerns",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s8",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3248853/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Comprehensive review of adaptive trial challenges: Type I error, selection bias, operational bias",
+    "fetched_title": "Benefits, challenges and obstacles of adaptive clinical trial designs - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s9",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2422839/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Methodological critique of trial integrity loss and moving target patient populations",
+    "fetched_title": "Adaptive design methods in clinical trials \u2013 a review - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s10",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4511222/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Sample size imbalance toward inferior treatment; estimation bias tripling with adaptive randomization",
+    "fetched_title": "Statistical controversies in clinical research: scientific and ethical problems with adaptive randomization in comparative clinical trials - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s11",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4639447/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Regulatory validity challenges and simulation bias masking error inflation concerns",
+    "fetched_title": "Adaptive Design of Confirmatory Trials: Advances and Challenges - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s12",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11451232/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024 systematic review: transparency gaps, operational bias, infrastructure deficits",
+    "fetched_title": "Adaptive designs in clinical trials: a systematic review-part I - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s13",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3519822/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Barriers and opportunities study: statistical complexity, infrastructure, expertise gaps",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s14",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0895435622003286",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Systematic review of reporting quality deficiencies limiting reproducibility",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s15",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7298567/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "ACE CONSORT Extension Statement (2020) establishing transparency standards",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s16",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4631356/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "CONSORT 2010 shortcomings for group sequential and adaptive trials",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s17",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6238302/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Development rationale for ACE consensus statement on transparency requirements",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s18",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4658715/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Barriers survey: lack of bridge funding, knowledge gaps, preference for traditional designs",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s19",
+    "url": "https://link.springer.com/article/10.1186/s13063-015-0958-9",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Qualitative study on stakeholder perspectives toward adaptive design adoption",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s20",
+    "url": "https://link.springer.com/article/10.1186/s13063-016-1493-z",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "ADAPT-IT mixed-methods analysis of barriers and facilitators to adoption",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s21",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8545558/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Costing Adaptive Trials Project: quantitative cost and resource comparisons",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s22",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2949788426000316",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Barriers to Bayesian adaptive trials in critical care: clinician skepticism",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s23",
+    "url": "https://link.springer.com/article/10.1007/s44253-024-00054-1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Pediatric critical care barriers: international mixed-methods study on implementation",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s24",
+    "url": "https://alimentiv.com/resources/why-arent-more-clinical-trials-using-adaptive-designs/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Industry analysis of adoption barriers and regulatory skepticism",
+    "fetched_title": "Why Aren\u2019t More Clinical Trials Using Adaptive Designs? | Alimentiv",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s25",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6283249/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Pre-trial simulation guide documenting SAS inadequacy and hybrid workarounds",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s26",
+    "url": "https://cytel.com/perspectives/sas-vs-r-in-clinical-development/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Comparative software capabilities analysis for adaptive trial implementation",
+    "fetched_title": "SAS vs. R in Clinical Development | Cytel",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s27",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2030491/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Practical Bayesian adaptive randomization: prior specification and implementation challenges",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s28",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1556086420308182",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Prior credibility, sensitivity analysis requirements, transparency needs in Bayesian trials",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s29",
+    "url": "https://arxiv.org/html/2608.04335",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Bivariate prior specification challenges in early-phase adaptive trials",
+    "fetched_title": "Bivariate Prior Specification for Bayesian Decision-Making in Early-Phase Clinical Trials",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s30",
+    "url": "https://www.clinicalleader.com/doc/fda-s-draft-guidance-on-bayesian-methods-strategic-implications-for-small-biotechs-0001",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "FDA draft Bayesian methods guidance recognizing methodological complexity",
+    "dropped_reason": "TimeoutError: The read operation timed out"
+  },
+  {
+    "id": "A-A6-s31",
+    "url": "https://link.springer.com/article/10.1186/s12874-026-02803-6",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Systematic survey of sensitivity analysis underuse in published Bayesian trials",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s32",
+    "url": "https://arxiv.org/pdf/2411.08495",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Methodological gaps in confidence interval estimation for adaptive designs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s33",
+    "url": "https://arxiv.org/pdf/2509.07602",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Prior elicitation challenges when treatment effects manifest with delay",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s34",
+    "url": "https://link.springer.com/article/10.1186/s12874-025-02566-6",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Value-of-information analysis and economic evaluation of adaptive designs",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s35",
+    "url": "https://www.mdpi.com/1718-7729/30/4/310",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Real-world cost-effectiveness analysis uncertainty comparative methods",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s36",
+    "url": "https://cytel.com/perspectives/how-to-ensure-your-adaptive-trial-is-appropriate-for-regulatory-submission/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Practical regulatory guidance documenting implementation complexities",
+    "fetched_title": "Regulatory Readiness for Adaptive Clinical Trials | Cytel",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s37",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6245528/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "EMA experience with adaptive designs from scientific advice to marketing authorization",
+    "fetched_title": "Adaptive designs in clinical trials: from scientific advice to marketing authorisation to the European Medicine Agency - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s38",
+    "url": "https://arxiv.org/pdf/2503.09226",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Machine learning solutions for regulatory validation of adaptive trial designs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  }
+]

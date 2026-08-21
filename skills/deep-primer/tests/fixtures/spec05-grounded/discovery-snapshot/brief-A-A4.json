@@ -1,0 +1,18 @@
+{
+  "wave": "A",
+  "framing": "source-authority",
+  "angle": null,
+  "source_class": "primary",
+  "stance": null,
+  "questions": [
+    "The most authoritative primary sources, seminal works, key recent papers, and best practitioner writeups on adaptive clinical trial design and its regulatory constraints."
+  ],
+  "instructions": [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs"
+  ],
+  "brief_id": "A-A4",
+  "seed_ref": null
+}

@@ -1,0 +1,527 @@
+[
+  {
+    "id": "A-A2-s1",
+    "url": "https://www.ema.europa.eu/system/files/documents/scientific-guideline/ich-e20-guideline-adaptive-designs-clinical-trials_step-2b_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "ICH E20 draft 2025, defines adaptive design framework and alpha spending",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s2",
+    "url": "https://arxiv.org/pdf/2606.00878",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Anytime-valid testing with e-values, alternative to classical alpha-spending functions",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s3",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4282114/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Type I error inflation in multi-armed trials with simultaneous modifications",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s4",
+    "url": "https://www.federalregister.gov/documents/2026/01/12/2026-00325/use-of-bayesian-methodology-in-clinical-trials-of-drug-and-biological-products-draft-guidance-for",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "FDA 2026 draft guidance on Bayesian methods and prior specification",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s5",
+    "url": "https://arxiv.org/abs/2601.14701",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Regulatory expectations for Bayesian adaptive methods, prior sensitivity",
+    "fetched_title": "[2601.14701] Regulatory Expectations for Bayesian Methods in Drug and Biologic Clinical Trials: A Practical Perspective on FDA's 2026 Draft Guidance",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s6",
+    "url": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1790396/full",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "FDA Bayesian adoption landscape and divergence from EMA",
+    "fetched_title": "Frontiers | The FDA's adoption of Bayesian methodology: transforming clinical trial justification from biosimilars to broader drug development",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s7",
+    "url": "https://arxiv.org/html/2512.10697v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Frequentist-Bayesian discrepancy in interim monitoring interpretation",
+    "fetched_title": "Revisiting the apparent discrepancy between the frequentist and\nBayesian interpretation of an adaptive design",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s8",
+    "url": "https://arxiv.org/pdf/2607.04976",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Operating characteristics comparison, interim analysis methods",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s9",
+    "url": "https://www.appliedclinicaltrialsonline.com/view/sample-size-re-estimation-as-an-adaptive-design",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Practical review of blinded vs unblinded sample size re-estimation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s10",
+    "url": "https://arxiv.org/pdf/1610.09878",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Blinded sample size re-estimation methods and Type I error control",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s11",
+    "url": "https://arxiv.org/abs/1803.10130",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Blinded/unblinded re-estimation in crossover adaptive trials",
+    "fetched_title": "[1803.10130] Blinded and unblinded sample size re-estimation in crossover trials balanced for period",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s12",
+    "url": "https://arxiv.org/pdf/2006.12811",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Practical guidance on adaptive design implementation and re-estimation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s13",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6680191/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Twenty-five years adaptive design review, pitfalls in multiplicity and confirmatory testing",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s14",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31066093/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Conditional error functions for adaptive enrichment designs",
+    "fetched_title": "pubmed.ncbi.nlm.nih.gov",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s15",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11536650/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Optimal conditional error function theory and applications",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s16",
+    "url": "https://arxiv.org/html/2508.16552",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Data-dependent hypothesis testing and epistemic risks",
+    "fetched_title": "Data Gluttony: Epistemic Risks, Dependent Testing and Data Reuse in Large Datasets",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s17",
+    "url": "https://www.fww.ovgu.de/fww_media/femm/femm_2017/2017_19-p-8998.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "P-hacking prevalence in clinical trials meta-analysis",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s18",
+    "url": "https://www.federalregister.gov/documents/2019/12/02/2019-25986/adaptive-designs-for-clinical-trials-of-drugs-and-biologics-guidance-for-industry-availability",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "FDA 2019 final guidance on adaptive designs, benchmarks for regulation",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s19",
+    "url": "https://www.ema.europa.eu/en/methodological-issues-confirmatory-clinical-trials-planned-adaptive-design-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "EMA 2007 reflection paper, foundational regulatory principles",
+    "fetched_title": "Methodological issues in confirmatory clinical trials planned with an adaptive design - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s20",
+    "url": "https://www.ema.europa.eu/en/documents/comments/overview-comments-received-ich-e20-guideline-adaptive-designs-clinical-trials-ema-chmp-ich-206586-2025_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "EMA member state comments on ICH E20, Feb 2025 disagreements",
+    "dropped_reason": "HTTPError: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "id": "A-A2-s21",
+    "url": "https://pharmaphorum.com/rd/ich-e20-draft-guideline-2025-adaptive-clinical-trials",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Commentary on ICH E20 2025 draft and regulatory harmonization status",
+    "fetched_title": "On the ICH E20 draft guideline (2025) for adaptive clinical trials | pharmaphorum",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s22",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12460923/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Response adaptive randomization 2025 review, adoption gaps and barriers",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41989356/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Practical RAR challenges, implementation underdevelopment",
+    "fetched_title": "pubmed.ncbi.nlm.nih.gov",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s24",
+    "url": "https://journals.sagepub.com/doi/10.1177/09622802251380625",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "RAR in stratified rare-disease trials, operational complexity",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A2-s25",
+    "url": "https://journals.sagepub.com/doi/10.1177/09622802251354924",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Systematic scan of 652 RAR trials, 39 identified as completed/ongoing",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A2-s26",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12333484/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Confidence intervals after adaptive trials, methodological gaps 2025",
+    "fetched_title": "Confidence Intervals for Adaptive Trial Designs I: A Methodological Review - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s27",
+    "url": "https://arxiv.org/pdf/2105.08836",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Point estimation bias in adaptive designs, review and guidance",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s28",
+    "url": "https://arxiv.org/pdf/2411.08771",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Confidence interval methods for adaptive trials with case study",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s29",
+    "url": "https://arxiv.org/html/2605.03554v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Reporting results with multiple adaptive hypotheses",
+    "fetched_title": "Communicating results in trials with multiple hypotheses or adaptive design features",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s30",
+    "url": "https://arxiv.org/html/2606.08642",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Sensitivity analysis framework for external controls 2024",
+    "fetched_title": "A Practical Framework for Sensitivity Analysis in Externally\nControlled Trials: An Illustration with a Bayesian Hybrid Evidence Synthesis\nCase Study",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s31",
+    "url": "https://arxiv.org/pdf/2605.27184",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Dynamic borrowing quantification, scoping review 2025",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s32",
+    "url": "https://arxiv.org/pdf/2602.20503",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Error-controlled borrowing via Wasserstein ambiguity sets",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s33",
+    "url": "https://www.iconplc.com/insights/blog/2025/04/14/understanding-new-draft-fda-guidance-data-monitoring-committees",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "FDA 2024 draft guidance on data monitoring committees structure",
+    "fetched_title": "Adaptive trials and the new draft FDA guidance on data monitoring committees | ICON",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s34",
+    "url": "https://academic.oup.com/biometrics/article/80/1/ujae006/7627896",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Changing interim monitoring rules, operational bias and integrity",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  }
+]
