@@ -5,8 +5,12 @@
 # merges — never the target concept restated (R-XREF-04).
 #
 # `contested: true` is not decoration: the graph-index section carries a `role: contested` block,
-# because the user's URL seed and the discovered consensus disagree about where the recall-latency
-# frontier lives. The structure is presented, not asserted (R-DISC-06).
+# because the user's seed paper and the discovered sources disagree about where the recall-latency
+# frontier lives at billion scale. The structure is presented, not asserted (R-DISC-06).
+#
+# source_ids and claim_ids are the real campaign identifiers (2026-08-21) — see source-ledger.yaml.
+# Each concept lists the sources and claims its own blocks cite, so the map and the IR can be
+# cross-checked against each other without reading the prose.
 contested: true
 concepts:
   - concept_id: graph-index
@@ -21,8 +25,25 @@ concepts:
       - {mode: tradeoff, block_ref: contested-graph}
       - {mode: architecture, block_ref: fig-graph}
       - {mode: failure, block_ref: body-graph-entry}
-    source_ids: [s-seed, s-survey]
-    claim_ids: [C-graph-1, C-graph-2]
+    source_ids:
+      - 9f25797951917c61969c66e225308666881d5cb2
+      - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+      - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+      - f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
+      - b43b68520a9614f47acf5967551fc04e8c45a9eb
+    claim_ids:
+      - C-9f257979-4
+      - C-9f257979-1
+      - C-9f257979-7
+      - C-9f257979-6
+      - C-e995dd02-2
+      - C-e995dd02-3
+      - C-e995dd02-17
+      - C-e995dd02-22
+      - C-e995dd02-10
+      - C-dd839b84-11
+      - C-f8ce5bbf-1
+      - C-b43b6852-5
 
   - concept_id: quantized-partition
     canonical_term: "quantized partition"
@@ -36,8 +57,19 @@ concepts:
       - {mode: cost, block_ref: matrix-quantize}
       - {mode: benchmark, block_ref: fig-quantize}
       - {mode: failure, block_ref: body-quantize-rerank}
-    source_ids: [s-survey, s-vendor, s-bench]
-    claim_ids: [C-quant-1, C-quant-2, C-perf-1, C-perf-2]
+    source_ids:
+      - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+      - b43b68520a9614f47acf5967551fc04e8c45a9eb
+      - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+    claim_ids:
+      - C-2f7ae826-4
+      - C-2f7ae826-1
+      - C-2f7ae826-3
+      - C-b43b6852-1
+      - C-b43b6852-15
+      - C-b43b6852-16
+      - C-e995dd02-12
+      - C-e995dd02-10
 
   - concept_id: index-churn
     canonical_term: "index churn"
@@ -51,5 +83,13 @@ concepts:
       - {mode: tradeoff, block_ref: toulmin-churn}
       - {mode: failure, block_ref: failures-churn}
       - {mode: benchmark, block_ref: fig-churn}
-    source_ids: [s-survey, s-bench]
-    claim_ids: [C-churn-1, C-churn-2]
+    source_ids:
+      - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+      - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+      - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+    claim_ids:
+      - C-2f7ae826-7
+      - C-e995dd02-7
+      - C-e995dd02-20
+      - C-e995dd02-22
+      - C-dd839b84-12

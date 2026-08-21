@@ -8,7 +8,7 @@ parameters:
   length_budget: 4000
   outputs: [html, llm_md]
 seed_sources:
-  - {kind: url, ref: "https://example.org/hnsw-paper", note: "user-supplied"}
+  - {kind: url, ref: "https://arxiv.org/abs/1603.09320", note: "user-supplied"}
   - {kind: author, ref: "Y. Malkov", note: "survey their work"}
 # A hand-built REFERENCE artifact, in the same spirit as spec-01's — not a real generation.
 # Its sources are openly synthetic (`example.org`, fictional authors) because this fixture exercises

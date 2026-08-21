@@ -3,13 +3,31 @@
 # The reader lives in classical IR: they already own posting lists, skip pointers, static pruning
 # and segment merges. Nothing here re-teaches those; every home_anchor spends them.
 #
-# Every source this cites is SYNTHETIC (see source-ledger.yaml). The artifact exercises structure
-# and the seed contract; it makes no grounding claim about approximate nearest-neighbour search.
+# SOURCES ARE REAL (2026-08-21 campaign) — see source-ledger.yaml. Every block_id, role,
+# artifact_kind, mode, heading, section title and concept id is unchanged from the structural
+# fixture this replaced; only the claim-bearing prose and its citations were re-drafted against what
+# the campaign actually found. Two blocks moved inferred -> verified because a real source states
+# exactly what they assert: [fig-graph], whose claim that unvisited regions cost recall is stated by
+# the production write-up, and [body-graph-degree], whose claim that degree is a memory decision is
+# stated as a formula in which the degree term multiplies the footprint. That is what takes
+# ungrounded_share down from 0.56.
 #
-# What is unusual about this IR: `contested-graph` is a `role: contested` block. The user's URL seed
-# says the graph index wins everywhere; the discovered consensus says the frontier is
-# memory-conditional. A seed is authoritative for inclusion and not for truth, so the disagreement
-# is PRESENTED as two framings rather than resolved into an assertion.
+# The blocks still marked `inferred` are inferred by their nature, not by accident: a decision
+# matrix, a benchmark-comparison figure, two sub-summaries, two extended mechanism narratives, a
+# Toulmin argument and a failure catalog are synthesis GROUNDED IN cited claims, not restatements
+# of them.
+#
+# THE SEED IS A REAL PAPER NOW. This fixture used to seed `https://example.org/hnsw-paper`, which
+# cannot be fetched; `triage_leads` checks fetch-failure before it applies the R-DISC-06 exemption,
+# so on a real campaign the seed was dropped before the rule it exists to exercise could see it.
+# The seed now points at arXiv 1603.09320, the Hierarchical NSW paper, which the campaign retrieved
+# by ordinary discovery, and the author directive "Y. Malkov" names that paper's first author.
+#
+# What is unusual about this IR is unchanged: `contested-graph` is a `role: contested` block. The
+# seed claims its index outperforms the prior open-source state of the art; the discovered sources
+# report that at billion scale under a memory ceiling a disk-resident index is the one that meets
+# the target. A seed is authoritative for inclusion and not for truth, so the disagreement is
+# PRESENTED as two framings rather than resolved into an assertion.
 meta:
   parameters:
     home_domain: [classical IR]
@@ -21,11 +39,17 @@ meta:
     length_budget: 700
     outputs: [html, llm_md]
     seed_sources:
-      - {kind: url, ref: "https://example.org/hnsw-paper", note: "user-supplied"}
+      - {kind: url, ref: "https://arxiv.org/abs/1603.09320", note: "user-supplied"}
       - {kind: author, ref: "Y. Malkov", note: "survey their work"}
-  ledger_snapshot: [s-seed, s-survey, s-vendor, s-bench]
+  ledger_snapshot:
+    - 9f25797951917c61969c66e225308666881d5cb2
+    - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+    - b43b68520a9614f47acf5967551fc04e8c45a9eb
+    - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+    - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+    - f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
   model_versions: {generator: test-fixture, verifier: lexical}
-  generated_at: "2026-08-18T00:00:00Z"
+  generated_at: "2026-08-21T00:00:00Z"
 
 sections:
   - block_id: sec-graph
@@ -34,30 +58,36 @@ sections:
     blocks:
       - block_id: lede-graph
         role: lede
-        text: "A graph index answers a query with a walk over neighbours, so probe count grows with the logarithm of corpus size. That walk is approximate, and a neighbour it never visits is lost."
-        claim_ids: [C-graph-1]
+        text: "A graph index answers a query with a walk over neighbours. The walk costs a number of probes that scales logarithmically with corpus size, which is what the paper introducing the hierarchy reports. The walk is approximate, so it degrades on exactly the sparse neighbourhoods a reader is least likely to test."
+        claim_ids: [C-9f257979-4, C-e995dd02-2]
         provenance: verified
-        source_ids: [s-seed]
+        source_ids:
+          - 9f25797951917c61969c66e225308666881d5cb2
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
       - block_id: card-graph
         role: card
         concept: graph-index
         mode: mental_model
-        claim_ids: [C-graph-1]
+        claim_ids: [C-9f257979-4, C-9f257979-1, C-9f257979-7, C-dd839b84-11]
         provenance: verified
-        source_ids: [s-seed]
-        # per-row attribution: the seed's probe bound is what the idea and the exemplar assert. The
-        # contested claim is NOT cited here — `confidence` is an epistemic label, not an assertion,
-        # and the disagreement itself renders in `contested-graph`.
+        source_ids:
+          - 9f25797951917c61969c66e225308666881d5cb2
+          - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+        # per-row attribution: the probe bound is what the idea asserts, and the exemplar asserts
+        # the structure the seed paper describes. The contested claim is NOT cited here —
+        # `confidence` is an epistemic label, not an assertion, and the disagreement itself renders
+        # in `contested-graph`.
         row_claims:
-          idea: [C-graph-1]
-          key_exemplar: [C-graph-1]
+          idea: [C-9f257979-4]
+          key_exemplar: [C-9f257979-1, C-9f257979-7]
+          skip_when: [C-dd839b84-11]
         rows:
           idea: "Search is a walk over a neighbour graph, so probe count grows with the logarithm of corpus size."
           home_anchor: "Skip pointers on a posting list: coarse hops first, fine ones once you are near the answer."
           whats_new_vs_renamed: "Hopping is renamed, not new; what is new is that the hop is approximate and can strand a true neighbour."
           reach_for_when: "Reach for it when the whole vector set stays resident and high recall is the requirement."
-          skip_when: "Skip it when memory is the binding constraint, or when the corpus turns over faster than it rebuilds."
-          key_exemplar: "A hierarchical proximity graph whose top layer holds a few hundred entry points."
+          skip_when: "Skip it when memory is the binding constraint, because the design assumes the entire graph sits in RAM."
+          key_exemplar: "A proximity graph built incrementally into layers, with a sparse top layer supplying the entry points."
           confidence: "settled for the probe bound; contested for whether it wins under a memory ceiling"
       # The seed conflict, presented rather than resolved (R-DISC-06). A contested block carries no
       # prose of its own — its content IS the framings, each attributed to the sources that hold it.
@@ -65,20 +95,25 @@ sections:
         role: contested
         concept: graph-index
         mode: tradeoff
-        claim_ids: [C-graph-2, C-quant-2]
+        claim_ids: [C-9f257979-6, C-e995dd02-10, C-f8ce5bbf-1]
         provenance: verified
-        source_ids: [s-seed, s-survey]
+        source_ids:
+          - 9f25797951917c61969c66e225308666881d5cb2
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+          - f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
         framings:
           - label: "the frontier is index-shaped"
-            summary: "The user-supplied seed holds that a graph index dominates the recall-latency frontier at every corpus scale."
+            summary: "The user-supplied seed holds that this graph index outperforms the open-source approaches that preceded it, and states no scale at which that stops."
             applies_when: "Memory is elastic and the vectors stay resident whole."
-            source_ids: [s-seed]
-            claim_ids: [C-graph-2]
+            source_ids: [9f25797951917c61969c66e225308666881d5cb2]
+            claim_ids: [C-9f257979-6]
           - label: "the frontier is memory-conditional"
-            summary: "The discovered sources hold that under a fixed memory ceiling a quantized partition overtakes the graph index."
+            summary: "The discovered sources hold that at billion scale a disk-resident index is the one that reaches high recall inside a millisecond-scale latency budget."
             applies_when: "A resident footprint is capped by hardware or by budget."
-            source_ids: [s-survey, s-bench]
-            claim_ids: [C-quant-2]
+            source_ids:
+              - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+              - f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
+            claim_ids: [C-e995dd02-10, C-f8ce5bbf-1]
       - block_id: checklist-graph
         role: matrix
         artifact_kind: checklist
@@ -90,12 +125,16 @@ sections:
         role: figure
         concept: graph-index
         mode: architecture
-        caption: "Figure 1: the walk descends from a sparse top layer into a dense base layer, so every region it fails to enter holds candidates the ranking will never see."
+        caption: "Figure 1: the walk descends from a sparse top layer into a dense base layer, so a thinly connected region it never enters holds candidates the ranking will never see."
         svg_ref: "synthetic/graph-walk.svg"
-        claim_ids: [C-graph-1]
-        # inferred, not verified: the seed states the probe bound, not this consequence of it.
-        provenance: inferred
-        source_ids: [s-seed]
+        claim_ids: [C-e995dd02-2, C-9f257979-7]
+        # verified, not inferred: the production write-up states that recall degrades precisely on
+        # the graph's underrepresented neighbourhoods, which is what this caption asserts, and the
+        # seed paper states the layered structure the caption draws.
+        provenance: verified
+        source_ids:
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+          - 9f25797951917c61969c66e225308666881d5cb2
       - block_id: recall-graph
         role: recall
         concept: graph-index
@@ -105,8 +144,8 @@ sections:
           - question: "Skip pointers on a posting list are also a hop structure. Where does that intuition stop paying?"
             answer: "Skip pointers are exact — they change how fast you reach a document, never whether you reach it. A graph hop can leave a true neighbour unreachable, so the structure changes the answer and not only the cost."
             cross_domain: true
-          - question: "Your seed source says this index wins at every scale. What would you need to measure before repeating that?"
-            answer: "The resident footprint at your corpus size against the memory you actually have; the claim is unconditional and the disagreement in the literature is entirely about that condition."
+          - question: "Your seed paper reports that this index outperforms the alternatives it was measured against. What has to be checked before you repeat that in a design review?"
+            answer: "Which alternatives, and at what corpus size: the comparison is against the open-source field of its publication year, and the later reports that disagree are all about billion-scale corpora under a memory ceiling the paper never assumes."
 
     subsections:
       - block_id: sub-graph-entry
@@ -115,28 +154,33 @@ sections:
         blocks:
           - block_id: subsum-graph-entry
             role: summary
-            text: "A walk can only rank what it reaches, so a poor entry point removes candidates the ranking never sees."
-            claim_ids: [C-graph-1]
+            text: "A walk can only rank what it reaches, so the neighbourhoods the graph connects thinly are the ones whose true neighbours go missing."
+            claim_ids: [C-e995dd02-2]
             provenance: inferred
-            source_ids: [s-seed]
+            source_ids: [e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6]
           - block_id: body-graph-entry
             role: body
             concept: graph-index
             mode: failure
             heading: "Where the walk loses a true neighbour"
-            text: "A greedy walk stops at a local minimum, which is a node whose neighbours all sit farther from the query. That minimum is invisible from inside the walk, because the walk only ever compares the neighbours it has already reached. The walk reaches more neighbours only when the candidate list grows, and that list is the one dial between recall and latency. Latency then rises with every extra candidate, so the dial has a ceiling that hardware sets rather than data."
-            claim_ids: [C-graph-1]
+            text: "A greedy walk stops at a local minimum, a node whose neighbours all sit farther from the query. That minimum is invisible from inside the walk, which only compares neighbours already reached. The walk reaches more only when the candidate list grows, the one dial between recall and latency. The dial hides the failure while a corpus is small. A corpus only develops the sparse neighbourhoods that strand a walk as it fills out."
+            claim_ids: [C-e995dd02-2, C-e995dd02-22]
             provenance: inferred
-            source_ids: [s-seed]
+            source_ids: [e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6]
           - block_id: body-graph-degree
             role: body
             concept: graph-index
             mode: failure
             heading: "Why degree is a memory decision wearing a recall costume"
-            text: "Graph degree fixes how many neighbours each node stores, and that number multiplies straight into the resident footprint. The footprint is what the memory ceiling constrains, so degree is spent before any query runs. A query then inherits whatever connectivity the budget allowed, which is why recall is often decided at build time. Build time is also when the entry layer is chosen, and the same budget pays for both."
-            claim_ids: [C-graph-2, C-quant-2]
-            provenance: inferred
-            source_ids: [s-seed, s-survey]
+            text: "Graph degree fixes how many neighbours each node stores, and a published formula multiplies degree into the resident footprint. The vendor's formula puts a 768-dimension index at roughly three kilobytes per vector at degree forty, or five gigabytes per million vectors. The footprint is what a memory ceiling constrains, so degree is spent at build time and a query inherits whatever the budget allowed. That budget binds harder here than in a posting list, because the design assumes the whole graph stays in RAM."
+            claim_ids: [C-b43b6852-5, C-e995dd02-3, C-e995dd02-17, C-dd839b84-11]
+            # verified, not inferred: the memory formula states that the degree term multiplies the
+            # footprint, and both sources publish the resulting bytes-per-vector figure.
+            provenance: verified
+            source_ids:
+              - b43b68520a9614f47acf5967551fc04e8c45a9eb
+              - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+              - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
 
   - block_id: sec-quantize
     title: "Quantization moves the loss from which vectors you see to how well you rank them"
@@ -144,37 +188,43 @@ sections:
     blocks:
       - block_id: lede-quantize
         role: lede
-        text: "A quantized partition keeps every vector but stores each as a short code, so residency falls and the distance becomes an estimate. That estimate is what a rerank over full vectors repairs."
-        claim_ids: [C-quant-1]
+        text: "A quantized partition keeps every vector but stores each one as a short code, because the dimensions split into subspaces that are clustered independently. Those codes stay in memory while the full-precision vectors sit on disk, so residency falls and the distance becomes an estimate."
+        claim_ids: [C-2f7ae826-4, C-2f7ae826-1]
         provenance: verified
-        source_ids: [s-survey]
+        source_ids: [2f7ae826badaf71e66bb483e304b3c103f2ba5bb]
       - block_id: card-quantize
         role: card
         concept: quantized-partition
         mode: mental_model
-        claim_ids: [C-quant-1]
+        claim_ids: [C-2f7ae826-4, C-b43b6852-1, C-2f7ae826-3]
         provenance: verified
-        source_ids: [s-survey]
+        source_ids:
+          - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+          - b43b68520a9614f47acf5967551fc04e8c45a9eb
         row_claims:
-          idea: [C-quant-1]
-          key_exemplar: [C-quant-1]
+          idea: [C-2f7ae826-4, C-b43b6852-1]
+          key_exemplar: [C-2f7ae826-4]
+          reach_for_when: [C-2f7ae826-3]
         rows:
-          idea: "A quantized partition keeps every vector as a short code, so memory falls and the distance blurs."
+          idea: "A quantized partition keeps every vector as a short code, and a binary code compresses by up to thirty-two times."
           home_anchor: "Static index pruning: a lossy summary answers most queries and the full postings stay as the fallback."
           whats_new_vs_renamed: "The lossy summary is renamed; what is new is that nothing is deleted, so the loss appears as reordering."
-          reach_for_when: "Reach for it when the resident footprint is capped and a rerank stage is affordable."
+          reach_for_when: "Reach for it when the corpus is too large or too expensive to hold in memory whole."
           skip_when: "Skip it when the corpus already fits in memory and rerank latency has no budget left."
-          key_exemplar: "A coarse quantizer over a few thousand cells, with each residual kept as a short code."
+          key_exemplar: "Product quantization: the dimensions split into subspaces and each subspace is clustered on its own."
           confidence: "settled for the memory saving; contested for where it overtakes a graph walk"
       - block_id: matrix-quantize
         role: matrix
         artifact_kind: decision_matrix
         concept: quantized-partition
         mode: cost
-        text: "Baseline: a quantized partition sized so the codes stay resident. A graph index buys probe count at full residency; an exact scan buys certainty at linear cost. Take the partition when the footprint is capped, the graph when it is not, and the scan only while the corpus is small enough that linear is cheap."
-        claim_ids: [C-quant-1, C-quant-2, C-graph-2]
+        text: "Baseline: a quantized partition sized so the codes stay resident, which one vendor puts at 184.8 GB for a billion vectors. A graph index buys probe count at full residency, and an exact scan buys certainty at linear cost. Take the partition when the footprint is capped, the graph when it is not, and at billion scale expect the disk-resident designs to be the ones that hold a millisecond latency budget at high recall."
+        claim_ids: [C-b43b6852-15, C-2f7ae826-3, C-e995dd02-10]
         provenance: inferred
-        source_ids: [s-survey, s-seed]
+        source_ids:
+          - b43b68520a9614f47acf5967551fc04e8c45a9eb
+          - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
       - block_id: aid-quantize
         role: matrix
         artifact_kind: decision_aid
@@ -186,18 +236,20 @@ sections:
         role: figure
         concept: quantized-partition
         mode: benchmark
-        caption: "Figure 2: the vendor curve and an independent replication agree on recall and disagree on latency by roughly a factor of two, so the operating point moves with who measured it."
+        caption: "Figure 2: the vendor curve reports as much as a ninety percent cost reduction at the compressed operating point, while an independent production report puts the same recall target two to three times higher in latency, so the operating point moves with who measured it."
         svg_ref: "synthetic/quantize-operating-point.svg"
-        claim_ids: [C-perf-1, C-perf-2]
+        claim_ids: [C-b43b6852-16, C-e995dd02-12]
         # inferred, not verified: each source states its own number; the disagreement between them
         # is this document's synthesis, which is exactly what `inferred` means.
         provenance: inferred
-        source_ids: [s-vendor, s-bench]
+        source_ids:
+          - b43b68520a9614f47acf5967551fc04e8c45a9eb
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
       - block_id: recall-quantize
         role: recall
         concept: quantized-partition
         items:
-          - question: "A vendor page reports one latency and an independent replication reports twice it, at the same recall. What do you carry forward into a capacity plan?"
+          - question: "A vendor page reports a large cost reduction at a recall target and an independent production write-up reports two to three times the latency at that same target. What do you carry forward into a capacity plan?"
             answer: "The independent number as the planning figure and the vendor number as the ceiling, because the gap is a measurement-condition difference you cannot reproduce from either page alone."
           - question: "Static index pruning discards postings you judged unlikely to matter. What is the analogous loss here, and why is it harder to notice?"
             answer: "Nothing is discarded — the distance is distorted instead, so the loss is a reordering. A pruned posting is absent and countable; a reordered candidate is present and looks like a correct answer."
@@ -212,19 +264,19 @@ sections:
         blocks:
           - block_id: subsum-quantize-rerank
             role: summary
-            text: "Blurred distances only cost accuracy where the final ordering is read, so a rerank over full vectors buys most of it back."
-            claim_ids: [C-quant-1]
+            text: "Blurred distances only cost accuracy where the final ordering is read, so a second pass over the full-precision vectors buys most of it back."
+            claim_ids: [C-2f7ae826-1]
             provenance: inferred
-            source_ids: [s-survey]
+            source_ids: [2f7ae826badaf71e66bb483e304b3c103f2ba5bb]
           - block_id: body-quantize-rerank
             role: body
             concept: quantized-partition
             mode: failure
             heading: "Where the estimate and the truth disagree"
-            text: "A short code answers with an estimated distance, and that estimate can reorder two vectors that are genuinely close. That estimate is harmless while the true neighbour stays inside the candidate set, and fatal once it falls out. The candidate set is therefore the quantity to watch, not the estimate itself. That set is measured against an exact scan, which is the only reference the estimate can be scored against."
-            claim_ids: [C-quant-1]
+            text: "A short code answers with an estimated distance, and that estimate can reorder two vectors that are genuinely close. The estimate is harmless while the true neighbour stays inside the candidate set, and fatal once it falls out. The candidate set is therefore the quantity to watch, not the estimate. That set is repaired by a disk read, because the full-precision vectors were the part moved off memory."
+            claim_ids: [C-2f7ae826-4, C-2f7ae826-1]
             provenance: inferred
-            source_ids: [s-survey]
+            source_ids: [2f7ae826badaf71e66bb483e304b3c103f2ba5bb]
 
   - block_id: sec-churn
     title: "Churn retires an index choice sooner than recall does"
@@ -232,53 +284,66 @@ sections:
     blocks:
       - block_id: lede-churn
         role: lede
-        text: "Index churn decides how long an index stays correct, because a rebuild changes which neighbours are reachable and measured recall moves with them."
-        claim_ids: [C-churn-1]
+        text: "Index churn decides how long an index stays correct. An index loses recall when its quantizer never adapts to the data arriving after the fit. A partitioned index cannot absorb a new vector without rebuilding its cluster centroids."
+        claim_ids: [C-2f7ae826-7, C-e995dd02-7]
         provenance: verified
-        source_ids: [s-survey]
+        source_ids:
+          - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
       - block_id: card-churn
         role: card
         concept: index-churn
         mode: mental_model
-        claim_ids: [C-churn-1]
+        claim_ids: [C-2f7ae826-7, C-e995dd02-22, C-e995dd02-20]
         provenance: verified
-        source_ids: [s-survey]
+        source_ids:
+          - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
         row_claims:
-          idea: [C-churn-1]
+          idea: [C-2f7ae826-7]
+          key_exemplar: [C-e995dd02-22]
+          reach_for_when: [C-e995dd02-20]
         rows:
-          idea: "A rebuild moves recall by changing which neighbours are reachable, not by changing the data."
+          idea: "A structure fitted to yesterday's data loses recall as today's arrives, so the drift tracks the stream and not the clock."
           home_anchor: "A segment merge policy: writes pile up cheaply until a merge pays the accumulated debt down."
           whats_new_vs_renamed: "Deferred maintenance is renamed; what is new is that the deferred work changes answers, not only speed."
-          reach_for_when: "Reach for a triggered rebuild when write volume is steady and a recall floor is contractual."
+          reach_for_when: "Reach for a volume-triggered rebuild when write volume is steady; one published rule fires it every twenty percent of corpus growth."
           skip_when: "Skip rebuilds on a static corpus, where an index has no shelf life to expire."
-          key_exemplar: "A rebuild fired by measured recall drift rather than by elapsed time."
+          key_exemplar: "A rebuild fired by measured drift, such as tail recall falling ten points between a tenth of the corpus and all of it."
           confidence: "settled that drift happens; contested for how much insertion volume it takes"
       - block_id: toulmin-churn
         role: toulmin
         concept: index-churn
         mode: tradeoff
-        text: "Because insertion degrades reachability, a write-heavy corpus needs a rebuild schedule rather than a one-time build. Qualifier: the schedule earns nothing while measured recall stays above the floor. Rebuttal: on a corpus that turns over hourly, the rebuild never finishes before the next batch invalidates it."
-        claim_ids: [C-churn-1, C-churn-2]
+        text: "Because insertion degrades reachability, a write-heavy corpus needs a rebuild schedule rather than a one-time build. Qualifier: the schedule earns nothing while measured recall stays above the floor. Rebuttal: high recall at billion scale is reported for static designs, so a corpus that turns over hourly invalidates each rebuild before it finishes."
+        claim_ids: [C-2f7ae826-7, C-e995dd02-7, C-dd839b84-12]
         provenance: inferred
-        source_ids: [s-survey, s-bench]
+        source_ids:
+          - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+          - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
       - block_id: failures-churn
         role: matrix
         artifact_kind: failure_catalog
         concept: index-churn
         mode: failure
-        text: "Silent drift: recall falls with insertion volume and nothing in the serving path reports it. Rebuild storm: the rebuild is fired by a clock and lands during peak traffic. Frozen benchmark: the acceptance number was measured on the build-day index and never taken again."
-        claim_ids: [C-churn-2]
+        text: "Silent drift: recall falls as the stream progresses and nothing in the serving path reports it. Rebuild storm: a centroid rebuild is fired by a clock and lands during peak traffic. Frozen benchmark: the acceptance number was measured on the build-day index at a tenth of today's corpus and never taken again."
+        claim_ids: [C-2f7ae826-7, C-e995dd02-7, C-e995dd02-22]
         provenance: inferred
-        source_ids: [s-bench]
+        source_ids:
+          - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
       - block_id: fig-churn
         role: figure
         concept: index-churn
         mode: benchmark
-        caption: "Figure 3: incremental insertion degrades recall until the index is rebuilt, so an index has a shelf life denominated in writes."
+        caption: "Figure 3: recall falls as the stream progresses and a rebuild restores it, so an index has a shelf life denominated in writes rather than in days — one published rule reindexes every twenty percent of corpus growth."
         svg_ref: "synthetic/churn-sawtooth.svg"
-        claim_ids: [C-churn-2]
+        claim_ids: [C-2f7ae826-7, C-e995dd02-20]
         provenance: verified
-        source_ids: [s-bench]
+        source_ids:
+          - 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
       - block_id: recall-churn
         role: recall
         concept: index-churn
@@ -288,5 +353,5 @@ sections:
           - question: "You already run a segment merge policy. Which part of that intuition transfers, and which part misleads?"
             answer: "Deferring work and paying it down in batches transfers. What misleads is that a merge is lossless — it costs latency, never answers — while a deferred rebuild is silently costing recall the whole time."
             cross_domain: true
-          - question: "Why is a nightly rebuild on a fixed clock a weaker policy than a triggered one?"
-            answer: "The clock is uncorrelated with write volume, so it rebuilds a quiet index for nothing and leaves a busy one below the floor for most of the day."
+          - question: "Why is a nightly rebuild on a fixed clock a weaker policy than one fired by corpus growth?"
+            answer: "The clock is uncorrelated with write volume, so it rebuilds a quiet index for nothing and leaves a busy one below the floor for most of the day; a growth trigger such as every twenty percent of new vectors tracks the thing that actually moves recall."
