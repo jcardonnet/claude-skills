@@ -7,8 +7,14 @@
 # heading is free to carry information scent. Read the four sections' `maps_to` beside their
 # `title` — that pairing is the whole point of this fixture.
 #
-# The sources are SYNTHETIC (example.org, fictional authors) — see source-ledger.yaml. This artifact
-# exercises structure, not grounding.
+# THE SOURCES ARE REAL. This fixture was re-grounded on 2026-08-21 against a Phase 1/1a campaign
+# (76 min, $5.05, 116 documents fetched, 30 extracted, 343 claims kept, 87 concepts grouped) whose
+# raw output is committed under tests/fixtures/spec06-grounded/. Every claim_id and source_id below
+# resolves to source-ledger.yaml, and that ledger's header records exactly which fields were hand-
+# filled at curation time and why. The four concepts were PINNED by `user_structure` BEFORE the
+# campaign ran, so this fixture now tests structure AND grounding at once: the outline was chosen up
+# front and the evidence had to either confirm it or break it. All four concepts survived. One alias
+# did not — see concept-map.yaml on why `groundedness` is no longer a synonym for `faithfulness`.
 meta:
   parameters:
     home_domain: ["ML engineering"]
@@ -27,9 +33,22 @@ meta:
       - "Metrics that matter"
       - "Tooling"
       - "Open problems"
-  ledger_snapshot: [s-attrib, s-metric, s-judge, s-drift]
+  # The 12 sources the primer actually cites, in ledger order.
+  ledger_snapshot:
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+    - d82e8275aa9034f305abcdf1d441e96e56b022db
+    - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+    - 8ee2ad4d316a9893170f5726fd67893be4787918
+    - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+    - 96072ac0a9442594589eacb8b5f43e8fad807de1
+    - 4122c4ed8a779f447f9bc1371ff7954477d8beee
+    - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+    - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+    - 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
   model_versions: {generator: test-fixture, verifier: lexical}
-  generated_at: "2026-08-18T00:00:00Z"
+  generated_at: "2026-08-21T00:00:00Z"
 
 sections:
   # entry 1 of the user structure. "Background" is a BANNED heading (R-SCENT-01), so the mapping is
@@ -41,96 +60,109 @@ sections:
     blocks:
       - block_id: lede-attrib
         role: lede
-        text: "Failure attribution splits an end-to-end score into a retrieval score and a generation score. Each score then has its own ground truth, so a regression points at one stage rather than at the whole system."
-        claim_ids: [C-attr-1, C-attr-2]
+        text: "A RAG pipeline exposes the retriever and the generator as two distinct failure surfaces, each inspectable on its own. That pipeline still reports one end-to-end number, and when it fails the number does not say which of the two surfaces is responsible."
+        claim_ids: [C-a29027ab-21, C-4833d8ca-4]
         provenance: verified
-        source_ids: [s-attrib]
+        source_ids:
+          - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+          - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
       - block_id: card-attrib
         role: card
         concept: failure-attribution
         mode: mental_model
-        claim_ids: [C-attr-2, C-attr-3]
+        claim_ids: [C-a29027ab-21, C-a29027ab-10, C-56cc8dbe-17, C-56cc8dbe-18]
         provenance: verified
-        source_ids: [s-attrib]
+        source_ids:
+          - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+          - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
         row_claims:
-          idea: [C-attr-2]
-          key_exemplar: [C-attr-3]
+          idea: [C-a29027ab-21]
+          reach_for_when: [C-a29027ab-10]
+          key_exemplar: [C-56cc8dbe-17, C-56cc8dbe-18]
         rows:
-          idea: "Score retrieval and generation against separate ground truth, because only one stage is usually broken."
+          idea: "Score the retriever and the generator against separate ground truth, because they are two distinct failure surfaces."
           home_anchor: "Like ablating one stage of a training pipeline to see which stage owns the loss."
           whats_new_vs_renamed: "Stage-wise ablation is renamed; what is new is that each stage needs a different kind of label."
-          reach_for_when: "Reach for stage-wise scores the moment an aggregate number moves and nobody can say why."
-          skip_when: "Skip the split when the context is fixed by construction and only the generator can vary."
-          key_exemplar: "Recall@k measured with no generator in the loop, then answer quality measured separately."
-          confidence: "settled that the stages fail independently; contested how to weight them into one number"
+          reach_for_when: "Reach for stage-wise scores when component metrics look healthy and end-to-end quality is collapsing anyway."
+          skip_when: "Skip the split when the retrieved context is fixed by construction and only the generator can vary."
+          key_exemplar: "RAGEC classifies a failure by stage before naming the error type, agreeing with human annotators 57.8 percent of the time."
+          confidence: "settled that the surfaces are distinct; the automatic stage classifiers are nowhere near reliable"
       - block_id: matrix-attrib
         role: matrix
         artifact_kind: decision_matrix
         mode: tradeoff
         concept: failure-attribution
-        text: "Baseline: label a small query set with the passages that answer it, then score the two stages apart. Human labels buy trust at the cost of throughput; reference-free judging buys coverage at the cost of a judge you must validate first. Questions generated from the corpus buy volume at the cost of matching the corpus rather than your users."
-        claim_ids: [C-attr-2]
-        # inferred, not verified: the baseline recommendation and the three-way cost comparison are
-        # synthesis GROUNDED IN the source rather than stated by it.
+        text: "Two surfaces is the cheap model and it holds for a plain retriever-generator pipeline. Four stages — chunking, retrieval, reranking, generation — is the accurate model, and it costs one labelled artifact per boundary. An automatic stage classifier costs nothing per query and reaches 57.8 percent agreement on stage and 40.3 percent on error type, so it ranks candidates rather than settling them. Agentic pipelines force the finer model, because one retrieval error there cascades across later tool calls."
+        claim_ids: [C-56cc8dbe-4, C-56cc8dbe-18, C-56cc8dbe-19, C-4833d8ca-8]
+        # inferred, not verified: the three-way cost comparison and the "ranks rather than settles"
+        # reading of the agreement numbers are synthesis GROUNDED IN the sources, not stated by them.
         provenance: inferred
-        source_ids: [s-attrib]
+        source_ids:
+          - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+          - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
       - block_id: fig-attrib
         role: figure
         concept: failure-attribution
         mode: architecture
-        caption: "Figure 1: retrieval error and generation error enter the same final score, so the aggregate moves without naming a cause."
+        caption: "Figure 1: retrieval error and generation error enter the same end-to-end score, so component metrics can read healthy while that score collapses."
         svg_ref: "assets/failure-attribution.svg"
       - block_id: recall-attrib
         role: recall
-        claim_ids: [C-attr-3]
+        claim_ids: [C-a29027ab-10, C-4833d8ca-8]
         provenance: verified
-        source_ids: [s-attrib]
+        source_ids:
+          - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+          - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
         items:
-          - question: "Your aggregate score drops four points the morning after a corpus refresh. What do you measure first?"
-            answer: "Retrieval recall against the labelled passages, because a refresh moves retrieval before it moves generation."
-            claim_ids: [C-attr-3]
+          - question: "Every component metric reads healthy and end-to-end quality has collapsed anyway. What does that pattern tell you?"
+            answer: "That component health and end-to-end quality can diverge, so the aggregate has to be attributed to a stage rather than trusted."
+            claim_ids: [C-a29027ab-10]
           - question: "Which training-pipeline habit does stage-wise scoring correspond to?"
             answer: "Ablating one stage at a time, so the loss is attributed rather than averaged away."
             cross_domain: true
-          - question: "When does splitting the score buy you nothing?"
-            answer: "When the retrieved context is fixed by construction, leaving the generator as the only stage that can vary."
+          - question: "Why does an agentic pipeline make attribution harder rather than easier?"
+            answer: "One retrieval error there cascades across later tool calls, so the visible failure sits several steps from its cause."
+            claim_ids: [C-4833d8ca-8]
 
     subsections:
-      - block_id: sub-attrib-recall
-        title: "Recall@k moves before the aggregate does"
+      - block_id: sub-attrib-blackbox
+        title: "Benchmarks were built for one stage or the other, not for the join"
         concept: failure-attribution
         blocks:
-          - block_id: subsum-attrib-recall
+          - block_id: subsum-attrib-blackbox
             role: summary
-            text: "Retrieval is measurable with no generator in the loop, which makes it the cheaper half to instrument first."
-          - block_id: body-attrib-recall
+            text: "The benchmarks you would reach for were built to score retrieval or generation in isolation, not the join between them."
+          - block_id: body-attrib-blackbox
             role: body
             mode: failure
             concept: failure-attribution
-            heading: "Where the aggregate goes quiet"
-            text: "An aggregate score stays flat when a retrieval loss and a generation gain cancel. That score is usually the only number a team watches, so the cancellation never surfaces. That cancellation becomes visible once recall@k is plotted beside the aggregate. Recall@k needs no generator, so it costs one retrieval pass over a labelled query set. That pass is cheap enough to run on every corpus rebuild."
-            claim_ids: [C-attr-1, C-attr-3]
+            heading: "Where the black box goes quiet"
+            text: "A RAG system treated as a black box hides where its retrieval and generation errors originate. That system reports metrics that mislead rather than metrics that are merely imprecise. Those metrics inherit the problem from the benchmarks beneath them, most of which were built to evaluate retrieval or generation in isolation. Metrics calibrated for this pipeline are what make failure attribution possible at all. Those metrics separate a retrieval error from a generation error, which makes the metric definition a design decision rather than a reporting choice."
+            claim_ids: [C-964231ec-15, C-964231ec-23, C-964231ec-24]
             provenance: inferred
-            source_ids: [s-attrib]
+            source_ids:
+              - 964231ec57389834e9f89b5a447be2e968a39342
 
-      - block_id: sub-attrib-labels
-        title: "The labelled query set is the asset; the metric is downstream of it"
+      - block_id: sub-attrib-surfaces
+        title: "Fine-tuning buys quality by removing the surface you debug on"
         concept: failure-attribution
         blocks:
-          - block_id: subsum-attrib-labels
+          - block_id: subsum-attrib-surfaces
             role: summary
-            text: "Every retrieval metric needs passages marked relevant, and that labelling is the work most teams skip."
-          - block_id: body-attrib-labels
+            text: "Knowledge folded into model weights leaves no retrieval step for a production failure to be traced back to."
+          - block_id: body-attrib-surfaces
             role: body
             mode: cost
             concept: failure-attribution
-            heading: "Why the label set outlives the metric"
-            text: "A labelled query set names, for each question, the passages that actually answer it. Those passages are what recall@k and precision@k are computed against. The same passages become the answer key for judging a hallucination in the generated text. That key is expensive in annotator hours, and no framework removes the expense. A framework matters less than the label quality underneath it."
-            claim_ids: [C-attr-2]
+            heading: "What the two surfaces are worth"
+            text: "A fine-tuned model folds what a retriever would have supplied into its own weights. That model leaves no retrievable error source behind when the pipeline fails in production. A RAG pipeline keeps both surfaces addressable instead, and pays for that with a label set per boundary. The pipeline has four such boundaries — chunking, retrieval, reranking, generation — and production systems add more."
+            claim_ids: [C-a29027ab-22, C-56cc8dbe-1, C-56cc8dbe-4]
             provenance: inferred
-            source_ids: [s-attrib]
+            source_ids:
+              - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+              - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
 
-  # entry 2. The label is not banned, but copying it would still be a topic label with no scent.
+  # entry 2 of the user structure.
   - block_id: sec-faith
     title: "Faithfulness and answer relevance move apart, so one averaged score buries both"
     maps_to: "Metrics that matter"
@@ -138,80 +170,102 @@ sections:
     blocks:
       - block_id: lede-faith
         role: lede
-        text: "Faithfulness asks whether an answer is entailed by the retrieved context, and relevance asks whether the answer addresses the question. An answer can satisfy either property alone, so the two scores move apart and an average destroys the signal."
-        claim_ids: [C-faith-1]
+        text: "Faithfulness asks whether an answer is grounded in and inferable from the retrieved context. Faithfulness is one of four core metrics, beside answer relevance, plus context precision and context recall. Answer relevance is the one people confuse it with, and it measures only whether the response addresses the question asked."
+        claim_ids: [C-8ee2ad4d-4, C-22c548bc-1, C-8ee2ad4d-5]
         provenance: verified
-        source_ids: [s-metric]
+        source_ids:
+          - 8ee2ad4d316a9893170f5726fd67893be4787918
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
       - block_id: card-faith
         role: card
         concept: faithfulness
         mode: mental_model
-        claim_ids: [C-faith-1, C-faith-2]
+        claim_ids: [C-8ee2ad4d-4, C-22c548bc-5, C-8ee2ad4d-3, C-e0cec4fc-5, C-e0cec4fc-6, C-e0cec4fc-13]
         provenance: verified
-        source_ids: [s-metric]
+        source_ids:
+          - 8ee2ad4d316a9893170f5726fd67893be4787918
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+          - e0cec4fc48ec1fc278bf0857885da3042409ccdf
         row_claims:
-          idea: [C-faith-1]
-          key_exemplar: [C-faith-1]
+          idea: [C-8ee2ad4d-4]
+          reach_for_when: [C-8ee2ad4d-3]
+          key_exemplar: [C-e0cec4fc-5, C-e0cec4fc-6]
         rows:
-          idea: "Faithfulness scores the answer against the context; relevance scores it against the question."
+          idea: "Faithfulness scores an answer against its retrieved context; answer relevance scores it against the question."
           home_anchor: "Like reporting precision and recall separately rather than collapsing them into accuracy."
           whats_new_vs_renamed: "The two-axis habit is renamed; what is new is that the reference is retrieved per query, not held out once."
-          reach_for_when: "Reach for both axes whenever the generator can answer well from the wrong passage."
+          reach_for_when: "Reach for both axes when no human-annotated ground truth exists, which is the case RAGAS was built for."
           skip_when: "Skip faithfulness on an extractive task, where the answer is copied out of the context."
-          key_exemplar: "A fluent answer entailed by nothing retrieved: high on relevance, near zero on faithfulness."
-          confidence: "settled that the axes are separable; contested how either is measured at scale"
+          key_exemplar: "LangChain ships correctness, relevance and groundedness as separate evaluators, and only correctness needs a reference answer."
+          confidence: "settled that the axes are separable; the boundary between faithfulness and groundedness is not"
       - block_id: matrix-faith
         role: matrix
         artifact_kind: failure_catalog
         mode: failure
         concept: faithfulness
-        text: "Confident synthesis: the generator answers from parameters while the retrieved context says nothing. Context echo: the answer is perfectly faithful to a passage that never addresses the question. Partial support: half the answer is entailed, and a binary score reports the whole answer as unfaithful."
-        claim_ids: [C-faith-3]
+        text: "Confident synthesis: the generator answers from parameters while the context supports nothing, and a stronger model makes the failure more convincing rather than rarer. Context echo: the response aligns closely with a retrieved document that never addressed the question. Boundary creep: the answer stays inside what the context supports for most sentences and steps outside it on one. Partial support: half the answer is entailed, and a single verdict reports the whole answer as unfaithful."
+        claim_ids: [C-22c548bc-6, C-e0cec4fc-7, C-a29027ab-11]
+        # inferred: the four-way catalog is synthesis over the sources' separate observations.
         provenance: inferred
-        source_ids: [s-metric]
+        source_ids:
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+          - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+          - a29027abc40701b6c95f56ba68f05e055a4bbe6e
       - block_id: toulmin-faith
         role: toulmin
-        concept: faithfulness
         mode: tradeoff
-        text: "When a generator can produce fluent text from parameters alone, score faithfulness apart from relevance. Qualifier: faithfulness stops discriminating once retrieval precision is high, because almost every answer is then entailed. Rebuttal: on an extractive task the answer is copied from context, so faithfulness sits near one by construction and measures nothing."
-        claim_ids: [C-faith-1, C-faith-2]
+        concept: faithfulness
+        text: "Claim: score faithfulness and groundedness against separate thresholds — flag below 0.80 groundedness, block below 0.70 faithfulness. Warrant: the two thresholds measure different properties, whether a response stays inside what the context supports and whether it represents what those documents say. Rebuttal: faithfulness in RAGAS is defined as grounded in and inferable from retrieved context, which collapses the distinction. That distinction is what a published threshold assumes, so a team on the RAGAS definition has one score and two bars."
+        claim_ids: [C-a29027ab-18, C-a29027ab-11, C-a29027ab-12, C-8ee2ad4d-4]
         provenance: inferred
-        source_ids: [s-metric]
+        source_ids:
+          - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+          - 8ee2ad4d316a9893170f5726fd67893be4787918
       - block_id: fig-faith
         role: figure
         concept: faithfulness
         mode: benchmark
-        caption: "Figure 2: as retrieval precision rises, faithfulness saturates near one while answer relevance keeps discriminating."
+        caption: "Figure 2: faithfulness scores an answer against its retrieved context while answer relevance scores it against the question."
         svg_ref: "assets/faithfulness-relevance.svg"
       - block_id: recall-faith
         role: recall
+        claim_ids: [C-e0cec4fc-5, C-e0cec4fc-13, C-22c548bc-6]
+        provenance: verified
+        source_ids:
+          - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
         items:
-          - question: "An answer scores high on relevance and low on faithfulness. What happened?"
-            answer: "The generator answered from parameters, so nothing in the retrieved context entails the answer."
+          - question: "An evaluator scores a response with no reference answer available. Which property can it still be measuring?"
+            answer: "Groundedness, which is assessed against the retrieved documents; only correctness needs a reference answer in the dataset."
+            claim_ids: [C-e0cec4fc-5, C-e0cec4fc-13]
           - question: "Which two-number habit from classification carries over here?"
             answer: "Reporting precision and recall apart, because one aggregate hides which of the two actually moved."
             cross_domain: true
-          - question: "Why does faithfulness stop discriminating on a high-precision retriever?"
-            answer: "Nearly every answer is then entailed by its context, so the score piles up near one."
+          - question: "Why does a stronger generator not shrink your faithfulness problem?"
+            answer: "More powerful models produce more convincing hallucinations, so the failures get harder to spot rather than rarer."
+            claim_ids: [C-22c548bc-6]
 
     subsections:
-      - block_id: sub-faith-binary
-        title: "A binary faithfulness label throws away the half-supported answer"
+      - block_id: sub-faith-split
+        title: "Faithfulness and groundedness are one word in one framework and two in another"
         concept: faithfulness
         blocks:
-          - block_id: subsum-faith-binary
+          - block_id: subsum-faith-split
             role: summary
-            text: "Most wrong answers are partly entailed, so a yes-or-no verdict loses the thing worth fixing."
-          - block_id: body-faith-binary
+            text: "Two frameworks draw the line between the terms in different places, so the metric name alone does not say what was measured."
+          - block_id: body-faith-split
             role: body
             concept: faithfulness
-            heading: "Claim-level scoring keeps the diagnosis"
-            text: "A binary faithfulness label collapses a mixed answer into one verdict. That verdict hides which sentence of the answer failed, so the scoring gives you nothing to fix. Claim-level scoring splits the answer into atomic statements and checks each one against the context. Each statement then carries its own verdict, and the unsupported ones name the repair."
-            claim_ids: [C-faith-3]
+            heading: "One word, two definitions"
+            text: "Faithfulness and groundedness name two different properties in one framework and one property in another. Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports. Faithfulness measures something adjacent, whether a response accurately represents what the retrieved documents actually say. Groundedness heads one of three LangChain evaluators, beside correctness and relevance, and only correctness needs a reference answer. Faithfulness is also the RAGAS name for that first property, so one word carries two definitions."
+            claim_ids: [C-a29027ab-11, C-a29027ab-12, C-e0cec4fc-5, C-e0cec4fc-6, C-e0cec4fc-7, C-8ee2ad4d-4]
             provenance: inferred
-            source_ids: [s-metric]
+            source_ids:
+              - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+              - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+              - 8ee2ad4d316a9893170f5726fd67893be4787918
 
-  # entry 3.
+  # entry 3 of the user structure.
   - block_id: sec-judge
     title: "Every eval framework ships a judge you have not validated yet"
     maps_to: "Tooling"
@@ -219,71 +273,87 @@ sections:
     blocks:
       - block_id: lede-judge
         role: lede
-        text: "Judge calibration measures an eval framework's model against human labels on a held-out set. Without that calibration a framework reports numbers whose error rate nobody knows."
-        claim_ids: [C-judge-1]
+        text: "LLM-as-a-judge has become a prominent RAG evaluation metric over roughly the last year. A judge model rates each response against specific criteria such as faithfulness and relevance. That judge has been demonstrated to produce reasonable correlation with human judgment. That judge still needs periodic human spot checks, to verify that automated scores align with actual output quality."
+        claim_ids: [C-92827b86-1, C-22c548bc-17, C-92827b86-2, C-22c548bc-19]
         provenance: verified
-        source_ids: [s-judge]
+        source_ids:
+          - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
       - block_id: card-judge
         role: card
         concept: judge-calibration
         mode: mental_model
-        claim_ids: [C-judge-1, C-judge-2]
+        claim_ids: [C-22c548bc-17, C-22c548bc-19, C-4122c4ed-3, C-4122c4ed-7]
         provenance: verified
-        source_ids: [s-judge]
+        source_ids:
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+          - 4122c4ed8a779f447f9bc1371ff7954477d8beee
         row_claims:
-          idea: [C-judge-1]
-          key_exemplar: [C-judge-2]
+          idea: [C-22c548bc-17]
+          reach_for_when: [C-22c548bc-19]
+          key_exemplar: [C-4122c4ed-3, C-4122c4ed-7]
         rows:
-          idea: "A judge model is a classifier, so it has a true positive rate you have not measured."
+          idea: "A judge model scores against criteria, so it has an agreement rate with humans that you have not measured."
           home_anchor: "Like holding out a labelled split before a classifier is allowed to gate anything."
           whats_new_vs_renamed: "Held-out validation is renamed; what is new is that the classifier is a prompt anyone can edit."
-          reach_for_when: "Reach for calibration before a judge score reaches a dashboard or a release gate."
+          reach_for_when: "Reach for calibration before a judge score reaches a dashboard, then keep periodic human spot checks after it does."
           skip_when: "Skip it when the criterion is decidable in code, where an exact match already answers."
-          key_exemplar: "A hundred human-labelled traces, split into a develop half and a test half."
-          confidence: "settled that judges need validation; contested how many labels are enough"
+          key_exemplar: "On TREC 2024 support assessment, GPT-4o and human judges agreed perfectly 56 percent of the time."
+          confidence: "settled that judges need validation; the published agreement numbers are lower than the adoption suggests"
       - block_id: matrix-judge
         role: matrix
         artifact_kind: decision_aid
         mode: cost
         concept: judge-calibration
-        text: "Below fifty human labels, treat a judge score as a smoke test and gate nothing on it. Between fifty and two hundred, report the judge's true positive and true negative rates beside every number it produces. Above two hundred, correct the raw judge rate for those two error rates and gate on the corrected estimate."
-        claim_ids: [C-judge-2]
+        text: "No human labels: treat a judge score as a smoke test, because its agreement with humans on your data is unmeasured. A few hundred labels: that is what ARES asks for, and it spends them on prediction-powered inference to correct the judge's own prediction errors. Same budget, better protocol: humans post-editing GPT-4o output reached 72 percent agreement against 56 percent for labelling from scratch. Recurring budget: finetune a lightweight judge on synthetic training data, which is what ARES does rather than pay a frontier model per query."
+        claim_ids: [C-96072ac0-5, C-96072ac0-3, C-96072ac0-2, C-4122c4ed-3, C-4122c4ed-4]
         provenance: inferred
-        source_ids: [s-judge]
+        source_ids:
+          - 96072ac0a9442594589eacb8b5f43e8fad807de1
+          - 4122c4ed8a779f447f9bc1371ff7954477d8beee
       - block_id: fig-judge
         role: figure
         concept: judge-calibration
         mode: benchmark
-        caption: "Figure 3: a judge at ninety percent true positive rate shifts the reported pass rate by several points."
+        caption: "Figure 3: human and GPT-4o agreement on TREC 2024 support assessment, 56 percent from scratch and 72 percent after human post-editing."
         svg_ref: "assets/judge-calibration.svg"
       - block_id: recall-judge
         role: recall
+        claim_ids: [C-92827b86-2, C-4122c4ed-3, C-4122c4ed-4]
+        provenance: verified
+        source_ids:
+          - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+          - 4122c4ed8a779f447f9bc1371ff7954477d8beee
         items:
-          - question: "Your judge reports eighty percent faithful. What is missing before that number ships?"
-            answer: "The judge's own true positive and true negative rates, measured on human-labelled traces."
+          - question: "Your framework reports eighty percent faithful. What is missing before that number gates a release?"
+            answer: "The judge's own agreement rate on your data, which a demonstrated correlation with human judgment does not supply."
+            claim_ids: [C-92827b86-2]
           - question: "What does judge calibration correspond to in a supervised training workflow?"
             answer: "Holding out a labelled test split, because a scorer fitted on everything reports its own optimism."
             cross_domain: true
-          - question: "When is calibrating a judge wasted effort?"
-            answer: "When the criterion is decidable in code, where an exact match is already the ground truth."
+          - question: "Human labels are expensive. Which protocol buys the most agreement per hour?"
+            answer: "Post-editing the judge's predictions rather than labelling from scratch, which moved agreement from 56 to 72 percent."
+            claim_ids: [C-4122c4ed-3, C-4122c4ed-4]
 
     subsections:
-      - block_id: sub-judge-prompt
-        title: "Editing the judge prompt retires every score above it"
+      - block_id: sub-judge-ceiling
+        title: "The judge agreed with the model more than the humans agreed with each other"
         concept: judge-calibration
         blocks:
-          - block_id: subsum-judge-prompt
+          - block_id: subsum-judge-ceiling
             role: summary
-            text: "A judge prompt is a model version, so editing it retires the calibration measured against the old one."
-          - block_id: body-judge-prompt
+            text: "An independent human judge correlated better with GPT-4o than with the other human, which caps what agreement can mean."
+          - block_id: body-judge-ceiling
             role: body
             mode: failure
             concept: judge-calibration
-            heading: "Silent drift in the scorer itself"
-            text: "A judge prompt gets edited far more often than a checkpoint gets replaced, and each edit is a version change. That edit retires the calibration measured against the previous prompt. A calibration that nobody retires is the one people trust longest. Version the prompt beside the code, then measure agreement again after every edit."
-            claim_ids: [C-judge-3]
+            heading: "The ceiling is human disagreement"
+            text: "An independent human judge's assessments correlated better with GPT-4o than another human judge's assessments did. Those assessments do not make the model a better judge than a person. The judge is capped by human disagreement instead, because two people scoring the same assessment already differ. Disagreement is not uniform, since RAGAS annotators agreed about 95 percent of the time on faithfulness and 90 percent on answer relevance."
+            claim_ids: [C-4122c4ed-5, C-8ee2ad4d-13]
             provenance: inferred
-            source_ids: [s-judge]
+            source_ids:
+              - 4122c4ed8a779f447f9bc1371ff7954477d8beee
+              - 8ee2ad4d316a9893170f5726fd67893be4787918
 
   # entry 4, and the shortest section — salience, not uniform padding (R-ARCH-06).
   - block_id: sec-drift
@@ -293,66 +363,84 @@ sections:
     blocks:
       - block_id: lede-drift
         role: lede
-        text: "An eval set is frozen against a corpus that keeps changing underneath it. That corpus gains documents and retires others, so eval set drift opens between the score and the system."
-        claim_ids: [C-drift-1]
+        text: "Enterprise documents evolve continuously underneath the retriever, which makes a static test set outdated quickly. The retriever is structurally blind to that staleness. That retriever keeps returning its usual numbers, so the eval measures a corpus that no longer exists."
+        claim_ids: [C-4833d8ca-5, C-d82e8275-13]
         provenance: verified
-        source_ids: [s-drift]
+        source_ids:
+          - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+          - d82e8275aa9034f305abcdf1d441e96e56b022db
       - block_id: card-drift
         role: card
         concept: eval-set-drift
         mode: mental_model
-        claim_ids: [C-drift-1, C-drift-2]
+        claim_ids: [C-4833d8ca-5, C-d82e8275-13, C-4044d111-3, C-22c548bc-2]
         provenance: verified
-        source_ids: [s-drift]
+        source_ids:
+          - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+          - d82e8275aa9034f305abcdf1d441e96e56b022db
+          - 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
         row_claims:
-          idea: [C-drift-1]
-          key_exemplar: [C-drift-2]
+          idea: [C-4833d8ca-5]
+          key_exemplar: [C-4044d111-3]
+          confidence: [C-22c548bc-2]
         rows:
-          idea: "An eval set measures the corpus it was labelled against, not the corpus you serve today."
+          idea: "An eval set measures the corpus it was labelled against, and enterprise documents evolve continuously underneath it."
           home_anchor: "Like training-serving skew, where the feature distribution moves after the model is fit."
-          whats_new_vs_renamed: "Distribution shift is renamed; what is new is that a label is a pointer, so an ingest can delete it."
+          whats_new_vs_renamed: "Distribution shift is renamed; what is new is that the retriever is structurally blind to staleness."
           reach_for_when: "Reach for a refresh policy the first time a corpus rebuild moves a score you did not touch."
-          skip_when: "Skip refreshing when the corpus is a fixed archive, where the labels cannot go stale."
-          key_exemplar: "A relevance label pointing at a passage that the last ingest deleted."
-          confidence: "contested: no settled refresh cadence has been established"
+          skip_when: "Skip refreshing when the corpus is a fixed archive, where the documents cannot go stale."
+          key_exemplar: "TREC's RAG track replaced MS MARCO v2.1 with ClimbMix-400b as its official corpus for 2026."
+          confidence: "contested: standard metrics assume the index is trustworthy, and no refresh cadence is settled"
       - block_id: checklist-drift
         role: matrix
         artifact_kind: checklist
-        text: "Re-resolve every labelled passage pointer after each ingest. Record the corpus snapshot identifier beside every score. Re-label a sampled slice on a fixed cadence rather than all at once. Refuse to compare two scores taken against different snapshots."
-        claim_ids: [C-drift-2]
+        text: "Record the corpus snapshot identifier beside every score, and refuse to compare two scores taken against different snapshots. Add a fifth dimension for index reliability, because the standard four measure pipeline performance rather than whether the source content is trustworthy. Re-read a benchmark's corpus version before quoting its numbers, since a track can replace its official corpus between years."
+        claim_ids: [C-22c548bc-14, C-22c548bc-15, C-4044d111-3]
         provenance: inferred
-        source_ids: [s-drift]
+        source_ids:
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+          - 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
       - block_id: fig-drift
         role: figure
         concept: eval-set-drift
         mode: historical
-        caption: "Figure 4: the reported score holds steady across rebuilds while the fraction of resolvable labels falls."
+        caption: "Figure 4: the reported score holds steady across corpus rebuilds while the fraction of still-resolvable labels falls."
         svg_ref: "assets/eval-set-drift.svg"
       - block_id: recall-drift
         role: recall
+        claim_ids: [C-22c548bc-2, C-8ee2ad4d-12]
+        provenance: verified
+        source_ids:
+          - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+          - 8ee2ad4d316a9893170f5726fd67893be4787918
         items:
           - question: "A nightly ingest ran and your eval score improved by three points. What do you check?"
-            answer: "How many labelled passages still resolve, because a deleted passage can flatter recall rather than raise it."
+            answer: "Whether the index still holds what the labels point at, since these metrics assume the index is trustworthy."
+            claim_ids: [C-22c548bc-2]
           - question: "Which production monitoring problem has the same shape?"
             answer: "Training-serving skew, where the data moves after the model was fit and nobody refits it."
             cross_domain: true
-          - question: "Why is a refresh cadence still an open problem?"
-            answer: "Re-labelling costs annotator time, and no result says how much staleness a score can absorb."
+          - question: "How does WikiEval bound its own staleness?"
+            answer: "By fixing scope — 50 Wikipedia pages covering events since the beginning of 2022 — rather than by refreshing."
+            claim_ids: [C-8ee2ad4d-12]
 
     subsections:
-      - block_id: sub-drift-pointer
-        title: "Relevance labels are pointers, and pointers dangle"
+      - block_id: sub-drift-groundtruth
+        title: "The routes out of drift disagree about what ground truth even is"
         concept: eval-set-drift
         blocks:
-          - block_id: subsum-drift-pointer
+          - block_id: subsum-drift-groundtruth
             role: summary
-            text: "A relevance label names a passage by identifier, so an ingest that re-chunks the corpus can orphan it."
-          - block_id: body-drift-pointer
+            text: "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers."
+          - block_id: body-drift-groundtruth
             role: body
             mode: failure
             concept: eval-set-drift
-            heading: "The dangling label problem"
-            text: "A relevance label points at a passage identifier rather than at text. That identifier is rewritten whenever an ingest re-chunks the document. A changed identifier raises no error, so the label silently leaves the recall denominator. Recall then rises, because the questions nobody could answer have quietly left the set."
-            claim_ids: [C-drift-2]
+            heading: "Regenerate the set, or refuse to"
+            text: "Synthetic generation can build question-and-answer triplets with their context, straight from the knowledge base, so the eval set is rebuilt with the corpus. That generation keeps pace with drift by construction, which is one position. The opposing position holds that the optimal ground truth for enterprise RAG is institutionally validated business answers, not a synthetic dataset. That position trades freshness for authority, and neither side carries a settled refresh cadence."
+            claim_ids: [C-4833d8ca-6, C-22c548bc-20]
             provenance: inferred
-            source_ids: [s-drift]
+            source_ids:
+              - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+              - 22c548bca734aa2677ccf9be6d95d8fb8745b90a

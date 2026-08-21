@@ -13,11 +13,15 @@ parameters:
     - "Metrics that matter"
     - "Tooling"
     - "Open problems"
-# A hand-built REFERENCE artifact, in the same spirit as spec-01's — not a real generation.
-# Its sources are openly synthetic (`example.org`, fictional authors) because this fixture exercises
-# STRUCTURE: it is what lets this spec's deterministic rules run against a document shaped the way
-# the spec describes. It makes no grounding claim, and it is deliberately distinguishable at a glance
-# from spec-02's ledger, which came from a real campaign with verbatim-verified quotes.
+# A hand-built REFERENCE artifact on REAL sources. The outline came first — the four `user_structure`
+# entries above pin the four concepts — and a Phase 1/1a campaign was then run against this exact
+# target_domain on 2026-08-21 (76 min, $5.05, 116 documents fetched, 30 extracted, 343 claims kept,
+# 87 concepts grouped). Raw campaign output is committed under tests/fixtures/spec06-grounded/;
+# tests/fixtures/spec06/ is the curated 12-source, 53-claim subset the artifact cites, and its
+# ledger header records which fields were hand-filled at curation time and why.
+# That ordering is what makes this spec worth more than a structural fixture: the structure was
+# chosen before the evidence, so the evidence could have broken it. All four concepts survived; one
+# alias did not (`groundedness` is no longer a synonym for `faithfulness` — see concept-map.yaml).
 # The soft_critic rules in `expect.must_pass` still need a judge run; offline they report as the
 # documented judge gap rather than as a pass.
 artifact:

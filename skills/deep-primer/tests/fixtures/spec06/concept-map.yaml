@@ -1,6 +1,25 @@
 # Concept-map for spec-06-user-structured-eval. One concept per user-structure entry, each realized
 # in >=3 modes so R-MV-01 passes. Every home_anchor resolves to an ADJACENT technique a mid/senior
 # ML engineer already owns — never the concept restated, which is what R-XREF-04 catches.
+#
+# The four concepts are PINNED by the spec's user_structure and were fixed before the campaign ran,
+# so this map is a real test of whether grounding confirms or contradicts a structure chosen up
+# front. All four survived. The 2026-08-21 run's own grouper independently produced
+# c23-RAG-reliability-and-failure-decomposition + c7-RAG-failure-modes + c8-Error-taxonomy for the
+# first, c19-Faithfulness-and-groundedness + c1-Core-RAG-evaluation-metrics for the second,
+# c9-LLM-as-judge-evaluation for the third, and c15-Evaluation-metric-validity for the fourth.
+#
+# ONE THING THE EVIDENCE CHANGED. `faithfulness` used to carry `groundedness` as a bare alias. The
+# corpus does not support treating them as one term: a29027ab defines them as SEPARATE failure
+# surfaces (C-a29027ab-11 vs C-a29027ab-12) while RAGAS defines faithfulness AS groundedness
+# (C-8ee2ad4d-4), and LangChain ships three DIFFERENT evaluators along that seam (C-e0cec4fc-5/6/7).
+# An alias asserts the terms are interchangeable, so the alias is wrong and is gone. The
+# disagreement is now carried where it belongs — as the symmetric contested pair in the ledger, and
+# as the concept's `contested` status. `answer faithfulness` replaces it: that IS the same property
+# under another name, per ARES (C-96072ac0-1).
+#
+# source_ids and claim_ids are the real full-hex ids from tests/fixtures/spec06-grounded/, so every
+# id here greps back to the campaign output it came from.
 concepts:
   - concept_id: failure-attribution
     canonical_term: "failure attribution"
@@ -13,14 +32,34 @@ concepts:
       - {mode: mental_model, block_ref: card-attrib}
       - {mode: tradeoff, block_ref: matrix-attrib}
       - {mode: architecture, block_ref: fig-attrib}
-      - {mode: failure, block_ref: body-attrib-recall}
-      - {mode: cost, block_ref: body-attrib-labels}
-    source_ids: [s-attrib]
-    claim_ids: [C-attr-1, C-attr-2, C-attr-3]
+      - {mode: failure, block_ref: body-attrib-blackbox}
+      - {mode: cost, block_ref: body-attrib-surfaces}
+    source_ids:
+      - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+      - 964231ec57389834e9f89b5a447be2e968a39342
+      - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+      - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+      - d82e8275aa9034f305abcdf1d441e96e56b022db
+    claim_ids:
+      - C-a29027ab-3
+      - C-a29027ab-10
+      - C-a29027ab-21
+      - C-a29027ab-22
+      - C-964231ec-15
+      - C-964231ec-23
+      - C-964231ec-24
+      - C-4833d8ca-4
+      - C-4833d8ca-8
+      - C-56cc8dbe-1
+      - C-56cc8dbe-4
+      - C-56cc8dbe-17
+      - C-56cc8dbe-18
+      - C-56cc8dbe-19
+      - C-d82e8275-2
 
   - concept_id: faithfulness
     canonical_term: "faithfulness"
-    aliases: ["groundedness"]
+    aliases: ["answer faithfulness"]
     home_anchor: "reporting precision and recall separately rather than collapsing them into accuracy"
     fidelity_boundary: "breaks because the reference is retrieved context that changes per query, not a fixed held-out label"
     epistemic_status: contested
@@ -30,8 +69,27 @@ concepts:
       - {mode: failure, block_ref: matrix-faith}
       - {mode: tradeoff, block_ref: toulmin-faith}
       - {mode: benchmark, block_ref: fig-faith}
-    source_ids: [s-metric]
-    claim_ids: [C-faith-1, C-faith-2, C-faith-3]
+    source_ids:
+      - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+      - 8ee2ad4d316a9893170f5726fd67893be4787918
+      - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+      - 96072ac0a9442594589eacb8b5f43e8fad807de1
+      - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+    claim_ids:
+      - C-a29027ab-11
+      - C-a29027ab-12
+      - C-a29027ab-18
+      - C-8ee2ad4d-3
+      - C-8ee2ad4d-4
+      - C-8ee2ad4d-5
+      - C-22c548bc-1
+      - C-22c548bc-5
+      - C-22c548bc-6
+      - C-96072ac0-1
+      - C-e0cec4fc-5
+      - C-e0cec4fc-6
+      - C-e0cec4fc-7
+      - C-e0cec4fc-13
 
   - concept_id: judge-calibration
     canonical_term: "judge calibration"
@@ -44,9 +102,29 @@ concepts:
       - {mode: mental_model, block_ref: card-judge}
       - {mode: cost, block_ref: matrix-judge}
       - {mode: benchmark, block_ref: fig-judge}
-      - {mode: failure, block_ref: body-judge-prompt}
-    source_ids: [s-judge]
-    claim_ids: [C-judge-1, C-judge-2, C-judge-3]
+      - {mode: failure, block_ref: body-judge-ceiling}
+    source_ids:
+      - 4122c4ed8a779f447f9bc1371ff7954477d8beee
+      - 96072ac0a9442594589eacb8b5f43e8fad807de1
+      - 8ee2ad4d316a9893170f5726fd67893be4787918
+      - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+      - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+    claim_ids:
+      - C-4122c4ed-3
+      - C-4122c4ed-4
+      - C-4122c4ed-5
+      - C-4122c4ed-7
+      - C-96072ac0-2
+      - C-96072ac0-3
+      - C-96072ac0-5
+      - C-96072ac0-6
+      - C-8ee2ad4d-13
+      - C-8ee2ad4d-14
+      - C-92827b86-1
+      - C-92827b86-2
+      - C-92827b86-3
+      - C-22c548bc-17
+      - C-22c548bc-19
 
   - concept_id: eval-set-drift
     canonical_term: "eval set drift"
@@ -58,6 +136,20 @@ concepts:
     representation_modes:
       - {mode: mental_model, block_ref: card-drift}
       - {mode: historical, block_ref: fig-drift}
-      - {mode: failure, block_ref: body-drift-pointer}
-    source_ids: [s-drift]
-    claim_ids: [C-drift-1, C-drift-2, C-drift-3]
+      - {mode: failure, block_ref: body-drift-groundtruth}
+    source_ids:
+      - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+      - d82e8275aa9034f305abcdf1d441e96e56b022db
+      - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+      - 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
+      - 8ee2ad4d316a9893170f5726fd67893be4787918
+    claim_ids:
+      - C-4833d8ca-5
+      - C-4833d8ca-6
+      - C-d82e8275-13
+      - C-22c548bc-2
+      - C-22c548bc-14
+      - C-22c548bc-15
+      - C-22c548bc-20
+      - C-4044d111-3
+      - C-8ee2ad4d-12
