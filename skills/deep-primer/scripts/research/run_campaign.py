@@ -156,7 +156,13 @@ def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
         },
         "retrieval": {
             "documents_fetched": len(getattr(backend, "documents", [])),
+            "documents_resolved": len(retrieval.documents),
             "documents_extracted": len(documents),
+            # The cap that made resolved != extracted, so the gap reads as a setting rather than a
+            # failure. Without it the 2026-08-20 spec-03 run looked like retrieval had lost 90 of
+            # its 120 documents; it had not, it was told to stop at 30. A bound on coverage that
+            # the report does not name is indistinguishable from having covered everything.
+            "max_docs": max_docs,
             "unresolved": retrieval.unresolved,
         },
         "grounding": {
