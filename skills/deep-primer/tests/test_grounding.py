@@ -798,11 +798,12 @@ def _stub_cli(payloads):
     class _Cli:
         calls = 0
         spend_usd = 0.0
+        timeout_s = 420
 
         def __init__(self):
             self.seen = []
 
-        def result_json(self, instruction):
+        def result_json(self, instruction, **_):
             self.seen.append(instruction)
             return payloads[min(len(self.seen) - 1, len(payloads) - 1)]
 
@@ -873,11 +874,69 @@ def test_a_grouping_outage_leaves_honest_singletons_not_a_dead_run():
     class _DeadCli:
         calls = 0
         spend_usd = 0.0
+        timeout_s = 420                                    # `_ask` doubles it on the retry
 
-        def result_json(self, _instruction):
+        def result_json(self, _instruction, **_):
             raise CliUnavailable("simulated outage")
 
     grouper = ClaudeConceptGrouper(cli=_DeadCli())
     cm = curate.curate_concept_map(_curation_ledger(), grouper=grouper)
     assert len(cm.concepts) == 3                           # ungrouped, but every claim still there
     assert "simulated outage" in grouper.errors[0]         # recorded, not swallowed
+
+
+def test_a_grouping_call_lost_to_the_clock_is_retried_before_it_is_believed():
+    """One slow call must not cost a whole batch its grouping.
+
+    Spec-04's 2026-08-21 campaign is the measurement: concept batch 2 of 3 died on `claude CLI
+    exceeded 420s`, batch 1 — an instruction built from the same 150 claims — had just succeeded,
+    and the run still exited 0 with 215 "concepts" from 333 claims. Nothing about that batch was
+    unanswerable; the clock ran out. The retry gets a longer ceiling because the evidence that we
+    are near one is that we just hit it, and the first failure is recorded either way — a retry
+    that rescues a run silently is a run whose latency is drifting invisibly.
+    """
+    from research.claude_curator import RETRY_TIMEOUT_FACTOR, ClaudeConceptGrouper
+    from utils.claude_cli import CliUnavailable
+
+    class _SlowOnceCli:
+        calls = 0
+        spend_usd = 0.0
+        timeout_s = 420
+
+        def __init__(self):
+            self.ceilings: list = []
+
+        def result_json(self, _instruction, *, timeout_s=None):
+            self.ceilings.append(timeout_s)
+            if len(self.ceilings) == 1:
+                raise CliUnavailable("claude CLI exceeded 420s")
+            return {"groups": [{"claim_ids": ["C1", "C2", "C3"], "canonical_term": "chunking",
+                                "home_anchor": "a page of a book"}]}
+
+    grouper = ClaudeConceptGrouper(cli=_SlowOnceCli())
+    cm = curate.curate_concept_map(_curation_ledger(), grouper=grouper)
+
+    assert len(cm.concepts) == 1                           # the retry's answer was used
+    assert grouper.errors == []                            # a rescued call is not a failure
+    assert any("retrying once" in n for n in grouper.notes)
+    assert grouper.lost_claims == 0
+    assert grouper.cli.ceilings == [None, 420 * RETRY_TIMEOUT_FACTOR]
+
+
+def test_a_batch_that_proposes_nothing_is_counted_not_quietly_absorbed():
+    """A silent batch and a batch of genuinely unique claims produce the SAME artifact.
+
+    Either way every claim falls through `resolve_groups` to a singleton concept, and the concept
+    map cannot tell the two apart afterwards. So the grouper counts the claims it lost at the point
+    where it still knows — the driver is what refuses to write the result (see test_run_campaign).
+    An empty `groups` list is counted alongside the outage because a call that answers nothing
+    costs exactly as much as a call that never returned.
+    """
+    from research.claude_curator import ClaudeConceptGrouper
+
+    grouper = ClaudeConceptGrouper(cli=_stub_cli([{"groups": []}]))
+    cm = curate.curate_concept_map(_curation_ledger(), grouper=grouper)
+
+    assert len(cm.concepts) == 3                           # indistinguishable from three uniques
+    assert grouper.lost_claims == 3                        # which is why the count exists
+    assert "no groups proposed" in grouper.errors[0]

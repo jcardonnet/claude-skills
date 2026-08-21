@@ -52,6 +52,11 @@ from utils.claude_cli import ClaudeCli, CliUnavailable  # noqa: E402
 #: instruction — well inside a window, and small enough that the model still attends to the tail.
 MAX_CLAIMS_PER_CALL = 150
 
+#: How much longer a retried call may take than the first attempt. A retry is only ever reached
+#: after a failure, and the failure this exists for is the clock, so re-running under the ceiling
+#: that just expired would mostly re-expire.
+RETRY_TIMEOUT_FACTOR = 2
+
 #: Characters of a claim shown to the model. Claims are one sentence by construction (R-GROUND-01);
 #: anything past this is a run-on that grouping does not need in full.
 CLAIM_CHARS = 240
@@ -186,15 +191,29 @@ class _ClaudeGrouper:
         self.cli = self.cli or ClaudeCli(model=self.model, cost_cap_usd=self.cost_cap_usd)
 
     def _ask(self, instruction: str, what: str) -> dict:
-        """One call. A failure is an empty answer for THIS step, recorded, not a dead run.
+        """One call, retried once. A failure that survives the retry is an empty answer for THIS
+        step, recorded, not a dead run.
+
+        The retry is there because of one measured failure. Spec-04's 2026-08-21 campaign lost
+        concept batch 2 of 3 to `claude CLI exceeded 420s` — and batch 1, the same 150 claims'
+        worth of instruction, had just succeeded under the same ceiling. That is latency variance,
+        not a question the model could not answer, and treating it as final cost 196 claims their
+        grouping. The second attempt gets a longer ceiling: the evidence that we are near one is
+        that we just hit it.
 
         `CliBudgetExceeded` is deliberately not caught: it is not a subclass of `CliUnavailable`,
-        and a run that has hit its ceiling must stop rather than quietly group nothing.
+        and a run that has hit its ceiling must stop rather than quietly group nothing. That also
+        bounds the retry — it cannot spend a run past its cap.
         """
         try:
             return self.cli.result_json(instruction)
+        except (CliUnavailable, json.JSONDecodeError) as first:
+            self.notes.append(f"{what}: retrying once after {type(first).__name__}: {first}")
+        try:
+            return self.cli.result_json(
+                instruction, timeout_s=self.cli.timeout_s * RETRY_TIMEOUT_FACTOR)
         except (CliUnavailable, json.JSONDecodeError) as exc:
-            self.errors.append(f"{what}: {type(exc).__name__}: {exc}")
+            self.errors.append(f"{what}: {type(exc).__name__}: {exc} (after one retry)")
             return {}
 
 
@@ -203,6 +222,15 @@ class ClaudeConceptGrouper(_ClaudeGrouper):
     """Groups claims into concepts AND names them, in one call per batch plus a merge pass."""
 
     max_claims_per_call: int = MAX_CLAIMS_PER_CALL
+
+    #: Claims whose batch came back with no groups at all. A batch that answers nothing is not a
+    #: grouping this run can stand behind: every one of its claims falls through to a singleton
+    #: concept, which is indistinguishable in the artifact from a claim the model genuinely found
+    #: unique. Counted rather than raised here because degrading gracefully is still the right
+    #: behaviour for a GROUPER — it is the driver that has to refuse to call the result a campaign
+    #: (see `run_campaign.run`). Covers both halves of the failure: a call that died, and a call
+    #: that returned `{"groups": []}` for 150 claims.
+    lost_claims: int = field(default=0, init=False)
 
     def __call__(self, claims: list[tuple[str, str]], params: dict) -> list[dict]:
         if not claims:
@@ -223,7 +251,13 @@ class ClaudeConceptGrouper(_ClaudeGrouper):
             payload = self._ask(_CONCEPT_INSTRUCTION.format(
                 target=target, home=home or "(not stated)", claims=_render(batch),
                 target_groups=n), f"concept batch {i}/{len(batches)}")
-            groups.extend(g for g in (payload.get("groups") or []) if isinstance(g, dict))
+            proposed = [g for g in (payload.get("groups") or []) if isinstance(g, dict)]
+            if not proposed:
+                self.lost_claims += len(batch)
+                self.errors.append(
+                    f"concept batch {i}/{len(batches)}: no groups proposed for {len(batch)} "
+                    f"claim(s); every one of them would become a singleton")
+            groups.extend(proposed)
 
         return self._merge(groups, claims, target) if len(batches) > 1 else groups
 

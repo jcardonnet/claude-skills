@@ -172,16 +172,16 @@ def test_claude_entailment_treats_every_failure_as_not_supported():
 
     judge = ClaudeEntailmentJudge()
 
-    judge.cli.result_text = lambda _instruction: '{"supports": true, "why": "ok"}'
+    judge.cli.result_text = lambda _instruction, **_: '{"supports": true, "why": "ok"}'
     assert judge("evidence", "statement") is True
 
-    judge.cli.result_text = lambda _instruction: '{"supports": "probably", "why": "hedged"}'
+    judge.cli.result_text = lambda _instruction, **_: '{"supports": "probably", "why": "hedged"}'
     assert judge("evidence", "statement") is False
 
-    judge.cli.result_text = lambda _instruction: "not json at all"
+    judge.cli.result_text = lambda _instruction, **_: "not json at all"
     assert judge("evidence", "statement") is False
 
-    def _boom(_instruction):
+    def _boom(_instruction, **_):
         raise CliUnavailable("simulated outage")
 
     judge.cli.result_text = _boom

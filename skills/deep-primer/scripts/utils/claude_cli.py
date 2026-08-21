@@ -176,19 +176,25 @@ class ClaudeCli:
     def calls(self) -> int:
         return self.budget.calls
 
-    def __call__(self, instruction: str) -> dict:
-        """Run one call and return the parsed CLI envelope. Raises CliUnavailable on any failure."""
+    def __call__(self, instruction: str, *, timeout_s: int | None = None) -> dict:
+        """Run one call and return the parsed CLI envelope. Raises CliUnavailable on any failure.
+
+        `timeout_s` overrides the ceiling for THIS call only. It exists for retries: a caller that
+        just lost a call to the clock has evidence it is near the ceiling, and re-running it under
+        the same ceiling mostly re-loses it (see `claude_curator._ask`).
+        """
+        ceiling = timeout_s or self.timeout_s
         try:
             # A neutral cwd: run from inside the repo and the CLI loads CLAUDE.md and project
             # context into every call — irrelevant to the judgement, and paid for each time.
             with tempfile.TemporaryDirectory() as neutral_cwd:
                 proc = subprocess.run(
                     self._argv(instruction),
-                    capture_output=True, text=True, timeout=self.timeout_s, cwd=neutral_cwd,
+                    capture_output=True, text=True, timeout=ceiling, cwd=neutral_cwd,
                     check=False,
                 )
         except subprocess.TimeoutExpired as exc:
-            raise CliUnavailable(f"claude CLI exceeded {self.timeout_s}s") from exc
+            raise CliUnavailable(f"claude CLI exceeded {ceiling}s") from exc
         except OSError as exc:
             raise CliUnavailable(f"claude CLI could not be started: {exc}") from exc
 
@@ -204,11 +210,11 @@ class ClaudeCli:
             raise CliUnavailable(f"CLI reported an error: {str(envelope.get('result'))[:200]}")
         return envelope
 
-    def result_text(self, instruction: str) -> str:
+    def result_text(self, instruction: str, *, timeout_s: int | None = None) -> str:
         """The model's answer, fence-stripped."""
-        return strip_fence(str(self(instruction).get("result", "")))
+        return strip_fence(str(self(instruction, timeout_s=timeout_s).get("result", "")))
 
-    def result_json(self, instruction: str) -> dict:
+    def result_json(self, instruction: str, *, timeout_s: int | None = None) -> dict:
         """The model's answer parsed as a JSON object.
 
         Uses `extract_json`, not a bare `json.loads`. Three separate runs in this project died on
@@ -216,4 +222,4 @@ class ClaudeCli:
         time a correct answer was discarded over packaging. Parse leniently, validate strictly:
         the CONTENT still has to satisfy the caller's contract.
         """
-        return extract_json(self.result_text(instruction))
+        return extract_json(self.result_text(instruction, timeout_s=timeout_s))

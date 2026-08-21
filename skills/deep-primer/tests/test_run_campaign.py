@@ -167,3 +167,64 @@ def test_the_grouping_seams_are_wired_and_what_they_reject_is_reported(tmp_path)
     assert any("C-invented" in n for n in report["grouping"]["gate_rejections"])
     assert "stub grouper ran" in report["grouping"]["grouper_notes"]
     assert report["calls"]["group"] == 0                 # stubs carry no cli; the field still exists
+
+
+def test_a_grouping_that_lost_a_batch_is_refused_not_written(tmp_path):
+    """A concept map of mostly singletons must not be filed as a campaign.
+
+    On 2026-08-21 spec-04 finished with `claims kept 333 · corroborated 20 · concepts 215` and exit
+    0. One of three concept batches had timed out; its ~150 claims each became their own concept,
+    and nothing in the artifact distinguishes that from 150 claims the model judged unique. The
+    grouper is right to degrade — a dead call should not kill a 65-minute run — so the refusal lives
+    here, in the step that decides whether what came back is a campaign. The ledger is written
+    BEFORE this point on purpose: the expensive half survives the refusal, and `--from-ledger`
+    resumes from it for the cost of grouping alone.
+    """
+    import pytest
+
+    class _LostBatch:
+        notes = ()
+        errors = ("concept batch 2/3: no groups proposed for 150 claim(s)",)
+        lost_claims = 150
+
+        def __call__(self, _claims, _params):
+            return []
+
+    out = tmp_path / "out"
+    with pytest.raises(RuntimeError, match="lost 150 of 3 claims"):
+        run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
+            backend=_Backend(), extractor=_Extractor(), judge=_NoFinding(), grouper=_LostBatch())
+
+    assert (out / "source-ledger.yaml").is_file()         # the grounding survives the refusal
+    assert not (out / "concept-map.yaml").exists()        # the degraded map does not
+
+
+def test_from_ledger_regroups_without_paying_for_the_grounding_again(tmp_path):
+    """Re-running a grouping that failed should not mean discarding a grounding that succeeded.
+
+    Extraction is a model call, so a second pass over the same corpus yields a DIFFERENT ledger —
+    `--from-corpus` re-runs it (51 calls and ~40 minutes on spec-04) and replaces the very artifact
+    the retry was supposed to preserve. Grouping was 3 of those calls. This path reads the ledger
+    already on disk, which is post-corroboration and post-recency because those ran before it was
+    written, and starts at the step that failed.
+    """
+    out = tmp_path / "out"
+    run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
+        backend=_Backend(), extractor=_Extractor(), judge=_NoFinding(), **OFFLINE)
+    frozen = (out / "source-ledger.yaml").read_text(encoding="utf-8")
+    (out / "concept-map.yaml").unlink()
+
+    class _Forbidden:
+        errors = ()
+
+        def __call__(self, _doc):
+            raise AssertionError("--from-ledger must not re-extract")
+
+    report = run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
+                 from_ledger=True, extractor=_Forbidden(), judge=_NoFinding(), **OFFLINE)
+
+    assert (out / "concept-map.yaml").is_file()           # the step that failed ran again
+    assert (out / "source-ledger.yaml").read_text(encoding="utf-8") == frozen   # untouched
+    assert report["resumed_from"] == "ledger"             # named, so the zeroes below read right
+    assert report["retrieval"]["documents_fetched"] == 0
+    assert report["grounding"]["claims_kept"] == 3        # counted off the ledger it reused
