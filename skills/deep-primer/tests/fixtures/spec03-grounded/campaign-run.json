@@ -2,7 +2,7 @@
   "spec": "spec-03-observability-tracing.yaml",
   "topic": "distributed tracing and the observability stack",
   "as_of": "2026-08-20",
-  "wall_clock_s": 3726.3,
+  "wall_clock_s": 2912.0,
   "discovery": {
     "waves": [
       {
@@ -34,65 +34,75 @@
       }
     ],
     "terminal": "max_waves",
-    "briefs": 11,
+    "briefs": 0,
     "source_leads": 143,
-    "dropped_by_backend": 29
+    "dropped_by_backend": 0
   },
   "retrieval": {
-    "documents_fetched": 128,
+    "documents_fetched": 0,
+    "documents_resolved": 120,
     "documents_extracted": 30,
+    "max_docs": 30,
     "unresolved": []
   },
   "grounding": {
-    "claims_kept": 271,
-    "claims_rejected": 30,
-    "corroborated": 0,
+    "claims_kept": 281,
+    "claims_rejected": 23,
+    "corroborated": 22,
     "extractor_errors": [],
     "rejections": [
       "bd3da1a2-1: quote not found in the fetched body of https://opentelemetry.io/docs/concepts/signals/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "bd3da1a2-4: quote not found in the fetched body of https://opentelemetry.io/docs/concepts/signals/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
       "b23a3dff-1: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-go-instrumentation \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
       "b23a3dff-3: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-go-instrumentation \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
       "b23a3dff-8: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-go-instrumentation \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "e442ace9-7: quote not found in the fetched body of https://github.com/openzipkin/zipkin \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
       "c33bab73-5: quote not found in the fetched body of https://www.jaegertracing.io/docs/2.20/architecture/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "a04e4429-12: quote not found in the fetched body of https://github.com/openzipkin/b3-propagation \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "a04e4429-13: quote not found in the fetched body of https://github.com/openzipkin/b3-propagation \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "a04e4429-14: quote not found in the fetched body of https://github.com/openzipkin/b3-propagation \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "a04e4429-16: quote not found in the fetched body of https://github.com/openzipkin/b3-propagation \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "cf4242b4-7: quote not found in the fetched body of https://prometheus.io/docs/introduction/overview/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "7290a7dc-3: quote is 16 words (> 15)",
-      "7290a7dc-6: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "e6b2e631-6: quote not found in the fetched body of https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "6c8aa937-1: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-specification/issues/2775 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "6c8aa937-2: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-specification/issues/2775 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "841df5cd-2: quote is 20 words (> 15)",
-      "36976b07-3: quote not found in the fetched body of https://opentelemetry.io/blog/2026/cardinality-limits-in-opentelemetry/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "9789ce77-6: quote not found in the fetched body of https://github.com/open-telemetry/semantic-conventions/issues/1315 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "fd103bb1-12: quote not found in the fetched body of https://last9.io/blog/jaeger-vs-zipkin/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "fd103bb1-15: quote not found in the fetched body of https://last9.io/blog/jaeger-vs-zipkin/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "226c9ebd-4: quote not found in the fetched body of https://www.cncf.io/blog/2025/09/01/jaeger-at-10-forged-in-community-reborn-in-opentelemetry/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "877e19dc-4: quote is 16 words (> 15)",
-      "877e19dc-8: quote is 16 words (> 15)",
-      "80b1f67b-5: quote not found in the fetched body of https://oneuptime.com/blog/post/2026-02-06-head-based-vs-tail-based-sampling-opentelemetry/view \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "a9fc4c7a-3: quote not found in the fetched body of https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "bcea9415-6: quote not found in the fetched body of https://last9.io/blog/opentelemetry-vs-datadog/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "bcea9415-15: quote not found in the fetched body of https://last9.io/blog/opentelemetry-vs-datadog/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
-      "ed606ca4-4: quote not found in the fetched body of https://www.systemshardening.com/articles/observability/prometheus-cardinality-dos-defence/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)"
+      "c33bab73-6: quote not found in the fetched body of https://www.jaegertracing.io/docs/2.20/architecture/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "49717491-10: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-collector \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "49717491-13: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-collector \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "7290a7dc-11: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e6b2e631-5: quote not found in the fetched body of https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6c8aa937-3: quote not found in the fetched body of https://github.com/open-telemetry/opentelemetry-specification/issues/2775 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "fd103bb1-8: quote not found in the fetched body of https://last9.io/blog/jaeger-vs-zipkin/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "fd103bb1-11: quote not found in the fetched body of https://last9.io/blog/jaeger-vs-zipkin/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "226c9ebd-1: quote not found in the fetched body of https://www.cncf.io/blog/2025/09/01/jaeger-at-10-forged-in-community-reborn-in-opentelemetry/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "226c9ebd-2: quote not found in the fetched body of https://www.cncf.io/blog/2025/09/01/jaeger-at-10-forged-in-community-reborn-in-opentelemetry/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "226c9ebd-8: quote not found in the fetched body of https://www.cncf.io/blog/2025/09/01/jaeger-at-10-forged-in-community-reborn-in-opentelemetry/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "80b1f67b-2: quote not found in the fetched body of https://oneuptime.com/blog/post/2026-02-06-head-based-vs-tail-based-sampling-opentelemetry/view \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "80b1f67b-4: quote not found in the fetched body of https://oneuptime.com/blog/post/2026-02-06-head-based-vs-tail-based-sampling-opentelemetry/view \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "a9fc4c7a-2: quote not found in the fetched body of https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "a9fc4c7a-6: quote not found in the fetched body of https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "a9fc4c7a-8: quote not found in the fetched body of https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "bcea9415-7: quote not found in the fetched body of https://last9.io/blog/opentelemetry-vs-datadog/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "bcea9415-16: quote not found in the fetched body of https://last9.io/blog/opentelemetry-vs-datadog/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)"
     ]
   },
-  "concepts": 260,
+  "concepts": 19,
+  "grouping": {
+    "gate_rejections": [
+      "group 8: claim_id 'C-e6b2e631-2' was already grouped; a claim belongs to at most one group",
+      "group 15: claim_id 'C-bcea9415-10' was already grouped; a claim belongs to at most one group",
+      "251 claim(s) were in no proposed group and became singletons"
+    ],
+    "grouper_notes": [
+      "281 claims exceeded 150 per call; grouped in 2 batches and reconciled by one merge pass",
+      "merge pass reconciled 22 batch groups into 19",
+      "21 block(s) drew on one source only and were not sent for judgement",
+      "137 lexical blocks at threshold 0.15 -> 28 judgement call(s)"
+    ],
+    "grouper_errors": []
+  },
   "convergence": {
     "map_v0": "skills/deep-primer/tests/fixtures/spec03-grounded/concept-map-v0.yaml",
-    "map_v1": "skills/deep-primer/tests/fixtures/spec03-grounded/concept-map-v1.yaml",
     "log": "skills/deep-primer/tests/fixtures/spec03-grounded/convergence-log.yaml"
   },
   "calls": {
-    "research": 11,
-    "extract": 46
+    "research": 0,
+    "extract": 46,
+    "group": 31
   },
   "spend_usd": {
-    "research": 4.3837,
-    "extract": 2.2243
+    "research": 0.0,
+    "extract": 2.1567,
+    "group": 1.0944
   }
 }

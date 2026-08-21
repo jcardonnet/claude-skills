@@ -6,59 +6,15 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: primary_paper
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: e8905bc8682e1e31e3f7f7ec50e326f95e9515fa
   claims:
   - claim_id: C-2220e276-1
-    text: The OpenTelemetry specification describes cross-language requirements and
-      expectations for implementations.
-    quote: describes the cross-language requirements and expectations
-    location: char 1672 of 4747 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-2220e276-2
-    text: The latest OpenTelemetry specification release is hosted at opentelemetry.io/docs/specs/otel.
-    quote: latest release is hosted at opentelemetry.io/docs/specs/otel
-    location: char 1774 of 4747 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: '2026-08-20'
-    provenance_origin: discovered
-  - claim_id: C-2220e276-3
-    text: Specification markdown sources are located in the specification directory.
-    quote: Markdown sources are under specification
-    location: char 1835 of 4747 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-2220e276-4
-    text: Specifications meetings are held every Tuesday at 8 AM Pacific time.
-    quote: meeting is held every Tuesday at 8 AM Pacific time
-    location: char 2136 of 4747 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-2220e276-5
-    text: Specification changes are versioned according to Semantic Versioning 2.0.
+    text: Changes to the OpenTelemetry specification are versioned according to Semantic
+      Versioning 2.0.
     quote: Changes to the specification are versioned according to Semantic Versioning
       2.0
     location: char 2823 of 4747 (normalized)
@@ -69,31 +25,7 @@ sources:
     corroborated_by: []
     as_of_date: '2026-08-20'
     provenance_origin: discovered
-  - claim_id: C-2220e276-6
-    text: Implementations must specify which version of the specification they implement.
-    quote: implementations of the specification should specify which version they
-      implement
-    location: char 2978 of 4747 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-2220e276-7
-    text: Contributions to the specification repository are licensed under Apache
-      2.0.
-    quote: contributions will be licensed under its Apache 2.0 License
-    location: char 3262 of 4747 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: '2026-08-20'
-    provenance_origin: discovered
-  - claim_id: C-2220e276-8
+  - claim_id: C-2220e276-2
     text: Layout changes to the specification are not versioned.
     quote: Layout changes are not versioned.
     location: char 2935 of 4747 (normalized)
@@ -104,22 +36,94 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-2220e276-3
+    text: Specific implementations of the specification should document which specification
+      version they implement.
+    quote: Specific implementations of the specification should specify which version
+      they implement.
+    location: char 2969 of 4747 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2220e276-4
+    text: Changes to the specification change process itself are not currently versioned.
+    quote: Changes to the change process itself are not currently versioned
+    location: char 3060 of 4747 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2220e276-5
+    text: Contributions to the OpenTelemetry Specification repository are licensed
+      under Apache 2.0.
+    quote: contributions will be licensed under its Apache 2.0 License
+    location: char 3262 of 4747 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 4971749189e744b65111f12d843f7f2b7194735e
+    as_of_date: '2026-08-20'
+    provenance_origin: discovered
+  - claim_id: C-2220e276-6
+    text: The specification maintainers form a superset of the OpenTelemetry Technical
+      Committee.
+    quote: maintainers of the specification are a superset of the Technical Committee
+    location: char 3340 of 4747 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2220e276-7
+    text: Specification markdown sources are located under the specification directory.
+    quote: Markdown sources are under specification
+    location: char 1835 of 4747 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2220e276-8
+    text: The latest OpenTelemetry specification release is hosted at opentelemetry.io/docs/specs/otel.
+    quote: The latest release is hosted at opentelemetry.io/docs/specs/otel
+    location: char 1770 of 4747 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-20'
+    provenance_origin: discovered
 - source_id: bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
   url: https://opentelemetry.io/docs/concepts/signals/
   title: Signals | OpenTelemetry
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 50d3e9b161d861b07970ffbba4f4c5255e06bd22
   claims:
   - claim_id: C-bd3da1a2-2
-    text: Signals are system outputs that describe the underlying activity of operating
-      systems and applications.
-    quote: Signals are system outputs that describe the underlying activity
+    text: Signals are system outputs that describe the activity of operating systems
+      and applications.
+    quote: Signals are system outputs that describe the underlying activity of the
+      operating system and applications
     location: char 264 of 1363 (normalized)
     confidence: high
     contested: false
@@ -129,9 +133,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bd3da1a2-3
-    text: OpenTelemetry currently supports Traces, Metrics, Logs, and Baggage.
-    quote: 'OpenTelemetry currently supports: Traces Metrics Logs Baggage'
-    location: char 727 of 1363 (normalized)
+    text: Signals can represent measurements at a specific point in time.
+    quote: A signal can be something you want to measure at a specific point in time
+    location: char 393 of 1363 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -139,18 +143,7 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-bd3da1a2-5
-    text: Profiles records resource usage at the code level.
-    quote: A recording of resource usage at the code level.
-    location: char 1079 of 1363 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-bd3da1a2-6
+  - claim_id: C-bd3da1a2-4
     text: Traces represent the path of a request through an application.
     quote: The path of a request through your application.
     location: char 886 of 1363 (normalized)
@@ -161,7 +154,7 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-bd3da1a2-7
+  - claim_id: C-bd3da1a2-5
     text: Metrics are measurements captured at runtime.
     quote: A measurement captured at runtime.
     location: char 942 of 1363 (normalized)
@@ -172,10 +165,32 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-bd3da1a2-8
-    text: Baggage is contextual information passed between signals.
+  - claim_id: C-bd3da1a2-6
+    text: Logs are recordings of events.
+    quote: A recording of an event.
+    location: char 982 of 1363 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd3da1a2-7
+    text: Baggage is contextual information that is passed between signals.
     quote: Contextual information that is passed between signals.
     location: char 1015 of 1363 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bd3da1a2-8
+    text: Profiles record resource usage at the code level.
+    quote: A recording of resource usage at the code level.
+    location: char 1079 of 1363 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -190,7 +205,7 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
@@ -208,7 +223,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-b23a3dff-4
-    text: Each major Go release is supported until there are two newer major releases.
+    text: Each major Go release is supported until two newer major releases are available.
     quote: Each major Go release is supported until there are two newer major releases.
     location: char 2095 of 4482 (normalized)
     confidence: high
@@ -219,8 +234,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-b23a3dff-5
-    text: Automatic instrumentation should work on any Linux kernel above version
-      4.4.
+    text: Automatic instrumentation should work on Linux kernel 4.4 or above.
     quote: Automatic instrumentation should work on any Linux kernel above 4.4.
     location: char 2933 of 4482 (normalized)
     confidence: high
@@ -231,7 +245,7 @@ sources:
     as_of_date: '2026-08-20'
     provenance_origin: discovered
   - claim_id: C-b23a3dff-6
-    text: OpenTelemetry Go Automatic Instrumentation supports the arm64 architecture.
+    text: The project supports arm64 architecture.
     quote: OpenTelemetry Go Automatic Instrumentation supports the arm64 architecture.
     location: char 3002 of 4482 (normalized)
     confidence: high
@@ -242,7 +256,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-b23a3dff-7
-    text: There is no automated testing for arm64 platform.
+    text: There is no automated testing for arm64 platform despite support.
     quote: However, there is no automated testing for this platform.
     location: char 3078 of 4482 (normalized)
     confidence: high
@@ -258,14 +272,14 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 2cf3904be34e1c18b7e374fd03421aa0b23e9cae
   claims:
   - claim_id: C-7c890a26-1
-    text: Kyverno is categorized as a platform primitive rather than a security tool.
+    text: Kyverno is positioned as a platform primitive rather than a security tool.
     quote: Kyverno is a platform primitive, not a security tool
     location: char 160 of 311 (normalized)
     confidence: high
@@ -276,8 +290,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7c890a26-2
-    text: Multi-plane architecture is presented as an approach to achieve cloud native
-      platform sovereignty.
+    text: Multi-plane architecture is an approach for cloud native platform sovereignty.
     quote: Cloud Native platform sovereignty through multi-plane architecture
     location: char 229 of 311 (normalized)
     confidence: medium
@@ -293,16 +306,16 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: c6268d9e6aec8cb043ec41a7996df14a3e43e3ea
   claims:
   - claim_id: C-e442ace9-1
-    text: The Zipkin server requires a minimum of JRE version 17 or higher.
-    quote: Zipkin server requires minimum JRE 17+
-    location: char 2592 of 10185 (normalized)
+    text: Zipkin server requires a minimum JRE version of 17 or higher
+    quote: Note that the Zipkin server requires minimum JRE 17+
+    location: char 2578 of 10185 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -311,7 +324,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e442ace9-2
-    text: The Zipkin core library requires Java language level 8 as a minimum.
+    text: Zipkin's core library supports Java 8 and higher language levels
     quote: The minimum Java language level of the core library is 8
     location: char 4821 of 10185 (normalized)
     confidence: high
@@ -322,9 +335,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e442ace9-3
-    text: The core library is delivered as a 155 kilobyte jar file.
-    quote: The result is a 155k jar which won't conflict
-    location: char 4090 of 10185 (normalized)
+    text: Zipkin storage components require Java 17 or higher
+    quote: storage components have minimal dependencies, though require Java 17+
+    location: char 5267 of 10185 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -333,8 +346,19 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e442ace9-4
-    text: The Cassandra storage component requires version 3.11.3 or higher and is
-      tested against Cassandra 4.1.
+    text: Compiling Zipkin source requires JDK 17 or higher
+    quote: JDK 17+ is required to compile the source
+    location: char 8837 of 10185 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e442ace9-5
+    text: The Cassandra storage component uses version 3.11.3+ features and is tested
+      against Cassandra 4.1
     quote: uses Cassandra 3.11.3+ features, but is tested against the latest patch
       of Cassandra 4.1
     location: char 5979 of 10185 (normalized)
@@ -345,12 +369,12 @@ sources:
     corroborated_by: []
     as_of_date: '2026-08-20'
     provenance_origin: discovered
-  - claim_id: C-e442ace9-5
-    text: The Elasticsearch storage component requires version 5 or higher and is
-      tested against Elasticsearch 7-8.x and OpenSearch 2.x.
-    quote: uses Elasticsearch 5+ features, but is tested against Elasticsearch 7-8.x
-      and OpenSearch 2.x
-    location: char 6445 of 10185 (normalized)
+  - claim_id: C-e442ace9-6
+    text: The Elasticsearch storage component uses version 5+ features and is tested
+      against versions 7-8.x
+    quote: The Elasticsearch component uses Elasticsearch 5+ features, but is tested
+      against Elasticsearch 7-8.x
+    location: char 6417 of 10185 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -358,12 +382,12 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-e442ace9-6
-    text: The slim build supports only in-memory and Elasticsearch storage backends,
-      not messaging transports like Kafka or RabbitMQ.
-    quote: supports in-memory and Elasticsearch storage, but doesn't support messaging
+  - claim_id: C-e442ace9-7
+    text: Zipkin's slim build does not support messaging transports like Kafka or
+      RabbitMQ
+    quote: It supports in-memory and Elasticsearch storage, but doesn't support messaging
       transports like Kafka or RabbitMQ
-    location: char 3266 of 10185 (normalized)
+    location: char 3263 of 10185 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -372,9 +396,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e442ace9-8
-    text: Version 2.x was the last version of Zipkin to support Java 6.
-    quote: Version 2.x was the last to support Java 6
-    location: char 4935 of 10185 (normalized)
+    text: The Cassandra storage backend requires a background job to aggregate dependency
+      links
+    quote: This store requires a job to aggregate dependency links
+    location: char 6346 of 10185 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -388,17 +413,18 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 58ae2db8c4ffacbee894364f4666788232cefbfc
   claims:
   - claim_id: C-c33bab73-1
-    text: Jaeger can be deployed as a single binary that can be configured for different
-      roles.
-    quote: It can be deployed as a single binary that can be configured
-    location: char 233 of 7146 (normalized)
+    text: The collector role receives incoming trace data from applications and writes
+      it to a storage backend.
+    quote: Receives incoming trace data from applications and writes it into a storage
+      backend.
+    location: char 371 of 7146 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -407,8 +433,20 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-c33bab73-2
-    text: In the collector/query configuration, read and write traffic can be separated
-      and scaled independently.
+    text: In-memory storage for all-in-one deployment is not recommended for production
+      because data is lost on restart.
+    quote: it is not recommended for production since the data is lost on restarts.
+    location: char 1518 of 7146 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c33bab73-3
+    text: The collector/query configuration allows separating read and write traffic
+      to scale them independently.
     quote: allows to separate the read and write traffic and to scale them independently
     location: char 1277 of 7146 (normalized)
     confidence: high
@@ -418,21 +456,9 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-c33bab73-3
-    text: All-in-one configuration with in-memory storage is not recommended for production
-      because data is lost on restarts.
-    quote: it is not recommended for production since the data is lost on restarts
-    location: char 1518 of 7146 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-c33bab73-4
-    text: In direct-to-storage deployment, sustained traffic spikes may result in
-      dropped data if storage cannot keep up.
+    text: Direct-to-storage deployment can result in dropped spans during sustained
+      traffic spikes if storage cannot keep up.
     quote: a sustained traffic spike may result in dropped data
     location: char 2181 of 7146 (normalized)
     confidence: high
@@ -442,23 +468,10 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-c33bab73-6
-    text: Badger backend is limited to a single instance and cannot be scaled horizontally.
-    quote: it is limited to a single instance and cannot be scaled horizontally
-    location: char 1692 of 7146 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-c33bab73-7
-    text: Jaeger is a customized distribution of the OpenTelemetry Collector with
-      different roles.
-    quote: Jaeger is a customized distribution of the OpenTelemetry Collector with
-      different roles
-    location: char 2901 of 7146 (normalized)
+    text: The OpenTelemetry Collector is not required to operate Jaeger.
+    quote: You do not need to use the OpenTelemetry Collector to operate Jaeger
+    location: char 2823 of 7146 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -467,15 +480,17 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-c33bab73-8
-    text: Dropping spans with the Filter Processor may cause broken traces.
-    quote: Allows dropping spans and span events from the collector (⚠️ may cause
-      broken traces)
-    location: char 6134 of 7146 (normalized)
+    text: Jaeger is a customized distribution of the OpenTelemetry Collector framework
+      with different roles.
+    quote: Jaeger is a customized distribution of the OpenTelemetry Collector with
+      different roles.
+    location: char 2901 of 7146 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - 226c9ebd183867ed1fc473aa75daede8fdab2279
     as_of_date: null
     provenance_origin: discovered
 - source_id: a04e4429e1c16d429c3b26135ddd11a7341deef5
@@ -485,16 +500,18 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: standard
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: b2b8a320f450ea9f587db3ebb8d79911df87745a
   claims:
   - claim_id: C-a04e4429-1
-    text: TraceId identifiers are either 64-bit or 128-bit in length
-    quote: Trace identifiers are 64 or 128-bit
-    location: char 3141 of 19824 (normalized)
+    text: B3 Propagation is a specification for propagating trace context using headers
+      named 'b3' and those starting with 'x-b3-'.
+    quote: B3 Propagation is a specification for the header "b3" and those that start
+      with "x-b3-"
+    location: char 880 of 19824 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -503,7 +520,31 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-a04e4429-2
-    text: SpanId identifiers are exactly 64-bit in length
+    text: Trace identifiers can be 64 or 128-bit, but all span identifiers within
+      a single trace must be 64-bit.
+    quote: Trace identifiers are 64 or 128-bit, but all span identifiers within a
+      trace are 64-bit
+    location: char 3141 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-3
+    text: The TraceId field is 64 or 128-bit in length.
+    quote: The TraceId is 64 or 128-bit in length
+    location: char 3398 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-4
+    text: The SpanId field is 64-bit in length.
     quote: The SpanId is 64-bit in length
     location: char 3525 of 19824 (normalized)
     confidence: high
@@ -513,30 +554,32 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-a04e4429-3
-    text: ParentSpanId identifiers are exactly 64-bit in length
-    quote: The ParentSpanId is 64-bit in length
-    location: char 3737 of 19824 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-a04e4429-4
-    text: B3 sampling decisions apply consistently per-trace, not per-span
-    quote: In B3, sampling applies consistently per-trace
-    location: char 4019 of 19824 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-a04e4429-5
-    text: X-B3-Sampled value of 1 encodes an accept sampling decision
+    text: The X-B3-TraceId HTTP header is encoded as either 32 or 16 lowercase hexadecimal
+      characters.
+    quote: The X-B3-TraceId header is encoded as 32 or 16 lower-hex characters
+    location: char 8951 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-6
+    text: The X-B3-SpanId HTTP header is encoded as 16 lowercase hexadecimal characters.
+    quote: The X-B3-SpanId header is encoded as 16 lower-hex characters
+    location: char 9212 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-7
+    text: An accept sampling decision is encoded in the X-B3-Sampled header with value
+      1.
     quote: 'An accept sampling decision is encoded as X-B3-Sampled: 1'
     location: char 9687 of 19824 (normalized)
     confidence: high
@@ -546,19 +589,8 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-a04e4429-6
-    text: X-B3-Sampled value of 0 encodes a deny sampling decision
-    quote: 'and a deny as X-B3-Sampled: 0'
-    location: char 9745 of 19824 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-a04e4429-7
-    text: Debug flag is encoded as X-B3-Flags with value 1
+  - claim_id: C-a04e4429-8
+    text: The debug flag is encoded in the X-B3-Flags header with value 1.
     quote: 'Debug is encoded as X-B3-Flags: 1'
     location: char 10140 of 19824 (normalized)
     confidence: high
@@ -568,19 +600,8 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-a04e4429-8
-    text: Single-header b3 encoding was standardized in late 2018
-    quote: A single header named b3 standardized in late 2018
-    location: char 10310 of 19824 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-a04e4429-9
-    text: TraceId must be included in B3 propagation headers.
+    text: TraceId is a required field in B3 propagation headers.
     quote: TraceId is required.
     location: char 11251 of 19824 (normalized)
     confidence: high
@@ -591,7 +612,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-a04e4429-10
-    text: SpanId is encoded as exactly 16 lowercase hexadecimal characters.
+    text: SpanId occupies the second position in b3 headers and consists of 16 lower-hex
+      characters.
     quote: The second position of the b3 value is the 16 lower-hex character SpanId.
     location: char 11429 of 19824 (normalized)
     confidence: high
@@ -602,9 +624,46 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-a04e4429-11
-    text: SpanId is mandatory except when propagating only the Sampling State field.
-    quote: Unless propagating only the Sampling State, the SpanId is required.
-    location: char 11503 of 19824 (normalized)
+    text: ParentSpanId is positioned last in b3 headers and consists of 16 lower-hex
+      characters.
+    quote: When present, ParentSpanId is the 16 lower-hex characters in the final
+      position
+    location: char 12230 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-12
+    text: Sampling state is encoded as a single hexadecimal character, except for
+      Defer which omits the field.
+    quote: Sampling State is encoded as a single hex character for all states except
+      Defer.
+    location: char 11902 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-13
+    text: Accept sampling decision is encoded as the hex digit 1.
+    quote: 'Accept: 1'
+    location: char 12023 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-14
+    text: Deny sampling decision is encoded as the hex digit 0.
+    quote: 'Deny: 0'
+    location: char 12033 of 19824 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -613,9 +672,21 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-a04e4429-15
-    text: JMS messaging systems must use only the single-header b3 format.
-    quote: As such, only the single header format b3 should be used with JMS.
-    location: char 12926 of 19824 (normalized)
+    text: Debug sampling state is encoded as the hex character d.
+    quote: 'Debug: d'
+    location: char 12041 of 19824 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a04e4429-16
+    text: JMS messaging systems should use only the single b3 header format, not separate
+      X-B3- prefixed headers.
+    quote: only the single header format b3 should be used with JMS.
+    location: char 12935 of 19824 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -630,17 +701,17 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 951ce2bbd235b8e6497f221bcbeaa2fcb1f3c7a5
   claims:
   - claim_id: C-49717491-1
-    text: The OpenTelemetry Collector is built against OTLP protocol v1.10.0, which
-      is marked as Stable.
-    quote: currently built against using OTLP protocol v1.10.0, considered Stable
-    location: char 4380 of 21978 (normalized)
+    text: The OpenTelemetry Collector codebase is built against OTLP protocol version
+      1.10.0.
+    quote: built against using OTLP protocol v1.10.0
+    location: char 4390 of 21978 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -649,11 +720,9 @@ sources:
     as_of_date: '2026-08-20'
     provenance_origin: discovered
   - claim_id: C-49717491-2
-    text: The collector is a single codebase that can be deployed as an agent or collector
-      with support for traces, metrics, and logs.
-    quote: Single codebase, deployable as an agent or collector with support for traces,
-      metrics and logs
-    location: char 2627 of 21978 (normalized)
+    text: The OpenTelemetry Collector SIG holds weekly video calls.
+    quote: meets once a week via video calls
+    location: char 2829 of 21978 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -662,31 +731,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-49717491-3
-    text: The collector is customizable without requiring changes to core code.
-    quote: Customizable without touching the core code
-    location: char 2573 of 21978 (normalized)
-    confidence: medium
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-49717491-4
-    text: When a new Go minor version N is released, the first OpenTelemetry Collector
-      release after it removes support for Go version N-2.
-    quote: remove support for Go version N-2
-    location: char 5092 of 21978 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-49717491-5
-    text: Removing support for an unsupported Go minor version is not considered a
-      breaking change.
+    text: Removing support for an unsupported Go version is not considered a breaking
+      change.
     quote: Removing support for an unsupported Go version is not considered a breaking
       change
     location: char 4736 of 21978 (normalized)
@@ -697,22 +743,57 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-49717491-4
+    text: When a new Go minor version is released, the first collector release adds
+      build and test steps for it.
+    quote: will add build and tests steps
+    location: char 4962 of 21978 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-49717491-5
+    text: When Go minor version N is released, the first collector release removes
+      support for Go version N-2.
+    quote: will remove support for Go version N-2
+    location: char 5087 of 21978 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-49717491-6
-    text: Official OpenTelemetry Collector distribution binaries are built using the
-      latest Go minor version series.
+    text: The minimum supported patch version for Go may increase over time without
+      being a breaking change.
+    quote: minimum supported patch version may increase over time
+    location: char 5168 of 21978 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-49717491-7
+    text: Official OpenTelemetry Collector distribution binaries are built with the
+      latest Go minor version.
     quote: distro binaries will be built with a release in the latest Go minor version
       series
     location: char 5424 of 21978 (normalized)
-    confidence: high
+    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
     as_of_date: '2026-08-20'
     provenance_origin: discovered
-  - claim_id: C-49717491-7
-    text: The otel/opentelemetry-collector and otel/opentelemetry-collector-contrib
-      container images are signed using sigstore cosign.
+  - claim_id: C-49717491-8
+    text: OpenTelemetry Collector container images are signed using sigstore cosign.
     quote: signing the images otel/opentelemetry-collector and otel/opentelemetry-collector-contrib
       using sigstore cosign tool
     location: char 5648 of 21978 (normalized)
@@ -723,19 +804,8 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-49717491-8
-    text: The OpenTelemetry Collector receives, processes, and exports telemetry data.
-    quote: receive, process and export telemetry data
-    location: char 2045 of 21978 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-49717491-9
-    text: OpenTelemetry Collector version v0.98.0 exists and is tagged in the repository.
+    text: OpenTelemetry Collector version 0.98.0 was released via GitHub Actions.
     quote: refs/tags/v0.98.0
     location: char 6369 of 21978 (normalized)
     confidence: high
@@ -745,52 +815,8 @@ sources:
     corroborated_by: []
     as_of_date: '2026-08-20'
     provenance_origin: discovered
-  - claim_id: C-49717491-10
-    text: The container image is hosted at ghcr.io under open-telemetry/opentelemetry-collector-releases.
-    quote: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
-    location: char 6457 of 21978 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-49717491-11
-    text: Container images are signed using cosign for signature verification.
-    quote: cosign container image signature
-    location: char 7184 of 21978 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-49717491-12
-    text: GitHub Actions token service is the certificate issuer for release signatures.
-    quote: https://token.actions.githubusercontent.com
-    location: char 6024 of 21978 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-49717491-13
-    text: Release workflows are triggered by push events to the repository.
-    quote: push
-    location: char 7326 of 21978 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-49717491-14
-    text: The release workflow files are stored in open-telemetry/opentelemetry-collector-releases.
+    text: Collector releases are stored in the repository open-telemetry/opentelemetry-collector-releases.
     quote: open-telemetry/opentelemetry-collector-releases
     location: char 5888 of 21978 (normalized)
     confidence: high
@@ -800,10 +826,32 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-49717491-12
+    text: Container images are published to ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib.
+    quote: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
+    location: char 6457 of 21978 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-49717491-14
+    text: The Release Contrib workflow is triggered by push events.
+    quote: githubWorkflowTrigger":"push
+    location: char 13421 of 21978 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-49717491-15
-    text: The release workflow is named Release Contrib.
-    quote: Release Contrib
-    location: char 7424 of 21978 (normalized)
+    text: Container images are signed using cosign signature mechanism.
+    quote: type":"cosign container image signature
+    location: char 7177 of 21978 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -812,9 +860,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-49717491-16
-    text: The container image manifest has a specific SHA256 digest for content verification.
-    quote: sha256:5cea85bcbc734a3c0a641368e5a4ea9d31b472997e9f2feca57eeb4a147fcf1a
-    location: char 7102 of 21978 (normalized)
+    text: GitHub Actions token service issues the container image signatures.
+    quote: Issuer":"https://token.actions.githubusercontent.com
+    location: char 13014 of 21978 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -823,7 +871,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-49717491-17
-    text: Image signing of OpenTelemetry Collector releases began with version 0.95.0.
+    text: Image signing of releases began with version v0.95.0
     quote: We started signing the images with release v0.95.0
     location: char 19980 of 21978 (normalized)
     confidence: high
@@ -834,22 +882,9 @@ sources:
     as_of_date: '2026-08-20'
     provenance_origin: discovered
   - claim_id: C-49717491-18
-    text: OpenTelemetry Collector is distributed under the Apache-2.0 open source
-      license.
-    quote: Apache-2.0 license
-    location: char 21677 of 21978 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: '2026-08-20'
-    provenance_origin: discovered
-  - claim_id: C-49717491-19
-    text: The SIG Collector policy requires all core approvers to participate in rotating
-      the release manager role.
-    quote: the SIG Collector requires all core approvers to take part in rotating
-      the role
+    text: The SIG Collector requires all core approvers to participate in rotating
+      the release manager role
+    quote: the SIG Collector requires all core approvers to take part
     location: char 20665 of 21978 (normalized)
     confidence: high
     contested: false
@@ -858,13 +893,47 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-49717491-19
+    text: The project is licensed under Apache License 2.0
+    quote: Apache-2.0 license
+    location: char 21677 of 21978 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 2220e2762fd4dd120200f52de4892c553194ab42
+    as_of_date: '2026-08-20'
+    provenance_origin: discovered
+  - claim_id: C-49717491-20
+    text: The repository had 7.4 thousand stars at time of documentation
+    quote: 7.4k stars
+    location: char 21819 of 21978 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-20'
+    provenance_origin: discovered
+  - claim_id: C-49717491-21
+    text: The repository had 2.2 thousand forks at time of documentation
+    quote: 2.2k forks
+    location: char 21857 of 21978 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-20'
+    provenance_origin: discovered
 - source_id: cf4242b488b8bd4fb1dbb6179594ae4e71453700
   url: https://prometheus.io/docs/introduction/overview/
   title: Overview | Prometheus
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
@@ -872,8 +941,9 @@ sources:
   claims:
   - claim_id: C-cf4242b4-1
     text: Prometheus was originally built at SoundCloud.
-    quote: originally built at SoundCloud
-    location: char 129 of 4317 (normalized)
+    quote: open-source systems monitoring and alerting toolkit originally built at
+      SoundCloud
+    location: char 77 of 4317 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -882,7 +952,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-cf4242b4-2
-    text: Prometheus was created in 2012.
+    text: Prometheus was first developed in 2012.
     quote: Since its inception in 2012
     location: char 162 of 4317 (normalized)
     confidence: high
@@ -893,11 +963,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-cf4242b4-3
-    text: Prometheus joined the Cloud Native Computing Foundation in 2016 as its second
-      hosted project.
-    quote: Prometheus joined the Cloud Native Computing Foundation in 2016 as the
-      second hosted project
-    location: char 472 of 4317 (normalized)
+    text: Prometheus joined the Cloud Native Computing Foundation in 2016 as the second
+      hosted project after Kubernetes.
+    quote: joined the Cloud Native Computing Foundation in 2016 as the second hosted
+      project
+    location: char 483 of 4317 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -906,9 +976,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-cf4242b4-4
-    text: Kubernetes was CNCF's first hosted project.
-    quote: the second hosted project, after Kubernetes
-    location: char 539 of 4317 (normalized)
+    text: Prometheus stores metrics as time series data with timestamps and labels.
+    quote: collects and stores its metrics as time series data
+    location: char 596 of 4317 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -917,7 +987,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-cf4242b4-5
-    text: Prometheus collects time series data using a pull model over HTTP.
+    text: Prometheus collects time series using an HTTP pull model.
     quote: time series collection happens via a pull model over HTTP
     location: char 1149 of 4317 (normalized)
     confidence: high
@@ -928,6 +998,17 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-cf4242b4-6
+    text: Single Prometheus servers do not rely on distributed storage and are autonomous.
+    quote: no reliance on distributed storage; single server nodes are autonomous
+    location: char 1078 of 4317 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-cf4242b4-7
     text: Most Prometheus components are written in Go.
     quote: Most Prometheus components are written in Go
     location: char 2590 of 4317 (normalized)
@@ -939,10 +1020,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-cf4242b4-8
-    text: Each Prometheus server is autonomous and does not depend on network storage.
-    quote: Each Prometheus server is standalone, not depending on network storage
-      or other remote services
-    location: char 3599 of 4317 (normalized)
+    text: Prometheus is unsuitable for billing systems requiring 100% accuracy.
+    quote: need 100% accuracy, such as for per-request billing, Prometheus is not
+      a good choice
+    location: char 3993 of 4317 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -956,7 +1037,7 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
@@ -968,15 +1049,15 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 48b5c989d19cc84add33d2919c060f853c4be31c
   claims:
   - claim_id: C-aab04fe1-1
-    text: Loki does not index the full contents of logs, only a set of labels for
-      each log stream.
+    text: Loki does not index the contents of logs, but instead indexes a set of labels
+      for each log stream.
     quote: does not index the contents of the logs, but rather a set of labels
     location: char 1956 of 7312 (normalized)
     confidence: high
@@ -987,9 +1068,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-aab04fe1-2
-    text: Loki is horizontally-scalable, highly-available, and multi-tenant.
-    quote: horizontally-scalable, highly-available, multi-tenant log aggregation system
-    location: char 1789 of 7312 (normalized)
+    text: Loki stores compressed, unstructured logs while only indexing metadata.
+    quote: storing compressed, unstructured logs and only indexing metadata
+    location: char 2137 of 7312 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -998,9 +1079,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-aab04fe1-3
-    text: Loki delivers logs via push instead of pull, unlike Prometheus.
-    quote: delivering logs via push, instead of pull
-    location: char 3312 of 7312 (normalized)
+    text: 'A standard Loki logging stack consists of three components: Alloy, Loki,
+      and Grafana.'
+    quote: A Loki-based logging stack consists of 3 components
+    location: char 2642 of 7312 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1009,9 +1091,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-aab04fe1-4
-    text: Alloy replaced Promtail in the Loki stack as the log collection agent.
-    quote: Alloy replaced Promtail in the stack, because Promtail is considered to
-      be feature complete
+    text: Alloy replaced Promtail as the recommended log collection agent for Loki.
+    quote: Alloy replaced Promtail in the stack
     location: char 2903 of 7312 (normalized)
     confidence: high
     contested: false
@@ -1021,7 +1102,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-aab04fe1-5
-    text: Loki has native support in Grafana starting with version 6.0.
+    text: Loki requires Grafana version 6.0 or later for native support.
     quote: has native support in Grafana (needs Grafana v6.0)
     location: char 2590 of 7312 (normalized)
     confidence: high
@@ -1032,19 +1113,19 @@ sources:
     as_of_date: '2026-08-20'
     provenance_origin: discovered
   - claim_id: C-aab04fe1-6
-    text: Grafana Loki is distributed under the AGPL-3.0-only license.
-    quote: Grafana Loki is distributed under AGPL-3.0-only
-    location: char 6775 of 7312 (normalized)
+    text: Loki delivers logs via push mechanism, unlike Prometheus which uses pull.
+    quote: delivering logs via push, instead of pull
+    location: char 3312 of 7312 (normalized)
     confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
-    as_of_date: '2026-08-20'
+    as_of_date: null
     provenance_origin: discovered
   - claim_id: C-aab04fe1-7
-    text: The Grafana Loki Helm chart was forked to grafana-community/helm-charts
-      effective March 16, 2026.
+    text: The Grafana Loki Helm chart was forked to a new repository effective March
+      16, 2026.
     quote: Effective March 16, 2026, the Grafana Loki Helm chart will be forked
     location: char 3444 of 7312 (normalized)
     confidence: high
@@ -1055,17 +1136,15 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-aab04fe1-8
-    text: Running multiple Loki tenants locally requires auth_enabled to be set to
-      true.
-    quote: To run multiple Loki tenants locally, ensure that auth_enabled is set to
-      true
-    location: char 6285 of 7312 (normalized)
+    text: Grafana Loki is licensed under AGPL-3.0-only.
+    quote: Grafana Loki is distributed under AGPL-3.0-only
+    location: char 6775 of 7312 (normalized)
     confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
-    as_of_date: null
+    as_of_date: '2026-08-20'
     provenance_origin: discovered
 - source_id: 78931e95e5c9a6a5ac611625e93a88cf6b43102a
   url: https://istio.io/latest/docs/tasks/observability/
@@ -1073,16 +1152,16 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 369399c91aef31c4bd86ee1d06471792dea0f10f
   claims:
   - claim_id: C-78931e95-1
-    text: Istio collects telemetry information from the mesh.
-    quote: Demonstrates how to collect telemetry information from the mesh.
-    location: char 45 of 644 (normalized)
+    text: Istio provides telemetry collection capabilities from the mesh.
+    quote: collect telemetry information from the mesh
+    location: char 65 of 644 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1091,9 +1170,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-78931e95-2
-    text: Istio supports metrics collection and querying within the mesh.
-    quote: Demonstrates the collection and querying of metrics within Istio.
-    location: char 118 of 644 (normalized)
+    text: Istio supports metrics collection and querying.
+    quote: collection and querying of metrics within Istio
+    location: char 135 of 644 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1102,9 +1181,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-78931e95-3
-    text: Istio supports log collection.
-    quote: Demonstrates the collection of logs within Istio.
-    location: char 189 of 644 (normalized)
+    text: Istio enables log collection within the mesh.
+    quote: collection of logs within Istio
+    location: char 206 of 644 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1114,7 +1193,7 @@ sources:
     provenance_origin: discovered
   - claim_id: C-78931e95-4
     text: Istio-enabled applications can be configured to collect trace spans.
-    quote: configure Istio-enabled applications to collect trace spans.
+    quote: configure Istio-enabled applications to collect trace spans
     location: char 286 of 644 (normalized)
     confidence: high
     contested: false
@@ -1124,8 +1203,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-78931e95-5
-    text: Istio can visualize services within a mesh.
-    quote: visualize your services within an Istio mesh.
+    text: Services within an Istio mesh can be visualized.
+    quote: visualize your services within an Istio mesh
     location: char 396 of 644 (normalized)
     confidence: high
     contested: false
@@ -1135,8 +1214,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-78931e95-6
-    text: Istio telemetry addons support remote external access configuration.
-    quote: configure external access to the set of Istio telemetry addons.
+    text: External access to Istio telemetry addons can be configured.
+    quote: configure external access to the set of Istio telemetry addons
     location: char 505 of 644 (normalized)
     confidence: high
     contested: false
@@ -1146,9 +1225,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-78931e95-7
-    text: Istio includes a Telemetry API.
-    quote: how to configure the Telemetry API.
-    location: char 603 of 644 (normalized)
+    text: Istio provides a configurable Telemetry API.
+    quote: configure the Telemetry API
+    location: char 610 of 644 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1163,15 +1242,42 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: standard
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: ff3123eef68291e00a805184db6f64ad2447b12a
   claims:
   - claim_id: C-7290a7dc-1
-    text: The system maintains an invariant where spans are sampled if and only if
-      the random value R is greater than or equal to the rejection threshold T.
+    text: Consistent sampling decisions require both a random 56-bit value (R) and
+      a 56-bit rejection threshold (T) in the trace context.
+    quote: A random (or pseudo-random) 56-bit value, called R below. A 56-bit rejection
+      threshold
+    location: char 3008 of 13443 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - e6b2e631449fefb10e505ee770c414f4f136462a
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7290a7dc-2
+    text: A span is sampled when the random value R is greater than or equal to the
+      threshold T.
+    quote: spans where R >= T will be sampled
+    location: char 3550 of 13443 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - e6b2e631449fefb10e505ee770c414f4f136462a
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7290a7dc-3
+    text: The system maintains an invariant that the sampled flag equals whether R
+      >= T.
     quote: 'The system has the following invariant: (R >= T) = sampled flag'
     location: char 5169 of 13443 (normalized)
     confidence: high
@@ -1181,10 +1287,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-7290a7dc-2
-    text: When the rejection threshold T is set to 0, all spans must be sampled.
-    quote: If T is 0, Always Sample.
-    location: char 5468 of 13443 (normalized)
+  - claim_id: C-7290a7dc-4
+    text: The threshold value (th) must never decrease as a span progresses through
+      collection stages.
+    quote: th is non-decreasing (and, in particular, must be increased at stages
+    location: char 4808 of 13443 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1192,8 +1299,9 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-7290a7dc-4
-    text: The rv value must always be represented using exactly 14 hexadecimal digits.
+  - claim_id: C-7290a7dc-5
+    text: Threshold and random values are expressed as hexadecimal with th allowing
+      trailing zeros omitted but rv always exactly 14 hex digits.
     quote: rv keys MUST always be exactly 14 hex digits
     location: char 6463 of 13443 (normalized)
     confidence: high
@@ -1203,10 +1311,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-7290a7dc-5
-    text: Trailing zeros may be omitted from th values but not from leading positions.
-    quote: For th keys only, trailing zeros (but not leading zeros) may be omitted.
-    location: char 6390 of 13443 (normalized)
+  - claim_id: C-7290a7dc-6
+    text: A head sampler is responsible for computing both rv and th values when creating
+      new spans.
+    quote: A head sampler is responsible for computing the rv and th values
+    location: char 8068 of 13443 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1215,22 +1324,22 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-7
-    text: Sampling probability is calculated using floating point arithmetic by dividing
-      by 2^56, producing a value between 0.0 and 1.0.
-    quote: can be calculated using floating point by dividing by 2^56
-    location: char 11567 of 13443 (normalized)
-    confidence: medium
+    text: The prior p-value approach was limited to power-of-two sampling probabilities,
+      while th supports arbitrary sampling rates.
+    quote: The p value is limited to powers of two, while the th value
+    location: char 2571 of 13443 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
-    as_of_date: '2026-08-20'
+    as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-8
-    text: A downstream sampler must set the output threshold to the maximum of the
-      input threshold and its chosen threshold.
-    quote: sampler MUST output the span with a th equal to max(input th, chosen th)
-    location: char 9843 of 13443 (normalized)
+    text: Common sampling probabilities in existing systems include 1%, 10%, and 75%,
+      which should be expressible without interpolation.
+    quote: sampling probabilities like 1%, 10%, and 75% are common
+    location: char 2083 of 13443 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1239,9 +1348,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-9
-    text: Non-probabilistic sampling produces spans with no th value.
-    quote: a sampled span with no th value
-    location: char 12045 of 13443 (normalized)
+    text: The previous r-value and p-value specifications were constrained to powers
+      of 2, which proved inadequate.
+    quote: r-value and p-value attempted to solve this problem, but were limited to
+      powers of 2
+    location: char 12445 of 13443 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1250,21 +1361,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-10
-    text: The prior r-value and p-value specifications were limited to powers of 2.
-    quote: but were limited to powers of 2, which is inadequate
-    location: char 12498 of 13443 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-7290a7dc-11
-    text: The design maintains at least 6 decimal digits of precision during format
-      conversion.
-    quote: without loss up to at least 6 decimal digits of precision
-    location: char 12960 of 13443 (normalized)
+    text: The design preserves at least 6 decimal digits of precision when converting
+      between different format representations.
+    quote: conversion to and from these formats without loss up to at least 6 decimal
+      digits
+    location: char 12923 of 13443 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1273,10 +1374,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-12
-    text: The design permits bidirectional conversion between sampling probability
-      and sampling rate formats.
-    quote: this design permits conversion to and from these formats without loss
-    location: char 12903 of 13443 (normalized)
+    text: The design enables sampling systems to propagate sampling information downstream
+      where it can be compensated.
+    quote: permits sampling systems to propagate consistent sampling information downstream
+      where it can be compensated
+    location: char 13045 of 13443 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1285,23 +1387,24 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-13
-    text: Some implementations prefer to use a sampling probability in the range from
-      0 to 1.0.
-    quote: some implementations prefer to use a sampling probability (in the range
-      from 0-1.0)
-    location: char 12783 of 13443 (normalized)
+    text: The tail-sampling processor in OTel Collector can propagate sampling decisions
+      to backends in a standard way.
+    quote: enable the tail-sampling processor in the OTel Collector to propagate its
+      sampling decisions to backends
+    location: char 13182 of 13443 (normalized)
     confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
-    as_of_date: '2026-08-20'
+    as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-14
-    text: Implementation options include both hex string comparison and numeric format
-      conversion.
-    quote: comparing hex strings or converting them to numeric format are both viable
-    location: char 12649 of 13443 (normalized)
+    text: Backend systems can use the effective sampling probability value in their
+      data presentations.
+    quote: permits backend systems to use the effective sampling probability in data
+      presentations
+    location: char 13311 of 13443 (normalized)
     confidence: medium
     contested: false
     contradicts: []
@@ -1310,21 +1413,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-7290a7dc-15
-    text: This proposal resulted from extended negotiations within the Sampling SIG.
-    quote: This proposal is the result of long negotiations on the Sampling SIG
-    location: char 12106 of 13443 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-7290a7dc-16
-    text: The design enables downstream systems to propagate consistent sampling information.
-    quote: permits sampling systems to propagate consistent sampling information downstream
-      where
-    location: char 13045 of 13443 (normalized)
+    text: Threshold handling can be implemented by either comparing hex strings or
+      converting to numeric format.
+    quote: Comparing hex strings or converting them to numeric format are both viable
+      alternatives
+    location: char 12649 of 13443 (normalized)
     confidence: medium
     contested: false
     contradicts: []
@@ -1338,60 +1431,41 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 86359221106313f2cf1b4065887a9c3f9092201b
   claims:
   - claim_id: C-e6b2e631-1
-    text: OpenTelemetry defines sampling probability as valid between 2^-56 and 1.
-    quote: sampling probability is valid in the range 2^-56 through 1
-    location: char 2689 of 22254 (normalized)
+    text: OpenTelemetry defines sampling probability as valid in the range from 2^-56
+      to 1.0.
+    quote: In OpenTelemetry, sampling probability is valid in the range 2^-56 through
+      1.
+    location: char 2671 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
-    as_of_date: null
+    as_of_date: '2026-08-20'
     provenance_origin: discovered
   - claim_id: C-e6b2e631-2
-    text: The exponent 56 in sampling calculations corresponds to 7 bytes of randomness
-      per W3C specification.
-    quote: The value 56 appearing in this expression corresponds with 7 bytes of randomness
-    location: char 2749 of 22254 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-e6b2e631-3
-    text: A sampling probability of zero is not defined in OpenTelemetry.
-    quote: the zero value is not defined
-    location: char 2916 of 22254 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-e6b2e631-4
-    text: The rejection threshold is a 56-bit value derived from sampling probability.
+    text: A rejection threshold is a 56-bit value mathematically derived from the
+      sampling probability.
     quote: This is a 56-bit value directly derived from the sampling probability.
     location: char 3315 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-e6b2e631-5
-    text: Rejection threshold is calculated by the formula (1 - Sampling_Probability)
-      × 2^56.
+  - claim_id: C-e6b2e631-3
+    text: The rejection threshold is calculated by multiplying (1 minus sampling probability)
+      by 2 to the 56th power.
     quote: Rejection_Threshold = (1 - Sampling_Probability) * 2^56.
     location: char 3583 of 22254 (normalized)
     confidence: high
@@ -1401,12 +1475,34 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-e6b2e631-4
+    text: In W3C Trace Context Level 2, the value 56 corresponds to 7 bytes of randomness.
+    quote: The value 56 appearing in this expression corresponds with 7 bytes of randomness
+    location: char 2749 of 22254 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e6b2e631-6
+    text: OpenTelemetry uses a TraceState 'rv' sub-key to propagate explicit trace
+      randomness values.
+    quote: can be propagated through the OpenTelemetry TraceState rv sub-key
+    location: char 4841 of 22254 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-e6b2e631-7
-    text: Adjusted count in sampling refers to the mathematical reciprocal of the
-      sampling probability.
-    quote: adjusted count refers to the mathematical inverse (reciprocal) of the sampling
-      probability
-    location: char 9298 of 22254 (normalized)
+    text: OpenTelemetry uses a TraceState 'th' sub-key to encode the rejection threshold
+      for sampled spans.
+    quote: expressed in the OpenTelemetry TraceState th sub-key for sampled spans
+    location: char 1857 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1415,11 +1511,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e6b2e631-8
-    text: Explicit trace randomness can be propagated through the OpenTelemetry TraceState
-      rv sub-key.
-    quote: This can be either an explicit randomness value expressed in the OpenTelemetry
-      TraceState rv sub-key
-    location: char 1582 of 22254 (normalized)
+    text: OpenTelemetry supports using the least-significant 56 bits of TraceID as
+      a source of randomness for sampling.
+    quote: OpenTelemetry supports using the least-significant 56 bits of the TraceID
+      as the source of randomness
+    location: char 4995 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1428,30 +1524,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e6b2e631-9
-    text: Downstream samplers can raise the applied threshold but cannot lower it
-    quote: Downstream samplers are able to raise the applied threshold, but they cannot
-      lower
-    location: char 12486 of 22254 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-e6b2e631-10
-    text: Raising downstream sampling probability introduces statistical error
-    quote: to raise sampling probability would introduce a statistical error
-    location: char 12784 of 22254 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-e6b2e631-11
-    text: Parent-based samplers propagate the incoming threshold as the outgoing threshold
+    text: Parent-based samplers propagate incoming threshold as the outgoing threshold.
     quote: Parent-based samplers propagate the incoming threshold as the outgoing
       threshold
     location: char 12195 of 22254 (normalized)
@@ -1462,11 +1535,35 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-e6b2e631-10
+    text: Downstream samplers can increase applied thresholds but cannot decrease
+      them.
+    quote: Downstream samplers are able to raise the applied threshold, but they cannot
+      lower
+    location: char 12486 of 22254 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e6b2e631-11
+    text: Raising sampling probability at downstream stages introduces statistical
+      error.
+    quote: to raise sampling probability would introduce a statistical error
+    location: char 12784 of 22254 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-e6b2e631-12
-    text: Equalizing downstream samplers aim to make all spans have equal threshold
-      after passing the stage
-    quote: make all spans have an equal threshold after passing the stage
-    location: char 13001 of 22254 (normalized)
+    text: Equalizing downstream samplers aim to equalize thresholds across all spans.
+    quote: An equalizing downstream sampler aims to make all spans have an equal threshold
+    location: char 12960 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1475,10 +1572,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e6b2e631-13
-    text: Proportional downstream samplers multiply the incoming probability by a
-      configured multiplier
-    quote: multiply the incoming probability with a configured multiplier
-    location: char 13693 of 22254 (normalized)
+    text: Proportional downstream samplers multiply incoming probability by a configured
+      multiplier.
+    quote: aims to multiply the incoming probability with a configured multiplier
+    location: char 13685 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1487,9 +1584,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e6b2e631-14
-    text: 56-bit T and R values are compatible with byte arrays and 64-bit integers
-    quote: As 56-bit values, they are compatible with byte arrays and 64-bit integers
-    location: char 15915 of 22254 (normalized)
+    text: OpenTelemetry SDKs should use 4 digits of precision as default for threshold
+      conversion.
+    quote: OpenTelemetry SDKs are recommended to use 4 digits of precision by default
+    location: char 19111 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1498,21 +1596,25 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e6b2e631-15
-    text: A span is sampled when its randomness value is greater than or equal to
-      the threshold
-    quote: sample should be taken if randomness is greater than or equal to the threshold
-    location: char 21261 of 22254 (normalized)
+    text: A span should be sampled when randomness value is greater than or equal
+      to threshold.
+    quote: a sample should be taken if randomness is greater than or equal to the
+      threshold
+    location: char 21259 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-e6b2e631-16
-    text: Adjusted count equals 1 divided by the sampling probability
-    quote: It is equal to 1/probability
-    location: char 21856 of 22254 (normalized)
+    text: Adjusted count metric is undefined for spans selected via non-probabilistic
+      sampling.
+    quote: Adjusted count is not defined for spans that were obtained via non-probabilistic
+      sampling
+    location: char 21970 of 22254 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1527,18 +1629,29 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: primary_paper
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: e89ca7ebde52901d8cc7c8602e06870fb089ec63
   claims:
-  - claim_id: C-6c8aa937-3
-    text: Process pid and parent_pid attributes churn between instances of an application,
-      causing higher cardinality
-    quote: known to churn between instances of an application and would lead to higher
-      cardinality
-    location: char 2186 of 5440 (normalized)
+  - claim_id: C-6c8aa937-1
+    text: In OpenTelemetry's metric data model, every Resource attribute is used to
+      determine metric identity.
+    quote: every attribute in an OpenTelemetry Resource, according to the metric datamodel,
+      is used
+    location: char 1661 of 5440 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6c8aa937-2
+    text: The Process resource semantic convention includes pid and parent_pid attributes.
+    quote: the Process resource includes pid and and parent_pid
+    location: char 2121 of 5440 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1547,12 +1660,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-6c8aa937-4
-    text: Many metric backends erase resource attributes from metrics to address cardinality
-      issues
+    text: Many metric backends erase Resource attributes from metrics to mitigate
+      cardinality issues.
     quote: Many metric backends are simply erasing resource attributes from metrics
-      to workaround
     location: char 2283 of 5440 (normalized)
-    confidence: medium
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -1560,11 +1672,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-6c8aa937-5
-    text: Resource attribute semantic conventions were originally defined for tracing
-      instrumentation
-    quote: Resource attributes semantic conventions today were defined for the tracing
-      instrumentation
-    location: char 1977 of 5440 (normalized)
+    text: The Resource identity problem in OpenTelemetry affects more than just metrics.
+    quote: the identity problem isn't isolated to metrics alone
+    location: char 2675 of 5440 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1573,7 +1683,20 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-6c8aa937-6
-    text: Some resource attributes cannot be determined before application startup
+    text: OpenTelemetry requires Resources to be fast-to-compute, consistent, and
+      completed at startup.
+    quote: the current need for Resource to be fast-to-compute, consistent and done
+      at startup
+    location: char 4112 of 5440 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6c8aa937-7
+    text: Some Resource attributes cannot be determined prior to application startup.
     quote: Some resource attributes are unable to be determined prior to actual startup
     location: char 3745 of 5440 (normalized)
     confidence: high
@@ -1583,23 +1706,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-6c8aa937-7
-    text: Metric time-series databases have known cardinality implementation issues
-    quote: known issues in metric time-series database implementation around cardinality
-    location: char 1793 of 5440 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-6c8aa937-8
-    text: OpenTelemetry has unresolved issues around Resource attribute merge order
-      from environment variables
-    quote: 'Unclear merge order for Resources from environment variable #1620'
-    location: char 2826 of 5440 (normalized)
-    confidence: medium
+    text: This GitHub issue was opened on September 7, 2022.
+    quote: opened on Sep 7, 2022
+    location: char 1582 of 5440 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -1613,14 +1724,14 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: primary_paper
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 705e3944aeabd14533b0d4138e268fa894705dec
   claims:
   - claim_id: C-841df5cd-1
-    text: Metrics and logs suffer degradation when attribute cardinality is high
+    text: High cardinality is a known problem for metrics and logs
     quote: metrics and logs suffer when cardinality is high
     location: char 855 of 1973 (normalized)
     confidence: high
@@ -1630,9 +1741,8 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-841df5cd-3
-    text: OpenTelemetry semantic conventions for HTTP explicitly address span name
-      cardinality concerns
+  - claim_id: C-841df5cd-2
+    text: HTTP semantic conventions explicitly address span name cardinality concerns
     quote: semantic conventions for HTTP mention this explicitly
     location: char 1163 of 1973 (normalized)
     confidence: high
@@ -1642,11 +1752,35 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-841df5cd-3
+    text: OpenTelemetry specifies predefined attributes for client IP, host identifier,
+      and route
+    quote: there are predefined attributes for client IP, host identifier, route
+    location: char 1257 of 1973 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-841df5cd-4
-    text: Combinations of predefined span attributes like client IP, host identifier,
-      and route often uniquely identify individual spans
-    quote: together will often uniquely identify a span
-    location: char 1348 of 1973 (normalized)
+    text: These predefined span attributes collectively often uniquely identify individual
+      spans
+    quote: which together will often uniquely identify a span
+    location: char 1342 of 1973 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-841df5cd-5
+    text: Log systems can be designed with predefined indexed tags and additional
+      unindexed structured data
+    quote: logs can have only some predefined tags used for indexing
+    location: char 956 of 1973 (normalized)
     confidence: medium
     contested: false
     contradicts: []
@@ -1660,15 +1794,15 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: cbb5a34017c246571a5e2faf02a8988a7ad334d9
   claims:
   - claim_id: C-36976b07-1
-    text: The default aggregation cardinality limit is 2000 combinations per metric
-      stream.
+    text: The default cardinality limit for metric aggregation is 2000 combinations
+      per metric stream.
     quote: The default aggregation cardinality limit is 2000 combinations per metric
       stream.
     location: char 1936 of 12643 (normalized)
@@ -1680,11 +1814,24 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-36976b07-2
-    text: When a metric stream overflows, total counts remain correct but queries
-      filtered by attributes can undercount.
-    quote: the total value remains correct, while queries that filter or group by
-      attributes can undercount
-    location: char 670 of 12643 (normalized)
+    text: When a metric overflows, the original measurement attributes are removed
+      from the exported data point.
+    quote: The original measurement attributes are removed from the overflow data
+      point.
+    location: char 2213 of 12643 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-36976b07-3
+    text: Resource attributes and instrumentation scope attributes remain queryable
+      even when overflow occurs, unlike measurement attributes.
+    quote: They are not part of the measurement attribute set that is replaced by
+      overflow
+    location: char 3832 of 12643 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1693,12 +1840,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-36976b07-4
-    text: Prometheus-compatible exporters replace dots in attribute names with underscores
-      for label compatibility.
-    quote: Prometheus-compatible exporters commonly replace dots in attribute names
-      with underscores for label compatibility
-    location: char 7708 of 12643 (normalized)
-    confidence: medium
+    text: Overflow data points are marked with the specific attribute otel.metric.overflow=true.
+    quote: Their values are folded into a single overflow data point marked with otel.metric.overflow=true
+    location: char 2086 of 12643 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -1706,23 +1851,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-36976b07-5
-    text: With delta temporality, a process can export different attribute combinations
-      in different collection cycles.
-    quote: With delta temporality, a process can export different combinations in
-      different collection cycles.
-    location: char 3547 of 12643 (normalized)
-    confidence: medium
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-36976b07-6
     text: Cardinality limits apply to metric streams created from counters, histograms,
       gauges, and asynchronous instruments.
     quote: Cardinality limits apply to metric streams created from counters, histograms,
-      gauges, and asynchronous instruments.
+      gauges, and asynchronous instruments
     location: char 11786 of 12643 (normalized)
     confidence: high
     contested: false
@@ -1731,13 +1863,24 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-36976b07-6
+    text: When a metric overflows, the total aggregated value remains correct even
+      though attribute breakdowns may be incomplete.
+    quote: The total count is still correct.
+    location: char 2431 of 12643 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-36976b07-7
-    text: Resource and instrumentation scope attributes are not removed by overflow
-      and remain queryable.
-    quote: They are not part of the measurement attribute set that is replaced by
-      overflow
-    location: char 3832 of 12643 (normalized)
-    confidence: medium
+    text: Queries that filter or group by measurement attributes can return incomplete
+      results when those measurements overflow.
+    quote: Any query that filters or groups by a measurement attribute can miss values
+    location: char 3231 of 12643 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -1745,9 +1888,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-36976b07-8
-    text: The SDK cardinality limit does not bound backend cardinality across a fleet.
-    quote: The SDK cap does not bound backend cardinality.
-    location: char 3499 of 12643 (normalized)
+    text: Prometheus-compatible exporters convert dots in attribute names to underscores
+      for label name compatibility.
+    quote: Prometheus-compatible exporters commonly replace dots in attribute names
+      with underscores for label compatibility
+    location: char 7708 of 12643 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1756,9 +1901,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-36976b07-9
-    text: When cardinality limits are exceeded, measurement values are retained in
-      the overflow data point rather than discarded entirely.
-    quote: The values are still included in the overflow data point
+    text: When cardinality limits are applied in OpenTelemetry metrics, measurement
+      values are retained in the overflow data point rather than being discarded.
+    quote: The values are still included in the overflow data point.
     location: char 12020 of 12643 (normalized)
     confidence: high
     contested: false
@@ -1768,8 +1913,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-36976b07-10
-    text: When cardinality limits cause overflow, the original measurement attribute
-      set is what is lost rather than the values themselves.
+    text: When cardinality limits are applied in OpenTelemetry metrics, the original
+      measurement attribute set is lost.
     quote: What is lost is the original measurement attribute set
     location: char 12078 of 12643 (normalized)
     confidence: high
@@ -1780,10 +1925,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-36976b07-11
-    text: Loss of attribute sets causes filtered and grouped metric queries to potentially
-      return inaccurate results with undercounts.
-    quote: filtered and grouped queries can undercount
-    location: char 12147 of 12643 (normalized)
+    text: When measurement attribute sets are lost due to cardinality limiting, filtered
+      and grouped queries can produce undercounts.
+    quote: which is why filtered and grouped queries can undercount.
+    location: char 12134 of 12643 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1798,15 +1943,15 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: primary_paper
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 3d62f155aff6d4c7ae683c939bfee03eb3c983f1
   claims:
   - claim_id: C-9789ce77-1
-    text: OpenTelemetry GenAI semantic conventions currently require span kind to
-      be CLIENT.
+    text: Current OpenTelemetry semantic conventions require GenAI spans to have kind
+      CLIENT.
     quote: The current conventions for GenAI spans require the span kind to be CLIENT
     location: char 1075 of 5417 (normalized)
     confidence: high
@@ -1814,12 +1959,11 @@ sources:
     contradicts: []
     corroboration_count: null
     corroborated_by: []
-    as_of_date: null
+    as_of_date: '2026-08-20'
     provenance_origin: discovered
   - claim_id: C-9789ce77-2
-    text: GenAI interactions with model providers rely on HTTP APIs.
-    quote: Interactions with model providers rely on HTTP APIs, for which Semantic
-      Conventions
+    text: Interactions with GenAI model providers rely on HTTP APIs.
+    quote: Interactions with model providers rely on HTTP APIs
     location: char 1207 of 5417 (normalized)
     confidence: high
     contested: false
@@ -1829,8 +1973,19 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-9789ce77-3
-    text: When a GenAI client wraps an already-instrumented HTTP library, the child
-      HTTP span has kind CLIENT.
+    text: GenAI client libraries can build on top of existing HTTP infrastructure.
+    quote: can build on top of the existing HTTP infrastructure
+    location: char 1535 of 5417 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9789ce77-4
+    text: When a GenAI library wraps an already-instrumented HTTP library, the child
+      HTTP span is kind CLIENT.
     quote: the child span (HTTP) would be of kind CLIENT
     location: char 2130 of 5417 (normalized)
     confidence: high
@@ -1840,20 +1995,9 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-9789ce77-4
-    text: OpenTelemetry defines CLIENT span kind as describing requests to remote
-      services.
-    quote: CLIENT Indicates that the span describes a request to some remote service.
-    location: char 3010 of 5417 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-9789ce77-5
-    text: A proposal exists to allow GenAI spans to be either INTERNAL or CLIENT kind.
+    text: The proposed solution allows GenAI spans to be either INTERNAL or CLIENT
+      kind.
     quote: change the requirement for GenAI spans to allow both INTERNAL and CLIENT
       kinds
     location: char 3373 of 5417 (normalized)
@@ -1864,13 +2008,26 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-9789ce77-7
-    text: Libraries not using already-instrumented HTTP would have GenAI spans of
-      kind CLIENT.
+  - claim_id: C-9789ce77-6
+    text: If a GenAI library does not use an instrumented HTTP library, its span should
+      be CLIENT.
     quote: If the library doesn't use an already-instrumented HTTP library, then the
       kind would be CLIENT
     location: char 3550 of 5417 (normalized)
-    confidence: medium
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-9789ce77-7
+    text: If a GenAI library relies on an instrumented HTTP library, its span should
+      be INTERNAL.
+    quote: If the library relies on an already-instrumented HTTP library, then the
+      kind would be INTERNAL
+    location: char 3679 of 5417 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -1878,10 +2035,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-9789ce77-8
-    text: The issue author is instrumenting Spring AI with INTERNAL GenAI spans and
-      CLIENT HTTP spans.
-    quote: the GenAI spans are of kind INTERNAL and the HTTP spans are of kind CLIENT
-    location: char 4661 of 5417 (normalized)
+    text: Some GenAI span attributes are unused when the span is of kind INTERNAL.
+    quote: would not be used when the GenAI span is of kind INTERNAL
+    location: char 4070 of 5417 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1896,26 +2052,15 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: primary_paper
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 456838964f8fddab8c9bc395d8e71df08a5f830c
   claims:
   - claim_id: C-a11ddc88-1
-    text: The GitHub issue was opened on June 28, 2022
-    quote: opened on Jun 28, 2022
-    location: char 944 of 2173 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-a11ddc88-2
     text: When opentelemetry-python-contrib is released, a corresponding opentelemetry-semantic-conventions
-      version is simultaneously released
+      is created and released.
     quote: a corresponding opentelemetry-semantic-conventions is created and released
       as well
     location: char 1090 of 2173 (normalized)
@@ -1926,9 +2071,9 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-a11ddc88-3
-    text: New versions of opentelemetry-semantic-conventions are incompatible with
-      older instrumented libraries
+  - claim_id: C-a11ddc88-2
+    text: New opentelemetry-semantic-conventions releases are incompatible with older
+      instrumentation libraries.
     quote: the new semantic-conventions lib doesn't support the previous instrumented
       libraries
     location: char 1267 of 2173 (normalized)
@@ -1939,12 +2084,23 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-a11ddc88-3
+    text: Users must update all instrumentation libraries, exporters, SDK, and utilities
+      together to resolve version conflicts.
+    quote: updating all instrumentation libraries as well as exporters, sdk, and utils
+    location: char 1587 of 2173 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-a11ddc88-4
-    text: Users need to update a single instrumentation library independently without
-      forcing updates to all others
-    quote: update a single opentelemetry-instrumentation library without having to
-      update all other instrumentations
-    location: char 1401 of 2173 (normalized)
+    text: The Go OpenTelemetry implementation uses version-specific subdirectories
+      to handle semantic conventions compatibility.
+    quote: in the Go implementation this is targeted by a subdirectory for each version
+    location: char 1734 of 2173 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -1953,24 +2109,12 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-a11ddc88-5
-    text: The current workaround requires updating all instrumentation libraries,
-      exporters, SDK, and utilities together
-    quote: solved by updating all instrumentation libraries as well as exporters,
-      sdk, and utils
-    location: char 1577 of 2173 (normalized)
+    text: Users cannot independently update a single instrumentation library without
+      updating all others.
+    quote: update a single opentelemetry-instrumentation library without having to
+      update all other instrumentations
+    location: char 1401 of 2173 (normalized)
     confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: '2026-08-20'
-    provenance_origin: discovered
-  - claim_id: C-a11ddc88-6
-    text: The Go OpenTelemetry implementation manages version compatibility using
-      subdirectories for each version
-    quote: in the Go implementation this is targeted by a subdirectory for each version
-    location: char 1734 of 2173 (normalized)
-    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
@@ -1983,7 +2127,7 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
@@ -1996,8 +2140,9 @@ sources:
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - 508252774ef95b477cc81a82daf923ddd74abf89
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-2
@@ -2007,14 +2152,15 @@ sources:
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - 508252774ef95b477cc81a82daf923ddd74abf89
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-3
     text: Jaeger supports Cassandra, Elasticsearch, Kafka, memory, and Badger storage
       backends
-    quote: Jaeger supports Cassandra, Elasticsearch, Kafka, memory, and Badger.
+    quote: Jaeger supports Cassandra, Elasticsearch, Kafka, memory, and Badger
     location: char 3541 of 14433 (normalized)
     confidence: high
     contested: false
@@ -2024,10 +2170,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-4
-    text: Zipkin works with Cassandra, Elasticsearch, MySQL, and in-memory storage
-      options
-    quote: Zipkin works with Cassandra, Elasticsearch, MySQL, and in-memory options.
-    location: char 3692 of 14433 (normalized)
+    text: Zipkin has over 8,800 GitHub stars
+    quote: over 8,800 GitHub stars
+    location: char 6698 of 14433 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2036,11 +2181,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-5
-    text: Zipkin has over 8,800 GitHub stars
-    quote: Zipkin has a larger, more established community, with over 8,800 GitHub
-      stars
-    location: char 6644 of 14433 (normalized)
-    confidence: medium
+    text: Jaeger has approximately 5,000 GitHub stars
+    quote: about 5,000 GitHub stars
+    location: char 6952 of 14433 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2048,10 +2192,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-6
-    text: Jaeger officially supports C++, C#, Go, Java, Python, Node.js, and Ruby
-    quote: Jaeger officially supports languages like C++, C#, Go, Java, Python, Node.js,
-      and Ruby.
-    location: char 5004 of 14433 (normalized)
+    text: Both Jaeger and Zipkin support the OpenTracing standard
+    quote: Both Jaeger and Zipkin support the OpenTracing standard
+    location: char 8132 of 14433 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2061,7 +2204,7 @@ sources:
     provenance_origin: discovered
   - claim_id: C-fd103bb1-7
     text: Jaeger can import Zipkin traces
-    quote: Jaeger can import Zipkin traces,
+    quote: Jaeger can import Zipkin traces
     location: char 8506 of 14433 (normalized)
     confidence: high
     contested: false
@@ -2070,21 +2213,10 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-fd103bb1-8
-    text: Both Jaeger and Zipkin support the OpenTracing standard
-    quote: Both Jaeger and Zipkin support the OpenTracing standard,
-    location: char 8132 of 14433 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-fd103bb1-9
-    text: Both Jaeger and Zipkin can run in the same environment simultaneously.
-    quote: Yes, you can run both systems simultaneously
-    location: char 12355 of 14433 (normalized)
+    text: Both Jaeger and Zipkin can run simultaneously in the same environment.
+    quote: you can run both systems simultaneously,
+    location: char 12360 of 14433 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2093,8 +2225,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-10
-    text: Both Jaeger and Zipkin support configurable data retention policies.
-    quote: Both tools support configurable retention policies
+    text: Both tools support configurable retention policies.
+    quote: Both tools support configurable retention policies.
     location: char 12788 of 14433 (normalized)
     confidence: high
     contested: false
@@ -2103,11 +2235,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-fd103bb1-11
-    text: Both Jaeger and Zipkin support standard protocols and APIs.
-    quote: Both support standard protocols and APIs
-    location: char 13007 of 14433 (normalized)
-    confidence: high
+  - claim_id: C-fd103bb1-12
+    text: Jaeger has stronger integration with cloud-native tools compared to Zipkin.
+    quote: Jaeger has stronger integration with cloud-native tools
+    location: char 13049 of 14433 (normalized)
+    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2115,12 +2247,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-13
-    text: Jaeger has better Kubernetes integration, including official templates and
-      Helm charts.
-    quote: Jaeger has better Kubernetes integration with official templates, Helm
-      charts, and service mesh support
-    location: char 13479 of 14433 (normalized)
-    confidence: high
+    text: Zipkin has broader language support for instrumentation than Jaeger.
+    quote: Zipkin has broader language support for instrumentation
+    location: char 13112 of 14433 (normalized)
+    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2128,12 +2258,23 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-14
-    text: Jaeger provides advanced filtering, search capabilities, and service dependency
-      mapping features.
+    text: Jaeger offers advanced filtering, search capabilities, and service dependency
+      maps in its UI.
     quote: Jaeger offers more advanced filtering and search capabilities, plus service
       dependency maps
     location: char 13744 of 14433 (normalized)
-    confidence: high
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fd103bb1-15
+    text: Zipkin has a simpler and more straightforward interface than Jaeger.
+    quote: Zipkin has a simpler, more straightforward interface
+    location: char 13837 of 14433 (normalized)
+    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2141,10 +2282,12 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-fd103bb1-16
-    text: Jaeger has stronger integration with cloud-native tools compared to Zipkin.
-    quote: Jaeger has stronger integration with cloud-native tools
-    location: char 13049 of 14433 (normalized)
-    confidence: high
+    text: Jaeger has better Kubernetes integration with official templates, Helm charts,
+      and service mesh support.
+    quote: Jaeger has better Kubernetes integration with official templates, Helm
+      charts, and service mesh support
+    location: char 13479 of 14433 (normalized)
+    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2157,16 +2300,18 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: a4fb570b62dd3e4daa999ed3c186db4e96687793
   claims:
-  - claim_id: C-226c9ebd-1
-    text: Jaeger v2's architecture is built on the OpenTelemetry Collector.
-    quote: Jaeger v2 is built on the OpenTelemetry Collector
-    location: char 2395 of 7613 (normalized)
+  - claim_id: C-226c9ebd-3
+    text: OpenTelemetry unified manual and automatic instrumentation through a single
+      vendor-neutral standard
+    quote: By providing a single, vendor-neutral standard, OpenTelemetry unified both
+      manual instrumentation
+    location: char 1357 of 7613 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2174,10 +2319,23 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-226c9ebd-2
-    text: Jaeger v2 consolidated Jaeger v1's multiple binaries into a single streamlined
-      binary.
-    quote: The multiple binaries of Jaeger v1 have been replaced by a single
+  - claim_id: C-226c9ebd-4
+    text: Jaeger v2 is built on the OpenTelemetry Collector architecture
+    quote: Jaeger v2 is built on the OpenTelemetry Collector, leveraging its flexible,
+      extensible pipeline
+    location: char 2395 of 7613 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-226c9ebd-5
+    text: Jaeger v2 replaced the multiple binaries of v1 with a single binary
+    quote: The multiple binaries of Jaeger v1 have been replaced by a single, streamlined
+      binary
     location: char 2601 of 7613 (normalized)
     confidence: high
     contested: false
@@ -2186,8 +2344,9 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-226c9ebd-3
-    text: Jaeger v2 natively understands the OpenTelemetry Protocol (OTLP) end-to-end.
+  - claim_id: C-226c9ebd-6
+    text: Jaeger v2 natively supports the OpenTelemetry Protocol end-to-end without
+      translation layers
     quote: Jaeger v2 natively understands the OpenTelemetry Protocol (OTLP) end to
       end
     location: char 2797 of 7613 (normalized)
@@ -2198,45 +2357,13 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-226c9ebd-5
-    text: Jaeger v1 will be fully deprecated in January 2026.
-    quote: Jaeger v1, which will be fully deprecated in January 2026
-    location: char 6925 of 7613 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-226c9ebd-6
-    text: Jaeger v1's final release is scheduled for December 2025.
-    quote: the last v1 release in December 2025
-    location: char 6993 of 7613 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-226c9ebd-7
-    text: As of 2025, the Jaeger project has grown to 1,359 contributors from 597
-      companies.
-    quote: the community has grown to 1,359 contributors from 597 companies
-    location: char 6466 of 7613 (normalized)
+    text: Jaeger v1 will be fully deprecated in January 2026 after a final release
+      in December 2025
+    quote: will be fully deprecated in January 2026 following the last v1 release
+      in December 2025
+    location: char 6942 of 7613 (normalized)
     confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: '2026-08-20'
-    provenance_origin: discovered
-  - claim_id: C-226c9ebd-8
-    text: ClickHouse is planned as an upcoming official storage backend for Jaeger.
-    quote: the upcoming addition of ClickHouse as an official storage backend
-    location: char 5702 of 7613 (normalized)
-    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2249,15 +2376,15 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 57a680bf7df301a1c03f2ce02df3715b371aae88
   claims:
   - claim_id: C-50825277-1
-    text: Zipkin was first released as an open-source project in 2012
-    quote: was first released as an open-source project in 2012.
+    text: Zipkin was first released as an open-source project in 2012.
+    quote: was first released as an open-source project in 2012
     location: char 823 of 20843 (normalized)
     confidence: high
     contested: false
@@ -2267,9 +2394,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-2
-    text: Jaeger was open-sourced by Uber in 2015
-    quote: Jaeger was originally built by teams at Uber and then open-sourced in 2015.
-    location: char 877 of 20843 (normalized)
+    text: Jaeger was open-sourced in 2015.
+    quote: open-sourced in 2015
+    location: char 931 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2278,22 +2405,22 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-3
-    text: Jaeger achieved Cloud Native Computing Foundation incubation status in 2017
-      and graduated in 2019
-    quote: It got accepted as a Cloud Native incubation project in 2017 and graduated
-      in 2019.
-    location: char 953 of 20843 (normalized)
+    text: Jaeger was originally built by teams at Uber.
+    quote: Jaeger was originally built by teams at Uber
+    location: char 877 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-4
-    text: Jaeger's source code is primarily written in Go
-    quote: Jaeger's source code is primarily written in Go,
-    location: char 3077 of 20843 (normalized)
+    text: Jaeger became a Cloud Native Computing Foundation incubation project in
+      2017.
+    quote: got accepted as a Cloud Native incubation project in 2017
+    location: char 956 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2302,9 +2429,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-5
-    text: Zipkin's source code is primarily written in Java
-    quote: Zipkin's source code is primarily written in Java.
-    location: char 3132 of 20843 (normalized)
+    text: Jaeger's source code is primarily written in Go.
+    quote: Jaeger's source code is primarily written in Go
+    location: char 3077 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2313,11 +2440,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-6
-    text: Jaeger uses a pull-based model where agents buffer traces locally before
-      forwarding to collectors
-    quote: It uses a pull-based model where agents buffer traces locally before sending
-      them to collectors,
-    location: char 6262 of 20843 (normalized)
+    text: Zipkin's source code is primarily written in Java.
+    quote: Zipkin's source code is primarily written in Java
+    location: char 3132 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2326,11 +2451,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-7
-    text: Zipkin uses a push-based model where instrumented applications send trace
-      data directly to collectors
-    quote: It uses a push-based model where instrumented applications send trace data
-      directly to collectors.
-    location: char 7616 of 20843 (normalized)
+    text: Jaeger uses a pull-based architecture where agents buffer traces locally
+      before sending to collectors.
+    quote: It uses a pull-based model where agents buffer traces locally
+    location: char 6262 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2339,11 +2463,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-8
-    text: Cassandra and Elasticsearch are the primarily supported storage backends
-      for Jaeger
-    quote: Cassandra and Elasticsearch are the primarily supported storage backends
-      by Jaeger.
-    location: char 5436 of 20843 (normalized)
+    text: Zipkin uses a push-based architecture where applications send trace data
+      directly to collectors.
+    quote: It uses a push-based model where instrumented applications send trace data
+      directly to collectors
+    location: char 7616 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2353,31 +2477,33 @@ sources:
     provenance_origin: discovered
   - claim_id: C-50825277-9
     text: Jaeger was developed by Uber.
-    quote: Jaeger, developed by Uber, is designed for high
+    quote: Jaeger, developed by Uber, is designed for high scalability
     location: char 15954 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-10
     text: Zipkin was originally developed by Twitter.
-    quote: Zipkin, originally developed by Twitter, is known for
+    quote: Zipkin, originally developed by Twitter, is known for its simplicity
     location: char 16119 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-11
     text: Jaeger provides client libraries for Java, Go, Python, Node.js, C++, and
       C#.
     quote: Jaeger provides client libraries for Java, Go, Python, Node.js, C++, and
-      C#
+      C#.
     location: char 16424 of 20843 (normalized)
     confidence: high
     contested: false
@@ -2390,7 +2516,7 @@ sources:
     text: Zipkin offers official client libraries for Java, JavaScript, Ruby, C#,
       Go, and PHP.
     quote: Zipkin offers official client libraries for Java, JavaScript, Ruby, C#,
-      Go, and PHP
+      Go, and PHP.
     location: char 16501 of 20843 (normalized)
     confidence: high
     contested: false
@@ -2400,9 +2526,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-13
-    text: Jaeger primarily supports Cassandra and Elasticsearch for trace data storage.
-    quote: Jaeger primarily supports Cassandra and Elasticsearch for trace data storage
-    location: char 17135 of 20843 (normalized)
+    text: Jaeger is backed by the Cloud Native Computing Foundation (CNCF).
+    quote: It's backed by the Cloud Native Computing Foundation (CNCF)
+    location: char 16799 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2411,10 +2537,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-14
-    text: Zipkin supports Cassandra, Elasticsearch, and MySQL for storage.
-    quote: Zipkin originally used Cassandra but now also supports Elasticsearch and
-      MySQL
-    location: char 17213 of 20843 (normalized)
+    text: Jaeger primarily supports Cassandra and Elasticsearch for trace data storage.
+    quote: Jaeger primarily supports Cassandra and Elasticsearch for trace data storage.
+    location: char 17135 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2423,9 +2548,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-50825277-15
-    text: Both Jaeger and Zipkin are compatible with OpenTelemetry.
-    quote: both Jaeger and Zipkin are compatible with OpenTelemetry
-    location: char 17455 of 20843 (normalized)
+    text: Zipkin originally used Cassandra but now also supports Elasticsearch and
+      MySQL.
+    quote: Zipkin originally used Cassandra but now also supports Elasticsearch and
+      MySQL.
+    location: char 17213 of 20843 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2435,9 +2562,9 @@ sources:
     provenance_origin: discovered
   - claim_id: C-50825277-16
     text: Jaeger is compatible with Zipkin's API.
-    quote: Jaeger is compatible with Zipkin's API, which can ease the transition
+    quote: Jaeger is compatible with Zipkin's API
     location: char 18500 of 20843 (normalized)
-    confidence: medium
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2450,18 +2577,17 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: standard
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: e2ff792520e0ff4848835c54c64a19e04af9ed58
   claims:
   - claim_id: C-877e19dc-1
-    text: Positional encoding is more space efficient and simpler to parse than key-value
-      encoding.
-    quote: Positional encoding is more space efficient and less complicated to parse
-      vs key/value encoding.
-    location: char 2842 of 9983 (normalized)
+    text: B3 format concatenates trace ID, span ID, sampled/debug flag, and optional
+      parent span ID separated by hyphens.
+    quote: b3={x-b3-traceid}-{x-b3-spanid}-{if x-b3-flags 'd' else x-b3-sampled}-{x-b3-parentspanid}
+    location: char 1388 of 9983 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2470,7 +2596,21 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-877e19dc-2
-    text: Trace ID and span ID are the only mandatory fields in the B3 format.
+    text: Positional encoding for B3 is more space-efficient and less complicated
+      to parse than key-value encoding.
+    quote: Positional encoding is more space efficient and less complicated to parse
+      vs key/value
+    location: char 2842 of 9983 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-877e19dc-3
+    text: Trace ID and span ID are the only mandatory fields in the B3 single header
+      format.
     quote: The trace ID and span ID fields are the only mandatory fields.
     location: char 3381 of 9983 (normalized)
     confidence: high
@@ -2480,9 +2620,21 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-877e19dc-3
+  - claim_id: C-877e19dc-4
+    text: The sampled flag is positioned before the parent span ID to improve clarity
+      between equal-length fields.
+    quote: By placing the sampled flag in-between, we make this more clear.
+    location: char 3966 of 9983 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-877e19dc-5
     text: The debug flag is encoded as the letter 'd' in the same position as the
-      sampled flag.
+      sampled indicator.
     quote: as the letter 'd' in the same place as sampled
     location: char 4360 of 9983 (normalized)
     confidence: high
@@ -2492,9 +2644,21 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-877e19dc-5
-    text: JMS requires message header names to follow Java naming conventions.
-    quote: JMS requires that message header names follow java naming conventions.
+  - claim_id: C-877e19dc-6
+    text: B3 fields have remained stable without changes over a period of years.
+    quote: B3 fields haven't changed in years and we can lock in something far
+    location: char 5046 of 9983 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-877e19dc-7
+    text: JMS requires message header names to follow Java naming conventions that
+      exclude hyphens and dots.
+    quote: JMS requires that message header names follow java naming conventions
     location: char 7845 of 9983 (normalized)
     confidence: high
     contested: false
@@ -2503,22 +2667,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-877e19dc-6
-    text: Using hyphenated prefixed headers like X-B3- is an antipattern.
-    quote: using prefixed headers X-B3- is an antipattern.
-    location: char 9892 of 9983 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-877e19dc-7
-    text: The single-header b3 format solves propagation compatibility problems caused
-      by hyphenated headers in JMS.
-    quote: solves propagation concerns a prefixed format causes with JMS
-    location: char 7782 of 9983 (normalized)
+  - claim_id: C-877e19dc-8
+    text: Finagle allocated 64 bits (16 hexadecimal characters) for flags, but this
+      full allocation was never used in practice.
+    quote: they allocated (64 bits or 16 characters in hex) was never used in practice
+    location: char 6934 of 9983 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2533,16 +2686,17 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: primary_paper
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: fdb04ce42f3e21301fa3492b2173d4f65aedc16b
   claims:
   - claim_id: C-28ed2da2-1
-    text: Brave was previously used as the distributed tracing solution in the application
-    quote: We have an application which was using brave for adding traces/spans
-    location: char 1142 of 2136 (normalized)
+    text: The application was using Brave for distributed tracing to add traces and
+      spans.
+    quote: application which was using brave for adding traces/spans
+    location: char 1153 of 2136 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2551,19 +2705,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-28ed2da2-2
-    text: Zipkin B3 trace format uses traceId and spanId fields for distributed tracing
-    quote: traceId/spanId from events meta was in turn used
-    location: char 1365 of 2136 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-28ed2da2-3
-    text: Trace context metadata can be embedded in event messages for correlation
-    quote: adding the traceContextMap in events meta
+    text: They stored trace context maps in event metadata sent over Kafka and gRPC.
+    quote: adding the traceContextMap in events meta (in events sent to/from a kafka/grpc
     location: char 1260 of 2136 (normalized)
     confidence: high
     contested: false
@@ -2572,10 +2715,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-28ed2da2-4
-    text: Kafka and gRPC are used for distributed event-based application communication
-    quote: events sent to/from a kafka/grpc based application
-    location: char 1306 of 2136 (normalized)
+  - claim_id: C-28ed2da2-3
+    text: They used B3 traceIds and spanIds from event metadata to segregate trace-specific
+      information.
+    quote: These traceId/spanId from events meta was in turn used to segregate info
+    location: char 1359 of 2136 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2583,8 +2727,8 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-28ed2da2-5
-    text: OpenTelemetry provides automatic instrumentation capability for Java applications
+  - claim_id: C-28ed2da2-4
+    text: The application is migrating from Brave to OpenTelemetry auto-instrumentation.
     quote: migrating to opentelemetry-autoinstrumentation from brave
     location: char 1482 of 2136 (normalized)
     confidence: high
@@ -2594,11 +2738,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-28ed2da2-6
-    text: The migration from Zipkin B3 to W3C trace context must avoid breaking existing
-      integrations
-    quote: correlate these zipkins-b3-traceId to w3c one's without any breaking change
-    location: char 1568 of 2136 (normalized)
+  - claim_id: C-28ed2da2-5
+    text: The migration involves changing from Zipkin B3 trace context format to W3C
+      trace context format.
+    quote: Zipkin B3 trace context to W3C trace context migration without breaking
+    location: char 0 of 2136 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2606,11 +2750,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-28ed2da2-7
-    text: W3C trace context is an alternative standard to Zipkin B3 for distributed
-      tracing
-    quote: Zipkin B3 trace context to W3C trace context migration
-    location: char 0 of 2136 (normalized)
+  - claim_id: C-28ed2da2-6
+    text: The goal is to correlate Zipkin B3 trace IDs to W3C trace IDs without introducing
+      breaking changes.
+    quote: correlate these zipkins-b3-traceId to w3c one's without any breaking change
+    location: char 1568 of 2136 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2624,30 +2768,18 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: a699bbe21fb3ebc465a3e50f7576c4e694c94689
   claims:
   - claim_id: C-80b1f67b-1
-    text: Head-based sampling makes the sampling decision before any spans are recorded
-      in the trace.
-    quote: Head-based sampling makes the keep-or-drop decision at the very start of
-      a trace
-    location: char 1531 of 13557 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-80b1f67b-2
-    text: The W3C traceparent header is used to propagate sampling decisions to downstream
-      services.
-    quote: The decision propagates through the W3C traceparent header.
-    location: char 2098 of 13557 (normalized)
+    text: A modest microservices application handling 10,000 requests per second generates
+      hundreds of thousands of spans per second.
+    quote: 10,000 requests per second can generate hundreds of thousands of spans
+      per second
+    location: char 1094 of 13557 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2656,9 +2788,21 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-80b1f67b-3
-    text: Tail-based sampling decisions are made in the OpenTelemetry Collector, not
-      in application SDKs.
-    quote: This happens in the OpenTelemetry Collector, not in your application code.
+    text: ParentBasedTraceIdRatio applies 10% sampling probability to root spans and
+      delegates child span decisions to the parent's decision.
+    quote: For root spans (no parent), it applies the 10% probability
+    location: char 3553 of 13557 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-80b1f67b-5
+    text: Tail-based sampling decisions occur in the OpenTelemetry Collector, not
+      within application code.
+    quote: This happens in the OpenTelemetry Collector, not in your application code
     location: char 5452 of 13557 (normalized)
     confidence: high
     contested: false
@@ -2667,36 +2811,25 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-80b1f67b-4
-    text: The Collector's decision_wait parameter should be set to 2-3 times the application's
-      p99 latency.
-    quote: A good starting point is 2 to 3 times your p99 latency.
-    location: char 7459 of 13557 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-80b1f67b-6
-    text: Tail-based sampling in OpenTelemetry requires load balancers to route traffic
-      by trace ID.
-    quote: This requires a load balancing strategy based on trace ID.
-    location: char 10634 of 13557 (normalized)
+    text: The decision_wait parameter controls how many seconds the Collector buffers
+      spans before applying tail-sampling policies.
+    quote: It controls how long the Collector waits for spans before making a decision
+    location: char 7197 of 13557 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-80b1f67b-7
-    text: Tail-based sampling with 5,000 traces per second, 30-second wait, 8 spans
-      per trace, and 2KB per span requires approximately 2.4GB of memory.
-    quote: that works out to roughly 2.4 GB just for the span buffer.
-    location: char 10479 of 13557 (normalized)
-    confidence: high
+    text: A recommended starting value for decision_wait is 2 to 3 times the measured
+      p99 latency.
+    quote: A good starting point is 2 to 3 times your p99 latency
+    location: char 7459 of 13557 (normalized)
+    confidence: medium
     contested: false
     contradicts: []
     corroboration_count: null
@@ -2704,17 +2837,18 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-80b1f67b-8
-    text: A microservices application handling 10,000 requests per second generates
-      hundreds of thousands of spans per second.
-    quote: handling 10,000 requests per second can generate hundreds of thousands
-      of spans per second.
-    location: char 1085 of 13557 (normalized)
+    text: With 5,000 new traces per second, 30-second wait, 8 spans per trace, and
+      2 KB per span, tail-based sampling requires approximately 2.4 GB of memory for
+      the span buffer.
+    quote: that works out to roughly 2.4 GB just for the span buffer
+    location: char 10479 of 13557 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
+    corroboration_count: 2
+    corroborated_by:
+    - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+    as_of_date: '2026-08-20'
     provenance_origin: discovered
 - source_id: a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
   url: https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view
@@ -2722,17 +2856,17 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 95b929eb2b7c5ce721b51cad0dec9f7eaf09e2b7
   claims:
   - claim_id: C-a9fc4c7a-1
-    text: Standard probabilistic sampling makes keep-or-drop decisions with equal
-      probability for fast and slow traces alike.
-    quote: Standard probabilistic sampling treats all traces equally.
-    location: char 410 of 13410 (normalized)
+    text: Head sampling makes sampling decisions before a trace completes, without
+      knowing the request latency.
+    quote: Head sampling makes the keep-or-drop decision at the beginning of a trace
+    location: char 1141 of 13410 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2740,50 +2874,39 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-a9fc4c7a-2
-    text: Head sampling decides whether to sample a trace before the first span is
-      even complete.
-    quote: makes the keep-or-drop decision at the beginning of a trace, before the
-      first span
-    location: char 1155 of 13410 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-a9fc4c7a-4
-    text: Tail sampling requires buffering all spans in memory while waiting for the
-      sampling decision.
+  - claim_id: C-a9fc4c7a-3
+    text: Tail sampling requires storing all spans in memory until the sampling decision
+      is made.
     quote: tail sampling requires holding all spans in memory until the decision is
       made
     location: char 2052 of 13410 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - 80b1f67ba2163d7cd2706a03842898479a051b64
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-a9fc4c7a-5
-    text: All spans belonging to a single trace must be processed by the same collector
-      instance for tail sampling to work correctly.
-    quote: all spans for a given trace must be processed by the same collector instance
-    location: char 7893 of 13410 (normalized)
+  - claim_id: C-a9fc4c7a-4
+    text: The decision_wait parameter controls how long the collector buffers an incomplete
+      trace in memory.
+    quote: decision_wait of 30 seconds means the collector holds spans in memory
+    location: char 3433 of 13410 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - 80b1f67ba2163d7cd2706a03842898479a051b64
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-a9fc4c7a-6
-    text: Load-balancing exporters solve the single-collector requirement by routing
-      all spans with the same trace ID to the same downstream collector.
-    quote: This exporter routes all spans with the same trace ID to the same downstream
-      collector
-    location: char 8215 of 13410 (normalized)
+  - claim_id: C-a9fc4c7a-5
+    text: When concurrent trace volume exceeds the num_traces limit, incomplete traces
+      are dropped without evaluation.
+    quote: If your system processes more concurrent traces than this limit, some traces
+      may be dropped
+    location: char 3741 of 13410 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2792,22 +2915,10 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-a9fc4c7a-7
-    text: 'The tail sampling processor applies OR logic across policies: a trace is
-      kept if any single policy evaluates to keep.'
-    quote: If any policy says "keep," the trace is kept.
-    location: char 6198 of 13410 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-a9fc4c7a-8
-    text: The and policy type requires both of its sub-policies to evaluate to keep
-      before a trace is retained.
-    quote: Both sub-policies must evaluate to "keep" for the trace to be kept.
-    location: char 5158 of 13410 (normalized)
+    text: Tail sampling requires all spans of the same trace to arrive at one collector
+      instance to evaluate latency correctly.
+    quote: all spans for a given trace must be processed by the same collector instance
+    location: char 7893 of 13410 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2822,17 +2933,18 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: docs
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 80d3263016474ca45cc3048a0f4a10c1925c5b1f
   claims:
   - claim_id: C-ba1d8db8-1
-    text: Backward-incompatible API changes require incrementing the major version
-      number.
-    quote: Backward-incompatible changes to API packages MUST NOT be made unless
-    location: char 5883 of 22207 (normalized)
+    text: Existing API calls must remain compatible with all future minor versions
+      within the same major version.
+    quote: All existing API calls MUST continue to compile and function against all
+      future minor versions
+    location: char 5994 of 22207 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2841,44 +2953,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-ba1d8db8-2
-    text: Code written against older API versions must work with newer API versions.
-    quote: Code written against older versions of the API MUST work with all newer
-      versions
-    location: char 2952 of 22207 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ba1d8db8-3
-    text: Signals begin their lifecycle in Development status.
-    quote: Signals start in Development status.
-    location: char 4318 of 22207 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ba1d8db8-4
-    text: Development-stage signals may experience breaking changes and performance
-      issues.
-    quote: While signals are in development, breaking changes and performance issues
-      MAY occur.
-    location: char 4355 of 22207 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ba1d8db8-5
-    text: Long-term dependencies should not be established against Development-stage
-      signals.
+    text: Long-term dependencies should not be taken on signals in Development status.
     quote: Long-term dependencies SHOULD NOT be taken against signals in Development.
     location: char 4578 of 22207 (normalized)
     confidence: high
@@ -2888,10 +2963,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ba1d8db8-6
-    text: Once stable, signals permit long-term dependencies to be established.
-    quote: Long-term dependencies MAY now be taken against this signal.
-    location: char 5529 of 22207 (normalized)
+  - claim_id: C-ba1d8db8-3
+    text: Instrumentation APIs are designed to never create version conflicts between
+      packages.
+    quote: Instrumentation APIs cannot create a version conflict, ever.
+    location: char 2787 of 22207 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2899,10 +2975,12 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ba1d8db8-7
-    text: A signal's API component must reach stability before other components.
-    quote: The API MUST become stable before the other components.
-    location: char 5695 of 22207 (normalized)
+  - claim_id: C-ba1d8db8-4
+    text: OpenTelemetry package versions may use suffixes like -alpha, -beta, -rc,
+      or -development to indicate maturity status.
+    quote: Package version numbers MAY include a suffix, such as -alpha, -beta, -rc,
+      or -development
+    location: char 5132 of 22207 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -2910,8 +2988,9 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ba1d8db8-8
-    text: Public SDK package functionality must maintain backward compatibility.
+  - claim_id: C-ba1d8db8-5
+    text: Public SDK package functionality must remain backward compatible across
+      versions.
     quote: Public portions of SDK packages MUST remain backward compatible.
     location: char 6217 of 22207 (normalized)
     confidence: high
@@ -2921,20 +3000,82 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ba1d8db8-9
-    text: OpenTelemetry clients must follow Semantic Versioning 2.0.0
-    quote: OpenTelemetry clients MUST follow Semantic Versioning 2.0.0
-    location: char 17363 of 22207 (normalized)
+  - claim_id: C-ba1d8db8-6
+    text: Different packages within the same OpenTelemetry release can have different
+      levels of stability.
+    quote: Different packages within the same release may have different levels of
+      stability.
+    location: char 3803 of 22207 (normalized)
     confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
-    as_of_date: '2026-08-20'
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ba1d8db8-7
+    text: New signals in Development status can be added without breaking the stability
+      guarantees of existing signals.
+    quote: allows signals in Development to be created without breaking the stability
+      guarantees of existing signals
+    location: char 4709 of 22207 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ba1d8db8-8
+    text: Backward-incompatible changes to API packages require incrementing the major
+      version number.
+    quote: changes to API packages MUST NOT be made unless the major version number
+      is incremented
+    location: char 5905 of 22207 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ba1d8db8-9
+    text: The span name is a telemetry field that must remain stable in OpenTelemetry.
+    quote: The span name
+    location: char 12088 of 22207 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
     provenance_origin: discovered
   - claim_id: C-ba1d8db8-10
-    text: Major version bumps must occur when there is a breaking change to a stable
-      interface
+    text: Renaming of span, metric, log and resource attributes is allowed if described
+      in schema files.
+    quote: Renaming of span, metric, log and resource attributes.
+    location: char 14277 of 22207 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ba1d8db8-11
+    text: Service resource attributes (service.*) are hardcoded in the specification
+      and cannot be changed.
+    quote: These resource attributes MUST NOT be ever changed.
+    location: char 14926 of 22207 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ba1d8db8-12
+    text: Breaking changes to stable interfaces require a major version bump.
     quote: Major version bumps MUST occur when there is a breaking change to a stable
       interface
     location: char 19443 of 22207 (normalized)
@@ -2945,54 +3086,8 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ba1d8db8-11
-    text: All stable API packages must version together across all signals
-    quote: All stable API packages MUST version together, across all signals.
-    location: char 17786 of 22207 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ba1d8db8-12
-    text: API major versions must be supported for a minimum of three years after
-      next major release
-    quote: Major versions of the API MUST be supported for a minimum of three years
-    location: char 20854 of 22207 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
   - claim_id: C-ba1d8db8-13
-    text: OpenTelemetry currently has no plans to create a major version past v1.0
-    quote: we currently have no plans for creating a major version of OpenTelemetry
-      past v1.0.
-    location: char 16414 of 22207 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: '2026-08-20'
-    provenance_origin: discovered
-  - claim_id: C-ba1d8db8-14
-    text: SDK packages for all signals must version together across all signals
-    quote: SDK packages for all signals MUST version together, across all signals.
-    location: char 18054 of 22207 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ba1d8db8-15
-    text: Signals must not be marked deprecated unless the replacement is stable
+    text: Signals cannot be marked as deprecated unless a stable replacement exists.
     quote: Signals MUST NOT be marked as deprecated unless the replacement is stable.
     location: char 16095 of 22207 (normalized)
     confidence: high
@@ -3002,10 +3097,37 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-ba1d8db8-14
+    text: OpenTelemetry API major versions must be supported for a minimum of three
+      years after the next major version.
+    quote: Major versions of the API MUST be supported for a minimum of three years
+      after
+    location: char 20854 of 22207 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ba1d8db8-15
+    text: OpenTelemetry SDK major versions must be supported for a minimum of one
+      year after the next major version.
+    quote: SDK stability, as defined above, will be maintained for a minimum of one
+      year after
+    location: char 21514 of 22207 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-ba1d8db8-16
-    text: Patch versions make no changes that would require recompilation
-    quote: Patch versions make no changes which would require recompilation
-    location: char 20033 of 22207 (normalized)
+    text: All stable API packages in OpenTelemetry must use the same version number
+      across all signals.
+    quote: All stable API packages MUST version together, across all signals.
+    location: char 17786 of 22207 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3019,30 +3141,30 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 56ab9f2a68bcf23f471a1d787e9ba49aeb827a8b
   claims:
   - claim_id: C-bcea9415-1
-    text: OpenTelemetry is an open-source framework that collects and exports telemetry
+    text: OpenTelemetry is an open-source framework for collecting and exporting telemetry
       data.
-    quote: open source framework and collection of tools for generating, collecting,
-      and exporting telemetry data
-    location: char 1019 of 18036 (normalized)
+    quote: is an open source framework and collection of tools for generating, collecting,
+      and exporting telemetry
+    location: char 1013 of 18036 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - c5bed1588ca2563c311a6016aefeba9081490af0
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bcea9415-2
-    text: Datadog collects, stores, visualizes, and analyzes telemetry data.
-    quote: collects your telemetry data, stores it, and gives you tools to visualize
-      and analyze it
-    location: char 1353 of 18036 (normalized)
+    text: Datadog is a commercial full-service observability platform.
+    quote: is a full-service, commercial observability platform
+    location: char 1296 of 18036 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3051,42 +3173,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bcea9415-3
-    text: OpenTelemetry supports programming languages including Java, Python, Go,
-      JavaScript, Ruby, .NET, PHP, Erlang, and Swift.
-    quote: Language support for Java, Python, Go, JavaScript, Ruby, .NET, PHP, Erlang,
-      Swift and more
-    location: char 2586 of 18036 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-bcea9415-4
-    text: Datadog has 600 or more built-in integrations for services and platforms.
-    quote: 600+ built-in integrations for common services and platforms
-    location: char 2957 of 18036 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-bcea9415-5
-    text: OpenTelemetry lacks native alerting capabilities.
-    quote: No native alerting capabilities
-    location: char 4263 of 18036 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-bcea9415-7
-    text: Datadog infrastructure monitoring costs $15 to $23 per host monthly.
+    text: Datadog infrastructure monitoring costs $15-23 per host per month.
     quote: 'Infrastructure monitoring: $15-23 per host/month'
     location: char 8170 of 18036 (normalized)
     confidence: high
@@ -3096,8 +3183,30 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-bcea9415-8
-    text: Datadog holds SOC 2, ISO 27001, and FedRAMP security certifications.
+  - claim_id: C-bcea9415-4
+    text: Datadog APM pricing is $40 per million spans.
+    quote: 'APM: $40 per million spans'
+    location: char 8219 of 18036 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bcea9415-5
+    text: Datadog log management costs $0.10-1.70 per GB for data ingestion.
+    quote: 'Log management: $0.10-1.70 per GB ingestion'
+    location: char 8246 of 18036 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-20'
+    provenance_origin: discovered
+  - claim_id: C-bcea9415-6
+    text: Datadog holds SOC 2, ISO 27001, and FedRAMP certifications.
     quote: SOC 2, ISO 27001, and FedRAMP certified
     location: char 10688 of 18036 (normalized)
     confidence: high
@@ -3107,11 +3216,21 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-bcea9415-8
+    text: OpenTelemetry has no native alerting capabilities.
+    quote: No native alerting capabilities
+    location: char 4263 of 18036 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-bcea9415-9
-    text: OpenTelemetry lacks native storage, dashboarding, and alerting capabilities
-    quote: OpenTelemetry collects and exports telemetry, but it has no storage, dashboards,
-      or alerting
-    location: char 16295 of 18036 (normalized)
+    text: Datadog provides 24/7 technical support to paying customers
+    quote: 24/7 technical support for paying customers
+    location: char 12043 of 18036 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3120,9 +3239,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bcea9415-10
-    text: OpenTelemetry's framework is free and open source software
-    quote: the framework is free and open source
-    location: char 16508 of 18036 (normalized)
+    text: OpenTelemetry collects and exports telemetry but has no built-in storage,
+      dashboards, or alerting capabilities
+    quote: OpenTelemetry collects and exports telemetry, but it has no storage, dashboards,
+      or alerting.
+    location: char 16295 of 18036 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3131,10 +3252,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bcea9415-11
-    text: Datadog ingests and forwards OpenTelemetry-formatted data
-    quote: Datadog ingests OpenTelemetry data, so you can instrument once and send
-      it there
-    location: char 16716 of 18036 (normalized)
+    text: OpenTelemetry's vendor-neutral instrumentation allows switching observability
+      backends without modifying application code
+    quote: Because the instrumentation is vendor-neutral, you can switch backends
+      without touching your code.
+    location: char 17178 of 18036 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3143,35 +3265,34 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bcea9415-12
-    text: OpenTelemetry's vendor-neutral instrumentation allows switching backends
-      without modifying code
-    quote: the instrumentation is vendor-neutral, you can switch backends without
-      touching your code
-    location: char 17186 of 18036 (normalized)
+    text: OpenTelemetry framework is free and open source
+    quote: the framework is free and open source
+    location: char 16508 of 18036 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - c5bed1588ca2563c311a6016aefeba9081490af0
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bcea9415-13
-    text: Some of Datadog's advanced features perform better with its native agent
-      than with OpenTelemetry
-    quote: some advanced features work best with their native agent
-    location: char 14347 of 18036 (normalized)
-    confidence: medium
+    text: Datadog currently ingests and supports OpenTelemetry-formatted data
+    quote: Datadog now supports OpenTelemetry data ingestion
+    location: char 14289 of 18036 (normalized)
+    confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - c5bed1588ca2563c311a6016aefeba9081490af0
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-bcea9415-14
-    text: Datadog offers tiered professional support with faster response times at
-      higher price levels
-    quote: with better response times at higher pricing tiers
-    location: char 12245 of 18036 (normalized)
+    text: Some advanced Datadog features work best with their proprietary native agent
+      rather than OpenTelemetry
+    quote: A few Datadog features still lean on its native agent.
+    location: char 16798 of 18036 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3179,11 +3300,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-bcea9415-16
-    text: At large scale, OpenTelemetry can be more cost-effective than alternatives
-      for organizations with engineering resources
-    quote: Very large deployments might find OpenTelemetry more cost-effective
-    location: char 12973 of 18036 (normalized)
+  - claim_id: C-bcea9415-15
+    text: Datadog provides out-of-the-box functionality requiring minimal configuration
+      to deploy
+    quote: works out of the box with minimal configuration
+    location: char 13194 of 18036 (normalized)
     confidence: medium
     contested: false
     contradicts: []
@@ -3197,29 +3318,31 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: 3127a0414d66ac8ff77b37a7f0b7c21a31cc6118
   claims:
   - claim_id: C-c5bed158-1
-    text: OpenTelemetry is an open-source observability framework, distinct from DataDog
-      which is a cloud-based SaaS service.
+    text: OpenTelemetry is an open-source observability framework while Datadog is
+      a cloud-based SaaS monitoring platform.
     quote: While OpenTelemetry is an open source observability framework, DataDog
-      is a cloud-monitoring SaaS service.
+      is a cloud-monitoring SaaS service
     location: char 415 of 17010 (normalized)
     confidence: high
     contested: false
     contradicts: []
-    corroboration_count: null
-    corroborated_by: []
+    corroboration_count: 2
+    corroborated_by:
+    - bcea9415eeda6a034ea18b9529ec6331daa28307
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-c5bed158-2
-    text: OpenTelemetry lacks built-in storage and visualization capabilities.
+    text: OpenTelemetry lacks built-in storage and visualization capabilities, whereas
+      Datadog provides these features.
     quote: OpenTelemetry does not provide a storage and visualization layer, while
-      DataDog does.
+      DataDog does
     location: char 652 of 17010 (normalized)
     confidence: high
     contested: false
@@ -3229,19 +3352,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-c5bed158-3
-    text: DataDog provides integrated data storage and analysis capabilities.
-    quote: Datadog provides a comprehensive cloud-based platform that includes built-in
-      data storage capabilities.
-    location: char 5400 of 17010 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-c5bed158-4
-    text: OpenTelemetry is a project under the Cloud Native Computing Foundation.
+    text: OpenTelemetry is a project within the Cloud Native Computing Foundation.
     quote: OpenTelemetry is part of the Cloud Native Computing Foundation
     location: char 2391 of 17010 (normalized)
     confidence: high
@@ -3251,9 +3362,10 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-c5bed158-5
-    text: OpenTelemetry is the second-most active project in CNCF, after Kubernetes.
-    quote: It is the second most active project after Kubernetes.
+  - claim_id: C-c5bed158-4
+    text: Among CNCF projects, OpenTelemetry ranks as the second-most active after
+      Kubernetes.
+    quote: It is the second most active project after Kubernetes
     location: char 2518 of 17010 (normalized)
     confidence: medium
     contested: false
@@ -3262,10 +3374,10 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-c5bed158-6
-    text: DataDog uses proprietary instrumentation agents and libraries for telemetry
-      collection.
-    quote: Datadog, in contrast, uses proprietary agents and libraries for data collection.
+  - claim_id: C-c5bed158-5
+    text: Datadog uses proprietary agents and libraries for collecting telemetry data
+      from applications.
+    quote: Datadog, in contrast, uses proprietary agents and libraries for data collection
     location: char 4205 of 17010 (normalized)
     confidence: high
     contested: false
@@ -3274,10 +3386,23 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-c5bed158-6
+    text: Datadog is a closed-source platform with limited customization options.
+    quote: In contrast, Datadog is a closed-source platform with limited customization
+      options
+    location: char 4790 of 17010 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-c5bed158-7
-    text: OpenTelemetry telemetry data can be exported to multiple backend platforms.
-    quote: The data collected by OpenTelemetry can be sent to multiple backends.
-    location: char 2667 of 17010 (normalized)
+    text: OpenTelemetry provides no inherent data storage capabilities and requires
+      an external backend.
+    quote: OpenTelemetry does not provide any data storage capabilities on its own
+    location: char 5193 of 17010 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3286,10 +3411,11 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-c5bed158-8
-    text: Most observability vendors have adopted support for the OTLP data format
-      standard.
-    quote: Most observability vendors support the OTLP data format.
-    location: char 2737 of 17010 (normalized)
+    text: Datadog uses a subscription-based pricing model with different feature-based
+      tiers.
+    quote: Datadog uses a subscription-based pricing model with various tiers based
+      on features
+    location: char 7652 of 17010 (normalized)
     confidence: medium
     contested: false
     contradicts: []
@@ -3298,9 +3424,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-c5bed158-9
-    text: Datadog supports ingesting OpenTelemetry data.
-    quote: Datadog supports ingesting OpenTelemetry data.
-    location: char 13899 of 17010 (normalized)
+    text: Open-source SigNoz has more than 24,000 GitHub stars.
+    quote: With 24,000+ GitHub stars
+    location: char 11410 of 17010 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3309,21 +3435,32 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-c5bed158-10
-    text: Using Datadog with OpenTelemetry instrumentation may not fully utilize all
-      of Datadog's proprietary features.
-    quote: may not fully utilize all of Datadog's features designed for its proprietary
-      agent
-    location: char 14095 of 17010 (normalized)
-    confidence: medium
+    text: Datadog can ingest and process OpenTelemetry formatted data.
+    quote: Datadog supports ingesting OpenTelemetry data.
+    location: char 13899 of 17010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - bcea9415eeda6a034ea18b9529ec6331daa28307
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c5bed158-11
+    text: SigNoz Cloud offers 30 days of unlimited access to all features for free
+      trial users.
+    quote: get 30 days of unlimited access to all features.
+    location: char 11285 of 17010 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-c5bed158-11
-    text: Datadog's direct pricing is typically higher than the direct costs of implementing
-      OpenTelemetry with a backend.
+  - claim_id: C-c5bed158-12
+    text: Datadog's direct costs are typically higher than implementing OpenTelemetry
+      with a backend solution.
     quote: Datadog's pricing is typically higher in terms of direct costs
     location: char 14609 of 17010 (normalized)
     confidence: medium
@@ -3333,11 +3470,34 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-c5bed158-12
-    text: Implementing OpenTelemetry with a backend may have lower direct costs but
-      higher implementation and maintenance expenses.
-    quote: lower direct costs but can incur higher implementation and maintenance
-    location: char 14768 of 17010 (normalized)
+  - claim_id: C-c5bed158-13
+    text: SigNoz can be self-hosted because it is open-source software.
+    quote: You can also install and self-host SigNoz yourself since it is open-source
+    location: char 11334 of 17010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c5bed158-14
+    text: OpenTelemetry creates vendor-neutral and standardized mechanisms for collecting
+      telemetry data.
+    quote: OpenTelemetry provides vendor-neutral, standardized telemetry data collection
+    location: char 13250 of 17010 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c5bed158-15
+    text: Migrating from Datadog involves running OpenTelemetry instrumentation in
+      parallel with existing Datadog agents.
+    quote: Implementing OpenTelemetry instrumentation alongside existing Datadog agents
+    location: char 15136 of 17010 (normalized)
     confidence: medium
     contested: false
     contradicts: []
@@ -3345,11 +3505,11 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-c5bed158-13
-    text: Migrating from Datadog to an OpenTelemetry-based solution may involve temporary
-      duplication of monitoring efforts.
-    quote: may involve temporary duplication of monitoring efforts during the transition
-    location: char 15438 of 17010 (normalized)
+  - claim_id: C-c5bed158-16
+    text: When ingesting OpenTelemetry data, Datadog's proprietary agent-specific
+      features may not be fully utilized.
+    quote: all of Datadog's features designed for its proprietary agent
+    location: char 14117 of 17010 (normalized)
     confidence: medium
     contested: false
     contradicts: []
@@ -3363,14 +3523,14 @@ sources:
   authors: []
   venue: null
   date: null
-  type: null
+  type: blog
   credibility: null
   provenance_origin: discovered
   retrieved_at: '2026-08-20'
   content_hash: f83f34c5d7dc8c5e40be444976804db063cde8d4
   claims:
   - claim_id: C-ed606ca4-1
-    text: Prometheus stores all time series in memory
+    text: Prometheus maintains all metrics in memory rather than persisting to disk
     quote: Prometheus stores all time series in memory.
     location: char 148 of 13818 (normalized)
     confidence: high
@@ -3381,7 +3541,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-ed606ca4-2
-    text: Each unique combination of metric name and label values constitutes a separate
+    text: Different label value combinations for the same metric name create distinct
       time series
     quote: Each unique combination of metric name and label values constitutes a separate
       time series.
@@ -3394,7 +3554,8 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-ed606ca4-3
-    text: The Prometheus Pushgateway has no authentication by default
+    text: The Pushgateway accepts metric submissions without requiring credentials
+      by default
     quote: The Prometheus Pushgateway has no authentication by default.
     location: char 1113 of 13818 (normalized)
     confidence: high
@@ -3404,18 +3565,20 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ed606ca4-5
-    text: Roughly 1 GB of memory is allocated per 100,000 time series
-    quote: Prometheus to allocate ~1 GB of memory per 100,000 time series
-    location: char 3264 of 13818 (normalized)
-    confidence: medium
+  - claim_id: C-ed606ca4-4
+    text: Remote-write ingestion systems like Thanos, Mimir, and Cortex do not enforce
+      label cardinality limits by default
+    quote: remote-write ingestion endpoints (Thanos Receiver, Grafana Mimir, Cortex)
+      typically accept metrics without label cardinality enforcement.
+    location: char 1531 of 13818 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ed606ca4-6
+  - claim_id: C-ed606ca4-5
     text: Prometheus 2.45 and later support global time series limits via storage
       configuration
     quote: 'For Prometheus 2.45+, use the storage-level limit:'
@@ -3427,11 +3590,23 @@ sources:
     corroborated_by: []
     as_of_date: '2026-08-20'
     provenance_origin: discovered
+  - claim_id: C-ed606ca4-6
+    text: Each 100,000 time series in Prometheus consumes approximately 1 gigabyte
+      of memory
+    quote: allocate ~1 GB of memory per 100,000 time series
+    location: char 3278 of 13818 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-ed606ca4-7
-    text: Applications can bound metric cardinality by normalizing dynamic path segments
-      to placeholders
-    quote: Replace dynamic path segments with a placeholder.
-    location: char 9748 of 13818 (normalized)
+    text: Prometheus rejects entire scrape batches that exceed the configured per-target
+      series limit
+    quote: Scrapes that would exceed this are rejected entirely
+    location: char 4773 of 13818 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3440,11 +3615,12 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-ed606ca4-8
-    text: Many remote-write endpoints are protected only by network ACLs without explicit
-      authentication
-    quote: Many remote-write endpoints are protected only by network ACLs, not authentication.
-    location: char 1766 of 13818 (normalized)
-    confidence: medium
+    text: High-cardinality input metrics cause downstream recording rules to generate
+      proportionally many output series
+    quote: Recording rules that process high-cardinality metrics produce many output
+      series.
+    location: char 2353 of 13818 (normalized)
+    confidence: high
     contested: false
     contradicts: []
     corroboration_count: null
@@ -3452,10 +3628,9 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-ed606ca4-9
-    text: Prometheus runs out of memory when cardinality attacks occur before limits
-      are set.
-    quote: Prometheus OOMs; all monitoring goes dark
-    location: char 12575 of 13818 (normalized)
+    text: NetworkPolicy can restrict which clients have access to Pushgateway.
+    quote: NetworkPolicy restricting Pushgateway access
+    location: char 12034 of 13818 (normalized)
     confidence: high
     contested: false
     contradicts: []
@@ -3464,52 +3639,7 @@ sources:
     as_of_date: null
     provenance_origin: discovered
   - claim_id: C-ed606ca4-10
-    text: Setting sample limits too low causes legitimate metrics to be dropped.
-    quote: Legitimate metrics dropped; dashboards show gaps
-    location: char 12325 of 13818 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ed606ca4-11
-    text: Restarting Prometheus with one-hour retention and compaction helps recover
-      from cardinality attacks.
-    quote: Restart Prometheus with --storage.tsdb.retention.time=1h to compact
-    location: char 12646 of 13818 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ed606ca4-12
-    text: Path normalization can change metric labels that alert rules depend on.
-    quote: Path normalisation changes a metric that was being alerted on
-    location: char 12759 of 13818 (normalized)
-    confidence: high
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ed606ca4-13
-    text: Path normalization breaking alerts can be detected through alert testing.
-    quote: Alert test fails; on-call investigates
-    location: char 12868 of 13818 (normalized)
-    confidence: medium
-    contested: false
-    contradicts: []
-    corroboration_count: null
-    corroborated_by: []
-    as_of_date: null
-    provenance_origin: discovered
-  - claim_id: C-ed606ca4-14
-    text: NetworkPolicy can restrict Pushgateway access to only approved namespaces.
+    text: Metrics push access can be restricted to only approved namespaces.
     quote: Only approved namespaces can push
     location: char 12079 of 13818 (normalized)
     confidence: high
@@ -3519,8 +3649,8 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
-  - claim_id: C-ed606ca4-15
-    text: New services require a namespace label to push metrics to Pushgateway.
+  - claim_id: C-ed606ca4-11
+    text: New services must have a namespace label to push metrics.
     quote: New services need namespace label to push metrics
     location: char 12113 of 13818 (normalized)
     confidence: high
@@ -3530,10 +3660,59 @@ sources:
     corroborated_by: []
     as_of_date: null
     provenance_origin: discovered
+  - claim_id: C-ed606ca4-12
+    text: ScrapeSampleLimitHit is a Prometheus alert that fires when sample limits
+      are set too low.
+    quote: 'Alert: ScrapeSampleLimitHit'
+    location: char 7998 of 13818 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ed606ca4-13
+    text: Cardinality attacks before limits are implemented cause Prometheus to run
+      out of memory and lose all monitoring.
+    quote: Prometheus OOMs; all monitoring goes dark
+    location: char 12575 of 13818 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ed606ca4-14
+    text: Restarting Prometheus with --storage.tsdb.retention.time=1h parameter triggers
+      storage compaction.
+    quote: Restart Prometheus with --storage.tsdb.retention.time=1h to compact
+    location: char 12646 of 13818 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ed606ca4-15
+    text: Path normalisation can change metric label values, causing existing alert
+      queries to stop matching.
+    quote: Path normalisation changes a metric that was being alerted on
+    location: char 12759 of 13818 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
   - claim_id: C-ed606ca4-16
-    text: Rate limiting on Pushgateway can cause batch jobs to fail delivering metrics.
-    quote: Batch job metrics not received; Pushgateway returns 429
-    location: char 13051 of 13818 (normalized)
+    text: Pushgateway rate limiting can reject legitimate batch job metrics with HTTP
+      429 errors.
+    quote: Rate limit on Pushgateway breaks legitimate batch job
+    location: char 12997 of 13818 (normalized)
     confidence: high
     contested: false
     contradicts: []
