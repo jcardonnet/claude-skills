@@ -5,6 +5,8 @@ artifact must not read as a pass, an expected rule that never ran must not read 
 threshold must not be proposed from a backend that cannot support one.
 """
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import yaml
@@ -712,3 +714,18 @@ def test_no_other_spec_is_entirely_ungrounded():
               for r in report["results"] if r["model_verified"].get("status") == "scored"}
     assert shares.pop("spec-02-callout-extraction") == 1.0
     assert shares and max(shares.values()) <= 0.60, shares
+
+
+def test_the_cli_can_print_its_own_help():
+    """`--help` crashed with `ValueError: unsupported format character`.
+
+    argparse %-formats every help string before printing it, so the literal `~18%` in
+    `--entailment-model`'s help was read as a format spec. Nothing else in the harness touches that
+    path, which is why a broken `--help` survived: every test drives `main(argv)` or the functions
+    under it with real arguments. Asserting on the rendered text as well as the exit code keeps the
+    escape hatch of `%%`-ing the string into unreadability from passing.
+    """
+    proc = subprocess.run([sys.executable, str(Path(__file__).resolve().parents[1] / "scripts" / "eval.py"), "--help"],
+                          capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr[-2000:]
+    assert "~18%" in proc.stdout and "%%" not in proc.stdout

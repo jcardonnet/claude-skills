@@ -797,7 +797,8 @@ def main(argv: list[str] | None = None) -> int:
                     help="USD ceiling for --backend claude; the run aborts rather than overspending")
     ap.add_argument("--entailment-model", default="haiku",
                     help="model for --backend claude. Measured: haiku split 7 of 38 "
-                         "ballots (~18%) under majority-of-3, so it cannot support a "
+                         "ballots (~18%%) under majority-of-3, so it cannot support a "  # %% — argparse
+                         # %-formats help strings, and a lone % crashed `--help` outright.
                          "calibrated threshold.")
     ap.add_argument("--entailment-votes", type=int, default=1,
                     help="majority-of-N per entailment call (odd; --backend claude only). Two runs "
