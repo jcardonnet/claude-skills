@@ -85,6 +85,24 @@ def run_brief(brief: ResearchBrief, snapshot_dir: str | Path,
     root.mkdir(parents=True, exist_ok=True)
     backend = backend or ReplayBackend(root)
 
+    # A brief already frozen here is a brief already paid for, so don't buy it twice. `brief_id` is
+    # content-addressed (wave + cell + questions), so a hit means THIS brief already ran, not merely
+    # that some brief did; edit the brief and it gets a new id and runs live.
+    #
+    # This is the same rule `--from-corpus` applies one level up, for the same reason. Discovery is
+    # the expensive, rate-limited half, and it is where campaigns actually die: on 2026-08-21
+    # specs 04, 05 and 06 each exhausted the research budget 10-11 briefs in, and every one of those
+    # briefs was already on disk. Without this, a retry re-pays for all of them before reaching the
+    # brief that failed.
+    #
+    # Gate on `brief-*.json` and not on the report, because it is written LAST. A run killed
+    # mid-freeze can leave a report with no sources file, and ReplayBackend reads that as an empty
+    # source list rather than an error -- a brief that found nothing, which is the most reassuring
+    # possible reading of a half-written snapshot. Requiring the last file makes presence mean the
+    # whole triple landed.
+    if not isinstance(backend, ReplayBackend) and (root / f"brief-{brief_id(brief)}.json").is_file():
+        return ReplayBackend(root)(brief)
+
     report, sources = backend(brief)
 
     # Replay is a READ. Writing back what a ReplayBackend just handed us re-froze the snapshot

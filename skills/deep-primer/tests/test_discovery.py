@@ -282,6 +282,60 @@ def test_replaying_a_snapshot_does_not_rewrite_it(tmp_path):
     assert {p.name: p.read_bytes() for p in src.iterdir()} == before, "replay mutated the snapshot"
 
 
+def test_a_brief_already_frozen_is_not_researched_again(tmp_path):
+    """Discovery is the expensive half and it is where campaigns die: on 2026-08-21 specs 04, 05 and
+    06 each exhausted the research budget 10-11 briefs in, with every one of those briefs already
+    frozen on disk. Re-running re-bought all of them before reaching the brief that actually failed.
+
+    A snapshot hit is content-addressed by `brief_id`, so it means THIS brief ran, not that some
+    brief did -- which is what makes skipping the call safe rather than merely cheap.
+    """
+    from research.deep_research import CallableBackend
+
+    b = ResearchBrief(wave="A", framing="structure", questions=["q"], brief_id="A-test")
+    snap = tmp_path / "snap"
+    calls = []
+
+    def fn(_b):
+        calls.append(_b)
+        return ("# fresh\n- lead: something\n", [{"url": "https://e.org/1"}])
+
+    run_brief(b, snap, CallableBackend(fn))
+    assert len(calls) == 1, "the first run has nothing to resume from and must research"
+
+    report, sources = run_brief(b, snap, CallableBackend(fn))
+    assert len(calls) == 1, "the second run re-paid for a brief already on disk"
+    assert "fresh" in report and sources[0]["url"] == "https://e.org/1"
+
+
+def test_a_half_written_snapshot_is_researched_rather_than_resumed(tmp_path):
+    """The reason the resume gate keys on `brief-*.json` and not on the report.
+
+    The freeze writes report, then sources, then the brief. A run killed between the first two
+    leaves a report with no sources file -- and ReplayBackend reads a missing sources file as an
+    empty list, not as an error. Resuming off the report would therefore turn a torn write into a
+    brief that silently found no sources, which is the most reassuring possible reading of a
+    corrupted snapshot and the same failure shape front_load_campaign's `exhausted` branch exists to
+    refuse. Keying on the file written LAST makes presence mean the whole triple landed.
+    """
+    from research.deep_research import CallableBackend
+
+    b = ResearchBrief(wave="A", framing="structure", questions=["q"], brief_id="A-test")
+    snap = tmp_path / "snap"
+    snap.mkdir()
+    (snap / "report-A-test.md").write_text("# torn\n", encoding="utf-8")   # sources/brief never landed
+    calls = []
+
+    def fn(_b):
+        calls.append(_b)
+        return ("# fresh\n- lead: something\n", [{"url": "https://e.org/1"}])
+
+    report, sources = run_brief(b, snap, CallableBackend(fn))
+    assert len(calls) == 1, "a torn snapshot was resumed instead of re-researched"
+    assert "fresh" in report and sources, "the torn snapshot's empty source list survived"
+    assert (snap / "brief-A-test.json").is_file(), "the completed re-run did not freeze the triple"
+
+
 def test_write_campaign_emits_both_artifacts(tmp_path):
     result = front_load_campaign("rag", {"target_domain": "rag"}, snapshot_dir=SNAPSHOT)
     paths = write_campaign(result, tmp_path)
