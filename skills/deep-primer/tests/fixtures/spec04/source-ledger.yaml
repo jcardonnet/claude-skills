@@ -30,13 +30,31 @@
 #     not state — which is exactly why it renders through `contested-graph` as two framings
 #     instead of being asserted (R-DISC-06: authoritative for INCLUSION, never for truth).
 #
-# Four fields were HAND-FILLED after the run because the pipeline drops them, not because they were
-# judged: `type`, `date`, `credibility` and `authors`. `retrieval_loop.fetch_source_leads` never
+# Four DESCRIPTIVE fields were HAND-FILLED after the run because the pipeline drops them, not
+# because they were judged: `type`, `date`, `credibility` and `authors`. `retrieval_loop.fetch_source_leads` never
 # copies `lead.type` onto the fetched document, so every campaign source lands with those null.
 # `date` is filled only where the document itself evidences one: the four arXiv/NeurIPS ids encode
 # their own year and month (1603 -> 2016-03, 2505 -> 2025-05, 2512 -> 2025-12, and the DiskANN URL
 # carries /paper/2019/). It is left null for the two web pages, which carry no date we retrieved.
 # `authors` is filled only for the seed paper, because the seed's author directive names one.
+#
+# FIVE EVIDENCE-GRADING FIELDS ARE ALSO AUTHORED, and unlike the four above they are judgements, so
+# they are listed separately: `contested`, `contradicts`, `corroboration_count`, `corroborated_by`
+# and `provenance_origin`. The first two are authored ENTIRELY. `claim_extractor.mark_conflicts`
+# exists and records disagreement symmetrically, but `run_campaign.py` never calls it — line 40
+# imports `build_ledger`, `corroborate` and `mark_recency` and stops there — so no campaign has ever
+# set `contested` on any claim. Across the three real runs to date (spec-03 281 claims, spec-04 333,
+# spec-05 283) the field is 0 in all 897. The two contested pairs below were therefore judged by a
+# reader of the two claims, not produced by the run, and the reasoning for the 9f257979-4/e995dd02-10
+# pair is written out above so it can be disagreed with. See GAPS.md G16.
+#
+# Corroboration is a weaker case of the same thing. The campaign DOES corroborate — 20 of its 333
+# claims — but only one of the claims kept here (C-9f257979-4) carried a run-produced count, and it
+# was raised from 2 to 3. The other 24 counts and 9 `corroborated_by` lists were authored, by the
+# rule stated in the next paragraph. `provenance_origin` differs everywhere: the run marks all 27
+# `discovered`, and the seed's 4 are re-marked `user` while the rest are cleared to null, which is
+# the point of the seed exercise. NOTHING here is a promotion — an authored corroboration link is a
+# claim a reader can check by grepping the two source_ids, and every one of them resolves.
 #
 # b43b6852 is typed `vendor`, not the `blog` the campaign recorded: it is AWS writing about Amazon
 # OpenSearch Service, its own product. R-EVID-03 wants a performance claim from such a source to
@@ -44,8 +62,9 @@
 # reduction") has one in C-e995dd02-12, an independent engineering blog reporting that the recall
 # target those numbers are quoted at costs 2-3x more latency in production than in benchmarks.
 #
-# Corroboration is marked only where the two sources are from DIFFERENT organisations, the same
-# discipline spec-03's ledger follows. Same-origin agreement is not corroboration (R-EVID-03).
+# The rule for those authored links: corroboration is marked only where the two sources are from
+# DIFFERENT organisations, the same discipline spec-03's ledger follows. Same-origin agreement is
+# not corroboration (R-EVID-03).
 #
 # Quotes are <=15 words (R-GROUND-01). They are NOT lexically close to the blocks that cite them —
 # R-GROUND-01 requires the prose to be a paraphrase, so the offline lexical entailment proxy scores
