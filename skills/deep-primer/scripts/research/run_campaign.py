@@ -67,6 +67,16 @@ def _spec_params(spec_path: Path) -> dict:
     params = dict(spec.get("parameters") or {})
     if not params.get("target_domain"):
         raise SystemExit(f"{spec_path} has no parameters.target_domain")
+    # `seed_sources` is a TOP-LEVEL spec key, not a parameter — artifact-schemas.md files it under
+    # "Phase 0" and spec-04 declares it beside `parameters`. `front_load_campaign` reads it back out
+    # of `params`, so returning only `spec["parameters"]` here resolved every campaign's seeds to
+    # `[]` and no seed ever reached the planner. It is the same bug already fixed on the eval path
+    # (eval.py, `seed_handling`), in the second place that reads a spec. Symptom on spec-04's first
+    # grounded run: 155 leads, none `provenance_origin: user`, and R-DISC-06 — a MUST in that spec's
+    # own `expect.must_pass` — with its entire subject missing from the artifact.
+    seeds = spec.get("seed_sources") or params.get("seed_sources")
+    if seeds:
+        params["seed_sources"] = seeds
     return params
 
 

@@ -659,3 +659,34 @@ def test_a_dropped_lead_is_not_resurrected_by_triage():
 
     # a lead the JUDGE dropped (no fetch verdict) still follows the normal triage path
     assert _status(sl("sl-3", "https://real.example/c", status="dropped")) == ["accepted"]
+
+
+def test_an_author_directive_reaches_the_b_seed_brief_without_a_hand_set_seed():
+    """R-DISC-06's directive half, end to end through `front_load_campaign`.
+
+    `route_seeds` has always split seeds into (direct, directives) correctly — the direct half
+    became accepted user leads and the directive half was dropped on the floor one line later. The
+    only thing that ever produced a B-seed brief was a test setting `params["seed"]` by hand, so a
+    real campaign carrying `{kind: author}` got no seed-anchored brief and nothing failed. Every
+    other test in this file sets `seed` directly, which is exactly why none of them caught it.
+    """
+    params = {"target_domain": "retrieval-augmented generation",
+              "seed_sources": [{"kind": "author", "ref": "J. Doe", "note": "survey their work"}]}
+    result = front_load_campaign("retrieval-augmented generation", params,
+                                 snapshot_dir=SNAPSHOT, waves=("B",))
+
+    seeded = [b for b in result.briefs if b.brief_id == "B-B-seed"]
+    assert len(seeded) == 1, [b.brief_id for b in result.briefs]
+    assert seeded[0].seed_ref == "J. Doe"
+    assert "J. Doe" in seeded[0].questions[0]
+    assert "seed" not in params, "front_load_campaign must not mutate the caller's params"
+
+
+def test_no_directive_still_skips_the_b_seed_brief():
+    """The other direction: wiring directives through must not make B-seed unconditional. A brief
+    whose `{seed}` is the empty string is a research call with no subject."""
+    result = front_load_campaign("retrieval-augmented generation",
+                                 {"target_domain": "retrieval-augmented generation",
+                                  "seed_sources": [{"kind": "url", "ref": "https://ex.test/p"}]},
+                                 snapshot_dir=SNAPSHOT, waves=("B",))
+    assert [b.brief_id for b in result.briefs if b.brief_id == "B-B-seed"] == []

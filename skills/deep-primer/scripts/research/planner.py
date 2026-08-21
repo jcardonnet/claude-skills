@@ -287,8 +287,17 @@ def front_load_campaign(topic: str, params: dict | None = None, snapshot_dir: st
     records: list[WaveRecord] = []
     terminal = "max_waves"
 
-    seed_direct, _ = route_seeds(params.get("seed_sources", []))
+    seed_direct, seed_directives = route_seeds(params.get("seed_sources", []))
     accepted.extend(SourceLead(**s) for s in seed_direct)
+    # `route_seeds` splits seeds two ways and only the direct half was being consumed. The directive
+    # half (author/entity) is what `wave_briefs` reads back as `params["seed"]` to emit the B-seed
+    # brief, so discarding it left "author/entity directives seed a targeted brief" (R-DISC-06)
+    # unreachable from every caller that did not already set `params["seed"]` by hand — which only
+    # the tests ever did. Refs are joined rather than truncated to the first: the contract promises
+    # *a* targeted brief, there is one B-seed slot per wave, and `brief_id` is `{wave}-{name}`, so
+    # one brief per directive would collide ids and rename the frozen snapshot files.
+    if seed_directives and not params.get("seed"):
+        params["seed"] = ", ".join(str(d.get("ref", "")) for d in seed_directives if d.get("ref"))
 
     for wave in waves[:discovery.MAX_WAVES]:
         briefs = wave_briefs(wave, residual=params.get("residual"), params=params, judge=judge)

@@ -10,7 +10,9 @@ from pathlib import Path
 import yaml
 
 from research.retrieval_loop import Document
-from research.run_campaign import run
+from research.run_campaign import _spec_params, run
+
+SPEC_DIR = Path(__file__).resolve().parents[1] / "references" / "eval" / "specs"
 
 # Grouping is a model seam like the other three, and these tests stay offline, so every call below
 # either injects a stub grouper or passes `lexical_grouping=True`. The default is deliberately the
@@ -228,3 +230,26 @@ def test_from_ledger_regroups_without_paying_for_the_grounding_again(tmp_path):
     assert report["resumed_from"] == "ledger"             # named, so the zeroes below read right
     assert report["retrieval"]["documents_fetched"] == 0
     assert report["grounding"]["claims_kept"] == 3        # counted off the ledger it reused
+
+
+def test_top_level_seed_sources_reach_the_campaign_params():
+    """The campaign half of the same guard `test_eval.py` puts on the eval half.
+
+    `seed_sources` sits BESIDE `parameters` in a spec, and `front_load_campaign` looks for it inside
+    the params dict the driver builds. Building that dict from `spec["parameters"]` alone dropped
+    every seed silently: spec-04 ran a full grounding campaign with 155 leads and not one of them
+    `provenance_origin: user`, so R-DISC-06 was unexercisable from a real run.
+
+    Both directions matter. A spec that declares seeds must carry them through, and a spec that
+    declares none must not grow the key — an empty `seed_sources` and an absent one route
+    differently in `route_seeds`.
+    """
+    seeded = SPEC_DIR / "spec-04-seeded-vector-index.yaml"
+    spec = yaml.safe_load(seeded.read_text(encoding="utf-8"))
+    assert "seed_sources" not in spec["parameters"], "not under parameters — that was the bug"
+
+    params = _spec_params(seeded)
+    assert [s["ref"] for s in params["seed_sources"]] == [s["ref"] for s in spec["seed_sources"]]
+
+    unseeded = SPEC_DIR / "spec-03-observability-tracing.yaml"
+    assert "seed_sources" not in _spec_params(unseeded)
