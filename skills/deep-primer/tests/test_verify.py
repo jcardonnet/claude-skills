@@ -111,10 +111,87 @@ def test_resolves_to_ledger_flags_unledgered_source_id():
 def test_thresholds_loaded_from_rubric():
     th = load_thresholds()
     # the verified_* pair is what --strict gates on; the legacy pair is kept for the pre-partition
-    # report shape and mixes declared synthesis with claimed grounding
+    # report shape and mixes declared synthesis with claimed grounding.
+    # The composition PAIR is per primer type since G13; with none declared it resolves to the
+    # rubric's `default_primer_type`, which is what every caller predating G13 gets.
     assert th == {"recall": 0.75, "precision": 0.90,
                   "verified_recall": 0.95, "verified_precision": 0.90,
-                  "max_inferred_share": 0.60}
+                  "max_inferred_share": 0.60, "min_spine_grounded": 0.90,
+                  "primer_type": "survey", "primer_type_recognised": True}
+
+
+def test_the_composition_pair_depends_on_the_declared_primer_type():
+    """G13. One global cap could not separate a primer that grounds nothing from one that is simply
+    apparatus-heavy, so the cap is now per type and carries a spine floor beside it."""
+    survey, frontier = load_thresholds(primer_type="survey"), load_thresholds(primer_type="frontier")
+    assert survey["max_inferred_share"] == 0.60 and survey["min_spine_grounded"] == 0.90
+    assert frontier["max_inferred_share"] == 0.85 and frontier["min_spine_grounded"] == 0.50
+    # a frontier primer may synthesise MORE and must still ground a spine
+    assert frontier["max_inferred_share"] > survey["max_inferred_share"]
+    assert frontier["min_spine_grounded"] < survey["min_spine_grounded"]
+
+
+def test_an_unknown_primer_type_resolves_to_the_strictest_row_not_the_default():
+    """A one-character typo in a spec must not be able to LOOSEN a gate. Resolving an unrecognised
+    type to the default would do exactly that the moment the default is not the strictest row, and
+    silently — so it resolves to the strictest row and says the name was not recognised."""
+    th = load_thresholds(primer_type="fronteir")
+    strictest = load_thresholds(primer_type="survey")
+    assert th["max_inferred_share"] == strictest["max_inferred_share"]
+    assert th["min_spine_grounded"] == strictest["min_spine_grounded"]
+    assert th["primer_type"] == "fronteir" and th["primer_type_recognised"] is False
+    # and a recognised one is not flagged
+    assert load_thresholds(primer_type="frontier")["primer_type_recognised"] is True
+
+
+def test_the_spine_counts_every_lede_and_card_not_only_the_cited_ones():
+    """Scoping the spine to blocks that already declare a grounding status leaves the escape open in
+    the one place it matters: strip a lede's claim_ids AND its provenance and it drops out of both
+    the numerator and the denominator, so an author could empty the whole spine and read 1.0."""
+    from ir.schema import Block, Claim, DocumentIR, Section, Source, SourceLedger
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    ledger = SourceLedger(sources=[Source(source_id="s", claims=[
+        Claim(claim_id="C1", text="x", quote="alpha beta gamma")])])
+
+    def doc(*ledes):
+        blocks = [Block(block_id="body", role="body", text="alpha beta gamma", claim_ids=["C1"],
+                        provenance="verified", source_ids=["s"])]
+        blocks += [Block(block_id=f"l{i}", role="lede", text="alpha beta gamma",
+                         **kw) for i, kw in enumerate(ledes)]
+        return DocumentIR(sections=[Section(block_id="s", title="T", blocks=blocks)])
+
+    th = load_thresholds(primer_type="survey")
+    grounded = {"claim_ids": ["C1"], "provenance": "verified", "source_ids": ["s"]}
+    assert evaluate(doc(grounded, grounded), ledger, backend=LexicalEntailment(),
+                    thresholds=th)["spine_grounded"] == 1.0
+    # tags stripped: the lede is still a lede, and still counts against the spine
+    naked = evaluate(doc(grounded, {}), ledger, backend=LexicalEntailment(), thresholds=th)
+    assert naked["spine_grounded"] == 0.5 and naked["blocking"] is True
+    # declaring `verified` while citing nothing is not a way to satisfy it either
+    bluff = evaluate(doc(grounded, {"provenance": "verified"}), ledger,
+                     backend=LexicalEntailment(), thresholds=th)
+    assert bluff["spine_grounded"] == 0.5 and bluff["blocking"] is True
+
+
+def test_a_document_with_no_lede_or_card_is_vacuous_on_the_spine_not_failing():
+    """R-ARCH-06 (`structure_coverage.layer_coverage`) is the deterministic MUST that requires the
+    layers to EXIST. Reporting a structural absence here as a grounding shortfall would send an
+    author to the wrong fix; the vacuity is reported instead of read either way."""
+    from ir.schema import Block, Claim, DocumentIR, Section, Source, SourceLedger
+    from verify._entailment import LexicalEntailment
+    from verify.citation_quality import evaluate
+
+    ledger = SourceLedger(sources=[Source(source_id="s", claims=[
+        Claim(claim_id="C1", text="x", quote="alpha beta gamma")])])
+    ir = DocumentIR(sections=[Section(block_id="s", title="T", blocks=[
+        Block(block_id="b", role="body", text="alpha beta gamma", claim_ids=["C1"],
+              provenance="verified", source_ids=["s"])])])
+    r = evaluate(ir, ledger, backend=LexicalEntailment(),
+                 thresholds=load_thresholds(primer_type="survey"))
+    assert r["spine_scoreable"] is False
+    assert r["spine_grounded"] == 1.0 and r["blocking"] is False
 
 
 def test_clean_primer_passes():
@@ -416,6 +493,27 @@ def test_composition_gates_on_every_backend_because_no_backend_computes_it():
         shortfall = _citation_shortfall(mv)
         assert shortfall and "composition" in shortfall, f"{backend} let composition through"
         assert "1.0" in shortfall
+
+
+def test_a_spec_that_fails_both_composition_gates_is_told_about_both():
+    """The cap and the spine floor call for OPPOSITE fixes — cite more, versus cite the RIGHT
+    blocks — so first-match-wins reporting sends the author to the wrong one. spec-02 fails both,
+    and the finding that matters is the second: its four ledes and cards cite nothing while its
+    ledger holds 13 home-domain technique papers."""
+    from eval import _citation_shortfall
+
+    mv = {"status": "scored", "backend": "lexical", "meets_recall": True, "meets_precision": True,
+          "meets_composition": False, "meets_spine": False, "primer_type": "frontier",
+          "ungrounded_share": 1.0, "spine_grounded": 0.0, "scoreable": True,
+          "thresholds": {"max_inferred_share": 0.85, "min_spine_grounded": 0.5}}
+    shortfall = _citation_shortfall(mv)
+    assert "composition below threshold" in shortfall
+    assert "spine below threshold" in shortfall
+
+    # and each still stands alone when it is the only one that fails
+    assert "spine" not in _citation_shortfall({**mv, "meets_spine": True})
+    only_spine = _citation_shortfall({**mv, "meets_composition": True})
+    assert "spine below threshold" in only_spine and "composition" not in only_spine
 
 
 def test_deleting_citations_does_not_improve_the_composition_score():

@@ -4,6 +4,7 @@ id: spec-05-clinical-trial-design
 parameters:
   home_domain: ["applied statistics", "experimental design"]
   target_domain: "adaptive clinical trial design and its regulatory constraints"
+  primer_type: survey
   seniority_band: staff_plus
   length_budget: 5000
   outputs: [html]

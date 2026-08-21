@@ -47,6 +47,73 @@ model_verified:    # scripts/verify/* (citation recall/precision; chunk self-con
     # with headroom and still fails a primer that is entirely synthesis.
     max_inferred_share: 0.60
     #
+    # --- per-primer-type composition (supersedes the single number above) ----------------------
+    # `max_inferred_share` is ONE number for every primer, and G13 recorded why that is wrong: a
+    # primer whose target has no literature cannot ground what a survey grounds. The cap now keys
+    # on `parameters.primer_type`; the scalar above remains the fallback for a spec that declares
+    # no type, so nothing regresses to unchecked.
+    #
+    # WHAT THE SIX SPECS ACTUALLY SHOW (measured 2026-08-21, after all four grounding campaigns):
+    #
+    #   spec   ungrounded   spine (lede+card) verified
+    #   03       0.4000            6/6
+    #   01       0.4286            4/4
+    #   04       0.4444            6/6
+    #   06       0.4545            8/8
+    #   05       0.5714            6/6
+    #   02       1.0000            0/4
+    #
+    # Two findings, and they change the instrument rather than the number.
+    #
+    # (1) `ungrounded_share` is CONFOUNDED WITH APPARATUS DENSITY. spec-05 scores worst of the five
+    #     (0.57) while having the most complete spine of any spec — ledes, cards AND summaries all
+    #     verified. It scores high only because it carries more matrix, figure and body blocks, and
+    #     every one of those is legitimately synthesis. A primer is therefore penalised for being
+    #     thorough, which is not what a grounding threshold should measure. Tightening the survey
+    #     cap to "fit" 0.57 would fail a correctly-composed primer: the inverse of `fix the
+    #     artifacts, do not lower the bar`, and just as wrong.
+    #
+    # (2) THE OUTLIER IS STRUCTURAL, NOT EXTREME. spec-02 is not "the top of a continuum" — the
+    #     other five ground 26/26 of their spine blocks and it grounds 0/4. That is a different
+    #     kind of document, and a scalar cap can only see it as a larger number.
+    #
+    # So the per-type entry carries a PAIR: the composition cap, plus a floor on the grounded SPINE
+    # the cap's original comment already argued for ("a primer needs a grounded SPINE") but never
+    # measured. Spine = blocks with role `lede` or `card` in the composition population.
+    #
+    # NEITHER TYPE ADMITS spec-02, and that is the answer to G13 rather than an oversight. The
+    # question G13 asks is what a primer may claim when its sources ground nothing; the answer is
+    # that no primer type licenses grounding nothing. Even with no literature for the composed
+    # task, the ADJACENT-FIELD foundations a frontier primer builds on are citable — spec-02's own
+    # ledger is 13 home-domain technique papers — so its ledes and cards can be grounded even
+    # though its conclusions cannot. 0/4 is a defect under any type. Fix the artifact.
+    #
+    # The numbers are set from principle, not fitted to the observations:
+    #   survey.max_ungrounded_share 0.60 — unchanged, and deliberately: the observed survey max is
+    #     0.57 (spec-05) and that artifact is correctly composed, so there is nothing to tighten
+    #     against. Moving it would be churn dressed as calibration.
+    #   survey.min_spine_grounded 0.90 — all five surveys are at 1.00. A floor AT 1.00 is brittle
+    #     (one legitimately un-citable lede fails the run), so this takes the same near-total shape
+    #     as verified_recall 0.95 rather than the observed maximum.
+    #   frontier.max_ungrounded_share 0.85 — derived, not observed (n=1, and that one is a defect).
+    #     A frontier primer that grounds its spine and nothing else lands near 0.6-0.75 on these
+    #     documents' shapes; 0.85 admits that with headroom and still fails 1.00. A cap at 1.00
+    #     would be a gate that cannot fail — the trap eval-rubric.yaml names two sections up.
+    #   frontier.min_spine_grounded 0.50 — half the spine, because the adjacent-field foundations
+    #     are citable even when the composed task is not.
+    #
+    # TWO TYPES, NOT THREE. A third bucket (an `applied`/regulated middle, which spec-05 might have
+    # motivated) would be invented from ZERO observations: finding (1) explains spec-05's 0.57 as
+    # apparatus density, not as a distinct grounding regime. Add one when a spec demands it.
+    composition_by_primer_type:
+      survey:
+        max_ungrounded_share: 0.60
+        min_spine_grounded: 0.90
+      frontier:
+        max_ungrounded_share: 0.85
+        min_spine_grounded: 0.50
+    default_primer_type: survey
+    #
     # The legacy pair stays for the pre-partition report shape and is NOT what --strict gates on.
     # It mixes declared synthesis with claimed grounding, so no value of it means anything.
     citation_recall: 0.75      # TODO: tune against real runs (registry budgets)

@@ -5,6 +5,7 @@ id: spec-06-user-structured-eval
 parameters:
   home_domain: ["ML engineering"]
   target_domain: "evaluation of retrieval-augmented systems"
+  primer_type: survey
   seniority_band: mid_senior
   length_budget: 4500
   outputs: [html, llm_md]

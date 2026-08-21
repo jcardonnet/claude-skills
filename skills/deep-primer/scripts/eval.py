@@ -145,11 +145,25 @@ def _citation_shortfall(mv: dict) -> str | None:
     # deterministic half. Putting them behind the proxy bypass (which the first version of this
     # function did) made the guard unreachable in the only configuration that runs offline and in
     # CI, and spec-02 sails through it at ungrounded_share 1.00 against a 0.60 cap.
+    # Both are reported when both fail, rather than first-match-wins. They are different defects
+    # calling for opposite fixes — cite MORE, versus cite the RIGHT blocks — and spec-02 fails both,
+    # so returning only the cap would send its author to the wrong one and hide the finding that
+    # actually matters: the four ledes and cards cite nothing while the ledger can support them.
+    composition = []
     if not mv.get("meets_composition", True):
-        return (f"composition below threshold "
-                f"(ungrounded_share={mv.get('ungrounded_share')} "
-                f"> max_inferred_share={(mv.get('thresholds') or {}).get('max_inferred_share')}, "
-                f"scoreable={mv.get('scoreable')}) — a primer that grounds nothing")
+        composition.append(
+            f"composition below threshold for primer_type={mv.get('primer_type')} "
+            f"(ungrounded_share={mv.get('ungrounded_share')} "
+            f"> max_inferred_share={(mv.get('thresholds') or {}).get('max_inferred_share')}, "
+            f"scoreable={mv.get('scoreable')}) — a primer that grounds nothing")
+    if not mv.get("meets_spine", True):
+        composition.append(
+            f"spine below threshold for primer_type={mv.get('primer_type')} "
+            f"(spine_grounded={mv.get('spine_grounded')} "
+            f"< min_spine_grounded={(mv.get('thresholds') or {}).get('min_spine_grounded')}) — "
+            f"a primer whose ledes and cards are not grounded")
+    if composition:
+        return "; ".join(composition)
 
     # The entailment pair is the only part the proxy cannot speak to.
     if mv.get("backend") == "lexical":
@@ -285,10 +299,13 @@ def _tier_hard_lints(paths: dict[str, Path], spec_params: dict | None = None,
 
 
 def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
-                         backend: object | None = None) -> dict:
+                         backend: object | None = None,
+                         primer_type: str | None = None) -> dict:
     if not paths.get("ledger"):
         return {"status": "skipped", "reason": "no source-ledger artifact"}
-    thresholds = load_thresholds(rubric_path)
+    # G13: the composition pair is per primer type, so the thresholds a spec is scored against are
+    # a function of what the spec declares itself to be. Everything else in this dict is unchanged.
+    thresholds = load_thresholds(rubric_path, primer_type)
     ir = DocumentIR.from_yaml(paths["ir"])
     ledger = SourceLedger.from_yaml(paths["ledger"])
     # `run_eval` builds ONE backend and hands it to every spec, so its `unresolved` list is a running
@@ -307,6 +324,10 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         "verified_precision": report["verified_precision"],
         "inferred_share": report["inferred_share"],
         "ungrounded_share": report["ungrounded_share"],
+        "spine_grounded": report["spine_grounded"],
+        "spine_scoreable": report["spine_scoreable"],
+        "primer_type": report["primer_type"],
+        "primer_type_recognised": report["primer_type_recognised"],
         "scoreable": report["scoreable"],
         "thresholds": thresholds,
         # gated on the VERIFIED pair: the overall numbers count a block the author honestly
@@ -323,6 +344,16 @@ def _tier_model_verified(paths: dict[str, Path], rubric_path: Path,
         # one. Identical on both shipped artifacts, where every block is verified or inferred.
         "meets_composition": (report["scoreable"]
                               and report["ungrounded_share"] <= thresholds["max_inferred_share"]),
+        # The half of composition a scalar cap cannot see. `ungrounded_share` turned out to track
+        # apparatus density as much as grounding — the most thoroughly sourced of the five compliant
+        # specs scores WORST on it, because it carries more matrix and figure blocks that are
+        # legitimately synthesis. The spine asks the question the cap was always standing in for:
+        # are the blocks a reader takes the primer's word from actually sourced?
+        # Vacuously true on a document with no lede or card at all — that is R-ARCH-06's finding,
+        # not this tier's, and `spine_scoreable` above is what makes the vacuity visible instead of
+        # letting it read as a pass.
+        "meets_spine": (not report["spine_scoreable"]
+                        or report["spine_grounded"] >= thresholds.get("min_spine_grounded", 0.0)),
         "unresolved_citations": len(report["resolves_to_ledger"]["violations"]),
         # judge health, not primer health — see propose_thresholds. Per-spec, not cumulative.
         "backend_unresolved": max(0, report["backend_unresolved"] - _unresolved_before),
@@ -477,7 +508,10 @@ def score_spec(spec: dict, root: Path = SKILL_ROOT, rubric_path: Path = RUBRIC,
         return result
 
     hard = _tier_hard_lints(paths, spec.get("parameters"), spec)
-    model = _tier_model_verified(paths, rubric_path, backend)
+    # A spec declares its own primer type; an omission resolves to the rubric's default, and an
+    # unrecognised one to the strictest row (see citation_quality._resolve_composition).
+    model = _tier_model_verified(paths, rubric_path, backend,
+                                 (spec.get("parameters") or {}).get("primer_type"))
     critics = _tier_soft_critic(paths)
     human = _tier_human(spec)
 
@@ -707,6 +741,9 @@ def propose_thresholds(report: dict) -> dict:
     """
     recalls, precisions, backends = [], [], set()
     v_recalls, v_precisions, ungrounded, unresolved = [], [], [], 0
+    # Composition is per primer type since G13, so it is fitted per type rather than pooled: one
+    # number over a survey primer and a frontier primer describes neither.
+    by_type: dict[str, dict] = {}
     for r in report["results"]:
         mv = r.get("model_verified") or {}
         if mv.get("status") == "scored":
@@ -717,6 +754,19 @@ def propose_thresholds(report: dict) -> dict:
             ungrounded.append(mv["ungrounded_share"])
             unresolved += mv.get("backend_unresolved", 0)
             backends.add(mv.get("backend"))
+            bucket = by_type.setdefault(str(mv.get("primer_type")),
+                                        {"fit": [], "excluded_failing": []})
+            # A spec that FAILS its current gate is excluded from the fit, not averaged into it.
+            # Including one is how a threshold gets derived from the artifact it was supposed to
+            # catch: spec-02 sits at ungrounded 1.00 / spine 0.00, and a min-0.05 fit over it would
+            # propose a gate that cannot fail. The repo's rule is fix the artifact, not the bar, so
+            # a failing spec can only ever appear here as a named exclusion.
+            target = ("excluded_failing"
+                      if not (mv.get("meets_composition", True) and mv.get("meets_spine", True))
+                      else "fit")
+            bucket[target].append({"spec": r["id"],
+                                   "ungrounded_share": mv["ungrounded_share"],
+                                   "spine_grounded": mv.get("spine_grounded")})
     if not recalls:
         return {"status": "insufficient_data", "scored_specs": 0}
 
@@ -724,6 +774,7 @@ def propose_thresholds(report: dict) -> dict:
                 "verified_recall_min": min(v_recalls),
                 "verified_precision_min": min(v_precisions),
                 "ungrounded_share_max": max(ungrounded),
+                "composition_by_primer_type": by_type,
                 "judge_unresolved": unresolved,
                 "backends": sorted(b for b in backends if b)}
     if backends <= {"lexical"}:
@@ -761,7 +812,23 @@ def propose_thresholds(report: dict) -> dict:
         # accumulate is max_inferred_share, and it was not among them.
         "verified_recall": max(0.0, round(min(v_recalls) - 0.05, 2)),
         "verified_precision": max(0.0, round(min(v_precisions) - 0.05, 2)),
-        "max_inferred_share": min(1.0, round(max(ungrounded) + 0.05, 2)),
+        # Shaped like the rubric key it feeds. A type whose every scored spec was excluded as
+        # failing proposes nothing and says why — there is no honest number to fit when the only
+        # evidence is an artifact the gate is currently rejecting.
+        "composition_by_primer_type": {
+            pt: ({"max_ungrounded_share": min(1.0, round(max(s["ungrounded_share"]
+                                                             for s in b["fit"]) + 0.05, 2)),
+                  "min_spine_grounded": max(0.0, round(min(s["spine_grounded"] or 0.0
+                                                           for s in b["fit"]) - 0.05, 2)),
+                  "fitted_from": [s["spec"] for s in b["fit"]]}
+                 if b["fit"] else
+                 {"status": "refused",
+                  "reason": "every scored spec of this type currently FAILS its composition or "
+                            "spine gate; fitting to them would derive a threshold from the "
+                            "artifact it exists to catch",
+                  "excluded_failing": [s["spec"] for s in b["excluded_failing"]]})
+            for pt, b in sorted(by_type.items())
+        },
         "caveat": "a floor from the artifacts present; re-calibrate against real generations (Stage G)",
     }
 

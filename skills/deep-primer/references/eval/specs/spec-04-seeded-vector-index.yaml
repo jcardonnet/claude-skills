@@ -4,6 +4,7 @@ id: spec-04-seeded-vector-index
 parameters:
   home_domain: ["classical IR"]
   target_domain: "approximate nearest-neighbour index selection"
+  primer_type: survey
   seniority_band: mid_senior
   length_budget: 4000
   outputs: [html, llm_md]

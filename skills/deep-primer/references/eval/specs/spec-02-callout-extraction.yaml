@@ -4,6 +4,12 @@ id: spec-02-callout-extraction
 parameters:
   home_domain: ["classical CV", "OCR", "instance segmentation", "SAM family", "document-AI"]
   target_domain: "callout/leader-line reading + exploded-view part segmentation for parts catalogues"
+  # G13: `frontier` — a target with little settled literature, so a larger share of the document
+  # is legitimately synthesis and the composition cap is looser. It does NOT license an
+  # ungrounded spine: this spec's own ledger is 13 home-domain technique papers, so its ledes
+  # and cards are citable and 0/4 verified is a defect under either type. That is the answer
+  # to G13's question — no primer type licenses grounding nothing.
+  primer_type: frontier
   seniority_band: staff_plus
   length_budget: 8000
   outputs: [html, llm_md]

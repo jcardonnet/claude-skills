@@ -4,6 +4,7 @@ id: spec-03-observability-tracing
 parameters:
   home_domain: ["backend services", "relational databases"]
   target_domain: "distributed tracing and the observability stack"
+  primer_type: survey
   seniority_band: mid_senior
   length_budget: 2500
   outputs: [html]

@@ -3,6 +3,9 @@ id: spec-01-rag-chunking
 parameters:
   home_domain: ["classical IR", "databases"]
   target_domain: "retrieval-augmented generation chunking strategies"
+  # G13: the composition gate is per primer type. `survey` = an established body of work exists
+  # to ground the spine against, which is the ordinary case.
+  primer_type: survey
   seniority_band: staff_plus
   length_budget: 6000
   outputs: [html, llm_md]

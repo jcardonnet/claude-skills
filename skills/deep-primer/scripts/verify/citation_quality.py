@@ -35,13 +35,61 @@ from verify._entailment import Entailment, resolve_backend  # noqa: E402
 DEFAULT_RUBRIC = Path(__file__).resolve().parents[2] / "references" / "eval" / "eval-rubric.yaml"
 _FALLBACK_THRESHOLDS = {"recall": 0.75, "precision": 0.90,
                         "verified_recall": 0.95, "verified_precision": 0.90,
-                        "max_inferred_share": 0.60}
+                        "max_inferred_share": 0.60,
+                        # no per-type table reachable -> no spine gate, rather than a floor
+                        # invented here that the rubric never agreed to
+                        "min_spine_grounded": 0.0,
+                        "primer_type": None,
+                        "primer_type_recognised": True}
+
+# The blocks a primer's grounded SPINE is made of. eval-rubric.yaml has justified
+# `max_inferred_share` by the spine since it was written ("a primer needs a grounded SPINE ...
+# spec-01 keeps its ledes and cards verified") without ever measuring one; this is that sentence
+# turned into a population.
+SPINE_ROLES = ("lede", "card")
 
 
-def load_thresholds(rubric_path: str | Path = DEFAULT_RUBRIC) -> dict[str, float]:
+def _resolve_composition(th: dict, primer_type: str | None) -> tuple[float, float, str | None, bool]:
+    """(max_ungrounded, min_spine, resolved_type, recognised) for a declared primer type.
+
+    An UNRECOGNISED type resolves to the STRICTEST entry in the table, never the default. A typo
+    in a spec must not be able to LOOSEN a gate — that is the silent-erosion shape this file's
+    other comments keep describing, and here it would be a one-character edit away.
+    """
+    table = th.get("composition_by_primer_type") or {}
+    if not isinstance(table, dict) or not table:
+        return (float(th.get("max_inferred_share", _FALLBACK_THRESHOLDS["max_inferred_share"])),
+                0.0, primer_type, True)
+    default = th.get("default_primer_type")
+    if primer_type and primer_type in table:
+        entry, resolved, known = table[primer_type], primer_type, True
+    elif primer_type:
+        resolved, known = primer_type, False
+        entry = min(table.values(), key=lambda e: (float(e.get("max_ungrounded_share", 1.0)),
+                                                   -float(e.get("min_spine_grounded", 0.0))))
+    elif default in table:
+        entry, resolved, known = table[default], default, True
+    else:
+        entry = min(table.values(), key=lambda e: float(e.get("max_ungrounded_share", 1.0)))
+        resolved, known = None, True
+    return (float(entry.get("max_ungrounded_share",
+                            th.get("max_inferred_share",
+                                   _FALLBACK_THRESHOLDS["max_inferred_share"]))),
+            float(entry.get("min_spine_grounded", 0.0)),
+            resolved, known)
+
+
+def load_thresholds(rubric_path: str | Path = DEFAULT_RUBRIC,
+                    primer_type: str | None = None) -> dict[str, float]:
+    """Citation thresholds, with composition resolved for `primer_type` (G13).
+
+    `max_inferred_share` keeps its name and its place in the report — only its VALUE now depends
+    on the declared type, so every existing consumer, message and pin reads the same shape.
+    """
     try:
         data = yaml.safe_load(Path(rubric_path).read_text(encoding="utf-8")) or {}
         th = (data.get("model_verified") or {}).get("thresholds") or {}
+        max_ungrounded, min_spine, resolved, known = _resolve_composition(th, primer_type)
         return {
             "recall": float(th.get("citation_recall", _FALLBACK_THRESHOLDS["recall"])),
             "precision": float(th.get("citation_precision", _FALLBACK_THRESHOLDS["precision"])),
@@ -51,12 +99,18 @@ def load_thresholds(rubric_path: str | Path = DEFAULT_RUBRIC) -> dict[str, float
                                             _FALLBACK_THRESHOLDS["verified_recall"])),
             "verified_precision": float(th.get("verified_precision",
                                                _FALLBACK_THRESHOLDS["verified_precision"])),
-            # without this, verified_recall is vacuous for a primer that declares nothing verified
-            "max_inferred_share": float(th.get("max_inferred_share",
-                                               _FALLBACK_THRESHOLDS["max_inferred_share"])),
+            # without this, verified_recall is vacuous for a primer that declares nothing
+            # verified. Per-primer-type since G13 — see the derivation in eval-rubric.yaml.
+            "max_inferred_share": max_ungrounded,
+            # the spine floor its justification always implied but never measured
+            "min_spine_grounded": min_spine,
+            "primer_type": resolved,
+            "primer_type_recognised": known,
         }
     except (OSError, ValueError, TypeError):
-        return dict(_FALLBACK_THRESHOLDS)
+        out = dict(_FALLBACK_THRESHOLDS)
+        out["primer_type"] = primer_type
+        return out
 
 
 def resolves_to_ledger(ir: DocumentIR, ledger: SourceLedger) -> list[dict]:
@@ -138,6 +192,7 @@ def evaluate(
             supported += int(block_supported)
             per_statement.append({"block_id": b.block_id, "claim_ids": resolvable,
                                   "supported": block_supported,
+                                  "role": b.role.value if b.role else None,
                                   "provenance": b.provenance.value if b.provenance else None})
 
     recall = supported / factual if factual else 1.0
@@ -196,6 +251,46 @@ def evaluate(
     ungrounded_share = ((composition_total - len(verified)) / composition_total
                         if composition_total else 0.0)
 
+    # --- the SPINE ------------------------------------------------------------------------------
+    # `ungrounded_share` alone turned out to measure APPARATUS DENSITY as much as grounding.
+    # Measured across the six eval specs: spec-05 scores worst of the compliant five (0.57) while
+    # having the most complete spine of any of them — every lede, card and summary verified — purely
+    # because it carries more matrix, figure and body blocks, all legitimately synthesis. A primer is
+    # penalised for being thorough, so no scalar cap can be tightened without failing a
+    # correctly-composed artifact.
+    #
+    # The spine is the other half. eval-rubric.yaml has justified the composition cap by it since it
+    # was written — "a primer needs a grounded SPINE ... spec-01 keeps its ledes and cards verified
+    # while its matrix, body elaboration and Toulmin argumentation are synthesis" — without ever
+    # measuring one. Across the five compliant specs the spine is 26/26 verified; spec-02's is 0/4.
+    # That is not the top of a continuum, it is a different kind of document, and it is the
+    # distinction a cap on the total could only ever see as a bigger number.
+    #
+    # Counted over EVERY lede and card in the document, not over the composition population. Scoping
+    # it to the composition population would leave the strip-the-tags escape open in the one place
+    # that matters: delete a lede's claim_ids and its provenance and the block drops out of both the
+    # numerator and the denominator, so an author could empty their whole spine and read a vacuous
+    # 1.0. Structurally, a lede is a lede whether or not it admits to being ungrounded.
+    #
+    # Grounded means `verified` AND carrying a resolvable citation. Declaring `verified` and citing
+    # nothing is the evasion this guard exists to stop, not a way to satisfy it. Measured identical
+    # to the composition-scoped reading on all six specs today (4/4, 0/4, 6/6, 6/6, 6/6, 8/8), so
+    # the wider population costs nothing and closes the hole.
+    spine_blocks = [b for b in ir.flatten_blocks()
+                    if (b.role.value if b.role else "") in SPINE_ROLES]
+    spine_verified = [b for b in spine_blocks
+                      if b.provenance and b.provenance.value == "verified"
+                      and any(c in cidx for c in b.claim_ids)]
+    spine_total = len(spine_blocks)
+    # A document with no lede and no card is not an ungrounded primer, it is an R-ARCH-06 failure —
+    # `checks/structure_coverage.py::layer_coverage` is the deterministic MUST that requires the
+    # layers to EXIST, and it gates on every backend already. Reporting a structural absence here as
+    # a grounding shortfall would send an author to the wrong fix and would make this verifier
+    # unusable on any document it was not asked a structural question about. Vacuous, and SAID to be
+    # vacuous, rather than silently either way.
+    spine_scoreable = spine_total > 0
+    spine_grounded = len(spine_verified) / spine_total if spine_scoreable else 1.0
+
     # With nothing to score, every ratio above reports its PASSING value by vacuous truth, so a
     # primer that cites nothing at all clears R-GROUND-02/03 outright. That is not a clean primer,
     # it is an unscoreable one, and a gate has to be able to tell the two apart.
@@ -223,8 +318,13 @@ def evaluate(
     # eval-rubric.yaml says exists precisely to "fail a primer that is entirely synthesis" — and it
     # passed clean. The same batch got this right for R-PROJ-04, whose deterministic
     # dangling-anaphora half gates on any backend while its entailment half waits for a real one.
+    #
+    # The spine floor rides along: it is computed from provenance tags and claim resolution too, so
+    # it means the same thing on every backend.
     blocking = (bool(resolves) or not scoreable
-                or ungrounded_share > thresholds["max_inferred_share"])
+                or ungrounded_share > thresholds["max_inferred_share"]
+                or (spine_scoreable
+                    and spine_grounded < thresholds.get("min_spine_grounded", 0.0)))
     if backend.name != "lexical":
         blocking = blocking \
             or verified_recall < thresholds["verified_recall"] \
@@ -244,6 +344,10 @@ def evaluate(
         "verified_precision": round(verified_precision, 4),
         "inferred_share": round(inferred_share, 4),
         "ungrounded_share": round(ungrounded_share, 4),
+        "spine_grounded": round(spine_grounded, 4),
+        "spine_scoreable": spine_scoreable,
+        "primer_type": thresholds.get("primer_type"),
+        "primer_type_recognised": thresholds.get("primer_type_recognised", True),
         "scoreable": scoreable,
         "thresholds": thresholds,
         "counts": {"factual_statements": factual, "supported_statements": supported,
@@ -251,6 +355,8 @@ def evaluate(
                    "verified_statements": len(verified), "verified_supported": v_supported,
                    "verified_citations": len(v_cites), "verified_supporting": v_cite_support,
                    "inferred_statements": len(inferred),
+                   "spine_blocks": spine_total,
+                   "spine_grounded_blocks": len(spine_verified),
                    "untagged_or_unverified_statements": factual - len(verified) - len(inferred)},
         "per_statement": per_statement,
         "per_citation": per_citation,
@@ -263,12 +369,13 @@ def verify_files(
     ledger_path: str | Path,
     rubric_path: str | Path = DEFAULT_RUBRIC,
     backend_name: str = "auto",
+    primer_type: str | None = None,
 ) -> dict:
     return evaluate(
         DocumentIR.from_yaml(ir_path),
         SourceLedger.from_yaml(ledger_path),
         backend=resolve_backend(backend_name),
-        thresholds=load_thresholds(rubric_path),
+        thresholds=load_thresholds(rubric_path, primer_type),
     )
 
 
@@ -278,10 +385,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--ledger", required=True)
     ap.add_argument("--rubric", default=str(DEFAULT_RUBRIC))
     ap.add_argument("--backend", default="auto", choices=["auto", "lexical", "nli", "claude"])
+    # Free-text on purpose: an unknown type resolves to the STRICTEST row of the rubric table rather
+    # than erroring, so a typo costs a confusing failure instead of a silently loosened gate.
+    ap.add_argument("--primer-type", default=None,
+                    help="primer type selecting the composition row in eval-rubric.yaml")
     ap.add_argument("--out", default="verify-report.json")
     args = ap.parse_args(argv)
 
-    report = verify_files(args.ir, args.ledger, args.rubric, args.backend)
+    report = verify_files(args.ir, args.ledger, args.rubric, args.backend, args.primer_type)
     Path(args.out).write_text(json.dumps(report, indent=2), encoding="utf-8")
 
     r = report
@@ -290,8 +401,14 @@ def main(argv: list[str] | None = None) -> int:
           f"verified_recall={r['verified_recall']} (>= {th['verified_recall']}) "
           f"verified_precision={r['verified_precision']} (>= {th['verified_precision']}) "
           f"ungrounded_share={r['ungrounded_share']} (<= {th['max_inferred_share']}) "
+          f"spine_grounded={r['spine_grounded']}{'' if r['spine_scoreable'] else ' (vacuous — no lede or card block; R-ARCH-06 is what requires them)'} "
+          f"(>= {th.get('min_spine_grounded', 0.0)}) "
+          f"primer_type={r['primer_type']} "
           f"scoreable={r['scoreable']} "
           f"unresolved={len(r['resolves_to_ledger']['violations'])} backend={r['backend']} -> {args.out}")
+    if not r["primer_type_recognised"]:
+        print(f"  (primer_type {r['primer_type']!r} is not in the rubric's composition table — "
+              f"resolved to the STRICTEST row so a typo cannot loosen the gate)")
     if r["backend"] == "lexical":
         print("  (lexical proxy: entailment thresholds are NOT gated — word overlap against a "
               "required paraphrase is not evidence; only ledger resolution blocks here)")

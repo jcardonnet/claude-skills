@@ -117,8 +117,10 @@ def test_thresholds_are_refused_when_only_the_lexical_proxy_scored():
 def _scored_mv(**over):
     base = {"status": "scored", "backend": "nli", "recall": 0.9, "precision": 0.95,
             "verified_recall": 0.9, "verified_precision": 0.95, "ungrounded_share": 0.4,
+            "spine_grounded": 1.0, "primer_type": "survey",
+            "meets_composition": True, "meets_spine": True,
             "backend_unresolved": 0}
-    return {"results": [{"model_verified": {**base, **over}}]}
+    return {"results": [{"id": "spec-x", "model_verified": {**base, **over}}]}
 
 
 def test_thresholds_are_proposed_for_the_pair_that_actually_gates():
@@ -129,7 +131,23 @@ def test_thresholds_are_proposed_for_the_pair_that_actually_gates():
     assert proposal["status"] == "proposed"
     assert proposal["verified_recall"] == 0.85
     assert proposal["verified_precision"] == 0.9
-    assert proposal["max_inferred_share"] == 0.45
+    # composition is per primer type since G13, so the proposal is shaped like the rubric key it
+    # feeds rather than a single pooled number that would describe neither type
+    assert proposal["composition_by_primer_type"]["survey"] == {
+        "max_ungrounded_share": 0.45, "min_spine_grounded": 0.95, "fitted_from": ["spec-x"]}
+
+
+def test_no_composition_threshold_is_fitted_to_a_spec_that_currently_fails():
+    """Including a failing spec in the fit is how a threshold gets derived from the artifact it
+    exists to catch: spec-02 sits at ungrounded 1.00 / spine 0.00, and a min-0.05 fit over it would
+    propose a gate that cannot fail. The repo's rule is fix the artifact, not the bar."""
+    proposal = propose_thresholds(_scored_mv(primer_type="frontier", ungrounded_share=1.0,
+                                             spine_grounded=0.0, meets_composition=False,
+                                             meets_spine=False))
+    entry = proposal["composition_by_primer_type"]["frontier"]
+    assert entry["status"] == "refused"
+    assert entry["excluded_failing"] == ["spec-x"]
+    assert "max_ungrounded_share" not in entry
 
 
 def test_no_threshold_is_proposed_from_a_judge_that_did_not_answer():
@@ -691,18 +709,27 @@ def test_a_narrowed_run_still_reports_real_spec_failures():
 # the point: resolving G13 means editing this pin on purpose and saying so in GAPS.md.
 
 def test_spec_02_grounds_nothing_and_the_composition_gate_says_so():
-    """All 13 claim-bearing blocks are `provenance: inferred`, so `ungrounded_share` is 1.00 against
-    a 0.60 cap. Defensible on inspection — every source is a home-domain technique paper and every
-    block's conclusion is a transfer no source states — but spec-02 is deliberately the `home ~=
-    target` cross-domain case (G1), so a global cap fails the flagship spec by construction.
-    GAPS G13 is that decision; this is its pin."""
+    """All 13 claim-bearing blocks are `provenance: inferred`, so `ungrounded_share` is 1.00.
+
+    G13 IS RESOLVED AND THIS PIN WAS MOVED ON PURPOSE — see GAPS.md. The cap is now per primer type,
+    spec-02 declares `frontier`, and its cap is 0.85 rather than 0.60. It still FAILS, which is the
+    finding: no primer type licenses grounding nothing. spec-02's own ledger is 13 home-domain
+    technique papers, so its ledes and cards are citable, and its 0/4 spine is a defect under either
+    type rather than a consequence of being the `home ~= target` cross-domain case (G1).
+
+    The pin now holds two things at once: that the per-type route is wired end to end, and that
+    widening the cap did not quietly turn spec-02 green."""
     report = run_eval(SPEC_DIR, SKILL_ROOT, only="spec-02-callout-extraction")
     mv = report["results"][0]["model_verified"]
     assert mv["status"] == "scored"
     assert mv["ungrounded_share"] == 1.0, "spec-02 is entirely synthesis — see GAPS G13"
     assert mv["scoreable"] is True, "unscoreable and ungrounded are different failures"
-    assert mv["meets_composition"] is False
-    assert mv["thresholds"]["max_inferred_share"] == 0.60
+    assert mv["primer_type"] == "frontier", "the spec declares its type; eval reads it"
+    assert mv["thresholds"]["max_inferred_share"] == 0.85, "the loosest cap in the table"
+    assert mv["meets_composition"] is False, "and 1.00 still exceeds even that"
+    # the second half of the gate: a frontier primer may synthesise more, never ground no spine
+    assert mv["spine_grounded"] == 0.0 and mv["spine_scoreable"] is True
+    assert mv["meets_spine"] is False
 
 
 def test_no_other_spec_is_entirely_ungrounded():
@@ -714,6 +741,12 @@ def test_no_other_spec_is_entirely_ungrounded():
               for r in report["results"] if r["model_verified"].get("status") == "scored"}
     assert shares.pop("spec-02-callout-extraction") == 1.0
     assert shares and max(shares.values()) <= 0.60, shares
+    # and the spine is what separates them: 26/26 across the five, 0/4 for spec-02. That gap is
+    # structural, not the top of a continuum, which is why a scalar cap alone could not see it.
+    spines = {r["id"]: r["model_verified"]["spine_grounded"]
+              for r in report["results"] if r["model_verified"].get("status") == "scored"}
+    assert spines.pop("spec-02-callout-extraction") == 0.0
+    assert min(spines.values()) == 1.0, spines
 
 
 def test_the_cli_can_print_its_own_help():
