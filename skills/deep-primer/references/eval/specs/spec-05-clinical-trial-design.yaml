@@ -7,11 +7,24 @@ parameters:
   seniority_band: staff_plus
   length_budget: 5000
   outputs: [html]
-# A hand-built REFERENCE artifact, in the same spirit as spec-01's — not a real generation.
-# Its sources are openly synthetic (`example.org`, fictional authors) because this fixture exercises
-# STRUCTURE: it is what lets this spec's deterministic rules run against a document shaped the way
-# the spec describes. It makes no grounding claim, and it is deliberately distinguishable at a glance
-# from spec-02's ledger, which came from a real campaign with verbatim-verified quotes.
+# A hand-built REFERENCE artifact, in the same spirit as spec-01's — the structure is authored, not
+# generated. THE SOURCES ARE NOT. Every source and claim under `tests/fixtures/spec05/` now comes
+# from a real Phase 1/1a campaign (2026-08-21): 131 documents retrieved, 30 sources extracted,
+# 283 claims kept, curated down to the 10 sources and 34 claims the primer cites. The previous
+# revision cited `example.org` with fictional authors and made no grounding claim; that is no
+# longer what this fixture is.
+#
+# THE FIRST CONCEPT WAS RENAMED BY THE EVIDENCE. It used to be `alpha-spending`. The campaign
+# retrieved nothing on alpha spending functions, O'Brien-Fleming, Pocock or Lan-DeMets — what the
+# corpus carries in depth is the CONDITIONAL ERROR FUNCTION, so the heading moved to the evidence
+# rather than the other way. Keeping the old name over conditional-error claims would have been
+# the GAPS.md G17 failure one level up.
+#
+# EXPECT CITATION PRECISION TO FALL SHARPLY against the previous revision, as it did for spec-04
+# (0.375 -> 0.023). That is not a regression. The synthetic quotes it replaced were byte-identical
+# to the claim texts citing them, which is trivially entailed and measures nothing; real quotes
+# support real claims by inference, and the entailment model has to work for its verdict.
+#
 # The soft_critic rules in `expect.must_pass` still need a judge run; offline they report as the
 # documented judge gap rather than as a pass.
 artifact:

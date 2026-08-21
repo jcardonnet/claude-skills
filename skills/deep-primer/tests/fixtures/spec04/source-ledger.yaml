@@ -30,15 +30,16 @@
 #     not state — which is exactly why it renders through `contested-graph` as two framings
 #     instead of being asserted (R-DISC-06: authoritative for INCLUSION, never for truth).
 #
-# Four DESCRIPTIVE fields were HAND-FILLED after the run because the pipeline drops them, not
-# because they were judged: `type`, `date`, `credibility` and `authors`. `retrieval_loop.fetch_source_leads` never
-# copies `lead.type` onto the fetched document, so every campaign source lands with those null.
+# Three DESCRIPTIVE fields were HAND-FILLED after the run because the pipeline never sets them, not
+# because they were judged: `date`, `credibility` and `authors`. `type` is NOT hand-filled —
+# `retrieval_loop.fetch_source_leads` does carry `lead.type` onto the fetched document, so every
+# campaign source arrives already typed and the values below are the run's own.
 # `date` is filled only where the document itself evidences one: the four arXiv/NeurIPS ids encode
 # their own year and month (1603 -> 2016-03, 2505 -> 2025-05, 2512 -> 2025-12, and the DiskANN URL
 # carries /paper/2019/). It is left null for the two web pages, which carry no date we retrieved.
 # `authors` is filled only for the seed paper, because the seed's author directive names one.
 #
-# FIVE EVIDENCE-GRADING FIELDS ARE ALSO AUTHORED, and unlike the four above they are judgements, so
+# FIVE EVIDENCE-GRADING FIELDS ARE ALSO AUTHORED, and unlike the three above they are judgements, so
 # they are listed separately: `contested`, `contradicts`, `corroboration_count`, `corroborated_by`
 # and `provenance_origin`. The first two are authored ENTIRELY. `claim_extractor.mark_conflicts`
 # exists and records disagreement symmetrically, but `run_campaign.py` never calls it — line 40

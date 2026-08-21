@@ -1,128 +1,428 @@
 # Source-ledger for spec-05-clinical-trial-design.
 #
-# SYNTHETIC BY CONSTRUCTION, and deliberately so. Every url is example.org and every author/venue
-# is obviously fictional — the same convention as tests/fixtures/source-ledger.full.yaml, and the
-# opposite of tests/fixtures/spec02/source-ledger.yaml, whose sources were fetched over the network
-# and quote-verified verbatim. This ledger asserts nothing about the world; it exists so the
-# STRUCTURE of a non-software primer can be exercised end to end.
+# THESE SOURCES ARE REAL. Every source_id, url, title, content_hash, claim_id, claim text, quote
+# and location below was produced by an actual Phase 1/1a campaign (2026-08-21) and is copied
+# VERBATIM from tests/fixtures/spec05-grounded/source-ledger.yaml, which holds the full run:
+# 131 documents retrieved, 30 sources extracted, 283 claims kept and 78 rejected. The 10 sources
+# and 34 claims here are the claims the primer cites plus the ones that supply their corroboration
+# — `corroborated_by` holds source_ids, so each corroborating claim is carried too, or the count
+# would be an assertion rather than something a reader can check. The full-hex source_ids are kept
+# precisely so any claim can be grepped back to the campaign output it came from.
 #
-# Quotes are <=15 words (R-GROUND-01) and lexically close to the statements they support, so the
-# offline lexical entailment proxy can resolve them. C-spend-3 and C-ssr-3 are a symmetric
-# contested pair (R-GROUND-05): the disagreement is visible from either source.
+# THIS IS THE RUN GAPS.md G17 IS ABOUT, so read the curation with that in mind. 37 of that run's
+# 131 documents are Cloudflare "Client Challenge" interstitials and 7 more are sub-60-word cookie
+# or reCAPTCHA stubs: 34% of the corpus is not a document at all, and six such sources reached the
+# grounded ledger carrying 17 claims of interstitial troubleshooting text ("Ad blockers can
+# interfere with website functionality") typed `primary_paper`. None of them are here. Every source
+# below was opened against its retrieved text before it was kept. That check is hand-work; the
+# pipeline does not do it, which is the whole content of G17.
+#
+# 71047f73 IS KEPT ON PURPOSE AND IS DISCLOSED. It is the EMA ICH E20 landing page — 241 words —
+# not the guideline itself, so it is exactly the second and subtler failure class G17 describes: a
+# depth downgrade that no length or fingerprint gate can see, because the page is genuinely about
+# the topic. Most of its extracted claims are bibliographic furniture (reference numbers, adoption
+# dates) presented as findings, and they are dropped. Exactly one claim survives, C-71047f73-2,
+# because it restates the guideline's own scope sentence rather than page metadata. Keeping one
+# usable claim from a downgraded page, and saying so, is what curation of this run actually looks
+# like — deleting the source would hide the failure mode the fixture is best placed to show.
+#
+# FOUR DESCRIPTIVE FIELDS WERE HAND-FILLED: `credibility`, `date`, `venue` and `authors`. The run
+# leaves all four empty on every source. `date` is filled only where the document evidences one:
+# the two arXiv ids encode their own year and month (1803 -> 2018-03, 2605 -> 2026-05). The eight
+# PMC, EMA and commercial pages carry no date we retrieved, so theirs stay null, and `authors` is
+# empty everywhere because this spec declares no seed_sources and nothing in the run named one.
+#
+# `type` IS RUN-PRODUCED HERE, unlike what the spec-04 ledger header claims. `fetch_source_leads`
+# does copy the lead's type onto the fetched document (`doc.source_type = doc.source_type or
+# lead.type`, retrieval_loop.py:157), so `type` arrives populated — but it is discovery's PRE-FETCH
+# guess, inherited and never observed, which is the mechanism that let interstitials be filed as
+# `primary_paper`. All ten types below were re-checked against the retrieved text and all ten were
+# already correct, so none were changed. That is luck, not a gate.
+#
+# THREE EVIDENCE-GRADING FIELDS ARE AUTHORED, and unlike the descriptive four they are judgements:
+# `contested`, `contradicts`, and one `corroboration_count`/`corroborated_by` pair. `contested` and
+# `contradicts` are authored ENTIRELY. `claim_extractor.mark_conflicts` exists and records
+# disagreement symmetrically, but `run_campaign.py` never calls it, so no campaign has ever set
+# `contested` on any claim — across four real runs the field is 0 in all of them. See GAPS.md G16.
+#
+# THE CONTESTED PAIR, written out so it can be disagreed with: C-07c9a426-3 says unblinded
+# re-estimation exists to address uncertainty about the MAGNITUDE OF THE EFFECT SIZE, which only
+# unblinded data reveal. C-e000d90c-7 reports simulations in which blinded procedures perform
+# similarly to unblinded ones in many cases. These are not flat logical negations, and the ledger
+# does not pretend they are: they are a disagreement about what sample-size re-estimation is FOR,
+# and the boundary between them is which uncertainty dominates — nuisance variance, which blinded
+# data estimate perfectly well, or treatment effect, which they cannot see. A staff-plus reader
+# deciding whether to pay the regulatory cost of unblinding needs both framings side by side, which
+# is why they render through `contested-graph` instead of one being asserted over the other.
+#
+# CORROBORATION IS ALMOST ENTIRELY RUN-PRODUCED, which is new: six of the seven links below came
+# out of the campaign as three symmetric cross-source pairs (C-b42f6bdc-23/C-5426dd09-9 on bounding
+# the family-wise error, C-3667249d-20/C-5426dd09-15 on repeated confidence intervals, and
+# C-c013edc2-7/C-71047f73-2 on prospective planning), and every one of their corroborators is
+# carried here so the count resolves. Exactly ONE link is authored — C-e000d90c-2 with
+# C-b42f6bdc-9, that trial planning rests on quantities not known to the needed precision at
+# protocol time — and it follows the same discipline as spec-03 and spec-04: corroboration is
+# marked only across DIFFERENT organisations, because same-origin agreement is not corroboration
+# (R-EVID-03). No corroboration is asserted between b42f6bdc and 64ab2594 despite their overlapping
+# subject matter: the run recorded no author lists, so a shared author group could not be excluded.
+#
+# Quotes are <=15 words (R-GROUND-01). They are NOT lexically close to the blocks that cite them —
+# R-GROUND-01 requires the prose to be a paraphrase, so the offline lexical entailment proxy scores
+# them low by design. citation_quality gates `verified_recall`/`verified_precision` only when a real
+# entailment backend is present; offline, only resolves_to_ledger / scoreable / ungrounded_share bind.
 sources:
-  - source_id: s-spend
-    url: "https://example.org/error-spending-across-looks"
-    title: "Error spending across interim analyses"
-    authors: ["A. Statistician"]
-    venue: "Example Biostatistics Review"
-    date: "2025-01-20"
-    type: primary_paper
-    credibility: high
-    provenance_origin: discovered
-    retrieved_at: "2026-08-17T00:00:00Z"
-    content_hash: "beef0501"
-    claims:
-      - claim_id: C-spend-1
-        text: "each interim analysis consumes part of one fixed error budget"
-        quote: "each interim analysis consumes part of one fixed error budget"
-        location: "p.3 / §2"
-        confidence: high
-        corroboration_count: 2
-        corroborated_by: [s-guide]
-      - claim_id: C-spend-2
-        text: "the spending shape decides how much error the final analysis keeps"
-        quote: "the spending shape decides how much error the final analysis keeps"
-        location: "p.6 / §4"
-        confidence: high
-      # the dissenting half of the C-ssr-3 disagreement; contested/contradicts are symmetric so the
-      # conflict is visible from either source (R-GROUND-05)
-      - claim_id: C-spend-3
-        text: "unblinded re-estimation is worth its loss when variance assumptions are weak"
-        quote: "unblinded re-estimation is worth its loss when variance assumptions are weak"
-        location: "p.11 / §7"
-        confidence: medium
-        contested: true
-        contradicts: [C-ssr-3]
-
-  - source_id: s-guide
-    url: "https://example.org/adaptive-design-prespecification-standard"
-    title: "Pre-specification requirements for adaptive designs"
-    authors: ["D. Regulator"]
-    venue: "Example Regulatory Standard"
-    date: "2025-04-30"
+  - source_id: 52e7543fccd0f1ec2aca26ca9f7834481c851371
+    url: "https://www.ema.europa.eu/en/ich-e6-good-clinical-practice-scientific-guideline"
+    title: "ICH E6 Good clinical practice - Scientific guideline | European Medicines Agency (EMA)"
+    authors: []
+    venue: "European Medicines Agency"
+    date: null
     type: standard
     credibility: high
     provenance_origin: discovered
-    retrieved_at: "2026-08-17T00:00:00Z"
-    content_hash: "beef0502"
+    retrieved_at: "2026-08-21"
+    content_hash: "0c077adde40094919a652bdcd7dfd391700e3782"
     claims:
-      - claim_id: C-guide-1
-        text: "an adaptation absent from the protocol has no bounded error rate"
-        quote: "an adaptation absent from the protocol has no bounded error rate"
-        location: "§3.1"
+      - claim_id: C-52e7543f-6
+        text: "ICH E6(R3) encourages a risk-based and proportionate approach to conducting clinical trials."
+        quote: "encourages a risk-based and proportionate approach to conducting clinical trials"
+        location: "char 1204 of 6545 (normalized)"
         confidence: high
-      - claim_id: C-guide-2
-        text: "unblinded interim data belong to an independent monitoring committee"
-        quote: "unblinded interim data belong to an independent monitoring committee"
-        location: "§5.2"
+        provenance_origin: discovered
+      - claim_id: C-52e7543f-7
+        text: "ICH E6 establishes an international standard for the design, conduct, recording, and reporting of clinical trials."
+        quote: "establishes an international standard for the design, conduct, recording, and reporting of clinical trials"
+        location: "char 212 of 6545 (normalized)"
         confidence: high
-
-  - source_id: s-ssr
-    url: "https://example.org/blinded-versus-unblinded-reestimation"
-    title: "Blinded and unblinded sample-size re-estimation compared"
-    authors: ["B. Trialist"]
-    venue: "Example Trials Journal"
-    date: "2025-06-12"
+        provenance_origin: discovered
+  - source_id: 71047f73f17ae532f5113b463247fc7e3d981aef
+    url: "https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline"
+    title: "ICH E20 adaptive designs for clinical trials - Scientific guideline | European Medicines Agency (EMA)"
+    authors: []
+    venue: "European Medicines Agency"
+    date: null
+    type: standard
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "541d4facc73f1378c481706eeba241982dbd9a78"
+    claims:
+      - claim_id: C-71047f73-2
+        text: "Adaptive trial designs allow pre-specified modifications based on interim analysis."
+        quote: "allowing pre-specified modifications of the trial design based on an interim analysis"
+        location: "char 388 of 1729 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        corroboration_count: 2
+        corroborated_by:
+          - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  - source_id: b42f6bdc4c163fb4259fad0399504ff443c71998
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6680191/"
+    title: "Twenty‐five years of confirmatory adaptive designs: opportunities and pitfalls - PMC"
+    authors: []
+    venue: null
+    date: null
     type: primary_paper
     credibility: high
     provenance_origin: discovered
-    retrieved_at: "2026-08-17T00:00:00Z"
-    content_hash: "beef0503"
+    retrieved_at: "2026-08-21"
+    content_hash: "5216803a36d8790d399cf03f069bb95bf4b639e3"
     claims:
-      - claim_id: C-ssr-1
-        text: "blinded re-estimation leaves the error rate essentially intact"
-        quote: "blinded re-estimation leaves the error rate essentially intact"
-        location: "p.4 / §3.2"
+      - claim_id: C-b42f6bdc-4
+        text: "Group sequential trials are considered to be a special case of the more general adaptive designs."
+        quote: "group sequential trials can be considered as a special case of the more general"
+        location: "char 7792 of 127546 (normalized)"
         confidence: high
+        provenance_origin: discovered
+      - claim_id: C-b42f6bdc-8
+        text: "Sample size reassessment was the major focus of adaptive design research during the early days of the field."
+        quote: "early days, the major focus was on sample size reassessment"
+        location: "char 5708 of 127546 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-b42f6bdc-9
+        text: "Study planning typically relies on information that is generally not available with the required precision when protocols are written."
+        quote: "relies on various information, which is generally not available with the required precision"
+        location: "char 12666 of 127546 (normalized)"
+        confidence: high
+        provenance_origin: discovered
         corroboration_count: 2
-        corroborated_by: [s-spend]
-      - claim_id: C-ssr-2
-        text: "unblinded re-estimation inflates the error rate without a combination test"
-        quote: "unblinded re-estimation inflates the error rate without a combination test"
-        location: "p.5 / §3.4"
+        corroborated_by:
+          - e000d90cf92d65ce0d3f2a9066c1d615ff4ed907
+      - claim_id: C-b42f6bdc-10
+        text: "All adaptive design modifications must be formally documented through scheduled amendments to the study protocol."
+        quote: "All the adaptation performed are documented in a prescheduled amendment of the study."
+        location: "char 13520 of 127546 (normalized)"
         confidence: high
-      - claim_id: C-ssr-3
-        text: "unblinded re-estimation rarely repays the efficiency it gives up"
-        quote: "unblinded re-estimation rarely repays the efficiency it gives up"
-        location: "p.9 / §6"
+        provenance_origin: discovered
+      - claim_id: C-b42f6bdc-11
+        text: "The study protocol must explicitly prespecify which types of adaptations are intended to be performed."
+        quote: "The study protocol has to describe which types of adaptations are intended"
+        location: "char 13769 of 127546 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-b42f6bdc-12
+        text: "Conditional error functions enable calculation of the maximum Type I error rate achievable from any interim outcome."
+        quote: "calculating the maximum type I error rate conditional on the observed data at interim"
+        location: "char 15230 of 127546 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-b42f6bdc-15
+        text: "The first-stage design parameters including sample size and test statistic must be prespecified before trial initiation."
+        quote: "the design of the first stage has to be prespecified"
+        location: "char 23564 of 127546 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-b42f6bdc-19
+        text: "Type I error control via conditional error function requires the second-stage p-value distribution to be stochastically larger than or equal to uniform"
+        quote: "is under H stochastically larger or equal to the uniform distribution"
+        location: "char 26628 of 127546 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-b42f6bdc-23
+        text: "Type I error control in multiple testing requires bounding the probability of falsely rejecting at least one true hypothesis"
+        quote: "probability to reject at least one true hypotheses should be bounded by α"
+        location: "char 31652 of 127546 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        corroboration_count: 2
+        corroborated_by:
+          - 5426dd096a626a9b4e81a8571e3c36738b087bdd
+  - source_id: 64ab25940d44e96401ad8256567d6a9af398d074
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11536650/"
+    title: "New results on optimal conditional error functions for adaptive two-stage designs - PMC"
+    authors: []
+    venue: null
+    date: null
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "089d87a8ec08ffefc060f0325280186c5ef03006"
+    claims:
+      - claim_id: C-64ab2594-3
+        text: "Conditional error functions and critical value functions are mathematically equivalent."
+        quote: "conditional error function and the critical value function are equivalent"
+        location: "char 8695 of 46513 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-64ab2594-8
+        text: "Variational calculus cannot be applied to optimize the promising zone design."
+        quote: "case where this variational approach is not applicable, namely the optimal promising zone design"
+        location: "char 5524 of 46513 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-64ab2594-10
+        text: "The Euler-Lagrange equation approach does not yield a closed-form solution for the optimal conditional error function."
+        quote: "by means of the Euler Lagrange equation does not yield a closed formula"
+        location: "char 15849 of 46513 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-64ab2594-12
+        text: "The sample size recalculation rule was developed by Proschan and Hunsberger."
+        quote: "This can be achieved by the sample size recalculation rule of Proschan and Hunsberger"
+        location: "char 13478 of 46513 (normalized)"
         confidence: medium
-        contested: true
-        contradicts: [C-spend-3]
-
-  - source_id: s-futile
-    url: "https://example.org/nonbinding-futility-audit"
-    title: "What nonbinding futility boundaries actually stop"
-    authors: ["C. Reviewer"]
-    venue: "Example Methods Workshop"
-    date: "2025-09-08"
+        provenance_origin: discovered
+      - claim_id: C-64ab2594-13
+        text: "Point-wise maximization of conditional power is equivalent to maximizing overall power."
+        quote: "point-wise maximization of the conditional power is equivalent to maximizing the overall power"
+        location: "char 21213 of 46513 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-64ab2594-19
+        text: "The design controlled the type I error rate at α = 0.025."
+        quote: "The type I error rate is to be controlled at level α = 0.025"
+        location: "char 25231 of 46513 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        as_of_date: "2026-08-21"
+  - source_id: c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+    url: "https://intuitionlabs.ai/articles/adaptive-clinical-trial-design"
+    title: "Adaptive Trial Design: A Guide to Flexible Clinical Trials | IntuitionLabs"
+    authors: []
+    venue: null
+    date: null
+    type: blog
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "83eff8b56fbc41aeacabefdc3ccaeadedf7a16ec"
+    claims:
+      - claim_id: C-c013edc2-7
+        text: "Adaptive trials require prospectively planned interim analyses with decision rules rather than ad hoc protocol modifications."
+        quote: "prospectively planned opportunity for modification of one or more specified aspects"
+        location: "char 6027 of 74601 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        corroboration_count: 2
+        corroborated_by:
+          - 71047f73f17ae532f5113b463247fc7e3d981aef
+      - claim_id: C-c013edc2-21
+        text: "Only 32% of published adaptive trials reported an independent Data Monitoring Committee."
+        quote: "only ~32% of published adaptive trials reported an independent DMC"
+        location: "char 32891 of 74601 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-c013edc2-23
+        text: "FDA requires adaptive confirmatory trials to maintain Type I error at nominal levels like 5%."
+        quote: "the overall Type I error rate must remain at the nominal level (e.g. 5%)"
+        location: "char 26858 of 74601 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+  - source_id: e000d90cf92d65ce0d3f2a9066c1d615ff4ed907
+    url: "https://arxiv.org/abs/1803.10130"
+    title: "[1803.10130] Blinded and unblinded sample size re-estimation in crossover trials balanced for period"
+    authors: []
+    venue: "arXiv"
+    date: "2018-03"
     type: primary_paper
     credibility: medium
     provenance_origin: discovered
-    retrieved_at: "2026-08-17T00:00:00Z"
-    content_hash: "beef0504"
+    retrieved_at: "2026-08-21"
+    content_hash: "ac3f2453f1ef4534ae9d1a1af1d9625e6dbe0135"
     claims:
-      - claim_id: C-futile-1
-        text: "ignoring a nonbinding futility boundary lowers power but never the error rate"
-        quote: "ignoring a nonbinding futility boundary lowers power, never the error rate"
-        location: "p.2 / §1.3"
+      - claim_id: C-e000d90c-2
+        text: "Uncertainty about variance parameters at design stage creates risk that a trial may be under- or over-powered."
+        quote: "Uncertainty about the value of these parameters at the design stage means that"
+        location: "char 730 of 4573 (normalized)"
         confidence: high
-      - claim_id: C-futile-2
-        text: "trials continuing past futility expose patients to an inferior arm"
-        quote: "trials continuing past futility expose patients to an inferior arm"
-        location: "p.7 / §4"
-        confidence: medium
-      - claim_id: C-futile-3
-        text: "an interim endpoint that mispredicts the final one defeats stopping rules"
-        quote: "an interim endpoint that mispredicts the final one defeats stopping rules"
-        location: "p.10 / §6"
-        confidence: medium
+        provenance_origin: discovered
+        corroboration_count: 2
+        corroborated_by:
+          - b42f6bdc4c163fb4259fad0399504ff443c71998
+      - claim_id: C-e000d90c-4
+        text: "Regulators prefer re-estimation procedures that maintain blinding of treatment allocations."
+        quote: "regulators favour re-estimation procedures to maintain the blinding of the treatment allocations"
+        location: "char 1155 of 4573 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-e000d90c-7
+        text: "Simulation results show blinded re-estimation procedures perform similarly to unblinded approaches in many cases."
+        quote: "the performance of the proposed blinded procedures is in many cases similar to"
+        location: "char 1904 of 4573 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        contested: true
+        contradicts:
+          - C-07c9a426-3
+  - source_id: 07c9a42632db2304755b95778286b7bef2a0a5d4
+    url: "https://www.statsols.com/guides/sample-size-re-estimation-in-clinical-trials"
+    title: "Guide to Sample Size Re-Estimation in Clinical Trials"
+    authors: []
+    venue: null
+    date: null
+    type: blog
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "3b4926a2ada3eeefd2dc424121e737fdcdf4f564"
+    claims:
+      - claim_id: C-07c9a426-1
+        text: "Sample Size Re-Estimation is an adaptive trial design method that allows sample size adjustments at interim points."
+        quote: "Sample Size Re-Estimation (SSR) is a type of adaptive trial design"
+        location: "char 2150 of 4400 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-07c9a426-2
+        text: "Sample size re-estimation approaches divide into blinded and unblinded methods."
+        quote: "Sample Size Re-Estimation can largely be split into two areas"
+        location: "char 2474 of 4400 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-07c9a426-3
+        text: "Unblinded sample size re-estimation addresses uncertainty about the magnitude of initial effect size estimates."
+        quote: "aims to address any uncertainty regarding the magnitude of the initial effect size estimate"
+        location: "char 3027 of 4400 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        contested: true
+        contradicts:
+          - C-e000d90c-7
+  - source_id: 8137885ca54412cc0e3cf5246a01b4967b3be8e4
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3570871/"
+    title: "An Adaptive, Dose-Finding, Seamless Phase 2/3 Study of a Long-Acting Glucagon-Like Peptide-1 Analog (Dulaglutide): Trial Design and Baseline Characteristics - PMC"
+    authors: []
+    venue: null
+    date: null
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "1df31d5b9bd63698d74099d4a4743c88691109b1"
+    claims:
+      - claim_id: C-8137885c-6
+        text: "Stage 1 of the trial aims to identify up to two safe and efficacious dulaglutide doses or declare futility."
+        quote: "identify up to 2 safe and efficacious doses of dula"
+        location: "char 11185 of 44088 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-8137885c-20
+        text: "The Data Monitoring Committee reviewed algorithm performance every two months."
+        quote: "The DMC reviewed the performance of the algorithm bimonthly"
+        location: "char 27460 of 44088 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+  - source_id: 5426dd096a626a9b4e81a8571e3c36738b087bdd
+    url: "https://arxiv.org/html/2605.03554v1"
+    title: "Communicating results in trials with multiple hypotheses or adaptive design features"
+    authors: []
+    venue: "arXiv"
+    date: "2026-05"
+    type: primary_paper
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "f1a1887609607ea2c0d47d66d0154a9599c1f45f"
+    claims:
+      - claim_id: C-5426dd09-9
+        text: "Multiplicity-adjusted inference requires a pre-defined type 1 error control strategy to be valid and interpretable."
+        quote: "multiplicity-adjusted inference is only valid and interpretable within the framework"
+        location: "char 12118 of 60383 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        corroboration_count: 2
+        corroborated_by:
+          - b42f6bdc4c163fb4259fad0399504ff443c71998
+      - claim_id: C-5426dd09-12
+        text: "Treatment effect estimates from group-sequential trials stopped early for efficacy show substantial conditional bias."
+        quote: "conditional bias for trials stopped early for efficacy can be substantial"
+        location: "char 16180 of 60383 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-5426dd09-15
+        text: "Repeated confidence intervals across multiple interim analyses are conservative in their coverage."
+        quote: "repeated confidence intervals are conservative"
+        location: "char 18836 of 60383 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        corroboration_count: 2
+        corroborated_by:
+          - 3667249d034630906a64cb3915053ab7ce22ec69
+  - source_id: 3667249d034630906a64cb3915053ab7ce22ec69
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12333484/"
+    title: "Confidence Intervals for Adaptive Trial Designs I: A Methodological Review - PMC"
+    authors: []
+    venue: null
+    date: null
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "f69ea45e30344403fbb1aba37685a2ee4145e935"
+    claims:
+      - claim_id: C-3667249d-9
+        text: "Standard confidence intervals assume an underlying normal distribution, but adaptive design stopping rules violate this assumption."
+        quote: "the standard CI assumes an underlying normal distribution"
+        location: "char 12133 of 96506 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+      - claim_id: C-3667249d-20
+        text: "Repeated confidence intervals preserve simultaneous coverage probability at the chosen significance level across all interim analyses."
+        quote: "simultaneous coverage probability is maintained at level 1 − α"
+        location: "char 31802 of 96506 (normalized)"
+        confidence: high
+        provenance_origin: discovered
+        corroboration_count: 2
+        corroborated_by:
+          - 5426dd096a626a9b4e81a8571e3c36738b087bdd
