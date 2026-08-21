@@ -111,6 +111,15 @@ def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
         # --- Freeze, then replay. Everything downstream reads the frozen corpus, not the live web.
         corpus_dir = freeze_corpus(list(getattr(backend, "documents", [])), out_dir / "corpus")
     retrieval = fetch_source_leads(campaign.leads, ReplayFetcher(corpus_dir=corpus_dir))
+    # A campaign that resolved nothing must not report success. Every stage below is a clean no-op on
+    # an empty document list: build_ledger anchors no claims, grouping has nothing to group, and the
+    # run exits 0 having written a report whose only symptom is `concepts: 0`. That is the most
+    # reassuring possible reading of a total retrieval failure -- and it is what the 2026-08-21
+    # spec-04 retry produced, 155 source leads with every one of them unresolved, exit 0.
+    if campaign.leads.source_leads and not retrieval.documents:
+        raise RuntimeError(
+            f"retrieval resolved 0 documents from {len(campaign.leads.source_leads)} source leads "
+            f"(corpus: {corpus_dir}) -- every stage downstream would be vacuous")
     documents = retrieval.documents[:max_docs] if max_docs else retrieval.documents
 
     # --- Phase 1: grounding. The model proposes claims; `anchor_claims` inside build_ledger keeps

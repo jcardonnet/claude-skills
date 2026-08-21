@@ -101,7 +101,20 @@ def run_brief(brief: ResearchBrief, snapshot_dir: str | Path,
     # possible reading of a half-written snapshot. Requiring the last file makes presence mean the
     # whole triple landed.
     if not isinstance(backend, ReplayBackend) and (root / f"brief-{brief_id(brief)}.json").is_file():
-        return ReplayBackend(root)(brief)
+        report, sources = ReplayBackend(root)(brief)
+        # Skipping the model call must not skip the documents. A live backend accumulates the pages
+        # it verified as a SIDE EFFECT of being called, and `run_campaign` freezes that list into the
+        # corpus every later stage reads -- so a resumed brief that replays only text hands back a
+        # report whose sources resolve to nothing. The 2026-08-21 spec-04 retry did exactly that:
+        # 11 briefs, 10 of them resumed, 155 leads, 0 documents, 0 claims, exit 0.
+        #
+        # Re-fetching is the cheap half and always was. The research MODEL call is what the budget
+        # dies on; `HttpFetcher` costs nothing but time. So resume the expensive half from disk and
+        # pay the free half again.
+        rehydrate = getattr(backend, "rehydrate", None)
+        if rehydrate is not None:
+            rehydrate(sources)
+        return report, sources
 
     report, sources = backend(brief)
 

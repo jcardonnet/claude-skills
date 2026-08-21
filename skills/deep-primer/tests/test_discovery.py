@@ -336,6 +336,47 @@ def test_a_half_written_snapshot_is_researched_rather_than_resumed(tmp_path):
     assert (snap / "brief-A-test.json").is_file(), "the completed re-run did not freeze the triple"
 
 
+def test_a_resumed_brief_still_hands_back_the_documents_it_fetched(tmp_path):
+    """Resuming must skip the model call, not the corpus.
+
+    A live backend collects the pages it verified as a side effect of being called, and
+    `run_campaign` freezes that list into the corpus every later stage reads. So a resume that
+    replays only the report text returns a perfectly good brief whose sources resolve to nothing --
+    which is what the 2026-08-21 spec-04 retry did: 10 of 11 briefs resumed, 155 source leads, 0
+    documents, 0 claims, exit 0. Re-fetching is free; the research call is the part worth saving.
+    """
+    from research.deep_research import CallableBackend
+
+    b = ResearchBrief(wave="A", framing="structure", questions=["q"], brief_id="A-test")
+    snap = tmp_path / "snap"
+    calls = []
+
+    class Backend(CallableBackend):
+        def __init__(self):
+            super().__init__(self._run)
+            self.documents = []
+
+        def _run(self, _b):
+            calls.append(_b)
+            self.documents.append("live-doc")
+            return ("# fresh\n", [{"url": "https://e.org/1", "status": "accepted"}])
+
+        def rehydrate(self, sources):
+            self.documents.extend(f"refetched:{s['url']}" for s in sources
+                                  if s.get("status") == "accepted")
+
+    first = Backend()
+    run_brief(b, snap, first)
+    assert calls and first.documents == ["live-doc"], "the live run did not collect its own document"
+
+    second = Backend()
+    _, sources = run_brief(b, snap, second)
+    assert len(calls) == 1, "the resume re-paid for a brief already on disk"
+    assert second.documents == ["refetched:https://e.org/1"], (
+        "the resumed brief handed back sources with no documents behind them")
+    assert sources[0]["url"] == "https://e.org/1"
+
+
 def test_write_campaign_emits_both_artifacts(tmp_path):
     result = front_load_campaign("rag", {"target_domain": "rag"}, snapshot_dir=SNAPSHOT)
     paths = write_campaign(result, tmp_path)

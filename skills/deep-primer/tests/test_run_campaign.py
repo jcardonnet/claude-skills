@@ -115,6 +115,31 @@ def test_the_ledger_is_built_by_replaying_the_frozen_corpus(tmp_path):
     assert second["retrieval"]["documents_fetched"] == 0   # the resume path touched no network
 
 
+def test_a_campaign_that_resolves_no_documents_fails_instead_of_reporting_zero(tmp_path):
+    """Total retrieval failure is silent unless something refuses it.
+
+    Every stage after retrieval is a clean no-op on an empty document list: no claims are anchored,
+    there is nothing to group, and the driver writes a full report and exits 0. The only symptom is
+    `concepts: 0` in a file nobody reads on a green run. That is how the 2026-08-21 spec-04 retry
+    reported success on 155 source leads with every one of them unresolved.
+    """
+    import pytest
+
+    class _Empty(_Backend):
+        def __init__(self):
+            super().__init__()
+            self.documents = []          # leads still surface; nothing behind them fetched
+
+        def __call__(self, _brief):
+            return "# report\n\n- lead: tracing\n", [
+                {"id": "s0", "url": "https://ex0.test/p", "type": "docs", "status": "accepted",
+                 "provenance_origin": "discovered"}]
+
+    with pytest.raises(RuntimeError, match="resolved 0 documents"):
+        run(_spec(tmp_path), tmp_path / "out", as_of="2026-08-20", waves=("A",),
+            backend=_Empty(), extractor=_Extractor(), judge=_NoFinding(), **OFFLINE)
+
+
 def test_the_grouping_seams_are_wired_and_what_they_reject_is_reported(tmp_path):
     """Grouping is where the last campaign quietly failed: 271 claims became 249 concepts and 0
     corroborations, and `campaign-run.json` had no field that would have said so.

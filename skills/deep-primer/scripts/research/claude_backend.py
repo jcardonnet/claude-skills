@@ -86,6 +86,34 @@ class ClaudeResearchBackend:
         self.documents: list = []       # what actually fetched — hand to freeze_corpus()
         self.dropped: list[dict] = []
 
+    def rehydrate(self, sources: list[dict]) -> None:
+        """Re-fetch the pages a resumed brief verified when it first ran.
+
+        `self.documents` is built as a side effect of `__call__`, so a brief replayed from its frozen
+        snapshot contributes none of its own -- and `run_campaign` freezes `documents` into the
+        corpus that every later stage reads. Without this, resuming discovery silently empties the
+        corpus and the campaign grounds nothing while exiting 0.
+
+        Only `accepted` leads are re-fetched: a lead dropped for not fetching the first time is not
+        evidence now either. Their `url` is already the POST-redirect URL the original run rewrote it
+        to, which is the key the corpus is written under. A page that has since gone away simply
+        stays absent -- the same outcome `verify_urls` produces on a live run, reported as unresolved
+        rather than invented.
+        """
+        seen = {doc.url for doc in self.documents}
+        for lead in sources:
+            url = str((lead or {}).get("url") or "")
+            if not url or lead.get("status") != "accepted" or url in seen:
+                continue
+            seen.add(url)
+            doc = self.fetcher(url)
+            if doc is None:
+                self.dropped.append({**lead, "status": "dropped",
+                                     "dropped_reason": self.fetcher.refused.get(
+                                         url, "did not fetch on resume")})
+            else:
+                self.documents.append(doc)
+
     def _instruction(self, brief) -> str:
         return _INSTRUCTION.format(
             wave=brief.wave, framing=brief.framing, angle=brief.angle or "-",
