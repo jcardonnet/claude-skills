@@ -1,0 +1,18 @@
+{
+  "wave": "C",
+  "framing": "contrarian-seed",
+  "angle": "by-failure-mode",
+  "source_class": null,
+  "stance": "against-dominant",
+  "questions": [
+    "Key claims of a primer on evaluation of retrieval-augmented systems: . Find the strongest evidence any are wrong or overstated."
+  ],
+  "instructions": [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs"
+  ],
+  "brief_id": "C-C-disconfirm",
+  "seed_ref": null
+}

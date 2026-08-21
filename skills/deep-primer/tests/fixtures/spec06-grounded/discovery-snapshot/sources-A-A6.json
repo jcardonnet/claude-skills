@@ -1,0 +1,126 @@
+[
+  {
+    "id": "A-A6-s1",
+    "url": "https://blog.anablock.com/blog/rag-benchmarking-problem-ai-accuracy-claims",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Documents vendor benchmark inflation, synthetic data gaps, 70% eval framework adoption gap",
+    "fetched_title": "The RAG Benchmarking Problem: Why Most AI Accuracy Claims Are Meaningless | Anablock",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s2",
+    "url": "https://arxiv.org/pdf/2605.08838",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Demonstrates data leakage and bias in synthetic RAG benchmarks through controlled generation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s3",
+    "url": "https://arxiv.org/pdf/2606.28330",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Proves mathematical limit on vector embedding representation via sign-rank theory, LIMIT benchmark",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s4",
+    "url": "https://bdtechtalks.substack.com/p/the-fundamental-limits-of-embeddings",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Explains embedding dimension hard cap, Gemini <20% recall@100, BM25 superiority on complex tasks",
+    "fetched_title": "The fundamental limits of embeddings in RAG applications",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s5",
+    "url": "https://arxiv.org/pdf/2504.15205",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "TREC 2024 RAG Track: 0.30\u20130.34 agreement between automated and human relevance judges",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s6",
+    "url": "https://docs.ragas.io/en/stable/howtos/applications/align-llm-as-judge/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "RAGAS documentation acknowledges 0.55 correlation with human judgment, 12 judge biases",
+    "fetched_title": "Align an LLM as a Judge - Ragas",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A6-s7",
+    "url": "https://arxiv.org/pdf/2508.06401",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Systematic review documenting cost-latency reporting gaps, domain shift brittleness",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s8",
+    "url": "https://www.meilisearch.com/blog/vector-dbs-rag",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Critiques vector precision-recall tradeoff, query refinement gaps in standard approaches",
+    "fetched_title": "Why you shouldn't use vector databases for RAG | Meilisearch",
+    "retrieved_at": "2026-08-21"
+  }
+]

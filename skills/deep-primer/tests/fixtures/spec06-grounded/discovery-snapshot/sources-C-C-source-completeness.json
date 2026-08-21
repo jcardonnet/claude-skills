@@ -1,0 +1,323 @@
+[
+  {
+    "id": "C-C-source-completeness-s1",
+    "url": "https://arxiv.org/abs/2309.15217",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "RAGAS framework, pioneering reference-free RAG evaluation with 4-metric suite",
+    "fetched_title": "[2309.15217] Ragas: Automated Evaluation of Retrieval Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s2",
+    "url": "https://aclanthology.org/2024.eacl-demo.16/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "RAGAS published proceedings; canonical ACL/EACL demonstration",
+    "fetched_title": "RAGAs: Automated Evaluation of Retrieval Augmented Generation - ACL Anthology",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s3",
+    "url": "https://arxiv.org/abs/2405.07437",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "2024 survey of RAG evaluation methods, taxonomizing metrics and frameworks",
+    "fetched_title": "[2405.07437] Evaluation of Retrieval-Augmented Generation: A Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s4",
+    "url": "https://arxiv.org/abs/2504.14891",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Apr 2025 comprehensive RAG evaluation survey in LLM era",
+    "fetched_title": "[2504.14891] Retrieval Augmented Generation Evaluation in the Era of Large Language Models: A Comprehensive Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s5",
+    "url": "https://arxiv.org/abs/2407.13193",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "RAG for NLP survey establishing historical context and foundations",
+    "fetched_title": "[2407.13193] Retrieval-Augmented Generation for Natural Language Processing: A Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s6",
+    "url": "https://arxiv.org/abs/2408.08067",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "RAGChecker fine-grained diagnostic framework; NeurIPS 2024 benchmark track",
+    "fetched_title": "[2408.08067] RAGChecker: A Fine-grained Framework for Diagnosing Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s7",
+    "url": "https://openreview.net/challenge?redirect=%2Fforum%3Fid%3DJ9oefdGUuM",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "RAGChecker peer review and detailed methodology documentation",
+    "requested_url": "https://openreview.net/forum?id=J9oefdGUuM",
+    "fetched_title": "Verifying your browser | OpenReview",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s8",
+    "url": "https://arxiv.org/abs/2510.21440",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Redefining retrieval evaluation in LLM era; challenges to classical IR metrics",
+    "fetched_title": "[2510.21440] Redefining Retrieval Evaluation in the Era of LLMs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s9",
+    "url": "https://arxiv.org/abs/2406.13232",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Taxonomy of datasets and metrics for open-domain QA evaluation",
+    "fetched_title": "[2406.13232] Towards Robust Evaluation: A Comprehensive Taxonomy of Datasets and Metrics for Open Domain Question Answering in the Era of Large Language Models",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s10",
+    "url": "https://trec.nist.gov/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "TREC evaluation conference; standardized IR metrics and benchmarking methodology",
+    "fetched_title": "Text REtrieval Conference",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s11",
+    "url": "https://mrqa.github.io/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "MRQA shared task; multi-domain QA benchmark and generalization testing",
+    "fetched_title": "MRQA: Home",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s12",
+    "url": "https://aclanthology.org/X98-1031.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Voorhees & Harman; foundational TREC evaluation theory",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-source-completeness-s13",
+    "url": "https://github.com/EdinburghNLP/awesome-hallucination-detection",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Curated list of hallucination detection and factuality papers in LLMs",
+    "fetched_title": "GitHub - EdinburghNLP/awesome-hallucination-detection: List of papers on hallucination detection in LLMs. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s14",
+    "url": "https://arxiv.org/abs/2404.05904",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Hallucinations Leaderboard; systematic measurement of LLM hallucination",
+    "fetched_title": "[2404.05904] The Hallucinations Leaderboard -- An Open Effort to Measure Hallucinations in Large Language Models",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s15",
+    "url": "https://link.springer.com/article/10.1007/s10462-025-11454-w",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Springer review of fact-checking and factuality in LLMs (2025)",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s16",
+    "url": "https://arxiv.org/abs/2504.15205",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "TREC 2024 RAG track; human vs. LLM judge comparison for RAG evaluation",
+    "fetched_title": "[2504.15205] Support Evaluation for the TREC 2024 RAG Track: Comparing Human versus LLM Judges",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s17",
+    "url": "https://arxiv.org/abs/2511.04696",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "EncouRAGe; local, fast, reliable RAG evaluation framework",
+    "fetched_title": "[2511.04696] EncouRAGe: Evaluating RAG Local, Fast, and Reliable",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s18",
+    "url": "https://plainenglish.io/machine-learning/evaluating-nlp-models-a-comprehensive-guide-to-rouge-bleu-meteor-and-bertscore-metrics-d0f1b1",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Comprehensive guide to reference-based NLP evaluation metrics",
+    "requested_url": "https://plainenglish.io/blog/evaluating-nlp-models-a-comprehensive-guide-to-rouge-bleu-meteor-and-bertscore-metrics-d0f1b1",
+    "fetched_title": "Evaluating NLP Models: A Comprehensive Guide to ROUGE, BLEU, METEOR, and BERTScore Metrics",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s19",
+    "url": "https://arxiv.org/abs/2305.14991",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "MuLER; detailed and scalable reference-based evaluation methods",
+    "fetched_title": "[2305.14991] MuLER: Detailed and Scalable Reference-based Evaluation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s20",
+    "url": "https://arxiv.org/abs/2312.10355",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "CoAScore; chain-of-aspects NLG evaluation via prompt engineering",
+    "fetched_title": "[2312.10355] CoAScore: Chain-of-Aspects Prompting for NLG Evaluation",
+    "retrieved_at": "2026-08-21"
+  }
+]

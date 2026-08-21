@@ -1,0 +1,311 @@
+[
+  {
+    "id": "B-B-dive-s1",
+    "url": "https://arxiv.org/pdf/2507.18910",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Systematic review of RAG systems, progress, gaps, and future directions",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s2",
+    "url": "https://arxiv.org/abs/2405.07437",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Comprehensive survey on evaluation of retrieval-augmented generation",
+    "fetched_title": "[2405.07437] Evaluation of Retrieval-Augmented Generation: A Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s3",
+    "url": "https://arxiv.org/pdf/2504.14891",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "RAG evaluation in the era of LLMs\u2014comprehensive survey on metrics and dimensions",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s4",
+    "url": "https://arxiv.org/html/2606.28337v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Systems-level analysis of sensitivity, robustness, and stability in RAG",
+    "fetched_title": "A Systems-Level Analysis of Sensitivity, Robustness, and Stability in Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s5",
+    "url": "https://arxiv.org/pdf/2411.19463",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Understanding design decisions and tradeoffs in retrieval-augmented generation systems",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s6",
+    "url": "https://arxiv.org/pdf/2508.06056",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "RAGTrace framework for understanding retrieval-generation dynamics",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s7",
+    "url": "https://arxiv.org/pdf/2311.09476",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "ARES\u2014automated evaluation framework for RAG with prediction-powered inference",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s8",
+    "url": "https://arxiv.org/abs/2309.15217",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "RAGAS\u2014automated evaluation of retrieval augmented generation",
+    "fetched_title": "[2309.15217] Ragas: Automated Evaluation of Retrieval Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s9",
+    "url": "https://arxiv.org/pdf/2504.15205",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "TREC 2024 RAG Track\u2014support evaluation comparing human vs. LLM judges",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s10",
+    "url": "https://arxiv.org/pdf/2603.09891",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "TREC 2025 RAG Track overview\u2014complex narratives and evidence synthesis",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s11",
+    "url": "https://arxiv.org/pdf/2506.08938",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "FaithfulRAG\u2014fact-level conflict modeling for context-faithful generation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s12",
+    "url": "https://arxiv.org/pdf/2510.22344",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "FAIR-RAG\u2014faithful adaptive iterative refinement for RAG",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s13",
+    "url": "https://arxiv.org/pdf/2602.03689",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Boundary-aware evidence selection for robust retrieval-augmented generation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s14",
+    "url": "https://arxiv.org/pdf/2410.13716",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "MIRAGE-Bench\u2014automatic multilingual benchmark arena for RAG systems",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s15",
+    "url": "https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Technical guide to RAG evaluation metrics and methodologies",
+    "fetched_title": "RAG evaluation: a technical guide to measuring retrieval-augmented generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s16",
+    "url": "https://docs.ragas.io/en/v0.1.21/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "RAGAS framework documentation\u2014latest stable release (v0.1.21)",
+    "fetched_title": "Introduction | Ragas",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s17",
+    "url": "https://github.com/stanford-futuredata/ARES",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "ARES framework repository with implementation and release history",
+    "fetched_title": "GitHub - stanford-futuredata/ARES: Automated Evaluation of RAG Systems \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s18",
+    "url": "https://github.com/vibrantlabsai/ragas",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "RAGAS repository\u2014latest releases and version tracking",
+    "fetched_title": "GitHub - vibrantlabsai/ragas: Supercharge Your LLM Application Evaluations \ud83d\ude80 \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s19",
+    "url": "https://developer.nvidia.com/blog/enhancing-rag-pipelines-with-re-ranking/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Two-stage retrieval and reranking mechanism for RAG pipelines",
+    "fetched_title": "Enhancing RAG Pipelines with Re-Ranking | NVIDIA Technical Blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s20",
+    "url": "https://dextralabs.com/blog/production-rag-in-2025-evaluation-cicd-observability/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Production RAG best practices for 2025\u2014evaluation suites and CI/CD quality gates",
+    "fetched_title": "Production RAG in 2025 | Evaluation Suites, CI/CD Quality Gates & Observability | Dextralabs",
+    "retrieved_at": "2026-08-21"
+  }
+]

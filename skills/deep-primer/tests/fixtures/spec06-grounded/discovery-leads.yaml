@@ -1,0 +1,2605 @@
+topic_leads: []
+source_leads:
+- id: sl-A-A1-0
+  support_count: 4
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - source-authority
+  - structure
+  - theorist
+  report_ids:
+  - A-A1
+  - A-A4
+  - A-A5
+  - B-B-dive
+  url: https://arxiv.org/pdf/2504.14891
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A1-1
+  support_count: 5
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - practitioner
+  - source-authority
+  - structure
+  - theorist
+  report_ids:
+  - A-A1
+  - A-A4
+  - B-B-dive
+  - C-C-omission
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2405.07437
+  type: primary_paper
+  supports: []
+  fetched_title: '[2405.07437] Evaluation of Retrieval-Augmented Generation: A Survey'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/embeddings-benchmark/mteb
+  type: standard
+  supports: []
+  fetched_title: 'GitHub - embeddings-benchmark/mteb: MTEB: State-of-the-art evaluation
+    of embeddings across languages and modalities · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://rajpurkar.github.io/SQuAD-explorer/
+  type: standard
+  supports: []
+  fetched_title: The Stanford Question Answering Dataset
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://docs.ragas.io/en/stable/
+  type: docs
+  supports: []
+  fetched_title: Ragas
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-13
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - structure
+  report_ids:
+  - A-A1
+  - C-C-omission
+  url: https://deepeval.com
+  type: docs
+  supports: []
+  fetched_title: DeepEval - The LLM Evaluation Framework
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://www.trulens.org
+  type: docs
+  supports: []
+  fetched_title: 'TruLens: Evals and Tracing for AI Agents'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/deepset-ai/haystack
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - deepset-ai/haystack: Open-source AI orchestration framework
+    for building context-engineered, production-ready LLM applications. Design modular
+    pipelines and agent workflows with explicit control over retrieval, routing, memory,
+    and generation. Built for scalable agents, RAG, multimodal applications, semantic
+    search, and conversational systems. · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://docs.langchain.com/langsmith/evaluate-rag-tutorial
+  type: docs
+  supports: []
+  fetched_title: Evaluate a RAG application - Docs by LangChain
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://evalscope.readthedocs.io/en/latest/blog/RAG/RAG_Evaluation.html
+  type: docs
+  supports: []
+  fetched_title: 'RAG Evaluation Survey: Framework, Metrics, and Methods | EvalScope'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://docs.ragas.io/en/v0.3.4/howtos/integrations/_llamaindex/
+  type: docs
+  supports: []
+  fetched_title: LlamaIndex RAG - Ragas
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/YHPeter/Awesome-RAG-Evaluation
+  type: blog
+  supports: []
+  fetched_title: 'GitHub - YHPeter/Awesome-RAG-Evaluation: The official repository
+    for the paper: Evaluation of Retrieval-Augmented Generation: A Survey. · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-2
+  support_count: 3
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - source-authority
+  - structure
+  report_ids:
+  - A-A1
+  - A-A4
+  - A-A5
+  url: https://arxiv.org/pdf/2407.13193
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A1-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://arxiv.org/pdf/2407.11005
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A1-4
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  - structure
+  report_ids:
+  - A-A1
+  - A-A4
+  url: https://arxiv.org/abs/2401.17043
+  type: primary_paper
+  supports: []
+  fetched_title: '[2401.17043] CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented
+    Generation of Large Language Models'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-5
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - structure
+  report_ids:
+  - A-A1
+  - C-C-omission
+  url: https://aclanthology.org/2024.naacl-long.20/
+  type: primary_paper
+  supports: []
+  fetched_title: 'ARES: An Automated Evaluation Framework for Retrieval-Augmented
+    Generation Systems - ACL Anthology'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://arxiv.org/pdf/2411.09607
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A1-7
+  support_count: 3
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  - practitioner
+  - structure
+  report_ids:
+  - A-A1
+  - A-A2
+  - C-C-omission
+  url: https://trec-rag.github.io
+  type: standard
+  supports: []
+  fetched_title: TREC RAG · Retrieval-Augmented Generation Track - RAG
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/facebookresearch/CRAG/
+  type: standard
+  supports: []
+  fetched_title: 'GitHub - facebookresearch/CRAG: Comprehensive benchmark for RAG
+    · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A1-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/beir-cellar/beir
+  type: standard
+  supports: []
+  fetched_title: 'GitHub - beir-cellar/beir: A Heterogeneous Benchmark for Information
+    Retrieval. Easy to use, evaluate your models across 15+ diverse IR datasets. ·
+    GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2512.05959
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2506.12071
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/abs/2502.08662
+  type: primary_paper
+  supports: []
+  fetched_title: '[2502.08662] RoToR: Towards More Reliable Responses for Order-Invariant
+    Inputs'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2510.21440
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2604.17677
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2604.20763
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2406.00944
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2503.00353
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-16
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  - theorist
+  report_ids:
+  - A-A2
+  - B-B-dive
+  url: https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/
+  type: blog
+  supports: []
+  fetched_title: 'RAG evaluation: a technical guide to measuring retrieval-augmented
+    generation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.ibm.com/think/architectures/rag-cookbook/result-evaluation
+  type: docs
+  supports: []
+  fetched_title: 'Result Evaluation for RAG: Metrics & Best Practices | IBM'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://developers.redhat.com/articles/2026/02/23/synthetic-data-rag-evaluation-why-your-rag-system-needs-better-testing
+  type: blog
+  supports: []
+  fetched_title: 'Synthetic data for RAG evaluation: Why your RAG system needs better
+    testing | Red Hat Developer'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://atlan.com/know/rag-accuracy-problems/
+  type: blog
+  supports: []
+  fetched_title: 'RAG Accuracy Problems: Why They Happen and How to Fix Them'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://medium.com/@Nexumo_/the-8-retrieval-benchmarks-lying-to-your-rag-5811ca3ee057
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-A-A2-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://medium.com/@bhagyarana80/10-rag-failure-modes-at-scale-and-how-to-fix-them-158240ce3a05
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-A-A2-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://aclanthology.org/2026.trustnlp-main.27.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2504.01840
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-23
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://atlan.com/know/how-to-evaluate-rag-systems-explained/
+  type: blog
+  supports: []
+  fetched_title: 'RAG Evaluation: Metrics, Tools, and the Context Gap (2026)'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-24
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - debates
+  report_ids:
+  - A-A2
+  - C-C-source-completeness
+  url: https://aclanthology.org/2024.eacl-demo.16/
+  type: primary_paper
+  supports: []
+  fetched_title: 'RAGAs: Automated Evaluation of Retrieval Augmented Generation -
+    ACL Anthology'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-25
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - debates
+  report_ids:
+  - A-A2
+  - A-A5
+  url: https://arxiv.org/html/2309.15217v1
+  type: primary_paper
+  supports: []
+  fetched_title: 'RAGAS: Automated Evaluation of Retrieval Augmented Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-27
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://deepchecks.com/rag-evaluation-metrics-answer-relevancy-faithfulness-accuracy/
+  type: docs
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-A-A2-28
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2504.15689
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2605.14488
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/pdf/2404.19232
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://arxiv.org/html/2510.13975v1
+  type: primary_paper
+  supports: []
+  fetched_title: Classifying and Addressing the Diversity of Errors inRetrieval-Augmented
+    Generation Systems
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-6
+  support_count: 4
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - debates
+  - practitioner
+  - source-authority
+  report_ids:
+  - A-A2
+  - A-A4
+  - C-C-omission
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2504.15205
+  type: primary_paper
+  supports: []
+  fetched_title: '[2504.15205] Support Evaluation for the TREC 2024 RAG Track: Comparing
+    Human versus LLM Judges'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.cs.unh.edu/~dietz/papers/dietz2025principles.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A2-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.openlayer.com/blog/rag-pipeline-evaluation-groundedness-faithfulness
+  type: docs
+  supports: []
+  fetched_title: 'RAG Evaluation in Production: Groundedness, Faithfulness, and Retrieval
+    Quality (July 2026) | Openlayer'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A2-9
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - debates
+  report_ids:
+  - A-A2
+  - C-C-disconfirm
+  url: https://arxiv.org/html/2506.00054v1
+  type: primary_paper
+  supports: []
+  fetched_title: 'Retrieval-Augmented Generation: A Comprehensive Survey of Architectures,
+    Enhancements, and Robustness Frontiers'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-0
+  support_count: 4
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - recency-frontier
+  - source-authority
+  - theorist
+  report_ids:
+  - A-A3
+  - A-A4
+  - B-B-dive
+  - C-C-omission
+  url: https://github.com/vibrantlabsai/ragas
+  type: primary_paper
+  supports: []
+  fetched_title: 'GitHub - vibrantlabsai/ragas: Supercharge Your LLM Application Evaluations
+    🚀 · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-1
+  support_count: 3
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - recency-frontier
+  - theorist
+  report_ids:
+  - A-A3
+  - B-B-dive
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2309.15217
+  type: primary_paper
+  supports: []
+  fetched_title: '[2309.15217] Ragas: Automated Evaluation of Retrieval Augmented
+    Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-10
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  - source-authority
+  report_ids:
+  - A-A3
+  - A-A4
+  url: https://arxiv.org/abs/2407.11005
+  type: primary_paper
+  supports: []
+  fetched_title: '[2407.11005] RAGBench: Explainable Benchmark for Retrieval-Augmented
+    Generation Systems'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2504.15800
+  type: primary_paper
+  supports: []
+  fetched_title: '[2504.15800] FinDER: Financial Dataset for Question Answering and
+    Evaluating Retrieval-Augmented Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2603.06198
+  type: primary_paper
+  supports: []
+  fetched_title: '[2603.06198] LIT-RAGBench: Benchmarking Generator Capabilities of
+    Large Language Models in Retrieval-Augmented Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2603.19281
+  type: primary_paper
+  supports: []
+  fetched_title: '[2603.19281] URAG: A Benchmark for Uncertainty Quantification in
+    Retrieval-Augmented Large Language Models'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2504.18024
+  type: primary_paper
+  supports: []
+  fetched_title: '[2504.18024] SMARTFinRAG: Interactive Modularized Financial RAG
+    Benchmark'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-15
+  support_count: 3
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  - practitioner
+  - recency-frontier
+  report_ids:
+  - A-A3
+  - C-C-omission
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2504.14891
+  type: primary_paper
+  supports: []
+  fetched_title: '[2504.14891] Retrieval Augmented Generation Evaluation in the Era
+    of Large Language Models: A Comprehensive Survey'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://link.springer.com/article/10.1007/s42979-026-05134-x
+  type: primary_paper
+  supports: []
+  fetched_title: Client Challenge
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-17
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - recency-frontier
+  report_ids:
+  - A-A3
+  - C-C-omission
+  url: https://arxiv.org/abs/2507.18910
+  type: primary_paper
+  supports: []
+  fetched_title: '[2507.18910] A Systematic Review of Key Retrieval-Augmented Generation
+    (RAG) Systems: Progress, Gaps, and Future Directions'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2508.02994
+  type: primary_paper
+  supports: []
+  fetched_title: '[2508.02994] When AIs Judge AIs: The Rise of Agent-as-a-Judge Evaluation
+    for LLMs'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2603.21654
+  type: primary_paper
+  supports: []
+  fetched_title: '[2603.21654] Towards Secure Retrieval-Augmented Generation: A Comprehensive
+    Review of Threats, Defenses and Benchmarks'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://deepeval.com/changelog
+  type: docs
+  supports: []
+  fetched_title: Welcome to Changelogs! | DeepEval - The LLM Evaluation Framework
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2604.08304
+  type: primary_paper
+  supports: []
+  fetched_title: '[2604.08304] Securing Retrieval-Augmented Generation: A Taxonomy
+    of Attacks, Defenses, and Future Directions'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2504.12323
+  type: primary_paper
+  supports: []
+  fetched_title: '[2504.12323] The Other Side of the Coin: Exploring Fairness in Retrieval-Augmented
+    Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2603.09891
+  type: primary_paper
+  supports: []
+  fetched_title: '[2603.09891] Overview of the TREC 2025 Retrieval Augmented Generation
+    (RAG) Track'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-23
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2602.10024
+  type: primary_paper
+  supports: []
+  fetched_title: '[2602.10024] Overview of the TREC 2025 RAGTIME Track'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/hkuds/lightrag
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - HKUDS/LightRAG: [EMNLP2025] LightRAG: Simple and Fast Retrieval-Augmented
+    Generation · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-25
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://huggingface.co/crag-mm-2025/datasets
+  type: docs
+  supports: []
+  fetched_title: crag-mm-2025 (CRAG - MM Challenge 2025)
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/confident-ai/deepeval
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - confident-ai/deepeval: The LLM Evaluation Framework · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-4
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - recency-frontier
+  report_ids:
+  - A-A3
+  - C-C-omission
+  url: https://github.com/truera/trulens
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - truera/trulens: Evaluation and Tracking for LLM Experiments
+    and AI Agents · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/langfuse/langfuse
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - langfuse/langfuse: 🪢 Open source AI engineering platform:
+    LLM evals, observability, metrics, prompt management, playground, datasets. Integrates
+    with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://arxiv.org/abs/2510.26160
+  type: primary_paper
+  supports: []
+  fetched_title: '[2510.26160] CRAG-MM: Multi-modal Multi-turn Comprehensive RAG Benchmark'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://aclanthology.org/2025.acl-long.418.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A3-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/OpenBMB/RAGEval
+  type: primary_paper
+  supports: []
+  fetched_title: GitHub - OpenBMB/RAGEval · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-A-A3-9
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - recency-frontier
+  report_ids:
+  - A-A3
+  - C-C-omission
+  url: https://arxiv.org/abs/2406.04744
+  type: primary_paper
+  supports: []
+  fetched_title: '[2406.04744] CRAG -- Comprehensive RAG Benchmark'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2005.11401
+  type: primary_paper
+  supports: []
+  fetched_title: '[2005.11401] Retrieval-Augmented Generation for Knowledge-Intensive
+    NLP Tasks'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2002.08909
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/pdf/2505.22430
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A4-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2410.13716
+  type: primary_paper
+  supports: []
+  fetched_title: '[2410.13716] MIRAGE-Bench: Automatic Multilingual Benchmark Arena
+    for Retrieval-Augmented Generation Systems'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2506.00054
+  type: primary_paper
+  supports: []
+  fetched_title: '[2506.00054] Retrieval-Augmented Generation: A Comprehensive Survey
+    of Architectures, Enhancements, and Robustness Frontiers'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://github.com/llm-as-a-judge/Awesome-LLM-as-a-judge
+  type: reference
+  supports: []
+  fetched_title: GitHub - llm-as-a-judge/Awesome-LLM-as-a-judge · GitHub
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.meilisearch.com/blog/rag-evaluation
+  type: blog
+  supports: []
+  fetched_title: 'RAG evaluation: Metrics, methodologies, best practices & more |
+    Meilisearch'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://aws.amazon.com/blogs/machine-learning/evaluate-rag-responses-with-amazon-bedrock-llamaindex-and-ragas/
+  type: blog
+  supports: []
+  fetched_title: Evaluate RAG responses with Amazon Bedrock, LlamaIndex and RAGAS
+    | Artificial Intelligence
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2511.06738
+  type: primary_paper
+  supports: []
+  fetched_title: '[2511.06738] Rethinking Retrieval-Augmented Generation for Medicine:
+    A Large-Scale, Systematic Expert Evaluation and Practical Insights'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2004.04906
+  type: primary_paper
+  supports: []
+  fetched_title: '[2004.04906] Dense Passage Retrieval for Open-Domain Question Answering'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-20
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  - source-authority
+  report_ids:
+  - A-A4
+  - C-C-omission
+  url: https://arxiv.org/abs/2504.01840
+  type: primary_paper
+  supports: []
+  fetched_title: '[2504.01840] LRAGE: Legal Retrieval Augmented Generation Evaluation
+    Tool'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2510.17853
+  type: primary_paper
+  supports: []
+  fetched_title: '[2510.17853] CiteGuard: Faithful Citation Attribution for LLMs via
+    Retrieval-Augmented Validation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2511.14531
+  type: primary_paper
+  supports: []
+  fetched_title: '[2511.14531] LiveRAG: A diverse Q&A dataset with varying difficulty
+    level for RAG evaluation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2007.01282
+  type: primary_paper
+  supports: []
+  fetched_title: '[2007.01282] Leveraging Passage Retrieval with Generative Models
+    for Open Domain Question Answering'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://arxiv.org/abs/2409.03759
+  type: primary_paper
+  supports: []
+  fetched_title: '[2409.03759] VERA: Validation and Evaluation of Retrieval-Augmented
+    Systems'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A4-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://proceedings.neurips.cc/paper_files/paper/2024/file/27245589131d17368cccdfa990cbf16e-Paper-Datasets_and_Benchmarks_Track.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2508.03860
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2503.16541
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/html/2604.25923
+  type: primary_paper
+  supports: []
+  fetched_title: 'Evaluation Revisited: A Taxonomy of Evaluation Concerns in Natural
+    Language Processing'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A5-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2506.18213
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2410.09638
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://kili-technology.com/blog/rag-evaluation-guide-measuring-retrieval-and-generation-as-separate-problems
+  type: blog
+  supports: []
+  fetched_title: 'RAG Evaluation Methods: Separate Retrieval from Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A5-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://deepchecks.com/retrieval-vs-answer-quality-rag-evaluation/
+  type: blog
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-A-A5-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://www.confident-ai.com/blog/llm-evaluation-metrics-everything-you-need-for-llm-evaluation
+  type: blog
+  supports: []
+  fetched_title: 'LLM Evaluation Metrics: The Ultimate LLM Evaluation Guide - Confident
+    AI'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A5-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://nlp.stanford.edu/IR-book/pdf/08eval.pdf
+  type: docs
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=51229
+  type: standard
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2305.12421
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://sh-tsang.medium.com/brief-review-squad-100-000-questions-for-machine-comprehension-of-text-f191c6b670b8
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-A-A5-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/1904.09675
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/pdf/2006.14799
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A5-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - A-A5
+  url: https://arxiv.org/abs/2501.12011
+  type: primary_paper
+  supports: []
+  fetched_title: '[2501.12011] Reference-free Evaluation Metrics for Text Generation:
+    A Survey'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://blog.anablock.com/blog/rag-benchmarking-problem-ai-accuracy-claims
+  type: blog
+  supports: []
+  fetched_title: 'The RAG Benchmarking Problem: Why Most AI Accuracy Claims Are Meaningless
+    | Anablock'
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2605.08838
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2606.28330
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://bdtechtalks.substack.com/p/the-fundamental-limits-of-embeddings
+  type: blog
+  supports: []
+  fetched_title: The fundamental limits of embeddings in RAG applications
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-4
+  support_count: 2
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - theorist
+  report_ids:
+  - A-A6
+  - B-B-dive
+  url: https://arxiv.org/pdf/2504.15205
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://docs.ragas.io/en/stable/howtos/applications/align-llm-as-judge/
+  type: docs
+  supports: []
+  fetched_title: Align an LLM as a Judge - Ragas
+  retrieved_at: '2026-08-21'
+- id: sl-A-A6-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/pdf/2508.06401
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-A-A6-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.meilisearch.com/blog/vector-dbs-rag
+  type: blog
+  supports: []
+  fetched_title: Why you shouldn't use vector databases for RAG | Meilisearch
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2507.18910
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2506.08938
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2510.22344
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2602.03689
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2410.13716
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://docs.ragas.io/en/v0.1.21/
+  type: docs
+  supports: []
+  fetched_title: Introduction | Ragas
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://github.com/stanford-futuredata/ARES
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - stanford-futuredata/ARES: Automated Evaluation of RAG Systems
+    · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://developer.nvidia.com/blog/enhancing-rag-pipelines-with-re-ranking/
+  type: blog
+  supports: []
+  fetched_title: Enhancing RAG Pipelines with Re-Ranking | NVIDIA Technical Blog
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://dextralabs.com/blog/production-rag-in-2025-evaluation-cicd-observability/
+  type: blog
+  supports: []
+  fetched_title: Production RAG in 2025 | Evaluation Suites, CI/CD Quality Gates &
+    Observability | Dextralabs
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/html/2606.28337v1
+  type: primary_paper
+  supports: []
+  fetched_title: A Systems-Level Analysis of Sensitivity, Robustness, and Stability
+    in Retrieval-Augmented Generation
+  retrieved_at: '2026-08-21'
+- id: sl-B-B-dive-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2411.19463
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2508.06056
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2311.09476
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2603.09891
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://www.mdpi.com/2227-7390/13/5/856
+  type: primary_paper
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-C-C-disconfirm-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/html/2512.15068
+  type: primary_paper
+  supports: []
+  fetched_title: 'The Semantic Illusion: Certified Limits of Embedding-Based Hallucination
+    Detection in RAG Systems'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2408.02854
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2405.20978
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2411.05037
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2408.13533
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2104.08663
+  type: primary_paper
+  supports: []
+  fetched_title: '[2104.08663] BEIR: A Heterogenous Benchmark for Zero-shot Evaluation
+    of Information Retrieval Models'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://dl.acm.org/doi/full/10.1145/3708657.3708747
+  type: primary_paper
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-C-C-disconfirm-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2405.16178
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/abs/2312.10997
+  type: primary_paper
+  supports: []
+  fetched_title: '[2312.10997] Retrieval-Augmented Generation for Large Language Models:
+    A Survey'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-disconfirm-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2410.04343
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2411.03538
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://aclanthology.org/2024.eacl-demo.16.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2601.04196
+  type: primary_paper
+  supports: []
+  fetched_title: '[2601.04196] RAGVUE: A Diagnostic View for Explainable and Automated
+    Evaluation of Retrieval-Augmented Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2602.00296
+  type: primary_paper
+  supports: []
+  fetched_title: '[2602.00296] RAGRouter-Bench: A Dataset and Benchmark for Adaptive
+    RAG Routing'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2503.10677
+  type: primary_paper
+  supports: []
+  fetched_title: '[2503.10677] A Survey on Knowledge-Oriented Retrieval-Augmented
+    Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://trec.nist.gov/pubs/trec34/papers/Overview_rag.pdf
+  type: standard
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-omission-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2511.09545
+  type: primary_paper
+  supports: []
+  fetched_title: '[2511.09545] Practical RAG Evaluation: A Rarity-Aware Set-Based
+    Metric and Cost-Latency-Quality Trade-offs'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://pypi.org/project/uptrain/
+  type: docs
+  supports: []
+  fetched_title: Client Challenge
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.llamaindex.ai/blog/evaluating-rag-with-deepeval-and-llamaindex
+  type: docs
+  supports: []
+  fetched_title: RAG Evaluation Guide With DeepEval & LlamaIndex | LlamaIndex
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2408.01262
+  type: primary_paper
+  supports: []
+  fetched_title: '[2408.01262] RAGEval: Scenario Specific RAG Evaluation Dataset Generation
+    Framework'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2605.26476
+  type: primary_paper
+  supports: []
+  fetched_title: '[2605.26476] FAB-Bench: A Framework for Adaptive RAG Benchmarking
+    in Semiconductor Manufacturing'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2502.14930
+  type: primary_paper
+  supports: []
+  fetched_title: '[2502.14930] RAGVA: Engineering Retrieval Augmented Generation-based
+    Virtual Assistants in Practice'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2603.05828
+  type: primary_paper
+  supports: []
+  fetched_title: '[2603.05828] HART: Data-Driven Hallucination Attribution and Evidence-Based
+    Tracing for Large Language Models'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2512.07515
+  type: primary_paper
+  supports: []
+  fetched_title: '[2512.07515] TPA: Next Token Probability Attribution for Detecting
+    Hallucinations in RAG'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-omission-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://arxiv.org/abs/2605.03534
+  type: primary_paper
+  supports: []
+  fetched_title: '[2605.03534] SURE-RAG: Sufficiency and Uncertainty-Aware Evidence
+    Verification for Selective Retrieval-Augmented Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://mrqa.github.io/
+  type: standard
+  supports: []
+  fetched_title: 'MRQA: Home'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://aclanthology.org/X98-1031.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-source-completeness-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://github.com/EdinburghNLP/awesome-hallucination-detection
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - EdinburghNLP/awesome-hallucination-detection: List of papers
+    on hallucination detection in LLMs. · GitHub'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2404.05904
+  type: primary_paper
+  supports: []
+  fetched_title: '[2404.05904] The Hallucinations Leaderboard -- An Open Effort to
+    Measure Hallucinations in Large Language Models'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://link.springer.com/article/10.1007/s10462-025-11454-w
+  type: primary_paper
+  supports: []
+  fetched_title: Client Challenge
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2511.04696
+  type: primary_paper
+  supports: []
+  fetched_title: '[2511.04696] EncouRAGe: Evaluating RAG Local, Fast, and Reliable'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://plainenglish.io/machine-learning/evaluating-nlp-models-a-comprehensive-guide-to-rouge-bleu-meteor-and-bertscore-metrics-d0f1b1
+  type: blog
+  supports: []
+  fetched_title: 'Evaluating NLP Models: A Comprehensive Guide to ROUGE, BLEU, METEOR,
+    and BERTScore Metrics'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2305.14991
+  type: primary_paper
+  supports: []
+  fetched_title: '[2305.14991] MuLER: Detailed and Scalable Reference-based Evaluation'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2312.10355
+  type: primary_paper
+  supports: []
+  fetched_title: '[2312.10355] CoAScore: Chain-of-Aspects Prompting for NLG Evaluation'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2407.13193
+  type: primary_paper
+  supports: []
+  fetched_title: '[2407.13193] Retrieval-Augmented Generation for Natural Language
+    Processing: A Survey'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2408.08067
+  type: primary_paper
+  supports: []
+  fetched_title: '[2408.08067] RAGChecker: A Fine-grained Framework for Diagnosing
+    Retrieval-Augmented Generation'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://openreview.net/challenge?redirect=%2Fforum%3Fid%3DJ9oefdGUuM
+  type: primary_paper
+  supports: []
+  fetched_title: Verifying your browser | OpenReview
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2510.21440
+  type: primary_paper
+  supports: []
+  fetched_title: '[2510.21440] Redefining Retrieval Evaluation in the Era of LLMs'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://arxiv.org/abs/2406.13232
+  type: primary_paper
+  supports: []
+  fetched_title: '[2406.13232] Towards Robust Evaluation: A Comprehensive Taxonomy
+    of Datasets and Metrics for Open Domain Question Answering in the Era of Large
+    Language Models'
+  retrieved_at: '2026-08-21'
+- id: sl-C-C-source-completeness-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - adjacent-field
+  report_ids:
+  - C-C-source-completeness
+  url: https://trec.nist.gov/
+  type: standard
+  supports: []
+  fetched_title: Text REtrieval Conference
+  retrieved_at: '2026-08-21'

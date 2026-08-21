@@ -1,0 +1,450 @@
+[
+  {
+    "id": "A-A2-s1",
+    "url": "https://arxiv.org/pdf/2512.05959",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "M4-RAG benchmark: oracle context 94-99% accuracy vs. RAG 64-74%, widening gap with model size",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s2",
+    "url": "https://arxiv.org/pdf/2506.12071",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "T\u00b2-RAGBench: 30+ percentage point oracle-RAG gap on text-and-table retrieval",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s3",
+    "url": "https://medium.com/@Nexumo_/the-8-retrieval-benchmarks-lying-to-your-rag-5811ca3ee057",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Industry observation: gap between vendor claims and production RAG performance",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A2-s4",
+    "url": "https://arxiv.org/pdf/2605.14488",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Deepchecks evaluation: RAGAS-Fact 19% precision, SelfCheck 15% precision failure rates",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s5",
+    "url": "https://arxiv.org/pdf/2404.19232",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "GRAMMAR: reference-free metrics unreliable, correlation ceiling r=0.477",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s6",
+    "url": "https://arxiv.org/html/2510.13975v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "RAGEC error classification: 57.8% agreement on error stage, 40.3% on error type",
+    "fetched_title": "Classifying and Addressing the Diversity of Errors inRetrieval-Augmented Generation Systems",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s7",
+    "url": "https://arxiv.org/abs/2504.15205",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "TREC 2024 RAG Track: 44% GPT-4o disagreement with human judges on support assessment",
+    "fetched_title": "[2504.15205] Support Evaluation for the TREC 2024 RAG Track: Comparing Human versus LLM Judges",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s8",
+    "url": "https://www.cs.unh.edu/~dietz/papers/dietz2025principles.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Laura Dietz 2025: principles for LLM judges acknowledge systematic bias",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s9",
+    "url": "https://www.openlayer.com/blog/rag-pipeline-evaluation-groundedness-faithfulness",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Groundedness and faithfulness are distinct concepts, not synonyms",
+    "fetched_title": "RAG Evaluation in Production: Groundedness, Faithfulness, and Retrieval Quality (July 2026) | Openlayer",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s10",
+    "url": "https://arxiv.org/html/2506.00054v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "RAG comprehensive survey: metrics reverse rankings across domains, eRAG vs TREC paradigms",
+    "fetched_title": "Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s11",
+    "url": "https://arxiv.org/abs/2502.08662",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Lost but Not Only in the Middle (ECIR 2025): positional bias extends beyond center",
+    "fetched_title": "[2502.08662] RoToR: Towards More Reliable Responses for Order-Invariant Inputs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s12",
+    "url": "https://arxiv.org/pdf/2510.21440",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Redefining Retrieval Evaluation in the Era of LLMs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s13",
+    "url": "https://arxiv.org/pdf/2604.17677",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Semantic Entanglement: retrieval accuracy 32% \u2192 82% after preprocessing, undetected by frameworks",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s14",
+    "url": "https://arxiv.org/pdf/2604.20763",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Coverage, Not Averages: semantic stratification for retrieval evaluation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s15",
+    "url": "https://arxiv.org/pdf/2406.00944",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Token-Level Harmonization theory critiques passage-level metrics as misspecified",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s16",
+    "url": "https://arxiv.org/pdf/2503.00353",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "U-NIAH: context window instability, larger windows increase variance and degrade accuracy",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s17",
+    "url": "https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "RAG evaluation technical guide: benchmarks not designed for combined retrieval-generation pipeline",
+    "fetched_title": "RAG evaluation: a technical guide to measuring retrieval-augmented generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s18",
+    "url": "https://www.ibm.com/think/architectures/rag-cookbook/result-evaluation",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "IBM: synthetic QA pipeline for ground truth construction",
+    "fetched_title": "Result Evaluation for RAG: Metrics & Best Practices | IBM",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s19",
+    "url": "https://developers.redhat.com/articles/2026/02/23/synthetic-data-rag-evaluation-why-your-rag-system-needs-better-testing",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Red Hat Feb 2026: synthetic data limitations, ground truth construction cost and bias",
+    "fetched_title": "Synthetic data for RAG evaluation: Why your RAG system needs better testing | Red Hat Developer",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s20",
+    "url": "https://atlan.com/know/rag-accuracy-problems/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Atlan 2025: 70-85% production failure rate of RAG agents",
+    "fetched_title": "RAG Accuracy Problems: Why They Happen and How to Fix Them",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s21",
+    "url": "https://medium.com/@bhagyarana80/10-rag-failure-modes-at-scale-and-how-to-fix-them-158240ce3a05",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Medium 2025: 10 RAG failure modes (drift, stale indexes, context overflow, silent failures)",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A2-s22",
+    "url": "https://aclanthology.org/2026.trustnlp-main.27.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Systematic Taxonomy of Failure Modes (TrustNLP 2026, ACL): 14 failure modes untested on TREC",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s23",
+    "url": "https://arxiv.org/pdf/2504.01840",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "LRAGE: Legal RAG evaluation, domain-specific limitations of Wikipedia-only benchmarks",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s24",
+    "url": "https://atlan.com/know/how-to-evaluate-rag-systems-explained/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Atlan 2026: RAGAS blind spot on source data freshness, accuracy, governance",
+    "fetched_title": "RAG Evaluation: Metrics, Tools, and the Context Gap (2026)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s25",
+    "url": "https://aclanthology.org/2024.eacl-demo.16/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "RAGAS: ACL EACL 2024 demo, reference-free evaluation limitations",
+    "fetched_title": "RAGAs: Automated Evaluation of Retrieval Augmented Generation - ACL Anthology",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s26",
+    "url": "https://arxiv.org/html/2309.15217v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "RAGAS arXiv version",
+    "fetched_title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s27",
+    "url": "https://trec-rag.github.io/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "TREC RAG Track: classical IR evaluation paradigm using MS MARCO V2.1",
+    "fetched_title": "TREC RAG \u00b7 Retrieval-Augmented Generation Track - RAG",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s28",
+    "url": "https://deepchecks.com/rag-evaluation-metrics-answer-relevancy-faithfulness-accuracy/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Deepchecks: RAG evaluation metrics overview, hallucination threats",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s29",
+    "url": "https://arxiv.org/pdf/2504.15689",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "The Viability of Crowdsourcing for RAG Evaluation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  }
+]

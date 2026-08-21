@@ -1,0 +1,148 @@
+{
+  "spec": "spec-06-user-structured-eval.yaml",
+  "topic": "evaluation of retrieval-augmented systems",
+  "as_of": "2026-08-21",
+  "wall_clock_s": 4593.1,
+  "resumed_from": null,
+  "discovery": {
+    "waves": [
+      {
+        "wave": "A",
+        "briefs": 6,
+        "framing_cells": 6,
+        "leads_total": 124,
+        "leads_new": 113,
+        "novel_fraction": 0.9113,
+        "decision": "continue"
+      },
+      {
+        "wave": "B",
+        "briefs": 2,
+        "framing_cells": 2,
+        "leads_total": 20,
+        "leads_new": 14,
+        "novel_fraction": 0.7,
+        "decision": "continue"
+      },
+      {
+        "wave": "C",
+        "briefs": 3,
+        "framing_cells": 3,
+        "leads_total": 58,
+        "leads_new": 41,
+        "novel_fraction": 0.7069,
+        "decision": "stop"
+      }
+    ],
+    "terminal": "max_waves",
+    "briefs": 11,
+    "source_leads": 168,
+    "dropped_by_backend": 11
+  },
+  "retrieval": {
+    "documents_fetched": 116,
+    "documents_resolved": 108,
+    "documents_extracted": 30,
+    "max_docs": 30,
+    "unresolved": []
+  },
+  "grounding": {
+    "claims_kept": 343,
+    "claims_rejected": 62,
+    "corroborated": 32,
+    "extractor_errors": [],
+    "rejections": [
+      "c99a2aab-2: quote not found in the fetched body of https://arxiv.org/abs/2405.07437 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "ff1f5305-7: quote not found in the fetched body of https://github.com/embeddings-benchmark/mteb \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "ff1f5305-8: quote not found in the fetched body of https://github.com/embeddings-benchmark/mteb \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e51fd256-7: quote not found in the fetched body of https://rajpurkar.github.io/SQuAD-explorer/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e51fd256-10: quote not found in the fetched body of https://rajpurkar.github.io/SQuAD-explorer/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e51fd256-13: quote not found in the fetched body of https://rajpurkar.github.io/SQuAD-explorer/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e51fd256-15: quote not found in the fetched body of https://rajpurkar.github.io/SQuAD-explorer/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "093322df-1: quote not found in the fetched body of https://docs.ragas.io/en/stable/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "7f30a843-5: quote not found in the fetched body of https://github.com/deepset-ai/haystack \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-1: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-9: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-11: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-12: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-16: quote is 16 words (> 15)",
+      "e0cec4fc-17: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-18: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-19: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-20: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-21: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-23: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "e0cec4fc-24: quote not found in the fetched body of https://docs.langchain.com/langsmith/evaluate-rag-tutorial \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "bacceb20-2: quote not found in the fetched body of https://evalscope.readthedocs.io/en/latest/blog/RAG/RAG_Evaluation.html \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "fd5d3f65-3: quote not found in the fetched body of https://docs.ragas.io/en/v0.3.4/howtos/integrations/_llamaindex/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "fd5d3f65-4: quote not found in the fetched body of https://docs.ragas.io/en/v0.3.4/howtos/integrations/_llamaindex/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "fd5d3f65-5: quote not found in the fetched body of https://docs.ragas.io/en/v0.3.4/howtos/integrations/_llamaindex/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "df8671bf-1: quote not found in the fetched body of https://arxiv.org/abs/2401.17043 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "df8671bf-5: quote not found in the fetched body of https://arxiv.org/abs/2401.17043 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "df8671bf-6: quote not found in the fetched body of https://arxiv.org/abs/2401.17043 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "df8671bf-7: quote not found in the fetched body of https://arxiv.org/abs/2401.17043 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "df8671bf-8: quote not found in the fetched body of https://arxiv.org/abs/2401.17043 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "2000e83c-1: quote not found in the fetched body of https://github.com/facebookresearch/CRAG/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "b44bfdea-11: quote not found in the fetched body of https://github.com/beir-cellar/beir \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "b44bfdea-12: quote not found in the fetched body of https://github.com/beir-cellar/beir \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "b44bfdea-15: quote not found in the fetched body of https://github.com/beir-cellar/beir \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "f79418b2-8: quote not found in the fetched body of https://arxiv.org/abs/2502.08662 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "964231ec-2: quote not found in the fetched body of https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "964231ec-5: quote not found in the fetched body of https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "964231ec-6: quote not found in the fetched body of https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "964231ec-18: quote is 16 words (> 15)",
+      "d82e8275-14: quote not found in the fetched body of https://atlan.com/know/rag-accuracy-problems/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "22c548bc-3: quote not found in the fetched body of https://atlan.com/know/how-to-evaluate-rag-systems-explained/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "22c548bc-12: quote not found in the fetched body of https://atlan.com/know/how-to-evaluate-rag-systems-explained/ \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "8ee2ad4d-9: quote not found in the fetched body of https://arxiv.org/html/2309.15217v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "8ee2ad4d-11: quote not found in the fetched body of https://arxiv.org/html/2309.15217v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "8ee2ad4d-16: quote not found in the fetched body of https://arxiv.org/html/2309.15217v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "8ee2ad4d-20: quote not found in the fetched body of https://arxiv.org/html/2309.15217v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "56cc8dbe-8: quote not found in the fetched body of https://arxiv.org/html/2510.13975v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "56cc8dbe-10: quote not found in the fetched body of https://arxiv.org/html/2510.13975v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "56cc8dbe-11: quote not found in the fetched body of https://arxiv.org/html/2510.13975v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "56cc8dbe-16: quote not found in the fetched body of https://arxiv.org/html/2510.13975v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "56cc8dbe-20: quote not found in the fetched body of https://arxiv.org/html/2510.13975v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "56cc8dbe-21: quote not found in the fetched body of https://arxiv.org/html/2510.13975v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6b91aaf9-10: quote not found in the fetched body of https://arxiv.org/html/2506.00054v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6b91aaf9-11: quote not found in the fetched body of https://arxiv.org/html/2506.00054v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6b91aaf9-12: quote not found in the fetched body of https://arxiv.org/html/2506.00054v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6b91aaf9-13: quote not found in the fetched body of https://arxiv.org/html/2506.00054v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6b91aaf9-14: quote not found in the fetched body of https://arxiv.org/html/2506.00054v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6b91aaf9-15: quote not found in the fetched body of https://arxiv.org/html/2506.00054v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "6b91aaf9-16: quote not found in the fetched body of https://arxiv.org/html/2506.00054v1 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "35c24b59-3: quote not found in the fetched body of https://github.com/vibrantlabsai/ragas \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "35c24b59-7: quote not found in the fetched body of https://github.com/vibrantlabsai/ragas \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)",
+      "f110bea0-8: quote not found in the fetched body of https://arxiv.org/abs/2309.15217 \u2014 a claim must be anchored to a document we fetched, not to a discovery lead (R-DISC-01)"
+    ]
+  },
+  "concepts": 87,
+  "grouping": {
+    "gate_rejections": [
+      "group 14: claim_id 'C-a29027ab-18' was already grouped; a claim belongs to at most one group",
+      "295 claim(s) were in no proposed group and became singletons",
+      "56 claim(s) were in no proposed group and became singletons"
+    ],
+    "grouper_notes": [
+      "343 claims exceeded 150 per call; grouped in 3 batches and reconciled by one merge pass",
+      "merge pass reconciled 34 batch groups into 31",
+      "15 block(s) drew on one source only and were not sent for judgement",
+      "150 lexical blocks at threshold 0.15 -> 26 judgement call(s)"
+    ],
+    "grouper_errors": []
+  },
+  "convergence": {
+    "map_v0": "skills/deep-primer/tests/fixtures/spec06-grounded/concept-map-v0.yaml",
+    "log": "skills/deep-primer/tests/fixtures/spec06-grounded/convergence-log.yaml"
+  },
+  "calls": {
+    "research": 2,
+    "extract": 51,
+    "group": 30
+  },
+  "spend_usd": {
+    "research": 1.1545,
+    "extract": 2.7008,
+    "group": 1.1985
+  }
+}

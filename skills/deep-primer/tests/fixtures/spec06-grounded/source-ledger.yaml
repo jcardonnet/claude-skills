@@ -1,0 +1,4546 @@
+sources:
+- source_id: c99a2aabb21d9e939696bfc3e4419c436695d67b
+  url: https://arxiv.org/abs/2405.07437
+  title: '[2405.07437] Evaluation of Retrieval-Augmented Generation: A Survey'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: e6271a956fc6eafce868904a31a0a6298c76ffb6
+  claims:
+  - claim_id: C-c99a2aab-1
+    text: The paper's arXiv identifier is 2405.07437.
+    quote: arXiv:2405.07437
+    location: char 173 of 4212 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-c99a2aab-3
+    text: Version 2 of the paper was last revised on 3 July 2024.
+    quote: last revised 3 Jul 2024 (this version, v2)
+    location: char 229 of 4212 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c99a2aab-4
+    text: The paper proposes Auepora, a unified evaluation process for RAG systems.
+    quote: we conduct A Unified Evaluation Process of RAG (Auepora)
+    location: char 983 of 4212 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c99a2aab-5
+    text: RAG systems have a hybrid structure combining retrieval and generation.
+    quote: their hybrid structure
+    location: char 878 of 4212 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c99a2aab-6
+    text: RAG systems rely on dynamic knowledge sources.
+    quote: reliance on dynamic knowledge sources
+    location: char 905 of 4212 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c99a2aab-7
+    text: The paper examines retrieval and generation component metrics including
+      relevance, accuracy, and faithfulness.
+    quote: quantifiable metrics of the Retrieval and Generation components, such as
+      relevance, accuracy, and faithfulness
+    location: char 1178 of 4212 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c99a2aab-8
+    text: The paper has six authors, with Hao Yu as the first author.
+    quote: by Hao Yu and 5 other authors
+    location: char 500 of 4212 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: ff1f5305ce1b3e247326f2812b6996f744c383f3
+  url: https://github.com/embeddings-benchmark/mteb
+  title: 'GitHub - embeddings-benchmark/mteb: MTEB: State-of-the-art evaluation of
+    embeddings across languages and modalities · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: c606497bef367b4ed53af2cce1661ff9ac45cb28
+  claims:
+  - claim_id: C-ff1f5305-1
+    text: MTEB can be installed using pip or uv
+    quote: You can install mteb simply using pip or uv
+    location: char 1320 of 6561 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff1f5305-2
+    text: Installing MTEB with uv is faster than using pip
+    quote: For faster installation, you can also use uv
+    location: char 1438 of 6561 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff1f5305-3
+    text: The MTEB repository has 3400 stars on GitHub
+    quote: 3.4k stars
+    location: char 6403 of 6561 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff1f5305-4
+    text: The MTEB repository has 669 forks on GitHub
+    quote: 669 forks
+    location: char 6441 of 6561 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff1f5305-5
+    text: MTEB evaluates embeddings across multiple languages and modalities
+    quote: State-of-the-art evaluation of embeddings across languages and modalities
+    location: char 42 of 6561 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-ff1f5305-6
+    text: MTEB provides an interactive leaderboard for benchmark comparison
+    quote: The interactive leaderboard of the benchmark
+    location: char 2266 of 6561 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: e51fd25680bfc308e887f1f5a1b4ef0881fb17ba
+  url: https://rajpurkar.github.io/SQuAD-explorer/
+  title: The Stanford Question Answering Dataset
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: ae0283f1096bdd32d8c1b39dca4189cfb7423a7d
+  claims:
+  - claim_id: C-e51fd256-1
+    text: SQuAD is a reading comprehension dataset with crowdsourced questions on
+      Wikipedia articles.
+    quote: questions posed by crowdworkers on a set of Wikipedia articles
+    location: char 238 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-2
+    text: In SQuAD, answers consist of text spans from the reading passage.
+    quote: answer to every question is a segment of text, or span
+    location: char 312 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-3
+    text: SQuAD2.0 combines 100,000 questions from SQuAD1.1 with over 50,000 adversarially
+      written unanswerable questions.
+    quote: SQuAD2.0 combines the 100,000 questions in SQuAD1.1 with over 50,000 unanswerable
+      questions
+    location: char 448 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-4
+    text: SQuAD1.1 contains over 100,000 question-answer pairs across over 500 Wikipedia
+      articles.
+    quote: contains 100,000+ question-answer pairs on 500+ articles
+    location: char 921 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-5
+    text: The SQuAD2.0 training set is 40 megabytes in size.
+    quote: Training Set v2.0 (40 MB)
+    location: char 1219 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-6
+    text: The SQuAD2.0 development set is 4 megabytes in size.
+    quote: Dev Set v2.0 (4 MB)
+    location: char 1245 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-8
+    text: The SQuAD test set is not publicly released to preserve the integrity of
+      test results.
+    quote: we do not release the test set to the public
+    location: char 1795 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-9
+    text: ANNA from LG AI Research achieved 90.622 ExactMatch and 95.719 F1 on SQuAD
+      v1.1.
+    quote: '{ANNA} (single model) LG AI Research 90.622 95.719'
+    location: char 19608 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-11
+    text: XLNet from Google Brain & CMU achieved 89.898 ExactMatch and 95.080 F1 on
+      SQuAD v1.1.
+    quote: XLNet (single model) Google Brain & CMU 89.898 95.080
+    location: char 19789 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-12
+    text: Human performance on SQuAD v1.1 is 82.304 ExactMatch and 91.221 F1 per Rajpurkar
+      et al. 2016.
+    quote: Human Performance Stanford University (Rajpurkar et al. '16) 82.304 91.221
+    location: char 19518 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-14
+    text: SpanBERT from FAIR achieved 88.839 ExactMatch and 94.635 F1 on SQuAD v1.1.
+    quote: SpanBERT (single model) FAIR & UW 88.839 94.635
+    location: char 20001 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-16
+    text: The SQuAD leaderboards track both single-model and ensemble submissions.
+    quote: (single model)
+    location: char 3722 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-17
+    text: Attention + ELMo ensemble by Allen Institute achieved EM score of 81.003
+      and F1 score of 87.432.
+    quote: Attention + ELMo (ensemble) Allen Institute for Artificial Intelligence
+      81.003 87.432
+    location: char 23964 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-18
+    text: Reinforced Mnemonic Reader + A2D single model by Microsoft Research Asia
+      & NUDT achieved EM 80.919 and F1 87.492.
+    quote: Reinforced Mnemonic Reader + A2D (single model) Microsoft Research Asia
+      & NUDT 80.919 87.492
+    location: char 24066 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-19
+    text: Document Reader by Facebook AI Research was published at arxiv paper 1704.00051.
+    quote: Document Reader (single model) Facebook AI Research https://arxiv.org/abs/1704.00051
+    location: char 32099 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-20
+    text: BiDAF ensemble model was developed collaboratively by Allen Institute for
+      AI and University of Washington.
+    quote: BiDAF (ensemble) Allen Institute for AI & University of Washington
+    location: char 29958 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-21
+    text: Dynamic Coattention Networks by Salesforce Research was published at arxiv
+      1611.01604.
+    quote: Dynamic Coattention Networks (ensemble) Salesforce Research https://arxiv.org/abs/1611.01604
+    location: char 31186 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-22
+    text: ReasoNet ensemble by MSR Redmond was published with arxiv ID 1609.05284.
+    quote: ReasoNet (ensemble) MSR Redmond https://arxiv.org/abs/1609.05284
+    location: char 29003 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-23
+    text: Match-LSTM with Ans-Ptr Boundary ensemble was developed by Singapore Management
+      University and published at arxiv 1608.07905.
+    quote: Match-LSTM with Ans-Ptr (Boundary) (ensemble) Singapore Management University
+      https://arxiv.org/abs/1608.07905
+    location: char 33481 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-e51fd256-24
+    text: BiDAF single model by Allen Institute for AI and University of Washington
+      was published at arxiv 1611.01603.
+    quote: BiDAF (single model) Allen Institute for AI & University of Washington
+      https://arxiv.org/abs/1611.01603
+    location: char 33347 of 35216 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+- source_id: 093322df6a095d57c28ca6e646cf2aa4c8d6d331
+  url: https://docs.ragas.io/en/stable/
+  title: Ragas
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 5ea853a5b21e036240c5868155886921f58afbb7
+  claims:
+  - claim_id: C-093322df-2
+    text: Ragas provides tools specifically for evaluating LLM applications.
+    quote: It provides tools to supercharge the evaluation of Large Language Model
+      (LLM) applications
+    location: char 268 of 2058 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-093322df-3
+    text: Ragas combines LLM-driven metrics with systematic experimentation as its
+      core approach.
+    quote: Ragas solves this by combining LLM-driven metrics with systematic experimentation
+    location: char 557 of 2058 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-093322df-4
+    text: Ragas integrates with frameworks such as LangChain and LlamaIndex.
+    quote: integration with popular frameworks like LangChain, LlamaIndex, and more
+    location: char 1108 of 2058 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-093322df-5
+    text: Ragas includes built-in dataset management and result tracking capabilities.
+    quote: Built-in dataset management, result tracking, and integration with popular
+      frameworks
+    location: char 1058 of 2058 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-093322df-6
+    text: Ragas enables users to create custom metrics using simple decorators.
+    quote: Create custom metrics tailored to your specific use case with simple decorators
+    location: char 880 of 2058 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-093322df-7
+    text: Ragas supports an evaluation workflow of making changes, running evaluations,
+      and iterating to improve applications.
+    quote: Make changes, run evaluations, observe results, and iterate to improve
+      your LLM application
+    location: char 771 of 2058 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-093322df-8
+    text: Traditional evaluation metrics are inadequate for assessing what matters
+      in LLM applications.
+    quote: Traditional evaluation metrics don't capture what matters for LLM applications
+    location: char 444 of 2058 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  url: https://deepeval.com/
+  title: DeepEval - The LLM Evaluation Framework
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: c8b477fddee2377057ed8a23e0c3bb47a0413c21
+  claims:
+  - claim_id: C-b0b471f8-1
+    text: DeepEval processes over 100 million evaluations daily
+    quote: Over 100 million daily evals
+    location: char 231 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-2
+    text: DeepEval is used by 150,000 or more developers
+    quote: Used by 150K+ developers
+    location: char 260 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-3
+    text: More than 50% of Fortune 500 companies have adopted DeepEval
+    quote: Adopted by > 50% of Fortune 500s
+    location: char 285 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-4
+    text: The framework provides at least 50 research-backed evaluation metrics
+    quote: 50+ research-backed metrics
+    location: char 1180 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-5
+    text: DeepEval supports multi-modal evaluation of text, images, and audio as first-class
+      modalities
+    quote: Text, images, and audio — all first-class.
+    location: char 1492 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-6
+    text: DeepEval implements G-Eval for criteria-based chain-of-thought scoring via
+      form-filling
+    quote: Criteria-based, chain-of-thought scoring via form-filling
+    location: char 1811 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-7
+    text: DeepEval uses directed-acyclic-graph metrics for objective multi-step conditional
+      scoring
+    quote: Directed-acyclic-graph metrics for objective, multi-step conditional scoring.
+    location: char 1904 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-8
+    text: DeepEval integrates natively with Confident AI observability platform
+    quote: DeepEval integrates natively with Confident AI
+    location: char 4774 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-9
+    text: DeepEval is an open-source framework for evaluating LLM applications, AI
+      agents, RAG systems, and prompts.
+    quote: DeepEval is an open-source framework for evaluating LLM applications, AI
+      agents, RAG systems
+    location: char 14474 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-10
+    text: DeepEval is distinct from Confident AI, which is an enterprise platform
+      rather than an open-source framework.
+    quote: DeepEval is the open-source evaluation framework, while Confident AI is
+      the enterprise
+    location: char 14697 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-11
+    text: DeepEval supports evaluation of chatbots, RAG pipelines, AI agents, prompts,
+      model outputs, and end-to-end LLM workflows.
+    quote: You can evaluate chatbots, RAG pipelines, AI agents, prompts, model outputs
+    location: char 14925 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-12
+    text: DeepEval is model-agnostic and compatible with any LLM provider or framework.
+    quote: DeepEval is model-agnostic and works with any LLM provider or framework
+    location: char 15142 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-13
+    text: DeepEval is designed to integrate into CI/CD testing workflows for catching
+      regressions before production.
+    quote: DeepEval is designed to fit into your testing workflow, so you can
+    location: char 15324 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-14
+    text: DeepEval supports both component-level and system-level evaluation of AI
+      systems.
+    quote: It supports both component-level and system-level evaluation
+    location: char 15032 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-15
+    text: Through OpenTelemetry, DeepEval collects only metric names and does not
+      collect prompts, inputs, outputs, or evaluation data.
+    quote: DeepEval only collects the names of the metrics that were run through OpenTelemetry
+    location: char 15908 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b0b471f8-16
+    text: Users can create DeepEval evaluations using their own datasets, production
+      traces, or synthetic test cases.
+    quote: You can use your own datasets, production traces, or synthetic test cases
+    location: char 15508 of 16128 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 7f06660638cb09d79adf9e4f43fe015e743b9703
+  url: https://www.trulens.org
+  title: 'TruLens: Evals and Tracing for AI Agents'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 75bf9bad37b453d4989e1ae32b588e1da30ba626
+  claims:
+  - claim_id: C-7f066606-1
+    text: TruLens Agent GPA metric caught 95% of agent errors on TRAIL/GAIA benchmarks
+      compared to 55% for baseline trace judge.
+    quote: 95% Agent errors caught with Agent GPA on TRAIL/GAIA
+    location: char 1443 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f066606-2
+    text: TruLens groundedness evaluation achieved 0.81 F1 score on LLM-AggreFact,
+      ahead of fine-tuned proprietary models.
+    quote: 0.81 Groundedness F1 on LLM-AggreFact
+    location: char 1626 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-7f066606-3
+    text: TruLens context relevance NDCG@5 metric scored 0.93 via AIMultiple benchmark.
+    quote: 0.93 Context relevance NDCG@5 via AIMultiple
+    location: char 1826 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-7f066606-4
+    text: TruLens achieved 4.2:1 win-loss ratio on adversarial context relevance tests
+      versus 3.3:1 for the next highest-scoring tool.
+    quote: 4.2:1 Context relevance adversarial win-loss via AIMultiple
+    location: char 2044 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-7f066606-5
+    text: Fixing a single tool call argument error improved system correctness from
+      0.27 to 0.90.
+    quote: Fixing it moved correctness 0.27 to 0.90
+    location: char 3697 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-7f066606-6
+    text: TruLens is open source software and uses OpenTelemetry-native instrumentation.
+    quote: Open source, OpenTelemetry-native
+    location: char 298 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f066606-7
+    text: TruLens traces record latency, inputs, outputs, tokens, and cost measurements
+      per execution step.
+    quote: Latency, inputs, outputs, tokens and cost, recorded per step
+    location: char 911 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f066606-8
+    text: Snowflake acquired TruEra and actively maintains TruLens as open source
+      software.
+    quote: Since the acquisition, Snowflake actively maintains TruLens in open source
+    location: char 7745 of 7820 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 7f30a8430fed1334604eccf9879e203fd7b2e894
+  url: https://github.com/deepset-ai/haystack
+  title: 'GitHub - deepset-ai/haystack: Open-source AI orchestration framework for
+    building context-engineered, production-ready LLM applications. Design modular
+    pipelines and agent workflows with explicit control over retrieval, routing, memory,
+    and generation. Built for scalable agents, RAG, multimodal applications, semantic
+    search, and conversational systems. · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 3f1164cdd22ad9a5c58cb933c759393b42a946b8
+  claims:
+  - claim_id: C-7f30a843-1
+    text: Haystack version 3.0 has been released.
+    quote: Haystack 3.0 is out!
+    location: char 1706 of 8637 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-7f30a843-2
+    text: Haystack is written in Python.
+    quote: building production-ready LLM applications in Python
+    location: char 1836 of 8637 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f30a843-3
+    text: The primary installation method is pip.
+    quote: The simplest way to get Haystack is via pip
+    location: char 2408 of 8637 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f30a843-4
+    text: Nightly pre-release builds are available via pip with the --pre flag.
+    quote: Install nightly pre-releases to try the newest features
+    location: char 2477 of 8637 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f30a843-6
+    text: Pipelines support both synchronous and asynchronous execution modes.
+    quote: One Pipeline runs synchronously or asynchronously and streams
+    location: char 3969 of 8637 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f30a843-7
+    text: Agents can execute tool calls concurrently.
+    quote: Agent can run concurrent tool calls
+    location: char 4047 of 8637 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-7f30a843-8
+    text: Haystack integrates with multiple LLM vendors including OpenAI, Anthropic,
+      and AWS Bedrock.
+    quote: Integrate with OpenAI, Mistral, Anthropic, Cohere, Hugging Face, Google,
+    location: char 4369 of 8637 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  url: https://docs.langchain.com/langsmith/evaluate-rag-tutorial
+  title: Evaluate a RAG application - Docs by LangChain
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 6c4fc75ced08134fef27b3b0478f6c7869d93a6e
+  claims:
+  - claim_id: C-e0cec4fc-2
+    text: A typical RAG evaluation process consists of three sequential steps.
+    quote: A typical RAG evaluation workflow has three steps
+    location: char 744 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-3
+    text: 'RAG systems are evaluated using three dimensions: answer relevance, answer
+      accuracy, and retrieval quality.'
+    quote: Score results with evaluators for answer relevance, answer accuracy, and
+      retrieval quality
+    location: char 891 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-4
+    text: 'A minimal RAG application is structured in three distinct stages: indexing,
+      retrieval, and generation.'
+    quote: Build a minimal RAG app with three stages
+    location: char 2043 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-5
+    text: The correctness evaluator requires a reference answer to exist in the evaluation
+      dataset.
+    quote: Requires a reference answer in the dataset
+    location: char 10211 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-6
+    text: The relevance evaluator operates without requiring a reference answer, evaluating
+      only against the user's question.
+    quote: No reference answer; compares the answer to the input
+    location: char 10405 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-7
+    text: The groundedness evaluator measures how closely a response aligns with the
+      retrieved source documents.
+    quote: Score how well the response agrees with the retrieved context
+    location: char 10565 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-8
+    text: The retrieval relevance evaluator measures how relevant the retrieved documents
+      are to the original user query.
+    quote: Score how relevant the retrieved documents are to the query
+    location: char 10815 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-10
+    text: Correctness evaluation criteria permit student answers containing more information
+      than ground truth if factually accurate.
+    quote: It is OK if the student answer contains more information than the ground
+      truth answer
+    location: char 12137 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-13
+    text: Groundedness evaluation assesses whether responses are justified by retrieved
+      documents without a reference answer.
+    quote: response is justified by (grounded in) the retrieved documents, without
+      a reference answer
+    location: char 18544 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-14
+    text: Retrieval relevance uses LLM-as-judge methodology to score whether retrieved
+      documents are relevant to user questions.
+    quote: Use an LLM-as-judge to score whether the retrieved documents are relevant
+    location: char 21933 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-15
+    text: Groundedness evaluation requires student answers not contain hallucinated
+      information outside the scope of provided facts.
+    quote: Ensure the STUDENT ANSWER does not contain "hallucinated" information outside
+      the scope
+    location: char 19121 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-22
+    text: The RAG bot limits answers to a maximum of three sentences.
+    quote: Use three sentences maximum
+    location: char 6135 of 49259 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: bacceb2058e4c277471f22402e8802f4a4b7b40a
+  url: https://evalscope.readthedocs.io/en/latest/blog/RAG/RAG_Evaluation.html
+  title: 'RAG Evaluation Survey: Framework, Metrics, and Methods | EvalScope'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 4f3a172fb5ccc451e1e901c6f6d59ed6d04c9475
+  claims:
+  - claim_id: C-bacceb20-1
+    text: Llama-index library includes evaluation tools for assessing retriever and
+      generator components in multimodal RAG systems.
+    quote: use the evaluation tools in the llama-index library to assess the retriever
+      and generator
+    location: char 363 of 4662 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bacceb20-3
+    text: Ragas provides evaluation metrics including Context Precision, Context Recall,
+      Faithfulness, and Answer Relevancy.
+    quote: RAGAs provides a range of evaluation metrics, including Context Precision,
+      Context Recall, Faithfulness
+    location: char 2518 of 4662 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bacceb20-4
+    text: Ragas uses large language models for evaluation instead of relying on human-annotated
+      labels.
+    quote: does not rely on human-annotated true labels but instead uses large language
+      models
+    location: char 2128 of 4662 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bacceb20-5
+    text: Ragas enables separate evaluation of retriever and generator components
+      in the RAG pipeline.
+    quote: RAGAs allows for separate evaluation of the two main components of the
+      RAG pipeline
+    location: char 2263 of 4662 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bacceb20-6
+    text: RAGChecker includes overall evaluation, diagnostic metrics, fine-grained
+      evaluation, benchmark datasets, and meta-evaluation.
+    quote: includes overall evaluation, diagnostic metrics, fine-grained evaluation,
+      benchmark datasets, and meta-evaluation
+    location: char 3039 of 4662 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bacceb20-7
+    text: TruLens supports integration with both Langchain and Llama-Index frameworks.
+    quote: supporting Langchain and Llama-Index
+    location: char 1276 of 4662 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-bacceb20-8
+    text: FlagEmbedding does not provide an evaluation framework for assessing RAG
+      systems.
+    quote: However, it does not provide an evaluation framework
+    location: char 3691 of 4662 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: fd5d3f65535b9f837fa4aaeac7c0d6ade0e81a7c
+  url: https://docs.ragas.io/en/v0.3.4/howtos/integrations/_llamaindex/
+  title: LlamaIndex RAG - Ragas
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 989070072cd027464a28ff6e4d5b3fd9fc363b8a
+  claims:
+  - claim_id: C-fd5d3f65-1
+    text: LlamaIndex is a data framework designed to ingest, structure, and access
+      data for LLM applications.
+    quote: is a data framework for LLM applications to ingest, structure, and access
+    location: char 177 of 8488 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fd5d3f65-2
+    text: Ragas helps evaluate the performance of a QueryEngine.
+    quote: Ragas will help you evaluate your QueryEngine
+    location: char 495 of 8488 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fd5d3f65-6
+    text: Ragas provides a set of metrics to measure different aspects of QueryEngine
+      performance.
+    quote: Ragas defines a set of metrics that can measure different aspects
+    location: char 4866 of 8488 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fd5d3f65-7
+    text: 'Running a Ragas evaluation with LlamaIndex requires three components: a
+      QueryEngine, metrics, and questions.'
+    quote: In order to run an evaluation with Ragas and LlamaIndex you need 3
+    location: char 4731 of 8488 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fd5d3f65-8
+    text: In the example evaluation, the faithfulness metric scored 0.7454.
+    quote: '''faithfulness'': 0.7454'
+    location: char 6449 of 8488 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+- source_id: 449b6cc33fce16dc983c007722566a3e86738fcf
+  url: https://github.com/YHPeter/Awesome-RAG-Evaluation
+  title: 'GitHub - YHPeter/Awesome-RAG-Evaluation: The official repository for the
+    paper: Evaluation of Retrieval-Augmented Generation: A Survey. · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 8fdf4ad568b741de657a5986964f179a7269a4a2
+  claims:
+  - claim_id: C-449b6cc3-1
+    text: The paper on RAG evaluation was accepted by the 2024 CCF Big Data conference.
+    quote: This paper has been accepted by the 2024 CCF Big Data
+    location: char 983 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-449b6cc3-2
+    text: RAG systems enhance generative models by retrieving and incorporating external
+      information.
+    quote: enhance generative models through external information retrieval
+    location: char 1221 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-449b6cc3-3
+    text: RAG system evaluation faces unique challenges from their hybrid structure
+      and dynamic knowledge sources.
+    quote: poses unique challenges due to their hybrid structure and reliance on dynamic
+      knowledge sources
+    location: char 1326 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-449b6cc3-4
+    text: RAG evaluation examines quantifiable metrics for both retrieval and generation
+      components.
+    quote: examine and compare several quantifiable metrics of the Retrieval and Generation
+      components
+    location: char 1636 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-449b6cc3-5
+    text: Key metrics for evaluating RAG systems include relevance, accuracy, and
+      faithfulness.
+    quote: quantifiable metrics of the Retrieval and Generation components, such as
+      relevance, accuracy, and faithfulness
+    location: char 1664 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-449b6cc3-6
+    text: RAG benchmark evaluation encompasses possible output and ground truth pair
+      comparisons.
+    quote: within the current RAG benchmarks, encompassing the possible output and
+      ground truth pairs
+    location: char 1776 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-449b6cc3-7
+    text: The GitHub repository had 201 stars at the time of this snapshot.
+    quote: Stars 201 stars
+    location: char 7031 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-449b6cc3-8
+    text: The GitHub repository has 20 forks.
+    quote: Forks 20 forks
+    location: char 7067 of 7184 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: df8671bfa99551dc0f76a766a0c5de6da219eb7f
+  url: https://arxiv.org/abs/2401.17043
+  title: '[2401.17043] CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented
+    Generation of Large Language Models'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: d1af73e666b7063769e734d13b337cf79cbae201
+  claims:
+  - claim_id: C-df8671bf-2
+    text: Existing RAG benchmarks are limited in their scope and diversity.
+    quote: existing benchmarks are limited in scope and diversity
+    location: char 1132 of 5258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-df8671bf-3
+    text: Most current RAG benchmarks focus primarily on question-answering applications.
+    quote: Most of the current benchmarks predominantly assess question-answering
+    location: char 1188 of 5258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-df8671bf-4
+    text: Existing RAG benchmarks evaluate only the language model component, not
+      the retrieval component.
+    quote: only evaluate the performance of the LLM component of the RAG pipeline
+    location: char 1371 of 5258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 96072ac0a9442594589eacb8b5f43e8fad807de1
+  url: https://aclanthology.org/2024.naacl-long.20/
+  title: 'ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation
+    Systems - ACL Anthology'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 46df2e38e8406828cbc7250c07a96d58264468ab
+  claims:
+  - claim_id: C-96072ac0-1
+    text: 'ARES evaluates RAG systems along three dimensions: context relevance, answer
+      faithfulness, and answer relevance.'
+    quote: evaluating RAG systems along the dimensions of context relevance, answer
+      faithfulness, and answer relevance
+    location: char 633 of 10634 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-2
+    text: ARES creates synthetic training data to finetune lightweight language model
+      judges.
+    quote: By creating its own synthetic training data, ARES finetunes lightweight
+      LM judges
+    location: char 742 of 10634 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-3
+    text: ARES uses prediction-powered inference (PPI) with human-annotated datapoints
+      to mitigate prediction errors.
+    quote: ARES utilizes a small set of human-annotated datapoints for prediction-powered
+      inference (PPI)
+    location: char 917 of 10634 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-4
+    text: ARES was evaluated on eight different knowledge-intensive tasks across KILT,
+      SuperGLUE, and AIS benchmarks.
+    quote: Across eight different knowledge-intensive tasks in KILT, SuperGLUE, and
+      AIS
+    location: char 1013 of 10634 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-5
+    text: ARES requires only a few hundred human annotations during evaluation.
+    quote: using only a few hundred human annotations during evaluation
+    location: char 1135 of 10634 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-6
+    text: ARES judges remain effective when domain shifts occur, including changes
+      to queries and documents.
+    quote: ARES judges remain effective across domain shifts, proving accurate even
+      after changing
+    location: char 1210 of 10634 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-7
+    text: Code and datasets for ARES are publicly available on GitHub.
+    quote: We make our code and datasets publicly available on Github
+    location: char 1370 of 10634 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
+  url: https://trec-rag.github.io/
+  title: TREC RAG · Retrieval-Augmented Generation Track - RAG
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: c4db2005adf1187af471380ab21477e6d4e30484
+  claims:
+  - claim_id: C-4044d111-1
+    text: The TREC RAG 2026 submission deadline is August 8, 2026.
+    quote: Submission deadline August 8, 2026
+    location: char 2162 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4044d111-2
+    text: Participants may submit up to 10 runs per task.
+    quote: You may submit up to 10 runs per task.
+    location: char 264 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4044d111-3
+    text: ClimbMix-400b replaces MS MARCO v2.1 as the official corpus for 2026.
+    quote: ClimbMix-400b replaces MS MARCO v2.1 for 2026.
+    location: char 765 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-4044d111-4
+    text: Test topics for TREC RAG 2026 were released on July 6, 2026.
+    quote: Test topics released July 6, 2026
+    location: char 2087 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4044d111-5
+    text: RAG systems combine retrieval methods with Large Language Models to find
+      information and generate answers.
+    quote: combining retrieval methods that find relevant information within large
+      corpora with Large Language Models
+    location: char 1070 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 449b6cc33fce16dc983c007722566a3e86738fcf
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4044d111-6
+    text: Baselines for TREC RAG 2026 were released during the week of July 19, 2026.
+    quote: Baselines released Week of July 19, 2026
+    location: char 2121 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4044d111-7
+    text: ClimbMix-400b is accessible through the Pyserini REST API.
+    quote: served through the Pyserini REST API skill
+    location: char 2657 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4044d111-8
+    text: The TREC 2026 Conference is scheduled for November 2026.
+    quote: TREC 2026 Conference November 2026
+    location: char 2230 of 3515 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 2000e83cf8614e3170b48a7b7fabb73ffe3c7fbb
+  url: https://github.com/facebookresearch/CRAG/
+  title: 'GitHub - facebookresearch/CRAG: Comprehensive benchmark for RAG · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 9186a050a7129d61b1974148dd1d5c1ebb198b01
+  claims:
+  - claim_id: C-2000e83c-2
+    text: CRAG provides mock APIs to simulate web and knowledge graph search
+    quote: CRAG provides mock APIs to simulate web and knowledge graph search
+    location: char 1257 of 4770 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2000e83c-3
+    text: CRAG covers questions across five domains and eight question categories
+    quote: across five domains and eight question categories, reflecting varied entity
+    location: char 1386 of 4770 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2000e83c-4
+    text: 'RAG responses are rated in four categories: perfect, acceptable, missing,
+      or incorrect'
+    quote: 'Responses are rated as perfect, acceptable, missing, or incorrect:'
+    location: char 1916 of 4770 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2000e83c-5
+    text: 'Auto-evaluation assigns three scores: correct (1 point), missing (0 points),
+      and incorrect (-1 point)'
+    quote: 'It will assign three scores: correct (1 point), missing (0 points), and
+      incorrect'
+    location: char 2623 of 4770 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2000e83c-6
+    text: CRAG includes three baseline models for demonstration
+    quote: We include three baselines for demonstration purposes, and you
+    location: char 3391 of 4770 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2000e83c-7
+    text: The project is licensed under CC BY-NC 4.0
+    quote: This project is licensed under the Creative Commons Attribution-NonCommercial
+      4.0
+    location: char 4121 of 4770 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-2000e83c-8
+    text: CRAG repository was migrated from a prior benchmark repository
+    quote: This repository is migrated from meta-comprehensive-rag-benchmark-kdd-cup-2024
+    location: char 1554 of 4770 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  url: https://github.com/beir-cellar/beir
+  title: 'GitHub - beir-cellar/beir: A Heterogeneous Benchmark for Information Retrieval.
+    Easy to use, evaluate your models across 15+ diverse IR datasets. · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: b22427711322431314f1db4061ed1cbe3c20d06d
+  claims:
+  - claim_id: C-b44bfdea-1
+    text: BEIR includes 17 preprocessed benchmark datasets.
+    quote: one of the already-preprocessed 17 benchmark datasets
+    location: char 2074 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-2
+    text: Python 3.9 or later is required.
+    quote: Tested with python versions 3.9+
+    location: char 1992 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-3
+    text: 'The framework evaluates four types of retrieval architectures: lexical,
+      dense, sparse, and reranking-based.'
+    quote: Evaluates well-known retrieval architectures (lexical, dense, sparse and
+      reranking-based)
+    location: char 2216 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-4
+    text: Standard evaluation metrics are NDCG, MAP, Recall, and Precision at k values
+      1, 3, 5, 10, 100, and 1000.
+    quote: NDCG@k, MAP@K, Recall@K and Precision@K  where k = [1,3,5,10,100,1000]
+    location: char 3924 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-5
+    text: BEIR was published at NeurIPS 2021 in the Datasets and Benchmarks Track.
+    quote: NeurIPS 2021, Datasets and Benchmarks Track
+    location: char 1650 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-6
+    text: A follow-up paper was published at SIGIR 2024 in the Resource Track.
+    quote: SIGIR 2024 Resource Track
+    location: char 1782 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-7
+    text: Users can add and evaluate custom retrieval models within the framework.
+    quote: Add and evaluate your own model in a easy framework
+    location: char 2306 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-8
+    text: The benchmark covers diverse IR settings suitable for both academic and
+      industrial applications.
+    quote: Wide settings included, covers diverse benchmarks useful for both academia
+      and industry
+    location: char 2128 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-9
+    text: BEIR benchmark is designed for zero-shot evaluation of information retrieval
+      models
+    quote: Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval
+      Models
+    location: char 15854 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-10
+    text: The original BEIR benchmark evaluated models across 18 different domain/task
+      combinations
+    quote: across 18 different domain/task combinations
+    location: char 16961 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-13
+    text: BEIR was published at the 2021 NeurIPS Datasets and Benchmarks Track
+    quote: Thirty-fifth Conference on Neural Information Processing Systems Datasets
+      and Benchmarks Track
+    location: char 16059 of 19786 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-14
+    text: BEIR provides reference implementations for learned dense and sparse retrieval
+      models
+    quote: reproducible reference implementations that cover learned dense and sparse
+      models
+    location: char 17569 of 19786 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b44bfdea-16
+    text: BEIR maintains an official leaderboard with reproducible reference models
+    quote: 'Resources for Brewing BEIR: Reproducible Reference Models and an Official
+      Leaderboard'
+    location: char 1695 of 19786 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: f79418b2ee984f816eb75e4ecc365048d2bae361
+  url: https://arxiv.org/abs/2502.08662
+  title: '[2502.08662] RoToR: Towards More Reliable Responses for Order-Invariant
+    Inputs'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 4630437f6f8d01f1306410f2129d8c20588043da
+  claims:
+  - claim_id: C-f79418b2-1
+    text: The paper proposes RoToR, a zero-shot invariant language model for order-invariant
+      inputs with minimal positional ID modifications.
+    quote: a zero-shot invariant LM for genuinely order-invariant inputs with minimal
+      modifications
+    location: char 1315 of 4425 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f79418b2-2
+    text: The paper proposes Selective Routing, an adaptive framework that handles
+      both order-invariant and order-sensitive inputs.
+    quote: an adaptive framework that handles both order-invariant and order-sensitive
+      inputs
+    location: char 1450 of 4425 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f79418b2-3
+    text: The paper evaluates methods on Lost in the Middle, Knowledge Graph QA, and
+      MMLU benchmarks.
+    quote: Lost in the middle (LitM), Knowledge Graph QA (KGQA), and MMLU benchmarks
+    location: char 1559 of 4425 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f79418b2-4
+    text: The paper was accepted to the ACL 2025 main conference.
+    quote: Accepted at ACL 2025 main
+    location: char 1781 of 4425 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f79418b2-5
+    text: The first version of the paper was submitted on February 10, 2025.
+    quote: Submitted on 10 Feb 2025
+    location: char 207 of 4425 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f79418b2-6
+    text: The paper identifies training and inference distribution mismatch from modified
+      positional ID assignments as a key limitation in existing approaches.
+    quote: training and inference distribution mismatch arising from modifying positional
+      ID assignments
+    location: char 1037 of 4425 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f79418b2-7
+    text: Version 3 of the paper was last revised on June 2, 2025.
+    quote: last revised 2 Jun 2025 (this version, v3)
+    location: char 240 of 4425 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 964231ec57389834e9f89b5a447be2e968a39342
+  url: https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/
+  title: 'RAG evaluation: a technical guide to measuring retrieval-augmented generation'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 25a497e67cf2e6f19f22675091b82c1a43d31dd1
+  claims:
+  - claim_id: C-964231ec-1
+    text: RAG systems use a two-stage architecture with a retriever that fetches documents
+      and a generator that synthesizes answers.
+    quote: A query first passes through a retriever that identifies related documents
+    location: char 2154 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-3
+    text: BM25 estimates document relevance using term frequency, inverse document
+      frequency, and document length normalization.
+    quote: BM25 estimates document relevance using term frequency, inverse document
+      frequency, and document length normalization
+    location: char 4979 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-4
+    text: Dense Passage Retriever outperforms BM25 on the Natural Questions dataset
+      even with limited training data.
+    quote: DPR outperforms BM25 even with as few as 1,000 training examples
+    location: char 5772 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-7
+    text: Domain-specific embeddings like PubMedBERT capture specialized terminology
+      more effectively than general-purpose embedding models.
+    quote: produces embeddings that capture medical terminology more effectively than
+      general-purpose models
+    location: char 8715 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-8
+    text: Financial QA systems typically chunk SEC 10-K reports into approximately
+      500-token segments.
+    quote: SEC 10-K reports are often chunked into ~500-token segments
+    location: char 10519 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-9
+    text: Context recall measures the proportion of necessary information from retrieved
+      materials that appears in the final prompt.
+    quote: The proportion of necessary information from the retrieved materials that
+      appears in the final prompt
+    location: char 12301 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-10
+    text: Context relevance measures the proportion of prompt content that is directly
+      useful for answering the query.
+    quote: The proportion of prompt content that is directly useful for answering
+      the query
+    location: char 12424 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-11
+    text: Larger language models require higher computational resources than smaller
+      models.
+    quote: they also demand higher compute
+    location: char 13118 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-12
+    text: Instruction-tuned models perform better in retrieval-augmented settings
+      than other model types.
+    quote: Instruction-tuned models often perform better in retrieval-augmented settings
+    location: char 13361 of 33407 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-13
+    text: Models fine-tuned on domain-specific documents exhibit higher answer accuracy
+      in their target domain.
+    quote: models fine-tuned on statutes and case law exhibit higher answer accuracy
+    location: char 13584 of 33407 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-14
+    text: Language models can produce incorrect or misleading outputs when they fail
+      to ground responses in provided context.
+    quote: can produce incorrect or misleading outputs
+    location: char 14248 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-15
+    text: Treating RAG systems as black boxes obscures where retrieval and generation
+      errors originate, resulting in misleading metrics.
+    quote: Treating RAG as a black box obscures these distinctions, resulting in misleading
+      metrics
+    location: char 16423 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-16
+    text: Decoding strategy—such as greedy decoding, beam search, or nucleus sampling—impacts
+      factual precision, diversity, and coherence of the generated output.
+    quote: impacts factual precision, diversity, and coherence
+    location: char 13308 of 33407 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-17
+    text: Answer accuracy in generation evaluation compares generated answers using
+      exact match, F1 score, or semantic similarity.
+    quote: often using exact match, F1 score, or semantic similarity
+    location: char 25225 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-19
+    text: In production RAG workflows, generation evaluation is often tied to downstream
+      KPIs.
+    quote: In production RAG workflows, generation evaluation is often tied to downstream
+      KPIs
+    location: char 25795 of 33407 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-20
+    text: Task success rate measures the percentage of queries where a RAG system
+      delivers correct and complete answers.
+    quote: Percentage of queries where the system delivers a correct and complete
+      answer
+    location: char 26383 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-21
+    text: User satisfaction in RAG can be derived from explicit ratings or behavioral
+      signals like follow-up query rates.
+    quote: Derived from explicit ratings or behavioral signals (e.g., follow-up query
+      rates) in live deployments
+    location: char 26542 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-22
+    text: Time to answer in RAG measures total latency from query to output, including
+      both retrieval and generation delays.
+    quote: Total latency from query submission to output, capturing both retrieval
+      and generation delays
+    location: char 26662 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-23
+    text: Many existing RAG benchmarks were designed for retrieval or generation evaluation
+      in isolation, not the combined pipeline.
+    quote: Many existing RAG benchmarks were designed for either retrieval or generation
+      tasks in isolation
+    location: char 27221 of 33407 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-964231ec-24
+    text: Well-calibrated custom metrics help isolate retrieval errors from generation
+      errors in RAG systems.
+    quote: Well-calibrated, custom metrics help isolate retrieval errors from generation
+      errors
+    location: char 24556 of 33407 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  url: https://www.ibm.com/think/architectures/rag-cookbook/result-evaluation
+  title: 'Result Evaluation for RAG: Metrics & Best Practices | IBM'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: e8c1c08ed64287cb9522da74ae361434d7a168fa
+  claims:
+  - claim_id: C-92827b86-1
+    text: LLMaaJ (LLM as a Judge) emerged as a prominent RAG evaluation metric in
+      approximately the last year.
+    quote: LLMaaJ (LLM as a Judge) has emerged as a leading metric in the last year
+    location: char 1833 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-2
+    text: LLM as a Judge evaluation has been demonstrated to produce reasonable correlation
+      with human judgment.
+    quote: This eval technique has been shown to produce decent correlation with human
+      judgment.
+    location: char 1981 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-3
+    text: The RAG triad evaluation framework consists of exactly three distinct assessments.
+    quote: 'It consists of three assessments: Context Relevance, Groundedness, and
+      Answer Relevance.'
+    location: char 7047 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-4
+    text: Mean Reciprocal Rank (MRR) measures the position where the first relevant
+      document appears in search results.
+    quote: measures the position of the first relevant document in the search results.
+    location: char 7856 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-5
+    text: MRR does not penalize retrieval systems for placing non-first ground truth
+      documents at low ranks.
+    quote: it does not penalize the retrieval for assigning low rank to other ground-truths
+    location: char 8295 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-6
+    text: NDCG@k is calculated by dividing the actual DCG@k by the ideal DCG@k (IDCG@k).
+    quote: NDCG@k is calculated as DCG@k divided by the ideal DCG@k (IDCG@k)
+    location: char 8686 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-7
+    text: ROUGE's reliance on n-gram overlap as the evaluation basis may fail to capture
+      semantic quality or text fluency.
+    quote: Focuses on n-gram overlap, which may not capture semantic quality or fluency
+    location: char 11538 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-8
+    text: Mean Average Precision (MAP) evaluation metric balances both precision and
+      recall in its calculation.
+    quote: Considers both precision and recall, providing a balanced evaluation of
+      retrieval performance
+    location: char 9542 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-9
+    text: GPU utilization is primarily used for generation phases in RAG systems
+    quote: GPU utilization is primarily used for the generation phase.
+    location: char 12494 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-10
+    text: Exact-match metrics penalize legitimate phrasing variations that differ
+      from reference text
+    quote: May penalize legitimate variations in phrasing that do not exactly match
+      reference texts
+    location: char 12201 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-11
+    text: Exact-match metrics may fail to capture partial inaccuracies or subtle meaning
+      differences
+    quote: May not fully capture partial inaccuracies or subtle differences in meaning.
+    location: char 12321 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-12
+    text: LangChain and LlamaIndex provide easy-to-use abstraction libraries for retrieval
+      reranking
+    quote: Both * LangChain and LlamaIndex offer easy-to-use abstractions for reranking.
+    location: char 13322 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-13
+    text: Semantically similar questions may not appear similar when converted to
+      embeddings
+    quote: similar questions for humans may not appear similar in embedding space.
+    location: char 13446 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-14
+    text: Reranking allows retrieval systems to refine the top selected context nodes
+    quote: This allows your retrieval system to refine the top nodes for context.
+    location: char 13251 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-15
+    text: Setting constraints on response length produces more concise and accurate
+      outputs
+    quote: Set constraints on response length to ensure outputs are concise and accurate.
+    location: char 14230 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-92827b86-16
+    text: Fine-tuning language models on domain-specific datasets improves model accuracy
+      and contextual understanding
+    quote: Customize the model to your domain by fine-tuning it on relevant datasets
+    location: char 13783 of 15369 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+  url: https://developers.redhat.com/articles/2026/02/23/synthetic-data-rag-evaluation-why-your-rag-system-needs-better-testing
+  title: 'Synthetic data for RAG evaluation: Why your RAG system needs better testing
+    | Red Hat Developer'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 89be85465be66f74e7eb7ccc580ee88eb347ab15
+  claims:
+  - claim_id: C-4833d8ca-1
+    text: Retrieval-augmented generation has become the default architecture for enterprise
+      LLM applications.
+    quote: Retrieval-augmented generation (RAG) has become the default architecture
+      for enterprise large-language models (LLM) applications.
+    location: char 362 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-2
+    text: Most RAG systems reach production with weak evaluation strategies.
+    quote: In practice, most RAG systems reach production with weak evaluation strategies.
+    location: char 644 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-3
+    text: Evaluating RAG systems is fundamentally harder than evaluating stand-alone
+      language models.
+    quote: Evaluating RAG systems is fundamentally harder than evaluating stand-alone
+      language models.
+    location: char 1134 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-4
+    text: When a RAG system fails, it is often unclear whether the retriever or LLM
+      is responsible.
+    quote: it's often unclear whether the retriever surfaced the wrong documents or
+      the LLM hallucinated
+    location: char 1340 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-5
+    text: Enterprise documents evolve continuously, causing static test sets to become
+      outdated quickly.
+    quote: Static test sets become outdated almost immediately, resulting in misleading
+      evaluations
+    location: char 1893 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-6
+    text: Synthetic data generation enables creation of question-answer-context triplets
+      directly from knowledge bases.
+    quote: Generate evaluation datasets directly from your knowledge base with realistic
+      questions, grounded answers
+    location: char 2904 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-7
+    text: 'SDG Hub''s RAG evaluation flow requires exactly two input columns: document
+      and document outline.'
+    quote: The RAG Evaluation flow expects exactly two columns, enforced to ensure
+      grounded and debuggable evaluation.
+    location: char 5991 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-8
+    text: A single retrieval error in agentic RAG systems can cascade across tool
+      calls and downstream decisions.
+    quote: A single retrieval error can cascade across tool calls, memory updates,
+      or downstream decisions.
+    location: char 2405 of 10081 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: d82e8275aa9034f305abcdf1d441e96e56b022db
+  url: https://atlan.com/know/rag-accuracy-problems/
+  title: 'RAG Accuracy Problems: Why They Happen and How to Fix Them'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: c7cad0c8515f9f2a886a07b82d01f5ef2dd93f7f
+  claims:
+  - claim_id: C-d82e8275-1
+    text: 80% of enterprise RAG projects experience critical failures in production
+    quote: 80% of enterprise RAG projects experience critical failures
+    location: char 3604 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-2
+    text: 73% of RAG failures originate at the retrieval stage rather than the language
+      model generation step
+    quote: 73% of failures originate in retrieval, not the LLM generation step
+    location: char 2012 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-3
+    text: RAG systems using governed data achieve 85-92% accuracy compared to 45-60%
+      on ungoverned data
+    quote: Governed data improves RAG accuracy from 45-60% to 85-92%
+    location: char 1869 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-4
+    text: General embedding models ranked high on MTEB benchmarks show no significant
+      correlation with financial domain performance
+    quote: statistically insignificant correlation between general MTEB leaderboard
+      rankings and financial domain performance
+    location: char 8905 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-5
+    text: LLMs exhibit a U-shaped accuracy pattern with worst performance in the middle
+      of the context window
+    quote: accuracy is highest for information at the beginning and end of the context
+      window
+    location: char 10146 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-6
+    text: A curated domain-specific knowledge base produces 6% hallucination while
+      general web search retrieval produces 35%
+    quote: produced 6% hallucination. The same approach using general web search retrieval
+      produced 35%
+    location: char 7600 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-7
+    text: RAG reduces hallucination rates by 71% on average compared to non-RAG systems
+    quote: RAG reduces hallucinations by 71% on average compared to non-RAG systems
+    location: char 10875 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-8
+    text: 85% of RAG systems that work in development environments fail when deployed
+      to production
+    quote: 85% of RAG systems that work in development fail in production
+    location: char 5782 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-9
+    text: According to 2025 industry surveys, between 70-85% of AI agents fail in
+      production.
+    quote: Industry surveys across 2025 converge on 70-85% of agents failing in production
+    location: char 12331 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-10
+    text: AI project failures increased by 42% from 2024 to 2025.
+    quote: 42% increase in AI project failures reported from 2024 to 2025
+    location: char 12443 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-11
+    text: Hybrid retrieval with reranking produces a documented 25% accuracy improvement.
+    quote: Hybrid retrieval with reranking delivers documented 25% accuracy improvements
+    location: char 13070 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-12
+    text: The same RAG pipeline achieves 85-92% accuracy on governed data but only
+      45-60% on ungoverned data.
+    quote: produces 85-92% accuracy on governed data and 45-60% on ungoverned data
+    location: char 13260 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-13
+    text: Vector search retrievers cannot detect or account for document staleness.
+    quote: The retriever is structurally blind to staleness
+    location: char 14883 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-15
+    text: Retrieval accounts for 73% of RAG system failures.
+    quote: The 73% retrieval failure rate cited earlier is real
+    location: char 13556 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-16
+    text: A 25% accuracy improvement on ungoverned data only reaches 45-60% total
+      accuracy.
+    quote: A 25% retrieval improvement on ungoverned data still lands in the 45-60%
+      accuracy range
+    location: char 16338 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-17
+    text: Governed RAG systems achieve 85-92% retrieval accuracy compared to 45-60%
+      on ungoverned sources
+    quote: retrieval accuracy in the 85-92% range versus the 45-60% baseline on ungoverned
+      sources
+    location: char 24477 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-18
+    text: Eighty percent of enterprise RAG projects fail in production
+    quote: 80% of enterprise RAG projects critically fail
+    location: char 1438 of 34213 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-19
+    text: Governed data provides a 30-45 percentage point accuracy advantage over
+      ungoverned data
+    quote: A 30-45 percentage point accuracy gap between governed and ungoverned data
+    location: char 26696 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-20
+    text: RAG reduces hallucinations by 71 percent on average
+    quote: RAG reduces hallucinations by 71% on average
+    location: char 10875 of 34213 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-21
+    text: Legal RAG tools retain 17-33% hallucination rates and medical tools retain
+      10-20% even with retrieval
+    quote: Domain-specific hallucination rates remain 17-33% in legal RAG tools and
+      10-20% in medical tools
+    location: char 29429 of 34213 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-22
+    text: Vector-only semantic search fails on exact-keyword queries that sparse retrieval
+      (BM25) can answer
+    quote: Naive vector-only search also misses exact-keyword queries that sparse
+      retrieval (BM25) handles
+    location: char 27754 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-23
+    text: RAGAS processes more than 5 million evaluations per month
+    quote: RAGAS processes over 5 million evaluations monthly
+    location: char 31778 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-24
+    text: Advanced RAG with multiple retrieval and reranking layers outperforms single-stage
+      naive RAG on complex queries
+    quote: Advanced RAG consistently outperforms naive RAG on complex queries
+    location: char 30014 of 34213 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  url: https://atlan.com/know/how-to-evaluate-rag-systems-explained/
+  title: 'RAG Evaluation: Metrics, Tools, and the Context Gap (2026)'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: a87405c17458d6dd7aea10dc7b8c5016c6e8632d
+  claims:
+  - claim_id: C-22c548bc-1
+    text: 'RAG evaluation uses four core metrics: faithfulness, answer relevance,
+      context precision, and context recall.'
+    quote: The four core metrics — faithfulness, answer relevance, context precision,
+      and context recall
+    location: char 2738 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-2
+    text: Standard RAG evaluation metrics assume the retrieval index is trustworthy.
+    quote: Standard eval metrics (faithfulness, relevance, precision, recall) assume
+      a trustworthy index
+    location: char 1162 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-4
+    text: Faithfulness scores close to 1.0 indicate the model stays grounded in retrieved
+      content.
+    quote: Faithfulness scores close to 1.0 indicate the model is staying grounded
+    location: char 5192 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-5
+    text: Answer relevance measures whether a response addresses the question asked.
+    quote: Answer relevance measures whether the response is on-topic and useful
+    location: char 5560 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 8ee2ad4d316a9893170f5726fd67893be4787918
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-6
+    text: More powerful language models produce more convincing hallucinations.
+    quote: better models hallucinate more convincingly
+    location: char 4197 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-7
+    text: Context precision uses weighted cumulative scoring, with higher-ranked chunks
+      weighted more heavily.
+    quote: contextual precision is calculated as a weighted cumulative precision score
+    location: char 6495 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-8
+    text: RAGAS is the most widely adopted open-source RAG evaluation framework.
+    quote: RAGAS (most widely adopted)
+    location: char 2881 of 27273 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-9
+    text: BEIR is a heterogeneous benchmark dataset covering 18 different retrieval
+      datasets.
+    quote: A heterogeneous benchmark covering 18 retrieval datasets across diverse
+      domains.
+    location: char 12336 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-10
+    text: HotpotQA requires connecting information across multiple passages to answer
+      questions.
+    quote: A multi-hop question-answering dataset that requires connecting information
+      from multiple passages.
+    location: char 12543 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-11
+    text: RGB benchmark specifically measures four types of RAG failure modes.
+    quote: 'covering four failure modes: noise robustness, negative rejection, information
+      integration, and counterfactual robustness.'
+    location: char 13063 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-13
+    text: Context recall measures whether retrieved chunks contain the necessary information
+      to answer questions.
+    quote: Context recall measures whether the retrieved chunks contain the information
+      needed to answer the question.
+    location: char 21799 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-14
+    text: Enterprise RAG systems require a fifth evaluation dimension measuring index
+      reliability.
+    quote: Enterprise RAG evaluation needs a fifth dimension that measures the reliability
+      of the index itself.
+    location: char 14798 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-15
+    text: Standard RAG metrics measure pipeline performance, not whether the source
+      content is trustworthy.
+    quote: Standard metrics measure pipeline performance, not context trustworthiness.
+    location: char 22615 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-16
+    text: Context precision measures whether retrieved chunks are actually relevant
+      to the user's query.
+    quote: Context precision measures whether the chunks that were retrieved are actually
+      relevant to the query.
+    location: char 21697 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-17
+    text: Judge models in RAG evaluation score responses using specific criteria such
+      as faithfulness and relevance.
+    quote: scores the response against criteria like faithfulness or relevance
+    location: char 24157 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-18
+    text: Automated model-based evaluation reduces the annotation burden compared
+      to traditional evaluation methods.
+    quote: reduces the annotation burden that traditional evaluation requires
+    location: char 24229 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-19
+    text: Periodic human spot checks are recommended to verify that automated evaluation
+      scores align with actual output quality.
+    quote: periodic human spot checks are recommended to verify that automated scores
+      align
+    location: char 24304 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-20
+    text: The optimal ground truth for enterprise RAG evaluation is not synthetic
+      datasets but institutionally validated business answers.
+    quote: The best ground truth for enterprise RAG evaluation is not a synthetic
+      dataset
+    location: char 24536 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-21
+    text: Trusted enterprise dashboards like Tableau, Power BI, and Looker represent
+      institutionally validated answers.
+    quote: Those dashboards represent institutionally validated answers
+    location: char 24766 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-22
+    text: When a RAG system disagrees with answers in a trusted dashboard, the dashboard
+      answer is authoritative.
+    quote: If a RAG-powered agent disagrees with a trusted dashboard, the dashboard
+      is right
+    location: char 24828 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-23
+    text: Disagreement between RAG output and trusted dashboards serves as a diagnostic
+      signal indicating retrieval index gaps.
+    quote: the disagreement is a diagnostic signal pointing to a gap in the retrieval
+      index
+    location: char 24914 of 27273 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-24
+    text: In Atlan's benchmark, adding contextual information improved AI text-to-SQL
+      accuracy by 38 percent.
+    quote: adding that context improved AI's text-to-SQL accuracy by 38%
+    location: char 25674 of 27273 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+  url: https://aclanthology.org/2024.eacl-demo.16/
+  title: 'RAGAs: Automated Evaluation of Retrieval Augmented Generation - ACL Anthology'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: f330075df6b892da724d199d4f88e72d401b61b2
+  claims:
+  - claim_id: C-d7ab3f9c-1
+    text: RAGAs is a reference-free evaluation framework for Retrieval Augmented Generation
+      pipelines.
+    quote: framework for reference-free evaluation of Retrieval Augmented Generation
+      (RAG) pipelines
+    location: char 431 of 10142 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - f110bea051e803126142fa710ea9e77a206403b4
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d7ab3f9c-2
+    text: RAGAs is available at https://github.com/explodinggradients/ragas.
+    quote: RAGAs is available at [https://github.com/explodinggradients/ragas]
+    location: char 6495 of 10142 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d7ab3f9c-3
+    text: RAG systems are composed of a retrieval module and an LLM-based generation
+      module.
+    quote: RAG systems are composed of a retrieval and an LLM based generation module
+    location: char 593 of 10142 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - f110bea051e803126142fa710ea9e77a206403b4
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d7ab3f9c-4
+    text: RAG systems provide LLMs with knowledge from a reference textual database.
+    quote: provide LLMs with knowledge from a reference textual database
+    location: char 674 of 10142 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d7ab3f9c-5
+    text: RAG systems reduce the risk of hallucinations.
+    quote: reducing the risk of hallucinations
+    location: char 829 of 10142 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - f110bea051e803126142fa710ea9e77a206403b4
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d7ab3f9c-6
+    text: RAGAs evaluates RAG pipelines without relying on ground truth human annotations.
+    quote: evaluate these different dimensions without relying on ground truth human
+      annotations
+    location: char 1191 of 10142 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 8ee2ad4d316a9893170f5726fd67893be4787918
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d7ab3f9c-7
+    text: Evaluating RAG systems requires assessing the retrieval system's ability
+      to identify relevant context passages.
+    quote: the ability of the retrieval system to identify relevant and focused context
+      passages
+    location: char 949 of 10142 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - f110bea051e803126142fa710ea9e77a206403b4
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d7ab3f9c-8
+    text: Evaluating RAG systems requires assessing the LLM's ability to faithfully
+      exploit retrieved passages.
+    quote: the ability of the LLM to exploit such passages faithfully
+    location: char 1036 of 10142 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - f110bea051e803126142fa710ea9e77a206403b4
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 8ee2ad4d316a9893170f5726fd67893be4787918
+  url: https://arxiv.org/html/2309.15217v1
+  title: 'RAGAS: Automated Evaluation of Retrieval Augmented Generation'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 6111dbda39e8536866b4b7ade0977e1ab294344f
+  claims:
+  - claim_id: C-8ee2ad4d-1
+    text: Large language models cannot answer questions about events that occurred
+      after their training date.
+    quote: not able to answer questions about events that have happened after
+    location: char 2147 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-2
+    text: Large language models struggle to memorize knowledge that appears rarely
+      in their training corpus.
+    quote: largest models struggle to memorise knowledge that is only rarely mentioned
+    location: char 2250 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-3
+    text: RAGAs framework enables evaluation of RAG systems without requiring human-annotated
+      ground truth answers.
+    quote: without having to rely on ground truth human annotations
+    location: char 1266 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-4
+    text: Faithfulness in RAGAs is defined as answers being grounded in and inferable
+      from retrieved context.
+    quote: answer should be grounded in the given context
+    location: char 9285 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-5
+    text: Answer Relevance in RAGAs measures whether generated answers address the
+      actual user question.
+    quote: generated answer should address the actual question
+    location: char 9746 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-6
+    text: Context Relevance in RAGAs prioritizes focused retrieval with minimal irrelevant
+      information included.
+    quote: retrieved context should be focused, containing as little irrelevant information
+    location: char 9872 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-7
+    text: RAGAs uses OpenAI's gpt-3.5-turbo-16k model to evaluate its assessment prompts.
+    quote: evaluated using the gpt-3.5-turbo-16k model
+    location: char 10422 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-8
+    text: RAGAs provides integration with both llama-index and Langchain RAG frameworks.
+    quote: integration with both llama-index and Langchain
+    location: char 4491 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-10
+    text: Answer relevance is estimated by generating multiple questions from the
+      answer and measuring their cosine similarity to the original question using
+      text-embedding-ada-002 embeddings.
+    quote: We then obtain embeddings for all questions using the text-embedding-ada-002
+      model
+    location: char 12792 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-12
+    text: WikiEval dataset consists of 50 Wikipedia pages covering events that occurred
+      since the beginning of 2022.
+    quote: selected 50 Wikipedia pages covering events that have happened since the
+      start of 2022
+    location: char 14980 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-13
+    text: Human annotators agreed approximately 95% of the time on faithfulness and
+      context relevance judgments, and 90% on answer relevance.
+    quote: For faithfulness and context relevance, the two annotators agreed in around
+      95% of cases.
+    location: char 16368 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-14
+    text: RAGAS metrics achieved significantly higher agreement with human judgments
+      than ChatGPT-based scoring or ranking baselines.
+    quote: are much closer aligned with the human judgements than the predictions
+      from the two baselines
+    location: char 20020 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-15
+    text: The GPT Score baseline method prompts ChatGPT to directly assign numerical
+      scores in a 0-10 range for each quality dimension.
+    quote: assign a score between 0 and 10 for the three quality dimensions
+    location: char 18651 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-17
+    text: Oppenheimer is a 2023 biographical thriller film.
+    quote: Oppenheimer is a 2023 biographical thriller film written and directed by
+      Christopher Nolan
+    location: char 30134 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-18
+    text: Christopher Nolan directed Oppenheimer.
+    quote: written and directed by Christopher Nolan
+    location: char 30183 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-19
+    text: Cillian Murphy stars as Oppenheimer in the film.
+    quote: Cillian Murphy stars as Oppenheimer, with Emily Blunt
+    location: char 30518 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-21
+    text: The film is based on the 2005 biography American Prometheus.
+    quote: Based on the 2005 biography American Prometheus by Kai Bird
+    location: char 30226 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-22
+    text: Chimnabai Clock Tower was completed in 1896.
+    quote: It was completed in 1896 and named in memory
+    location: char 31860 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-23
+    text: Chimnabai Clock Tower is located in Vadodara, Gujarat, India.
+    quote: a clock tower situated in the Raopura area of Vadodara, Gujarat, India
+    location: char 31788 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-24
+    text: Chimnabai Clock Tower was named after Chimnabai I, who lived from 1864-1885.
+    quote: named in memory of Chimnabai I (1864–1885), a queen
+    location: char 31889 of 32855 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  url: https://arxiv.org/html/2510.13975v1
+  title: Classifying and Addressing the Diversity of Errors inRetrieval-Augmented
+    Generation Systems
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: abb42868cd685cf27442184a1a35f272e6f81edb
+  claims:
+  - claim_id: C-56cc8dbe-1
+    text: RAG systems use complex multi-step pipelines that incorporate additional
+      components beyond retriever-generator pairs.
+    quote: real RAG systems use complex multi-step pipelines that go beyond a retriever-generator
+      pair
+    location: char 3183 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-2
+    text: The DragonBall dataset contains 3108 English-language and 3601 Chinese-language
+      questions.
+    quote: English and Chinese portions of the dataset with 3108 and 3601 questions
+      respectively
+    location: char 8051 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-3
+    text: The CLAPnq dataset comprises 4946 natural language questions related to
+      Wikipedia documents.
+    quote: which contains high-quality reference answers and passages for 4946 natural
+      questions
+    location: char 8221 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-4
+    text: 'A RAG pipeline consists of four distinct stages: chunking, retrieval, reranking,
+      and generation.'
+    quote: 'Errors are grouped by the pipeline stage that caused them: chunking, retrieval,
+      reranking, or generation'
+    location: char 8475 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-5
+    text: Overchunking occurs when documents split into excessively small fragments,
+      causing incomplete topic coverage.
+    quote: Documents are split into excessively small or disjointed segments, causing
+      incomplete coverage of topics
+    location: char 9269 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-6
+    text: Underchunking results from oversized chunks covering multiple topics, which
+      dilutes keyword relevance in retrieval.
+    quote: Chunks are too large, covering multiple topics with mixed content
+    location: char 10069 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-7
+    text: Context Mismatch errors occur when arbitrary chunk boundaries separate topic
+      definitions from supporting information.
+    quote: Chunks split text at arbitrary points, breaking contextual links by separating
+      definitions
+    location: char 10999 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-9
+    text: Semantic chunking detects topic shifts using cosine distance between sentence
+      embeddings.
+    quote: detecting topic shifts using cosine distance between sentence embeddings
+    location: char 12441 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-12
+    text: Cross-encoders jointly encode query-chunk pairs to rerank retrieved documents.
+    quote: cross-encoders, which jointly encode query-chunk pairs
+    location: char 17279 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-13
+    text: Fine-tuning on in-domain labeled data is the most effective approach for
+      improving reranker performance.
+    quote: Fine-tuning on in-domain data is the most effective way
+    location: char 17567 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-14
+    text: Hard negatives (plausible but non-relevant passages) help reranking models
+      reduce false positives.
+    quote: hard negatives, which are plausible but non-relevant passages
+    location: char 17814 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-15
+    text: Chain-of-Verification is a post-generation validation technique to mitigate
+      hallucination errors.
+    quote: post-generation validation such as Chain-of-Verification
+    location: char 23165 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-17
+    text: 'RAGEC consists of three sequential steps: answer evaluation, stage classification,
+      and error type classification.'
+    quote: 'RAGEC consists of 3 steps: answer evaluation, stage classification, and
+      error type classification.'
+    location: char 24662 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-18
+    text: RAGEC achieves 57.8% agreement with human annotations on stage classification
+      of errors.
+    quote: RAGEC achieves a 57.8% agreement rate with human annotations.
+    location: char 28477 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-19
+    text: RAGEC achieves 40.3% accuracy on error type classification compared to human
+      annotations.
+    quote: Compared to human-annotated error types, RAGEC achieves an accuracy of
+      40.3%.
+    location: char 29338 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-22
+    text: No existing dataset documented the taxonomy of error types in RAG systems
+      before this work.
+    quote: No existing dataset details the types of errors which can occur in RAG
+      systems.
+    location: char 27312 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-23
+    text: 406 queries were manually annotated with 377 confirmed as erroneous through
+      human review.
+    quote: 406 queries were manually annotated, and 377 were confirmed as erroneous
+    location: char 28339 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-24
+    text: After targeted improvements, the RAG pipeline reduced total errors from
+      832 to 534 (73.3% to 82.8% correct).
+    quote: The improved pipeline resulted in fewer errors overall, only 534 (82.8%
+      correct).
+    location: char 33548 of 85368 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+- source_id: 4122c4ed8a779f447f9bc1371ff7954477d8beee
+  url: https://arxiv.org/abs/2504.15205
+  title: '[2504.15205] Support Evaluation for the TREC 2024 RAG Track: Comparing Human
+    versus LLM Judges'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 697fbdde1d3b76cc1f047627b93a1e693207340e
+  claims:
+  - claim_id: C-4122c4ed-1
+    text: The study evaluated 45 participant submissions across 36 topics for the
+      TREC 2024 RAG Track.
+    quote: large-scale comparative study of 45 participant submissions on 36 topics
+    location: char 973 of 4503 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-2
+    text: The support assessment mechanism used a three-level scale for judgments.
+    quote: on a three-level scale
+    location: char 1418 of 4503 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-3
+    text: In manual from-scratch assessments, human judges and GPT-4o achieved perfect
+      agreement 56% of the time.
+    quote: for 56% of the manual from-scratch assessments, human and GPT-4o predictions
+      match perfectly
+    location: char 1324 of 4503 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-4
+    text: Agreement between human and GPT-4o judges increased to 72% when humans post-edited
+      LLM predictions.
+    quote: increasing to 72% in the manual with post-editing condition
+    location: char 1443 of 4503 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-5
+    text: An independent human judge's judgments correlated better with GPT-4o than
+      another human judge's judgments did.
+    quote: an independent human judge correlates better with GPT-4o than a human judge
+    location: char 1594 of 4503 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-6
+    text: The paper was accepted at SIGIR 2025 as a short paper.
+    quote: Accepted at SIGIR 2025 (short)
+    location: char 1891 of 4503 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-7
+    text: The research compared an automatic LLM judge (GPT-4o) against human judges
+      for support assessment.
+    quote: comparing an automatic LLM judge (GPT-4o) against human judges for support
+      assessment
+    location: char 1074 of 4503 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  url: https://www.openlayer.com/blog/rag-pipeline-evaluation-groundedness-faithfulness
+  title: 'RAG Evaluation in Production: Groundedness, Faithfulness, and Retrieval
+    Quality (July 2026) | Openlayer'
+  authors: []
+  venue: null
+  date: null
+  type: docs
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 75e0becc95882c67cc0c8f57406d5c7703ebfa20
+  claims:
+  - claim_id: C-a29027ab-1
+    text: Openlayer was recognized in the 2026 Gartner Market Guide for AI Evaluation
+      and Observability Platforms.
+    quote: Openlayer named in the 2026 Gartner Market Guide® for AI Evaluation and
+      Observability Platforms.
+    location: char 116 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-2
+    text: RAG systems connect language models to external knowledge sources at inference
+      time before generation occurs.
+    quote: RAG connects an LLM to an external knowledge source at inference time.
+    location: char 1914 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+    - c99a2aabb21d9e939696bfc3e4419c436695d67b
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-3
+    text: 'RAG pipelines have three distinct failure modes: retrieval quality, faithfulness,
+      and groundedness.'
+    quote: 'RAG has three distinct failure surfaces: retrieval quality, faithfulness,
+      and groundedness.'
+    location: char 1105 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-4
+    text: Practitioners recommend flagging responses scoring below 0.80 on groundedness
+      metrics for human review.
+    quote: flag responses below 0.80 groundedness for review
+    location: char 1303 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-5
+    text: Practitioners recommend blocking responses scoring below 0.70 on faithfulness
+      from reaching end users.
+    quote: block those below 0.70 faithfulness before they reach users
+    location: char 1354 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-6
+    text: HyDE improves retrieval recall on vague queries by generating and embedding
+      a hypothetical answer first.
+    quote: HyDE improves recall on vague queries by embedding a hypothetical answer
+      first
+    location: char 1553 of 27062 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-7
+    text: HyDE reduces retrieval precision when its hypothetical answer hallucinates
+      and retrieves irrelevant chunks.
+    quote: but hurts precision when that answer hallucinates and pulls wrong chunks
+    location: char 1633 of 27062 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-8
+    text: Context Recall measures whether all chunks necessary to answer a query were
+      successfully retrieved.
+    quote: Context Recall measures whether the chunks needed to answer the query were
+      retrieved at all.
+    location: char 11837 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-9
+    text: HyDE works by generating a hypothetical answer to the query first, then
+      using that answer's embedding instead of the raw query embedding for retrieval.
+    quote: HyDE generates a hypothetical answer to the query first, then uses that
+      answer's embedding
+    location: char 12525 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-10
+    text: Component-level metrics can appear healthy while end-to-end RAG pipeline
+      quality simultaneously collapses.
+    quote: Component metrics can look healthy while end-to-end quality collapses.
+    location: char 13496 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-11
+    text: Groundedness measures whether a generated response stays within the boundaries
+      of what its retrieved context supports.
+    quote: Groundedness measures whether a response stays within what the retrieved
+      context supports
+    location: char 22850 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-12
+    text: Faithfulness measures whether a response accurately represents what the
+      retrieved documents actually say.
+    quote: Faithfulness measures whether the response accurately represents what those
+      documents actually say
+    location: char 22983 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-13
+    text: HyDE adds a full LLM generation step before retrieval, which increases both
+      latency and computational cost on every query.
+    quote: HyDE adds a full LLM generation step before retrieval, increasing latency
+      and cost
+    location: char 16000 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-14
+    text: HyDE improves recall for short, abstract, or underspecified queries where
+      raw query embeddings diverge from document space.
+    quote: This tends to improve recall for abstract or underspecified queries
+    location: char 12671 of 27062 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-15
+    text: HyDE can reduce precision when the LLM generates confident-sounding hallucinations
+      in the hypothetical answer.
+    quote: But it can hurt precision when the hypothetical answer contains confident-sounding
+      fabrications
+    location: char 12813 of 27062 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-16
+    text: For well-specified queries with strong lexical overlap against a corpus,
+      standard dense retrieval often matches or exceeds HyDE performance.
+    quote: For well-specified queries with strong lexical overlap against the corpus,
+      standard dense retrieval often matches
+    location: char 16133 of 27062 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-17
+    text: HyDE improves recall on vague queries but reduces precision by introducing
+      confident-sounding hallucinations that match loosely related chunks.
+    quote: HyDE tends to improve recall on vague queries but can hurt precision
+    location: char 24011 of 27062 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-18
+    text: RAG pipelines should flag responses when groundedness scores below 0.80
+      and block responses when faithfulness drops below 0.70.
+    quote: Flag responses when groundedness falls below 0.80 and block responses when
+      faithfulness drops below 0.70
+    location: char 24865 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-19
+    text: 'RAG evaluation should use four sequential measurement stages: retrieval
+      quality, groundedness, faithfulness, then end-to-end answer relevance.'
+    quote: 'Structure the pipeline in four sequential measurement stages: retrieval
+      quality first'
+    location: char 24300 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-20
+    text: RAG systems require an inference-time logging layer capturing inputs, retrieved
+      chunks, and generated outputs for post-hoc evaluation.
+    quote: The structural requirement is a logging layer that captures inputs, retrieved
+      chunks, and generated outputs
+    location: char 24670 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-21
+    text: RAG exposes retriever and generator as two distinct, independently inspectable
+      failure surfaces.
+    quote: RAG exposes two distinct failure surfaces, the retriever and the generator
+    location: char 25183 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-22
+    text: Fine-tuning collapses retriever and generator failures into model weights,
+      eliminating retrievable error sources in production failures.
+    quote: Fine-tuning collapses both into the model weights, so when output quality
+      degrades in production
+    location: char 25308 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-23
+    text: RAG allows knowledge base updates without retraining, enabling corpus changes
+      faster than fine-tuning retraining cycles.
+    quote: RAG also lets you update the knowledge base without retraining, which matters
+      when
+    location: char 25524 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-24
+    text: Misaligned embedding spaces across languages produce retrieval mismatches
+      that are difficult to diagnose without per-query inspection.
+    quote: misaligned embedding spaces across languages produce retrieval mismatches
+      that are hard to diagnose
+    location: char 26311 of 27062 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+  url: https://arxiv.org/html/2506.00054v1
+  title: 'Retrieval-Augmented Generation: A Comprehensive Survey of Architectures,
+    Enhancements, and Robustness Frontiers'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 9756bdf26bafcb33a3e86e388cd61eea6816979a
+  claims:
+  - claim_id: C-6b91aaf9-1
+    text: Retrieval-Augmented Generation (RAG) is a framework that augments large
+      language models with external knowledge access via document retrieval.
+    quote: Retrieval-Augmented Generation (RAG) is a framework that augments large
+      language models (LLMs) with external knowledge
+    location: char 4768 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    - c99a2aabb21d9e939696bfc3e4419c436695d67b
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-2
+    text: 'RAG systems consist of three core modules: Query Encoder, Retriever, and
+      Generator.'
+    quote: 'At a high level, a RAG system consists of three modules:'
+    location: char 5946 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-3
+    text: The paper provides comparative performance analyses on short-form and multi-hop
+      question answering tasks.
+    quote: comparative performance analyses on short-form and multi-hop question answering
+      tasks
+    location: char 1657 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-4
+    text: Retrieval noise and redundancy can degrade output quality in RAG systems.
+    quote: retrieval noise and redundancy can degrade output quality
+    location: char 3790 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-5
+    text: RAG addresses critical limitations of parametric knowledge storage including
+      factual inconsistency and domain inflexibility.
+    quote: RAG addresses critical limitations of parametric knowledge storage—such
+      as factual inconsistency and domain inflexibility
+    location: char 1025 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-6
+    text: Misalignment between retrieved evidence and generated text can lead to hallucinations.
+    quote: misalignment between retrieved evidence and generated text can lead to
+      hallucinations
+    location: char 3849 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-7
+    text: RAG-Fusion improves recall by combining results from multiple reformulated
+      queries through reciprocal rank fusion.
+    quote: further improves recall by combining results from multiple reformulated
+      queries through reciprocal rank fusion
+    location: char 10374 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-8
+    text: The document is a preprint currently under review at ACM Transactions on
+      Information Systems (TOIS).
+    quote: This is a preprint under review at ACM TOIS.
+    location: char 254 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-9
+    text: LongRAG retrieves compressed long-context chunks created through document
+      grouping to better exploit long-context language models.
+    quote: retrieving compressed long-context chunks, constructed through document
+      grouping
+    location: char 12438 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-17
+    text: TA-ARE reduces redundant retrievals by 14.9% in short-form retrieval tasks
+      using learned estimators instead of static thresholds.
+    quote: reducing redundant retrievals by 14.9% in short-form tasks
+    location: char 25950 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-18
+    text: SimRAG self-supervised learning on synthetic QA pairs achieves 1.2–8.6%
+      accuracy gains across datasets.
+    quote: achieves 1.2–8.6% accuracy gains across datasets
+    location: char 26930 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-19
+    text: KRAGEN knowledge graph subgraph retrieval using Graph-of-Thoughts prompting
+      reduces hallucinations by 20–30%.
+    quote: reduces hallucinations by 20–30%
+    location: char 28066 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-20
+    text: Dual-Pathway KG-RAG combining structured and unstructured retrieval reduces
+      hallucinations by 18% in biomedical QA tasks.
+    quote: reducing hallucinations by 18% in biomedical QA tasks
+    location: char 28402 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-21
+    text: Graph RAG using entity-centric graphs and community summarization improves
+      multi-hop QA recall by 6.4 points.
+    quote: improving multi-hop QA recall by 6.4 points
+    location: char 28620 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-22
+    text: Customer Service QA deployed at LinkedIn achieved 77.6% improvement in retrieval
+      MRR using RAG with knowledge graphs from issue tickets.
+    quote: achieving a 77.6% improvement in retrieval MRR
+    location: char 28824 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-23
+    text: FILCO lexical filtering reduces hallucinations by up to 64% and improves
+      EM by +8.6 using word overlap scoring.
+    quote: reduces hallucinations by up to 64%, improving EM by +8.6
+    location: char 30025 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-6b91aaf9-24
+    text: SEER self-supervised filtering improves F1 by 13.5% while reducing context
+      length by 9.25× using label-free pseudo-relevance judgments.
+    quote: improving F1 by 13.5% and achieving a 9.25× reduction in context length
+    location: char 30922 of 137190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+- source_id: 35c24b59b22d7a7793ab42cf31546a81daa03eef
+  url: https://github.com/vibrantlabsai/ragas
+  title: 'GitHub - vibrantlabsai/ragas: Supercharge Your LLM Application Evaluations
+    🚀 · GitHub'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 8e3b4abcd3d85d35e6e9e393d4cbec14604f4be8
+  claims:
+  - claim_id: C-35c24b59-1
+    text: Ragas can be installed via pip package manager
+    quote: pip install ragas
+    location: char 2274 of 6410 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-35c24b59-2
+    text: Ragas can be installed from source via git
+    quote: pip install git+https://github.com/vibrantlabsai/ragas
+    location: char 2320 of 6410 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-35c24b59-4
+    text: Ragas provides a quickstart CLI command for project generation
+    quote: ragas quickstart command
+    location: char 2466 of 6410 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-35c24b59-5
+    text: Ragas collects minimal anonymized usage data by default
+    quote: We collect minimal, anonymized usage data
+    location: char 5521 of 6410 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-35c24b59-6
+    text: Users can disable analytics tracking via the RAGAS_DO_NOT_TRACK environment
+      variable
+    quote: set the RAGAS_DO_NOT_TRACK environment variable to true
+    location: char 5754 of 6410 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: f110bea051e803126142fa710ea9e77a206403b4
+  url: https://arxiv.org/abs/2309.15217
+  title: '[2309.15217] Ragas: Automated Evaluation of Retrieval Augmented Generation'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 61a57ad7acb11a9b8969c4dc41b620e44c82c5ac
+  claims:
+  - claim_id: C-f110bea0-1
+    text: Ragas is a framework that enables reference-free evaluation of RAG pipelines
+      without ground truth annotations.
+    quote: a framework for reference-free evaluation of Retrieval Augmented Generation
+      (RAG) pipelines
+    location: char 655 of 4347 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f110bea0-2
+    text: 'RAG systems have two main components: a retrieval module and an LLM-based
+      generation module.'
+    quote: RAG systems are composed of a retrieval and an LLM based generation module
+    location: char 748 of 4347 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f110bea0-3
+    text: Providing knowledge from reference databases through RAG reduces the risk
+      of LLM hallucinations.
+    quote: reducing the risk of hallucinations
+    location: char 983 of 4347 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f110bea0-4
+    text: Evaluating RAG systems is challenging because multiple evaluation dimensions
+      must be considered.
+    quote: Evaluating RAG architectures is, however, challenging because there are
+      several dimensions to consider
+    location: char 1020 of 4347 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f110bea0-5
+    text: Retrieval system performance is measured by its ability to identify relevant
+      and focused context passages.
+    quote: the ability of the retrieval system to identify relevant and focused context
+      passages
+    location: char 1124 of 4347 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f110bea0-6
+    text: LLM performance in RAG is assessed by its ability to faithfully use retrieved
+      passages.
+    quote: the ability of the LLM to exploit such passages in a faithful way
+    location: char 1211 of 4347 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f110bea0-7
+    text: Generation quality is an independent evaluation dimension in RAG systems.
+    quote: the quality of the generation itself
+    location: char 1281 of 4347 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
