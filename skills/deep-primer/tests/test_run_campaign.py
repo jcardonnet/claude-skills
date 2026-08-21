@@ -12,6 +12,12 @@ import yaml
 from research.retrieval_loop import Document
 from research.run_campaign import run
 
+# Grouping is a model seam like the other three, and these tests stay offline, so every call below
+# either injects a stub grouper or passes `lexical_grouping=True`. The default is deliberately the
+# model path — word-overlap grouping is what turned spec-03's 271 claims into 249 concepts — so a
+# test that forgets to say so would reach the network, which is the failure mode worth spelling out.
+OFFLINE = {"lexical_grouping": True}
+
 BODY = (
     "Distributed tracing propagates a trace context across service boundaries.\n\n"
     "A span is the unit of work in a trace and carries a start and an end timestamp.\n\n"
@@ -71,7 +77,7 @@ def _spec(tmp_path: Path) -> Path:
 def test_the_driver_produces_every_artifact_the_lints_read(tmp_path):
     out = tmp_path / "out"
     report = run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
-                 backend=_Backend(), extractor=_Extractor(), judge=_NoFinding())
+                 backend=_Backend(), extractor=_Extractor(), judge=_NoFinding(), **OFFLINE)
 
     for name in ("discovery-leads.yaml", "discovery-log.yaml", "source-ledger.yaml",
                  "concept-map.yaml", "convergence-log.yaml", "campaign-run.json"):
@@ -84,7 +90,7 @@ def test_the_gate_still_runs_inside_the_composition(tmp_path):
     """A fabricated quote does not become provenance just because a driver assembled the call."""
     out = tmp_path / "out"
     report = run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
-                 backend=_Backend(), extractor=_Extractor(), judge=_NoFinding())
+                 backend=_Backend(), extractor=_Extractor(), judge=_NoFinding(), **OFFLINE)
 
     assert report["grounding"]["claims_kept"] == 3        # one survivor per document
     assert report["grounding"]["claims_rejected"] == 3
@@ -98,12 +104,41 @@ def test_the_ledger_is_built_by_replaying_the_frozen_corpus(tmp_path):
     re-runs offline to a byte-identical ledger — the property a threshold can be fitted against."""
     out = tmp_path / "out"
     first = run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
-                backend=_Backend(), extractor=_Extractor(), judge=_NoFinding())
+                backend=_Backend(), extractor=_Extractor(), judge=_NoFinding(), **OFFLINE)
     frozen = (out / "source-ledger.yaml").read_text(encoding="utf-8")
 
     # --from-corpus: no backend at all, and the same bytes come back out.
     second = run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
-                 from_corpus=out / "corpus", extractor=_Extractor(), judge=_NoFinding())
+                 from_corpus=out / "corpus", extractor=_Extractor(), judge=_NoFinding(), **OFFLINE)
     assert (out / "source-ledger.yaml").read_text(encoding="utf-8") == frozen
     assert second["retrieval"]["documents_extracted"] == first["retrieval"]["documents_extracted"]
     assert second["retrieval"]["documents_fetched"] == 0   # the resume path touched no network
+
+
+def test_the_grouping_seams_are_wired_and_what_they_reject_is_reported(tmp_path):
+    """Grouping is where the last campaign quietly failed: 271 claims became 249 concepts and 0
+    corroborations, and `campaign-run.json` had no field that would have said so.
+
+    An injected grouper wins over `lexical_grouping`, so a test never has to opt out twice.
+    """
+    out = tmp_path / "out"
+
+    class _Grouper:
+        notes = ["stub grouper ran"]
+        errors: list = []
+
+        def __call__(self, claims, params):
+            assert params["target_domain"] == "distributed tracing"   # params reach the seam
+            return [{"claim_ids": [cid for cid, _ in claims] + ["C-invented"],
+                     "canonical_term": "span", "home_anchor": "a request log line"}]
+
+    report = run(_spec(tmp_path), out, as_of="2026-08-20", waves=("A",),
+                 backend=_Backend(), extractor=_Extractor(), judge=_NoFinding(),
+                 grouper=_Grouper(), corroboration_grouper=lambda claims, _p: [
+                     {"claim_ids": [cid for cid, _ in claims]}])
+
+    assert report["concepts"] == 1                       # one concept, not one per claim
+    assert report["grounding"]["corroborated"] == 3      # three documents, three sources, one fact
+    assert any("C-invented" in n for n in report["grouping"]["gate_rejections"])
+    assert "stub grouper ran" in report["grouping"]["grouper_notes"]
+    assert report["calls"]["group"] == 0                 # stubs carry no cli; the field still exists

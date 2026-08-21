@@ -28,6 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ir.schema import Claim, Source, SourceLedger  # noqa: E402
 from research.discovery import LexicalSimilarity, Similarity  # noqa: E402
+from research.grouping import ClaimGrouper, resolve_groups  # noqa: E402
 from research.retrieval_loop import Document  # noqa: E402
 
 MAX_QUOTE_WORDS = 15                   # SKILL.md: quotes stay short; the primer paraphrases
@@ -142,13 +143,31 @@ def build_ledger(documents: Iterable[Document], extractor: Extractor | None = No
 
 
 def corroborate(ledger: SourceLedger, backend: Similarity | None = None,
-                threshold: float = CLAIM_MATCH_THRESHOLD) -> SourceLedger:
+                threshold: float = CLAIM_MATCH_THRESHOLD,
+                grouper: ClaimGrouper | None = None,
+                notes: list[str] | None = None) -> SourceLedger:
     """R-GROUND-05: set corroboration_count + corroborated_by on multiply-supported claims.
 
     Counts INDEPENDENT sources — a claim repeated twice within one document is one source, and
     vendor sources are still counted here but tagged, so coverage.py can apply the stricter
     non-vendor rule to performance claims (R-EVID-03) without losing information.
+
+    Two ways to decide "the same claim", one meaning
+    -----------------------------------------------
+    Without a `grouper` this is pairwise lexical overlap: for each claim, every OTHER source with a
+    claim above `threshold`. That is the offline path, and on real prose it finds almost nothing —
+    spec-03's first campaign corroborated 0 of 271 claims, which quietly makes R-GROUND-05 and
+    R-EVID-03 unenforceable in exactly the runs that need them.
+
+    With a `grouper` the model proposes sets of claims that assert one fact and `resolve_groups`
+    decides; corroboration is then a count over the DISTINCT SOURCES in a surviving group. The
+    field means the same thing either way — independent sources supporting one assertion — and the
+    group form is strictly better behaved: pairwise similarity is not transitive, so A~B and B~C
+    could credit A and C to each other's support without ever being compared.
     """
+    if grouper is not None:
+        return _corroborate_by_group(ledger, grouper, notes)
+
     backend = backend or LexicalSimilarity()
     indexed = [(s, c) for s in ledger.sources for c in s.claims]
 
@@ -162,6 +181,29 @@ def corroborate(ledger: SourceLedger, backend: Similarity | None = None,
         if supporters:
             claim.corroborated_by = sorted(supporters)
             claim.corroboration_count = len(supporters) + 1   # this source plus the others
+    return ledger
+
+
+def _corroborate_by_group(ledger: SourceLedger, grouper: ClaimGrouper,
+                          notes: list[str] | None = None) -> SourceLedger:
+    """Count distinct sources per resolved group. A single-source group corroborates nothing."""
+    indexed = {c.claim_id: (s.source_id, c) for s in ledger.sources for c in s.claims}
+    claims = sorted(((cid, c.text) for cid, (_, c) in indexed.items()), key=lambda x: x[0])
+    # The grouper gets the claim->source map so it can skip work it could never learn from: a
+    # candidate set drawn from one source has no corroboration to find, whatever it says.
+    params = {"claim_sources": {cid: src for cid, (src, _) in indexed.items()}}
+    groups, rejected = resolve_groups(grouper(claims, params), claims)
+    if notes is not None:
+        notes.extend(rejected)
+
+    for group in groups:
+        sources = sorted({indexed[cid][0] for cid in group.claim_ids})
+        if len(sources) < 2:
+            continue
+        for cid in group.claim_ids:
+            own, claim = indexed[cid]
+            claim.corroborated_by = [s for s in sources if s != own]
+            claim.corroboration_count = len(sources)
     return ledger
 
 

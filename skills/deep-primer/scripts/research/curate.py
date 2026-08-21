@@ -9,9 +9,18 @@ a deep-research report's structure. That is the R-DISC-01 firewall applied to sh
 evidence: a discovery report's own taxonomy is a lead about how the field is organized, not a
 finding about it.
 
-Deterministic here: clustering claims into concepts, salience (claim-frequency centrality),
-epistemic status from the contested flags, and the outline's order/mapping. Model-judged behind
-the `Curator` seam: what to CALL a concept, and which adjacent technique anchors it.
+Deterministic here: salience (claim-frequency centrality), epistemic status from the contested
+flags, the outline's order/mapping — and the GATE on grouping. Model-judged behind two seams: which
+claims belong together (`ClaimGrouper`, see `research/grouping.py`), and what to CALL the result
+(`Curator`).
+
+Grouping moved behind a seam because the offline lexical path could not do the job. On spec-03's
+real ledger it turned 271 grounded claims into 249 single-claim "concepts": two sources describing
+one idea seldom reuse each other's words, so bag-of-words overlap under-merges by construction, and
+a concept-map of singletons makes salience meaningless and depth allocation (R-ARCH-06) arbitrary.
+What stayed deterministic is every DECISION — `resolve_groups` admits a grouping, `curate` derives
+salience, status, and source_ids from the ledger. `LexicalGrouper` remains the default so an
+offline run still produces a concept-map without a model.
 """
 from __future__ import annotations
 
@@ -23,6 +32,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ir.schema import Concept, ConceptMap, EpistemicStatus, SourceLedger  # noqa: E402
 from research.discovery import LexicalSimilarity, Similarity  # noqa: E402
+from research.grouping import ClaimGrouper, Group, lexical_groups, resolve_groups  # noqa: E402
 
 CONCEPT_MATCH_THRESHOLD = 0.5     # claims this similar cluster into one concept
 
@@ -72,51 +82,80 @@ class StubCurator:
         return max(scored, key=lambda s: (s[0], -s[1]))[2]
 
 
+def ledger_claims(ledger: SourceLedger) -> list[tuple[str, str]]:
+    """Every grounded claim as (claim_id, text), sorted by id — the stable order groupers need."""
+    return sorted(((c.claim_id, c.text) for s in ledger.sources for c in s.claims),
+                  key=lambda x: x[0])
+
+
 def cluster_claims(ledger: SourceLedger, backend: Similarity | None = None,
                    threshold: float = CONCEPT_MATCH_THRESHOLD) -> list[list[tuple[str, str]]]:
-    """Group ledger claims into concept clusters. Deterministic (claims sorted by id first).
+    """Group ledger claims into concept clusters by lexical overlap, as (claim_id, text) pairs.
 
-    Returns clusters of (claim_id, claim_text).
+    Kept as the offline path; the clustering itself now lives in `grouping.lexical_groups` so the
+    same primitive can also block candidate pairs for corroboration.
     """
-    backend = backend or LexicalSimilarity()
-    claims = sorted(((c.claim_id, c.text) for s in ledger.sources for c in s.claims),
-                    key=lambda x: x[0])
-    clusters: list[list[tuple[str, str]]] = []
-    for cid, text in claims:
-        for cluster in clusters:
-            if any(backend.score(text, other) >= threshold for _, other in cluster):
-                cluster.append((cid, text))
-                break
-        else:
-            clusters.append([(cid, text)])
-    return clusters
+    claims = ledger_claims(ledger)
+    text_of = dict(claims)
+    return [[(cid, text_of[cid]) for cid in ids]
+            for ids in lexical_groups(claims, backend, threshold)]
+
+
+class LexicalGrouper:
+    """The offline `ClaimGrouper`: lexical overlap, no naming. Under-merges — see the module docstring."""
+
+    def __init__(self, backend: Similarity | None = None,
+                 threshold: float = CONCEPT_MATCH_THRESHOLD) -> None:
+        self.backend = backend or LexicalSimilarity()
+        self.threshold = threshold
+
+    def __call__(self, claims: list[tuple[str, str]], params: dict) -> list[dict]:
+        return [{"claim_ids": ids}
+                for ids in lexical_groups(claims, self.backend, self.threshold)]
 
 
 def curate_concept_map(ledger: SourceLedger, params: dict | None = None,
                        curator: Curator | None = None,
-                       backend: Similarity | None = None) -> ConceptMap:
+                       backend: Similarity | None = None,
+                       grouper: ClaimGrouper | None = None,
+                       notes: list[str] | None = None) -> ConceptMap:
     """Build the concept-map from grounded claims.
+
+    `grouper` proposes which claims belong together; `resolve_groups` decides. A grouper that also
+    names its groups (the model path) supplies canonical_term / aliases / home_anchor directly; the
+    `Curator` seam fills in only what the grouper left blank, so the offline path is unchanged.
 
     `salience` is the claim-frequency centrality proxy the depth allocator uses (R-ARCH-06): a
     concept's share of claims relative to the largest cluster. V1 has no concept graph, so
     frequency stands in for centrality.
+
+    `notes` collects what the gate rejected. It is a sink rather than a second return value because
+    every existing caller wants the concept-map; a run that cares what was thrown away passes a list.
     """
     params = params or {}
     curator = curator or StubCurator(backend)
-    clusters = cluster_claims(ledger, backend)
-    if not clusters:
+    claims = ledger_claims(ledger)
+    if not claims:
         return ConceptMap()
 
+    grouper = grouper or LexicalGrouper(backend)
+    groups, rejected = resolve_groups(grouper(claims, params), claims)
+    if notes is not None:
+        notes.extend(rejected)
+    if not groups:
+        return ConceptMap()
+
+    text_of = dict(claims)
     claim_source = {c.claim_id: s.source_id for s in ledger.sources for c in s.claims}
     contested_ids = {c.claim_id for s in ledger.sources for c in s.claims if c.contested}
-    biggest = max(len(c) for c in clusters)
+    biggest = max(len(g.claim_ids) for g in groups)
 
     concepts: list[Concept] = []
-    for n, cluster in enumerate(clusters, start=1):
-        claim_ids = [cid for cid, _ in cluster]
-        texts = [t for _, t in cluster]
-        term, aliases = curator.name_concept(texts)
-        anchor, boundary = curator.home_anchor(term, texts, params)
+    for n, group in enumerate(groups, start=1):
+        claim_ids = group.claim_ids
+        texts = [text_of[cid] for cid in claim_ids]
+        term, aliases = _name(group, texts, curator)
+        anchor, boundary = _anchor(group, term, texts, params, curator)
         concepts.append(Concept(
             concept_id=f"c{n}-{term.replace(' ', '-')[:40]}",
             canonical_term=term,
@@ -126,11 +165,27 @@ def curate_concept_map(ledger: SourceLedger, params: dict | None = None,
             epistemic_status=(EpistemicStatus.contested
                               if any(cid in contested_ids for cid in claim_ids)
                               else EpistemicStatus.settled),
-            salience=round(len(cluster) / biggest, 4),
+            salience=round(len(claim_ids) / biggest, 4),
             source_ids=sorted({claim_source[cid] for cid in claim_ids if cid in claim_source}),
             claim_ids=claim_ids,
         ))
     return ConceptMap(concepts=concepts)
+
+
+def _name(group: Group, texts: list[str], curator: Curator) -> tuple[str, list[str]]:
+    """The grouper's own name if it gave one, else the curator's. Never both."""
+    if group.canonical_term:
+        return group.canonical_term, list(group.aliases)
+    return curator.name_concept(texts)
+
+
+def _anchor(group: Group, term: str, texts: list[str], params: dict,
+            curator: Curator) -> tuple[str, str]:
+    """Ditto for the R-XREF-04 bridge. `resolve_groups` has already stripped a tautological one,
+    so an empty `home_anchor` here means "the grouper had no answer", not "the answer was bad"."""
+    if group.home_anchor:
+        return group.home_anchor, group.fidelity_boundary
+    return curator.home_anchor(term, texts, params)
 
 
 def outline_seed(concept_map: ConceptMap, params: dict | None = None,

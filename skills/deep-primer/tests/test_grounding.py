@@ -24,6 +24,7 @@ from research.claim_extractor import (
     mark_conflicts,
     mark_recency,
 )
+from research.grouping import resolve_groups
 from research.retrieval_loop import Document, ReplayFetcher, fetch_source_leads, retrieve_for_questions
 
 BODY = (
@@ -646,3 +647,218 @@ def test_an_extraction_failure_is_a_document_with_no_claims_not_a_dead_run():
     doc = Document(url="https://example.org/a", text="Spans carry a timestamp.")
     assert extractor(doc) == []
     assert "simulated outage" in extractor.errors[0]       # recorded, not swallowed
+
+
+# --- the grouping gate (research/grouping.py) --------------------------------
+# Concept grouping and corroboration ask one question — "which of these claims say the same
+# thing?" — and both used to answer it with word overlap. Spec-03's first real campaign is the
+# measurement: 271 grounded claims became 249 single-claim concepts, 0 of them corroborated. The
+# model proposes now. What is pinned below is that it still does not DECIDE: every property here
+# holds no matter what the model returns, which is the only reason a model is allowed near the
+# evidence base at all.
+
+GATE_CLAIMS = [("C1", "chunking bounds recall"),
+               ("C2", "recall is bounded by chunking"),
+               ("C3", "rerankers reorder candidates")]
+
+
+def test_the_gate_drops_a_claim_id_that_is_not_in_the_ledger():
+    """A confabulated id would otherwise invent provenance out of nothing."""
+    groups, rejected = resolve_groups(
+        [{"claim_ids": ["C1", "C99"], "canonical_term": "chunking"}], GATE_CLAIMS)
+    assert groups[0].claim_ids == ["C1"]
+    assert "C99" in rejected[0] and "not in the ledger" in rejected[0]
+
+
+def test_a_claim_joins_at_most_one_group_however_often_it_is_proposed():
+    """Salience is claims-per-concept over the largest concept. A claim counted twice inflates both
+    ends of that ratio, and R-ARCH-06 spends depth on the result."""
+    groups, rejected = resolve_groups(
+        [{"claim_ids": ["C1", "C2"], "canonical_term": "chunking"},
+         {"claim_ids": ["C2", "C3"], "canonical_term": "reranking"}], GATE_CLAIMS)
+    assert [g.claim_ids for g in groups] == [["C1", "C2"], ["C3"]]
+    assert sum(len(g.claim_ids) for g in groups) == len(GATE_CLAIMS)
+    assert any("already grouped" in r for r in rejected)
+
+
+def test_two_groups_with_one_name_are_one_concept():
+    """R-VOCAB-01 (A) wants canonical terms unique across concepts. Naming two groups identically
+    IS the model saying they are one, so merging makes the rule true by construction rather than
+    leaving a lint to report it after the map is built."""
+    groups, rejected = resolve_groups(
+        [{"claim_ids": ["C1"], "canonical_term": "chunking", "aliases": ["segmentation"]},
+         {"claim_ids": ["C2"], "canonical_term": "Chunking", "aliases": ["windowing"]},
+         {"claim_ids": ["C3"], "canonical_term": "reranking"}], GATE_CLAIMS)
+    assert [g.canonical_term for g in groups] == ["chunking", "reranking"]
+    assert groups[0].claim_ids == ["C1", "C2"]
+    assert groups[0].aliases == ["segmentation", "windowing"]
+    assert any("repeats an earlier group" in r for r in rejected)
+
+
+def test_a_claim_nobody_grouped_becomes_a_singleton_not_a_deletion():
+    """Silently dropping unmentioned claims would shrink the evidence base every time the model
+    got lazy, and shrink it invisibly. An unmerged claim is a fact about the grouping, not a
+    reason to stop grounding it."""
+    groups, rejected = resolve_groups(
+        [{"claim_ids": ["C1"], "canonical_term": "chunking"}], GATE_CLAIMS)
+    assert [g.claim_ids for g in groups] == [["C1"], ["C2"], ["C3"]]
+    assert "2 claim(s)" in rejected[0]
+
+
+def test_a_home_anchor_that_restates_its_own_concept_never_reaches_the_concept_map():
+    """R-XREF-04, enforced where the anchor is admitted rather than only where it is audited.
+
+    The last assertion is the point: the gate and `home_anchor_distinct` share one predicate, so an
+    anchor the gate lets through cannot be one the lint later rejects. Two copies of "does this
+    restate itself" would drift, and the drift strands a finished concept-map.
+    """
+    from checks._base import LintContext
+    from checks.univocity_terms import home_anchor_distinct
+    from ir.schema import DocumentIR
+
+    def _tautology(claims, _params):
+        return [{"claim_ids": [cid for cid, _ in claims],
+                 "canonical_term": "cross-encoder reranking",
+                 "home_anchor": "reranking", "fidelity_boundary": "the cost model differs"}]
+
+    notes: list[str] = []
+    cm = curate.curate_concept_map(_curation_ledger(), grouper=_tautology, notes=notes)
+    assert not cm.concepts[0].home_anchor          # stripped, not shipped as a bridge
+    assert not cm.concepts[0].fidelity_boundary    # a boundary with no bridge is orphaned prose
+    assert any("R-XREF-04" in n for n in notes)
+    assert home_anchor_distinct(LintContext(ir=DocumentIR(sections=[]), concept_map=cm)) == []
+
+
+# --- group-based corroboration (R-GROUND-05) ---------------------------------
+
+def _three_claim_ledger():
+    return SourceLedger(sources=[
+        Source(source_id="s-a", claims=[Claim(claim_id="C1", text="alpha", quote="q"),
+                                        Claim(claim_id="C2", text="beta", quote="q")]),
+        Source(source_id="s-b", claims=[Claim(claim_id="C3", text="gamma", quote="q")]),
+    ])
+
+
+def test_group_corroboration_counts_distinct_sources_not_claims():
+    """Three claims, two sources, one asserted fact — the support is 2. Counting claims would let a
+    single wordy source corroborate itself, which is exactly what R-GROUND-05 exists to prevent."""
+    assert corroborate(_three_claim_ledger()).sources[0].claims[0].corroboration_count is None
+    led = corroborate(_three_claim_ledger(),
+                      grouper=lambda claims, _p: [{"claim_ids": [c for c, _ in claims]}])
+    c1, c2 = led.sources[0].claims
+    assert c1.corroboration_count == 2 and c1.corroborated_by == ["s-b"]
+    assert c2.corroborated_by == ["s-b"]
+    assert led.sources[1].claims[0].corroborated_by == ["s-a"]
+
+
+def test_a_group_drawn_from_one_source_corroborates_nothing():
+    led = corroborate(SourceLedger(sources=[Source(source_id="s-a", claims=[
+        Claim(claim_id="C1", text="alpha", quote="q"),
+        Claim(claim_id="C2", text="beta", quote="q")])]),
+        grouper=lambda claims, _p: [{"claim_ids": [c for c, _ in claims]}])
+    assert all(c.corroboration_count is None for c in led.sources[0].claims)
+
+
+def test_the_corroboration_grouper_is_told_which_source_each_claim_came_from():
+    """So it can skip candidate sets it could never learn anything from — see the blocking test."""
+    seen: dict = {}
+
+    def _grouper(_claims, params):
+        seen.update(params.get("claim_sources") or {})
+        return []
+
+    corroborate(_curation_ledger(), grouper=_grouper)
+    assert seen == {"C1": "s-a", "C2": "s-a", "C3": "s-b"}
+
+
+# --- the model half (research/claude_curator.py) -----------------------------
+# Hermetic: the CLI is stubbed. These pin the plumbing — batching, reconciliation, blocking, and
+# what an outage costs — not the model's judgement, which is not testable here and is not trusted.
+
+def _stub_cli(payloads):
+    class _Cli:
+        calls = 0
+        spend_usd = 0.0
+
+        def __init__(self):
+            self.seen = []
+
+        def result_json(self, instruction):
+            self.seen.append(instruction)
+            return payloads[min(len(self.seen) - 1, len(payloads) - 1)]
+
+    return _Cli()
+
+
+def test_the_concept_grouper_names_but_the_gate_still_decides():
+    from research.claude_curator import ClaudeConceptGrouper
+
+    grouper = ClaudeConceptGrouper(cli=_stub_cli([{"groups": [
+        {"claim_ids": ["C1", "C2", "C404"], "canonical_term": "chunk granularity",
+         "aliases": ["chunking"], "home_anchor": "record blocking",
+         "fidelity_boundary": "no join key survives the split"}]}]))
+    notes: list[str] = []
+    cm = curate.curate_concept_map(
+        _curation_ledger(), {"target_domain": "RAG", "home_domain": ["classical IR"]},
+        grouper=grouper, notes=notes)
+
+    first = cm.concepts[0]
+    assert first.canonical_term == "chunk granularity" and first.claim_ids == ["C1", "C2"]
+    assert first.home_anchor == "record blocking"          # distinct, so it survives the gate
+    assert {cid for c in cm.concepts for cid in c.claim_ids} == {"C1", "C2", "C3"}
+    assert any("C404" in n for n in notes)                 # invented id rejected, run continues
+    assert "RAG" in grouper.cli.seen[0] and "classical IR" in grouper.cli.seen[0]
+
+
+def test_batched_grouping_is_reconciled_by_one_merge_pass():
+    """Two batches of one evidence base name one concept twice. Without the merge pass the
+    duplicate survives to R-VOCAB-01 as two near-identical terms competing for the same claims."""
+    from research.claude_curator import ClaudeConceptGrouper
+
+    grouper = ClaudeConceptGrouper(max_claims_per_call=1, cli=_stub_cli([
+        {"groups": [{"claim_ids": ["C1"], "canonical_term": "chunk granularity"}]},
+        {"groups": [{"claim_ids": ["C2"], "canonical_term": "chunk sizing"}]},
+        {"merge": [[1, 2]]},
+    ]))
+    proposals = grouper([("C1", "a"), ("C2", "b")], {})
+    assert len(grouper.cli.seen) == 3                       # two batches + one reconciliation
+    assert proposals == [{"claim_ids": ["C1", "C2"], "canonical_term": "chunk granularity",
+                          "aliases": ["chunk sizing"]}]     # the absorbed name becomes an alias
+    assert any("merge pass" in n for n in grouper.notes)
+
+
+def test_the_corroboration_grouper_does_not_pay_to_judge_a_single_source_block():
+    """Corroboration counts INDEPENDENT sources, so a candidate set from one source has no verdict
+    worth buying. Blocking is what makes this affordable at 271 claims; this is what makes it cheap
+    at the ones that block together but cannot corroborate."""
+    from research.claude_curator import ClaudeCorroborationGrouper
+
+    claims = [("C1", "chunking bounds achievable retrieval recall"),
+              ("C2", "achievable retrieval recall is bounded by chunking"),
+              ("C3", "rerankers reorder candidate documents")]
+    same = ClaudeCorroborationGrouper(cli=_stub_cli([{"groups": [{"claim_ids": ["C1", "C2"]}]}]))
+    assert same(claims, {"claim_sources": {"C1": "s-a", "C2": "s-a", "C3": "s-b"}}) == []
+    assert same.cli.seen == []
+    assert any("one source only" in n for n in same.notes)
+
+    split = ClaudeCorroborationGrouper(cli=_stub_cli([{"groups": [{"claim_ids": ["C1", "C2"]}]}]))
+    assert split(claims, {"claim_sources": {"C1": "s-a", "C2": "s-b", "C3": "s-b"}}) == [
+        {"claim_ids": ["C1", "C2"]}]
+    assert len(split.cli.seen) == 1        # C3 blocked alone and was never sent
+
+
+def test_a_grouping_outage_leaves_honest_singletons_not_a_dead_run():
+    from research.claude_curator import ClaudeConceptGrouper
+    from utils.claude_cli import CliUnavailable
+
+    class _DeadCli:
+        calls = 0
+        spend_usd = 0.0
+
+        def result_json(self, _instruction):
+            raise CliUnavailable("simulated outage")
+
+    grouper = ClaudeConceptGrouper(cli=_DeadCli())
+    cm = curate.curate_concept_map(_curation_ledger(), grouper=grouper)
+    assert len(cm.concepts) == 3                           # ungrouped, but every claim still there
+    assert "simulated outage" in grouper.errors[0]         # recorded, not swallowed

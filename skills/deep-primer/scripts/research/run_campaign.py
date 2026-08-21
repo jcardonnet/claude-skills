@@ -40,6 +40,7 @@ from research import planner
 from research.claim_extractor import build_ledger, corroborate, mark_recency
 from research.claude_backend import ClaudeResearchBackend
 from research.claude_claim_extractor import ClaudeClaimExtractor
+from research.claude_curator import ClaudeConceptGrouper, ClaudeCorroborationGrouper
 from research.claude_structure_judge import ClaudeStructureJudge
 from research.curate import curate_concept_map
 from research.http_fetcher import freeze_corpus
@@ -72,10 +73,16 @@ def _spec_params(spec_path: Path) -> dict:
 def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
         research_model: str = "haiku", extract_model: str = "haiku", cost_cap: float = 5.0,
         max_docs: int | None = None, skip_convergence: bool = False,
-        from_corpus: Path | None = None,
-        backend=None, extractor=None, judge=None) -> dict:
-    """The three model seams are injectable for the same reason they are everywhere else here:
-    the composition is what this file is for, and it has to be exercisable without the network."""
+        lexical_grouping: bool = False, from_corpus: Path | None = None,
+        backend=None, extractor=None, judge=None,
+        grouper=None, corroboration_grouper=None) -> dict:
+    """Every model seam is injectable for the same reason they are everywhere else here: the
+    composition is what this file is for, and it has to be exercisable without the network.
+
+    `lexical_grouping` is the offline escape hatch, not a mode anyone should prefer — it restores
+    the word-overlap grouping that produced 249 concepts from 271 claims. An explicitly injected
+    grouper wins over it, so a test can pass a stub without also having to opt out.
+    """
     params = _spec_params(spec_path)
     topic = params["target_domain"]
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -110,10 +117,21 @@ def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
     # only the ones whose quote is verbatim in the fetched body.
     extractor = extractor or ClaudeClaimExtractor(model=extract_model, cost_cap_usd=cost_cap)
     ledger, rejections = build_ledger(documents, extractor)
-    ledger = mark_recency(corroborate(ledger), as_of=as_of)
+
+    # --- Grouping. Both of the next two steps ask "which of these claims say the same thing?", and
+    # both used to answer it with word overlap: spec-03's first campaign turned 271 claims into 249
+    # single-claim concepts and corroborated 0 of them. The model proposes now; `resolve_groups`
+    # still decides, and `--lexical-grouping` restores the offline answer for a cheap replay.
+    notes: list[str] = []
+    corroborator = corroboration_grouper
+    if corroborator is None and not lexical_grouping:
+        corroborator = ClaudeCorroborationGrouper(model=extract_model, cost_cap_usd=cost_cap)
+    ledger = mark_recency(corroborate(ledger, grouper=corroborator, notes=notes), as_of=as_of)
     _dump(ledger, out_dir / "source-ledger.yaml")
 
-    concept_map = curate_concept_map(ledger, params)
+    if grouper is None and not lexical_grouping:
+        grouper = ClaudeConceptGrouper(model=extract_model, cost_cap_usd=cost_cap)
+    concept_map = curate_concept_map(ledger, params, grouper=grouper, notes=notes)
     _dump(concept_map, out_dir / "concept-map.yaml")
 
     convergence_paths: dict = {}
@@ -149,11 +167,22 @@ def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
             "rejections": rejections,
         },
         "concepts": len(concept_map.concepts),
+        # What the gate threw away and what the groupers had to do to fit. Reported rather than
+        # logged because a silently-capped grouping run looks exactly like a well-grouped one.
+        "grouping": {
+            "gate_rejections": notes,
+            "grouper_notes": list(getattr(grouper, "notes", []))
+                             + list(getattr(corroborator, "notes", [])),
+            "grouper_errors": list(getattr(grouper, "errors", []))
+                              + list(getattr(corroborator, "errors", [])),
+        },
         "convergence": {k: str(v) for k, v in convergence_paths.items()},
         # Notional API-equivalent under the subscription, not a bill. Recorded because the binding
         # constraint on a campaign is the rate limit, and calls are what track against it.
-        "calls": {"research": _calls(backend), "extract": _calls(extractor)},
-        "spend_usd": {"research": _spend(backend), "extract": _spend(extractor)},
+        "calls": {"research": _calls(backend), "extract": _calls(extractor),
+                  "group": _calls(grouper) + _calls(corroborator)},
+        "spend_usd": {"research": _spend(backend), "extract": _spend(extractor),
+                      "group": round(_spend(grouper) + _spend(corroborator), 4)},
     }
     (out_dir / "campaign-run.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     return report
@@ -170,6 +199,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--cost-cap", type=float, default=5.0, help="per-caller notional USD ceiling")
     ap.add_argument("--max-docs", type=int, default=None, help="cap documents sent to extraction")
     ap.add_argument("--skip-convergence", action="store_true")
+    ap.add_argument("--lexical-grouping", action="store_true",
+                    help="group concepts and corroboration by word overlap instead of by model "
+                         "(free and offline, but it under-merges badly — see claude_curator.py)")
     ap.add_argument("--from-corpus", default=None,
                     help="skip discovery; replay this frozen corpus (resumes a died-in-grounding run)")
     args = ap.parse_args(argv)
@@ -179,6 +211,7 @@ def main(argv: list[str] | None = None) -> int:
                  research_model=args.research_model, extract_model=args.extract_model,
                  cost_cap=args.cost_cap, max_docs=args.max_docs,
                  skip_convergence=args.skip_convergence,
+                 lexical_grouping=args.lexical_grouping,
                  from_corpus=Path(args.from_corpus) if args.from_corpus else None)
     print(json.dumps({k: v for k, v in report.items() if k != "grounding"}, indent=2))
     g = report["grounding"]

@@ -16,6 +16,7 @@ from __future__ import annotations
 import re
 
 from checks._base import CheckNotApplicable, LintContext, Violation
+from research.grouping import anchor_restates_term
 
 
 def _doc_text(ctx: LintContext) -> str:
@@ -80,6 +81,11 @@ def home_anchor_distinct(ctx: LintContext) -> list[Violation]:
     domain, the bridge degenerates into "X is like X" and the advance organizer never fires; an
     anchor equal to (or contained in) the concept's own canonical term or aliases is that failure
     in its detectable form. Whether a distinct anchor is genuinely ADJACENT stays a critic call.
+
+    The comparison is `research.grouping.anchor_restates_term`, shared with the gate that admits a
+    model-proposed anchor in the first place. Two copies of "does this restate itself" could drift
+    apart, and the drift is silent in the dangerous direction: an anchor the gate waves through and
+    the lint later rejects strands a finished concept-map.
     """
     cm = ctx.concept_map
     if cm is None:
@@ -90,10 +96,10 @@ def home_anchor_distinct(ctx: LintContext) -> list[Violation]:
         anchor = (c.home_anchor or "").strip().lower()
         if not anchor:
             continue
-        own = {(c.canonical_term or "").strip().lower(), *(a.strip().lower() for a in c.aliases)}
-        own.discard("")
+        own = sorted({(c.canonical_term or "").strip().lower(),
+                      *(a.strip().lower() for a in c.aliases)} - {""})
         for term in own:
-            if anchor == term or anchor in term or term in anchor:
+            if anchor_restates_term(anchor, [term]):
                 out.append(Violation(
                     None,
                     f"concept '{c.concept_id}': home_anchor {c.home_anchor!r} restates its own term "
