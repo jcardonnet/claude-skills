@@ -9,6 +9,7 @@ import os
 import subprocess
 import sys
 from pathlib import Path
+from typing import ClassVar
 
 import pytest
 
@@ -24,7 +25,7 @@ from research.claim_extractor import (
     mark_conflicts,
     mark_recency,
 )
-from research.grouping import resolve_groups
+from research.grouping import Group, resolve_groups, unnamed_singletons
 from research.retrieval_loop import Document, ReplayFetcher, fetch_source_leads, retrieve_for_questions
 
 BODY = (
@@ -542,7 +543,7 @@ def test_robots_is_rechecked_after_a_redirect(monkeypatch):
     monkeypatch.setattr(fetcher, "_allowed", _allowed)
 
     class _Response:
-        headers = {"Content-Type": "text/html"}
+        headers: ClassVar[dict] = {"Content-Type": "text/html"}
 
         def read(self, _n):
             return b"<html><body><p>secret</p></body></html>"
@@ -561,6 +562,91 @@ def test_robots_is_rechecked_after_a_redirect(monkeypatch):
     assert fetcher("https://example.org/public/page") is None
     assert "redirect" in fetcher.refused["https://example.org/public/page"]
     assert allowed_calls == ["https://example.org/public/page", "https://example.org/private/page"]
+
+
+# The verbatim body Cloudflare served for `link.springer.com/article/10.1186/s13063-015-0958-9`
+# during spec-05's 2026-08-21 campaign. It went into the corpus, an extractor read claims out of it,
+# and `fetch_source_leads` stamped it `primary_paper` because that is what the lead had claimed.
+WALL = ("Client Challenge\n"
+        "A required part of this site couldn\u2019t load. This may be due to a browser extension, "
+        "network issues, or browser settings. Please check your connection, disable any ad blockers, "
+        "or try using a different browser.")
+
+PAGE = ("Adaptive designs let a trial modify itself while it is running: an interim analysis can "
+        "drop an arm, re-estimate the sample size, or stop early for futility, and the design fixes "
+        "in advance which of those moves is allowed and on what evidence. The type I error rate is "
+        "preserved by spending it across the looks rather than by pretending the looks did not "
+        "happen. What the method cannot do is rescue a trial whose endpoint was wrong, and "
+        "regulators ask for the adaptation rule before the first patient is enrolled.")
+
+
+def _page_fetcher(monkeypatch, text, **kwargs):
+    """An HttpFetcher that serves `text` as an HTML page, with robots.txt out of the way."""
+    from research.http_fetcher import HttpFetcher
+
+    fetcher = HttpFetcher(**kwargs)
+    monkeypatch.setattr(fetcher, "_allowed", lambda _url: True)
+
+    class _Response:
+        headers: ClassVar[dict] = {"Content-Type": "text/html"}
+
+        def read(self, _n=None):
+            return f"<html><body><p>{text}</p></body></html>".encode()
+
+        def geturl(self):
+            return "https://example.org/page"
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_exc):
+            return False
+
+    monkeypatch.setattr("urllib.request.urlopen", lambda *_a, **_k: _Response())
+    return fetcher
+
+
+@pytest.mark.parametrize("label,text,kept", [
+    ("a bot wall", WALL, False),
+    ("a cookie notice", "Cookies must be enabled. Please enable cookies and reload the page.", False),
+    ("a nav-only shell", ("Baggage | OpenTelemetry View Markdown View page source Edit this page "
+                          "Was this page helpful? Yes No"), False),
+    ("an actual page", PAGE, True),
+])
+def test_a_body_too_short_to_be_the_document_is_refused_at_the_fetch(label, text, kept, monkeypatch):
+    """G17 class 1. Returning bytes is not the same as returning the page that was sought, and by
+    the time the difference matters it is gone: `fetch_source_leads` stamps every Document it keeps
+    with its lead\u2019s declared type, so a wall enters the ledger wearing whatever credibility tier
+    discovery guessed for the paper behind it. spec-05 shipped 15 claims of interstitial
+    troubleshooting text that way.
+
+    The threshold is measured, not chosen. Across the 449 documents of the four committed campaign
+    corpora the word-count band 62\u201392 is EMPTY \u2014 below it everything is chrome, and the thinnest
+    document carrying a real sentence is 93 words long.
+    """
+    from research.http_fetcher import MIN_CONTENT_WORDS
+
+    fetcher = _page_fetcher(monkeypatch, text)
+    got = fetcher("https://example.org/page")
+    assert (got is not None) is kept, label
+    if kept:
+        assert len(text.split()) > MIN_CONTENT_WORDS       # the sample really is over the line
+    else:
+        assert "below the" in fetcher.refused["https://example.org/page"]
+
+
+def test_the_length_gate_is_a_dial_and_emptiness_is_refused_underneath_it(monkeypatch):
+    """Two separate refusals that would otherwise collapse into one.
+
+    `min_words=0` restores the pre-gate behaviour exactly \u2014 a campaign that wants every byte it can
+    get can have it \u2014 but an empty extraction is still not a document, and it keeps its own distinct
+    reason so a corpus audit can tell "the server sent chrome" from "the server sent nothing".
+    """
+    assert _page_fetcher(monkeypatch, WALL, min_words=0)("https://example.org/page") is not None
+
+    empty = _page_fetcher(monkeypatch, "   ", min_words=0)
+    assert empty("https://example.org/page") is None
+    assert empty.refused["https://example.org/page"] == "fetched but empty after text extraction"
 
 
 # --- the model half of the grounding loop (ClaudeClaimExtractor) -------------
@@ -722,6 +808,62 @@ def test_a_singleton_is_named_from_meaning_not_from_a_digit_that_sorts_first():
                   "hundreds of thousands of spans per second.")])[0] == "microservices application"
     assert name([("Datadog has 600 or more built-in integrations for services and "
                   "platforms.")])[0] == "integrations platforms"
+
+
+def test_the_singleton_the_grouper_could_not_name_is_the_one_worth_looking_at():
+    """G17 class 1, read off the grouping instead of off the page.
+
+    A grouper that saw every claim in the corpus, put THIS one with nothing, and could not say what
+    it was about either has answered a question: the claim shares no subject with the rest of the
+    evidence. `resolve_groups` was computing that and `curate_concept_map` was discarding it \u2014 by
+    the time the artifact exists the tell is gone, because StubCurator's word-frequency fallback has
+    already supplied a name ("settings browser", "requires content") that only LOOKS like an answer.
+
+    The empty term is the signal; the salad is the symptom. So the test is structural: a singleton
+    the grouper named is not flagged, and a group of two is not a singleton however it was named.
+    """
+    groups = [Group(claim_ids=["C1", "C2"]),                          # corroboration: no name wanted
+              Group(claim_ids=["C3"], canonical_term="reranking"),    # named \u2014 the grouper had an answer
+              Group(claim_ids=["C4"])]                                # orphaned AND unnameable
+    assert unnamed_singletons(groups) == ["C4"]
+    assert unnamed_singletons([]) == []
+
+
+def test_a_source_stranded_in_every_claim_is_reported_and_a_mostly_stranded_one_is_not():
+    """The cut is "all of them", and it has no threshold to tune because that is where spec-05's
+    real campaign separates: the five sources at 100% are the five bot walls, and the worst GENUINE
+    source \u2014 a Bayesian dose-finding paper full of one-off specifics \u2014 sits at 9 of 20.
+
+    `w-*` below is a wall's whole contribution; `p-*` is that paper, shrunk to the same ratio. Any
+    threshold loose enough to catch a chatty wall would take the paper with it, so the roll-up
+    refuses to be a percentage.
+    """
+    groups = [Group(claim_ids=["w1"]), Group(claim_ids=["w2"]),
+              Group(claim_ids=["p1"]), Group(claim_ids=["p2"]),
+              Group(claim_ids=["p3", "p4"], canonical_term="dose escalation")]
+    claim_source = {"w1": "s-wall", "w2": "s-wall",
+                    "p1": "s-paper", "p2": "s-paper", "p3": "s-paper", "p4": "s-paper"}
+    assert curate.ungrouped_sources(groups, claim_source) == [
+        {"source_id": "s-wall", "claims": 2, "claim_ids": ["w1", "w2"]}]
+
+
+def test_stranded_sources_reach_the_campaign_report_only_when_a_caller_asks_for_them():
+    """Advisory, never a gate \u2014 the claims stay in the ledger and the concept-map is unchanged.
+
+    It cannot be a gate for a structural reason worth pinning: `LexicalGrouper`, the default offline
+    path, names nothing at all, so on `--lexical-grouping` every singleton is flagged and the signal
+    means nothing. Only a naming grouper makes the empty term informative, which is why the stub
+    below supplies one and why the parameter is opt-in rather than always-on.
+    """
+    def grouper(_claims, _params):
+        return [{"claim_ids": ["C1", "C2"], "canonical_term": "chunking recall"}]
+
+    stranded: list[dict] = []
+    cm = curate.curate_concept_map(_curation_ledger(), grouper=grouper, stranded=stranded)
+    assert stranded == [{"source_id": "s-b", "claims": 1, "claim_ids": ["C3"]}]
+    assert {cid for c in cm.concepts for cid in c.claim_ids} == {"C1", "C2", "C3"}
+
+    assert curate.curate_concept_map(_curation_ledger(), grouper=grouper).concepts == cm.concepts
 
 
 def test_a_home_anchor_that_restates_its_own_concept_never_reaches_the_concept_map():

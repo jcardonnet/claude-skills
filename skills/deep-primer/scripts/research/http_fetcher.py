@@ -22,6 +22,12 @@ Deliberate constraints
     SVG rather than lifting a source domain's artwork, so there is nothing here that fetches images.
   - Failures return None instead of raising. `retrieve_for_questions` already treats an unfetchable
     URL as `unresolved`, which is the honest outcome — a lead that would not load is not evidence.
+  - A body that is too short to be the document is refused too (`MIN_CONTENT_WORDS`). Returning
+    bytes is not the same as returning the page that was sought, and the difference is invisible
+    downstream: `fetch_source_leads` stamps every document it keeps with its lead's declared type,
+    so a bot wall enters the ledger wearing whatever credibility tier discovery guessed for the
+    paper behind it. spec-05's campaign put 15 claims of interstitial troubleshooting text into the
+    ledger that way, attributed to `trialsjournal.biomedcentral.com` and typed `primary_paper`.
 """
 from __future__ import annotations
 
@@ -37,6 +43,16 @@ from research.retrieval_loop import Document, canonical_url
 USER_AGENT = "deep-primer/1.0 (+research primer generator; respects robots.txt)"
 MAX_BYTES = 4_000_000
 TIMEOUT_S = 20
+
+#: Below this many words a fetch is refused as chrome rather than kept as a document (G17 class 1).
+#: Measured, not guessed. Across the 449 documents of the four committed campaign corpora the
+#: word-count band 62-92 is EMPTY: everything below it is a bot wall (Cloudflare "Client Challenge"
+#: at 37 words), a cookie notice (PubMed at 15), or a navigation-only shell (a Jaeger docs index at
+#: 61, the OpenTelemetry Baggage spec page at 51 -- all 51 of them "View page source / Was this page
+#: helpful?"), and the thinnest document carrying a real sentence is 93. 80 sits inside that gap.
+#: It is deliberately NOT set high enough to reach the landing-page class (222-262 words), which is
+#: genuinely about the topic and cannot be told from a document by length -- see GAPS.md G17.
+MIN_CONTENT_WORDS = 80
 _TEXTUAL = ("text/html", "text/plain", "application/xhtml+xml", "application/xml", "text/xml")
 
 
@@ -60,11 +76,13 @@ class HttpFetcher:
     name = "http"
 
     def __init__(self, *, timeout_s: int = TIMEOUT_S, max_bytes: int = MAX_BYTES,
-                 user_agent: str = USER_AGENT, obey_robots: bool = True) -> None:
+                 user_agent: str = USER_AGENT, obey_robots: bool = True,
+                 min_words: int = MIN_CONTENT_WORDS) -> None:
         self.timeout_s = timeout_s
         self.max_bytes = max_bytes
         self.user_agent = user_agent
         self.obey_robots = obey_robots
+        self.min_words = min_words
         self.fetched: list[str] = []
         self.refused: dict[str, str] = {}          # url -> why it produced no Document
         self._robots: dict[str, urllib.robotparser.RobotFileParser | None] = {}
@@ -153,6 +171,14 @@ class HttpFetcher:
         text = html_to_text(body) if "html" in (content_type or "html") else body
         if not text.strip():
             self.refused[url] = "fetched but empty after text extraction"
+            return None
+
+        # Too short to be the document that was asked for. Refusing here rather than downstream is
+        # the point: every later stage sees a Document and has no way back to "was this a page?".
+        words = len(text.split())
+        if words < self.min_words:
+            self.refused[url] = (f"body is {words} words, below the {self.min_words}-word minimum "
+                                 f"— a bot wall, cookie notice or nav-only shell, not a document")
             return None
 
         self.fetched.append(final_url)

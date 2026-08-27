@@ -32,7 +32,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ir.schema import Concept, ConceptMap, EpistemicStatus, SourceLedger  # noqa: E402
 from research.discovery import LexicalSimilarity, Similarity  # noqa: E402
-from research.grouping import ClaimGrouper, Group, lexical_groups, resolve_groups  # noqa: E402
+from research.grouping import (  # noqa: E402
+    ClaimGrouper, Group, lexical_groups, resolve_groups, unnamed_singletons,
+)
 
 CONCEPT_MATCH_THRESHOLD = 0.5     # claims this similar cluster into one concept
 
@@ -120,11 +122,36 @@ class LexicalGrouper:
                 for ids in lexical_groups(claims, self.backend, self.threshold)]
 
 
+def ungrouped_sources(groups: list[Group], claim_source: dict[str, str]) -> list[dict]:
+    """Sources every one of whose claims the grouper left an unnamed singleton (G17 class 1).
+
+    The cut is "all of them", with no threshold to tune, because that is where the real data
+    separates: on spec-05's campaign the five sources at 100% are the five bot walls, and the
+    worst genuine source — a real Bayesian dose-finding trial paper with plenty of one-off
+    specifics — sits at 9 of 20. A source that contributed nothing any other source corroborated
+    AND nothing the grouper could name is a source that was probably not read.
+
+    Reported, never enforced. Two things it cannot tell apart from a wall: a genuine source that is
+    the only one covering its subject, and any source at all on the `--lexical-grouping` path,
+    where nothing is ever named. The output is for the campaign report and the curator's eye.
+    """
+    from collections import Counter
+    lone = set(unnamed_singletons(groups))
+    if not lone:
+        return []
+    total = Counter(claim_source.values())
+    stranded: Counter = Counter(claim_source[cid] for cid in lone if cid in claim_source)
+    return [{"source_id": sid, "claims": total[sid],
+             "claim_ids": sorted(cid for cid in lone if claim_source.get(cid) == sid)}
+            for sid, n in sorted(stranded.items()) if n == total[sid]]
+
+
 def curate_concept_map(ledger: SourceLedger, params: dict | None = None,
                        curator: Curator | None = None,
                        backend: Similarity | None = None,
                        grouper: ClaimGrouper | None = None,
-                       notes: list[str] | None = None) -> ConceptMap:
+                       notes: list[str] | None = None,
+                       stranded: list[dict] | None = None) -> ConceptMap:
     """Build the concept-map from grounded claims.
 
     `grouper` proposes which claims belong together; `resolve_groups` decides. A grouper that also
@@ -137,6 +164,8 @@ def curate_concept_map(ledger: SourceLedger, params: dict | None = None,
 
     `notes` collects what the gate rejected. It is a sink rather than a second return value because
     every existing caller wants the concept-map; a run that cares what was thrown away passes a list.
+    `stranded` is the same shape for `ungrouped_sources` — the G17 retrieval-wall signal the
+    grouper was already computing and this function was already discarding.
     """
     params = params or {}
     curator = curator or StubCurator(backend)
@@ -153,6 +182,8 @@ def curate_concept_map(ledger: SourceLedger, params: dict | None = None,
 
     text_of = dict(claims)
     claim_source = {c.claim_id: s.source_id for s in ledger.sources for c in s.claims}
+    if stranded is not None:
+        stranded.extend(ungrouped_sources(groups, claim_source))
     contested_ids = {c.claim_id for s in ledger.sources for c in s.claims if c.contested}
     biggest = max(len(g.claim_ids) for g in groups)
 

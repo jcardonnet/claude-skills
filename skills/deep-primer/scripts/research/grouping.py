@@ -190,3 +190,26 @@ def resolve_groups(proposals, claims: list[tuple[str, str]]) -> tuple[list[Group
         rejected.append(f"{len(orphans)} claim(s) were in no proposed group and became singletons")
     groups.extend(Group(claim_ids=[cid]) for cid in orphans)
     return groups, rejected
+
+
+def unnamed_singletons(groups: list[Group]) -> list[str]:
+    """Claim_ids of one-claim groups the grouper never named — an answer worth keeping (G17).
+
+    A grouper that read every claim in the corpus and put THIS one with nothing, and could not name
+    what it was about either, has said something: the claim shares no subject with the rest of the
+    evidence. On spec-05's real campaign that reading was exact — all 30 singletons in its
+    concept-map are orphans of this kind, and the five sources whose claims are ALL orphans are the
+    five bot walls ("Client Challenge" x3, PubMed cookie stubs x2), while the worst genuine source
+    scores 9 of 20. The signal was computed and thrown away; this returns it.
+
+    Structural, not a heuristic on the term. The names those claims carry in the artifact
+    (`settings browser`, `requires content`, `extensions interfere`) come from `StubCurator`'s
+    word-frequency fallback, which only runs BECAUSE `canonical_term` is empty — so the empty term
+    is the tell and the salad is the symptom.
+
+    Diagnostic only, never a gate. `LexicalGrouper` names nothing at all, so on the `--lexical-
+    grouping` path every singleton is flagged and the signal means nothing; and even on the model
+    path a genuinely unique claim from a real source is a legitimate orphan. What it is good for is
+    the roll-up in `curate.ungrouped_sources`, where "every claim from this source" is the cut.
+    """
+    return [g.claim_ids[0] for g in groups if len(g.claim_ids) == 1 and not g.canonical_term]

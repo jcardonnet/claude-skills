@@ -122,6 +122,7 @@ def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
         # --- Freeze, then replay. Everything downstream reads the frozen corpus, not the live web.
         corpus_dir = freeze_corpus(list(getattr(backend, "documents", [])), out_dir / "corpus")
     notes: list[str] = []
+    stranded: list[dict] = []
     corroborator = corroboration_grouper
     if from_ledger:
         # `--from-ledger` resumes at grouping. The ledger on disk is already corroborated and
@@ -161,7 +162,8 @@ def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
 
     if grouper is None and not lexical_grouping:
         grouper = ClaudeConceptGrouper(model=extract_model, cost_cap_usd=cost_cap)
-    concept_map = curate_concept_map(ledger, params, grouper=grouper, notes=notes)
+    concept_map = curate_concept_map(ledger, params, grouper=grouper, notes=notes,
+                                     stranded=stranded)
     # A grouping that lost a whole batch must not be written as a campaign. `_ask` already retries,
     # and a batch that answers nothing even then leaves every one of its claims a singleton concept
     # -- which reads, in the artifact, exactly like a claim the model found genuinely unique. That
@@ -226,6 +228,10 @@ def run(spec_path: Path, out_dir: Path, *, as_of: str, waves: tuple[str, ...],
                              + list(getattr(corroborator, "notes", [])),
             "grouper_errors": list(getattr(grouper, "errors", []))
                               + list(getattr(corroborator, "errors", [])),
+            # G17 class 1: sources every one of whose claims the grouper left an unnamed singleton.
+            # A retrieval-wall detector that costs nothing because the grouping already ran. Advisory
+            # — these claims are still in the ledger; the report names them so a curator can look.
+            "stranded_sources": stranded,
         },
         "convergence": {k: str(v) for k, v in convergence_paths.items()},
         # Notional API-equivalent under the subscription, not a bill. Recorded because the binding
