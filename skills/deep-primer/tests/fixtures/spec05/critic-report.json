@@ -1,0 +1,1398 @@
+{
+  "passes": [
+    {
+      "pass": "coherence",
+      "rules": [
+        "R-PROSE-01",
+        "R-SUMM-04"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-cef",
+          "verdict": "pass",
+          "evidence": "Single-sentence lede, one subject entity, no subsequent sentence to break given-new chain",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-cef",
+          "verdict": "pass",
+          "evidence": "R-PROSE-01 targets prose/paragraph blocks; card-cef is role:card with labeled fields, not running prose subject to given-new chaining",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "toulmin-cef",
+          "verdict": "pass",
+          "evidence": "Anaphoric chain 'that rate'/'the rate'/'the same rate' links Data through Warrant, Qualifier, Rebuttal, not disconnected subjects.",
+          "span": "that rate bounds the chance of rejecting at least one true hypothesis",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-cef-pre",
+          "verdict": "pass",
+          "evidence": "Single-sentence block; no multi-sentence subject-chaining pattern to violate",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-cef-pre",
+          "verdict": "pass",
+          "evidence": "Each subject reuses prior sentence's new term: protocol\u2192protocol, standard\u2192standard, approach\u2192approach, licence\u2192licence.",
+          "span": "A proportionate approach is what a sponsor under commercial pressure reads as licence to document less. That licence is how a prescheduled amendment quietly becomes a retrospective one.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-ssr",
+          "verdict": "pass",
+          "evidence": "Single-sentence lede; no multi-sentence subject-hopping to evaluate",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-ssr",
+          "verdict": "fail",
+          "evidence": "skip_when introduces 'the unblinded form' with no antecedent in the prior two sentences (reach_for_when, whats_new_vs_renamed); it's only defined afterward in key_exemplar.",
+          "span": "Skip the unblinded form unless the protocol already fixes the test that will absorb it.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "toulmin-ssr",
+          "verdict": "pass",
+          "evidence": "Each sentence's subject (variance/blinded form/pooled arms) chains from the prior sentence rather than introducing an unrelated new subject.",
+          "span": "a variance recomputed across the pooled arms cannot leak which arm is winning, which is what makes that form cheap",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-ssr",
+          "verdict": "pass",
+          "evidence": "Single-sentence block; no multi-sentence chain exists to evaluate given-new flow, so R-PROSE-01 doesn't apply",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-ssr",
+          "verdict": "pass",
+          "evidence": "Each sentence's subject (variance\u2192pooled variance\u2192that variance\u2192the method) carries from the prior sentence via 'therefore'/'so' links, not fresh entities.",
+          "span": "That variance is therefore blind to which arm did better, and its blindness is the whole economy of the method.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-futility",
+          "verdict": "pass",
+          "evidence": "Single-sentence lede has no prior sentence for given-new chaining to fail against",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-futility",
+          "verdict": "fail",
+          "evidence": "key_exemplar opens 'A dose-finding trial...' as a wholly new subject with no link to skip_when's subject ('it'/endpoint) two sentences prior.",
+          "span": "A dose-finding trial whose monitoring committee reviewed the adaptive algorithm every two months.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-futility",
+          "verdict": "pass",
+          "evidence": "Chain: 'effect'\u2192'That effect'\u2192'the interval'\u2192'the interval'\u2192'stopping rule'\u2192'stopping rule and estimate', each subject given from prior sentences.",
+          "span": "That effect arrives with an interval, and the interval is wrong for the same reason.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-futility-limits",
+          "verdict": "pass",
+          "evidence": "Single-sentence block; no multi-sentence chain exists to violate given-new flow.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-futility-limits",
+          "verdict": "pass",
+          "evidence": "Each sentence's subject (interval/they) repeats or refers to the prior sentence's given entity, building cumulatively.",
+          "span": "They pay for that by being conservative",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-cef",
+          "verdict": "pass",
+          "evidence": "Self-contained definition of adaptive design; no reference to deeper content like 'see below'.",
+          "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-cef",
+          "verdict": "pass",
+          "evidence": "Card defines idea, anchor, novelty, and exemplar inline with no 'see below' pointer to a deeper layer.",
+          "span": "The critical value function, which is the same object written the other way round.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-cef-pre",
+          "verdict": "pass",
+          "evidence": "Self-contained statement about protocol requirement; no reference to deeper content or 'see below'.",
+          "span": "The study protocol has to describe which types of adaptation are intended, before the trial begins.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-ssr",
+          "verdict": "pass",
+          "evidence": "Lede states a complete, self-contained claim about variance uncertainty causing under/over-powering, with no reference to deeper content.",
+          "span": "Uncertainty about the variance at the design stage leaves a trial at risk of being under-powered or over-powered.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-ssr",
+          "verdict": "fail",
+          "evidence": "Card names 'blinded and unblinded methods' as 'the whole of the decision' but never defines either term within this layer",
+          "span": "The split into blinded and unblinded methods, which is the whole of the decision.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-ssr",
+          "verdict": "pass",
+          "evidence": "Sentence is a standalone claim about regulator preference with no reference to deeper content like 'see below' or an ablation.",
+          "span": "Regulators favour a procedure that keeps the treatment allocations blinded.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-futility",
+          "verdict": "pass",
+          "evidence": "Lede states a complete, self-contained statistic with no reference to deeper content",
+          "span": "Only about 32% of published adaptive trials reported an independent data monitoring committee.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-futility",
+          "verdict": "pass",
+          "evidence": "Card states idea, analogue (SPRT acceptance region), what's-new (standing committee), reach/skip conditions, and exemplar with no forward reference to a deeper layer.",
+          "span": "Like the acceptance region of a sequential probability ratio test, drawn before the first observation.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-futility-limits",
+          "verdict": "pass",
+          "evidence": "States a complete claim (coverage level across all interim analyses) without pointing to a deeper layer or 'see below'.",
+          "span": "hold their simultaneous coverage at level one minus alpha across every interim analysis",
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    },
+    {
+      "pass": "evidence-grounding",
+      "rules": [
+        "R-ART-03",
+        "R-EVID-01",
+        "R-EVID-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ART-03",
+          "block_id": "toulmin-cef",
+          "verdict": "pass",
+          "evidence": "Block explicitly labels both Qualifier (p-value condition) and Rebuttal (cost to exploratory trials)",
+          "span": "Qualifier: the rate holds only while the second-stage p-value stays no smaller than uniform under the null. Rebuttal: the same rate costs an exploratory trial its speed",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-03",
+          "block_id": "toulmin-ssr",
+          "verdict": "pass",
+          "evidence": "Both Qualifier ('genuine nuisance parameter') and Rebuttal ('dissenting camp... reads uncertainty as effect size') are explicit and substantive",
+          "span": "Qualifier: the variance has to be a genuine nuisance parameter for the argument to hold. Rebuttal: the variance is not what a dissenting camp wants fixed",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "body-cef-pre asserts sponsor-incentive causal chain as flat fact with no hedge/tag",
+          "span": "That licence is how a prescheduled amendment quietly becomes a retrospective one.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Claims framed as academic methods and regulatory requirements with source citations; no vendor benchmarks presented; empirical base rates from published trials cited",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "expertise-calibration",
+      "rules": [
+        "R-PARAM-02",
+        "R-PROSE-02",
+        "R-PROSE-06",
+        "R-EXPERT-01",
+        "R-EXPERT-03",
+        "R-EXPERT-02",
+        "R-DEPTH-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PARAM-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No block contains a step-by-step worked example; apparatus is cards/matrices/checklists at a uniform technical density with no novice walkthrough.",
+          "span": "Confirm the protocol describes which types of adaptation are intended.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-cef",
+          "verdict": "pass",
+          "evidence": "Purely definitional statement with no merit claim or praise to frame as trade-off",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-cef",
+          "verdict": "pass",
+          "evidence": "No unqualified praise; reach_for_when is paired with skip_when boundary and confidence flags contested preference",
+          "span": "Skip it for a fixed-sample analysis, where no interim result will ever be read.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "toulmin-cef",
+          "verdict": "pass",
+          "evidence": "Rebuttal names explicit cost: 'costs an exploratory trial its speed' for the guarantee, not unqualified praise",
+          "span": "the same rate costs an exploratory trial its speed and buys a guarantee nobody there will rely on",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-cef-pre",
+          "verdict": "pass",
+          "evidence": "Neutral procedural statement, not a claim of merit; no unqualified praise present",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-cef-pre",
+          "verdict": "pass",
+          "evidence": "No unqualified praise; proportionate approach immediately paired with its cost: exploitable as licence to document less",
+          "span": "is what a sponsor under commercial pressure reads as licence to document less",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-ssr",
+          "verdict": "pass",
+          "evidence": "No claim of merit or endorsement is made; text states a risk (under/over-powered) without unqualified praise, so rule doesn't apply",
+          "span": null,
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-ssr",
+          "verdict": "pass",
+          "evidence": "Merit is conditioned via reach_for_when/skip_when pairing, not unqualified praise",
+          "span": "Reach for it when the assumed variance rests on external data thinner than the trial it is sizing.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "toulmin-ssr",
+          "verdict": "pass",
+          "evidence": "Merit ('cheap', 'close to unblinded... in many cases') is qualified by a nuisance-parameter condition and a rebuttal naming dissenting cost, not unqualified praise.",
+          "span": "the variance has to be a genuine nuisance parameter for the argument to hold",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-ssr",
+          "verdict": "fail",
+          "evidence": "States regulator preference for blinding with no cost or trade-off named",
+          "span": "Regulators favour a procedure that keeps the treatment allocations blinded.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-ssr",
+          "verdict": "fail",
+          "evidence": "merit claims ('whole economy of the method', 'made respectable') stated with no cost named",
+          "span": "the recalculation rule of Proschan and Hunsberger is where its unblinded version was made respectable",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-futility",
+          "verdict": "pass",
+          "evidence": "Bare statistic with no merit claim or praise language present to evaluate for trade-off framing",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-futility",
+          "verdict": "pass",
+          "evidence": "No unqualified praise; merit is conditioned via reach_for_when/skip_when and hedged in confidence field",
+          "span": "Skip it when the endpoint matures so late that no interim look could inform the decision.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-futility",
+          "verdict": "pass",
+          "evidence": "No claims of merit/praise present to require trade-off framing; text is diagnostic, not evaluative.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-futility-limits",
+          "verdict": "pass",
+          "evidence": "Neutral factual statement about statistical property, not a claim of merit requiring trade-off framing",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-futility-limits",
+          "verdict": "pass",
+          "evidence": "Coverage benefit paired with named cost: 'pay for that by being conservative' and 'wider than the data alone would justify'",
+          "span": "They pay for that by being conservative, so the interval comes out wider than the data alone would justify.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-cef",
+          "verdict": "fail",
+          "evidence": "Statement is neutral and definitional; lacks leverage-weighted position or asymmetric framing R-PROSE-06 requires",
+          "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-cef",
+          "verdict": "pass",
+          "evidence": "Text takes leverage-weighted positions: 'Group sequential testing is renamed, not new' assigns asymmetric weight; 'confidence' distinguishes settled vs contested without false symmetry or hedging.",
+          "span": "Group sequential testing is renamed, not new: it is a special case of the general adaptive design. New is that the second stage is designed after the first is read."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "toulmin-cef",
+          "verdict": "pass",
+          "evidence": "Rebuttal asymmetrically frames exploratory cost (speed loss + unreliable guarantee) rather than force-balancing alternatives",
+          "span": "the same rate costs an exploratory trial its speed and buys a guarantee nobody there will rely on"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-cef-pre",
+          "verdict": "pass",
+          "evidence": "Text uses firm prescriptive language ('has to describe') without hedging, over-symmetrizing, or presenting competing viewpoints. Non-hedged requirement statement.",
+          "span": "has to describe"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-cef-pre",
+          "verdict": "pass",
+          "evidence": "Takes weighted position on incentive misalignment: principle of proportionality creates exploitation loophole under commercial pressure, not hedged or symmetrized.",
+          "span": "A proportionate approach is what a sponsor under commercial pressure reads as licence to document less. That licence is how a prescheduled amendment quietly becomes a retrospective one."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-ssr",
+          "verdict": "fail",
+          "evidence": "Presents under-powered and over-powered as symmetric risks without weighting which is costlier or more critical.",
+          "span": "under-powered or over-powered"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-ssr",
+          "verdict": "pass",
+          "evidence": "reach_for_when and skip_when provide weighted conditional recommendations; confidence asymmetrically settles (regulators favor blinded) vs contests (unblinded purpose).",
+          "span": "Skip the unblinded form unless the protocol already fixes the test that will absorb it. ... settled that regulators favour the blinded form; contested for what the unblinded form is actually for"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "toulmin-ssr",
+          "verdict": "pass",
+          "evidence": "Claim sets default (blinded form), qualifier names scoped condition (genuine nuisance parameter), rebuttal reframes dissent (effect size vs. variance), no forced pro/con parity",
+          "span": "treat the unblinded form as an exception you have to argue for"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-ssr",
+          "verdict": "pass",
+          "evidence": "Statement is clear and directional without hedging or forced symmetry; takes a direct position on regulatory preference.",
+          "span": "Regulators favour a procedure that keeps the treatment allocations blinded."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-ssr",
+          "verdict": "pass",
+          "evidence": "Text positions blindness as 'the whole economy of the method,' a weighted claim naming what matters. No over-symmetrization or hedging; takes opinionated stance on mechanism.",
+          "span": "its blindness is the whole economy of the method"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-futility",
+          "verdict": "fail",
+          "evidence": "Statement reports a statistic with mild evaluative qualifier ('only') but does not frame a trade-off or take a leverage-weighted position on what this means or what to do about it.",
+          "span": "Only about 32% of published adaptive trials reported an independent data monitoring committee."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-futility",
+          "verdict": "fail",
+          "evidence": "confidence field presents settled/contested aspects with equal weight rather than leverage-weighted position; hedges instead of opinionating which uncertainty actually matters",
+          "span": "settled that the rule can be written; contested whether the committee that would enforce it exists"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-futility",
+          "verdict": "pass",
+          "evidence": "Text makes direct causal claims (stopping rule breaks CI assumption) and identifies a single weighted failure (reporting effect without stopping rule accounting), with no hedging or forced symmetry.",
+          "span": "The stopping rule and the estimate are one object, and reporting the second as though the first had never happened is the common failure."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-futility-limits",
+          "verdict": "pass",
+          "evidence": "Factual claim stated directly without hedging qualifiers or forced symmetry between alternatives.",
+          "span": "Repeated confidence intervals hold their simultaneous coverage at level one minus alpha across every interim analysis."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-futility-limits",
+          "verdict": "pass",
+          "evidence": "Text takes asymmetric stance: 'standard repair' + cost named ('pay for that by being conservative, interval wider'). Frames tradeoff, does not hedge or symmetrize.",
+          "span": "They pay for that by being conservative, so the interval comes out wider than the data alone would justify."
+        },
+        {
+          "rule_id": "R-EXPERT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Checklist-cef and card blocks use contrastive framing (new-vs-renamed) and verification/audit items ('Confirm...', 'Verify...'), not sequential worked-example steps",
+          "span": "Confirm the protocol describes which types of adaptation are intended. Verify the first stage's sample size and test statistic are prespecified",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EXPERT-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Rule R-EXPERT-03 applies only when a reference_case is supplied. Document has briefly-described figures but no detailed reference_case (e.g., shared artifact with callouts/specifics) for claims to ground against.",
+          "span": null
+        },
+        {
+          "rule_id": "R-EXPERT-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Mental model cards, checklists, decision aids, and failure catalogs appear inline on primary surface without explicit prerequisite pointers gating novice scaffolding away.",
+          "span": null
+        },
+        {
+          "rule_id": "R-DEPTH-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "All three sections uniformly carry identical apparatus structure (lede, card, analytical framework, figure, body text, subsummary); subsummaries are minimal one-line claims (e.g., 'The study protocol has to describe which types of adaptation are intended') that restate points from body text without ",
+          "span": "Claim: The study protocol has to describe which types of adaptation are intended, before the trial begins. [block: subsum-cef-pre]; identical pattern repeated in subsum-ssr and subsum-futility-limits"
+        }
+      ]
+    },
+    {
+      "pass": "figures",
+      "rules": [
+        "R-FIG-01",
+        "R-FIG-02",
+        "R-FIG-03",
+        "R-FIG-05"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-cef",
+          "verdict": "pass",
+          "evidence": "Caption states the specific mapping (interim outcome \u2192 remaining spendable alpha), not just a label naming the figure",
+          "span": "each interim outcome maps to the part of it the second stage may still spend",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-ssr",
+          "verdict": "pass",
+          "evidence": "States a conclusion: curves 'separating only where the design-stage guess was badly wrong', not just naming the plot.",
+          "span": "the blinded and unblinded curves separating only where the design-stage guess was badly wrong",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-cef",
+          "verdict": "fail",
+          "evidence": "Caption describes conceptual focus without confirming box/arrow vocabulary use or visual emphasis implementation",
+          "span": "one ceiling of alpha = 0.025 enters at the left, and each interim outcome maps to the part of it"
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-ssr",
+          "verdict": "fail",
+          "evidence": "Curve plot incompatible with box/arrow vocabulary requirement of R-FIG-02",
+          "span": "curves"
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-cef",
+          "verdict": "pass",
+          "evidence": "Description shows spatial flow (enters left, maps through stages) with no indication of split labels from referents.",
+          "span": "one ceiling of alpha = 0.025 enters at the left, and each interim outcome maps to the part of it the second stage"
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-ssr",
+          "verdict": "pass",
+          "evidence": "Caption text alone insufficient to assess spatial label positioning; no evidence of legend-far-from-data or referent separation.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-cef",
+          "verdict": "pass",
+          "evidence": "Caption describes single conditional-error architecture, not a comparison; R-FIG-05 applies only when comparisons are present.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-ssr",
+          "verdict": "fail",
+          "evidence": "curves separating indicates overlay comparison in one composite plot, not separate small-multiple panels",
+          "span": "with the blinded and unblinded curves separating only where the design-stage guess was badly wrong"
+        }
+      ]
+    },
+    {
+      "pass": "structure-architecture",
+      "rules": [
+        "R-ARCH-01",
+        "R-ARCH-03",
+        "R-ARCH-04",
+        "R-SCENT-01",
+        "R-SCENT-02",
+        "R-DEPTH-01",
+        "R-XREF-01",
+        "R-XREF-03",
+        "R-VOCAB-02"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ARCH-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Front matter has only title/generated_at/concepts list; no audience, scope boundary, or editorial-decision statement before lede-cef begins",
+          "span": "title: An adaptation you did not name in advance has no error rate\ngenerated_at: '2026-08-21T00:00:00Z'\nconcepts:",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Opening block states generic definition ('adaptive design permits pre-specified modifications...') not the sharper claim in heading 1 ('no error rate')",
+          "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document lacks explicit goal-tuned reading paths with audience notes; blocks presented in fixed linear sequence with no statement of alternative reading orders for different audiences or goals.",
+          "span": null
+        },
+        {
+          "rule_id": "R-SCENT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "All 3 headings are claim-bearing propositions, not generic labels (no Background/Overview/Conclusion)",
+          "span": "An adaptation you did not name in advance has no error rate",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SCENT-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Three sibling headings use different grammatical structures: declarative (heading 1), compound-with-semicolon (heading 2), conditional (heading 3). No parallel form.",
+          "span": "Heading 1: 'An adaptation you did not name in advance has no error rate'; Heading 2: 'Re-estimating the sample size blind is nearly free; unblinding it is not'; Heading 3: 'A futility rule protects patients only if a committee is obliged to read it'"
+        },
+        {
+          "rule_id": "R-DEPTH-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each concept's mental_model card (card-cef, card-ssr, card-futility) states Reach-for-it-when/Skip-it-when/Confidence directly, enabling routine adopt-or-skip decisions without descending into tradeoff/toulmin/failure blocks.",
+          "span": "Reach-for-it-when: Reach for it when the second stage's design may still move on what the first stage shows.\nSkip-it-when: Skip it for a fixed-sample analysis, where no interim result will ever be read.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "card-cef/ssr/futility 'New-vs-renamed' fields map to in-domain concepts (group sequential testing, power calculation, stopping region), not a home-domain analogy from outside statistics",
+          "span": "Group sequential testing is renamed, not new: it is a special case of the general adaptive design.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Three core concepts (conditional-error-function, sample-size-reestimation, futility-boundary) share adaptive design logic and interim-analysis dependencies but lack cross-references between sections.",
+          "span": null
+        },
+        {
+          "rule_id": "R-VOCAB-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Recurring patterns consistently named and reused: 'naming in advance' (CEF heads, body-cef-pre, checklist-cef, subsum-cef-pre); 'blindness' (SSR heading, card-ssr, toulmin-ssr, body-ssr); 'committee enforcement' (futility heading, lede-futility, card-futility, aid-futility); 'conditional bias' (body",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rules": [
+        "R-CARD-01",
+        "R-CARD-03",
+        "R-SUMM-01",
+        "R-PROSE-03",
+        "R-RECALL-02",
+        "R-ART-02",
+        "R-ART-04",
+        "R-ART-05",
+        "R-EVID-02",
+        "R-XREF-04",
+        "R-ART-06",
+        "R-MV-01"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-cef",
+          "verdict": "pass",
+          "evidence": "home_anchor gives a distinct home-domain analogy (multiple-comparison budget) bridging to prior knowledge, not a restatement",
+          "span": "Like a multiple-comparison budget split across contrasts you declared before seeing the data.",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-ssr",
+          "verdict": "pass",
+          "evidence": "Card opens with anchor 'redoing a power calculation on a pilot's variance estimate' before stating the concept, functioning as an advance organizer.",
+          "span": "Like redoing a power calculation on a pilot's variance estimate, except the pilot is this trial.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-futility",
+          "verdict": "pass",
+          "evidence": "home_anchor gives a genuine cross-domain analogue (SPRT acceptance region) distinct from the section's own terms, paired with whats_new_vs_renamed",
+          "span": "Like the acceptance region of a sequential probability ratio test, drawn before the first observation.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-cef",
+          "verdict": "pass",
+          "evidence": "skip_when gives specific condition: 'fixed-sample analysis, where no interim result will ever be read', paired with reach_for_when",
+          "span": "Skip it for a fixed-sample analysis, where no interim result will ever be read.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-ssr",
+          "verdict": "pass",
+          "evidence": "skip_when gives a specific, non-generic condition ('unless the protocol already fixes the test that will absorb it') tied to the unblinded form, not a bare use-condition restated.",
+          "span": "Skip the unblinded form unless the protocol already fixes the test that will absorb it.",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-futility",
+          "verdict": "pass",
+          "evidence": "skip_when gives specific condition (endpoint matures too late for interim looks) alongside reach_for_when",
+          "span": "Skip it when the endpoint matures so late that no interim look could inform the decision.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-cef",
+          "verdict": "fail",
+          "evidence": "Announces the mechanism definitionally without defending a position or claim",
+          "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-ssr",
+          "verdict": "fail",
+          "evidence": "Topic-label statement of a fact, not a claim defending a position; no thesis framing",
+          "span": "Uncertainty about the variance at the design stage leaves a trial at risk of being under-powered or over-powered.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-futility",
+          "verdict": "fail",
+          "evidence": "States a topic-adjacent stat with no defended claim or position",
+          "span": "Only about 32% of published adaptive trials reported an independent data monitoring committee.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-cef",
+          "verdict": "pass",
+          "evidence": "Lede is a complete prose sentence; no bullet fragmentation present.",
+          "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-cef",
+          "verdict": "pass",
+          "evidence": "All content fields (idea, home_anchor, whats_new_vs_renamed, reach_for_when, skip_when, key_exemplar, confidence) use complete sentences and prose, not bullet fragmentation.",
+          "span": "A conditional error function reports the largest type I error rate still reachable from whatever the interim data turned out to be."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "toulmin-cef",
+          "verdict": "pass",
+          "evidence": "Reasoning carried in complete prose sentences within each Toulmin section; structured labels are formal argumentation framework, not ad-hoc bullet fragmentation.",
+          "span": "Data: that test is what multiplicity-adjusted inference needs defined in advance, and a confirmatory adaptive trial must hold its nominal rate regardless."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-cef-pre",
+          "verdict": "pass",
+          "evidence": "Text is a single complete sentence; reasoning carried in prose, not fragmented into bullets.",
+          "span": "The study protocol has to describe which types of adaptation are intended, before the trial begins."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-cef-pre",
+          "verdict": "pass",
+          "evidence": "Reasoning is carried in prose through a causal chain (adaptation \u2192 protocol \u2192 standard \u2192 commercial pressure \u2192 retrospective amendment). Fragmentation into bullets would harm the logical progression and nuance of the critique.",
+          "span": "A proportionate approach is what a sponsor under commercial pressure reads as licence to document less. That licence is how a prescheduled amendment quietly becomes a retrospective one."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-ssr",
+          "verdict": "pass",
+          "evidence": "Lede is a complete prose sentence conveying causal reasoning about variance and trial power without bullet fragmentation.",
+          "span": "Uncertainty about the variance at the design stage leaves a trial at risk of being under-powered or over-powered."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-ssr",
+          "verdict": "pass",
+          "evidence": "All reasoning presented as prose sentences within labeled fields; no bullet fragmentation detected.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "toulmin-ssr",
+          "verdict": "fail",
+          "evidence": "Reasoning fragmented by structural labels (Claim:, Data:, Warrant:, Qualifier:, Rebuttal:) rather than integrated prose narrative",
+          "span": "Claim: re-estimate the variance blind... Rebuttal: the variance is not what a dissenting camp wants fixed..."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-ssr",
+          "verdict": "pass",
+          "evidence": "Block is entirely prose-first; no bullets fragment reasoning.",
+          "span": "Regulators favour a procedure that keeps the treatment allocations blinded."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-ssr",
+          "verdict": "pass",
+          "evidence": "Reasoning is carried as continuous prose sentences; no bullet fragmentation; causal flow (problem\u2192consequence\u2192mechanism\u2192importance\u2192solution) maintained through prose sequence.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-futility",
+          "verdict": "pass",
+          "evidence": "Single sentence presented as prose, not fragmented into bullets.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-futility",
+          "verdict": "pass",
+          "evidence": "Each field contains complete prose sentences; no bullet fragmentation of reasoning.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-futility",
+          "verdict": "pass",
+          "evidence": "Entire block is prose-only; reasoning flows through connected sentences with no bullet fragmentation; logical chain clearly expressed: stopping rule \u2192 conditional bias \u2192 broken assumption \u2192 common failure.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-futility-limits",
+          "verdict": "pass",
+          "evidence": "Single continuous prose sentence without bullet fragmentation; reasoning carried in prose form.",
+          "span": "Repeated confidence intervals hold their simultaneous coverage at level one minus alpha across every interim analysis."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-futility-limits",
+          "verdict": "pass",
+          "evidence": "Entire block is prose narrative; reasoning flows through connected sentences without bullet fragmentation; no bullets present.",
+          "span": "Repeated confidence intervals are the standard repair, and they keep their simultaneous coverage across every look. They pay for that by being conservative, so the interval comes out wider than the data alone would justify."
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-cef",
+          "verdict": "fail",
+          "evidence": "All 3 Q&A pairs stay within trial/protocol domain (amendments, multiplicity, CEF); none maps to an outside home domain",
+          "span": null,
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-ssr",
+          "verdict": "pass",
+          "evidence": "All 3 items pose novel scenarios requiring generated answers; Q2 explicitly cross-maps pilot-study power recalculation to this trial's own data.",
+          "span": "You would normally rerun a power calculation on a pilot study. Why is reusing this trial's own data different?",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-futility",
+          "verdict": "fail",
+          "evidence": "All 3 Q&As stay within clinical-trial/stopping-rule domain; none maps the concept to an unrelated home domain.",
+          "span": "Which single fact tells you whether a futility rule in a published trial was real?",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-ART-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Checklist has 5 action-verb items (Confirm, Verify, Check, Record) addressing high-frequency adaptive trial failures, not glossary items",
+          "span": "Confirm the protocol describes which types of adaptation are intended. Verify the first stage's sample size and test statistic are prespecified before the trial opens. Check that every adaptation performed is documented in a prescheduled amendment to the protocol. Confirm the interim analyses are planned prospectively with their decision rules attached, rather than proposed once the data are in. Record the looks that were scheduled and not taken, alongside those that were."
+        },
+        {
+          "rule_id": "R-ART-04",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Document contains one decision matrix (matrix-cef) that names criteria (closed form, conditional power, prespecification), baseline (optimal CEF via variational calculus), and provides decisive recommendation with explicit rule: take fixed rule unless sponsor can name differing interim outcome.",
+          "span": "Recommendation: take the fixed rule unless the sponsor can name the interim outcome whose second stage would genuinely differ"
+        },
+        {
+          "rule_id": "R-ART-05",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "The three mechanisms have inconsistent artifact structures: CEF includes matrix+toulmin+checklist; SSR includes toulmin+failures only; Futility includes decision_aid but no toulmin block. The toulmin artifact (explaining input/mechanism/assumption) is present for CEF and SSR but absent for futility-",
+          "span": "toulmin-cef and toulmin-ssr present; no toulmin-futility block; aid-futility substituted instead"
+        },
+        {
+          "rule_id": "R-EVID-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Failures are documented within concept sections (body-cef-pre, failures-ssr, body-futility) but no unifying document-level honest-limits section critiques the overall thesis or approach.",
+          "span": null
+        },
+        {
+          "rule_id": "R-XREF-04",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "All three cards' New-vs-renamed lines anchor on distinct prior techniques (group sequential testing, power calculation, stopping region), not the target concept restated",
+          "span": "The stopping region is renamed, not new; new is that a standing committee reads it on a schedule",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-06",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No further-reading section or artifact present in document; rule does not apply to this unit.",
+          "span": null
+        },
+        {
+          "rule_id": "R-MV-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each concept shows >=4 distinct modes (mental_model, tradeoff, cost/architecture, failure, benchmark/figure) with genuinely different representational structures",
+          "span": "mode: mental_model ... mode: tradeoff ... mode: architecture ... mode: failure ... mode: benchmark",
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "pass": 85,
+    "fail": 29,
+    "error": 0
+  },
+  "blocking": true,
+  "blocking_failures": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-ssr",
+      "verdict": "fail",
+      "evidence": "skip_when introduces 'the unblinded form' with no antecedent in the prior two sentences (reach_for_when, whats_new_vs_renamed); it's only defined afterward in key_exemplar.",
+      "span": "Skip the unblinded form unless the protocol already fixes the test that will absorb it.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-futility",
+      "verdict": "fail",
+      "evidence": "key_exemplar opens 'A dose-finding trial...' as a wholly new subject with no link to skip_when's subject ('it'/endpoint) two sentences prior.",
+      "span": "A dose-finding trial whose monitoring committee reviewed the adaptive algorithm every two months.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "card-ssr",
+      "verdict": "fail",
+      "evidence": "Card names 'blinded and unblinded methods' as 'the whole of the decision' but never defines either term within this layer",
+      "span": "The split into blinded and unblinded methods, which is the whole of the decision.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "evidence-grounding",
+      "rule_id": "R-EVID-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "body-cef-pre asserts sponsor-incentive causal chain as flat fact with no hedge/tag",
+      "span": "That licence is how a prescheduled amendment quietly becomes a retrospective one.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "subsum-ssr",
+      "verdict": "fail",
+      "evidence": "States regulator preference for blinding with no cost or trade-off named",
+      "span": "Regulators favour a procedure that keeps the treatment allocations blinded.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "body-ssr",
+      "verdict": "fail",
+      "evidence": "merit claims ('whole economy of the method', 'made respectable') stated with no cost named",
+      "span": "the recalculation rule of Proschan and Hunsberger is where its unblinded version was made respectable",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Front matter has only title/generated_at/concepts list; no audience, scope boundary, or editorial-decision statement before lede-cef begins",
+      "span": "title: An adaptation you did not name in advance has no error rate\ngenerated_at: '2026-08-21T00:00:00Z'\nconcepts:",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Opening block states generic definition ('adaptive design permits pre-specified modifications...') not the sharper claim in heading 1 ('no error rate')",
+      "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "card-cef/ssr/futility 'New-vs-renamed' fields map to in-domain concepts (group sequential testing, power calculation, stopping region), not a home-domain analogy from outside statistics",
+      "span": "Group sequential testing is renamed, not new: it is a special case of the general adaptive design.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-cef",
+      "verdict": "fail",
+      "evidence": "Announces the mechanism definitionally without defending a position or claim",
+      "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-ssr",
+      "verdict": "fail",
+      "evidence": "Topic-label statement of a fact, not a claim defending a position; no thesis framing",
+      "span": "Uncertainty about the variance at the design stage leaves a trial at risk of being under-powered or over-powered.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-futility",
+      "verdict": "fail",
+      "evidence": "States a topic-adjacent stat with no defended claim or position",
+      "span": "Only about 32% of published adaptive trials reported an independent data monitoring committee.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-RECALL-02",
+      "block_id": "recall-cef",
+      "verdict": "fail",
+      "evidence": "All 3 Q&A pairs stay within trial/protocol domain (amendments, multiplicity, CEF); none maps to an outside home domain",
+      "span": null,
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-RECALL-02",
+      "block_id": "recall-futility",
+      "verdict": "fail",
+      "evidence": "All 3 Q&As stay within clinical-trial/stopping-rule domain; none maps the concept to an unrelated home domain.",
+      "span": "Which single fact tells you whether a futility rule in a published trial was real?",
+      "retest": "pass",
+      "flipped": true
+    }
+  ],
+  "advisory_failures": [
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "lede-cef",
+      "verdict": "fail",
+      "evidence": "Statement is neutral and definitional; lacks leverage-weighted position or asymmetric framing R-PROSE-06 requires",
+      "span": "An adaptive design permits pre-specified modifications of a running trial on the strength of an interim analysis."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "lede-ssr",
+      "verdict": "fail",
+      "evidence": "Presents under-powered and over-powered as symmetric risks without weighting which is costlier or more critical.",
+      "span": "under-powered or over-powered"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "lede-futility",
+      "verdict": "fail",
+      "evidence": "Statement reports a statistic with mild evaluative qualifier ('only') but does not frame a trade-off or take a leverage-weighted position on what this means or what to do about it.",
+      "span": "Only about 32% of published adaptive trials reported an independent data monitoring committee."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "card-futility",
+      "verdict": "fail",
+      "evidence": "confidence field presents settled/contested aspects with equal weight rather than leverage-weighted position; hedges instead of opinionating which uncertainty actually matters",
+      "span": "settled that the rule can be written; contested whether the committee that would enforce it exists"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Mental model cards, checklists, decision aids, and failure catalogs appear inline on primary surface without explicit prerequisite pointers gating novice scaffolding away.",
+      "span": null
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-DEPTH-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "All three sections uniformly carry identical apparatus structure (lede, card, analytical framework, figure, body text, subsummary); subsummaries are minimal one-line claims (e.g., 'The study protocol has to describe which types of adaptation are intended') that restate points from body text without ",
+      "span": "Claim: The study protocol has to describe which types of adaptation are intended, before the trial begins. [block: subsum-cef-pre]; identical pattern repeated in subsum-ssr and subsum-futility-limits"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-cef",
+      "verdict": "fail",
+      "evidence": "Caption describes conceptual focus without confirming box/arrow vocabulary use or visual emphasis implementation",
+      "span": "one ceiling of alpha = 0.025 enters at the left, and each interim outcome maps to the part of it"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-ssr",
+      "verdict": "fail",
+      "evidence": "Curve plot incompatible with box/arrow vocabulary requirement of R-FIG-02",
+      "span": "curves"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-05",
+      "block_id": "fig-ssr",
+      "verdict": "fail",
+      "evidence": "curves separating indicates overlay comparison in one composite plot, not separate small-multiple panels",
+      "span": "with the blinded and unblinded curves separating only where the design-stage guess was badly wrong"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document lacks explicit goal-tuned reading paths with audience notes; blocks presented in fixed linear sequence with no statement of alternative reading orders for different audiences or goals.",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-SCENT-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Three sibling headings use different grammatical structures: declarative (heading 1), compound-with-semicolon (heading 2), conditional (heading 3). No parallel form.",
+      "span": "Heading 1: 'An adaptation you did not name in advance has no error rate'; Heading 2: 'Re-estimating the sample size blind is nearly free; unblinding it is not'; Heading 3: 'A futility rule protects patients only if a committee is obliged to read it'"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Three core concepts (conditional-error-function, sample-size-reestimation, futility-boundary) share adaptive design logic and interim-analysis dependencies but lack cross-references between sections.",
+      "span": null
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-PROSE-03",
+      "block_id": "toulmin-ssr",
+      "verdict": "fail",
+      "evidence": "Reasoning fragmented by structural labels (Claim:, Data:, Warrant:, Qualifier:, Rebuttal:) rather than integrated prose narrative",
+      "span": "Claim: re-estimate the variance blind... Rebuttal: the variance is not what a dissenting camp wants fixed..."
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-05",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "The three mechanisms have inconsistent artifact structures: CEF includes matrix+toulmin+checklist; SSR includes toulmin+failures only; Futility includes decision_aid but no toulmin block. The toulmin artifact (explaining input/mechanism/assumption) is present for CEF and SSR but absent for futility-",
+      "span": "toulmin-cef and toulmin-ssr present; no toulmin-futility block; aid-futility substituted instead"
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-EVID-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Failures are documented within concept sections (body-cef-pre, failures-ssr, body-futility) but no unifying document-level honest-limits section critiques the overall thesis or approach.",
+      "span": null
+    }
+  ],
+  "errored_items": [],
+  "flake": {
+    "retested": 65,
+    "flipped": 10,
+    "flake_rate": 0.1538
+  },
+  "flaky_items": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-futility",
+      "verdict": "fail",
+      "evidence": "key_exemplar opens 'A dose-finding trial...' as a wholly new subject with no link to skip_when's subject ('it'/endpoint) two sentences prior.",
+      "span": "A dose-finding trial whose monitoring committee reviewed the adaptive algorithm every two months.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "card-ssr",
+      "verdict": "fail",
+      "evidence": "Card names 'blinded and unblinded methods' as 'the whole of the decision' but never defines either term within this layer",
+      "span": "The split into blinded and unblinded methods, which is the whole of the decision.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "lede-ssr",
+      "verdict": "pass",
+      "evidence": "No claim of merit or endorsement is made; text states a risk (under/over-powered) without unqualified praise, so rule doesn't apply",
+      "span": null,
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "body-ssr",
+      "verdict": "fail",
+      "evidence": "merit claims ('whole economy of the method', 'made respectable') stated with no cost named",
+      "span": "the recalculation rule of Proschan and Hunsberger is where its unblinded version was made respectable",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-CARD-01",
+      "block_id": "card-cef",
+      "verdict": "pass",
+      "evidence": "home_anchor gives a distinct home-domain analogy (multiple-comparison budget) bridging to prior knowledge, not a restatement",
+      "span": "Like a multiple-comparison budget split across contrasts you declared before seeing the data.",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-CARD-03",
+      "block_id": "card-ssr",
+      "verdict": "pass",
+      "evidence": "skip_when gives a specific, non-generic condition ('unless the protocol already fixes the test that will absorb it') tied to the unblinded form, not a bare use-condition restated.",
+      "span": "Skip the unblinded form unless the protocol already fixes the test that will absorb it.",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-futility",
+      "verdict": "fail",
+      "evidence": "States a topic-adjacent stat with no defended claim or position",
+      "span": "Only about 32% of published adaptive trials reported an independent data monitoring committee.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-RECALL-02",
+      "block_id": "recall-cef",
+      "verdict": "fail",
+      "evidence": "All 3 Q&A pairs stay within trial/protocol domain (amendments, multiplicity, CEF); none maps to an outside home domain",
+      "span": null,
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-RECALL-02",
+      "block_id": "recall-ssr",
+      "verdict": "pass",
+      "evidence": "All 3 items pose novel scenarios requiring generated answers; Q2 explicitly cross-maps pilot-study power recalculation to this trial's own data.",
+      "span": "You would normally rerun a power calculation on a pilot study. Why is reusing this trial's own data different?",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-RECALL-02",
+      "block_id": "recall-futility",
+      "verdict": "fail",
+      "evidence": "All 3 Q&As stay within clinical-trial/stopping-rule domain; none maps the concept to an unrelated home domain.",
+      "span": "Which single fact tells you whether a futility rule in a published trial was real?",
+      "retest": "pass",
+      "flipped": true
+    }
+  ],
+  "ir_sha256": "87164b84c647119e40141984acf89a201afabf7bc517d06c088c052279e0fa58",
+  "judge": {
+    "kind": "claude",
+    "model": "haiku",
+    "calls": 190,
+    "spend_usd": 22.7839,
+    "exercised_rules": true,
+    "gating_model": "sonnet"
+  }
+}

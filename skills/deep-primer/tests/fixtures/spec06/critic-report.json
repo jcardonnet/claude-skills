@@ -1,0 +1,1643 @@
+{
+  "passes": [
+    {
+      "pass": "coherence",
+      "rules": [
+        "R-PROSE-01",
+        "R-SUMM-04"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-attrib",
+          "verdict": "pass",
+          "evidence": "Sentence 2 subject 'That pipeline' repeats sentence 1's given subject before introducing new predicate",
+          "span": "That pipeline still reports one end-to-end number",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-attrib",
+          "verdict": "pass",
+          "evidence": "The 'stage' motif chains across home_anchor\u2192whats_new\u2192reach_for_when\u2192skip_when\u2192key_exemplar\u2192confidence, not isolated new subjects.",
+          "span": "stage-wise ablation... stage-wise scores... classifies a failure by stage... stage classifiers",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "Single-sentence block; no multi-sentence subject-chaining to evaluate, so no given-new violation possible.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "Each sentence's subject chains via demonstrative back-reference ('That system', 'Those metrics') to the prior sentence's content, not a bare new topic each time",
+          "span": "Those metrics inherit the problem from the benchmarks beneath them",
+          "retest": null,
+          "flipped": null,
+          "retest_error": "JudgeError: R-PROSE-01/body-attrib-blackbox: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))"
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "Single-sentence block; no multi-sentence chain exists to exhibit choppy new-subject-per-sentence pattern",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "Subjects chain in pairs (model\u2192model, pipeline\u2192pipeline) with explicit contrast marker 'instead' bridging them, not disconnected assertions.",
+          "span": "A RAG pipeline keeps both surfaces addressable instead",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-faith",
+          "verdict": "pass",
+          "evidence": "S3 subject 'Answer relevance' was introduced in S2's list, chaining given->new rather than a fresh unrelated subject",
+          "span": "beside answer relevance, plus context precision and context recall",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-faith",
+          "verdict": "error",
+          "evidence": "JudgeError: R-PROSE-01/card-faith: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "toulmin-faith",
+          "verdict": "pass",
+          "evidence": "Warrant's 'the two thresholds' refers to Claim; Rebuttal's 'the distinction' and final 'That distinction' chain given->new across sentences.",
+          "span": "the two thresholds measure different properties",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-faith-split",
+          "verdict": "pass",
+          "evidence": "Single-sentence summary; subject 'Two frameworks' is not preceded by other sentences to break given-new chaining.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-faith-split",
+          "verdict": "pass",
+          "evidence": "sentences alternate between Groundedness and Faithfulness, both introduced in S1, chained via 'adjacent' and 'that first property'",
+          "span": "Faithfulness measures something adjacent",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-judge",
+          "verdict": "pass",
+          "evidence": "Each sentence's subject ties to prior: 'judge model' picks up 'LLM-as-a-judge', then 'That judge' repeats twice as anaphoric given subject.",
+          "span": "That judge has been demonstrated to produce reasonable correlation with human judgment. That judge still needs periodic human spot checks",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-judge",
+          "verdict": "pass",
+          "evidence": "Fields chain one topic: idea's unmeasured agreement rate -> anchor analogy -> renamed/new -> reach/skip -> TREC exemplar backing idea's claim -> confidence citing that number",
+          "span": "agreement rate with humans that you have not measured",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "Single sentence; relative clause 'which caps...' chains back to the prior clause, no cross-sentence subject discontinuity to flag.",
+          "span": "which caps what agreement can mean",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "Each sentence's subject (assessments, judge/model, disagreement) is carried over from the prior sentence, chaining given->new.",
+          "span": "Those assessments do not make the model a better judge than a person.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-drift",
+          "verdict": "pass",
+          "evidence": "Subject chains: retriever (S1 obj->S2 subj), 'That retriever' (S2->S3) explicitly carries given entity forward",
+          "span": "The retriever is structurally blind to that staleness. That retriever keeps returning",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-drift",
+          "verdict": "pass",
+          "evidence": "Fields chain via repeated topical anchors (corpus, refresh, distribution/staleness) with explicit links like 'Like' and 'renamed', not disconnected new subjects each time.",
+          "span": "Distribution shift is renamed",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-drift-groundtruth",
+          "verdict": "pass",
+          "evidence": "Single sentence with parallel 'one route... the other...' structure sharing subject, not disconnected new-subject sentences",
+          "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-drift-groundtruth",
+          "verdict": "pass",
+          "evidence": "Each sentence's subject back-references the prior sentence: 'that generation' recalls generation, 'opposing position' recalls 'one position'",
+          "span": "That generation keeps pace with drift by construction, which is one position",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-attrib",
+          "verdict": "pass",
+          "evidence": "Lede defines RAG, retriever/generator surfaces, and the one-number problem entirely within itself; no forward reference to a deeper layer.",
+          "span": "That pipeline still reports one end-to-end number, and when it fails the number does not say which of the two surfaces is responsible.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-attrib",
+          "verdict": "pass",
+          "evidence": "Card includes analogue, what's-new, reach/skip guidance, exemplar, and confidence with no 'see below' deferral",
+          "span": "confidence: settled that the surfaces are distinct; the automatic stage classifiers are nowhere near reliable",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "Sentence is a self-contained contrastive claim about benchmarks vs. the retrieval/generation join, with no forward pointer to deeper content",
+          "span": "built to score retrieval or generation in isolation, not the join between them",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "Standalone claim about weights vs retrieval traceability; no reference to deeper content or 'see below'.",
+          "span": "leaves no retrieval step for a production failure to be traced back to",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-faith",
+          "verdict": "pass",
+          "evidence": "Lede defines faithfulness, situates it among the four metrics, and disambiguates from answer relevance without deferring to a deeper layer.",
+          "span": "Answer relevance is the one people confuse it with, and it measures only whether the response addresses the question asked.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-faith",
+          "verdict": "pass",
+          "evidence": "Card defines both axes, gives analogy, what's-new, reach/skip criteria, and exemplar with no 'see below' pointer to deeper content",
+          "span": "Faithfulness scores an answer against its retrieved context; answer relevance scores it against the question.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-faith-split",
+          "verdict": "fail",
+          "evidence": "References 'the terms' and 'the metric name' without naming them here; reader must consult a deeper layer to know what is meant",
+          "span": "the terms in different places",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-judge",
+          "verdict": "pass",
+          "evidence": "Lede defines LLM-as-judge, its rating function, correlation evidence, and spot-check caveat with no forward reference to deeper content",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-judge",
+          "verdict": "pass",
+          "evidence": "Card states analogue, anchor, what's-new, and exemplar without referring to any deeper layer.",
+          "span": "Held-out validation is renamed; what is new is that the classifier is a prompt anyone can edit.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "States finding and its implication in one self-contained sentence; no 'see below' deferral to a deeper layer.",
+          "span": "which caps what agreement can mean",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-drift",
+          "verdict": "pass",
+          "evidence": "Lede explains drift, blindness, and stale eval fully in itself; no reference to deeper layer needed",
+          "span": "so the eval measures a corpus that no longer exists",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-drift",
+          "verdict": "pass",
+          "evidence": "Card defines analogue, anchor, and new item (retriever staleness) with no reference to a deeper layer like 'see below'",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-drift-groundtruth",
+          "verdict": "pass",
+          "evidence": "Contrast is complete in itself (two routes named and distinguished); no pointer to deeper layer like 'see below'.",
+          "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers.",
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    },
+    {
+      "pass": "evidence-grounding",
+      "rules": [
+        "R-ART-03",
+        "R-EVID-01",
+        "R-EVID-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ART-03",
+          "block_id": "toulmin-faith",
+          "verdict": "fail",
+          "evidence": "Claim states thresholds unconditionally; only Warrant and Rebuttal present, no explicit qualifier stating conditions/strength for the recommendation",
+          "span": null,
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each card carries a Confidence line separating settled from contested (e.g. 'settled... boundary between faithfulness and groundedness is not'), and body/toulmin blocks name dissenting positions.",
+          "span": "Confidence: settled that the axes are separable; the boundary between faithfulness and groundedness is not",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "All quantified performance claims (57.8%, 40.3%, 72%, 56%, 95%, 90%) cite >=2 distinct sources; explicit references to TREC 2024 and ARES as independent benchmarks indicate corroboration beyond single vendor.",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "expertise-calibration",
+      "rules": [
+        "R-PARAM-02",
+        "R-PROSE-02",
+        "R-PROSE-06",
+        "R-EXPERT-01",
+        "R-EXPERT-03",
+        "R-EXPERT-02",
+        "R-DEPTH-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PARAM-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "All blocks use mental-model cards, trade-off matrices, and failure catalogs (reach-for-it-when/skip-it-when framing) rather than step-by-step worked examples",
+          "span": "Reach for stage-wise scores when component metrics look healthy and end-to-end quality is collapsing anyway.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-attrib",
+          "verdict": "pass",
+          "evidence": "No unqualified praise; separability is immediately paired with the cost that the end-to-end number hides which surface failed.",
+          "span": "the number does not say which of the two surfaces is responsible",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-attrib",
+          "verdict": "pass",
+          "evidence": "skip_when names when not to use it; confidence flags automatic classifiers as 'nowhere near reliable' \u2014 cost stated, not unqualified praise",
+          "span": "the automatic stage classifiers are nowhere near reliable",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "No claim of merit or praise is made; text states a benchmark scope limitation, not unqualified endorsement.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-attrib-blackbox",
+          "verdict": "fail",
+          "evidence": "Calibrated metrics are credited as enabling failure attribution with no cost or trade-off named",
+          "span": "Metrics calibrated for this pipeline are what make failure attribution possible at all.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "States a cost (no retrieval/traceability) with no accompanying claim of merit or unqualified praise to balance",
+          "span": "leaves no retrieval step for a production failure to be traced back to",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "merit (addressable surfaces) is paired with named cost 'pays for that with a label set per boundary'",
+          "span": "pays for that with a label set per boundary",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-faith",
+          "verdict": "pass",
+          "evidence": "Lede defines faithfulness taxonomically vs. answer relevance; contains no merit claim or unqualified praise for R-PROSE-02 to fail on",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-faith",
+          "verdict": "pass",
+          "evidence": "Card contains no unqualified praise; content is definitional (what each metric scores) and conditional (reach_for/skip_when), not a merit claim needing a trade-off",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "toulmin-faith",
+          "verdict": "pass",
+          "evidence": "No merit/praise claims present; text argues definitional inconsistency, not trade-offs, so rule is inapplicable",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-faith-split",
+          "verdict": "pass",
+          "evidence": "Text notes frameworks 'draw the line... in different places' without unqualified praise; no merit claim is made to evaluate",
+          "span": "the metric name alone does not say what was measured",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-faith-split",
+          "verdict": "fail",
+          "evidence": "Text presents definitional differences (groundedness vs faithfulness) with no cost/benefit named; purely descriptive, not a trade-off",
+          "span": "Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-judge",
+          "verdict": "pass",
+          "evidence": "Correlation claim ('reasonable correlation with human judgment') is qualified by cost 'still needs periodic human spot checks'",
+          "span": "That judge still needs periodic human spot checks, to verify that automated scores align with actual output quality.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-judge",
+          "verdict": "pass",
+          "evidence": "No unqualified praise; confidence line names the cost directly: 'published agreement numbers are lower than the adoption suggests'",
+          "span": "the published agreement numbers are lower than the adoption suggests",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "No unqualified praise present; states a limitation ('caps what agreement can mean') rather than merit claim.",
+          "span": "which caps what agreement can mean",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "correlation claim is immediately capped: 'do not make the model a better judge than a person...capped by human disagreement'",
+          "span": "Those assessments do not make the model a better judge than a person. The judge is capped by human disagreement instead",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-drift",
+          "verdict": "pass",
+          "evidence": "No merit/praise claims present to evaluate; text only describes a failure mode (staleness blindness), so R-PROSE-02 is inapplicable",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-drift",
+          "verdict": "pass",
+          "evidence": "reach_for_when/skip_when pair frames the refresh policy's applicability by cost/limit, not as unqualified praise",
+          "span": "Skip refreshing when the corpus is a fixed archive, where the documents cannot go stale.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-drift-groundtruth",
+          "verdict": "fail",
+          "evidence": "Describes two routes neutrally without naming any cost/trade-off for either \u2014 matches FAIL pattern 'neutral balanced coverage'",
+          "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-drift-groundtruth",
+          "verdict": "pass",
+          "evidence": "Cost is named: 'That position trades freshness for authority' \u2014 merit framed as trade-off, not unqualified praise",
+          "span": "That position trades freshness for authority",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-attrib",
+          "verdict": "fail",
+          "evidence": "Text presents structural tradeoff (inspection granularity vs. aggregate accountability) symmetrically without leverage-weighting which surface deserves priority or when one dominates.",
+          "span": "each inspectable on its own. That pipeline still reports one end-to-end number, and when it fails the number does not say which of the two surfaces is responsible."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-attrib",
+          "verdict": "pass",
+          "evidence": "Takes clear opinionated position ('Score separately') with asymmetric reasoning ('distinct failure surfaces'); no hedging or forced symmetry of alternatives",
+          "span": "Score the retriever and the generator against separate ground truth, because they are two distinct failure surfaces"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "Text makes asymmetric claim about benchmark limitation (isolation vs. joins) without hedging or false symmetry.",
+          "span": "The benchmarks you would reach for were built to score retrieval or generation in isolation, not the join between them."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "Text frames RAG black-box problem unhedged and asymmetric: misleading metrics as necessity-level, metric design as design decision not reporting choice, no forced symmetry.",
+          "span": "metrics that mislead rather than metrics that are merely imprecise"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "Direct claim without hedging; takes asymmetric position on single consequence (traceability loss), avoids symmetrizing pros/cons equally.",
+          "span": "Knowledge folded into model weights leaves no retrieval step for a production failure to be traced back to."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "Text positions RAG as solution with named cost ('pays for that with a label set per boundary'), asymmetric and weighted, not over-symmetrized.",
+          "span": "A RAG pipeline keeps both surfaces addressable instead, and pays for that with a label set per boundary."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-faith",
+          "verdict": "fail",
+          "evidence": "Text is definitional and clarifying rather than opinionated; identifies a confusion point but takes no leverage-weighted stance on relative importance or priority.",
+          "span": "Answer relevance is the one people confuse it with"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-faith",
+          "verdict": "pass",
+          "evidence": "Card asymmetrically privileges two-axis approach in specific context (no ground truth), identifies skip conditions (extractive tasks), and cites asymmetric exemplar (only correctness needs reference); no false balance",
+          "span": "Reach for both axes when no human-annotated ground truth exists... Skip faithfulness on an extractive task"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "toulmin-faith",
+          "verdict": "pass",
+          "evidence": "Text takes leverage-weighted position (dual thresholds) with specific named rebuttal (RAGAS collapses distinction) rather than hedging or symmetrizing approaches equally",
+          "span": "That distinction is what a published threshold assumes, so a team on the RAGAS definition has one score and two bars."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-faith-split",
+          "verdict": "pass",
+          "evidence": "Direct causal claim without hedging qualifiers or false symmetry between frameworks",
+          "span": "so the metric name alone does not say what was measured"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-faith-split",
+          "verdict": "fail",
+          "evidence": "Text gives equal definitional treatment to both groundedness and faithfulness without leverage-weighting or asymmetry; parallel structure ('measures whether...') over-symmetrizes rather than taking opinionated stance",
+          "span": "Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports. Faithfulness measures something adjacent, whether a response accurately represents what the retrieved documents actually say."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-judge",
+          "verdict": "fail",
+          "evidence": "Text presents balanced pro-con structure (reasonable correlation + needs checks) without leverage-weighted positioning on use cases or constraint severity.",
+          "span": "has been demonstrated to produce reasonable correlation with human judgment. That judge still needs periodic human spot checks"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-judge",
+          "verdict": "pass",
+          "evidence": "Clear leverage-weighted positions: reach for calibration before dashboard adoption, skip when decidable in code; asymmetric framing (settled on need, adoption exceeds evidence); minimal hedging.",
+          "span": "Reach for calibration before a judge score reaches a dashboard, then keep periodic human spot checks after it does. Skip it when the criterion is decidable in code."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "Asymmetric finding ('correlated better...than') weighted with leverage claim ('caps what agreement can mean'); direct stance, unhedged.",
+          "span": "which caps what agreement can mean"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-judge-ceiling",
+          "verdict": "fail",
+          "evidence": "Text opens with pro-model finding, immediately hedges with 'do not make the model a better judge,' then explains away the implication. Over-symmetrizes rather than stating weighted position.",
+          "span": "Those assessments do not make the model a better judge than a person. The judge is capped by human disagreement instead, because two people scoring the same assessment already differ."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-drift",
+          "verdict": "pass",
+          "evidence": "Text takes direct, unhedged position on staleness as structural failure ('retriever is structurally blind'); no hedging, no forced symmetry or pros/cons balance.",
+          "span": "The retriever is structurally blind to that staleness. That retriever keeps returning its usual numbers, so the eval measures a corpus that no longer exists."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-drift",
+          "verdict": "pass",
+          "evidence": "Asymmetric position with clear boundaries: drift applies when corpus moves, skipped when archive is fixed; contested confidence labels specific unsettled assumptions rather than hedging.",
+          "span": "Reach for a refresh policy the first time a corpus rebuild moves a score you did not touch. Skip refreshing when the corpus is a fixed archive"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-drift-groundtruth",
+          "verdict": "fail",
+          "evidence": "Presents two routes as symmetric alternatives without naming costs, trade-offs, or a weighted position; neutral description, not opinionated call.",
+          "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-drift-groundtruth",
+          "verdict": "fail",
+          "evidence": "Text presents two positions in parallel structure, hedges with 'neither side carries a settled refresh cadence,' avoiding weighted leverage favoring one approach.",
+          "span": "which is one position. The opposing position holds that the optimal ground truth for enterprise RAG is institutionally validated business answers, not a synthetic dataset. That position trades freshness for authority, and neither side carries a settled refresh cadence."
+        },
+        {
+          "rule_id": "R-EXPERT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No block contains sequential step-by-step instructions; content is claims, mental models, trade-offs, failure catalogs, and a non-sequential checklist",
+          "span": "Record the corpus snapshot identifier beside every score, and refuse to compare two scores taken against different snapshots.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EXPERT-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Figures are supplied but claims lack specific grounding against them; e.g., 'Two surfaces is the cheap model' unstated against Figure 1's specific depiction",
+          "span": "Two surfaces is the cheap model and it holds for a plain retriever-generator pipeline"
+        },
+        {
+          "rule_id": "R-EXPERT-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Card blocks explicitly gate scaffolding via 'Reach-for-it-when' and 'Skip-it-when' metadata; detailed failure modes in body blocks are secondary, not primary surface; no step-by-step procedural walkthroughs present.",
+          "span": "Card blocks consistently structure as: 'Reach-for-it-when: [condition]' and 'Skip-it-when: [condition]' with 'New-vs-renamed' and 'Confidence' gates"
+        },
+        {
+          "rule_id": "R-DEPTH-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each concept receives substantive apparatus (card, matrix/checklist, figure, body) scaled to its complexity; no padding of thin sections or quota-filling observed.",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "figures",
+      "rules": [
+        "R-FIG-01",
+        "R-FIG-02",
+        "R-FIG-03",
+        "R-FIG-05"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-attrib",
+          "verdict": "pass",
+          "evidence": "States a conclusion: healthy component metrics can coexist with collapsed end-to-end score",
+          "span": "component metrics can read healthy while that score collapses",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-faith",
+          "verdict": "pass",
+          "evidence": "Caption states a conclusion contrasting two metrics' comparands, not just naming the figure",
+          "span": "faithfulness scores an answer against its retrieved context while answer relevance scores it against the question",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-judge",
+          "verdict": "fail",
+          "evidence": "States topic and raw percentages (56%, 72%) but no interpretive claim about what the gap means",
+          "span": "human and GPT-4o agreement on TREC 2024 support assessment, 56 percent from scratch and 72 percent after human post-editing",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-drift",
+          "verdict": "pass",
+          "evidence": "Caption states a conclusion (score steady vs resolvable labels falling), not just a label",
+          "span": "the reported score holds steady across corpus rebuilds while the fraction of still-resolvable labels falls",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-attrib",
+          "verdict": "pass",
+          "evidence": "Only caption text provided; visual emphasis in figure itself cannot be assessed without diagram content.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-faith",
+          "verdict": "fail",
+          "evidence": "Caption presents faithfulness and answer relevance as equally weighted parallel concepts, suggesting multiple emphasized elements rather than one",
+          "span": "faithfulness scores an answer against its retrieved context while answer relevance scores it against the question"
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-judge",
+          "verdict": "fail",
+          "evidence": "Caption describes findings (percentages) but provides no evidence of exactly one emphasized element or shared box/arrow vocabulary",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-drift",
+          "verdict": "fail",
+          "evidence": "Caption describes two contrasting trends equally (steady score, falling fraction), suggesting multiple elements shown without single emphasized element.",
+          "span": "the reported score holds steady across corpus rebuilds while the fraction of still-resolvable labels falls"
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-attrib",
+          "verdict": "pass",
+          "evidence": "Spatial contiguity rule requires visual layout assessment; only caption text provided without figure visualization.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-faith",
+          "verdict": "fail",
+          "evidence": "Figure contains only text caption; no visual diagram with spatial label-to-referent adjacency is present to assess.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-judge",
+          "verdict": "fail",
+          "evidence": "Cannot verify label-referent spatial adjacency; visual figure layout not provided",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-drift",
+          "verdict": "pass",
+          "evidence": "Caption describes figure content but provides no evidence of legend-far-from-data or label separation violations",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-attrib",
+          "verdict": "fail",
+          "evidence": "Caption describes errors entering one combined score without indicating separate small-multiples visualizations for component vs. end-to-end comparison.",
+          "span": "retrieval error and generation error enter the same end-to-end score"
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-faith",
+          "verdict": "pass",
+          "evidence": "Figure defines two metric types; R-FIG-05 applies to comparison figures showing performance/results data, not definitional explanations.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-judge",
+          "verdict": "fail",
+          "evidence": "Single caption presents two conditions (from scratch vs. after editing) inline without indicating separate panels or small multiples structure",
+          "span": "56 percent from scratch and 72 percent after human post-editing"
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-drift",
+          "verdict": "pass",
+          "evidence": "Straightforward comparison of two metrics across rebuilds; no indication of visual overload or complexity.",
+          "span": "the reported score holds steady across corpus rebuilds while the fraction of still-resolvable labels falls"
+        }
+      ]
+    },
+    {
+      "pass": "structure-architecture",
+      "rules": [
+        "R-ARCH-01",
+        "R-ARCH-03",
+        "R-ARCH-04",
+        "R-SCENT-01",
+        "R-SCENT-02",
+        "R-DEPTH-01",
+        "R-XREF-01",
+        "R-XREF-03",
+        "R-VOCAB-02"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ARCH-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Frontmatter contains only title, generated_at, and concepts list \u2014 no audience, scope boundaries, or editorial decisions stated",
+          "span": "title: One end-to-end score hides which stage of the pipeline broke\ngenerated_at: '2026-08-21T00:00:00Z'\nconcepts:",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Opening paragraph claims only end-to-end scores hide stage failure; doesn't preview faithfulness, judge-calibration, or eval-drift sections",
+          "span": "A RAG pipeline exposes the retriever and the generator as two distinct failure surfaces, each inspectable on its own.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-ARCH-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document presents four sections organized linearly with no explicit goal-tuned reading paths or audience notes. No guidance for different reader types (e.g., practitioners vs. researchers).",
+          "span": null
+        },
+        {
+          "rule_id": "R-SCENT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "All 4 headings are specific claims (e.g. 'One end-to-end score hides which stage of the pipeline broke'), none are generic labels like Background/Overview.",
+          "span": "One end-to-end score hides which stage of the pipeline broke",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SCENT-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Heading 2 uses compound-complex form with 'so' conjunction; headings 1, 3, 4 are simple declarative SVO structures. Grammatical parallelism broken.",
+          "span": "Faithfulness and answer relevance move apart, so one averaged score buries both"
+        },
+        {
+          "rule_id": "R-DEPTH-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each concept's card block (card-attrib, card-faith, card-judge, card-drift) gives Claim + Reach-for-it-when + Skip-it-when + Confidence, enabling routine decisions without descending to matrix/toulmin/body blocks.",
+          "span": "Reach-for-it-when: Reach for stage-wise scores when component metrics look healthy and end-to-end quality is collapsing anyway.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "R-XREF-01 is a card-level rule (home-domain mapping in card opening); document has no card blocks to apply it to",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Four sections (failure-attribution, faithfulness, judge-calibration, eval-set-drift) presented sequentially without explicit cross-references linking their conceptual dependencies: e.g., faithfulness as a failure surface type, judge-calibration applied to faithfulness metrics, or eval-set-drift's im",
+          "span": "1. One end-to-end score hides which stage of the pipeline broke / 2. Faithfulness and answer relevance move apart, so one averaged score buries both / 3. Every eval framework ships a judge you have not validated yet / 4. A frozen eval set stops measuring the system once the corpus moves"
+        },
+        {
+          "rule_id": "R-VOCAB-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Eval-set-drift section uses 'One route'/'the other' instead of named handles. Faithfulness failure modes named in matrix-faith but not reused in opening/card blocks. Patterns inconsistently converted to reusable handles across the document.",
+          "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers"
+        }
+      ]
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rules": [
+        "R-CARD-01",
+        "R-CARD-03",
+        "R-SUMM-01",
+        "R-PROSE-03",
+        "R-RECALL-02",
+        "R-ART-02",
+        "R-ART-04",
+        "R-ART-05",
+        "R-EVID-02",
+        "R-XREF-04",
+        "R-ART-06",
+        "R-MV-01"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-attrib",
+          "verdict": "pass",
+          "evidence": "home_anchor maps to a distinct adjacent domain (pipeline ablation), not a restatement of the idea",
+          "span": "Like ablating one stage of a training pipeline to see which stage owns the loss.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-faith",
+          "verdict": "pass",
+          "evidence": "home_anchor gives a distinct analogue (precision/recall reported separately) plus whats_new_vs_renamed, not a restatement of the idea field",
+          "span": "Like reporting precision and recall separately rather than collapsing them into accuracy.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-judge",
+          "verdict": "pass",
+          "evidence": "home_anchor gives genuine ML analogy ('holding out a labelled split before a classifier is allowed to gate anything') distinct from restating judge calibration itself",
+          "span": "Like holding out a labelled split before a classifier is allowed to gate anything.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-drift",
+          "verdict": "pass",
+          "evidence": "home_anchor gives genuine analogue (training-serving skew) plus whats_new field distinguishes retriever staleness, not a section restatement",
+          "span": "Like training-serving skew, where the feature distribution moves after the model is fit.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-attrib",
+          "verdict": "pass",
+          "evidence": "skip_when gives a specific condition (context fixed by construction, only generator varies), not just a use-condition",
+          "span": "Skip the split when the retrieved context is fixed by construction and only the generator can vary.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-faith",
+          "verdict": "pass",
+          "evidence": "skip_when names a specific scenario: extractive task where the answer is copied out of the context, not a generic caveat",
+          "span": "Skip faithfulness on an extractive task, where the answer is copied out of the context.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-judge",
+          "verdict": "pass",
+          "evidence": "skip_when gives specific condition: 'when the criterion is decidable in code, where an exact match already answers'",
+          "span": "Skip it when the criterion is decidable in code, where an exact match already answers.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-drift",
+          "verdict": "pass",
+          "evidence": "skip_when gives a specific condition (fixed archive corpus) distinct from reach_for_when, not just a use-trigger",
+          "span": "Skip refreshing when the corpus is a fixed archive, where the documents cannot go stale.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-attrib",
+          "verdict": "pass",
+          "evidence": "States a claim (one number can't attribute failure between two distinct surfaces), not a topic label like 'this section covers X'",
+          "span": "when it fails the number does not say which of the two surfaces is responsible",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-faith",
+          "verdict": "fail",
+          "evidence": "Lede defines faithfulness and lists metrics, no defended claim/position",
+          "span": "Faithfulness asks whether an answer is grounded in and inferable from the retrieved context.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-judge",
+          "verdict": "fail",
+          "evidence": "Lede is topic-announcement/summary of what LLM-as-judge is, not a claim defending a position",
+          "span": "LLM-as-a-judge has become a prominent RAG evaluation metric over roughly the last year.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-drift",
+          "verdict": "pass",
+          "evidence": "Lede asserts a specific claim ('the eval measures a corpus that no longer exists') via causal chain, not a topic announcement.",
+          "span": "so the eval measures a corpus that no longer exists",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-attrib",
+          "verdict": "pass",
+          "evidence": "Entire lede carried in flowing prose sentences; no bullet fragmentation; reasoning connected via subordinate clauses and logical connectors.",
+          "span": "A RAG pipeline exposes the retriever and the generator as two distinct failure surfaces, each inspectable on its own. That pipeline still reports one end-to-end number, and when it fails the number does not say which of the two surfaces is responsible."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-attrib",
+          "verdict": "pass",
+          "evidence": "All card fields (idea, home_anchor, reach_for_when, skip_when, key_exemplar, confidence) present reasoning as connected prose sentences with conjunctions, not fragmented bullet points.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "Single prose sentence carries reasoning without bullet fragmentation",
+          "span": "The benchmarks you would reach for were built to score retrieval or generation in isolation, not the join between them."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-attrib-blackbox",
+          "verdict": "pass",
+          "evidence": "Reasoning carried entirely in prose across connected sentences; causal chain flows through multiple sentences without bullet fragmentation.",
+          "span": "A RAG system treated as a black box hides where its retrieval and generation errors originate. That system reports metrics that mislead rather than metrics that are merely imprecise."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "Text is written as cohesive prose sentence, not fragmented into bullets; reasoning carried clearly in prose form",
+          "span": "Knowledge folded into model weights leaves no retrieval step for a production failure to be traced back to."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-attrib-surfaces",
+          "verdict": "pass",
+          "evidence": "Reasoning carried through connected prose sentences; boundary enumeration integrated via em-dash, not bulletized.",
+          "span": "four such boundaries \u2014 chunking, retrieval, reranking, generation \u2014 and production systems add more"
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-faith",
+          "verdict": "pass",
+          "evidence": "Entire lede is cohesive prose sentences explaining faithfulness and its relationship to answer relevance; no bullet fragmentation of reasoning.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-faith",
+          "verdict": "pass",
+          "evidence": "All reasoning presented as prose sentences within fields; no bullet-point fragmentation used.",
+          "span": "Faithfulness scores an answer against its retrieved context; answer relevance scores it against the question."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "toulmin-faith",
+          "verdict": "pass",
+          "evidence": "Reasoning flows through connected prose sentences; no bullet fragmentation within Claim/Warrant/Rebuttal sections.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-faith-split",
+          "verdict": "pass",
+          "evidence": "Reasoning carried in flowing prose sentence, not fragmented into bullets",
+          "span": "Two frameworks draw the line between the terms in different places, so the metric name alone does not say what was measured."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-faith-split",
+          "verdict": "pass",
+          "evidence": "Entire block written as connected prose sentences; reasoning flows through narrative structure without bullet fragmentation.",
+          "span": "Faithfulness and groundedness name two different properties in one framework and one property in another. Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-judge",
+          "verdict": "pass",
+          "evidence": "Entire lede is prose-form connected sentences; no bullets fragment the reasoning about LLM-as-a-judge development, correlation, and verification need.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-judge",
+          "verdict": "pass",
+          "evidence": "All field content is prose (complete sentences). No bullet-point fragmentation. Each field (idea, home_anchor, whats_new_vs_renamed, reach_for_when, skip_when, key_exemplar, confidence) contains prose reasoning.",
+          "span": "A judge model scores against criteria, so it has an agreement rate with humans that you have not measured."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "Reasoning flows in a single prose sentence (observation plus implication) without bullet fragmentation",
+          "span": "An independent human judge correlated better with GPT-4o than with the other human, which caps what agreement can mean."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-judge-ceiling",
+          "verdict": "pass",
+          "evidence": "Reasoning flows through connected prose sentences without bullet fragmentation; logical chain maintained across four sentences establishing correlation, cautioning interpretation, explaining constraint, providing evidence.",
+          "span": "An independent human judge's assessments correlated better with GPT-4o than another human judge's assessments did. Those assessments do not make the model a better judge than a person. The judge is capped by human disagreement instead, because two people scoring the same assessment already differ."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-drift",
+          "verdict": "pass",
+          "evidence": "Entire block written as connected prose sentences; reasoning flows through full clauses, not fragmented into bullets.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-drift",
+          "verdict": "pass",
+          "evidence": "All reasoning presented in prose within labeled fields; no bullet fragmentation. Structured format is standard card organization.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-drift-groundtruth",
+          "verdict": "pass",
+          "evidence": "Single prose sentence conveys reasoning without bullet fragmentation; two routes contrasted in flowing connected text.",
+          "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-drift-groundtruth",
+          "verdict": "pass",
+          "evidence": "Entire block carries reasoning through connected prose sentences presenting opposing positions and trade-offs, with no bullet fragmentation.",
+          "span": null
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-attrib",
+          "verdict": "pass",
+          "evidence": "All 3 require generation ('what does this pattern tell you', 'why... harder'); Q2 is cross-domain mapping to training-pipeline ablation habit",
+          "span": "Which training-pipeline habit does stage-wise scoring correspond to?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-faith",
+          "verdict": "pass",
+          "evidence": "Q2 explicitly transfers a classification-domain habit (precision/recall) to evaluation; all three require generation/reasoning, not definitional recall",
+          "span": "Which two-number habit from classification carries over here?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-judge",
+          "verdict": "pass",
+          "evidence": "All 3 questions require generation from scenarios (e.g., 'what is missing before that number gates a release'), and Q2 is a cross-domain mapping (judge calibration -> supervised training holdout split).",
+          "span": "What does judge calibration correspond to in a supervised training workflow?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-drift",
+          "verdict": "pass",
+          "evidence": "Q2 is cross-domain mapping (RAG drift -> training-serving skew) and all 3 require generation, not term recognition",
+          "span": "Which production monitoring problem has the same shape?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "4-item checklist with action verbs (Record, refuse, Add, Re-read) addressing corpus versioning, comparison, metrics, and benchmarks\u2014high-frequency failures, not glossary, under 9-item limit",
+          "span": null
+        },
+        {
+          "rule_id": "R-ART-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Decision matrix block (matrix-attrib) presents tradeoff as prose without structured matrix, named baseline, explicit criteria, or per-column recommendations.",
+          "span": "Two surfaces is the cheap model and it holds for a plain retriever-generator pipeline. Four stages \u2014 chunking, retrieval, reranking, generation \u2014 is the accurate model, and it costs one labelled artifact per boundary."
+        },
+        {
+          "rule_id": "R-ART-05",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Four concept surveys use inconsistent artifact types (decision_matrix, failure_catalog, decision_aid, checklist) and non-uniform body sections without input/mechanism/assumption/when structure",
+          "span": "matrix-attrib, matrix-faith, matrix-judge, checklist-drift + body-attrib-blackbox, body-faith-split, body-judge-ceiling, body-drift-groundtruth"
+        },
+        {
+          "rule_id": "R-EVID-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "No dedicated honest-limits section. Limitations are embedded within topic sections (e.g., judge-ceiling, drift-groundtruth) rather than stated in a separate 'Where this breaks down' statement.",
+          "span": null
+        },
+        {
+          "rule_id": "R-XREF-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "card-drift's anchor 'distribution shift' is the general name for the same staleness phenomenon eval-set-drift specifically names, not a genuinely different adjacent technique",
+          "span": "Distribution shift is renamed; what is new is that the retriever is structurally blind to staleness.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-06",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No further-reading artifact or section present in the document blocks provided.",
+          "span": null
+        },
+        {
+          "rule_id": "R-MV-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each concept spans 3-5 distinct modes with new content per lens: judge-calibration's card gives use/skip criteria, matrix gives budget tiers, fig gives 56%/72% agreement data, body gives the human-ceiling argument",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "pass": 111,
+    "fail": 33,
+    "error": 1
+  },
+  "blocking": true,
+  "blocking_failures": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "subsum-faith-split",
+      "verdict": "fail",
+      "evidence": "References 'the terms' and 'the metric name' without naming them here; reader must consult a deeper layer to know what is meant",
+      "span": "the terms in different places",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "evidence-grounding",
+      "rule_id": "R-ART-03",
+      "block_id": "toulmin-faith",
+      "verdict": "fail",
+      "evidence": "Claim states thresholds unconditionally; only Warrant and Rebuttal present, no explicit qualifier stating conditions/strength for the recommendation",
+      "span": null,
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "body-attrib-blackbox",
+      "verdict": "fail",
+      "evidence": "Calibrated metrics are credited as enabling failure attribution with no cost or trade-off named",
+      "span": "Metrics calibrated for this pipeline are what make failure attribution possible at all.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "body-faith-split",
+      "verdict": "fail",
+      "evidence": "Text presents definitional differences (groundedness vs faithfulness) with no cost/benefit named; purely descriptive, not a trade-off",
+      "span": "Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "subsum-drift-groundtruth",
+      "verdict": "fail",
+      "evidence": "Describes two routes neutrally without naming any cost/trade-off for either \u2014 matches FAIL pattern 'neutral balanced coverage'",
+      "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-01",
+      "block_id": "fig-judge",
+      "verdict": "fail",
+      "evidence": "States topic and raw percentages (56%, 72%) but no interpretive claim about what the gap means",
+      "span": "human and GPT-4o agreement on TREC 2024 support assessment, 56 percent from scratch and 72 percent after human post-editing",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Frontmatter contains only title, generated_at, and concepts list \u2014 no audience, scope boundaries, or editorial decisions stated",
+      "span": "title: One end-to-end score hides which stage of the pipeline broke\ngenerated_at: '2026-08-21T00:00:00Z'\nconcepts:",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Opening paragraph claims only end-to-end scores hide stage failure; doesn't preview faithfulness, judge-calibration, or eval-drift sections",
+      "span": "A RAG pipeline exposes the retriever and the generator as two distinct failure surfaces, each inspectable on its own.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-faith",
+      "verdict": "fail",
+      "evidence": "Lede defines faithfulness and lists metrics, no defended claim/position",
+      "span": "Faithfulness asks whether an answer is grounded in and inferable from the retrieved context.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-judge",
+      "verdict": "fail",
+      "evidence": "Lede is topic-announcement/summary of what LLM-as-judge is, not a claim defending a position",
+      "span": "LLM-as-a-judge has become a prominent RAG evaluation metric over roughly the last year.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-XREF-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "card-drift's anchor 'distribution shift' is the general name for the same staleness phenomenon eval-set-drift specifically names, not a genuinely different adjacent technique",
+      "span": "Distribution shift is renamed; what is new is that the retriever is structurally blind to staleness.",
+      "retest": "fail",
+      "flipped": false
+    }
+  ],
+  "advisory_failures": [
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "lede-attrib",
+      "verdict": "fail",
+      "evidence": "Text presents structural tradeoff (inspection granularity vs. aggregate accountability) symmetrically without leverage-weighting which surface deserves priority or when one dominates.",
+      "span": "each inspectable on its own. That pipeline still reports one end-to-end number, and when it fails the number does not say which of the two surfaces is responsible."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "lede-faith",
+      "verdict": "fail",
+      "evidence": "Text is definitional and clarifying rather than opinionated; identifies a confusion point but takes no leverage-weighted stance on relative importance or priority.",
+      "span": "Answer relevance is the one people confuse it with"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "body-faith-split",
+      "verdict": "fail",
+      "evidence": "Text gives equal definitional treatment to both groundedness and faithfulness without leverage-weighting or asymmetry; parallel structure ('measures whether...') over-symmetrizes rather than taking opinionated stance",
+      "span": "Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports. Faithfulness measures something adjacent, whether a response accurately represents what the retrieved documents actually say."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "lede-judge",
+      "verdict": "fail",
+      "evidence": "Text presents balanced pro-con structure (reasonable correlation + needs checks) without leverage-weighted positioning on use cases or constraint severity.",
+      "span": "has been demonstrated to produce reasonable correlation with human judgment. That judge still needs periodic human spot checks"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "body-judge-ceiling",
+      "verdict": "fail",
+      "evidence": "Text opens with pro-model finding, immediately hedges with 'do not make the model a better judge,' then explains away the implication. Over-symmetrizes rather than stating weighted position.",
+      "span": "Those assessments do not make the model a better judge than a person. The judge is capped by human disagreement instead, because two people scoring the same assessment already differ."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "subsum-drift-groundtruth",
+      "verdict": "fail",
+      "evidence": "Presents two routes as symmetric alternatives without naming costs, trade-offs, or a weighted position; neutral description, not opinionated call.",
+      "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "body-drift-groundtruth",
+      "verdict": "fail",
+      "evidence": "Text presents two positions in parallel structure, hedges with 'neither side carries a settled refresh cadence,' avoiding weighted leverage favoring one approach.",
+      "span": "which is one position. The opposing position holds that the optimal ground truth for enterprise RAG is institutionally validated business answers, not a synthetic dataset. That position trades freshness for authority, and neither side carries a settled refresh cadence."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Figures are supplied but claims lack specific grounding against them; e.g., 'Two surfaces is the cheap model' unstated against Figure 1's specific depiction",
+      "span": "Two surfaces is the cheap model and it holds for a plain retriever-generator pipeline"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-faith",
+      "verdict": "fail",
+      "evidence": "Caption presents faithfulness and answer relevance as equally weighted parallel concepts, suggesting multiple emphasized elements rather than one",
+      "span": "faithfulness scores an answer against its retrieved context while answer relevance scores it against the question"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-judge",
+      "verdict": "fail",
+      "evidence": "Caption describes findings (percentages) but provides no evidence of exactly one emphasized element or shared box/arrow vocabulary",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-drift",
+      "verdict": "fail",
+      "evidence": "Caption describes two contrasting trends equally (steady score, falling fraction), suggesting multiple elements shown without single emphasized element.",
+      "span": "the reported score holds steady across corpus rebuilds while the fraction of still-resolvable labels falls"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-03",
+      "block_id": "fig-faith",
+      "verdict": "fail",
+      "evidence": "Figure contains only text caption; no visual diagram with spatial label-to-referent adjacency is present to assess.",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-03",
+      "block_id": "fig-judge",
+      "verdict": "fail",
+      "evidence": "Cannot verify label-referent spatial adjacency; visual figure layout not provided",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-05",
+      "block_id": "fig-attrib",
+      "verdict": "fail",
+      "evidence": "Caption describes errors entering one combined score without indicating separate small-multiples visualizations for component vs. end-to-end comparison.",
+      "span": "retrieval error and generation error enter the same end-to-end score"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-05",
+      "block_id": "fig-judge",
+      "verdict": "fail",
+      "evidence": "Single caption presents two conditions (from scratch vs. after editing) inline without indicating separate panels or small multiples structure",
+      "span": "56 percent from scratch and 72 percent after human post-editing"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document presents four sections organized linearly with no explicit goal-tuned reading paths or audience notes. No guidance for different reader types (e.g., practitioners vs. researchers).",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-SCENT-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Heading 2 uses compound-complex form with 'so' conjunction; headings 1, 3, 4 are simple declarative SVO structures. Grammatical parallelism broken.",
+      "span": "Faithfulness and answer relevance move apart, so one averaged score buries both"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Four sections (failure-attribution, faithfulness, judge-calibration, eval-set-drift) presented sequentially without explicit cross-references linking their conceptual dependencies: e.g., faithfulness as a failure surface type, judge-calibration applied to faithfulness metrics, or eval-set-drift's im",
+      "span": "1. One end-to-end score hides which stage of the pipeline broke / 2. Faithfulness and answer relevance move apart, so one averaged score buries both / 3. Every eval framework ships a judge you have not validated yet / 4. A frozen eval set stops measuring the system once the corpus moves"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-VOCAB-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Eval-set-drift section uses 'One route'/'the other' instead of named handles. Faithfulness failure modes named in matrix-faith but not reused in opening/card blocks. Patterns inconsistently converted to reusable handles across the document.",
+      "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers"
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Decision matrix block (matrix-attrib) presents tradeoff as prose without structured matrix, named baseline, explicit criteria, or per-column recommendations.",
+      "span": "Two surfaces is the cheap model and it holds for a plain retriever-generator pipeline. Four stages \u2014 chunking, retrieval, reranking, generation \u2014 is the accurate model, and it costs one labelled artifact per boundary."
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-05",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Four concept surveys use inconsistent artifact types (decision_matrix, failure_catalog, decision_aid, checklist) and non-uniform body sections without input/mechanism/assumption/when structure",
+      "span": "matrix-attrib, matrix-faith, matrix-judge, checklist-drift + body-attrib-blackbox, body-faith-split, body-judge-ceiling, body-drift-groundtruth"
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-EVID-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "No dedicated honest-limits section. Limitations are embedded within topic sections (e.g., judge-ceiling, drift-groundtruth) rather than stated in a separate 'Where this breaks down' statement.",
+      "span": null
+    }
+  ],
+  "errored_items": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-faith",
+      "verdict": "error",
+      "evidence": "JudgeError: R-PROSE-01/card-faith: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+      "span": null
+    }
+  ],
+  "flake": {
+    "retested": 80,
+    "flipped": 6,
+    "flake_rate": 0.075
+  },
+  "flaky_items": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-drift",
+      "verdict": "pass",
+      "evidence": "Fields chain via repeated topical anchors (corpus, refresh, distribution/staleness) with explicit links like 'Like' and 'renamed', not disconnected new subjects each time.",
+      "span": "Distribution shift is renamed",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "body-faith-split",
+      "verdict": "fail",
+      "evidence": "Text presents definitional differences (groundedness vs faithfulness) with no cost/benefit named; purely descriptive, not a trade-off",
+      "span": "Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "subsum-drift-groundtruth",
+      "verdict": "fail",
+      "evidence": "Describes two routes neutrally without naming any cost/trade-off for either \u2014 matches FAIL pattern 'neutral balanced coverage'",
+      "span": "One route regenerates the eval set from the knowledge base; the other refuses synthetic data and uses validated business answers.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-01",
+      "block_id": "fig-faith",
+      "verdict": "pass",
+      "evidence": "Caption states a conclusion contrasting two metrics' comparands, not just naming the figure",
+      "span": "faithfulness scores an answer against its retrieved context while answer relevance scores it against the question",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-01",
+      "block_id": "fig-judge",
+      "verdict": "fail",
+      "evidence": "States topic and raw percentages (56%, 72%) but no interpretive claim about what the gap means",
+      "span": "human and GPT-4o agreement on TREC 2024 support assessment, 56 percent from scratch and 72 percent after human post-editing",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Opening paragraph claims only end-to-end scores hide stage failure; doesn't preview faithfulness, judge-calibration, or eval-drift sections",
+      "span": "A RAG pipeline exposes the retriever and the generator as two distinct failure surfaces, each inspectable on its own.",
+      "retest": "pass",
+      "flipped": true
+    }
+  ],
+  "ir_sha256": "83590f09a4f7627fe4fe0e0dc64742b102c73d8d9f88805a502ce9fde032b609",
+  "judge": {
+    "kind": "claude",
+    "model": "haiku",
+    "calls": 249,
+    "spend_usd": 30.915,
+    "exercised_rules": true,
+    "gating_model": "sonnet"
+  }
+}

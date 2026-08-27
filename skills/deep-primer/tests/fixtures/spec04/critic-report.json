@@ -1,0 +1,1193 @@
+{
+  "passes": [
+    {
+      "pass": "coherence",
+      "rules": [
+        "R-PROSE-01",
+        "R-SUMM-04"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-graph",
+          "verdict": "pass",
+          "evidence": "Subject 'the walk' introduced in s1, reused as subject in s2 and s3 ('it'), chaining given->new rather than disconnected topics",
+          "span": "The walk costs a number of probes",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-graph",
+          "verdict": "pass",
+          "evidence": "Fields chain via repeated entities: hops\u2192Hopping, probe count\u2192probe bound, memory\u2192memory ceiling, graph\u2192proximity graph",
+          "span": "Hopping is renamed, not new",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-graph-entry",
+          "verdict": "pass",
+          "evidence": "Single sentence chains cause->effect via 'so', linking 'reaches' to 'neighbourhoods the graph connects thinly' as one flow.",
+          "span": "A walk can only rank what it reaches, so the neighbourhoods the graph connects thinly are the ones whose true neighbours go missing.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-graph-entry",
+          "verdict": "pass",
+          "evidence": "Each subject (minimum, walk, dial, corpus) is introduced in the prior sentence via apposition/relative clauses, chaining given->new.",
+          "span": "The dial hides the failure while a corpus is small.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-graph-degree",
+          "verdict": "pass",
+          "evidence": "Each subject (formula, footprint, budget) is anaphoric to an entity in the prior 1-2 sentences",
+          "span": "The footprint is what a memory ceiling constrains, so degree is spent at build time",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-quantize",
+          "verdict": "error",
+          "evidence": "JudgeError: R-PROSE-01/lede-quantize: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-quantize",
+          "verdict": "pass",
+          "evidence": "Pronoun chain 'Reach for it'/'Skip it' and 'The lossy summary' back-reference to home_anchor tie sentences to prior subject",
+          "span": "The lossy summary is renamed",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "'it' anaphorically refers back to 'accuracy', chaining given->new across the clauses via 'so'",
+          "span": "buys most of it back",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-quantize-rerank",
+          "verdict": "error",
+          "evidence": "JudgeError: R-PROSE-01/body-quantize-rerank: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-churn",
+          "verdict": "pass",
+          "evidence": "All three subjects share head noun 'index'; flow moves general claim -> mechanism (quantizer non-adaptation) -> concrete instance (centroid rebuild), not scattered topics.",
+          "span": null,
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-churn",
+          "verdict": "fail",
+          "evidence": "home_anchor introduces 'segment merge policy' and reach_for_when introduces 'volume-triggered rebuild' with no lexical link to prior sentences",
+          "span": "A segment merge policy: writes pile up cheaply until a merge pays the accumulated debt down.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "toulmin-churn",
+          "verdict": "error",
+          "evidence": "JudgeError: R-PROSE-01/toulmin-churn: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+          "span": null
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-graph",
+          "verdict": "fail",
+          "evidence": "References 'the paper introducing the hierarchy' without naming or anchoring it in this layer, requiring deeper content to resolve.",
+          "span": "which is what the paper introducing the hierarchy reports",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-graph",
+          "verdict": "pass",
+          "evidence": "Card defines its own terms (hops, proximity graph, layers) inline with no reference to deeper content like 'see below' or 'the ablation'.",
+          "span": "A proximity graph built incrementally into layers, with a sparse top layer supplying the entry points.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-graph-entry",
+          "verdict": "pass",
+          "evidence": "Standalone causal claim about walks and graph connectivity; no deferral to deeper content like 'see below' or undefined forward reference.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-quantize",
+          "verdict": "pass",
+          "evidence": "Lede explains quantization, subspace clustering, and memory/disk tradeoff fully without referencing deeper content or figures.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-quantize",
+          "verdict": "pass",
+          "evidence": "idea/anchor/delta/reach/skip/exemplar/confidence all self-contained; no 'see below' or deeper-layer pointer present",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "Explains mechanism (blur costs accuracy only at ordering; rerank on full-precision recovers it) with no pointer to another layer.",
+          "span": "so a second pass over the full-precision vectors buys most of it back",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-churn",
+          "verdict": "pass",
+          "evidence": "Lede defines churn, quantizer adaptation, and partitioned-index limits without pointing to a deeper layer",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-churn",
+          "verdict": "pass",
+          "evidence": "Card defines analogue (segment merge), anchor, and what's-new inline; no forward reference like 'see below' to a deeper layer.",
+          "span": null,
+          "retest": null,
+          "flipped": null,
+          "retest_error": "JudgeError: R-SUMM-04/card-churn: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))"
+        }
+      ]
+    },
+    {
+      "pass": "evidence-grounding",
+      "rules": [
+        "R-ART-03",
+        "R-EVID-01",
+        "R-EVID-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ART-03",
+          "block_id": "toulmin-churn",
+          "verdict": "pass",
+          "evidence": "Block explicitly labels both a Qualifier and Rebuttal clause tied to the rebuild-schedule recommendation.",
+          "span": "Qualifier: the schedule earns nothing while measured recall stays above the floor. Rebuttal: high recall at billion scale is reported for static designs, so a corpus that turns over hourly invalidates each rebuild before it finishes.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Multiple explicit Confidence: settled/contested tags (card-graph, card-quantize, card-churn) and paired contested-graph framings naming dissenting views plus vendor-vs-independent contrast in fig-quantize",
+          "span": "Confidence: settled for the probe bound; contested for whether it wins under a memory ceiling",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Document frames major performance claims through competing sourced viewpoints (contested-graph blocks); explicitly contrasts vendor curve (90% reduction) vs independent production report (2-3x latency) in fig-quantize; transparently labels vendor sources (formula, curves); acknowledges contestation ",
+          "span": "the vendor curve reports as much as a ninety percent cost reduction at the compressed operating point, while an independent production report puts the same recall target two to three times higher in latency"
+        }
+      ]
+    },
+    {
+      "pass": "expertise-calibration",
+      "rules": [
+        "R-PARAM-02",
+        "R-PROSE-02",
+        "R-PROSE-06",
+        "R-EXPERT-01",
+        "R-EXPERT-03",
+        "R-EXPERT-02",
+        "R-DEPTH-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PARAM-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No step-by-step worked examples on primary surface; cards use terse Reach-for-it-when/Skip-it-when trade-off framing assuming expert prior knowledge (subspace clustering, degree formulas, greedy-walk minima)",
+          "span": "New-vs-renamed: Hopping is renamed, not new; what is new is that the hop is approximate and can strand a true neighbour.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-graph",
+          "verdict": "pass",
+          "evidence": "Log-scaling benefit paired with named cost: 'degrades on exactly the sparse neighbourhoods a reader is least likely to test'",
+          "span": "The walk is approximate, so it degrades on exactly the sparse neighbourhoods a reader is least likely to test.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-graph",
+          "verdict": "pass",
+          "evidence": "skip_when names concrete cost (must fit in RAM) and confidence flags 'contested... under a memory ceiling', no unqualified praise",
+          "span": "Skip it when memory is the binding constraint, because the design assumes the entire graph sits in RAM.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-graph-entry",
+          "verdict": "pass",
+          "evidence": "Text states a limitation/consequence, not a claim of merit or unqualified praise, so R-PROSE-02 doesn't apply",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-graph-entry",
+          "verdict": "pass",
+          "evidence": "Names trade-off explicitly: 'the one dial between recall and latency,' no unqualified praise present",
+          "span": "the one dial between recall and latency",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-graph-degree",
+          "verdict": "pass",
+          "evidence": "No claim of merit/praise appears; text only states cost/footprint mechanics, so no unqualified praise to flag",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-quantize",
+          "verdict": "pass",
+          "evidence": "Names benefit (residency falls) and cost (distance becomes an estimate) together, no unqualified praise",
+          "span": "residency falls, and the distance becomes an estimate",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-quantize",
+          "verdict": "pass",
+          "evidence": "Benefit (32x compression) is paired with named cost: loss becomes reordering, and skip_when names rerank-latency cost",
+          "span": "the loss appears as reordering",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "Names accuracy cost from blurring and that rerank recovers only 'most' of it, not full-precision claim",
+          "span": "Blurred distances only cost accuracy where the final ordering is read, so a second pass over the full-precision vectors buys most of it back",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "No merit claims or praise appear; text is mechanistic (candidate set, disk read) with no unqualified praise to flag",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-churn",
+          "verdict": "pass",
+          "evidence": "Text states only costs/limitations (recall loss, rebuild requirement), no unqualified praise present to flag",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-churn",
+          "verdict": "pass",
+          "evidence": "No unqualified praise; merit is conditioned via reach_for_when/skip_when pairing and confidence caveat, not bare endorsement.",
+          "span": "Reach for a volume-triggered rebuild when write volume is steady; ... Skip rebuilds on a static corpus",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "toulmin-churn",
+          "verdict": "pass",
+          "evidence": "Claim is cost-grounded ('insertion degrades reachability') and qualifier/rebuttal name further costs/limits, no unqualified praise present",
+          "span": "Qualifier: the schedule earns nothing while measured recall stays above the floor.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-graph",
+          "verdict": "pass",
+          "evidence": "Acknowledges weakness (approximate walk, degradation) but weights it irrelevant: only affects sparse neighbourhoods readers won't test.",
+          "span": "The walk is approximate, so it degrades on exactly the sparse neighbourhoods a reader is least likely to test."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-graph",
+          "verdict": "pass",
+          "evidence": "Takes weighted positions (use when vector set resident + high recall needed; skip when memory-bound) grounded in specific constraints, no forced symmetry or hedging.",
+          "span": "Reach for it when the whole vector set stays resident and high recall is the requirement. Skip it when memory is the binding constraint, because the design assumes the entire graph sits in RAM."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-graph-entry",
+          "verdict": "pass",
+          "evidence": "Causal claim with asymmetric conclusion; unhedged and weighted (connectivity constraint directly implies outcome), not balanced.",
+          "span": "A walk can only rank what it reaches, so the neighbourhoods the graph connects thinly are the ones whose true neighbours go missing."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-graph-entry",
+          "verdict": "pass",
+          "evidence": "Text identifies specific failure mode and asymmetrically weights when it manifests (hidden while small, visible as sparse neighborhoods develop) rather than equally-balancing tradeoffs or hedging.",
+          "span": "The dial hides the failure while a corpus is small. A corpus only develops the sparse neighbourhoods that strand a walk as it fills out."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-graph-degree",
+          "verdict": "pass",
+          "evidence": "Text identifies memory ceiling as binding constraint for degree without hedging, taking asymmetric position (harder here than posting lists) grounded in design requirement.",
+          "span": "That budget binds harder here than in a posting list, because the design assumes the whole graph stays in RAM."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-quantize",
+          "verdict": "fail",
+          "evidence": "Trade-offs named without weight attribution; lacks opinionated stance on which dominates.",
+          "span": "residency falls and the distance becomes an estimate"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-quantize",
+          "verdict": "pass",
+          "evidence": "Asymmetric epistemic stance (settled for memory saving; contested for graph-walk comparison) and unhedged prescriptive guidance (reach_for_when/skip_when) avoid forced symmetry or hedging.",
+          "span": "confidence: settled for the memory saving; contested for where it overtakes a graph walk"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "Scopes harm narrowly ('only cost accuracy where final ordering is read'), names specific recovery ('second pass... buys most of it back'). Leverage-weighted position, not hedged symmetry.",
+          "span": "Blurred distances only cost accuracy where the final ordering is read, so a second pass over the full-precision vectors buys most of it back."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "Text makes asymmetric, weighted call: candidate set prioritized over estimate; error harmless within bounds, fatal outside \u2014 not symmetrized.",
+          "span": "The candidate set is therefore the quantity to watch, not the estimate. That set is repaired by a disk read, because the full-precision vectors were the part moved off memory."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-churn",
+          "verdict": "pass",
+          "evidence": "Text is declarative (loses, cannot absorb) without hedging or forced symmetry; frames costs asymmetrically without balancing pros/cons.",
+          "span": "An index loses recall when its quantizer never adapts to the data arriving after the fit. A partitioned index cannot absorb a new vector without rebuilding its cluster centroids."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-churn",
+          "verdict": "pass",
+          "evidence": "Card recommends volume-triggered rebuilds for steady-write scenarios with specific triggering rule; skip condition (static corpus) is legitimate boundary, not forced counter-balance.",
+          "span": "Reach for a volume-triggered rebuild when write volume is steady; one published rule fires it every twenty percent of corpus growth. Skip rebuilds on a static corpus"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "toulmin-churn",
+          "verdict": "fail",
+          "evidence": "Text presents claim and rebuttal with equal weight rather than a weighted position: 'schedule earns nothing' + counter-statement that static designs 'invalidates each rebuild'\u2014hedges rather than taking a leverage-weighted call.",
+          "span": "the schedule earns nothing while measured recall stays above the floor. Rebuttal: high recall at billion scale is reported for static designs, so a corpus that turns over hourly invalidates each rebuild before it finishes."
+        },
+        {
+          "rule_id": "R-EXPERT-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "aid-quantize is a sequential procedure: 'Start from the memory ceiling... Divide the ceiling... If the width... is settled; if it does not, the ceiling is the thing to renegotiate.'",
+          "span": "Start from the memory ceiling, not from the index name. Divide the ceiling by corpus size to get bytes per vector, and let that number choose the code width.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EXPERT-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Body content explains concepts procedurally (greedy walk, estimated distance reordering) without grounding claims to supplied Figures 1-3.",
+          "span": "body-graph-entry: 'A greedy walk stops at a local minimum...which only compares neighbours already reached' \u2014 procedural explanation, not anchored to Figure 1's sparse architecture."
+        },
+        {
+          "rule_id": "R-EXPERT-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Document maintains expert-level technical discourse throughout with direct introductions (lede, card, body blocks); no inline remedial scaffolding or step-by-step procedures targeting novices are present on primary surface.",
+          "span": null
+        },
+        {
+          "rule_id": "R-DEPTH-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Apparatus scales with substance: Section 1 (9 blocks, multiple conceptual loads) > Section 2 (7 blocks) > Section 3 (5 blocks, tighter scope). Each artifact adds content\u2014contested framings, checklists, decision aids, Toulmin framings\u2014not padding.",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "figures",
+      "rules": [
+        "R-FIG-01",
+        "R-FIG-02",
+        "R-FIG-03",
+        "R-FIG-05"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-graph",
+          "verdict": "pass",
+          "evidence": "Caption states a claim: an unentered thin region holds candidates the ranking never sees, not just a label",
+          "span": "holds candidates the ranking will never see",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-quantize",
+          "verdict": "pass",
+          "evidence": "States a conclusion: operating point shifts (2-3x latency) depending on measurement source, not just a label",
+          "span": "so the operating point moves with who measured it",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-churn",
+          "verdict": "pass",
+          "evidence": "States a conclusion: index has a shelf life in writes, with a reindex rule, not just a label",
+          "span": "an index has a shelf life denominated in writes rather than in days",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-graph",
+          "verdict": "fail",
+          "evidence": "Caption describes logical structure only; no description of visual emphasis, which element is highlighted, or shared box/arrow vocabulary.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-quantize",
+          "verdict": "pass",
+          "evidence": "Rule targets visual design elements; input contains only caption text.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-churn",
+          "verdict": "fail",
+          "evidence": "Visual emphasis pattern requires figure visualization; caption text alone cannot verify whether exactly one element is emphasized using shared vocabulary",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-graph",
+          "verdict": "pass",
+          "evidence": "Rule requires visual layout evaluation; only caption text provided, not figure rendering visible.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-quantize",
+          "verdict": "pass",
+          "evidence": "Visual layout assessment required; text description insufficient for spatial-contiguity evaluation.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-churn",
+          "verdict": "pass",
+          "evidence": "Only caption text provided; spatial contiguity requires visual diagram layout assessment, which cannot be performed on text alone. Rule does not meaningfully apply to caption-only unit.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-graph",
+          "verdict": "pass",
+          "evidence": "Figure describes single architecture (walk hierarchy), not comparative structure; R-FIG-05 applies only to comparisons",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-quantize",
+          "verdict": "fail",
+          "evidence": "Comparison of vendor curve vs. independent report embedded in single figure statement, no small-multiples phrasing suggesting separate panels.",
+          "span": "the vendor curve reports...while an independent production report puts"
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-churn",
+          "verdict": "pass",
+          "evidence": "No comparison between alternatives evident; single scenario (degrade-rebuild pattern) shown to illustrate shelf-life concept, not comparing strategies.",
+          "span": "recall falls as the stream progresses and a rebuild restores it"
+        }
+      ]
+    },
+    {
+      "pass": "structure-architecture",
+      "rules": [
+        "R-ARCH-01",
+        "R-ARCH-03",
+        "R-ARCH-04",
+        "R-SCENT-01",
+        "R-SCENT-02",
+        "R-DEPTH-01",
+        "R-XREF-01",
+        "R-XREF-03",
+        "R-VOCAB-02"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ARCH-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Front matter is only title/generated_at/concepts list; no audience, scope boundary, or editorial-decision statement precedes lede-graph content.",
+          "span": "title: A graph walk buys sublinear probes and pays for them in resident memory\ngenerated_at: '2026-08-21T00:00:00Z'\nconcepts:",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Opening block lede-graph states a claim scoped to graph-index alone; the primer's actual cross-index tradeoff synthesis appears later in matrix-quantize.",
+          "span": "A graph index answers a query with a walk over neighbours.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document organized linearly by concept (graph-index, quantized-partition, index-churn) with no explicit goal-tuned reading paths or audience notes; no guidance for different reader goals or personas.",
+          "span": null
+        },
+        {
+          "rule_id": "R-SCENT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "All three headings state specific claims (sublinear probes vs resident memory; loss shifts from visibility to ranking; churn retires index before recall does), not generic labels",
+          "span": "Churn retires an index choice sooner than recall does",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SCENT-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Three sibling headings use different grammatical structures: heading 1 uses compound verbs (buys...and pays), heading 2 uses from/to structure, heading 3 uses comparative (sooner than).",
+          "span": "1. A graph walk buys sublinear probes and pays for them in resident memory / 2. Quantization moves the loss from which vectors you see to how well you rank them / 3. Churn retires an index choice sooner than recall does"
+        },
+        {
+          "rule_id": "R-DEPTH-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each card block (card-graph, card-quantize, card-churn) states explicit Reach-for-it-when/Skip-it-when decision criteria without requiring descent into subsum/body/matrix blocks",
+          "span": "Reach for it when the whole vector set stays resident and high recall is the requirement. Skip it when memory is the binding constraint",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "R-XREF-01 targets card blocks (mental_model mode) per its own wording ('the card's opening'); this unit is the whole document, so the rule does not apply here",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Three concepts (graph-index, quantized-partition, index-churn) presented sequentially without explicit cross-references. Decision matrix states 'take partition when footprint capped, graph when not' but relationship unlinked between sections. Rebuild dependencies for quantization unstated. Implicit ",
+          "span": "Section 1 (graph-index), Section 2 (quantized-partition), Section 3 (index-churn) \u2014 no inter-section links; matrix-quantize contrasts both but unlinked from source; toulmin-churn addresses all three types but standalone"
+        },
+        {
+          "rule_id": "R-VOCAB-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Recurring failure modes (sparse neighbourhoods, candidate set, memory footprint) are named and reused across multiple sections; tradeoff patterns use consistent handles (reach-for-it-when/skip-it-when) in all three mental model cards.",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rules": [
+        "R-CARD-01",
+        "R-CARD-03",
+        "R-SUMM-01",
+        "R-PROSE-03",
+        "R-RECALL-02",
+        "R-ART-02",
+        "R-ART-04",
+        "R-ART-05",
+        "R-EVID-02",
+        "R-XREF-04",
+        "R-ART-06",
+        "R-MV-01"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-graph",
+          "verdict": "pass",
+          "evidence": "home_anchor gives a distinct prior-knowledge analogue (posting-list skip pointers) mapped to the new concept, with whats_new_vs_renamed isolating the delta, rather than restating the section",
+          "span": "Skip pointers on a posting list: coarse hops first, fine ones once you are near the answer.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-quantize",
+          "verdict": "pass",
+          "evidence": "home_anchor gives a genuine analogous domain (static index pruning/lossy summary+fallback) and whats_new_vs_renamed bridges old-to-new knowledge, matching the advance-organizer shape, not a topic-restating teaser",
+          "span": "Static index pruning: a lossy summary answers most queries and the full postings stay as the fallback.",
+          "retest": null,
+          "flipped": null,
+          "retest_error": "JudgeError: R-CARD-01/card-quantize: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))"
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-churn",
+          "verdict": "pass",
+          "evidence": "home_anchor gives genuine adjacent analogue (segment merge policy) distinct from the concept, not a section restatement",
+          "span": "A segment merge policy: writes pile up cheaply until a merge pays the accumulated debt down.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-graph",
+          "verdict": "pass",
+          "evidence": "skip_when names memory as binding constraint since 'design assumes entire graph sits in RAM', paired with reach_for_when",
+          "span": "Skip it when memory is the binding constraint, because the design assumes the entire graph sits in RAM.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-quantize",
+          "verdict": "pass",
+          "evidence": "skip_when gives specific condition beyond negating reach_for_when: corpus fits in memory AND rerank latency has no budget left",
+          "span": "Skip it when the corpus already fits in memory and rerank latency has no budget left.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-churn",
+          "verdict": "pass",
+          "evidence": "skip_when names a specific condition \u2014 static corpus with no shelf life \u2014 not a vague non-condition",
+          "span": "Skip rebuilds on a static corpus, where an index has no shelf life to expire.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-graph",
+          "verdict": "pass",
+          "evidence": "Lede asserts approximate walk degrades on sparse neighbourhoods readers rarely test, a defended claim not a topic label",
+          "span": "The walk is approximate, so it degrades on exactly the sparse neighbourhoods a reader is least likely to test.",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-quantize",
+          "verdict": "fail",
+          "evidence": "Lede describes the mechanism ('keeps every vector but stores each one as a short code') rather than asserting a defensible claim/position.",
+          "span": "A quantized partition keeps every vector but stores each one as a short code, because the dimensions split into subspaces that are clustered independently.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-churn",
+          "verdict": "pass",
+          "evidence": "Opens with claim 'Index churn decides how long an index stays correct,' not a topic announcement",
+          "span": "Index churn decides how long an index stays correct.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-graph",
+          "verdict": "pass",
+          "evidence": "Reasoning carried entirely in connected prose sentences; no bullet fragmentation or list structure present.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-graph",
+          "verdict": "pass",
+          "evidence": "All reasoning carried in complete prose sentences within labeled fields; no bullet-point fragmentation present.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-graph-entry",
+          "verdict": "pass",
+          "evidence": "Reasoning carried as complete prose sentence, not fragmented into bullets.",
+          "span": "A walk can only rank what it reaches, so the neighbourhoods the graph connects thinly are the ones whose true neighbours go missing."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-graph-entry",
+          "verdict": "pass",
+          "evidence": "Entire reasoning is prose-carried with causal flow (walk \u2192 minimum \u2192 invisible \u2192 dial), no bullets or fragmentation.",
+          "span": "A greedy walk stops at a local minimum... A corpus only develops the sparse neighbourhoods that strand a walk as it fills out."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-graph-degree",
+          "verdict": "pass",
+          "evidence": "Entire block is continuous prose with flowing logical connections; no bullet fragmentation present.",
+          "span": "Graph degree fixes how many neighbours each node stores, and a published formula multiplies degree into the resident footprint. The vendor's formula puts a 768-dimension index at roughly three kilobytes per vector..."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-quantize",
+          "verdict": "pass",
+          "evidence": "Entire block is connected prose with explicit causal relationships (because, so); no bullet fragmentation; reasoning flows naturally.",
+          "span": "because the dimensions split into subspaces that are clustered independently. Those codes stay in memory... so residency falls"
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-quantize",
+          "verdict": "pass",
+          "evidence": "Each field contains complete prose sentences; no bullet-point fragmentation present. Reasoning is carried in prose within labeled-field card structure.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "Reasoning flows as coherent prose sentence with causal chain; no bullet fragmentation present",
+          "span": "Blurred distances only cost accuracy where the final ordering is read, so a second pass over the full-precision vectors buys most of it back."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-quantize-rerank",
+          "verdict": "pass",
+          "evidence": "Entire block is connected prose narrative; no bullet fragmentation; reasoning flows logically across sentences.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-churn",
+          "verdict": "pass",
+          "evidence": "Reasoning is carried in continuous prose sentences without bullet fragmentation; three mechanisms flow logically in connected claims.",
+          "span": "Index churn decides how long an index stays correct. An index loses recall when its quantizer never adapts to the data arriving after the fit. A partitioned index cannot absorb a new vector without rebuilding its cluster centroids."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-churn",
+          "verdict": "pass",
+          "evidence": "Each field contains full prose sentences (compound sentences with semicolons, causal reasoning) rather than bullet-fragmented lists. Reasoning is carried continuously within prose.",
+          "span": "A structure fitted to yesterday's data loses recall as today's arrives, so the drift tracks the stream and not the clock."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "toulmin-churn",
+          "verdict": "pass",
+          "evidence": "Reasoning carried in connected prose with explicit logical connectors (Because, Qualifier, Rebuttal); no bullet fragmentation despite complex argument structure.",
+          "span": "Because insertion degrades reachability, a write-heavy corpus needs a rebuild schedule rather than a one-time build. Qualifier: the schedule earns nothing while measured recall stays above the floor. Rebuttal: high recall at billion scale is reported for static designs, so a corpus that turns over hourly invalidates each rebuild before it finishes."
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-graph",
+          "verdict": "pass",
+          "evidence": "Q2 maps posting-list skip pointers to graph hops (cross-domain); all 3 require generative reasoning about mechanism, not recall of a fact",
+          "span": "Skip pointers on a posting list are also a hop structure. Where does that intuition stop paying?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-quantize",
+          "verdict": "pass",
+          "evidence": "All 3 require generation (synthesis/application of conditions); Q2 explicitly cross-maps static index pruning to quantization's distance distortion.",
+          "span": "Static index pruning discards postings you judged unlikely to matter. What is the analogous loss here",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-churn",
+          "verdict": "pass",
+          "evidence": "Q2 maps segment-merge intuition cross-domain (transfers/misleads); all three require generative reasoning, not recall",
+          "span": "Which part of that intuition transfers, and which part misleads?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Document contains one checklist with 3 action-verb items (Measure, Confirm, Check) focused on high-frequency failures, not exhaustive coverage or glossary.",
+          "span": "Measure recall@10 against an exact scan on real query traffic, not on the vectors the index was built from. Confirm the resident footprint fits the smallest node you will actually deploy on. Check that a rebuild path exists before insertion volume forces one."
+        },
+        {
+          "rule_id": "R-ART-04",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Block matrix-quantize names baseline (quantized partition at 184.8 GB), criteria (footprint, scale), and clear recommendations per condition: take partition when capped, graph when not, disk-resident at billion scale.",
+          "span": "Take the partition when the footprint is capped, the graph when it is not, and at billion scale expect the disk-resident designs to be the ones that hold a millisecond latency budget at high recall."
+        },
+        {
+          "rule_id": "R-ART-05",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Three mechanisms use inconsistent supporting structures: graph-index employs contested framings, quantized-partition uses decision matrix/aid, index-churn uses toulmin and failure catalog. No uniform input/mechanism/assumption/when shape across surveys.",
+          "span": "graph-index: contested-graph, checklist; quantized-partition: matrix-quantize, aid-quantize; index-churn: toulmin-churn, failures-churn"
+        },
+        {
+          "rule_id": "R-EVID-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document embeds failure modes and contested framings within concept sections (body-graph-entry, failures-churn, toulmin-churn) but lacks a dedicated honest-limits section stepping back to address where the primer's thesis breaks down holistically.",
+          "span": null
+        },
+        {
+          "rule_id": "R-XREF-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "card-graph/card-quantize/card-churn claims restate their own target concept (e.g. 'Search is a walk over a neighbour graph') with no named adjacent already-owned technique as bridging anchor",
+          "span": "Search is a walk over a neighbour graph, so probe count grows with the logarithm of corpus size.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-ART-06",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No further-reading section present in document blocks; rule does not apply to this unit.",
+          "span": null
+        },
+        {
+          "rule_id": "R-MV-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each of 3 concepts has >=3 distinct modes (mental_model/architecture/failure; mental_model/cost/benchmark/failure; mental_model/tradeoff/failure/benchmark) carrying non-overlapping content, not restatements",
+          "span": "the walk descends from a sparse top layer into a dense base layer, so a thinly connected region it never enters holds candidates the ranking will never see",
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "pass": 83,
+    "fail": 18,
+    "error": 3
+  },
+  "blocking": true,
+  "blocking_failures": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-churn",
+      "verdict": "fail",
+      "evidence": "home_anchor introduces 'segment merge policy' and reach_for_when introduces 'volume-triggered rebuild' with no lexical link to prior sentences",
+      "span": "A segment merge policy: writes pile up cheaply until a merge pays the accumulated debt down.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "lede-graph",
+      "verdict": "fail",
+      "evidence": "References 'the paper introducing the hierarchy' without naming or anchoring it in this layer, requiring deeper content to resolve.",
+      "span": "which is what the paper introducing the hierarchy reports",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "aid-quantize is a sequential procedure: 'Start from the memory ceiling... Divide the ceiling... If the width... is settled; if it does not, the ceiling is the thing to renegotiate.'",
+      "span": "Start from the memory ceiling, not from the index name. Divide the ceiling by corpus size to get bytes per vector, and let that number choose the code width.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Front matter is only title/generated_at/concepts list; no audience, scope boundary, or editorial-decision statement precedes lede-graph content.",
+      "span": "title: A graph walk buys sublinear probes and pays for them in resident memory\ngenerated_at: '2026-08-21T00:00:00Z'\nconcepts:",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Opening block lede-graph states a claim scoped to graph-index alone; the primer's actual cross-index tradeoff synthesis appears later in matrix-quantize.",
+      "span": "A graph index answers a query with a walk over neighbours.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-quantize",
+      "verdict": "fail",
+      "evidence": "Lede describes the mechanism ('keeps every vector but stores each one as a short code') rather than asserting a defensible claim/position.",
+      "span": "A quantized partition keeps every vector but stores each one as a short code, because the dimensions split into subspaces that are clustered independently.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-XREF-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "card-graph/card-quantize/card-churn claims restate their own target concept (e.g. 'Search is a walk over a neighbour graph') with no named adjacent already-owned technique as bridging anchor",
+      "span": "Search is a walk over a neighbour graph, so probe count grows with the logarithm of corpus size.",
+      "retest": "pass",
+      "flipped": true
+    }
+  ],
+  "advisory_failures": [
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "lede-quantize",
+      "verdict": "fail",
+      "evidence": "Trade-offs named without weight attribution; lacks opinionated stance on which dominates.",
+      "span": "residency falls and the distance becomes an estimate"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "toulmin-churn",
+      "verdict": "fail",
+      "evidence": "Text presents claim and rebuttal with equal weight rather than a weighted position: 'schedule earns nothing' + counter-statement that static designs 'invalidates each rebuild'\u2014hedges rather than taking a leverage-weighted call.",
+      "span": "the schedule earns nothing while measured recall stays above the floor. Rebuttal: high recall at billion scale is reported for static designs, so a corpus that turns over hourly invalidates each rebuild before it finishes."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Body content explains concepts procedurally (greedy walk, estimated distance reordering) without grounding claims to supplied Figures 1-3.",
+      "span": "body-graph-entry: 'A greedy walk stops at a local minimum...which only compares neighbours already reached' \u2014 procedural explanation, not anchored to Figure 1's sparse architecture."
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-graph",
+      "verdict": "fail",
+      "evidence": "Caption describes logical structure only; no description of visual emphasis, which element is highlighted, or shared box/arrow vocabulary.",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-churn",
+      "verdict": "fail",
+      "evidence": "Visual emphasis pattern requires figure visualization; caption text alone cannot verify whether exactly one element is emphasized using shared vocabulary",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-05",
+      "block_id": "fig-quantize",
+      "verdict": "fail",
+      "evidence": "Comparison of vendor curve vs. independent report embedded in single figure statement, no small-multiples phrasing suggesting separate panels.",
+      "span": "the vendor curve reports...while an independent production report puts"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document organized linearly by concept (graph-index, quantized-partition, index-churn) with no explicit goal-tuned reading paths or audience notes; no guidance for different reader goals or personas.",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-SCENT-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Three sibling headings use different grammatical structures: heading 1 uses compound verbs (buys...and pays), heading 2 uses from/to structure, heading 3 uses comparative (sooner than).",
+      "span": "1. A graph walk buys sublinear probes and pays for them in resident memory / 2. Quantization moves the loss from which vectors you see to how well you rank them / 3. Churn retires an index choice sooner than recall does"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Three concepts (graph-index, quantized-partition, index-churn) presented sequentially without explicit cross-references. Decision matrix states 'take partition when footprint capped, graph when not' but relationship unlinked between sections. Rebuild dependencies for quantization unstated. Implicit ",
+      "span": "Section 1 (graph-index), Section 2 (quantized-partition), Section 3 (index-churn) \u2014 no inter-section links; matrix-quantize contrasts both but unlinked from source; toulmin-churn addresses all three types but standalone"
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-05",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Three mechanisms use inconsistent supporting structures: graph-index employs contested framings, quantized-partition uses decision matrix/aid, index-churn uses toulmin and failure catalog. No uniform input/mechanism/assumption/when shape across surveys.",
+      "span": "graph-index: contested-graph, checklist; quantized-partition: matrix-quantize, aid-quantize; index-churn: toulmin-churn, failures-churn"
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-EVID-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document embeds failure modes and contested framings within concept sections (body-graph-entry, failures-churn, toulmin-churn) but lacks a dedicated honest-limits section stepping back to address where the primer's thesis breaks down holistically.",
+      "span": null
+    }
+  ],
+  "errored_items": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "lede-quantize",
+      "verdict": "error",
+      "evidence": "JudgeError: R-PROSE-01/lede-quantize: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+      "span": null
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "body-quantize-rerank",
+      "verdict": "error",
+      "evidence": "JudgeError: R-PROSE-01/body-quantize-rerank: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+      "span": null
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "toulmin-churn",
+      "verdict": "error",
+      "evidence": "JudgeError: R-PROSE-01/toulmin-churn: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+      "span": null
+    }
+  ],
+  "flake": {
+    "retested": 53,
+    "flipped": 6,
+    "flake_rate": 0.1132
+  },
+  "flaky_items": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "lede-churn",
+      "verdict": "pass",
+      "evidence": "All three subjects share head noun 'index'; flow moves general claim -> mechanism (quantizer non-adaptation) -> concrete instance (centroid rebuild), not scattered topics.",
+      "span": null,
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-churn",
+      "verdict": "fail",
+      "evidence": "home_anchor introduces 'segment merge policy' and reach_for_when introduces 'volume-triggered rebuild' with no lexical link to prior sentences",
+      "span": "A segment merge policy: writes pile up cheaply until a merge pays the accumulated debt down.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "lede-graph",
+      "verdict": "fail",
+      "evidence": "References 'the paper introducing the hierarchy' without naming or anchoring it in this layer, requiring deeper content to resolve.",
+      "span": "which is what the paper introducing the hierarchy reports",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-graph",
+      "verdict": "pass",
+      "evidence": "Lede asserts approximate walk degrades on sparse neighbourhoods readers rarely test, a defended claim not a topic label",
+      "span": "The walk is approximate, so it degrades on exactly the sparse neighbourhoods a reader is least likely to test.",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-quantize",
+      "verdict": "fail",
+      "evidence": "Lede describes the mechanism ('keeps every vector but stores each one as a short code') rather than asserting a defensible claim/position.",
+      "span": "A quantized partition keeps every vector but stores each one as a short code, because the dimensions split into subspaces that are clustered independently.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-XREF-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "card-graph/card-quantize/card-churn claims restate their own target concept (e.g. 'Search is a walk over a neighbour graph') with no named adjacent already-owned technique as bridging anchor",
+      "span": "Search is a walk over a neighbour graph, so probe count grows with the logarithm of corpus size.",
+      "retest": "pass",
+      "flipped": true
+    }
+  ],
+  "ir_sha256": "9d26aba33938fb8a691dc4f8537e9489761c89b52d5690291f46b551be209c7e",
+  "judge": {
+    "kind": "claude",
+    "model": "haiku",
+    "calls": 180,
+    "spend_usd": 24.5619,
+    "exercised_rules": true,
+    "gating_model": "sonnet"
+  }
+}

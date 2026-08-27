@@ -1,0 +1,868 @@
+{
+  "passes": [
+    {
+      "pass": "coherence",
+      "rules": [
+        "R-PROSE-01",
+        "R-SUMM-04"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-leader",
+          "verdict": "pass",
+          "evidence": "Single sentence links mapping->leader tracing->detector accuracy via causal 'so', not disconnected assertions",
+          "span": "is decided by leader tracing, so a detector that returns disconnected strokes caps accuracy",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-leader",
+          "verdict": "pass",
+          "evidence": "Entities chain across fields: 'graph walk' (idea) -> 'walking edges in a...graph' (home_anchor) -> 'the walk...the graph' (whats_new) -> 'leaders'/'detector' (reach_for_when, skip_when) -> 'connectivity graph' (key_exemplar) -> 'connectivity'/'crossings' (confidence)",
+          "span": "Like walking edges in a connectivity graph until you hit a terminal node.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Single-sentence summary; two clauses share 'leaders'/'each' as given, no competing new subjects introduced",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Each subject picks up prior sentence's new term: fragments\u2192gap\u2192gap-spanning\u2192hatching, chaining given-new.",
+          "span": "That gap is what segment growing spans",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-anchor",
+          "verdict": "pass",
+          "evidence": "Sentence 2's 'it' refers back to 'that point' from sentence 1, chaining given->new rather than introducing a new subject.",
+          "span": "that point is a segmentation prompt. Whether you spend a mask on it",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-anchor",
+          "verdict": "pass",
+          "evidence": "Entities chain across fields: anchor/seed link idea\u2192whats_new; masks link reach_for_when\u2192skip_when\u2192confidence.",
+          "span": "Skip masks when the deliverable is the numeral-to-part table, which the anchor already answers.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "toulmin-anchor",
+          "verdict": "pass",
+          "evidence": "Anchor carried as given subject across all three sentences, building qualifier then rebuttal",
+          "span": "the anchor must land inside the intended part for that to hold",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-leader",
+          "verdict": "pass",
+          "evidence": "Self-contained causal claim (leader tracing decides mapping, disconnected strokes cap accuracy) with no forward reference to deeper layers.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-leader",
+          "verdict": "pass",
+          "evidence": "Card gives analogue (graph walk), anchor, and what's-new inline; no 'see below' pointer to a deeper layer.",
+          "span": "The walk is renamed, not new; new is that the graph must be recovered from ink before it can be walked.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Sentence names three failure types and asserts a general claim (each breaks a different assumption) without deferring to a deeper section.",
+          "span": "each breaks a different assumption in the pipeline",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-anchor",
+          "verdict": "pass",
+          "evidence": "States a complete claim (callout->point->prompt; mask-use is separate) with no forward reference to deeper content.",
+          "span": "Whether you spend a mask on it is a downstream decision, not a prerequisite.",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-anchor",
+          "verdict": "pass",
+          "evidence": "Card states analogue, what's-new, reach/skip guidance, and exemplar without deferring to a deeper layer",
+          "span": "Reach for masks when a downstream consumer needs part boundaries, such as area or overlap.",
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    },
+    {
+      "pass": "evidence-grounding",
+      "rules": [
+        "R-ART-03",
+        "R-EVID-01",
+        "R-EVID-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ART-03",
+          "block_id": "toulmin-anchor",
+          "verdict": "pass",
+          "evidence": "Explicit 'Qualifier:' names the landing condition; explicit 'Rebuttal:' names the seated-parts failure case.",
+          "span": "Qualifier: the anchor must land inside the intended part for that to hold. Rebuttal: on seated parts the anchor lands inside an occluding silhouette instead, and the mask then answers a different question than the one asked.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Contested claims are explicitly tagged with named dissent, e.g. card-leader 'settled for connectivity, contested for how to disambiguate crossings' and card-anchor 'contested \u2014 zero-shot transfer is evidenced, necessity of masks is not'",
+          "span": "Confidence: contested \u2014 zero-shot transfer is evidenced, necessity of masks is not",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Performance claims (detector tradeoffs, zero-shot transfer, gap-spanning) cite sources [s-sam, s-tgg, s-elsed, s-letr] by code only, with no metadata establishing their independence from vendors.",
+          "span": "[s-tgg, s-elsed, s-letr] in matrix-leader block; [s-sam] in fig-anchor block"
+        }
+      ]
+    },
+    {
+      "pass": "expertise-calibration",
+      "rules": [
+        "R-PARAM-02",
+        "R-PROSE-02",
+        "R-PROSE-06",
+        "R-EXPERT-01",
+        "R-EXPERT-03",
+        "R-EXPERT-02",
+        "R-DEPTH-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PARAM-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No step-by-step worked example on primary surface; apparatus is mental_model/tradeoff/failure_catalog/decision_matrix, not tutorial scaffolding",
+          "span": "Reach-for-it-when: Reach for a topological detector when leaders kink, break, or cross hatching.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-leader",
+          "verdict": "pass",
+          "evidence": "text states a limitation/cost (accuracy capped by disconnected strokes), not unqualified praise",
+          "span": "caps accuracy before segmentation is even reached",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-leader",
+          "verdict": "pass",
+          "evidence": "reach_for_when/skip_when names the cost: skip when a plain detector already resolves it, no unqualified praise",
+          "span": "Skip it when leaders are straight, unbroken and uncrossed, where a plain segment detector already resolves them",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-leader-breaks",
+          "verdict": "pass",
+          "evidence": "No merit claim or unqualified praise present; text names a failure surface, not benefits requiring cost-framing.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Benefit 'stroke survives as one edge' is paired with cost 'makes hatching dangerous...bridges a leader into crossing hatch'",
+          "span": "The same gap-spanning is what makes hatching dangerous, since a loose threshold bridges a leader into crossing hatch.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-anchor",
+          "verdict": "pass",
+          "evidence": "No claim of merit or praise is made; text states a scoping fact, not an unqualified benefit",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-anchor",
+          "verdict": "pass",
+          "evidence": "reach_for_when/skip_when pair names conditions instead of unqualified praise; confidence flags necessity of masks as unproven",
+          "span": "confidence: contested \u2014 zero-shot transfer is evidenced, necessity of masks is not",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "toulmin-anchor",
+          "verdict": "pass",
+          "evidence": "Merit (anchor drives segmenter) is qualified and rebutted: failure names the cost \u2014 'mask then answers a different question than the one asked'",
+          "span": "the mask then answers a different question than the one asked",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-leader",
+          "verdict": "pass",
+          "evidence": "Text takes a definitive technical position\u2014leader tracing determines mapping, disconnected strokes cap accuracy\u2014without hedging or symmetrizing drawbacks.",
+          "span": "a detector that returns disconnected strokes caps accuracy before segmentation is even reached"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-leader",
+          "verdict": "pass",
+          "evidence": "Card takes leverage-weighted positions: identifies real novelty (graph recovery, not walk itself); gives asymmetric use/skip conditions; confidence field asymmetrically splits settled vs. contested aspects without hedging or forced balance.",
+          "span": "The walk is renamed, not new; new is that the graph must be recovered from ink before it can be walked. ... settled for connectivity, contested for how to disambiguate crossings"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Text takes clear, unhedged position on failure surface; asymmetrically names specific failure modes without over-symmetrizing or hedging.",
+          "span": "are the failure surface, and each breaks a different assumption in the pipeline"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Text presents solution (segment growing) then weights cost directly: 'makes hatching dangerous.' No over-symmetrization or hedging; leverage-weighted as per exemplar.",
+          "span": "The same gap-spanning is what makes hatching dangerous, since a loose threshold bridges a leader into crossing hatch."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-anchor",
+          "verdict": "pass",
+          "evidence": "Text takes weighted position ('downstream decision, not a prerequisite') without hedging or presenting equal alternatives",
+          "span": "Whether you spend a mask on it is a downstream decision, not a prerequisite"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-anchor",
+          "verdict": "pass",
+          "evidence": "Card takes weighted, asymmetric positions ('reach for masks when...', 'skip masks when...', 'seeding is renamed, not new') with contrast-based framing rather than hedging or forced parity.",
+          "span": "reach_for_when: Reach for masks when a downstream consumer needs part boundaries, such as area or overlap. skip_when: Skip masks when the deliverable is the numeral-to-part table, which the anchor already answers."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "toulmin-anchor",
+          "verdict": "fail",
+          "evidence": "Text symmetrically presents claim + qualifier + rebuttal without weighting; hedges rather than taking opinionated position on trade-off's relative importance",
+          "span": "Qualifier: the anchor must land inside the intended part for that to hold. Rebuttal: on seated parts the anchor lands inside an occluding silhouette instead"
+        },
+        {
+          "rule_id": "R-EXPERT-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "checklist-leader lists 5 sequential imperative validation steps (confirm; re-run; check; verify; sample) \u2014 a step-by-step procedure, not contrastive teaching",
+          "span": "Before trusting a mapping: confirm every numeral has exactly one terminal; re-run with hatching masked and diff the mapping; check repeated numerals resolve to distinct parts; verify dotted leaders survive the gap threshold; sample ten crossings by hand.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-EXPERT-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Rule applies only when reference_case is supplied; no reference_case is present in this document.",
+          "span": null
+        },
+        {
+          "rule_id": "R-EXPERT-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No inline remedial explanations on primary surface; all content assumes expert familiarity with graphs, topology, segmentation, detection.",
+          "span": null
+        },
+        {
+          "rule_id": "R-DEPTH-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Matrix (3 detector types), checklist (verification), Toulmin (conditional claim), decision aid, and failure catalogs each serve substance; no forced apparatuses or quota-filling detected.",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "figures",
+      "rules": [
+        "R-FIG-01",
+        "R-FIG-02",
+        "R-FIG-03",
+        "R-FIG-05"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-leader",
+          "verdict": "fail",
+          "evidence": "States the mechanism, not a conclusion or finding; no claim about what this implies",
+          "span": "Ink becomes a connectivity graph, the graph is walked from numeral to terminal, and only the surviving terminals become part anchors.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-anchor",
+          "verdict": "pass",
+          "evidence": "States a specific claim (transfer removes per-catalogue training) plus a critical limitation, not a bare label",
+          "span": "which removes per-catalogue training",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-leader",
+          "verdict": "fail",
+          "evidence": "Textual description contains no visual emphasis markup or box/arrow vocabulary indicators required to demonstrate exactly one emphasized element.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-anchor",
+          "verdict": "fail",
+          "evidence": "No emphasized elements or shared vocabulary markers visible in provided figure.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-leader",
+          "verdict": "pass",
+          "evidence": "R-FIG-03 requires visual spatial contiguity of labels and referents; text-only concept description lacks visual representation to evaluate.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-anchor",
+          "verdict": "pass",
+          "evidence": "Block contains text description only; spatial contiguity rule requires visual figure with positioned labels and referents, which are not present.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-leader",
+          "verdict": "pass",
+          "evidence": "Figure describes single leader-tracing process, not a comparison; R-FIG-05 applies only to comparative layouts",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-anchor",
+          "verdict": "fail",
+          "evidence": "Figure characterized as composite statement (\"it is silent on\") rather than showing comparisons as separate small multiples",
+          "span": "it is silent on whether the mask is needed at all"
+        }
+      ]
+    },
+    {
+      "pass": "structure-architecture",
+      "rules": [
+        "R-ARCH-01",
+        "R-ARCH-03",
+        "R-ARCH-04",
+        "R-SCENT-01",
+        "R-SCENT-02",
+        "R-DEPTH-01",
+        "R-XREF-01",
+        "R-XREF-03",
+        "R-VOCAB-02"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ARCH-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Front matter is only YAML metadata (title, generated_at, concepts); no audience, scope boundaries, or editorial decisions before content begins",
+          "span": "title: Leader tracing fixes the callout mapping before any segmentation runs\ngenerated_at: '2026-08-16T00:00:00Z'\nconcepts:",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Opening block states claim directly: 'mapping is decided by leader tracing, so a detector that returns disconnected strokes caps accuracy' \u2014 no generic intro precedes it.",
+          "span": "The callout number to part mapping is decided by leader tracing, so a detector that returns disconnected strokes caps accuracy before segmentation is even reached.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document lacks explicit goal-tuned reading paths with audience notes. Content organized by concept/block-type, not by distinct audience goals or navigation guidance (e.g., 'for practitioners: read X\u2192Y\u2192Z').",
+          "span": null
+        },
+        {
+          "rule_id": "R-SCENT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Both headings are full predictive claims ('Leader tracing fixes the callout mapping before any segmentation runs'; 'A resolved anchor is already a prompt...'), no generic labels like Overview/Background present",
+          "span": "Leader tracing fixes the callout mapping before any segmentation runs",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SCENT-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Heading 1 uses active transitive verb ('fixes'); Heading 2 uses copulative structure ('is'). Incompatible grammatical forms degrade parallel scannability.",
+          "span": null
+        },
+        {
+          "rule_id": "R-DEPTH-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "card-leader and card-anchor each give explicit Reach-for-it-when/Skip-it-when heuristics for the routine detector-choice and mask-or-not decisions without needing the matrix/aid blocks",
+          "span": "Reach for a topological detector when leaders kink, break, or cross hatching. Skip it when leaders are straight, unbroken and uncrossed",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-01",
+          "block_id": "document",
+          "verdict": "error",
+          "evidence": "JudgeError: R-XREF-01/document: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+          "span": null
+        },
+        {
+          "rule_id": "R-XREF-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Key concept dependency (leader-tracing output feeds anchor-seeded-segmentation input) is implicit in structure and headings, not realized as explicit cross-references between blocks.",
+          "span": null
+        },
+        {
+          "rule_id": "R-VOCAB-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Anchor failures are named handles (Anchor-inside-occluder, Prompt-drift, Mask-without-consumer); leader failures (kinked, hatch-crossed) introduced in subsum-leader-breaks lack equivalent named-handle elaboration or reuse.",
+          "span": "Dotted, kinked and hatch-crossed leaders are the failure surface [introduced but not consistently reused as named handles like anchor failures]"
+        }
+      ]
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rules": [
+        "R-CARD-01",
+        "R-CARD-03",
+        "R-SUMM-01",
+        "R-PROSE-03",
+        "R-RECALL-02",
+        "R-ART-02",
+        "R-ART-04",
+        "R-ART-05",
+        "R-EVID-02",
+        "R-XREF-04",
+        "R-ART-06",
+        "R-MV-01"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-leader",
+          "verdict": "pass",
+          "evidence": "home_anchor gives graph-walk analogy distinct from the leader-tracing concept, framing idea as transfer not restatement",
+          "span": "Like walking edges in a connectivity graph until you hit a terminal node.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-anchor",
+          "verdict": "pass",
+          "evidence": "Card opens with 'Like a query planner handed an index seek instead of scanning the table' \u2014 an analogue, not a restatement",
+          "span": "Like a query planner handed an index seek instead of scanning the table.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-leader",
+          "verdict": "pass",
+          "evidence": "skip_when gives specific condition (straight, unbroken, uncrossed leaders \u2192 plain segment detector suffices), not just a use-condition",
+          "span": "Skip it when leaders are straight, unbroken and uncrossed, where a plain segment detector already resolves them.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-anchor",
+          "verdict": "pass",
+          "evidence": "Card gives both reach_for_when and a specific skip_when tied to a concrete deliverable condition, not a vague catch-all.",
+          "span": "Skip masks when the deliverable is the numeral-to-part table, which the anchor already answers.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-leader",
+          "verdict": "pass",
+          "evidence": "Lede asserts a claim (leader tracing caps accuracy pre-segmentation), not a topic label",
+          "span": "caps accuracy before segmentation is even reached",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-anchor",
+          "verdict": "fail",
+          "evidence": "States a factual claim about sequencing, not a defended thesis position; reads as a rule statement rather than an arguable claim",
+          "span": "Whether you spend a mask on it is a downstream decision, not a prerequisite.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-leader",
+          "verdict": "pass",
+          "evidence": "Text is a single prose sentence with causal reasoning intact, not fragmented into bullets.",
+          "span": "The callout number to part mapping is decided by leader tracing, so a detector that returns disconnected strokes caps accuracy before segmentation is even reached."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-leader",
+          "verdict": "pass",
+          "evidence": "All card fields contain prose sentences; no bullet fragmentation present.",
+          "span": "idea: 'A leader is a path, and tracing it is a graph walk from a numeral to a part.'"
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Reasoning carried as a single prose sentence; no bullet fragmentation present.",
+          "span": "Dotted, kinked and hatch-crossed leaders are the failure surface, and each breaks a different assumption in the pipeline."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-leader-breaks",
+          "verdict": "pass",
+          "evidence": "Entire block is prose-driven; reasoning flows through connected sentences explaining problem-consequence-mechanism-warning, with no bullet fragmentation.",
+          "span": "A dotted leader is not a line but a sequence of marks, and a detector that demands continuity returns fragments."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-anchor",
+          "verdict": "pass",
+          "evidence": "Two complete sentences carry causal reasoning and decision hierarchy in prose flow; no bullet fragmentation.",
+          "span": "Once tracing resolves a callout to a point on a part, that point is a segmentation prompt. Whether you spend a mask on it is a downstream decision, not a prerequisite."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-anchor",
+          "verdict": "pass",
+          "evidence": "All fields contain complete prose sentences; no bullet points fragment the reasoning.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "toulmin-anchor",
+          "verdict": "pass",
+          "evidence": "Reasoning flows in connected prose sentences with logical connectors ('Because', 'instead'); Toulmin labels embedded in sentences, not fragmented into bullets.",
+          "span": "Because a promptable segmenter accepts a point, a resolved callout anchor can drive it directly."
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-leader",
+          "verdict": "pass",
+          "evidence": "All 3 require generation (diagnose failure stage, explain why segmentation doesn't answer it, specify output structure); Q2 is a cross-domain-mapping question against segmentation.",
+          "span": "You already run instance segmentation. Why does that not settle which part a numeral refers to?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-anchor",
+          "verdict": "pass",
+          "evidence": "All 3 require generation (argument construction, transfer analysis, scenario diagnosis); Q2 is explicit cross-domain mapping from SAM-family models.",
+          "span": "You have used SAM-family models for instance masks before. What transfers here, and what does not?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Checklist contains 5 action-verb items (confirm, re-run, check, verify, sample) targeting high-frequency failures (hatching, terminals, crossings, dotted leaders, repeated numerals); action-first, not exhaustive.",
+          "span": "confirm every numeral has exactly one terminal; re-run with hatching masked and diff the mapping; check repeated numerals resolve to distinct parts; verify dotted leaders survive the gap threshold; sample ten crossings by hand"
+        },
+        {
+          "rule_id": "R-ART-04",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Baseline named (topological detector); criteria enumerated (speed, gap tolerance, topology, training, opacity); recommendations given with specific conditions (growing for dotted leaders with throughput pressure; transformer with labelled drawings); each 'it depends' replaced with actionable decisio",
+          "span": "Baseline: a topological, connectivity-preserving detector... Use growing when leaders are dotted and throughput matters; use a transformer only once you have labelled drawings from this catalogue family."
+        },
+        {
+          "rule_id": "R-ART-05",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Matrix-leader surveysthree mechanisms (topological, growing, transformer) with consistent tradeoff + when structure; mechanisms are comparable despite implicit input",
+          "span": null
+        },
+        {
+          "rule_id": "R-EVID-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document contains scattered failure discussions (body-leader-breaks, toulmin-anchor rebuttal, failures-anchor) but no dedicated honest-limits section explicitly stating where the primer's framework breaks down.",
+          "span": null
+        },
+        {
+          "rule_id": "R-XREF-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "card-anchor's home concept (seeding/prompting) equals the target (anchor-seeded-segmentation) per its own New-vs-renamed note",
+          "span": "Seeding is renamed, not new; new is that the seed arrives from ink topology rather than from a detector.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-06",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No further-reading section present in document blocks; rule does not apply.",
+          "span": null
+        },
+        {
+          "rule_id": "R-MV-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Both concepts carry >=4 distinct modes (mental_model, tradeoff, architecture/benchmark, failure) with substantively different content, e.g. card-anchor's seed metaphor vs toulmin-anchor's qualifier/rebuttal vs failures-anchor's failure catalog vs fig-anchor's benchmark evidence.",
+          "span": "The anchor seeds the segmenter; the segmenter does not find the anchor.",
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "pass": 57,
+    "fail": 15,
+    "error": 1
+  },
+  "blocking": true,
+  "blocking_failures": [
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "checklist-leader lists 5 sequential imperative validation steps (confirm; re-run; check; verify; sample) \u2014 a step-by-step procedure, not contrastive teaching",
+      "span": "Before trusting a mapping: confirm every numeral has exactly one terminal; re-run with hatching masked and diff the mapping; check repeated numerals resolve to distinct parts; verify dotted leaders survive the gap threshold; sample ten crossings by hand.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-01",
+      "block_id": "fig-leader",
+      "verdict": "fail",
+      "evidence": "States the mechanism, not a conclusion or finding; no claim about what this implies",
+      "span": "Ink becomes a connectivity graph, the graph is walked from numeral to terminal, and only the surviving terminals become part anchors.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Front matter is only YAML metadata (title, generated_at, concepts); no audience, scope boundaries, or editorial decisions before content begins",
+      "span": "title: Leader tracing fixes the callout mapping before any segmentation runs\ngenerated_at: '2026-08-16T00:00:00Z'\nconcepts:",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-anchor",
+      "verdict": "fail",
+      "evidence": "States a factual claim about sequencing, not a defended thesis position; reads as a rule statement rather than an arguable claim",
+      "span": "Whether you spend a mask on it is a downstream decision, not a prerequisite.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-XREF-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "card-anchor's home concept (seeding/prompting) equals the target (anchor-seeded-segmentation) per its own New-vs-renamed note",
+      "span": "Seeding is renamed, not new; new is that the seed arrives from ink topology rather than from a detector.",
+      "retest": "fail",
+      "flipped": false
+    }
+  ],
+  "advisory_failures": [
+    {
+      "pass": "evidence-grounding",
+      "rule_id": "R-EVID-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Performance claims (detector tradeoffs, zero-shot transfer, gap-spanning) cite sources [s-sam, s-tgg, s-elsed, s-letr] by code only, with no metadata establishing their independence from vendors.",
+      "span": "[s-tgg, s-elsed, s-letr] in matrix-leader block; [s-sam] in fig-anchor block"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "toulmin-anchor",
+      "verdict": "fail",
+      "evidence": "Text symmetrically presents claim + qualifier + rebuttal without weighting; hedges rather than taking opinionated position on trade-off's relative importance",
+      "span": "Qualifier: the anchor must land inside the intended part for that to hold. Rebuttal: on seated parts the anchor lands inside an occluding silhouette instead"
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-leader",
+      "verdict": "fail",
+      "evidence": "Textual description contains no visual emphasis markup or box/arrow vocabulary indicators required to demonstrate exactly one emphasized element.",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-anchor",
+      "verdict": "fail",
+      "evidence": "No emphasized elements or shared vocabulary markers visible in provided figure.",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-05",
+      "block_id": "fig-anchor",
+      "verdict": "fail",
+      "evidence": "Figure characterized as composite statement (\"it is silent on\") rather than showing comparisons as separate small multiples",
+      "span": "it is silent on whether the mask is needed at all"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document lacks explicit goal-tuned reading paths with audience notes. Content organized by concept/block-type, not by distinct audience goals or navigation guidance (e.g., 'for practitioners: read X\u2192Y\u2192Z').",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-SCENT-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Heading 1 uses active transitive verb ('fixes'); Heading 2 uses copulative structure ('is'). Incompatible grammatical forms degrade parallel scannability.",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Key concept dependency (leader-tracing output feeds anchor-seeded-segmentation input) is implicit in structure and headings, not realized as explicit cross-references between blocks.",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-VOCAB-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Anchor failures are named handles (Anchor-inside-occluder, Prompt-drift, Mask-without-consumer); leader failures (kinked, hatch-crossed) introduced in subsum-leader-breaks lack equivalent named-handle elaboration or reuse.",
+      "span": "Dotted, kinked and hatch-crossed leaders are the failure surface [introduced but not consistently reused as named handles like anchor failures]"
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-EVID-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document contains scattered failure discussions (body-leader-breaks, toulmin-anchor rebuttal, failures-anchor) but no dedicated honest-limits section explicitly stating where the primer's framework breaks down.",
+      "span": null
+    }
+  ],
+  "errored_items": [
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-01",
+      "block_id": "document",
+      "verdict": "error",
+      "evidence": "JudgeError: R-XREF-01/document: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+      "span": null
+    }
+  ],
+  "flake": {
+    "retested": 39,
+    "flipped": 3,
+    "flake_rate": 0.0769
+  },
+  "flaky_items": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "subsum-leader-breaks",
+      "verdict": "pass",
+      "evidence": "Sentence names three failure types and asserts a general claim (each breaks a different assumption) without deferring to a deeper section.",
+      "span": "each breaks a different assumption in the pipeline",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "lede-anchor",
+      "verdict": "pass",
+      "evidence": "States a complete claim (callout->point->prompt; mask-use is separate) with no forward reference to deeper content.",
+      "span": "Whether you spend a mask on it is a downstream decision, not a prerequisite.",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "checklist-leader lists 5 sequential imperative validation steps (confirm; re-run; check; verify; sample) \u2014 a step-by-step procedure, not contrastive teaching",
+      "span": "Before trusting a mapping: confirm every numeral has exactly one terminal; re-run with hatching masked and diff the mapping; check repeated numerals resolve to distinct parts; verify dotted leaders survive the gap threshold; sample ten crossings by hand.",
+      "retest": "pass",
+      "flipped": true
+    }
+  ],
+  "ir_sha256": "50158bd7a6b43a7c2ef95d32bb47520c8648cef3271441d44fa750122c9d3a02",
+  "judge": {
+    "kind": "claude",
+    "model": "haiku",
+    "calls": 118,
+    "spend_usd": 14.314,
+    "exercised_rules": true,
+    "gating_model": "sonnet"
+  }
+}

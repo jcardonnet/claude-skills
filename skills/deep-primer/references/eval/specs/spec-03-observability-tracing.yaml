@@ -21,6 +21,33 @@ artifact:
   ir: tests/fixtures/spec03/document-ir.yaml
   concept_map: tests/fixtures/spec03/concept-map.yaml
   ledger: tests/fixtures/spec03/source-ledger.yaml
+  # Judged 2026-08-27 — one of five runs that ended this spec's status as never-critic-judged.
+  # Until now every one of the 35 soft_critic rules was credited from spec-01 alone: 44% of the
+  # registry resting on a single document, which cannot distinguish a rule that discriminates from
+  # a rule that only ever agreed with the one artifact written beside it.
+  #
+  # Regenerate with
+  #   scripts/critics/run_critics.py <ir> --judge claude --model haiku --gating-model sonnet \
+  #     --out <here>
+  # (146 calls, ~$18.74-equivalent — gating rules are judged twice, hence calls > verdicts).
+  # 7 MUST failures, the widest spread of the five — and 2 items the judge never answered.
+  #
+  # Flake on this run: 5/48 gating verdicts flipped when asked a second time. That figure is
+  # recorded, not gating (the FIRST verdict decides), and it is not a constant of the judge — across
+  # the five runs it tracks document size, from 3/39 here-abouts to 10/65 on spec-05. A flake rate
+  # measured on one artifact does not transfer to another, which is the same argument as this
+  # comment's first paragraph, arrived at from the other direction.
+  #
+  # R-ARCH-01 fails on all five of these specs for one reason, not five: none of their IRs carries
+  # the `front_matter` block that c0c3477 added to spec-01 for exactly this rule. That was
+  # predictable from `grep front_matter` before a single call was made, and it was left unfixed on
+  # purpose — editing an IR moves its digest, and eval then refuses the report beside it as stale.
+  # Fixing the artifacts is the right move; doing it before judging would have meant judging five
+  # documents this session had just rewritten, and doing it after means one re-judge, so batch them.
+  #
+  # The report carries `ir_sha256` of the IR it judged, and eval REFUSES to credit it as coverage
+  # if that no longer matches.
+  critic_report: tests/fixtures/spec03/critic-report.json
 expect:
   must_pass: [R-ARCH-03, R-SCENT-01, R-CARD-02, R-RECALL-01, R-CONSIST-01, R-ARCH-06]
   watch: [apparatus_proportionality]
