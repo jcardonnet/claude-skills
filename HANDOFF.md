@@ -1,9 +1,10 @@
 # HANDOFF — resuming deep-primer work in a local session
 
 Written at the end of a Claude Code **web** session that implemented `PLAN.md` Stages A–F, and
-extended by two local sessions since (§8, §9). Branch **`claude/deep-primer-skill-review-n3egin`**,
-PR **#1** (draft), 17 commits on `f80ff65`. Read `PLAN.md` for the full stage-by-stage rationale;
-this file is the what-you-need-to-start. **§1 is the current state; §9 is the most recent work.**
+extended by three local sessions since (§8, §9, §10). Branch **`claude/deep-primer-skill-review-n3egin`**,
+PR **#1** (draft), 46 commits on `f80ff65` / 70 ahead of `main`. Read `PLAN.md` for the full
+stage-by-stage rationale; this file is the what-you-need-to-start. **§1 is the current state; §10 is
+the most recent work.**
 
 ---
 
@@ -24,13 +25,13 @@ Expected on a clean checkout (measured at handoff):
 
 | Command | Expected |
 |---|---|
-| `make test` | `475 passed, 0 skipped` (~1m45s; longer if `make eval` runs alongside it) |
+| `make test` | `525 passed, 0 skipped` (~2m20s; longer if `make eval` runs alongside it) |
 | `make validate` | `OK — 1 skill(s) valid (lockstep in sync), 2 skipped` |
-| `make lint` | **136 errors** — all pre-existing, none from the recent work. It is ruff over `scripts/`, `tests/` and repo `tests/`, with `tools/` deliberately excluded (see the Makefile comment). Not in CI. A number *above* 136 is the signal |
-| `make eval` | **6/6 specs scored**, enforcement coverage **79/79 (100%)** — every tier at 100%: hard_lint 32/32, model_verified 3/3, soft_critic 35/35, human 9/9. Thresholds still **refused** on the lexical proxy (see §4) |
-| `eval.py --strict` | exit **1**, for exactly two reasons, both recorded: spec-01 `critic MUST failure(s): R-SUMM-01` (**GAPS G14** — judge drift, not an artifact defect) and spec-02 `composition below threshold (ungrounded_share=1.0 > max_inferred_share=0.6)` (**GAPS G13**). Any *third* reason is a regression |
-| `make bundle` | `deep-primer: 84 files -> dist/deep-primer, bundled 1/1` |
-| strict lint (below) | `clean — fail=0 warn=0 pass=22 skip=0` |
+| `make lint` | **144 errors** — the baseline moved from 136 as the research path grew. 58 of the 144 are `unused-noqa`, i.e. ruff disagreeing with suppressions rather than finding defects. It is ruff over `scripts/`, `tests/` and repo `tests/`, with `tools/` deliberately excluded (see the Makefile comment). Not in CI. A number *above* 144 is the signal |
+| `make eval` | **6/6 specs scored**, enforcement coverage **79/79 (100%)** — every tier at 100%: hard_lint 32/32, model_verified 3/3, soft_critic 35/35, human 9/9. Thresholds still **refused** on the lexical proxy (see §4). Exit **0** without `--strict` |
+| `eval.py --strict` | exit **1**, and since the five-spec judgement it is red on **all six specs**, not two — see §10. Every reason is critic-side: `lint fail=0 warn=0` on all six (spec-06 `warn=1`), and no spec reports `blocking lint failure`. The documented set is 13 MUST rules headed by `R-SUMM-01` (6/6) and `R-ARCH-01` (5/6), plus spec-02's composition **and** spine failures under `primer_type=frontier` (**GAPS G13**, red on purpose). A *deterministic* failure — a `blocking lint failure` line, or a lint `fail>0` — is the regression signal now |
+| `make bundle` | `deep-primer: 88 files -> dist/deep-primer, bundled 1/1` |
+| strict lint (below) | `clean — fail=0 warn=0 pass=22 skip=0`, exit 0 |
 
 ```bash
 python skills/deep-primer/scripts/lint.py \
@@ -60,12 +61,16 @@ Registry: **79 rules** — 32 `hard_lint`, 35 `soft_critic`, 3 `model_verified`,
 | **G (live run)** | **seams built, one brief run live** | `HttpFetcher`, `ClaudeResearchBackend` and the Claude entailment backend all exist and have run against the network. What remains is a full multi-wave campaign and a generated primer. See §5 |
 | H (local session) | done | Coverage ratchet (`eval.py --strict`), the critic tier's first real judge, determinism fix, Sonar security half. See §8 |
 | **H2 (second local session)** | **done** | Two adversarial review rounds (55 findings), the artifact fixes for `R-ARCH-01`/`R-EVID-01`, and the re-judge that took coverage 46/79 → **79/79**. Opened G14. See §9 |
+| **H3 (third local session)** | **done** | Four real grounding campaigns (specs 03–06), a model-backed claim extractor and campaign driver, G13's per-type composition route, G14 resolved, G15/G16/G17/G18 opened, the wall gate at fetch, and the five-spec critic judgement that ended 44% of the registry resting on one document. See §10 |
 
-`GAPS.md` has **two OPEN gaps, G13 and G14**, and they are the two reasons `eval.py --strict` exits
-1. Neither is an engineering problem and neither is cleared by spending: **G13** is a decision about
-the composition bound and what spec-02 is allowed to claim, **G14** about how much a MUST verdict
-from a stochastic judge is worth. Both are surfaced rather than applied — read them before touching
-the reference artifact. (G11 and G12 were the other two and are RESOLVED; see §8.)
+`GAPS.md` is the live list and it has moved twice since this paragraph first said "two OPEN gaps".
+**G13 and G14 are both settled** — G13 as an implemented route (a per-`primer_type` composition cap
+paired with a spine floor; spec-02 is still red under it, on purpose), G14 as a control decision
+(the first verdict gates, the retest is recorded as a flake measurement). **What is open now is
+G15(a), G16, G17 classes 2–3, and what G18 found.** Each is the same shape — a seam with no live
+supplier, or a measurement that had only ever run on one document — and none is cleared by spending
+alone. Read them before touching a reference artifact; §10 is the narrative. (G11 and G12 are
+RESOLVED; see §8.)
 
 The only remaining `NotImplementedError` in the tree is `scripts/research/kb.py` — a deliberate V2
 deferral (Mixedbread-backed source KB).
@@ -640,3 +645,167 @@ the exact strings; a third reason is a regression.
 One footnote worth keeping: `GAPS.md` had blank lines *inside* its status table, and GFM ends a table
 at the first blank line — so G11–G14 had been rendering as literal pipe-text rather than rows. Fixed
 while editing it.
+
+---
+
+## 10. Stage H, third local session — four real campaigns, and the tier that had judged one document
+
+Twenty-nine commits, `a225684` … `7a0f994`, all on 2026-08-19 → 2026-08-27. The one-line summary:
+the skill went from **one** grounded artifact to **five**, and from **one** judged document to
+**six** — and both of those moves made `eval.py --strict` *redder*, on purpose. That is the whole
+character of this session. Nothing here was fixed by relaxing a bound.
+
+### The two gaps that closed
+
+**G14 — RESOLVED as (c)** (`a225684`). The cross-run judge flip on `R-SUMM-01` was a *control*
+problem, not an artifact problem, so it was settled as one: the **first** verdict gates, and the
+retest is recorded as a **flake measurement** rather than collapsing the pair to `unstable`. The
+lede was not edited to make it green — see §9 for why that mattered.
+
+**G13 — route implemented** (`424d0ac`), after being sequenced behind the four real campaigns it
+needed data from. The composition guard is no longer one global `max_inferred_share`; it is an
+explicit `primer_type` with two values, each carrying a **cap paired with a spine floor**. A survey
+primer may infer a good deal as long as its ledes and cards are grounded; a frontier primer is held
+looser on the cap (0.85) and still to a `min_spine_grounded` of 0.5. The five survey specs land at
+`ungrounded_share` 0.40–0.57 with `spine_grounded` **1.0** across the board. **spec-02 still fails,
+on purpose** — `ungrounded_share=1.0`, `spine_grounded=0.0`. It is the one spec with no real
+campaign behind it, so it grounds nothing, and the guard says so instead of being widened until it
+stops saying so.
+
+### The four campaigns
+
+Specs 03, 04, 05 and 06 each now have a real `campaign-run.json` (`301b61f`, `34a376d`, `7ca409e`,
+`11130e8`, with re-grounding passes at `6233997`, `08d3495`, `1912684`, `30c3ec9`). Getting there
+needed real machinery, not just spend: a model-backed claim extractor and campaign driver
+(`97a6a37`), a model that **proposes** concept groups while the deterministic gate still **decides**
+(`5a57f92`), campaign resume from frozen briefs (`5c13fff`), a retry for a lost grouping batch that
+refuses to ship a degraded map (`c9abdd4`), and a rehydration fix so a resumed brief's documents come
+back (`4df58e4`). **spec-01 and spec-02 are the two specs still without a campaign.**
+
+### The four gaps that opened, in increasing order of how much they cost to close
+
+**G15 — `R-DISC-06` had never been exercised by a real campaign** (`e8990bf`). The rule whose entire
+subject is user seeds. Two bugs, both fixed with mutation-verified tests (`fa637be`): `seed_sources`
+is a **top-level** spec key but `_spec_params` returned `spec["parameters"]` alone, so every campaign
+ever run resolved its seeds to `[]`; and `front_load_campaign` dropped the directive half of
+`route_seeds`, so an `author`/`entity` seed never set `params["seed"]` and the `B-seed` brief was
+never built. The only thing that had ever produced one was a test setting `params["seed"]` by hand —
+which is exactly why no test caught it. **(b) is decided and applied** (`08d3495`): spec-04's seed
+was `https://example.org/hnsw-paper`, which cannot fetch, and `triage_leads` checks fetch-failure
+*before* the R-DISC-06 exemption on purpose — so the rule was unfailable in the direction that
+matters. It now points at the real HNSW paper (`arxiv.org/abs/1603.09320`), which was already source
+#1 of spec-04's own ledger. **(a) stays open:** `planner.Judge` has exactly one implementor,
+`StubJudge`, and `run_campaign` injects a model at the *structure* seam but passes no judge at the
+*discovery* seam. Every real campaign has run the stub. Two visible consequences: spec-03 (143 leads)
+and spec-04 (155) both carry **0 topic_leads**, and `triage` returns `accepted` for every cluster.
+
+**G16 — no campaign has ever marked a conflict** (`26d0940`). `claim_extractor.mark_conflicts`
+exists, is symmetric, and has a unit test. Nothing calls it: `run_campaign.py` imports `build_ledger`,
+`corroborate` and `mark_recency`, not `mark_conflicts`. Across spec-03/04/05 — **897 claims** —
+`contested` is 0 and `contradicts` is empty everywhere. Corroboration is the control that proves this
+is a missing supplier rather than an agreeable corpus: the same stage sets it on 22 / 20 / 21 claims,
+because `_corroborate_by_group` **does** have a live supplier. `R-DISC-06` (a MUST) grades on
+`contested`, so it rests on a signal no campaign produces. GAPS names **(b)** — a cheap second pass
+over the corroboration groups already computed — as the honest cheap route, recorded not applied.
+
+**G17 — retrieval had no "is this the document?" gate** (`f3fad3f`, `7fe1ceb`, `f6e6557`), three
+classes, one closed:
+
+- **Class 1, walls — APPLIED** (`9729580`). 37 of spec-05's 131 retrieved documents were Cloudflare
+  interstitials and 7 more were sub-60-word cookie notices: **34% of that corpus was not a document**,
+  and six of them reached the ledger with 17 claims of the interstitial's own text (`quote: disable
+  any ad blockers`) typed `primary_paper`, because `doc.source_type = doc.source_type or lead.type`
+  inherits discovery's pre-fetch guess. The fix is `MIN_CONTENT_WORDS = 80` in `http_fetcher.py`,
+  refused before a `Document` is constructed — and the threshold is **measured, not chosen**: across
+  all 449 documents of the four committed corpora the word-count band **62–92 is empty**. Paired with
+  **(d)**, `grouping.unnamed_singletons` → `curate.ungrouped_sources` →
+  `campaign-run.json: grouping.stranded_sources`, which is **advisory, never a gate** (on
+  `--lexical-grouping` every singleton would flag, so the signal would be meaningless).
+- **Class 2, landing pages — OPEN.** The FDA adaptive-design guidance resolves to its 262-word
+  landing page; EMA ICH E20 to 241. Faithfully extracted, 23 claims, all typed `standard`, all
+  resolving cleanly — the primer loses the whole substance while every check stays green. Length
+  cannot separate 222–262 words from a document, which is why 80 was deliberately **not** raised.
+  Needs **(c)**, a model-side "is this the document you asked for?" seam.
+- **Class 3, worked-example contamination — OPEN, and the hardest.** Source `8ee2ad4d` in spec-06's
+  campaign is the RAGAS paper: genuine, primary, on topic, fetched in full. **8 of its 24 claims are
+  about the 2023 film *Oppenheimer* and a clock tower in Vadodara** — the WikiEval passages RAGAS
+  prints as worked examples of its own metrics. Every document-level signal reports green because the
+  document *is* correct; the confusion is inside it, at the claim level. Nothing in the pipeline can
+  see that today.
+
+The four committed corpora are **not** retro-cleaned. The gate is a forward guarantee only, and
+hand-curation is what caught all of this — which is not part of the skill's contract.
+
+**G18 — 44% of the registry was credited from a single document** (`7a0f994`). `soft_critic` is 35 of
+79 rules, and until 2026-08-27 exactly one spec declared a `critic_report`. Coverage read 35/35 and
+was *correct* — `eval.py:713` unions `rules_exercised` across specs, so one report that touches every
+rule saturates the tier. The number was never wrong; it was answering a weaker question than it
+looked like it was answering. Specs 02–06 were judged with the real critic (haiku advisory, sonnet
+gating), five concurrent runs, ~75 min: **883 calls, $111.32-equivalent** — roughly double the ~$60
+implied by scaling spec-01, because the later specs are larger (spec-06 is 21 blocks, 249 calls).
+
+| spec | calls | spend | pass | fail | err | flake | rules failed | MUST failed |
+|---|---|---|---|---|---|---|---|---|
+| 01\* | 119 | $11.89 | 64 | 12 | 0 | — | 12 | 1 |
+| 02 | 118 | $14.31 | 57 | 15 | 1 | 3/39 | 14 | 5 |
+| 03 | 146 | $18.74 | 63 | 22 | 2 | 5/48 | 20 | 7 |
+| 04 | 180 | $24.56 | 83 | 18 | 3 | 6/53 | 16 | 7 |
+| 05 | 190 | $22.78 | 85 | 29 | 0 | 10/65 | 20 | 9 |
+| 06 | 249 | $30.91 | 111 | 33 | 1 | 6/80 | 20 | 8 |
+
+<sub>\* pre-existing, from §9. `calls = items + gating_items`: gating items are judged twice, the
+first verdict decides and the second is recorded as flake, per G14.</sub>
+
+**Three things one document could not have shown.** (1) **`R-SUMM-01` fails 6/6.** As spec-01's lone
+MUST failure it looked like judge drift; failing on every primer the skill has ever produced reframes
+it as a rule/artifact mismatch, and the open question is which side is wrong. (2) **The flake rate
+tracks document size** — 3/39 (7.7%) on spec-02 to 10/65 (15.4%) on spec-05 — so the figure G14
+measured on spec-01 is not a constant of the judge and does not transfer. That is G18's own argument
+arriving from the other direction. (3) **`R-ARCH-01` fails 5/6, and that was predicted before a call
+was paid for**: `c0c3477` added a `front_matter` block to spec-01 for exactly this rule, and `grep
+front_matter` finds it in no other IR. A *pass* on any of the five would have been rubber-stamping.
+
+MUST rules failing, by how many of the six: `R-SUMM-01` 6 · `R-ARCH-01` 5 · `R-ARCH-03` 4 ·
+`R-SUMM-04` 4 · `R-XREF-04` 4 · `R-PROSE-01` 3 · `R-EXPERT-01` 2 · `R-FIG-01` 2 · `R-PROSE-02` 2 ·
+`R-XREF-01` 2 · `R-ART-03` 1 · `R-EVID-01` 1 · `R-RECALL-02` 1.
+
+**One near-miss worth keeping:** `.gitignore`'s `*-report.json` glob would have swallowed all five
+reports in silence. spec-01's survived it only by the accident of being named
+`critic-report.full.json`. A critic report is not a transient run output — it costs real money,
+`eval` replays it as the entire soft_critic tier, and it is digest-stamped so a stale one is caught
+rather than trusted. The negation `!skills/deep-primer/tests/fixtures/**/critic-report.json` is now
+`.gitignore` line 17.
+
+### The sequencing trap, before you fix any of those 13 rules
+
+Editing an IR moves its `ir_sha256`, and `eval` then refuses the critic report beside it as **stale**
+— by design, so a report can never be credited to a document it did not judge. So **every artifact
+fix costs a re-judge**, and a re-judge of the corpus is ~$110-equivalent. The fixes have to be
+decided across all 13 rules and all 6 primers *first*, applied in one batch, then judged once. One at
+a time is six re-judges. This is also why `R-ARCH-01` was deliberately left unfixed before the
+judgement: fixing first would have meant judging five documents the session had just rewritten.
+
+### Where that leaves `--strict`
+
+Exit **1**, on all six specs. **Every reason is critic-side** — `lint fail=0 warn=0` on all six
+(spec-06 `warn=1`), and no spec reports `blocking lint failure`. Note that the `expected rule(s)
+FAILED` line is *not* a separate deterministic failure: it is `expected_must_pass_report["failed"]`,
+the curated `expect.must_pass` subset, and every name in it also appears in the same line's `critic
+MUST failure(s)`. The regression signal is now **a `blocking lint failure` line, or any lint
+`fail>0`** — not the length of the critic list.
+
+### What I would pick up next
+
+1. **The G18 decision** — rule or artifacts, over 13 rules and 6 primers, batched into one re-judge.
+   It is the one item where the corpus has already been paid for and the finding is sitting unacted on.
+2. **G17 class 2 then class 3** — until those are settled, a campaign's output is not trustworthy
+   without hand-curation, and hand-curation is not in the contract.
+3. **G16 via option (b)**, the cheapest honest route to a `contested` signal that exists.
+4. **G15(a)**, a `ClaudeDiscoveryJudge` — it changes what every grounded fixture contains, so it is
+   cheaper to do before more campaigns than after.
+5. **Ground spec-02**, which is what turns G13's two red lines green honestly rather than by moving a
+   bound.
+
+Still deliberately untouched, and still the maintainer's call: **reclassifying the nine `human`
+rules** (`checks/conformance.py` checks all nine against the source tree and passes 9/9; the registry
+still files them under `human`).
