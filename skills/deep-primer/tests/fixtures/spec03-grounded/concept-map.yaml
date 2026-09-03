@@ -1,0 +1,595 @@
+concepts:
+- concept_id: c1-Specification-governance-and-versioning
+  canonical_term: Specification governance and versioning
+  aliases:
+  - OpenTelemetry versioning strategy
+  - semantic conventions compatibility
+  - collector release management
+  home_anchor: Protocol specification versions and release cycles
+  fidelity_boundary: Specification versions can include non-breaking layout changes;
+    protocol versions typically require all breaking changes to bump major version
+  epistemic_status: settled
+  salience: 0.7442
+  representation_modes: []
+  source_ids:
+  - 2220e2762fd4dd120200f52de4892c553194ab42
+  - 4971749189e744b65111f12d843f7f2b7194735e
+  - a11ddc88570adb99d1e15ac473a654ab215dd9fd
+  claim_ids:
+  - C-2220e276-1
+  - C-2220e276-2
+  - C-2220e276-3
+  - C-2220e276-4
+  - C-2220e276-5
+  - C-2220e276-6
+  - C-2220e276-7
+  - C-2220e276-8
+  - C-a11ddc88-1
+  - C-a11ddc88-2
+  - C-a11ddc88-3
+  - C-a11ddc88-4
+  - C-a11ddc88-5
+  - C-49717491-1
+  - C-49717491-2
+  - C-49717491-3
+  - C-49717491-4
+  - C-49717491-5
+  - C-49717491-6
+  - C-49717491-7
+  - C-49717491-8
+  - C-49717491-9
+  - C-49717491-11
+  - C-49717491-12
+  - C-49717491-14
+  - C-49717491-15
+  - C-49717491-16
+  - C-49717491-17
+  - C-49717491-18
+  - C-49717491-19
+  - C-49717491-20
+  - C-49717491-21
+- concept_id: c2-B3-propagation-format
+  canonical_term: B3 propagation format
+  aliases:
+  - Trace context header encoding
+  - B3 specification
+  - trace correlation format
+  home_anchor: HTTP request identification in headers
+  fidelity_boundary: B3 propagates immutable trace identity across service boundaries;
+    HTTP request IDs can be regenerated per service
+  epistemic_status: settled
+  salience: 0.5581
+  representation_modes: []
+  source_ids:
+  - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+  - a04e4429e1c16d429c3b26135ddd11a7341deef5
+  claim_ids:
+  - C-877e19dc-1
+  - C-877e19dc-2
+  - C-877e19dc-3
+  - C-877e19dc-4
+  - C-877e19dc-5
+  - C-877e19dc-6
+  - C-877e19dc-7
+  - C-877e19dc-8
+  - C-a04e4429-1
+  - C-a04e4429-2
+  - C-a04e4429-3
+  - C-a04e4429-4
+  - C-a04e4429-5
+  - C-a04e4429-6
+  - C-a04e4429-7
+  - C-a04e4429-8
+  - C-a04e4429-9
+  - C-a04e4429-10
+  - C-a04e4429-11
+  - C-a04e4429-12
+  - C-a04e4429-13
+  - C-a04e4429-14
+  - C-a04e4429-15
+  - C-a04e4429-16
+- concept_id: c3-Trace-context-format-evolution
+  canonical_term: Trace context format evolution
+  aliases:
+  - Format migration strategy
+  - B3 to W3C transition
+  - trace context interoperability
+  home_anchor: Data format migrations with backward compatibility
+  fidelity_boundary: Trace formats can coexist in flight during migration; data format
+    migrations typically require full cutover
+  epistemic_status: settled
+  salience: 0.1395
+  representation_modes: []
+  source_ids:
+  - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+  claim_ids:
+  - C-28ed2da2-1
+  - C-28ed2da2-2
+  - C-28ed2da2-3
+  - C-28ed2da2-4
+  - C-28ed2da2-5
+  - C-28ed2da2-6
+- concept_id: c4-Metric-cardinality-limits
+  canonical_term: Metric cardinality limits
+  aliases:
+  - cardinality control
+  - attribute overflow handling
+  - high-cardinality attribute management
+  home_anchor: Index cardinality on composite keys
+  fidelity_boundary: Cardinality limits permanently discard attribute data; indexes
+    use compression and manage cardinality without data loss
+  epistemic_status: settled
+  salience: 0.3721
+  representation_modes: []
+  source_ids:
+  - 36976b07dc28e845134e228893af52e30717adfe
+  - 841df5cd70826525d0f64183d6cd107385236948
+  claim_ids:
+  - C-36976b07-1
+  - C-36976b07-2
+  - C-36976b07-3
+  - C-36976b07-4
+  - C-36976b07-5
+  - C-36976b07-6
+  - C-36976b07-7
+  - C-36976b07-8
+  - C-36976b07-9
+  - C-36976b07-10
+  - C-36976b07-11
+  - C-841df5cd-1
+  - C-841df5cd-2
+  - C-841df5cd-3
+  - C-841df5cd-4
+  - C-841df5cd-5
+- concept_id: c5-Resource-attributes-and-metric-identity
+  canonical_term: Resource attributes and metric identity
+  aliases:
+  - process resource semantics
+  - resource lifecycle
+  - resource-determined metric identity
+  home_anchor: Process environment variables and startup context
+  fidelity_boundary: Resource attributes must remain constant for a service instance;
+    environment variables can change between deployments
+  epistemic_status: settled
+  salience: 0.1628
+  representation_modes: []
+  source_ids:
+  - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+  claim_ids:
+  - C-6c8aa937-1
+  - C-6c8aa937-2
+  - C-6c8aa937-4
+  - C-6c8aa937-5
+  - C-6c8aa937-6
+  - C-6c8aa937-7
+  - C-6c8aa937-8
+- concept_id: c6-Trace-sampling
+  canonical_term: Trace sampling
+  aliases:
+  - head vs tail sampling
+  - probabilistic sampling with thresholds
+  - sampling decision propagation
+  - Probabilistic trace sampling
+  - Head-based sampling
+  - sampling probability propagation
+  - rejection threshold
+  home_anchor: Random sampling in query result sets
+  fidelity_boundary: Sampling decisions must propagate consistently across entire
+    request path; query sampling is per-query and independent
+  epistemic_status: settled
+  salience: 0.9302
+  representation_modes: []
+  source_ids:
+  - 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+  - 80b1f67ba2163d7cd2706a03842898479a051b64
+  - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+  - e6b2e631449fefb10e505ee770c414f4f136462a
+  claim_ids:
+  - C-7290a7dc-1
+  - C-7290a7dc-2
+  - C-7290a7dc-3
+  - C-7290a7dc-4
+  - C-7290a7dc-5
+  - C-7290a7dc-6
+  - C-7290a7dc-7
+  - C-7290a7dc-8
+  - C-7290a7dc-9
+  - C-7290a7dc-10
+  - C-7290a7dc-12
+  - C-7290a7dc-13
+  - C-7290a7dc-14
+  - C-7290a7dc-15
+  - C-80b1f67b-1
+  - C-80b1f67b-3
+  - C-80b1f67b-5
+  - C-80b1f67b-6
+  - C-80b1f67b-7
+  - C-80b1f67b-8
+  - C-a9fc4c7a-1
+  - C-a9fc4c7a-3
+  - C-a9fc4c7a-4
+  - C-a9fc4c7a-5
+  - C-a9fc4c7a-7
+  - C-e6b2e631-1
+  - C-e6b2e631-2
+  - C-e6b2e631-3
+  - C-e6b2e631-4
+  - C-e6b2e631-6
+  - C-e6b2e631-7
+  - C-e6b2e631-8
+  - C-e6b2e631-9
+  - C-e6b2e631-10
+  - C-e6b2e631-11
+  - C-e6b2e631-12
+  - C-e6b2e631-13
+  - C-e6b2e631-14
+  - C-e6b2e631-15
+  - C-e6b2e631-16
+- concept_id: c7-Distributed-tracing-backends
+  canonical_term: Distributed tracing backends
+  aliases:
+  - Zipkin and Jaeger
+  - tracing system architecture
+  - backend storage and analysis
+  - Distributed trace storage backends
+  - Trace persistence tier
+  - trace database requirements
+  - Distributed tracing implementations
+  - Trace collection systems
+  - APM backends
+  home_anchor: Event log storage and query systems
+  fidelity_boundary: Tracing backends correlate events by trace ID into causal chains;
+    event logs are independent records
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 226c9ebd183867ed1fc473aa75daede8fdab2279
+  - 508252774ef95b477cc81a82daf923ddd74abf89
+  - e442ace94b66955624c3753004ac523a2e890d39
+  - fd103bb106e8ca1e8e4932af3e4eb4eb027e49cd
+  claim_ids:
+  - C-50825277-1
+  - C-50825277-2
+  - C-50825277-3
+  - C-50825277-4
+  - C-50825277-5
+  - C-50825277-6
+  - C-50825277-7
+  - C-50825277-8
+  - C-50825277-9
+  - C-50825277-10
+  - C-50825277-11
+  - C-50825277-12
+  - C-50825277-13
+  - C-50825277-14
+  - C-50825277-15
+  - C-50825277-16
+  - C-226c9ebd-3
+  - C-226c9ebd-4
+  - C-226c9ebd-5
+  - C-226c9ebd-6
+  - C-226c9ebd-7
+  - C-e442ace9-1
+  - C-e442ace9-2
+  - C-e442ace9-3
+  - C-e442ace9-4
+  - C-e442ace9-5
+  - C-e442ace9-6
+  - C-e442ace9-7
+  - C-e442ace9-8
+  - C-fd103bb1-1
+  - C-fd103bb1-2
+  - C-fd103bb1-3
+  - C-fd103bb1-4
+  - C-fd103bb1-5
+  - C-fd103bb1-6
+  - C-fd103bb1-7
+  - C-fd103bb1-9
+  - C-fd103bb1-10
+  - C-fd103bb1-12
+  - C-fd103bb1-13
+  - C-fd103bb1-14
+  - C-fd103bb1-15
+  - C-fd103bb1-16
+- concept_id: c8-GenAI-instrumentation
+  canonical_term: GenAI instrumentation
+  aliases:
+  - LLM call tracing
+  - generative AI span semantics
+  home_anchor: External service call instrumentation
+  fidelity_boundary: GenAI spans may nest already-instrumented HTTP client spans,
+    creating parent-child relationships not found in simple external calls
+  epistemic_status: settled
+  salience: 0.186
+  representation_modes: []
+  source_ids:
+  - 9789ce77ae2d10b02afea1dd60b9a91c7e48703d
+  claim_ids:
+  - C-9789ce77-1
+  - C-9789ce77-2
+  - C-9789ce77-3
+  - C-9789ce77-4
+  - C-9789ce77-5
+  - C-9789ce77-6
+  - C-9789ce77-7
+  - C-9789ce77-8
+- concept_id: c9-Service-mesh-telemetry-collection
+  canonical_term: Service mesh telemetry collection
+  aliases:
+  - Istio telemetry
+  - mesh-based observability
+  - transparent network telemetry
+  home_anchor: Network middleware request intercepting
+  fidelity_boundary: Service mesh telemetry collection is transparent to application
+    code; instrumentation requires explicit code changes
+  epistemic_status: settled
+  salience: 0.1628
+  representation_modes: []
+  source_ids:
+  - 78931e95e5c9a6a5ac611625e93a88cf6b43102a
+  claim_ids:
+  - C-78931e95-1
+  - C-78931e95-2
+  - C-78931e95-3
+  - C-78931e95-4
+  - C-78931e95-5
+  - C-78931e95-6
+  - C-78931e95-7
+- concept_id: c10-Log-label-indexing
+  canonical_term: Log label indexing
+  aliases:
+  - label-based log storage
+  - log compression with metadata indexes
+  home_anchor: Sparse column indexes on unstructured text
+  fidelity_boundary: Label indexing enables fast stream filtering but sacrifices full-text
+    search capability
+  epistemic_status: settled
+  salience: 0.0465
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-1
+  - C-aab04fe1-2
+- concept_id: c11-Platform-policy-primitives
+  canonical_term: Platform policy primitives
+  aliases:
+  - policy-as-code for observability
+  - multi-plane platform control
+  home_anchor: Role-based access control policies
+  fidelity_boundary: Platform policies can enforce observability practices uniformly
+    across services; RBAC is service-local
+  epistemic_status: settled
+  salience: 0.0465
+  representation_modes: []
+  source_ids:
+  - 7c890a26e7c2d52d855195c4274d951cca4f4ac2
+  claim_ids:
+  - C-7c890a26-1
+  - C-7c890a26-2
+- concept_id: c12-Log-collection-stack
+  canonical_term: Log collection stack
+  aliases:
+  - Loki logging architecture
+  - push-based log collection
+  - log aggregation pipeline
+  home_anchor: Centralized log collection and storage
+  fidelity_boundary: Unlike traditional log aggregation, Loki indexes by labels rather
+    than full text content, enabling efficient querying of high-volume logs
+  epistemic_status: settled
+  salience: 0.1395
+  representation_modes: []
+  source_ids:
+  - aab04fe1b482e7348adbf671dfbe77b5b7a5aaaa
+  claim_ids:
+  - C-aab04fe1-3
+  - C-aab04fe1-4
+  - C-aab04fe1-5
+  - C-aab04fe1-6
+  - C-aab04fe1-7
+  - C-aab04fe1-8
+- concept_id: c13-Observability-signals
+  canonical_term: Observability signals
+  aliases:
+  - Telemetry signal types
+  - observability data types
+  home_anchor: Diverse information types used in system monitoring
+  fidelity_boundary: The signal taxonomy is standardized across observability frameworks,
+    whereas monitoring data collection typically varies widely depending on system
+    and operator preferences
+  epistemic_status: settled
+  salience: 0.1628
+  representation_modes: []
+  source_ids:
+  - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+  claim_ids:
+  - C-bd3da1a2-2
+  - C-bd3da1a2-3
+  - C-bd3da1a2-4
+  - C-bd3da1a2-5
+  - C-bd3da1a2-6
+  - C-bd3da1a2-7
+  - C-bd3da1a2-8
+- concept_id: c14-Observability-instrumentation-framework
+  canonical_term: Observability instrumentation framework
+  aliases:
+  - Vendor-neutral telemetry standard
+  - instrumentation specification
+  home_anchor: Standard data schema and protocol specification
+  fidelity_boundary: Standardizes telemetry collection and export but intentionally
+    provides no built-in storage, visualization, or alerting—these must be supplied
+    by external backends, unlike database schemas which typically imply a complete
+    data system
+  epistemic_status: settled
+  salience: 0.2558
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-bcea9415-1
+  - C-bcea9415-11
+  - C-bcea9415-12
+  - C-bcea9415-8
+  - C-bcea9415-10
+  - C-c5bed158-1
+  - C-c5bed158-2
+  - C-c5bed158-3
+  - C-c5bed158-4
+  - C-c5bed158-7
+  - C-c5bed158-14
+- concept_id: c15-API-stability-and-support-commitments
+  canonical_term: API stability and support commitments
+  aliases:
+  - Semantic versioning policy
+  - backward compatibility contract
+  - support lifecycle
+  home_anchor: Semantic versioning and API deprecation policy
+  fidelity_boundary: Separates signals by maturity status and enforces different support
+    lifetimes for APIs versus SDKs; signals in development status can coexist with
+    stable signals without forcing upgrades—unlike traditional semantic versioning
+    which typically applies uniformly across all packages
+  epistemic_status: settled
+  salience: 0.4884
+  representation_modes: []
+  source_ids:
+  - b23a3dff596135e73bcb59da23321c53c5f3cf5b
+  - ba1d8db88fe981a224771a8f1e32c500346437e8
+  claim_ids:
+  - C-ba1d8db8-1
+  - C-ba1d8db8-2
+  - C-ba1d8db8-3
+  - C-ba1d8db8-4
+  - C-ba1d8db8-5
+  - C-ba1d8db8-6
+  - C-ba1d8db8-7
+  - C-ba1d8db8-8
+  - C-ba1d8db8-9
+  - C-ba1d8db8-10
+  - C-ba1d8db8-11
+  - C-ba1d8db8-12
+  - C-ba1d8db8-13
+  - C-ba1d8db8-14
+  - C-ba1d8db8-15
+  - C-ba1d8db8-16
+  - C-b23a3dff-2
+  - C-b23a3dff-4
+  - C-b23a3dff-5
+  - C-b23a3dff-6
+  - C-b23a3dff-7
+- concept_id: c16-Pull-based-metric-collection-and-storage
+  canonical_term: Pull-based metric collection and storage
+  aliases:
+  - Prometheus scrape-based monitoring
+  - autonomous time-series storage
+  home_anchor: Periodic polling of application metrics
+  fidelity_boundary: Uses HTTP pull from instrumented endpoints with autonomous, non-distributed
+    storage; unsuitable for billing requiring 100% accuracy—unlike push-based systems
+    or distributed metric backends
+  epistemic_status: settled
+  salience: 0.186
+  representation_modes: []
+  source_ids:
+  - cf4242b488b8bd4fb1dbb6179594ae4e71453700
+  claim_ids:
+  - C-cf4242b4-1
+  - C-cf4242b4-2
+  - C-cf4242b4-3
+  - C-cf4242b4-4
+  - C-cf4242b4-5
+  - C-cf4242b4-6
+  - C-cf4242b4-7
+  - C-cf4242b4-8
+- concept_id: c17-Time-series-cardinality-management
+  canonical_term: Time series cardinality management
+  aliases:
+  - Cardinality explosion control
+  - label cardinality limits
+  home_anchor: Column cardinality and index resource consumption
+  fidelity_boundary: Stores every distinct label combination as a separate in-memory
+    time series without automatic deduplication; cardinality attacks exhaust memory
+    and cause data loss—unlike indexed databases which compress high-cardinality columns
+    and fail gracefully
+  epistemic_status: settled
+  salience: 0.3721
+  representation_modes: []
+  source_ids:
+  - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+  claim_ids:
+  - C-ed606ca4-1
+  - C-ed606ca4-2
+  - C-ed606ca4-3
+  - C-ed606ca4-4
+  - C-ed606ca4-5
+  - C-ed606ca4-6
+  - C-ed606ca4-7
+  - C-ed606ca4-8
+  - C-ed606ca4-9
+  - C-ed606ca4-10
+  - C-ed606ca4-11
+  - C-ed606ca4-12
+  - C-ed606ca4-13
+  - C-ed606ca4-14
+  - C-ed606ca4-15
+  - C-ed606ca4-16
+- concept_id: c18-Trace-collection-and-storage-architectur
+  canonical_term: Trace collection and storage architecture
+  aliases:
+  - Distributed trace ingestion
+  - collector-storage separation
+  home_anchor: Database write path and query separation
+  fidelity_boundary: Separates SDKs, collection agents, storage backends, and query
+    services into independent scaled components supporting pluggable backends—unlike
+    monolithic database systems where these functions are tightly integrated
+  epistemic_status: settled
+  salience: 0.1395
+  representation_modes: []
+  source_ids:
+  - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+  claim_ids:
+  - C-c33bab73-1
+  - C-c33bab73-2
+  - C-c33bab73-3
+  - C-c33bab73-4
+  - C-c33bab73-7
+  - C-c33bab73-8
+- concept_id: c19-Observability-platforms
+  canonical_term: Observability platforms
+  aliases:
+  - Full-stack monitoring solutions
+  - observability SaaS
+  - backend observability services
+  home_anchor: Managed platform-as-a-service solutions
+  fidelity_boundary: Proprietary platforms integrate collection, storage, querying,
+    and visualization with closed-source agents and proprietary data formats to unlock
+    advanced features, whereas open-source platforms use standard formats at the cost
+    of completeness—a trade-off less pronounced in managed database services
+  epistemic_status: settled
+  salience: 0.4419
+  representation_modes: []
+  source_ids:
+  - bcea9415eeda6a034ea18b9529ec6331daa28307
+  - c5bed1588ca2563c311a6016aefeba9081490af0
+  claim_ids:
+  - C-bcea9415-2
+  - C-bcea9415-3
+  - C-bcea9415-4
+  - C-bcea9415-5
+  - C-bcea9415-6
+  - C-bcea9415-9
+  - C-bcea9415-13
+  - C-bcea9415-14
+  - C-bcea9415-15
+  - C-c5bed158-5
+  - C-c5bed158-6
+  - C-c5bed158-8
+  - C-c5bed158-10
+  - C-c5bed158-12
+  - C-c5bed158-15
+  - C-c5bed158-16
+  - C-c5bed158-9
+  - C-c5bed158-11
+  - C-c5bed158-13
+cycle: null
+contested: false

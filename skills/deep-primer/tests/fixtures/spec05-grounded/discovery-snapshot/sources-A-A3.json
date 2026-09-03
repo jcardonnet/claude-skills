@@ -1,0 +1,850 @@
+[
+  {
+    "id": "A-A3-s1",
+    "url": "https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ICH E20 Step 2b draft and consultation timeline",
+    "fetched_title": "ICH E20 adaptive designs for clinical trials - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s2",
+    "url": "https://www.federalregister.gov/documents/2025/09/30/2025-18897/e20-adaptive-designs-for-clinical-trials-international-council-for-harmonisation-draft-guidance-for",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ICH E20 Federal Register notice and consultation announcement",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A3-s3",
+    "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/ich-e20-guideline-adaptive-designs-clinical-trials-step-2b_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ICH E20 Step 2b draft PDF with full guideline scope and requirements",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s4",
+    "url": "https://www.ich.org/news/ich-e20-draft-guideline-available-now-ich-website",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ICH E20 global harmonization announcement",
+    "fetched_title": "ICH Official web site : ICH",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s5",
+    "url": "https://www.federalregister.gov/documents/2026/01/12/2026-00325/use-of-bayesian-methodology-in-clinical-trials-of-drug-and-biological-products-draft-guidance-for",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "FDA Bayesian methodology draft guidance (Jan 2026) and requirements",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A3-s6",
+    "url": "https://www.alston.com/en/insights/publications/2026/01/fda-bayesian-guidance-drug-trials",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Alston & Bird legal analysis of FDA Bayesian guidance shift",
+    "fetched_title": "All Roads Lead to Smarter Trials with FDA\u2019s New Bayesian Guidance | Alston & Bird",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s7",
+    "url": "https://www.berryconsultants.com/resource/guide-to-the-draft-fda-bayesian-guidance-2026",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Berry Consultants guidance on FDA Bayesian draft regulatory implications",
+    "fetched_title": "Guide to the FDA\u2019s 2026 Draft Bayesian Guidance for Clinical Trials | Berry Consultants",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s8",
+    "url": "https://www.fda.gov/media/174976/download",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "FDA Master Protocols revised draft guidance 2026",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s9",
+    "url": "https://www.morganlewis.com/blogs/asprescribed/2026/01/awash-in-data-fda-removes-a-barrier-in-real-world-evidence-generation",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Morgan Lewis legal analysis of FDA RWE policy shift (Dec 2025)",
+    "fetched_title": "Awash in Data? FDA Removes a Barrier in Real-World Evidence Generation \u2013 As Prescribed",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s10",
+    "url": "https://arxiv.org/abs/2602.06379",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Sokolova & Sokolov e-values for adaptive trials (Feb 2026)",
+    "fetched_title": "[2602.06379] E-values for Adaptive Clinical Trials: Anytime-Valid Monitoring in Practice",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s11",
+    "url": "https://arxiv.org/pdf/2602.06379",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "E-values practitioner methodology and evalinger R package documentation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s12",
+    "url": "https://arxiv.org/pdf/2606.00878",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Brannath & Fischer anytime-valid e-values and confirmatory adaptive designs (May 2026)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s13",
+    "url": "https://arxiv.org/pdf/2605.28653",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Adaptive clinical trials with design-optimal e-values and automatic curtailment",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s14",
+    "url": "https://arxiv.org/pdf/2512.04366",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Sequential randomization tests using e-values for optional stopping",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s15",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/sim.70386",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Liu et al. Bayesian RAR for cluster randomized trials (Statistics in Medicine, Jan 2026)",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A3-s16",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/pst.2443",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Aslanyan et al. Bayesian RAR with covariate adjustment (Pharmaceutical Statistics 2025)",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A3-s17",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/pst.70042",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Granholm et al. guide to Bayesian advanced adaptive randomized trials (Pharmaceutical Statistics 2025)",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A3-s18",
+    "url": "https://journals.sagepub.com/doi/10.1177/09622802251360413",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Giovagnoli & Lupparelli Bayesian prediction viewpoint on RAR (Statistical Methods in Medical Research 2025)",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A3-s19",
+    "url": "https://arxiv.org/pdf/2406.00196",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Seamless Phase II/III adaptive designs with surrogate endpoints",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s20",
+    "url": "https://arxiv.org/pdf/2512.09430",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Seamless II/III with covariate-adaptive randomization and model-robust inference",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s21",
+    "url": "https://arxiv.org/pdf/2212.11433",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Flexible 2-in-1 designs with sample size adaptation eliminating inter-phase gaps",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33588655/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Seamless design with multiple endpoints and subpopulation selection",
+    "fetched_title": "pubmed.ncbi.nlm.nih.gov",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s23",
+    "url": "https://clinicaltrialrisk.org/clinical-trial-design/ai-in-clinical-trials-the-edge-of-tech/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Clinical Trial Risk Tool AI/ML integration status overview",
+    "fetched_title": "AI In clinical trials in 2025: the edge of tech",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s24",
+    "url": "https://pharmatica.io/insights/deep-learning-in-clinical-trials",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Pharmatica 2026 outlook on deep learning operational deployment",
+    "fetched_title": "Deep Learning in Clinical Trials for 2026 and Beyond | Pharmatica",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s25",
+    "url": "https://www.biopharmatrend.com/business-intelligence/companies-applying-ai-to-de-risk-clinical-trials-2026-watchlist/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "BioPharmaTrend watchlist: PhaseV Series A $50M funding and 40+ sponsor adoption",
+    "fetched_title": "Companies Applying AI to De-Risk Clinical Trials: 2026 Watchlist",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s26",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12627430/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ClinicalReTrial Framework AI agents for iterative protocol optimization",
+    "fetched_title": "AI and innovation in clinical trials - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s27",
+    "url": "https://www.appliedclinicaltrialsonline.com/view/ai-driven-clinical-trial-recruitment-design",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Applied Clinical Trials: outcome prediction models and AI-driven enrollment",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A3-s28",
+    "url": "https://www.fda.gov/news-events/fda-brief/fda-brief-fda-modernizes-clinical-trial-designs-and-approaches-drug-development-proposing-new",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "FDA statement on platform trial design modernization and adaptive approaches",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A3-s29",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13106893/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Platform trial expansion across therapeutic areas (TBI, ALS, cardiovascular)",
+    "fetched_title": "Modern Clinical Trials: Seamless Designs and Master Protocols - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s30",
+    "url": "https://cran.r-project.org/web/packages/rpact/index.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "rpact v4.4.0 (March 4, 2026) CRAN package page and documentation",
+    "requested_url": "https://cran.r-project.org/package=rpact",
+    "fetched_title": "CRAN: Package rpact",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s31",
+    "url": "https://cran.r-project.org/web/packages/rpact/rpact.pdf",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "rpact manual and capabilities reference",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s32",
+    "url": "https://github.com/cran/rpact",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "rpact GitHub mirror for version and release verification",
+    "fetched_title": "GitHub - cran/rpact: :exclamation:\u00a0This\u00a0is\u00a0a\u00a0read-only\u00a0mirror\u00a0of\u00a0the\u00a0CRAN\u00a0R\u00a0package\u00a0repository.  rpact\u00a0\u2014\u00a0Confirmatory\u00a0Adaptive\u00a0Clinical\u00a0Trial\u00a0Design\u00a0and\u00a0Analysis.\u00a0Homepage:\u00a0https://www.rpact.org,\u00a0https://www.rpact.com,\u00a0https://docs.rpact.org,\u00a0https://github.com/rpact-com/rpact,\u00a0https://rpact-cloud.share.connect.posit.cloud  Report\u00a0bugs\u00a0for ... \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s33",
+    "url": "https://www.rpact.org",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "rpact official documentation portal",
+    "fetched_title": "rpact: Confirmatory Adaptive Clinical Trial Design, Simulation, and Analysis \u2013 RPACT",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s34",
+    "url": "https://r-universe.dev/rpact",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "rpact R Universe distribution and package details",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A3-s35",
+    "url": "https://cran.r-project.org/web/packages/adoptr/index.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adoptr v1.1.2 (May 3, 2026) CRAN package page",
+    "requested_url": "https://cran.r-project.org/package=adoptr",
+    "fetched_title": "CRAN: Package adoptr",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s36",
+    "url": "https://optad.github.io/adoptr/news/index.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adoptr changelog documenting v1.1.2 release date and previous versions",
+    "fetched_title": "Changelog \u2022 adoptr",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s37",
+    "url": "https://github.com/optad/adoptr",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adoptr GitHub repository for version history and source code",
+    "fetched_title": "GitHub - optad/adoptr: Adaptive optimal two-stage designs for clinical trials made easy. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s38",
+    "url": "https://kkmann.github.io/adoptr/articles/adoptr_jss.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adoptr documentation and methodology reference",
+    "fetched_title": "The adoptr Package: Adaptive Optimal Designs for Clinical Trials in R \u2022 adoptr",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s39",
+    "url": "https://cran.r-project.org/web/packages/adaptr/index.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adaptr v1.5.0 CRAN package page and documentation",
+    "requested_url": "https://cran.r-project.org/package=adaptr",
+    "fetched_title": "CRAN: Package adaptr",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s40",
+    "url": "https://inceptdk.github.io/adaptr/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adaptr official documentation and capabilities (INCEPT)",
+    "fetched_title": "Adaptive Trial Simulator \u2022 adaptr",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s41",
+    "url": "https://github.com/INCEPTdk/adaptr",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adaptr GitHub repository (INCEPT maintainer)",
+    "fetched_title": "GitHub - INCEPTdk/adaptr: Adaptive Trial Simulator \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s42",
+    "url": "https://cran.r-project.org/web/packages/EValue/EValue.pdf",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "EValue package (May 7, 2026) documentation and e-value computation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s43",
+    "url": "https://louisahsmith.github.io/evalue/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "EValue official documentation portal",
+    "fetched_title": "An R package for E-values and bounds \u2022 EValue",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s44",
+    "url": "https://r-packages.io/packages/EValue",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "EValue R packages index entry",
+    "fetched_title": "EValue R package [Documentation] | R PACKAGES",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s45",
+    "url": "https://github.com/VadimSokolov/evalinger",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "evalinger R package GitHub (new Feb 2026, e-value adaptive trial monitoring)",
+    "fetched_title": "GitHub - VadimSokolov/evalinger: E-Values for Adaptive Clinical Trial Monitoring \u2014 R package with Shiny web app \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s46",
+    "url": "https://cran.r-project.org/web/views/ClinicalTrials.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "CRAN Task View: Clinical Trials (updated June 10, 2026)",
+    "requested_url": "https://cran.r-project.org/view=ClinicalTrials",
+    "fetched_title": "CRAN Task View: Clinical Trial Design, Monitoring, Analysis and Reporting",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s47",
+    "url": "https://www.openstatsware.org/blog/cran-task-view-new-version-2026/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "OpenStatsWare blog documenting June 2026 CRAN Task View update",
+    "fetched_title": "CRAN Task View on Clinical Trials - June 2026 Update \u2013 openstatsware",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s48",
+    "url": "https://github.com/cran-task-views/ClinicalTrials",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "CRAN Task View Clinical Trials GitHub repository",
+    "fetched_title": "GitHub - cran-task-views/ClinicalTrials: CRAN Task View: Clinical Trial Design, Monitoring, and Analysis \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s49",
+    "url": "https://pypi.org/project/adaptivetesting/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "adaptivetesting Python package (2025) PyPI distribution",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s50",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42498892/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Engicht et al. Customizable Bayesian Adaptive Testing Python package (2025)",
+    "fetched_title": "pubmed.ncbi.nlm.nih.gov",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s51",
+    "url": "https://pypi.org/project/adopy/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ADOpy Python package PyPI page",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s52",
+    "url": "https://github.com/adopy/adopy",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ADOpy GitHub repository (active maintenance)",
+    "fetched_title": "GitHub - adopy/adopy: Adaptive Design Optimization for Experimental Tasks \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s53",
+    "url": "https://link.springer.com/article/10.3758/s13428-020-01386-4",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "ADOpy Springer Nature paper on adaptive design optimization (2020)",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s54",
+    "url": "https://github.com/brockk/clintrials",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "clintrials Python framework GitHub repository (active development)",
+    "fetched_title": "GitHub - brockk/clintrials: Clinical trial designs and methods in Python \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  }
+]

@@ -1,0 +1,206 @@
+[
+  {
+    "id": "A-A2-s1",
+    "url": "https://arxiv.org/pdf/2606.04522",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Directly addresses recall metric problems and tail behavior in ANN",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s2",
+    "url": "https://medium.com/@reliabledataengineering/the-vector-database-performance-lie-hnsw-vs-ivf-when-you-have-100m-embeddings-1d8ef5a0b6c6",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Production failure account: HNSW collapse at 100M vectors",
+    "fetched_title": "Medium",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s3",
+    "url": "https://ranjankumar.in/hnsw-vector-search-recall-production",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "HNSW recall failures in production systems",
+    "fetched_title": "HNSW Vector Search Recall Failures in Production | Ranjan Kumar",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s4",
+    "url": "http://htor.inf.ethz.ch/publications/img/2025_iff_fanns_benchmark.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Benchmarking filtered ANN search, demonstrates post-filter recall loss",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s5",
+    "url": "https://yudhiesh.github.io/2025/05/09/the-achilles-heel-of-vector-search-filters/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Analysis of filter integration failure modes in 2025",
+    "fetched_title": "The Achilles Heel of Vector Search: Filters | Bits & Backprops",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s6",
+    "url": "https://arxiv.org/html/2512.18335",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Quantization under streaming updates, incremental maintenance challenge",
+    "fetched_title": "Quantization for Vector Search under Streaming Updates",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s7",
+    "url": "https://arxiv.org/html/2505.17152",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "LSM-based dynamic vector search, addresses incremental update problem",
+    "fetched_title": "LSM-VEC: A Large-Scale Disk-Based System for Dynamic Vector Search",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s8",
+    "url": "https://milvus.io/ai-quick-reference/what-is-the-curse-of-dimensionality-and-how-does-it-affect-vector-search",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Curse of dimensionality effects on vector search",
+    "dropped_reason": "HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nMoved Temporarily"
+  },
+  {
+    "id": "A-A2-s9",
+    "url": "https://www.abhik.ai/concepts/embeddings/ann-comparison",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "HNSW vs IVF vs LSH comparison, highlights algorithm-workload mismatch",
+    "fetched_title": "HNSW vs IVF-PQ vs LSH: Approximate Nearest Neighbor Algorithms Compared | Abhik Sarkar",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s10",
+    "url": "https://www.elastic.co/blog/understanding-ann",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Elasticsearch production analysis of HNSW vs LSH tradeoffs",
+    "requested_url": "https://www.elastic.co/blog/understanding-approximate-nearest-neighbor-search",
+    "fetched_title": "Understanding the approximate nearest neighbor (ANN) algorithm | Elastic Blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s11",
+    "url": "https://arxiv.org/pdf/2403.12583",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Quantixar: effects of quantization, distance metrics on high-dimensional search",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A2-s12",
+    "url": "https://aws.amazon.com/blogs/big-data/build-billion-scale-vector-databases-in-under-an-hour-with-gpu-acceleration-on-amazon-opensearch-service/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "GPU acceleration response to HNSW scalability failure (2025)",
+    "fetched_title": "Build billion-scale vector databases in under an hour with GPU acceleration on Amazon OpenSearch Service | AWS Big Data Blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A2-s13",
+    "url": "https://www.mdpi.com/2076-3417/15/19/10554",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "P-HNSW: crash consistency workaround for persistent storage scalability",
+    "dropped_reason": "disallowed by robots.txt"
+  }
+]

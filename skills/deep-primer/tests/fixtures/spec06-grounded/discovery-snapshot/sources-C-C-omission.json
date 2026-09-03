@@ -1,0 +1,385 @@
+[
+  {
+    "id": "C-C-omission-s1",
+    "url": "https://arxiv.org/abs/2405.07437",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Survey of quantifiable RAG evaluation metrics, benchmarks, and processes",
+    "fetched_title": "[2405.07437] Evaluation of Retrieval-Augmented Generation: A Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s2",
+    "url": "https://arxiv.org/abs/2504.14891",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Comprehensive evaluation dimensions and methodologies in era of LLMs",
+    "fetched_title": "[2504.14891] Retrieval Augmented Generation Evaluation in the Era of Large Language Models: A Comprehensive Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s3",
+    "url": "https://arxiv.org/abs/2511.09545",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Cost-latency-quality tradeoff framework for production RAG systems",
+    "fetched_title": "[2511.09545] Practical RAG Evaluation: A Rarity-Aware Set-Based Metric and Cost-Latency-Quality Trade-offs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s4",
+    "url": "https://arxiv.org/abs/2504.01840",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "LRAGE: Legal RAG evaluation with domain-specific metrics and multilingual support",
+    "fetched_title": "[2504.01840] LRAGE: Legal Retrieval Augmented Generation Evaluation Tool",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s5",
+    "url": "https://arxiv.org/abs/2605.26476",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "FAB-Bench: Manufacturing domain RAG evaluation framework",
+    "fetched_title": "[2605.26476] FAB-Bench: A Framework for Adaptive RAG Benchmarking in Semiconductor Manufacturing",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s6",
+    "url": "https://arxiv.org/abs/2502.14930",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "RAGVA: Real-world customer support RAG evaluation and deployment",
+    "fetched_title": "[2502.14930] RAGVA: Engineering Retrieval Augmented Generation-based Virtual Assistants in Practice",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s7",
+    "url": "https://arxiv.org/abs/2603.05828",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "HART: Data-driven hallucination attribution and evidence tracing",
+    "fetched_title": "[2603.05828] HART: Data-Driven Hallucination Attribution and Evidence-Based Tracing for Large Language Models",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s8",
+    "url": "https://arxiv.org/abs/2512.07515",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "TPA: Token probability attribution for hallucination detection in RAG",
+    "fetched_title": "[2512.07515] TPA: Next Token Probability Attribution for Detecting Hallucinations in RAG",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s9",
+    "url": "https://arxiv.org/abs/2605.03534",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "SURE-RAG: Uncertainty-aware evidence verification for RAG",
+    "fetched_title": "[2605.03534] SURE-RAG: Sufficiency and Uncertainty-Aware Evidence Verification for Selective Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s10",
+    "url": "https://arxiv.org/abs/2406.04744",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "CRAG: Comprehensive RAG benchmark with 4,409 QA pairs and temporal dynamics",
+    "fetched_title": "[2406.04744] CRAG -- Comprehensive RAG Benchmark",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s11",
+    "url": "https://aclanthology.org/2024.naacl-long.20/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "ARES: Automated evaluation framework for RAG systems",
+    "fetched_title": "ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems - ACL Anthology",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s12",
+    "url": "https://arxiv.org/abs/2504.15205",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "TREC 2024: Human vs. LLM judge comparison (56-72% agreement study)",
+    "fetched_title": "[2504.15205] Support Evaluation for the TREC 2024 RAG Track: Comparing Human versus LLM Judges",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s13",
+    "url": "https://arxiv.org/abs/2601.04196",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "RAGVue: Diagnostic evaluation and explainability for RAG",
+    "fetched_title": "[2601.04196] RAGVUE: A Diagnostic View for Explainable and Automated Evaluation of Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s14",
+    "url": "https://arxiv.org/abs/2602.00296",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "RAGRouter-Bench: Evaluation of retrieval routing algorithms",
+    "fetched_title": "[2602.00296] RAGRouter-Bench: A Dataset and Benchmark for Adaptive RAG Routing",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s15",
+    "url": "https://arxiv.org/abs/2503.10677",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Survey on knowledge-oriented RAG evaluation and temporal dynamics",
+    "fetched_title": "[2503.10677] A Survey on Knowledge-Oriented Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s16",
+    "url": "https://trec-rag.github.io/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "TREC 2024 RAG Track: Official nugget, support, fluency, retrieval evaluation guidelines",
+    "fetched_title": "TREC RAG \u00b7 Retrieval-Augmented Generation Track - RAG",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s17",
+    "url": "https://trec.nist.gov/pubs/trec34/papers/Overview_rag.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "TREC 2025 RAG Track: Long-form narratives and attribution verification standards",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s18",
+    "url": "https://github.com/vibrantlabsai/ragas",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "RAGAS v0.4.3 (Jan 13, 2026): Reference-free RAG evaluation framework",
+    "fetched_title": "GitHub - vibrantlabsai/ragas: Supercharge Your LLM Application Evaluations \ud83d\ude80 \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s19",
+    "url": "https://deepeval.com/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "DeepEval v4.1.9 (Aug 20, 2026): 50+ metrics with pytest CI/CD integration",
+    "fetched_title": "DeepEval - The LLM Evaluation Framework",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s20",
+    "url": "https://github.com/truera/trulens",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "TruLens v2.12+: OpenTelemetry-based tracing and multi-turn evaluation",
+    "fetched_title": "GitHub - truera/trulens: Evaluation and Tracking for LLM Experiments and AI Agents \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s21",
+    "url": "https://pypi.org/project/uptrain/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "UpTrain v0.7.1 (May 14, 2024): Predefined metrics and production monitoring",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s22",
+    "url": "https://www.llamaindex.ai/blog/evaluating-rag-with-deepeval-and-llamaindex",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "LlamaIndex integration: Faithfulness, relevancy, context precision/recall evaluation",
+    "fetched_title": "RAG Evaluation Guide With DeepEval & LlamaIndex | LlamaIndex",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s23",
+    "url": "https://arxiv.org/abs/2408.01262",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "RAGEval: Scenario-specific evaluation dataset generation framework",
+    "fetched_title": "[2408.01262] RAGEval: Scenario Specific RAG Evaluation Dataset Generation Framework",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s24",
+    "url": "https://arxiv.org/abs/2507.18910",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Systematic review of RAG systems, gaps, and future directions",
+    "fetched_title": "[2507.18910] A Systematic Review of Key Retrieval-Augmented Generation (RAG) Systems: Progress, Gaps, and Future Directions",
+    "retrieved_at": "2026-08-21"
+  }
+]

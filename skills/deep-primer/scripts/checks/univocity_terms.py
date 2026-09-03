@@ -15,16 +15,24 @@ from __future__ import annotations
 
 import re
 
-from checks._base import LintContext, Violation
+from checks._base import CheckNotApplicable, LintContext, Violation
+from research.grouping import anchor_restates_term
 
 
 def _doc_text(ctx: LintContext) -> str:
+    """Every surface form the document actually puts in front of a reader.
+
+    Two blind spots used to live here and both bit in the damaging direction. Walking `sec.blocks`
+    never descended into an h3, so an alias used in a subsection went unreported; and reading
+    `b.text`/`b.caption` skipped the three composite roles, so a canonical term ESTABLISHED in a
+    card read as "never appears" and (B) reported a violation the document does not commit.
+    `flatten_blocks` + `prose_segments` is what "the prose" means (R-PROJ-01).
+    """
     parts: list[str] = []
     for sec in ctx.ir.sections:
         parts.append(sec.title or "")
-        for b in sec.blocks:
-            parts.append(b.text or "")
-            parts.append(b.caption or "")
+        parts.extend(sub.title or "" for sub in sec.subsections)
+    parts.extend(seg for b in ctx.ir.flatten_blocks() for seg in b.prose_segments)
     return "\n".join(parts)
 
 
@@ -38,7 +46,7 @@ def _contains_phrase(text_lower: str, phrase: str) -> bool:
 def canonical_terms(ctx: LintContext) -> list[Violation]:
     cm = ctx.concept_map
     if cm is None:
-        return []
+        raise CheckNotApplicable("R-VOCAB-01 needs a concept-map; none was supplied")
     out: list[Violation] = []
 
     # (A) canonical terms unique across concepts
@@ -61,6 +69,41 @@ def canonical_terms(ctx: LintContext) -> list[Violation]:
                     None,
                     f"concept '{c.concept_id}' referenced by alias {alias!r} but canonical term "
                     f"{c.canonical_term!r} never appears",
+                ))
+                break
+    return out
+
+
+def home_anchor_distinct(ctx: LintContext) -> list[Violation]:
+    """R-XREF-04 (also_hard_lint): a home_anchor must not restate its own concept.
+
+    The mechanical half of the home ~= target gap. When the reader already lives in the target
+    domain, the bridge degenerates into "X is like X" and the advance organizer never fires; an
+    anchor equal to (or contained in) the concept's own canonical term or aliases is that failure
+    in its detectable form. Whether a distinct anchor is genuinely ADJACENT stays a critic call.
+
+    The comparison is `research.grouping.anchor_restates_term`, shared with the gate that admits a
+    model-proposed anchor in the first place. Two copies of "does this restate itself" could drift
+    apart, and the drift is silent in the dangerous direction: an anchor the gate waves through and
+    the lint later rejects strands a finished concept-map.
+    """
+    cm = ctx.concept_map
+    if cm is None:
+        raise CheckNotApplicable("R-XREF-04 needs a concept-map; none was supplied")
+
+    out: list[Violation] = []
+    for c in cm.concepts:
+        anchor = (c.home_anchor or "").strip().lower()
+        if not anchor:
+            continue
+        own = sorted({(c.canonical_term or "").strip().lower(),
+                      *(a.strip().lower() for a in c.aliases)} - {""})
+        for term in own:
+            if anchor_restates_term(anchor, [term]):
+                out.append(Violation(
+                    None,
+                    f"concept '{c.concept_id}': home_anchor {c.home_anchor!r} restates its own term "
+                    f"{term!r}; resolve it to the nearest ADJACENT technique (R-XREF-04)",
                 ))
                 break
     return out

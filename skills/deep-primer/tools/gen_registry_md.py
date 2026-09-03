@@ -18,7 +18,22 @@ NS_TITLES = {
 }
 order = list(NS_TITLES)
 rules = d['rules']
+
+# NS_TITLES is a second copy of the registry's namespace set, and the grouping below is keyed on it
+# — so a rule in a namespace nobody added a title for is silently absent from the generated file.
+# `validate_skill.py --check-build` cannot see that: it regenerates and diffs, and both sides omit
+# the rule identically, so lockstep reports "in sync" over a registry entry that reaches no reader.
+_missing_ns = sorted({r['id'].split('-')[1] for r in rules} - set(NS_TITLES))
+if _missing_ns:
+    raise SystemExit(
+        f"gen_registry_md: no NS_TITLES entry for namespace(s) {_missing_ns}. Rules in them would "
+        f"be dropped from rule-registry.md with no diff to show it. Add a title and re-run "
+        f"tools/build.sh.")
+
 by_ns = {ns:[r for r in rules if r['id'].split('-')[1]==ns] for ns in order}
+_grouped = sum(len(v) for v in by_ns.values())
+if _grouped != len(rules):
+    raise SystemExit(f"gen_registry_md: grouped {_grouped} of {len(rules)} rules — some were lost.")
 
 L = []; w = L.append
 w("# Deep Primer — Rule Registry (companion)\n")

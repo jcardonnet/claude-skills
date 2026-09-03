@@ -17,7 +17,7 @@ from checks import (
     univocity_terms,
     xrefs,
 )
-from checks._base import LintContext, nlp_available
+from checks._base import CheckNotApplicable, LintContext, nlp_available
 from ir.schema import Block, Concept, ConceptMap, DocumentIR, Section
 
 
@@ -267,3 +267,256 @@ def test_provenance_verified_without_source():
 def test_provenance_ok():
     d = doc(sec("s1", blk("b", "toulmin", text="x", claim_ids=["C1"], provenance="verified", source_ids=["s1"])))
     assert provenance.tagged(ctx(d)) == []
+
+
+# --- Stage A: the structural checks the flat V1 IR could not express ----------
+
+def _rows(**overrides):
+    base = dict(idea="i", home_anchor="h", whats_new_vs_renamed="n", reach_for_when="r",
+                skip_when="s", key_exemplar="k", confidence="c")
+    base.update(overrides)
+    return base
+
+
+def _items(n, **kw):
+    return [{"question": f"q{i}", "answer": f"a{i}", **kw} for i in range(n)]
+
+
+def sub(block_id, *blocks, title="A subsection claim", concept=None):
+    from ir.schema import Subsection
+    return Subsection(block_id=block_id, title=title, concept=concept, blocks=list(blocks))
+
+
+def sec_with_subs(block_id, blocks, subsections, title="A claim-bearing title"):
+    return Section(block_id=block_id, title=title, blocks=list(blocks), subsections=list(subsections))
+
+
+# structure_coverage.params_present (R-PARAM-01)
+
+def test_params_present_pass():
+    p = {"home_domain": ["ir"], "target_domain": "rag", "seniority_band": "staff_plus", "length_budget": 4000}
+    assert structure_coverage.params_present(ctx(doc(), parameters=p)) == []
+
+
+def test_params_present_flags_each_missing():
+    p = {"home_domain": ["ir"], "target_domain": "rag"}
+    out = structure_coverage.params_present(ctx(doc(), parameters=p))
+    assert out and "seniority_band" in details(out) and "length_budget" in details(out)
+
+
+# structure_coverage.card_rows (R-CARD-02)
+
+def test_card_rows_pass():
+    d = doc(sec("s1", blk("c", "card", text="x", rows=_rows())))
+    assert structure_coverage.card_rows(ctx(d)) == []
+
+
+def test_card_rows_flags_untyped_card():
+    d = doc(sec("s1", blk("c", "card", text="a free-text card")))
+    out = structure_coverage.card_rows(ctx(d))
+    assert out and out[0].block_id == "c" and "no typed rows" in out[0].detail
+
+
+def test_card_rows_flags_blank_skip_when():
+    d = doc(sec("s1", blk("c", "card", text="x", rows=_rows(skip_when="   "))))
+    out = structure_coverage.card_rows(ctx(d))
+    assert out and "skip_when" in out[0].detail
+
+
+# structure_coverage.recall_count (R-RECALL-01)
+
+def test_recall_count_pass_with_three_items():
+    d = doc(sec("s1", blk("r", "recall", items=_items(3))))
+    assert structure_coverage.recall_count(ctx(d)) == []
+
+
+def test_recall_count_flags_wrong_number():
+    d = doc(sec("s1", blk("r", "recall", items=_items(2))))
+    out = structure_coverage.recall_count(ctx(d))
+    assert out and "2 recall item" in out[0].detail
+
+
+def test_recall_count_silent_when_section_has_no_recall_block():
+    """A missing recall layer is layer_coverage's finding; recall_count must not double-report."""
+    d = doc(sec("s1", blk("l", "lede", text="x")))
+    assert structure_coverage.recall_count(ctx(d)) == []
+
+
+# structure_coverage.operational_artifacts (R-ART-01)
+
+def test_operational_artifacts_pass_with_all_four():
+    d = doc(sec("s1", *[blk(f"a{i}", "matrix", artifact_kind=k) for i, k in enumerate(
+        ["decision_matrix", "checklist", "failure_catalog", "decision_aid"])]))
+    assert structure_coverage.operational_artifacts(ctx(d)) == []
+
+
+def test_operational_artifacts_flags_collapsed_set():
+    d = doc(sec("s1", blk("a0", "matrix", artifact_kind="decision_matrix")))
+    out = structure_coverage.operational_artifacts(ctx(d))
+    assert out and "checklist" in out[0].detail and "decision_aid" in out[0].detail
+
+
+# structure_coverage.heading_hierarchy + banned_heading_terms (R-ARCH-05, R-SCENT-01)
+
+def test_heading_hierarchy_pass():
+    d = doc(sec_with_subs("s1", [blk("l", "lede", text="x")],
+                          [sub("s1a", blk("m", "summary", text="y"),
+                               blk("b", "body", text="z", heading="An h4 label"))]))
+    assert structure_coverage.heading_hierarchy(ctx(d)) == []
+
+
+def test_heading_hierarchy_flags_untitled_subsection():
+    d = doc(sec_with_subs("s1", [], [sub("s1a", blk("m", "summary", text="y"), title="  ")]))
+    out = structure_coverage.heading_hierarchy(ctx(d))
+    assert out and out[0].block_id == "s1a"
+
+
+def test_heading_hierarchy_flags_h4_on_non_body_role():
+    d = doc(sec("s1", blk("c", "card", text="x", rows=_rows(), heading="not allowed here")))
+    out = structure_coverage.heading_hierarchy(ctx(d))
+    assert out and "body blocks only" in out[0].detail
+
+
+def test_banned_heading_terms_flags_generic_labels():
+    d = doc(sec("s1", blk("l", "lede", text="x"), title="Overview"))
+    out = structure_coverage.banned_heading_terms(ctx(d))
+    assert out and "Overview" in out[0].detail
+
+
+def test_banned_heading_terms_allows_predictive_heading():
+    d = doc(sec("s1", blk("l", "lede", text="x"), title="Why long context did not kill chunking"))
+    assert structure_coverage.banned_heading_terms(ctx(d)) == []
+
+
+# structure_coverage.summary_budgets + the h3:sub-sum 1:1 clause (R-SUMM-02, R-CONSIST-01)
+
+def test_summary_budgets_pass():
+    d = doc(sec_with_subs("s1", [blk("m", "summary", text="short")],
+                          [sub("s1a", blk("sm", "summary", text="one sub-sum"))]))
+    assert structure_coverage.summary_budgets(ctx(d)) == []
+
+
+def test_summary_budgets_flags_overlong_section_summary():
+    d = doc(sec("s1", blk("m", "summary", text=" ".join(["word"] * 501))))
+    out = structure_coverage.summary_budgets(ctx(d))
+    assert out and "501 words" in out[0].detail
+
+
+def test_summary_budgets_flags_missing_sub_sum():
+    d = doc(sec_with_subs("s1", [], [sub("s1a", blk("b", "body", text="no sub-sum here"))]))
+    out = structure_coverage.summary_budgets(ctx(d))
+    assert out and "0 sub-sum" in out[0].detail
+
+
+def test_layer_coverage_flags_duplicate_sub_sum():
+    d = doc(sec_with_subs("s1",
+                          [blk("l", "lede", text="x"), blk("c", "card", text="y"), blk("r", "recall", text="q")],
+                          [sub("s1a", blk("m1", "summary", text="a"), blk("m2", "summary", text="b"))]))
+    out = structure_coverage.layer_coverage(ctx(d))
+    assert out and "2 sub-sum" in details(out)
+
+
+# subsection-awareness of the pre-existing checks
+
+def test_flatten_blocks_recurses_into_subsections():
+    d = doc(sec_with_subs("s1", [blk("a", "lede", text="x")], [sub("s1a", blk("b", "body", text="y"))]))
+    assert [b.block_id for b in d.flatten_blocks()] == ["a", "b"]
+    assert d.all_block_ids() == ["s1", "a", "s1a", "b"]
+
+
+def test_compression_gradient_counts_subsection_body():
+    """Body prose living in a subsection still counts as the section's body layer."""
+    d = doc(sec_with_subs("s1", [blk("c", "card", text="one two three")],
+                          [sub("s1a", blk("b", "body", text=" ".join(["w"] * 20)))]))
+    assert prose_caps.compression_gradient(ctx(d)) == []
+
+
+# --- G1: anchor resolution when home ~= target (R-XREF-04) -------------------
+
+def _cm(**kw):
+    return ConceptMap(concepts=[Concept(concept_id="c1", canonical_term="leader anchoring", **kw)])
+
+
+def test_home_anchor_distinct_passes_on_adjacent_technique():
+    out = univocity_terms.home_anchor_distinct(ctx(doc(), _cm(home_anchor="ray casting in graphics")))
+    assert out == []
+
+
+def test_home_anchor_distinct_flags_self_restatement():
+    """home ~= target degenerates the bridge into 'X is like X'."""
+    out = univocity_terms.home_anchor_distinct(ctx(doc(), _cm(home_anchor="leader anchoring")))
+    assert out and "restates its own term" in out[0].detail
+
+
+def test_home_anchor_distinct_flags_substring_restatement():
+    out = univocity_terms.home_anchor_distinct(ctx(doc(), _cm(home_anchor="anchoring")))
+    assert out
+
+
+def test_home_anchor_distinct_flags_alias_restatement():
+    out = univocity_terms.home_anchor_distinct(
+        ctx(doc(), _cm(home_anchor="leader following", aliases=["leader following"])))
+    assert out
+
+
+def test_concept_map_checks_declare_they_did_not_run_rather_than_passing():
+    """These used to return `[]` with no concept-map, and the dispatcher records `[]` as a PASS — so
+    an IR-only lint reported three MUST rules (R-VOCAB-01, R-XREF-04, R-MV-01) as satisfied and
+    credited them as coverage. `[]` has to keep meaning "I looked and found nothing"."""
+    for check in (univocity_terms.home_anchor_distinct, univocity_terms.canonical_terms,
+                  multiview_concepts.modes_per_concept):
+        with pytest.raises(CheckNotApplicable):
+            check(ctx(doc()))
+
+
+# --- G6: user-specified structure is authoritative (R-ARCH-07) ---------------
+
+def _sec_mapped(bid, maps_to, title="A predictive claim about it"):
+    return Section(block_id=bid, title=title, maps_to=maps_to)
+
+
+def test_user_structure_not_enforced_when_absent():
+    d = DocumentIR(sections=[Section(block_id="s1", title="t")])
+    assert structure_coverage.user_structure_respected(ctx(d)) == []
+
+
+def test_user_structure_pass_with_rewritten_headings():
+    """The heading is a predictive claim (R-SCENT-01); maps_to carries the user's entry."""
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background"), _sec_mapped("s2", "Tradeoffs")])
+    p = {"user_structure": ["Background", "Tradeoffs"]}
+    assert structure_coverage.user_structure_respected(ctx(d, parameters=p)) == []
+
+
+def test_user_structure_flags_missing_entry():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background")])
+    p = {"user_structure": ["Background", "Tradeoffs"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("'Tradeoffs' is not realized" in v.detail for v in out)
+
+
+def test_user_structure_flags_unmapped_section():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background"), Section(block_id="s2", title="invented")])
+    p = {"user_structure": ["Background"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("declares no maps_to" in v.detail for v in out)
+
+
+def test_user_structure_flags_duplicate_claim():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Background"), _sec_mapped("s2", "Background")])
+    p = {"user_structure": ["Background"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("claimed by 2 sections" in v.detail for v in out)
+
+
+def test_user_structure_flags_foreign_maps_to():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Nowhere")])
+    p = {"user_structure": ["Background"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("not an entry of the user structure" in v.detail for v in out)
+
+
+def test_user_structure_flags_reordering():
+    d = DocumentIR(sections=[_sec_mapped("s1", "Tradeoffs"), _sec_mapped("s2", "Background")])
+    p = {"user_structure": ["Background", "Tradeoffs"]}
+    out = structure_coverage.user_structure_respected(ctx(d, parameters=p))
+    assert any("does not follow the user structure" in v.detail for v in out)

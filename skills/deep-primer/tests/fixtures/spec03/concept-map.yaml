@@ -1,0 +1,92 @@
+# Concept-map for spec-03-observability-tracing. Three concepts, each realized in >=3 modes so
+# R-MV-01 passes. Salience is what R-ARCH-06 expects depth to follow: context propagation is the
+# load-bearing concept and carries a subsection; attribute cardinality is a mention-plus-aid.
+#
+# Every home_anchor resolves to a technique the reader ALREADY owns from backend services or
+# relational databases — a transaction id, a slow-query log, an index's distinct-value count —
+# never to the tracing concept restated (R-XREF-04).
+#
+# source_ids/claim_ids point into the REAL ledger produced by the 2026-08-20 campaign; the block
+# structure (concept_id, canonical_term, aliases, home_anchor, fidelity_boundary, salience,
+# representation_modes) is unchanged from the structural fixture this replaced.
+#
+# tail-based-sampling used to be marked `contested`. It is now `settled`: the campaign read 30
+# sources and found no contradiction about what a tail sampler does. The genuine engineering
+# tradeoff — fidelity against collector memory — is carried by the Toulmin qualifier and rebuttal
+# in [toulmin-sampling], which is where a tradeoff belongs; `contested` is for a disagreement in
+# the literature, and inventing one would make this fixture lie about the sources.
+concepts:
+  - concept_id: context-propagation
+    canonical_term: "context propagation"
+    aliases: ["trace context"]
+    home_anchor: "the transaction id threaded through one unit of work"
+    fidelity_boundary: "breaks where the id must cross a process boundary it does not control, which a database transaction never has to do"
+    epistemic_status: settled
+    salience: 0.95
+    representation_modes:
+      - {mode: mental_model, block_ref: card-propagation}
+      - {mode: tradeoff, block_ref: matrix-propagation}
+      - {mode: architecture, block_ref: fig-propagation}
+      - {mode: failure, block_ref: body-prop-queue}
+    source_ids:
+      - 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+      - a04e4429e1c16d429c3b26135ddd11a7341deef5
+      - bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+      - 28ed2da2964b6fd6fb05e25509355db789fd1efd
+      - c33bab732ffdab0be4a4d077705eae94c77ddbb0
+    claim_ids:
+      - C-877e19dc-2
+      - C-877e19dc-7
+      - C-a04e4429-5
+      - C-a04e4429-15
+      - C-bd3da1a2-6
+      - C-28ed2da2-3
+      - C-28ed2da2-6
+      - C-c33bab73-8
+  - concept_id: tail-based-sampling
+    canonical_term: "tail-based sampling"
+    aliases: ["tail sampling"]
+    home_anchor: "the slow-query log that records a statement only past a duration threshold"
+    fidelity_boundary: "breaks because the threshold is evaluated over many processes at once, so the deciding component must hold state it did not produce"
+    epistemic_status: settled
+    salience: 0.7
+    representation_modes:
+      - {mode: mental_model, block_ref: card-sampling}
+      - {mode: tradeoff, block_ref: toulmin-sampling}
+      - {mode: failure, block_ref: failures-sampling}
+    source_ids:
+      - 80b1f67ba2163d7cd2706a03842898479a051b64
+      - a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+    claim_ids:
+      - C-80b1f67b-3
+      - C-80b1f67b-4
+      - C-80b1f67b-6
+      - C-80b1f67b-7
+      - C-a9fc4c7a-2
+      - C-a9fc4c7a-4
+      - C-a9fc4c7a-5
+  - concept_id: attribute-cardinality
+    canonical_term: "attribute cardinality"
+    aliases: ["label cardinality"]
+    home_anchor: "the distinct-value count you weigh before indexing a column"
+    fidelity_boundary: "breaks because a span's key set is open — one request can mint a key the schema never declared"
+    epistemic_status: settled
+    salience: 0.45
+    representation_modes:
+      - {mode: mental_model, block_ref: card-cardinality}
+      - {mode: tradeoff, block_ref: aid-cardinality}
+      - {mode: cost, block_ref: fig-cardinality}
+    source_ids:
+      - 841df5cd70826525d0f64183d6cd107385236948
+      - 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+      - 36976b07dc28e845134e228893af52e30717adfe
+      - ed606ca486ad9f76419e5ed22310a231c4ac01bf
+    claim_ids:
+      - C-841df5cd-1
+      - C-6c8aa937-3
+      - C-36976b07-2
+      - C-36976b07-8
+      - C-36976b07-9
+      - C-36976b07-10
+      - C-ed606ca4-2
+      - C-ed606ca4-7

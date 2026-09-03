@@ -1,0 +1,365 @@
+[
+  {
+    "id": "A-A4-s1",
+    "url": "https://arxiv.org/abs/2005.11401",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Seminal RAG paper introducing parametric-nonparametric hybrid architecture (Lewis et al., 2020)",
+    "fetched_title": "[2005.11401] Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s2",
+    "url": "https://arxiv.org/pdf/2002.08909",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "REALM: joint pre-training retriever + LM, foundational architecture for RAG (Guu et al., 2020)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s3",
+    "url": "https://arxiv.org/abs/2004.04906",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "DPR: dense passage retrieval dual-encoder framework establishing dense retrieval paradigm (Karpukhin et al., 2020)",
+    "fetched_title": "[2004.04906] Dense Passage Retrieval for Open-Domain Question Answering",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s4",
+    "url": "https://arxiv.org/abs/2007.01282",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Fusion-in-Decoder: efficient multi-passage fusion for seq2seq generation (Izacard & Grave, 2020)",
+    "fetched_title": "[2007.01282] Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s5",
+    "url": "https://arxiv.org/pdf/2504.14891",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Comprehensive April 2025 survey on RAG evaluation in era of LLMs; authoritative state-of-art overview",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s6",
+    "url": "https://arxiv.org/abs/2405.07437",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "May 2024 survey on RAG evaluation covering metrics, benchmarks, methodologies across domains",
+    "fetched_title": "[2405.07437] Evaluation of Retrieval-Augmented Generation: A Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s7",
+    "url": "https://arxiv.org/abs/2407.11005",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "RAGBench: formalizes TRACe explainable evaluation metrics (Relevance, Utilization, Completeness, Adherence)",
+    "fetched_title": "[2407.11005] RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s8",
+    "url": "https://arxiv.org/abs/2409.03759",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "VERA: validation framework with cross-encoder ranking and bootstrap confidence bounds (Sept 2024)",
+    "fetched_title": "[2409.03759] VERA: Validation and Evaluation of Retrieval-Augmented Systems",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s9",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/27245589131d17368cccdfa990cbf16e-Paper-Datasets_and_Benchmarks_Track.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "RAGCHECKER: fine-grained diagnostic RAG evaluation framework (NeurIPS 2024)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s10",
+    "url": "https://arxiv.org/abs/2401.17043",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "CRUD-RAG: comprehensive Chinese benchmark covering Create/Read/Update/Delete operations (v3 July 2024)",
+    "fetched_title": "[2401.17043] CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s11",
+    "url": "https://arxiv.org/abs/2504.15205",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "TREC 2024 RAG Track: large-scale comparison of LLM vs human judges for support assessment",
+    "fetched_title": "[2504.15205] Support Evaluation for the TREC 2024 RAG Track: Comparing Human versus LLM Judges",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s12",
+    "url": "https://arxiv.org/pdf/2505.22430",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "RAG-Zeval: rule-guided reasoning for robust interpretable end-to-end RAG evaluation (May 2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s13",
+    "url": "https://arxiv.org/abs/2410.13716",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "MIRAGE-Bench: automatic multilingual benchmark arena for RAG systems",
+    "fetched_title": "[2410.13716] MIRAGE-Bench: Automatic Multilingual Benchmark Arena for Retrieval-Augmented Generation Systems",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s14",
+    "url": "https://arxiv.org/pdf/2407.13193",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Retrieval-Augmented Generation for NLP: comprehensive survey covering architectures and methods",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s15",
+    "url": "https://arxiv.org/abs/2506.00054",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "2025 comprehensive RAG survey: architectures, enhancements, robustness frontiers, evaluation frameworks",
+    "fetched_title": "[2506.00054] Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s16",
+    "url": "https://github.com/vibrantlabsai/ragas",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "RAGAS framework: reference-free evaluation metrics, LLM-based faithfulness/relevance assessment",
+    "fetched_title": "GitHub - vibrantlabsai/ragas: Supercharge Your LLM Application Evaluations \ud83d\ude80 \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s17",
+    "url": "https://github.com/llm-as-a-judge/Awesome-LLM-as-a-judge",
+    "type": "reference",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Curated 50+ papers on LLM-as-judge paradigm, bias mitigation, validator approaches for RAG",
+    "fetched_title": "GitHub - llm-as-a-judge/Awesome-LLM-as-a-judge \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s18",
+    "url": "https://www.meilisearch.com/blog/rag-evaluation",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Practitioner guide: RAG evaluation metrics, methodologies, best practices for production systems",
+    "fetched_title": "RAG evaluation: Metrics, methodologies, best practices & more | Meilisearch",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s19",
+    "url": "https://aws.amazon.com/blogs/machine-learning/evaluate-rag-responses-with-amazon-bedrock-llamaindex-and-ragas/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Production integration: evaluating RAG with LlamaIndex and RAGAS via Amazon Bedrock",
+    "fetched_title": "Evaluate RAG responses with Amazon Bedrock, LlamaIndex and RAGAS | Artificial Intelligence",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s20",
+    "url": "https://arxiv.org/abs/2511.06738",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Medical RAG systematic evaluation: large-scale expert assessment, production insights, domain gaps",
+    "fetched_title": "[2511.06738] Rethinking Retrieval-Augmented Generation for Medicine: A Large-Scale, Systematic Expert Evaluation and Practical Insights",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s21",
+    "url": "https://arxiv.org/abs/2504.01840",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "LRAGE: Legal RAG Evaluation Tool, domain-specific framework for legal document QA",
+    "fetched_title": "[2504.01840] LRAGE: Legal Retrieval Augmented Generation Evaluation Tool",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s22",
+    "url": "https://arxiv.org/abs/2510.17853",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "CiteGuard: citation attribution validation for RAG, addresses hallucination via retrieval grounding",
+    "fetched_title": "[2510.17853] CiteGuard: Faithful Citation Attribution for LLMs via Retrieval-Augmented Validation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s23",
+    "url": "https://arxiv.org/abs/2511.14531",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "LiveRAG: diverse QA dataset with varying difficulty for dynamic RAG evaluation (2025)",
+    "fetched_title": "[2511.14531] LiveRAG: A diverse Q&A dataset with varying difficulty level for RAG evaluation",
+    "retrieved_at": "2026-08-21"
+  }
+]

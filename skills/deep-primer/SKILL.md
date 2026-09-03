@@ -19,7 +19,7 @@ Generate a research-grade primer for a senior practitioner moving into an adjace
 working map you'd build after reading a dozen papers, watching conference talks, and talking to
 practitioners — delivered as one self-contained, depth-dialed HTML artifact.
 
-This skill is governed by a **rule registry** (`references/rule-registry.yaml`, 61 rules). The
+This skill is governed by a **rule registry** (`references/rule-registry.yaml`, 79 rules). The
 18 highest-leverage generation-time rules are inlined below as the **CORE**; hold them throughout.
 The rest are enforced *after* generation by deterministic lints (`scripts/`), a model-verified
 citation check (Phase 6), and scoped binary critics (`references/critic-prompts/`) — you needn't
@@ -37,11 +37,13 @@ Set four parameters before anything else (`R-PARAM-01`). If the request is bare,
 and past chats (`conversation_search`, `recent_chats`); if still unknown, ask **one** compact
 question. Write `parameters.yaml`.
 
-- **home_domain** (list) — the reader's existing expertise; fills the card's anchor row, calibrates analogies and assumed vocabulary.
+- **home_domain** (list) — the reader's existing expertise; fills the card's anchor row, calibrates analogies and assumed vocabulary. When it overlaps `target_domain`, resolve each anchor to the nearest *adjacent* technique or sub-field instead — the bridge becomes prior-art transfer (`R-XREF-04`); an anchor that restates its own concept fires no advance organizer.
 - **target_domain** — the primer's subject (the domain being bridged into).
 - **seniority_band** — `early_career | mid_senior | staff_plus`; scales scaffolding suppression (`R-PARAM-02`, `R-EXPERT-01`). Default `mid_senior` if unknown.
 - **length_budget** — drives depth allocation via the ledger-salience proxy (claim frequency / centrality), since V1 has no concept graph. Total length tracks the budget; allocate by salience rather than padding uniformly (`R-ARCH-06`), and scale the apparatus to each section's substance (`R-DEPTH-03`).
 - **outputs** — which projections to render from the IR: `html` (human) and/or `llm_md` (operationally-distilled, block-id-aligned, provenance-tagged). Default `[html]`; add `llm_md` when the primer will also ground an LLM (`R-PROJ-01..06`).
+- **user_structure** — optional. An explicit section structure from the user. It governs the top-level outline (`R-ARCH-07`): every entry is realized by exactly one section, in order, each declaring its entry via `maps_to` — so headings stay predictive claims rather than copied labels. The concept-map still drives depth within sections.
+- **reference_case** — optional. One concrete artifact every claim is grounded against (`R-EXPERT-03`). A contrastive anchor, *not* a worked example: `R-EXPERT-01` suppresses procedural walkthroughs, never the reference case.
 - **seed_sources** — optional user-provided sources to consult ("check the work of John Doe and <URL>"): `url` / `file` / `project_ref` (direct — fetched, grounded, never dropped) and `author`/entity directives (seed a targeted brief). Treated as leads worth looking at, not gospel — still corroboration-graded and surfaced as contested where the consensus disagrees (`R-DISC-06`). `project_ref` resolves only in claude.ai.
 
 ## CORE — hold these throughout (the resident `must_core`)
@@ -55,7 +57,7 @@ question. Write `parameters.yaml`.
 8. **R-MV-01** Each core concept appears in ≥3 distinct representation modes across the document (architecture / tradeoff-table / failure-taxonomy / benchmark / cost-model / code / mental-model / historical).
 9. **R-PROSE-01** Given→new flow: sentences open with given/linking material and end with the new; chain subject entities across sentences; each section opening restates the prior section's terminal entity.  *(why: given→new is how prose coheres, not a style preference)*
 10. **R-PROSE-02** Trade-offs as word-choice: never "X is good" — always "X buys A at the cost of B".
-11. **R-EXPERT-01** No step-by-step worked examples in the primary layer above `early_career`; teach by contrastive comparison; worked examples only behind opt-in deeper layers.  *(why: expertise reversal — scaffolding that helps novices hurts experts)*
+11. **R-EXPERT-01** No step-by-step *procedural* walkthroughs in the primary layer above `early_career`; teach by contrastive comparison; walkthroughs only behind opt-in deeper layers. A running **reference case** (`R-EXPERT-03`) is a contrastive anchor, not scaffolding — never suppress it.  *(why: expertise reversal — scaffolding that helps novices hurts experts)*
 12. **R-VOCAB-01** One canonical term per concept; define only topic-specific terms-of-art; assume in-domain vocabulary per home_domain.
 13. **R-RECALL-02** 3 generation (not recognition) questions per section, ≥1 forcing a cross-domain mapping, answerable from an attentive L1 read.  *(why: testing effect — generation beats recognition)*
 14. **R-ART-03** Every recommendation/trade-off/superiority claim is a Toulmin block — Claim / Data / Warrant / Backing / Qualifier / Rebuttal — with the **Qualifier** (conditions/strength) and **Rebuttal** (when it fails) always present.
@@ -134,7 +136,7 @@ arc, not one batch of searches. Perspective question-templates live in
 
 ## Phase 7 in detail — critique, bounded loop, block-scoped revision
 - **Hard lints first** (deterministic, free of context): run `scripts/lint.py`, which loads the registry and dispatches every `hard_lint` check; plus the Phase 6 verification report.
-- **Then scoped binary critics** — the **six** prompts in `references/critic-prompts/` (architecture, field-guide, coherence, expertise-calibration, evidence-grounding, figures), each reading only its slice of the registry and answering binary rubric questions against the parsed block list. Never ask a critic for holistic quality (`R-REJECT-05`). Run gating judgments ≥2× (test-retest) and flag unstable verdicts for human review; swap-and-average applies only when comparing two candidate revisions, not to pointwise verdicts.
+- **Then scoped binary critics** — the **six** prompts in `references/critic-prompts/` (architecture, field-guide, coherence, expertise-calibration, evidence-grounding, figures), each reading only its slice of the registry and answering binary rubric questions against the parsed block list. Never ask a critic for holistic quality (`R-REJECT-05`). Judge each gating item twice: the **first verdict gates** and the second is recorded as a flip or not, so the run reports a `flake_rate` instead of a third outcome that neither blocks nor clears. Swap-and-average applies only when comparing two candidate revisions, not to pointwise verdicts.
 - **Revise block-scoped.** Each violation points at a `data-block-id`; revise that block and its immediate neighbors only — never regenerate the whole document. Track which violations were fixed, which persisted, which appeared new, in `revision-log.md`.
 - **Bounded.** Stop at zero MUST violations or `max_revise_iterations`; surface any persistent violations in the quality card rather than papering over them.
 - **Calibration (maintenance, not per-run):** spot-check critic verdicts against the human-labeled eval set; divergence above `critic_human_divergence_recalibrate_threshold` means the rubric needs recalibration.
@@ -156,12 +158,12 @@ strokes that vanish in dark mode); numbered footnotes linking to a references se
 - `references/exemplars.md` — contrast pairs keyed by rule_id. Load during **Phase 3** drafting. **[built]**
 - `references/critic-prompts/{structure-architecture,structure-fieldguide,coherence,expertise-calibration,evidence-grounding,figures}.md` — scoped binary critic prompts. Load the matching one **during its Phase-7 pass**. **[built]**
 - `tools/{gen_registry_md,gen_critic_prompts}.py` + `build.sh` — regenerate the lockstep-derived files after editing the registry. **[built]**
-- `scripts/lint.py` + `scripts/checks/*` — `hard_lint` implementations. **[Claude Code phase]**
+- `scripts/lint.py` + `scripts/checks/*` — `hard_lint` implementations; `--strict` fails on an unenforced MUST. **[built]**
 - `scripts/research/*` — planner, retrieval loop, claim extractor, recency, coverage, KB (files + Mixedbread). **[Claude Code phase]**
-- `scripts/verify/citation_quality.py` — `model_verified` recall/precision + ledger resolution. **[Claude Code phase]**
-- `scripts/utils/parse_primer.py` — HTML → typed AST + block list (id/type/concept/mode); figure a11y; meta. **[Claude Code phase]**
+- `scripts/verify/citation_quality.py` — `model_verified` recall/precision + ledger resolution. **[built]**
+- `scripts/utils/parse_primer.py` — HTML → typed AST + block list (id/type/concept/mode); figure a11y; meta. **[built]**
 - `scripts/eval.py` + `references/eval/` — held-out test specs + rubric. **[Claude Code phase]**
-- `assets/primer-template.html`, `assets/card-template.html` — the rendering shells. **[Claude Code phase]**
+- `assets/primer-template.html`, `assets/card-template.html` — the rendering shells. **[built]**
 
 ## Surfaces (V1)
 Single-agent throughout. The research phase is *structured* into questions × perspectives and the

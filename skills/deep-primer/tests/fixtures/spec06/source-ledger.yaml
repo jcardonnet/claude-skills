@@ -1,0 +1,572 @@
+# Source-ledger for spec-06-user-structured-eval.
+#
+# THESE SOURCES ARE REAL. Every source_id, url, title, content_hash, claim_id, claim text, quote
+# and location below was produced by an actual Phase 1/1a campaign (2026-08-21, 76 min, $5.05) and
+# is copied VERBATIM from tests/fixtures/spec06-grounded/source-ledger.yaml, which holds the full
+# run: 116 documents fetched, 108 resolved, 30 extracted, 343 claims kept and 62 rejected, 87
+# concepts grouped. The 12 sources and 53 claims here are the claims the primer cites plus the ones
+# that supply their corroboration — `corroborated_by` holds source_ids, so each corroborating claim
+# is carried too, or the count would be an assertion rather than something a reader can check. The
+# full-hex source_ids are kept precisely so any claim can be grepped back to the campaign output.
+#
+# FOUR FIELDS ARE NOT FROM THE RUN, and they are called out here rather than blended in. The
+# campaign extracted no `authors`, `venue`, `date` or `credibility` for any source — all four came
+# back null across all 30. They are hand-filled at curation time under one rule: only from what the
+# identifier or the title already encodes, never from recall.
+#   - `authors` carries the PUBLISHING ORGANISATION, not individual bylines. The run captured no
+#     bylines, and reconstructing "who wrote the Openlayer post" from memory would be invention.
+#     The four arXiv/ACL papers therefore carry an empty author list rather than a guessed one.
+#   - `venue` is read off the URL or title (arXiv id, ACL Anthology, NIST TREC, the vendor site).
+#   - `date` only where the identifier or title states it: 4833d8ca from its URL path (2026-02-23),
+#     a29027ab from "(July 2026)" in its title, 22c548bc and 4044d111 from "2026" in theirs, and the
+#     four papers from their arXiv/venue ids (2309.15217 -> 2023-09, 2504.15205 -> 2025-04,
+#     2510.13975 -> 2025-10, NAACL 2024 -> 2024-06). The remaining three stay null. `date` is
+#     `str | None` in the schema, so a partial YYYY-MM is legal and is preferable to a fabricated day.
+#   - `credibility` is an editorial tier: peer-reviewed/standards bodies high, first-party product
+#     docs and named engineering blogs medium, undated marketing-adjacent explainers low.
+#
+# THE TWO CONTESTED PAIRS ARE ALSO EDITORIAL. The campaign found ZERO contested claims in 343 — it
+# does not currently look for disagreement, which is a real gap in Phase 1a and not a property of
+# this topic, because the corpus plainly disagrees with itself. Both pairs below are conflicts that
+# are visible in the retrieved text; the annotation asserting they conflict is curation-time work:
+#   - C-a29027ab-12 vs C-8ee2ad4d-4 — whether faithfulness and groundedness are one property.
+#     Openlayer defines them as separate failure surfaces; RAGAS defines faithfulness AS
+#     groundedness. This one is load-bearing: it is why the concept map no longer carries
+#     "groundedness" as a bare alias of faithfulness.
+#   - C-22c548bc-20 vs C-4833d8ca-6 — whether the right eval ground truth is institutionally
+#     validated business answers or QA triplets generated from the knowledge base.
+# They are symmetric in both directions so the conflict is visible from either source (R-GROUND-05).
+#
+# CORROBORATION IS RECOMPUTED, NOT COPIED. `corroborated_by` is filtered to the 12 sources kept
+# here and `corroboration_count` recomputed from the filtered list, so no entry points at a source
+# that is not in this file. Exactly one claim lost its only corroborator that way and is now
+# uncorroborated; it is not marked as if it were still cross-checked.
+#
+# WHAT WAS DROPPED, AND WHY IT MATTERS. 18 of the run's 30 sources are not here. Most are ordinary
+# topic drift, but one class is worth recording as a NEW instance of GAPS.md G17, and a subtler one
+# than spec-05's Cloudflare interstitials. Source 8ee2ad4d IS the RAGAS paper — genuine, on-topic,
+# peer-reviewed, correctly typed — and 8 of its 24 extracted claims are facts about the 2023 film
+# Oppenheimer and about the Chimnabai Clock Tower in Vadodara. Those are the Wikipedia passages the
+# paper uses as WORKED EXAMPLES of its metrics, and the extractor read the paper's illustrative
+# material as the paper's findings. No length gate, no fingerprint gate and no relevance gate on the
+# DOCUMENT can catch this, because the document is exactly what it should be; the confusion is
+# inside it. The same shape put a SQuAD leaderboard page (e51fd256, 20 claims of model names and F1
+# scores) and an order-invariance paper (f79418b2, off-topic entirely) into the ledger, and made
+# "SQuAD" the grouper's 4th-largest concept at 18 claims. Six of this file's claims come from
+# 8ee2ad4d; each was opened against the retrieved text before it was kept.
+#
+sources:
+- source_id: a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  url: https://www.openlayer.com/blog/rag-pipeline-evaluation-groundedness-faithfulness
+  title: 'RAG Evaluation in Production: Groundedness, Faithfulness, and Retrieval Quality (July 2026) | Openlayer'
+  authors:
+  - Openlayer
+  venue: Openlayer engineering blog
+  date: 2026-07
+  type: docs
+  credibility: medium
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 75e0becc95882c67cc0c8f57406d5c7703ebfa20
+  claims:
+  - claim_id: C-a29027ab-3
+    text: 'RAG pipelines have three distinct failure modes: retrieval quality, faithfulness, and groundedness.'
+    quote: 'RAG has three distinct failure surfaces: retrieval quality, faithfulness, and groundedness.'
+    location: char 1105 of 27062 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-10
+    text: Component-level metrics can appear healthy while end-to-end RAG pipeline quality simultaneously collapses.
+    quote: Component metrics can look healthy while end-to-end quality collapses.
+    location: char 13496 of 27062 (normalized)
+    confidence: high
+    corroboration_count: 2
+    corroborated_by:
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-11
+    text: Groundedness measures whether a generated response stays within the boundaries of what its retrieved context supports.
+    quote: Groundedness measures whether a response stays within what the retrieved context supports
+    location: char 22850 of 27062 (normalized)
+    confidence: high
+    corroboration_count: 2
+    corroborated_by:
+    - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-12
+    text: Faithfulness measures whether a response accurately represents what the retrieved documents actually say.
+    quote: Faithfulness measures whether the response accurately represents what those documents actually say
+    location: char 22983 of 27062 (normalized)
+    confidence: high
+    contested: true
+    contradicts:
+    - C-8ee2ad4d-4
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-18
+    text: RAG pipelines should flag responses when groundedness scores below 0.80 and block responses when faithfulness drops
+      below 0.70.
+    quote: Flag responses when groundedness falls below 0.80 and block responses when faithfulness drops below 0.70
+    location: char 24865 of 27062 (normalized)
+    confidence: high
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-21
+    text: RAG exposes retriever and generator as two distinct, independently inspectable failure surfaces.
+    quote: RAG exposes two distinct failure surfaces, the retriever and the generator
+    location: char 25183 of 27062 (normalized)
+    confidence: high
+    corroboration_count: 2
+    corroborated_by:
+    - 964231ec57389834e9f89b5a447be2e968a39342
+    provenance_origin: discovered
+  - claim_id: C-a29027ab-22
+    text: Fine-tuning collapses retriever and generator failures into model weights, eliminating retrievable error sources
+      in production failures.
+    quote: Fine-tuning collapses both into the model weights, so when output quality degrades in production
+    location: char 25308 of 27062 (normalized)
+    confidence: high
+    provenance_origin: discovered
+- source_id: 964231ec57389834e9f89b5a447be2e968a39342
+  url: https://toloka.ai/blog/rag-evaluation-a-technical-guide-to-measuring-retrieval-augmented-generation/
+  title: 'RAG evaluation: a technical guide to measuring retrieval-augmented generation'
+  authors:
+  - Toloka
+  venue: Toloka blog
+  date: null
+  type: blog
+  credibility: medium
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 25a497e67cf2e6f19f22675091b82c1a43d31dd1
+  claims:
+  - claim_id: C-964231ec-15
+    text: Treating RAG systems as black boxes obscures where retrieval and generation errors originate, resulting in misleading
+      metrics.
+    quote: Treating RAG as a black box obscures these distinctions, resulting in misleading metrics
+    location: char 16423 of 33407 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-964231ec-23
+    text: Many existing RAG benchmarks were designed for retrieval or generation evaluation in isolation, not the combined
+      pipeline.
+    quote: Many existing RAG benchmarks were designed for either retrieval or generation tasks in isolation
+    location: char 27221 of 33407 (normalized)
+    confidence: high
+    corroboration_count: 2
+    corroborated_by:
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    provenance_origin: discovered
+  - claim_id: C-964231ec-24
+    text: Well-calibrated custom metrics help isolate retrieval errors from generation errors in RAG systems.
+    quote: Well-calibrated, custom metrics help isolate retrieval errors from generation errors
+    location: char 24556 of 33407 (normalized)
+    confidence: medium
+    provenance_origin: discovered
+- source_id: 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  url: https://arxiv.org/html/2510.13975v1
+  title: Classifying and Addressing the Diversity of Errors inRetrieval-Augmented Generation Systems
+  authors: []
+  venue: arXiv:2510.13975
+  date: 2025-10
+  type: primary_paper
+  credibility: high
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: abb42868cd685cf27442184a1a35f272e6f81edb
+  claims:
+  - claim_id: C-56cc8dbe-1
+    text: RAG systems use complex multi-step pipelines that incorporate additional components beyond retriever-generator pairs.
+    quote: real RAG systems use complex multi-step pipelines that go beyond a retriever-generator pair
+    location: char 3183 of 85368 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-4
+    text: 'A RAG pipeline consists of four distinct stages: chunking, retrieval, reranking, and generation.'
+    quote: 'Errors are grouped by the pipeline stage that caused them: chunking, retrieval, reranking, or generation'
+    location: char 8475 of 85368 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-17
+    text: 'RAGEC consists of three sequential steps: answer evaluation, stage classification, and error type classification.'
+    quote: 'RAGEC consists of 3 steps: answer evaluation, stage classification, and error type classification.'
+    location: char 24662 of 85368 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-18
+    text: RAGEC achieves 57.8% agreement with human annotations on stage classification of errors.
+    quote: RAGEC achieves a 57.8% agreement rate with human annotations.
+    location: char 28477 of 85368 (normalized)
+    confidence: high
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-56cc8dbe-19
+    text: RAGEC achieves 40.3% accuracy on error type classification compared to human annotations.
+    quote: Compared to human-annotated error types, RAGEC achieves an accuracy of 40.3%.
+    location: char 29338 of 85368 (normalized)
+    confidence: high
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+- source_id: d82e8275aa9034f305abcdf1d441e96e56b022db
+  url: https://atlan.com/know/rag-accuracy-problems/
+  title: 'RAG Accuracy Problems: Why They Happen and How to Fix Them'
+  authors:
+  - Atlan
+  venue: Atlan knowledge base
+  date: null
+  type: blog
+  credibility: low
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: c7cad0c8515f9f2a886a07b82d01f5ef2dd93f7f
+  claims:
+  - claim_id: C-d82e8275-2
+    text: 73% of RAG failures originate at the retrieval stage rather than the language model generation step
+    quote: 73% of failures originate in retrieval, not the LLM generation step
+    location: char 2012 of 34213 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-d82e8275-13
+    text: Vector search retrievers cannot detect or account for document staleness.
+    quote: The retriever is structurally blind to staleness
+    location: char 14883 of 34213 (normalized)
+    confidence: high
+    provenance_origin: discovered
+- source_id: 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+  url: https://developers.redhat.com/articles/2026/02/23/synthetic-data-rag-evaluation-why-your-rag-system-needs-better-testing
+  title: 'Synthetic data for RAG evaluation: Why your RAG system needs better testing | Red Hat Developer'
+  authors:
+  - Red Hat Developer
+  venue: Red Hat Developer
+  date: '2026-02-23'
+  type: blog
+  credibility: medium
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 89be85465be66f74e7eb7ccc580ee88eb347ab15
+  claims:
+  - claim_id: C-4833d8ca-4
+    text: When a RAG system fails, it is often unclear whether the retriever or LLM is responsible.
+    quote: it's often unclear whether the retriever surfaced the wrong documents or the LLM hallucinated
+    location: char 1340 of 10081 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-5
+    text: Enterprise documents evolve continuously, causing static test sets to become outdated quickly.
+    quote: Static test sets become outdated almost immediately, resulting in misleading evaluations
+    location: char 1893 of 10081 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-6
+    text: Synthetic data generation enables creation of question-answer-context triplets directly from knowledge bases.
+    quote: Generate evaluation datasets directly from your knowledge base with realistic questions, grounded answers
+    location: char 2904 of 10081 (normalized)
+    confidence: high
+    contested: true
+    contradicts:
+    - C-22c548bc-20
+    provenance_origin: discovered
+  - claim_id: C-4833d8ca-8
+    text: A single retrieval error in agentic RAG systems can cascade across tool calls and downstream decisions.
+    quote: A single retrieval error can cascade across tool calls, memory updates, or downstream decisions.
+    location: char 2405 of 10081 (normalized)
+    confidence: high
+    provenance_origin: discovered
+- source_id: 8ee2ad4d316a9893170f5726fd67893be4787918
+  url: https://arxiv.org/html/2309.15217v1
+  title: 'RAGAS: Automated Evaluation of Retrieval Augmented Generation'
+  authors: []
+  venue: arXiv:2309.15217v1
+  date: 2023-09
+  type: primary_paper
+  credibility: high
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 6111dbda39e8536866b4b7ade0977e1ab294344f
+  claims:
+  - claim_id: C-8ee2ad4d-3
+    text: RAGAs framework enables evaluation of RAG systems without requiring human-annotated ground truth answers.
+    quote: without having to rely on ground truth human annotations
+    location: char 1266 of 32855 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-4
+    text: Faithfulness in RAGAs is defined as answers being grounded in and inferable from retrieved context.
+    quote: answer should be grounded in the given context
+    location: char 9285 of 32855 (normalized)
+    confidence: high
+    contested: true
+    contradicts:
+    - C-a29027ab-12
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-5
+    text: Answer Relevance in RAGAs measures whether generated answers address the actual user question.
+    quote: generated answer should address the actual question
+    location: char 9746 of 32855 (normalized)
+    confidence: high
+    corroboration_count: 2
+    corroborated_by:
+    - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-12
+    text: WikiEval dataset consists of 50 Wikipedia pages covering events that occurred since the beginning of 2022.
+    quote: selected 50 Wikipedia pages covering events that have happened since the start of 2022
+    location: char 14980 of 32855 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-13
+    text: Human annotators agreed approximately 95% of the time on faithfulness and context relevance judgments, and 90% on
+      answer relevance.
+    quote: For faithfulness and context relevance, the two annotators agreed in around 95% of cases.
+    location: char 16368 of 32855 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-8ee2ad4d-14
+    text: RAGAS metrics achieved significantly higher agreement with human judgments than ChatGPT-based scoring or ranking
+      baselines.
+    quote: are much closer aligned with the human judgements than the predictions from the two baselines
+    location: char 20020 of 32855 (normalized)
+    confidence: high
+    provenance_origin: discovered
+- source_id: 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  url: https://atlan.com/know/how-to-evaluate-rag-systems-explained/
+  title: 'RAG Evaluation: Metrics, Tools, and the Context Gap (2026)'
+  authors:
+  - Atlan
+  venue: Atlan knowledge base
+  date: '2026'
+  type: blog
+  credibility: low
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: a87405c17458d6dd7aea10dc7b8c5016c6e8632d
+  claims:
+  - claim_id: C-22c548bc-1
+    text: 'RAG evaluation uses four core metrics: faithfulness, answer relevance, context precision, and context recall.'
+    quote: The four core metrics — faithfulness, answer relevance, context precision, and context recall
+    location: char 2738 of 27273 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-2
+    text: Standard RAG evaluation metrics assume the retrieval index is trustworthy.
+    quote: Standard eval metrics (faithfulness, relevance, precision, recall) assume a trustworthy index
+    location: char 1162 of 27273 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-5
+    text: Answer relevance measures whether a response addresses the question asked.
+    quote: Answer relevance measures whether the response is on-topic and useful
+    location: char 5560 of 27273 (normalized)
+    confidence: high
+    corroboration_count: 2
+    corroborated_by:
+    - 8ee2ad4d316a9893170f5726fd67893be4787918
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-6
+    text: More powerful language models produce more convincing hallucinations.
+    quote: better models hallucinate more convincingly
+    location: char 4197 of 27273 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-14
+    text: Enterprise RAG systems require a fifth evaluation dimension measuring index reliability.
+    quote: Enterprise RAG evaluation needs a fifth dimension that measures the reliability of the index itself.
+    location: char 14798 of 27273 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-15
+    text: Standard RAG metrics measure pipeline performance, not whether the source content is trustworthy.
+    quote: Standard metrics measure pipeline performance, not context trustworthiness.
+    location: char 22615 of 27273 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-17
+    text: Judge models in RAG evaluation score responses using specific criteria such as faithfulness and relevance.
+    quote: scores the response against criteria like faithfulness or relevance
+    location: char 24157 of 27273 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-19
+    text: Periodic human spot checks are recommended to verify that automated evaluation scores align with actual output quality.
+    quote: periodic human spot checks are recommended to verify that automated scores align
+    location: char 24304 of 27273 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-22c548bc-20
+    text: The optimal ground truth for enterprise RAG evaluation is not synthetic datasets but institutionally validated business
+      answers.
+    quote: The best ground truth for enterprise RAG evaluation is not a synthetic dataset
+    location: char 24536 of 27273 (normalized)
+    confidence: high
+    contested: true
+    contradicts:
+    - C-4833d8ca-6
+    provenance_origin: discovered
+- source_id: 96072ac0a9442594589eacb8b5f43e8fad807de1
+  url: https://aclanthology.org/2024.naacl-long.20/
+  title: 'ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems - ACL Anthology'
+  authors: []
+  venue: NAACL-HLT 2024 (ACL Anthology)
+  date: 2024-06
+  type: primary_paper
+  credibility: high
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 46df2e38e8406828cbc7250c07a96d58264468ab
+  claims:
+  - claim_id: C-96072ac0-1
+    text: 'ARES evaluates RAG systems along three dimensions: context relevance, answer faithfulness, and answer relevance.'
+    quote: evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance
+    location: char 633 of 10634 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-2
+    text: ARES creates synthetic training data to finetune lightweight language model judges.
+    quote: By creating its own synthetic training data, ARES finetunes lightweight LM judges
+    location: char 742 of 10634 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-3
+    text: ARES uses prediction-powered inference (PPI) with human-annotated datapoints to mitigate prediction errors.
+    quote: ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)
+    location: char 917 of 10634 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-5
+    text: ARES requires only a few hundred human annotations during evaluation.
+    quote: using only a few hundred human annotations during evaluation
+    location: char 1135 of 10634 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-96072ac0-6
+    text: ARES judges remain effective when domain shifts occur, including changes to queries and documents.
+    quote: ARES judges remain effective across domain shifts, proving accurate even after changing
+    location: char 1210 of 10634 (normalized)
+    confidence: high
+    provenance_origin: discovered
+- source_id: 4122c4ed8a779f447f9bc1371ff7954477d8beee
+  url: https://arxiv.org/abs/2504.15205
+  title: '[2504.15205] Support Evaluation for the TREC 2024 RAG Track: Comparing Human versus LLM Judges'
+  authors: []
+  venue: arXiv:2504.15205 (SIGIR 2025 short)
+  date: 2025-04
+  type: primary_paper
+  credibility: high
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 697fbdde1d3b76cc1f047627b93a1e693207340e
+  claims:
+  - claim_id: C-4122c4ed-3
+    text: In manual from-scratch assessments, human judges and GPT-4o achieved perfect agreement 56% of the time.
+    quote: for 56% of the manual from-scratch assessments, human and GPT-4o predictions match perfectly
+    location: char 1324 of 4503 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-4
+    text: Agreement between human and GPT-4o judges increased to 72% when humans post-edited LLM predictions.
+    quote: increasing to 72% in the manual with post-editing condition
+    location: char 1443 of 4503 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-5
+    text: An independent human judge's judgments correlated better with GPT-4o than another human judge's judgments did.
+    quote: an independent human judge correlates better with GPT-4o than a human judge
+    location: char 1594 of 4503 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-4122c4ed-7
+    text: The research compared an automatic LLM judge (GPT-4o) against human judges for support assessment.
+    quote: comparing an automatic LLM judge (GPT-4o) against human judges for support assessment
+    location: char 1074 of 4503 (normalized)
+    confidence: high
+    provenance_origin: discovered
+- source_id: 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  url: https://www.ibm.com/think/architectures/rag-cookbook/result-evaluation
+  title: 'Result Evaluation for RAG: Metrics & Best Practices | IBM'
+  authors:
+  - IBM
+  venue: IBM Think — RAG cookbook
+  date: null
+  type: docs
+  credibility: medium
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: e8c1c08ed64287cb9522da74ae361434d7a168fa
+  claims:
+  - claim_id: C-92827b86-1
+    text: LLMaaJ (LLM as a Judge) emerged as a prominent RAG evaluation metric in approximately the last year.
+    quote: LLMaaJ (LLM as a Judge) has emerged as a leading metric in the last year
+    location: char 1833 of 15369 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-92827b86-2
+    text: LLM as a Judge evaluation has been demonstrated to produce reasonable correlation with human judgment.
+    quote: This eval technique has been shown to produce decent correlation with human judgment.
+    location: char 1981 of 15369 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-92827b86-3
+    text: The RAG triad evaluation framework consists of exactly three distinct assessments.
+    quote: 'It consists of three assessments: Context Relevance, Groundedness, and Answer Relevance.'
+    location: char 7047 of 15369 (normalized)
+    confidence: high
+    provenance_origin: discovered
+- source_id: e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  url: https://docs.langchain.com/langsmith/evaluate-rag-tutorial
+  title: Evaluate a RAG application - Docs by LangChain
+  authors:
+  - LangChain
+  venue: LangChain documentation
+  date: null
+  type: docs
+  credibility: medium
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 6c4fc75ced08134fef27b3b0478f6c7869d93a6e
+  claims:
+  - claim_id: C-e0cec4fc-5
+    text: The correctness evaluator requires a reference answer to exist in the evaluation dataset.
+    quote: Requires a reference answer in the dataset
+    location: char 10211 of 49259 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-6
+    text: The relevance evaluator operates without requiring a reference answer, evaluating only against the user's question.
+    quote: No reference answer; compares the answer to the input
+    location: char 10405 of 49259 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-7
+    text: The groundedness evaluator measures how closely a response aligns with the retrieved source documents.
+    quote: Score how well the response agrees with the retrieved context
+    location: char 10565 of 49259 (normalized)
+    confidence: high
+    provenance_origin: discovered
+  - claim_id: C-e0cec4fc-13
+    text: Groundedness evaluation assesses whether responses are justified by retrieved documents without a reference answer.
+    quote: response is justified by (grounded in) the retrieved documents, without a reference answer
+    location: char 18544 of 49259 (normalized)
+    confidence: high
+    corroboration_count: 2
+    corroborated_by:
+    - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+    provenance_origin: discovered
+- source_id: 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
+  url: https://trec-rag.github.io/
+  title: TREC RAG · Retrieval-Augmented Generation Track - RAG
+  authors:
+  - TREC RAG track organizers
+  venue: NIST TREC
+  date: '2026'
+  type: standard
+  credibility: high
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: c4db2005adf1187af471380ab21477e6d4e30484
+  claims:
+  - claim_id: C-4044d111-3
+    text: ClimbMix-400b replaces MS MARCO v2.1 as the official corpus for 2026.
+    quote: ClimbMix-400b replaces MS MARCO v2.1 for 2026.
+    location: char 765 of 3515 (normalized)
+    confidence: high
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered

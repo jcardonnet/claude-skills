@@ -1,0 +1,432 @@
+[
+  {
+    "id": "A-A2-s1",
+    "url": "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "OTEP 235: defines 56-bit rejection threshold for sampling",
+    "fetched_title": "opentelemetry-specification/oteps/trace/0235-sampling-threshold-in-trace-state.md at main \u00b7 open-telemetry/opentelemetry-specification \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s2",
+    "url": "https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Official OTel trace state probability sampling spec",
+    "fetched_title": "TraceState: Probability Sampling | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s3",
+    "url": "https://www.w3.org/TR/trace-context/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "W3C Trace Context official recommendation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A2-s4",
+    "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/36291",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Tail sampling decision_wait tradeoff, real user case",
+    "fetched_title": "[processor/tailsampling] decision_wait time and the lifespan of a trace \u00b7 Issue #36291 \u00b7 open-telemetry/opentelemetry-collector-contrib \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s5",
+    "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17275",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "decision_wait duration and trace lifespan semantics",
+    "fetched_title": "How to understand decision_wait of tail_sampling \u00b7 Issue #17275 \u00b7 open-telemetry/opentelemetry-collector-contrib \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s6",
+    "url": "https://www.elastic.co/observability-labs/blog/tail-sampling-memory-opentelemetry",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "65% memory reduction with Pebble disk storage mitigation",
+    "fetched_title": "OpenTelemetry tail sampling: 65% less memory with disk storage \u2014 Elastic Observability Labs",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s7",
+    "url": "https://www.michal-drozd.com/en/blog/otel-tail-sampling/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Tail sampling memory, disk, and cost model analysis",
+    "fetched_title": "Tail-Based Sampling in OpenTelemetry: Sizing, Memory Crashes and Cost Model | Michal Drozd",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s8",
+    "url": "https://cribl.io/blog/mastering-tail-sampling-for-opentelemetry-cost-effective-strategies-with-cribl/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Cost spike paradox during incidents, tail sampling strategies",
+    "fetched_title": "Mastering Tail Sampling for OpenTelemetry: Cost-Effective Strategies with Cribl | Cribl",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s9",
+    "url": "https://www.aquasec.com/blog/300000-prometheus-servers-and-exporters-exposed-to-dos-attacks/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "336K Prometheus servers cardinality DoS vulnerability",
+    "fetched_title": "300,000+ Prometheus Servers and Exporters Exposed to DoS Attacks",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s10",
+    "url": "https://medium.com/@PlanB./prometheus-ecosystem-under-siege-how-336k-servers-became-vulnerable-to-dos-attacks-9f119a7d6e6b",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Prometheus cardinality attack analysis, time series explosion",
+    "fetched_title": "Medium",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s11",
+    "url": "https://github.com/open-telemetry/opentelemetry-specification/issues/2775",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Resource attributes metric identity partitioning debate",
+    "fetched_title": "Refine which attributes of Resource contribute to Metric Identity. \u00b7 Issue #2775 \u00b7 open-telemetry/opentelemetry-specification \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s12",
+    "url": "https://github.com/open-telemetry/opentelemetry-specification/discussions/3554",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Span attribute cardinality and backend indexing strategy",
+    "fetched_title": "Span attributes cardinality \u00b7 open-telemetry/opentelemetry-specification \u00b7 Discussion #3554 \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s13",
+    "url": "https://opentelemetry.io/blog/2026/cardinality-limits-in-opentelemetry/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "OTel cardinality limits, DoS defense mechanisms",
+    "fetched_title": "Metric cardinality limits in OpenTelemetry: a practical guide | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s14",
+    "url": "https://github.com/open-telemetry/semantic-conventions/issues/1315",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Span kind for GenAI/database: CLIENT vs INTERNAL debate",
+    "fetched_title": "Allow `INTERNAL` GenAI/db spans instead of requiring the kind to be `CLIENT` \u00b7 Issue #1315 \u00b7 open-telemetry/semantic-conventions \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s15",
+    "url": "https://github.com/open-telemetry/opentelemetry-python-contrib/issues/1168",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Semantic conventions version conflicts, language fragmentation",
+    "fetched_title": "opentelemetry-semantic-conventions causes version conflicts with older instrumentation libraries \u00b7 Issue #1168 \u00b7 open-telemetry/opentelemetry-python-contrib \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s16",
+    "url": "https://last9.io/blog/jaeger-vs-zipkin/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Comprehensive backend architecture and design tradeoffs",
+    "fetched_title": "Jaeger vs Zipkin: Which is Right for Your Distributed Tracing | Last9",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s17",
+    "url": "https://www.cncf.io/blog/2025/09/01/jaeger-at-10-forged-in-community-reborn-in-opentelemetry/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Jaeger retrospective, community adoption, standards alignment",
+    "fetched_title": "Jaeger at 10: Forged in Community, Reborn in OpenTelemetry | CNCF",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s18",
+    "url": "https://signoz.io/blog/jaeger-vs-zipkin/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Backend comparison, deployment context tradeoffs",
+    "fetched_title": "Jaeger vs Zipkin 2026: Key Differences | SigNoz",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s19",
+    "url": "https://github.com/openzipkin/b3-propagation/blob/master/RATIONALE.md",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "B3 format rationale, semantic differences vs W3C",
+    "fetched_title": "b3-propagation/RATIONALE.md at master \u00b7 openzipkin/b3-propagation \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s20",
+    "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7457",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "B3 to W3C migration without breaking changes",
+    "fetched_title": "Zipkin B3 trace context to W3C trace context migration without breaking  \u00b7 Issue #7457 \u00b7 open-telemetry/opentelemetry-java-instrumentation \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s21",
+    "url": "https://oneuptime.com/blog/post/2026-02-06-head-based-vs-tail-based-sampling-opentelemetry/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Head-based vs tail-based sampling tradeoff analysis",
+    "fetched_title": "How to Choose Between Head-Based and Tail-Based Sampling in OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s22",
+    "url": "https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Latency-based sampling costs, tail latency visibility",
+    "fetched_title": "How to Implement Latency-Based Sampling to Capture Slow Traces",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s23",
+    "url": "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Database span semantic conventions, span kind guidance",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A2-s24",
+    "url": "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Versioning and stability policy, incubating semantics",
+    "fetched_title": "opentelemetry-specification/specification/versioning-and-stability.md at main \u00b7 open-telemetry/opentelemetry-specification \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s25",
+    "url": "https://last9.io/blog/opentelemetry-vs-datadog/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Vendor lock-in debate, backend portability",
+    "fetched_title": "OpenTelemetry vs. Datadog: Key Differences Explained | Last9",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s26",
+    "url": "https://signoz.io/blog/opentelemetry-vs-datadog/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Cost model conflicts, platform switching friction",
+    "fetched_title": "OpenTelemetry vs Datadog - Choosing the Right Monitoring Tool | SigNoz",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A2-s27",
+    "url": "https://www.systemshardening.com/articles/observability/prometheus-cardinality-dos-defence/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "debates"
+    ],
+    "report_ids": [
+      "A-A2"
+    ],
+    "why": "Cardinality DoS defense mechanisms, Pushgateway exposure",
+    "fetched_title": "Defending Prometheus Against High-Cardinality Label Injection and DoS",
+    "retrieved_at": "2026-08-20"
+  }
+]

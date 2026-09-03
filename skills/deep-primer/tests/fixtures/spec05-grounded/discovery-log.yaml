@@ -1,0 +1,25 @@
+max_waves: 3
+saturation_threshold: 0.15
+waves:
+- wave: A
+  briefs: 6
+  framing_cells: 6
+  leads_total: 227
+  leads_new: 202
+  novel_fraction: 0.8899
+  decision: continue
+- wave: B
+  briefs: 2
+  framing_cells: 2
+  leads_total: 9
+  leads_new: 4
+  novel_fraction: 0.4444
+  decision: continue
+- wave: C
+  briefs: 3
+  framing_cells: 3
+  leads_total: 74
+  leads_new: 51
+  novel_fraction: 0.6892
+  decision: stop
+terminal: max_waves

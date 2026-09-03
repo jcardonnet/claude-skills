@@ -1,0 +1,233 @@
+[
+  {
+    "id": "A-A6-s1",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-core/issues/631",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Documents screen reader accessibility failure of callout components; real-world bug report",
+    "fetched_title": "Callout: Screen reader and keyboard accessibility \u00b7 Issue #631 \u00b7 OfficeDev/office-ui-fabric-core \u00b7 GitHub",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A6-s2",
+    "url": "https://adhoc.team/2023/06/28/become-an-accessibility-champion-by-using-simple-mockup-annotations/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Explains Section 508 compliance via annotations; confirms accessibility gap in practice",
+    "fetched_title": "Become a champion for Section 508 compliance by using annotations | Ad Hoc",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A6-s3",
+    "url": "https://webaim.org/techniques/screenreader/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "WebAIM screen reader design patterns; confirms callout layer problems in PDFs",
+    "fetched_title": "WebAIM: Designing for Screen Reader Compatibility",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A6-s4",
+    "url": "https://arxiv.org/pdf/2410.05579",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Peer-reviewed survey on annotations in visualization; documents cognitive load trade-offs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s5",
+    "url": "https://www.nngroup.com/articles/minimize-cognitive-load/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "NN/G cognitive load principles; visual clutter degrades UI performance",
+    "fetched_title": "Minimize Cognitive Load to Maximize Usability - NN/G",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A6-s6",
+    "url": "https://arxiv.org/pdf/2411.11285",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "November 2024 zero-shot annotation paper; eliminates manual annotation via LLM+SAM; quantified results (0.9513 Dice)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A6-s7",
+    "url": "https://www.linkedin.com/advice/0/what-benefits-challenges-using-exploded-views",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Industry perspective on exploded view creation burden and error-proneness",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s8",
+    "url": "https://latitude.so/blog/automated-labeling-vs-manual-annotation/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025 analysis: automated labeling 10\u00d7\u2013100\u00d7 faster than manual; hybrid workflows now standard",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A6-s9",
+    "url": "https://cleverx.com/blog/automated-data-labeling-in-2025-how-to-deploy-ai-assisted-automation-without-losing-quality",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2025 trend report on automation replacing manual annotation; BMW case study of AI-driven QC",
+    "fetched_title": "Automated data labeling in 2025: how to deploy AI-assisted automation without losing quality | CleverX Blog",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A6-s10",
+    "url": "https://arxiv.org/html/2510.09586v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Survey of 26K VLM papers 2023\u20132025; 40% adoption rate in 2025; documents rapid capability scaling",
+    "fetched_title": "Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023\u20132025)",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A6-s11",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12626568/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Medical imaging proof-of-concept: VLMs (GPT-4o, Gemini 1.5) identify surgical instruments at 100% accuracy",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s12",
+    "url": "https://sodevelopment.medium.com/from-yolo-to-sam-the-evolution-of-object-detection-and-segmentation-d324786ca510",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Medium analysis: YOLO to SAM evolution; YOLOv12 (2024\u201325) integrated transformers; SAM trade-offs (speed vs. accuracy)",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s13",
+    "url": "https://labelyourdata.com/articles/best-image-segmentation-models",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2026 reference on state-of-art segmentation models; confirms SAM/YOLO dominate automated segmentation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s14",
+    "url": "https://www.researchgate.net/publication/385921060_Zero-Shot_Automatic_Annotation_and_Instance_Segmentation_using_LLM-Generated_Datasets_Eliminating_Field_Imaging_and_Manual_Annotation_for_Deep_Learning_Model_Development",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "Peer-reviewed zero-shot segmentation; eliminates manual annotation and field imaging entirely",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A6-s15",
+    "url": "https://dl.acm.org/doi/fullHtml/10.1145/3677182.3677237",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "A-A6"
+    ],
+    "why": "2024 ACM conference: vehicle parts identification via instance segmentation (Mask RCNN, GCNet, Cascade); parts-domain ap",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  }
+]

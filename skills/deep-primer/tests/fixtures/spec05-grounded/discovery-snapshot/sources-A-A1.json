@@ -1,0 +1,921 @@
+[
+  {
+    "id": "A-A1-s1",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "FDA foundational guidance finalizing adaptive design principles, Type I error control",
+    "fetched_title": "Adaptive Design Clinical Trials for Drugs and Biologics Guidance for Industry | FDA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s2",
+    "url": "https://www.fda.gov/media/78495/download",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "FDA Adaptive Designs guidance PDF direct link, core regulatory document",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s3",
+    "url": "https://www.federalregister.gov/documents/2019/12/02/2019-25986/adaptive-designs-for-clinical-trials-of-drugs-and-biologics-guidance-for-industry-availability",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Federal Register notice FDA adaptive designs finalized December 2019",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s4",
+    "url": "https://www.federalregister.gov/documents/2026/06/24/2026-12620/master-protocols-for-drug-and-biological-product-development-draft-guidance-for-industry",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "FDA Master Protocols revised draft June 2026, basket/umbrella/platform guidance",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s5",
+    "url": "https://www.fda.gov/media/120721/download",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "FDA Master Protocols original guidance December 2023",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s6",
+    "url": "https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ICH E20 draft adaptive designs endorsed June 2025, harmonized international guidance",
+    "fetched_title": "ICH E20 adaptive designs for clinical trials - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s7",
+    "url": "https://www.federalregister.gov/documents/2025/09/30/2025-18897/e20-adaptive-designs-for-clinical-trials-international-council-for-harmonisation-draft-guidance-for",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Federal Register announcement ICH E20 adaptive designs September 2025",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s8",
+    "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-methodological-issues-confirmatory-clinical-trials-planned-adaptive-design_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "EMA CHMP/EWP Reflection Paper 2007, foundational adaptive design methodology",
+    "dropped_reason": "HTTPError: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "id": "A-A1-s9",
+    "url": "https://www.ema.europa.eu/en/ich-e6-good-clinical-practice-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ICH E6(R3) GCP finalized January 2025, supports adaptive trial protocol modifications",
+    "fetched_title": "ICH E6 Good clinical practice - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s10",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2422839/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Systematic review adaptive design methods, comprehensive methodology taxonomy",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s11",
+    "url": "https://arxiv.org/pdf/2105.08836",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ArXiv point estimation for adaptive trial designs, methodology review",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s12",
+    "url": "https://link.springer.com/article/10.1186/s12874-024-02272-9",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "BMC Medical Research Methodology 2024 adaptive designs systematic review current landscape",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s13",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5516365/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Literature review applied adaptive design oncology, CONSORT extension",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s14",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6751792/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Systematic review basket umbrella platform trials landscape 49 basket 18 umbrella 16 platform",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s15",
+    "url": "https://trialsjournal.biomedcentral.com/articles/10.1186/1745-6215-15-383",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Trials BMC adaptive designs EMA scientific advice survey 2014",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s16",
+    "url": "https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-018-3012-x",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Trials BMC 2018 adaptive designs from scientific advice to marketing authorisation",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s17",
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK603603/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "NCBI Bookshelf platform basket umbrella trial stakeholder perspectives",
+    "fetched_title": "Platform, Basket, and Umbrella Trial Designs: Stakeholder Perspectives of Novel Therapeutics - NCBI Bookshelf",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s18",
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK603602/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "NCBI Bookshelf platform basket umbrella HTA context and methods",
+    "fetched_title": "Platform, Basket, and Umbrella Trial Designs: Issues Around Health Technology Assessment of Novel Therapeutics - NCBI Bookshelf",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s19",
+    "url": "https://academic.oup.com/biometrics/article-abstract/82/1/ujaf168/8416971",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Biometrics Vol. 82 March 2026 adaptive design multi-stage allocation ratios",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s20",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/bimj.202200301",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Biometrical Journal 2023 response-adaptive randomization multiarm entropy methods",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s21",
+    "url": "https://academic.oup.com/biometrics/article/79/4/2869/7587578",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Biometrics 2024 regression-based treatment effect covariate-adaptive randomization",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s22",
+    "url": "https://academic.oup.com/biometrics/article/80/4/ujae152/7925419",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Biometrics Vol. 80 2024 Thompson sampling sequential multiple assignment randomized trials",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s23",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/pst.2443",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Pharmaceutical Statistics 2025 Bayesian response adaptive randomization continuous outcomes",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s24",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3570871/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC adaptive dose-finding seamless phase 2/3 study dulaglutide case study",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s25",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/14760584.2024.2348612",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Trends in Molecular Medicine 2024 seamless phase 2/3 vaccine development",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s26",
+    "url": "https://www.tandfonline.com/doi/abs/10.1080/19466315.2021.1914717",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Statistics in Biopharmaceutical Research Vol. 14 2021 seamless adaptive 2-in-1 design",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s27",
+    "url": "https://arxiv.org/pdf/2512.09430",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ArXiv December 2025 model-robust inference seamless phase 2/3 covariate adaptive",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s28",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5007718/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC continual reassessment method CRM dose escalation prior skeleton comparison",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s29",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7786936/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2021 continual reassessment method models real clinical data simulation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s30",
+    "url": "https://doi.org/10.3390/math13050863",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Mathematics Vol. 13 Issue 5 2025 modified continual reassessment method comparison",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s31",
+    "url": "https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0638-z",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "BMC Medical Research Methodology 2018 dose-finding continual reassessment design guide",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s32",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/pst.70074",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Pharmaceutical Statistics 2026 Kessels knowledge base adaptive dose-finding trial designs",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s33",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7531353/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC adaptive Bayesian design personalized dosing cancer prevention trial",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s34",
+    "url": "https://link.springer.com/article/10.1186/s12874-024-02247-w",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "BMC Medical Research Methodology 2024 MAMS treatment selection rules impact",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s35",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2704188/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2010 multi-arm multi-stage methodology MRC STAMPEDE trial",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s36",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10962588/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2024 Bayesian multi-arm multi-stage clinical trial design",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s37",
+    "url": "https://www.innovative-ctu.ucl.ac.uk/our-research/methodology/design/multi-arm-multi-stage-mams-platform-trials/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "UCL Innovative Clinical Trials Unit MAMS platform trials methodology resource",
+    "fetched_title": "Multi-Arm Multi-Stage (MAMS) platform trials | UCL Innovative Clinical Trials Unit",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s38",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/10543400802369053",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Journal Biopharmaceutical Statistics Vol. 18 2008 sample size re-estimation adaptive",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s39",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4288989/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2015 group-sequential sample size re-estimation two-stage trials review",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s40",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S1551714420302949",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Advances in Clinical Trials 2020 sample size re-estimation adaptive enrichment",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s41",
+    "url": "https://www.statsols.com/guides/sample-size-re-estimation-in-clinical-trials",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Statsols educational guide sample size re-estimation clinical trials",
+    "fetched_title": "Guide to Sample Size Re-Estimation in Clinical Trials",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s42",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/resp.14337",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Respirology 2022 Bayesian adaptive design respiratory medicine Ryan et al",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s43",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7826635/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC Bayesian design adaptive clinical trials overview methodology",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s44",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9027907/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2021 Bayesian adaptive design pediatric clinical trials",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s45",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8008394/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2021 Bayesian adaptive decision-theoretic multi-arm multi-stage trials",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s46",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5473477/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2017 Bayesian adaptive design rare diseases clinical trials",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s47",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6961269/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2020 Bayesian adaptive designs multi-arm orthopaedic case study",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s48",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5753844/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2018 Bayesian response adaptive randomization excessive menstruation study",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s49",
+    "url": "https://arxiv.org/pdf/2601.10590",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ArXiv January 2026 aggressive conservative early stopping Bayesian group sequential",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s50",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S1551714419305890",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Advances in Clinical Trials 2019 sequential monitoring covariate adaptive sample re-estimation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s51",
+    "url": "https://arxiv.org/pdf/2602.06379",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ArXiv February 2026 E-values adaptive clinical trials anytime-valid monitoring",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s52",
+    "url": "https://www.tandfonline.com/doi/full/10.1081/BIP-200062859",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Journal Biopharmaceutical Statistics Vol. 15 2005 group-sequential adaptive comparison",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s53",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3248853/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "PMC 2011 benefits challenges obstacles adaptive clinical trial designs",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A1-s54",
+    "url": "https://cran.r-project.org/web/packages/escalation/index.html",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "R package escalation modular dose-finding clinical trials CRAN",
+    "fetched_title": "CRAN: Package escalation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s55",
+    "url": "https://www.berryconsultants.com/software",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Berry Consultants FACTS Bayesian adaptive trial simulation software proprietary tools",
+    "fetched_title": "Clinical Trial Software | Bayesian Simulation & Analysis Tools | Berry Consultants",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s56",
+    "url": "https://cytel.com/solutions/clinical-trial-design/software-for-trial-design/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Cytel ADDPLAN EAST adaptive design statistical software commercial tools",
+    "fetched_title": "Clinical Trial Optimization Software | Cytel",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s57",
+    "url": "https://www.routledge.com/Bayesian-Adaptive-Methods-for-Clinical-Trials/Berry-Carlin-Lee-Muller/p/book/9781032922058",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Berry et al. textbook Bayesian Adaptive Methods for Clinical Trials canonical reference",
+    "fetched_title": "Bayesian Adaptive Methods for Clinical Trials - 1st Edition - Scott M.",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s58",
+    "url": "https://arxiv.org/pdf/2006.12811",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ArXiv 2020 adding flexibility clinical trial designs example-based adaptive guide",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s59",
+    "url": "https://intuitionlabs.ai/articles/adaptive-clinical-trial-design",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "IntuitionLabs overview adaptive trial design guide benefits summary",
+    "fetched_title": "Adaptive Trial Design: A Guide to Flexible Clinical Trials | IntuitionLabs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s60",
+    "url": "https://admin.ich.org/sites/default/files/inline-files/7-Adaptive_design.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ICH archival overview drug development adaptive seamless design",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  }
+]

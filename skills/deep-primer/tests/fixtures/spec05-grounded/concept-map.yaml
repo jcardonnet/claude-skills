@@ -1,0 +1,959 @@
+concepts:
+- concept_id: c1-Sample-size-re-estimation
+  canonical_term: Sample size re-estimation
+  aliases:
+  - interim sample size reassessment
+  - adaptive sample size modification
+  - Adaptive Sample Size Re-estimation
+  - Sample size recalculation
+  - adaptive reassessment
+  - sample size re-evaluation
+  home_anchor: Sequential analysis with optional stopping
+  fidelity_boundary: Sequential analysis stops based on a single interim look; sample
+    size re-estimation uses prospectively planned interim points to adjust future
+    enrollment based on effect size estimates subject to regulatory constraints.
+  epistemic_status: settled
+  salience: 0.3784
+  representation_modes: []
+  source_ids:
+  - 07c9a42632db2304755b95778286b7bef2a0a5d4
+  - 64ab25940d44e96401ad8256567d6a9af398d074
+  - b42f6bdc4c163fb4259fad0399504ff443c71998
+  - e000d90cf92d65ce0d3f2a9066c1d615ff4ed907
+  claim_ids:
+  - C-07c9a426-1
+  - C-07c9a426-2
+  - C-07c9a426-3
+  - C-07c9a426-4
+  - C-07c9a426-5
+  - C-64ab2594-12
+  - C-b42f6bdc-8
+  - C-e000d90c-1
+  - C-e000d90c-2
+  - C-e000d90c-3
+  - C-e000d90c-4
+  - C-e000d90c-5
+  - C-e000d90c-6
+  - C-e000d90c-7
+- concept_id: c2-Evidence-borrowing
+  canonical_term: Evidence borrowing
+  aliases:
+  - external control arms
+  - historical data incorporation
+  - synthetic controls
+  home_anchor: Bayesian prior specification and information incorporation
+  fidelity_boundary: Bayesian priors are fixed before data collection; evidence borrowing
+    requires sensitivity analyses across the parameter space to assess robustness
+    and meet regulatory standards for borrowed strength.
+  epistemic_status: settled
+  salience: 0.4324
+  representation_modes: []
+  source_ids:
+  - 0da9561be7d6961c528948abb18cc28e0c0144c4
+  claim_ids:
+  - C-0da9561b-1
+  - C-0da9561b-2
+  - C-0da9561b-3
+  - C-0da9561b-4
+  - C-0da9561b-7
+  - C-0da9561b-8
+  - C-0da9561b-9
+  - C-0da9561b-10
+  - C-0da9561b-12
+  - C-0da9561b-13
+  - C-0da9561b-14
+  - C-0da9561b-15
+  - C-0da9561b-16
+  - C-0da9561b-17
+  - C-0da9561b-23
+  - C-0da9561b-24
+- concept_id: c3-Confidence-interval-construction-in-adap
+  canonical_term: Confidence interval construction in adaptive designs
+  aliases:
+  - adaptive confidence intervals
+  - CI coverage under repeated looks
+  home_anchor: Confidence interval estimation assuming fixed sample plan
+  fidelity_boundary: Standard CI construction assumes predetermined sample size; adaptive
+    stopping rules and mid-trial modifications violate the distributional assumptions
+    required for nominal coverage.
+  epistemic_status: settled
+  salience: 0.5405
+  representation_modes: []
+  source_ids:
+  - 3667249d034630906a64cb3915053ab7ce22ec69
+  claim_ids:
+  - C-3667249d-1
+  - C-3667249d-2
+  - C-3667249d-3
+  - C-3667249d-4
+  - C-3667249d-5
+  - C-3667249d-6
+  - C-3667249d-7
+  - C-3667249d-8
+  - C-3667249d-9
+  - C-3667249d-10
+  - C-3667249d-11
+  - C-3667249d-12
+  - C-3667249d-13
+  - C-3667249d-14
+  - C-3667249d-15
+  - C-3667249d-17
+  - C-3667249d-20
+  - C-3667249d-21
+  - C-3667249d-22
+  - C-3667249d-23
+- concept_id: c4-Biomarker-driven-trial-structures
+  canonical_term: Biomarker-driven trial structures
+  aliases:
+  - basket trials
+  - umbrella trials
+  - platform trials
+  - enrichment designs
+  home_anchor: Stratified and factorial experimental designs
+  fidelity_boundary: Stratified designs maintain separate randomization per stratum
+    with a fixed control arm; biomarker-driven trials often lack concurrent controls,
+    share control groups across substudies, and use Bayesian elimination rules.
+  epistemic_status: settled
+  salience: 0.2432
+  representation_modes: []
+  source_ids:
+  - 3d02c8751ae9aa618b6b973540a39ffadd5fc91e
+  claim_ids:
+  - C-3d02c875-1
+  - C-3d02c875-2
+  - C-3d02c875-3
+  - C-3d02c875-4
+  - C-3d02c875-5
+  - C-3d02c875-6
+  - C-3d02c875-9
+  - C-3d02c875-10
+  - C-3d02c875-11
+- concept_id: c5-Regulatory-and-payer-assessment-of-novel
+  canonical_term: Regulatory and payer assessment of novel trials
+  aliases:
+  - health technology assessment of adaptive designs
+  - evidence requirements for novel trials
+  - payer interpretation of uncertainty
+  home_anchor: Treatment effect comparison under model and population uncertainty
+  fidelity_boundary: Standard evaluation assumes a single defined treatment comparison
+    and homogeneous population; novel trials introduce multiple indications, adaptive
+    arm selection, and biomarker-defined subgroups that complicate effect attribution.
+  epistemic_status: settled
+  salience: 0.3514
+  representation_modes: []
+  source_ids:
+  - 3d02c8751ae9aa618b6b973540a39ffadd5fc91e
+  claim_ids:
+  - C-3d02c875-12
+  - C-3d02c875-13
+  - C-3d02c875-14
+  - C-3d02c875-15
+  - C-3d02c875-16
+  - C-3d02c875-17
+  - C-3d02c875-18
+  - C-3d02c875-19
+  - C-3d02c875-20
+  - C-3d02c875-21
+  - C-3d02c875-22
+  - C-3d02c875-23
+  - C-3d02c875-24
+- concept_id: c6-Data-reuse-and-positive-dependence
+  canonical_term: Data reuse and positive dependence
+  aliases:
+  - inference correlation from shared data
+  - statistical dependence in multiple testing
+  home_anchor: Independence assumptions in multiple hypothesis testing
+  fidelity_boundary: Standard multiplicity corrections assume independent test statistics
+    across disjoint datasets; shared data creates positive dependence that standard
+    corrections cannot address.
+  epistemic_status: settled
+  salience: 0.3784
+  representation_modes: []
+  source_ids:
+  - 3eb8e442d7e099d27c56034643b48331dfe3c42f
+  claim_ids:
+  - C-3eb8e442-1
+  - C-3eb8e442-2
+  - C-3eb8e442-3
+  - C-3eb8e442-5
+  - C-3eb8e442-7
+  - C-3eb8e442-8
+  - C-3eb8e442-9
+  - C-3eb8e442-10
+  - C-3eb8e442-12
+  - C-3eb8e442-18
+  - C-3eb8e442-19
+  - C-3eb8e442-20
+  - C-3eb8e442-21
+  - C-3eb8e442-23
+- concept_id: c7-Multi-arm-multi-stage-design
+  canonical_term: Multi-arm multi-stage design
+  aliases:
+  - MAMS
+  - platform trial architecture
+  - staged multi-arm screening
+  home_anchor: Sequential screening designs with staged arm elimination
+  fidelity_boundary: Traditional staged designs screen arms against a single fixed
+    threshold; MAMS employs multiple pre-planned interim decision points and integrated
+    stopping boundaries across arms.
+  epistemic_status: settled
+  salience: 0.2162
+  representation_modes: []
+  source_ids:
+  - 42dca0badf006411b4ed256e4a4ae37aef1ff7da
+  claim_ids:
+  - C-42dca0ba-1
+  - C-42dca0ba-2
+  - C-42dca0ba-3
+  - C-42dca0ba-4
+  - C-42dca0ba-5
+  - C-42dca0ba-6
+  - C-42dca0ba-7
+  - C-42dca0ba-8
+- concept_id: c8-Multiplicity-and-Type-I-error-control
+  canonical_term: Multiplicity and Type I error control
+  aliases:
+  - multiple testing adjustment
+  - family-wise error rate control
+  - multiplicity-adjusted inference
+  home_anchor: Multiple hypothesis testing and error rate control
+  fidelity_boundary: FWER control assumes fixed pre-specified tests; interim analyses
+    introduce repeated data looks that increase the effective number of comparisons.
+  epistemic_status: settled
+  salience: 0.3784
+  representation_modes: []
+  source_ids:
+  - 5426dd096a626a9b4e81a8571e3c36738b087bdd
+  claim_ids:
+  - C-5426dd09-1
+  - C-5426dd09-2
+  - C-5426dd09-3
+  - C-5426dd09-4
+  - C-5426dd09-5
+  - C-5426dd09-7
+  - C-5426dd09-8
+  - C-5426dd09-9
+  - C-5426dd09-10
+  - C-5426dd09-11
+  - C-5426dd09-17
+  - C-5426dd09-19
+  - C-5426dd09-20
+  - C-5426dd09-24
+- concept_id: c9-Stopping-induced-estimation-bias
+  canonical_term: Stopping-induced estimation bias
+  aliases:
+  - conditional bias in early stopping
+  - estimation after sequential stopping
+  home_anchor: Unbiasedness of point estimators under fixed sample plans
+  fidelity_boundary: Standard estimators are unbiased under predetermined stopping;
+    optional stopping based on test statistics induces conditional bias dependent
+    on which boundary condition triggered.
+  epistemic_status: settled
+  salience: 0.1081
+  representation_modes: []
+  source_ids:
+  - 5426dd096a626a9b4e81a8571e3c36738b087bdd
+  claim_ids:
+  - C-5426dd09-12
+  - C-5426dd09-14
+  - C-5426dd09-15
+  - C-5426dd09-16
+- concept_id: c10-Health-economic-evaluation
+  canonical_term: Health economic evaluation
+  aliases:
+  - cost-effectiveness analysis
+  - incremental cost-effectiveness ratio
+  - budget impact analysis
+  home_anchor: Cost-benefit analysis and utility maximization
+  fidelity_boundary: Standard economic evaluation compares defined treatments in specified
+    homogeneous populations; novel trials introduce multiple indications, missing
+    comparators, and heterogeneous subgroups complicating cost-effectiveness estimation.
+  epistemic_status: settled
+  salience: 0.5405
+  representation_modes: []
+  source_ids:
+  - 475386b384ca4201453373ffc3b9ca9ce87c09ed
+  claim_ids:
+  - C-475386b3-2
+  - C-475386b3-4
+  - C-475386b3-7
+  - C-475386b3-8
+  - C-475386b3-9
+  - C-475386b3-10
+  - C-475386b3-11
+  - C-475386b3-12
+  - C-475386b3-13
+  - C-475386b3-14
+  - C-475386b3-15
+  - C-475386b3-16
+  - C-475386b3-17
+  - C-475386b3-18
+  - C-475386b3-19
+  - C-475386b3-20
+  - C-475386b3-21
+  - C-475386b3-22
+  - C-475386b3-23
+  - C-475386b3-24
+- concept_id: c11-Adaptive-trial-regulatory-guidance
+  canonical_term: Adaptive trial regulatory guidance
+  aliases:
+  - FDA guidance on adaptive trials
+  - EMA reflection paper on adaptive designs
+  - ICH E6 and E8 guidance
+  - Regulatory Guidance on Adaptive Designs
+  - ICH E20 guideline
+  - FDA adaptive design guidance
+  - EMA/ICH consensus
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 12a435a29efddc3d1ccbd7bffbddd76a5b1012aa
+  - 52e7543fccd0f1ec2aca26ca9f7834481c851371
+  - 593bfe1b5d4aa95188b46c8774a2b29c81c95951
+  - 71047f73f17ae532f5113b463247fc7e3d981aef
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  - fdf6820dcc0317ee58cf602f8283b0e4d5b46c7f
+  claim_ids:
+  - C-12a435a2-1
+  - C-12a435a2-2
+  - C-12a435a2-3
+  - C-12a435a2-4
+  - C-12a435a2-5
+  - C-12a435a2-6
+  - C-12a435a2-8
+  - C-52e7543f-1
+  - C-52e7543f-2
+  - C-52e7543f-3
+  - C-52e7543f-5
+  - C-52e7543f-6
+  - C-52e7543f-7
+  - C-52e7543f-8
+  - C-593bfe1b-1
+  - C-593bfe1b-2
+  - C-593bfe1b-3
+  - C-593bfe1b-4
+  - C-593bfe1b-5
+  - C-593bfe1b-6
+  - C-593bfe1b-7
+  - C-593bfe1b-8
+  - C-71047f73-1
+  - C-71047f73-2
+  - C-71047f73-3
+  - C-71047f73-5
+  - C-71047f73-6
+  - C-71047f73-7
+  - C-71047f73-8
+  - C-c013edc2-2
+  - C-c013edc2-6
+  - C-c013edc2-9
+  - C-c013edc2-10
+  - C-c013edc2-12
+  - C-c013edc2-16
+  - C-fdf6820d-1
+  - C-fdf6820d-2
+- concept_id: c12-Trial-design-software-implementations
+  canonical_term: Trial design software implementations
+  aliases:
+  - adaptive trial design tools
+  - statistical software for adaptive designs
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.1351
+  representation_modes: []
+  source_ids:
+  - 2e49a0e1761a6046e2c9d5c101532ecd33860d9b
+  claim_ids:
+  - C-2e49a0e1-1
+  - C-2e49a0e1-2
+  - C-2e49a0e1-5
+  - C-2e49a0e1-7
+  - C-2e49a0e1-8
+- concept_id: c13-Conditional-Error-Functions
+  canonical_term: Conditional Error Functions
+  aliases:
+  - Critical value functions
+  - conditional error approach
+  home_anchor: Error spending across sequential looks
+  fidelity_boundary: Differs by conditioning on observed stage-1 data rather than
+    pre-allocating alpha budget based purely on design parameters
+  epistemic_status: settled
+  salience: 0.1622
+  representation_modes: []
+  source_ids:
+  - 64ab25940d44e96401ad8256567d6a9af398d074
+  - b42f6bdc4c163fb4259fad0399504ff443c71998
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-64ab2594-3
+  - C-64ab2594-13
+  - C-b42f6bdc-12
+  - C-b42f6bdc-19
+  - C-b42f6bdc-23
+  - C-c013edc2-24
+- concept_id: c14-Variational-Calculus-Optimization
+  canonical_term: Variational Calculus Optimization
+  aliases:
+  - Euler-Lagrange methods
+  - calculus of variations
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0811
+  representation_modes: []
+  source_ids:
+  - 64ab25940d44e96401ad8256567d6a9af398d074
+  claim_ids:
+  - C-64ab2594-1
+  - C-64ab2594-8
+  - C-64ab2594-10
+- concept_id: c15-Two-Stage-Adaptive-Design
+  canonical_term: Two-Stage Adaptive Design
+  aliases:
+  - Adaptive two-stage structure
+  - two-stage trial framework
+  home_anchor: Sequential sampling with interim decision points
+  fidelity_boundary: Allows adaptive modifications to design parameters between stages
+    based on interim results, not just stop/continue decisions
+  epistemic_status: settled
+  salience: 0.0541
+  representation_modes: []
+  source_ids:
+  - 64ab25940d44e96401ad8256567d6a9af398d074
+  - 8137885ca54412cc0e3cf5246a01b4967b3be8e4
+  claim_ids:
+  - C-64ab2594-5
+  - C-8137885c-2
+- concept_id: c16-Adaptive-Treatment-Selection
+  canonical_term: Adaptive Treatment Selection
+  aliases:
+  - Adaptive randomization
+  - response-adaptive designs
+  - dose-finding algorithms
+  home_anchor: Stratified randomization with covariate-dependent allocation
+  fidelity_boundary: Uses accumulated trial efficacy and safety data to adaptively
+    shift allocation; requires prespecified selection criteria and treatment allocation
+    blinding to avoid selection bias
+  epistemic_status: settled
+  salience: 0.1892
+  representation_modes: []
+  source_ids:
+  - 8137885ca54412cc0e3cf5246a01b4967b3be8e4
+  - b42f6bdc4c163fb4259fad0399504ff443c71998
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-b42f6bdc-5
+  - C-b42f6bdc-17
+  - C-c013edc2-4
+  - C-c013edc2-19
+  - C-8137885c-10
+  - C-8137885c-12
+  - C-8137885c-19
+- concept_id: c17-Bayesian-Integration-of-External-Data
+  canonical_term: Bayesian Integration of External Data
+  aliases:
+  - Power priors
+  - hierarchical Bayesian models
+  - precision-weighted data fusion
+  home_anchor: Hierarchical regression pooling data across population substrata
+  fidelity_boundary: Combines external and concurrent internal data within a single
+    trial framework; requires careful prior specification and fractional exponent
+    tuning to prevent Type I error inflation
+  epistemic_status: settled
+  salience: 0.3514
+  representation_modes: []
+  source_ids:
+  - 71047f73f17ae532f5113b463247fc7e3d981aef
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-b2a7a96d-8
+  - C-b2a7a96d-10
+  - C-b2a7a96d-11
+  - C-b2a7a96d-13
+  - C-b2a7a96d-14
+  - C-b2a7a96d-19
+  - C-b2a7a96d-20
+  - C-b2a7a96d-21
+  - C-b2a7a96d-22
+  - C-b2a7a96d-23
+  - C-b2a7a96d-24
+  - C-71047f73-4
+  - C-c013edc2-20
+- concept_id: c18-Prospective-Specification-and-Governance
+  canonical_term: Prospective Specification and Governance
+  aliases:
+  - Prespecified adaptations
+  - blinded interim analysis
+  - protocol amendments
+  home_anchor: Intention-to-treat analysis with pre-registered outcome measures
+  fidelity_boundary: Pre-specifies interim decision rules and maintains treatment
+    allocation blinding during interim analyses, preventing ad hoc protocol modifications
+    while preserving Type I error control
+  epistemic_status: settled
+  salience: 0.2432
+  representation_modes: []
+  source_ids:
+  - b42f6bdc4c163fb4259fad0399504ff443c71998
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-b42f6bdc-7
+  - C-b42f6bdc-9
+  - C-b42f6bdc-10
+  - C-b42f6bdc-11
+  - C-b42f6bdc-15
+  - C-c013edc2-7
+  - C-c013edc2-8
+  - C-c013edc2-22
+  - C-c013edc2-23
+- concept_id: c19-Seamless-Phase-Transition
+  canonical_term: Seamless Phase Transition
+  aliases:
+  - Seamless Phase II/III
+  - integrated phase design
+  home_anchor: Sequential phase transitions with interim efficacy gates
+  fidelity_boundary: Eliminates calendar pauses between phases and uses unified statistical
+    analysis across phases, allowing continuous patient enrollment without phase restart
+  epistemic_status: settled
+  salience: 0.0811
+  representation_modes: []
+  source_ids:
+  - 8137885ca54412cc0e3cf5246a01b4967b3be8e4
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-8137885c-5
+  - C-8137885c-23
+  - C-c013edc2-18
+- concept_id: c20-Historical-Development-and-Implementatio
+  canonical_term: Historical Development and Implementation
+  aliases:
+  - Foundational methodology
+  - textbooks and software
+  - methodological emergence
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.5405
+  representation_modes: []
+  source_ids:
+  - b42f6bdc4c163fb4259fad0399504ff443c71998
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  - c514afefdc920c3b975799524f61353e336a5668
+  - d60e11415860c16c5f129649f8db23c26fea2d6a
+  claim_ids:
+  - C-b42f6bdc-1
+  - C-b42f6bdc-2
+  - C-b42f6bdc-6
+  - C-c514afef-1
+  - C-c514afef-2
+  - C-c514afef-3
+  - C-c514afef-4
+  - C-c514afef-6
+  - C-c514afef-7
+  - C-c514afef-8
+  - C-d60e1141-1
+  - C-d60e1141-2
+  - C-d60e1141-3
+  - C-d60e1141-4
+  - C-d60e1141-5
+  - C-d60e1141-6
+  - C-d60e1141-7
+  - C-d60e1141-8
+  - C-c013edc2-5
+  - C-c013edc2-11
+- concept_id: c21-Dose-Finding-Seamless-Phase-II/III-Trial
+  canonical_term: Dose-Finding Seamless Phase II/III Trial
+  aliases:
+  - Adaptive dose selection trial
+  - once-weekly GLP-1 dose-ranging
+  home_anchor: Phase IIb dose-ranging study with Phase III confirmatory transition
+  fidelity_boundary: Seamlessly integrates both phases without calendar pause and
+    uses adaptive algorithms to select doses based on interim efficacy and safety
+    accumulation within unified enrollment
+  epistemic_status: settled
+  salience: 0.4324
+  representation_modes: []
+  source_ids:
+  - 8137885ca54412cc0e3cf5246a01b4967b3be8e4
+  claim_ids:
+  - C-8137885c-1
+  - C-8137885c-3
+  - C-8137885c-4
+  - C-8137885c-6
+  - C-8137885c-7
+  - C-8137885c-8
+  - C-8137885c-9
+  - C-8137885c-11
+  - C-8137885c-13
+  - C-8137885c-15
+  - C-8137885c-16
+  - C-8137885c-17
+  - C-8137885c-18
+  - C-8137885c-20
+  - C-8137885c-21
+  - C-8137885c-22
+- concept_id: c22-controlled-design
+  canonical_term: controlled design
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - 64ab25940d44e96401ad8256567d6a9af398d074
+  claim_ids:
+  - C-64ab2594-19
+- concept_id: c23-distributed-variables
+  canonical_term: distributed variables
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - 64ab25940d44e96401ad8256567d6a9af398d074
+  claim_ids:
+  - C-64ab2594-4
+- concept_id: c24-functionality-extensions
+  canonical_term: functionality extensions
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - 81f7c6f63320efd84f021e351687ae8a8477b32f
+  claim_ids:
+  - C-81f7c6f6-1
+- concept_id: c25-troubleshooting-recommended
+  canonical_term: troubleshooting recommended
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - 81f7c6f63320efd84f021e351687ae8a8477b32f
+  claim_ids:
+  - C-81f7c6f6-4
+- concept_id: c26-troubleshooting-extensions
+  canonical_term: troubleshooting extensions
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - 81f7c6f63320efd84f021e351687ae8a8477b32f
+  claim_ids:
+  - C-81f7c6f6-5
+- concept_id: c27-attempting-different
+  canonical_term: attempting different
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - 81f7c6f63320efd84f021e351687ae8a8477b32f
+  claim_ids:
+  - C-81f7c6f6-6
+- concept_id: c28-nct01860352-identifier
+  canonical_term: nct01860352 identifier
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-1
+- concept_id: c29-enrollment-occurred
+  canonical_term: enrollment occurred
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-16
+- concept_id: c30-incorporates-variables
+  canonical_term: incorporates variables
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-17
+- concept_id: c31-participants-enrolled
+  canonical_term: participants enrolled
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-2
+- concept_id: c32-analysis-carried
+  canonical_term: analysis carried
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-3
+- concept_id: c33-iterations-decreased
+  canonical_term: iterations decreased
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-4
+- concept_id: c34-approximately-bayesian
+  canonical_term: approximately bayesian
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-5
+- concept_id: c35-participants-required
+  canonical_term: participants required
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-6
+- concept_id: c36-supplement-capsules
+  canonical_term: supplement capsules
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  claim_ids:
+  - C-b2a7a96d-7
+- concept_id: c37-considered-sequential
+  canonical_term: considered sequential
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - b42f6bdc4c163fb4259fad0399504ff443c71998
+  claim_ids:
+  - C-b42f6bdc-4
+- concept_id: c38-dose-finding-model-based
+  canonical_term: dose-finding model-based
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-c013edc2-15
+- concept_id: c39-independent-monitoring
+  canonical_term: independent monitoring
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-c013edc2-21
+- concept_id: c40-model-based-simulations
+  canonical_term: model-based simulations
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  claim_ids:
+  - C-c013edc2-3
+- concept_id: c41-extensions-interfere
+  canonical_term: extensions interfere
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+  claim_ids:
+  - C-c6bbb1fa-1
+- concept_id: c42-content-loading
+  canonical_term: content loading
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+  claim_ids:
+  - C-c6bbb1fa-2
+- concept_id: c43-settings-browser
+  canonical_term: settings browser
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+  claim_ids:
+  - C-c6bbb1fa-3
+- concept_id: c44-functionality-interfere
+  canonical_term: functionality interfere
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+  claim_ids:
+  - C-c6bbb1fa-4
+- concept_id: c45-different-browser
+  canonical_term: different browser
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+  claim_ids:
+  - C-c6bbb1fa-5
+- concept_id: c46-requires-content
+  canonical_term: requires content
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - e97e189a6e844854ac748c47fbc2ce5bfd68be56
+  claim_ids:
+  - C-e97e189a-1
+- concept_id: c47-accessing-requires
+  canonical_term: accessing requires
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - eedc3669dbe6406717c8ae4cf8a5eef35b7d6589
+  claim_ids:
+  - C-eedc3669-1
+- concept_id: c48-enabling-cookies
+  canonical_term: enabling cookies
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - eedc3669dbe6406717c8ae4cf8a5eef35b7d6589
+  claim_ids:
+  - C-eedc3669-2
+- concept_id: c49-extensions-browser
+  canonical_term: extensions browser
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+  claim_ids:
+  - C-f1e4bacf-1
+- concept_id: c50-blockers-content
+  canonical_term: blockers content
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+  claim_ids:
+  - C-f1e4bacf-4
+- concept_id: c51-different-failures
+  canonical_term: different failures
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.027
+  representation_modes: []
+  source_ids:
+  - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+  claim_ids:
+  - C-f1e4bacf-5
+cycle: null
+contested: false

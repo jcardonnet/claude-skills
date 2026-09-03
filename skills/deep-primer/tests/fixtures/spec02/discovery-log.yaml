@@ -1,0 +1,30 @@
+# The cap this campaign ACTUALLY ran under. It recorded 4 (the MAX_WAVES constant) while the wave
+# list defaults to three, so R-DISC-03 read "terminal 'max_waves' but only 3 of 4 waves ran" — a log
+# describing a cap that was never reached. Three waves ran, the cap was three, and it was hit:
+# novel_fraction stayed 1.00 throughout, because the backend does not really search and so every
+# wave looked entirely new. Saturation-gated stopping measures confabulation when retrieval is fake.
+max_waves: 3
+saturation_threshold: 0.15
+waves:
+- wave: A
+  briefs: 6
+  framing_cells: 6
+  leads_total: 107
+  leads_new: 103
+  novel_fraction: 0.9626
+  decision: continue
+- wave: B
+  briefs: 2
+  framing_cells: 2
+  leads_total: 10
+  leads_new: 9
+  novel_fraction: 0.9
+  decision: continue
+- wave: C
+  briefs: 3
+  framing_cells: 3
+  leads_total: 12
+  leads_new: 12
+  novel_fraction: 1.0
+  decision: stop
+terminal: max_waves

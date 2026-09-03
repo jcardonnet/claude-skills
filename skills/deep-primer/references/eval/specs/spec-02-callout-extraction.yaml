@@ -4,10 +4,65 @@ id: spec-02-callout-extraction
 parameters:
   home_domain: ["classical CV", "OCR", "instance segmentation", "SAM family", "document-AI"]
   target_domain: "callout/leader-line reading + exploded-view part segmentation for parts catalogues"
+  # G13: `frontier` — a target with little settled literature, so a larger share of the document
+  # is legitimately synthesis and the composition cap is looser. It does NOT license an
+  # ungrounded spine: this spec's own ledger is 13 home-domain technique papers, so its ledes
+  # and cards are citable and 0/4 verified is a defect under either type. That is the answer
+  # to G13's question — no primer type licenses grounding nothing.
+  primer_type: frontier
   seniority_band: staff_plus
   length_budget: 8000
   outputs: [html, llm_md]
 reference_case: "binary exploded-view drawing, ~80 numbered leader callouts (some repeated), thin/kinked/dotted leaders, hatching, seated/overlapping parts"
+# The first artifact in this repo produced by a REAL grounding run rather than hand-authored prose:
+# sources found by web search, fetched over the network by research/http_fetcher.py, and every quote
+# in the ledger verified verbatim against the fetched body (R-DISC-01) at <=15 words (R-GROUND-01).
+# One candidate quote was rejected at 16 words, which is the cap doing its job rather than a nuisance.
+artifact:
+  ir: tests/fixtures/spec02/document-ir.yaml
+  concept_map: tests/fixtures/spec02/concept-map.yaml
+  ledger: tests/fixtures/spec02/source-ledger.yaml
+  # Judged 2026-08-27 — one of five runs that ended this spec's status as never-critic-judged.
+  # Until now every one of the 35 soft_critic rules was credited from spec-01 alone: 44% of the
+  # registry resting on a single document, which cannot distinguish a rule that discriminates from
+  # a rule that only ever agreed with the one artifact written beside it.
+  #
+  # Regenerate with
+  #   scripts/critics/run_critics.py <ir> --judge claude --model haiku --gating-model sonnet \
+  #     --out <here>
+  # (118 calls, ~$14.31-equivalent — gating rules are judged twice, hence calls > verdicts).
+  # 5 MUST failures. R-ARCH-01 is the front-matter gap shared by all five (below).
+  #
+  # Flake on this run: 3/39 gating verdicts flipped when asked a second time. That figure is
+  # recorded, not gating (the FIRST verdict decides), and it is not a constant of the judge — across
+  # the five runs it tracks document size, from 3/39 here-abouts to 10/65 on spec-05. A flake rate
+  # measured on one artifact does not transfer to another, which is the same argument as this
+  # comment's first paragraph, arrived at from the other direction.
+  #
+  # R-ARCH-01 fails on all five of these specs for one reason, not five: none of their IRs carries
+  # the `front_matter` block that c0c3477 added to spec-01 for exactly this rule. That was
+  # predictable from `grep front_matter` before a single call was made, and it was left unfixed on
+  # purpose — editing an IR moves its digest, and eval then refuses the report beside it as stale.
+  # Fixing the artifacts is the right move; doing it before judging would have meant judging five
+  # documents this session had just rewritten, and doing it after means one re-judge, so batch them.
+  #
+  # The report carries `ir_sha256` of the IR it judged, and eval REFUSES to credit it as coverage
+  # if that no longer matches.
+  critic_report: tests/fixtures/spec02/critic-report.json
+  # The campaign's own audit trail from the same 3-wave run. Wiring these is what lets eval reach
+  # R-DISC-02/03/06 — deterministic rules implemented in Stage B that no spec had ever handed an
+  # artifact, so they sat permanently in the "needs a discovery campaign artifact" bucket and were
+  # counted as an explained gap rather than an unmet one.
+  discovery_log: tests/fixtures/spec02/discovery-log.yaml
+  discovery_leads: tests/fixtures/spec02/discovery-leads.yaml
+  briefs: tests/fixtures/spec02/briefs.yaml
+  # A REAL convergence run over the concept map above, judged by
+  # research/claude_structure_judge.py — not ScriptedStructureJudge, which was the only
+  # implementation in the tree and replays findings it was told in advance. The model was
+  # asked whether the map has a structural problem and said no, so the loop terminated
+  # `coherent` through the documented no-further-finding exit. R-CONV-01 checks that a
+  # valid terminal state was reached; now it checks a real one.
+  convergence_log: tests/fixtures/spec02/convergence-log.yaml
 expect:
   must_pass: [R-ARCH-03, R-CARD-03, R-ART-03, R-ART-04, R-EVID-03, R-PROJ-05]
   watch: [G1_home_equals_target, G2_reference_case_vs_worked_example, G6_user_structure_override]

@@ -1,0 +1,217 @@
+[
+  {
+    "id": "C-C-disconfirm-s1",
+    "url": "https://dl.acm.org/doi/10.1145/3680256.3721316",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Measurements of distributed tracing performance overhead in microservices and serverless",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s2",
+    "url": "https://arxiv.org/pdf/2502.06318",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Tracezip: distributed tracing compression and efficiency analysis",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s3",
+    "url": "https://arxiv.org/pdf/2406.06975",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "TraceMesh: scalable and streaming sampling for distributed traces",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s4",
+    "url": "https://dl.acm.org/doi/pdf/10.1145/3357223.3362736",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Sifter: scalable sampling for distributed traces without feature engineering",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s5",
+    "url": "https://www.usenix.org/system/files/nsdi23-zhang-lei.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Tracing edge cases in distributed systems; infrastructure-level debugging gaps",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s6",
+    "url": "https://arxiv.org/pdf/2411.04605",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Mint: cost-efficient tracing via commonality and variability analysis",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s7",
+    "url": "https://arxiv.org/pdf/2508.11342",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "CrossTrace: span correlation efficiency in distributed tracing",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-disconfirm-s8",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/spe.3317",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Distributed tracing pipeline design and locality awareness",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-disconfirm-s9",
+    "url": "https://link.springer.com/article/10.1007/s10723-021-09551-5",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Automated analysis of distributed tracing: challenges and research directions",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-disconfirm-s10",
+    "url": "https://thenewstack.io/distributed-tracing-sampling-opentelemetry/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Sampling limitations and philosophy of distributed tracing",
+    "fetched_title": "Sampling: the philosopher's stone of distributed tracing - The New Stack",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-disconfirm-s11",
+    "url": "https://www.datadoghq.com/architecture/mastering-distributed-tracing-data-volume-challenges-and-datadogs-approach-to-efficient-sampling/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Data volume challenges and sampling strategies at scale",
+    "fetched_title": "Mastering Distributed Tracing | Datadog",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-disconfirm-s12",
+    "url": "https://hydrolix.io/glossary/cardinality-explosion/",
+    "type": "vendor",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Cardinality explosion root cause and operational impact",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-disconfirm-s13",
+    "url": "https://openobserve.ai/blog/prometheus-data-cardinality/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Cardinality bomb causes and mitigation in observability stacks",
+    "fetched_title": "The Prometheus Cardinality Bomb: Causes, Impact & How to Fix It",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "C-C-disconfirm-s14",
+    "url": "https://chronosphere.io/learn/distributed-tracing-how-to-fix/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Known problems with distributed tracing and architectural solutions",
+    "fetched_title": "Distributing Tracing: How to Fix | Chronosphere",
+    "retrieved_at": "2026-08-20"
+  }
+]

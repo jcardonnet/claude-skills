@@ -1,0 +1,2188 @@
+topic_leads: []
+source_leads:
+- id: sl-A-A1-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/open-telemetry/opentelemetry-specification
+  type: primary_paper
+  supports: []
+  fetched_title: 'GitHub - open-telemetry/opentelemetry-specification: Specifications
+    for OpenTelemetry · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://opentelemetry.io/docs/concepts/signals/
+  type: docs
+  supports: []
+  fetched_title: Signals | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/open-telemetry/opentelemetry-go-instrumentation
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - open-telemetry/opentelemetry-go-instrumentation: OpenTelemetry
+    Auto Instrumentation using eBPF · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://www.cncf.io/landscape/
+  type: docs
+  supports: []
+  fetched_title: landscape | CNCF
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/openzipkin/zipkin
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - openzipkin/zipkin: Zipkin is a distributed tracing system
+    · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://www.jaegertracing.io/docs/2.20/architecture/
+  type: docs
+  supports: []
+  fetched_title: Architecture | Jaeger
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-3
+  support_count: 4
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  - practitioner
+  - source-authority
+  - structure
+  report_ids:
+  - A-A1
+  - A-A2
+  - A-A4
+  - C-C-omission
+  url: https://www.w3.org/TR/trace-context/
+  type: standard
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-A-A1-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/openzipkin/b3-propagation
+  type: standard
+  supports: []
+  fetched_title: 'GitHub - openzipkin/b3-propagation: Repository that describes and
+    sometimes implements B3 propagation · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/open-telemetry/opentelemetry-collector
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - open-telemetry/opentelemetry-collector: OpenTelemetry Collector
+    · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://prometheus.io/docs/introduction/overview/
+  type: docs
+  supports: []
+  fetched_title: Overview | Prometheus
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://grafana.com/products/cloud/grafana/
+  type: docs
+  supports: []
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://github.com/grafana/loki
+  type: docs
+  supports: []
+  fetched_title: 'GitHub - grafana/loki: Like Prometheus, but for logs. · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A1-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - structure
+  report_ids:
+  - A-A1
+  url: https://istio.io/latest/docs/tasks/observability/
+  type: docs
+  supports: []
+  fetched_title: Istio / Observability
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md
+  type: standard
+  supports: []
+  fetched_title: opentelemetry-specification/oteps/trace/0235-sampling-threshold-in-trace-state.md
+    at main · open-telemetry/opentelemetry-specification · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/
+  type: docs
+  supports: []
+  fetched_title: 'TraceState: Probability Sampling | OpenTelemetry'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-specification/issues/2775
+  type: primary_paper
+  supports: []
+  fetched_title: 'Refine which attributes of Resource contribute to Metric Identity.
+    · Issue #2775 · open-telemetry/opentelemetry-specification · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-specification/discussions/3554
+  type: primary_paper
+  supports: []
+  fetched_title: 'Span attributes cardinality · open-telemetry/opentelemetry-specification
+    · Discussion #3554 · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://opentelemetry.io/blog/2026/cardinality-limits-in-opentelemetry/
+  type: blog
+  supports: []
+  fetched_title: 'Metric cardinality limits in OpenTelemetry: a practical guide |
+    OpenTelemetry'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/semantic-conventions/issues/1315
+  type: primary_paper
+  supports: []
+  fetched_title: 'Allow `INTERNAL` GenAI/db spans instead of requiring the kind to
+    be `CLIENT` · Issue #1315 · open-telemetry/semantic-conventions · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-python-contrib/issues/1168
+  type: primary_paper
+  supports: []
+  fetched_title: 'opentelemetry-semantic-conventions causes version conflicts with
+    older instrumentation libraries · Issue #1168 · open-telemetry/opentelemetry-python-contrib
+    · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://last9.io/blog/jaeger-vs-zipkin/
+  type: blog
+  supports: []
+  fetched_title: 'Jaeger vs Zipkin: Which is Right for Your Distributed Tracing |
+    Last9'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.cncf.io/blog/2025/09/01/jaeger-at-10-forged-in-community-reborn-in-opentelemetry/
+  type: blog
+  supports: []
+  fetched_title: 'Jaeger at 10: Forged in Community, Reborn in OpenTelemetry | CNCF'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://signoz.io/blog/jaeger-vs-zipkin/
+  type: blog
+  supports: []
+  fetched_title: 'Jaeger vs Zipkin 2026: Key Differences | SigNoz'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/openzipkin/b3-propagation/blob/master/RATIONALE.md
+  type: standard
+  supports: []
+  fetched_title: b3-propagation/RATIONALE.md at master · openzipkin/b3-propagation
+    · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7457
+  type: primary_paper
+  supports: []
+  fetched_title: 'Zipkin B3 trace context to W3C trace context migration without breaking  ·
+    Issue #7457 · open-telemetry/opentelemetry-java-instrumentation · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://oneuptime.com/blog/post/2026-02-06-head-based-vs-tail-based-sampling-opentelemetry/view
+  type: blog
+  supports: []
+  fetched_title: How to Choose Between Head-Based and Tail-Based Sampling in OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-21
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view
+  type: blog
+  supports: []
+  fetched_title: How to Implement Latency-Based Sampling to Capture Slow Traces
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md
+  type: docs
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 404: Not Found'
+- id: sl-A-A2-23
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md
+  type: docs
+  supports: []
+  fetched_title: opentelemetry-specification/specification/versioning-and-stability.md
+    at main · open-telemetry/opentelemetry-specification · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://last9.io/blog/opentelemetry-vs-datadog/
+  type: blog
+  supports: []
+  fetched_title: 'OpenTelemetry vs. Datadog: Key Differences Explained | Last9'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-25
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://signoz.io/blog/opentelemetry-vs-datadog/
+  type: blog
+  supports: []
+  fetched_title: OpenTelemetry vs Datadog - Choosing the Right Monitoring Tool | SigNoz
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-26
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.systemshardening.com/articles/observability/prometheus-cardinality-dos-defence/
+  type: blog
+  supports: []
+  fetched_title: Defending Prometheus Against High-Cardinality Label Injection and
+    DoS
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/36291
+  type: primary_paper
+  supports: []
+  fetched_title: '[processor/tailsampling] decision_wait time and the lifespan of
+    a trace · Issue #36291 · open-telemetry/opentelemetry-collector-contrib · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17275
+  type: primary_paper
+  supports: []
+  fetched_title: 'How to understand decision_wait of tail_sampling · Issue #17275
+    · open-telemetry/opentelemetry-collector-contrib · GitHub'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.elastic.co/observability-labs/blog/tail-sampling-memory-opentelemetry
+  type: blog
+  supports: []
+  fetched_title: 'OpenTelemetry tail sampling: 65% less memory with disk storage —
+    Elastic Observability Labs'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.michal-drozd.com/en/blog/otel-tail-sampling/
+  type: blog
+  supports: []
+  fetched_title: 'Tail-Based Sampling in OpenTelemetry: Sizing, Memory Crashes and
+    Cost Model | Michal Drozd'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://cribl.io/blog/mastering-tail-sampling-for-opentelemetry-cost-effective-strategies-with-cribl/
+  type: blog
+  supports: []
+  fetched_title: 'Mastering Tail Sampling for OpenTelemetry: Cost-Effective Strategies
+    with Cribl | Cribl'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://www.aquasec.com/blog/300000-prometheus-servers-and-exporters-exposed-to-dos-attacks/
+  type: blog
+  supports: []
+  fetched_title: 300,000+ Prometheus Servers and Exporters Exposed to DoS Attacks
+  retrieved_at: '2026-08-20'
+- id: sl-A-A2-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - debates
+  report_ids:
+  - A-A2
+  url: https://medium.com/@PlanB./prometheus-ecosystem-under-siege-how-336k-servers-became-vulnerable-to-dos-attacks-9f119a7d6e6b
+  type: blog
+  supports: []
+  fetched_title: Medium
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.45.0
+  type: primary_paper
+  supports: []
+  fetched_title: Release Release v1.45.0/v0.67.0/v0.21.0/v0.0.18 · open-telemetry/opentelemetry-go
+    · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.65.0
+  type: primary_paper
+  supports: []
+  fetched_title: Release Version 1.65.0 · open-telemetry/opentelemetry-java · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://opentracing.io/
+  type: docs
+  supports: []
+  fetched_title: The OpenTracing project
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/open-telemetry/opentelemetry-specification/releases
+  type: primary_paper
+  supports: []
+  fetched_title: Releases · open-telemetry/opentelemetry-specification · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://opentelemetry.io/blog/2025/
+  type: blog
+  supports: []
+  fetched_title: 2025 | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://opentelemetry.io/blog/2026/
+  type: blog
+  supports: []
+  fetched_title: 2026 | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/open-telemetry/opentelemetry-kotlin/releases
+  type: primary_paper
+  supports: []
+  fetched_title: Releases · open-telemetry/opentelemetry-kotlin · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://opentelemetry.io/docs/collector/
+  type: docs
+  supports: []
+  fetched_title: Collector | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://w3c.github.io/trace-context/
+  type: standard
+  supports: []
+  fetched_title: Trace Context
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://opentelemetry.io/docs/specs/otel/profiles/
+  type: docs
+  supports: []
+  fetched_title: OpenTelemetry Profiles | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://opentelemetry.io/docs/specs/otel/baggage/
+  type: docs
+  supports: []
+  fetched_title: Baggage | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-19
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  - source-authority
+  report_ids:
+  - A-A3
+  - A-A4
+  url: https://www.jaegertracing.io/docs/
+  type: docs
+  supports: []
+  fetched_title: Documentation | Jaeger
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.10.0
+  type: primary_paper
+  supports: []
+  fetched_title: Release v2.10.0 · open-telemetry/opentelemetry-js · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/open-telemetry/opentelemetry-collector/releases
+  type: primary_paper
+  supports: []
+  fetched_title: Releases · open-telemetry/opentelemetry-collector · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.159.0
+  type: primary_paper
+  supports: []
+  fetched_title: Release v0.159.0 · open-telemetry/opentelemetry-collector-contrib
+    · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/jaegertracing/jaeger/releases/tag/v2.20.0
+  type: primary_paper
+  supports: []
+  fetched_title: Release Release v2.20.0 · jaegertracing/jaeger · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/jaegertracing/jaeger/releases/tag/v2.19.0
+  type: primary_paper
+  supports: []
+  fetched_title: Release Release v2.19.0 · jaegertracing/jaeger · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/grafana/tempo/releases/tag/v3.0.3
+  type: primary_paper
+  supports: []
+  fetched_title: Release v3.0.3 · grafana/tempo · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://github.com/SigNoz/signoz/releases/tag/v0.138.0
+  type: primary_paper
+  supports: []
+  fetched_title: Release v0.138.0 · SigNoz/signoz · GitHub
+  retrieved_at: '2026-08-20'
+- id: sl-A-A3-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - recency-frontier
+  report_ids:
+  - A-A3
+  url: https://opencensus.io/
+  type: docs
+  supports: []
+  fetched_title: OpenCensus
+  retrieved_at: '2026-08-20'
+- id: sl-A-A4-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/
+  type: primary_paper
+  supports: []
+  fetched_title: Dapper, a Large-Scale Distributed Systems Tracing Infrastructure
+  retrieved_at: '2026-08-20'
+- id: sl-A-A4-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://opentelemetry.io/docs/specs/otel/protocol/
+  type: standard
+  supports: []
+  fetched_title: OpenTelemetry Protocol | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A4-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://zipkin.io/
+  type: docs
+  supports: []
+  fetched_title: OpenZipkin · A distributed tracing system
+  retrieved_at: '2026-08-20'
+- id: sl-A-A4-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://opentelemetry.io/docs/specs/otel/overview/
+  type: standard
+  supports: []
+  fetched_title: Overview | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A4-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://www.cncf.io/blog/
+  type: blog
+  supports: []
+  fetched_title: 'Category: Blog | CNCF'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A4-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - source-authority
+  report_ids:
+  - A-A4
+  url: https://grafana.com/docs/tempo/latest/
+  type: docs
+  supports: []
+  fetched_title: Grafana Tempo | Grafana Tempo documentation
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://oneuptime.com/
+  type: blog
+  supports: []
+  fetched_title: OneUptime | Open-Source Observability & Incident Management
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.honeycomb.io/author/charity
+  type: vendor
+  supports: []
+  fetched_title: Charity Majors - CTO at Honeycomb
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-11
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - practitioner
+  report_ids:
+  - A-A6
+  - C-C-omission
+  url: https://www.grepr.ai/blog/the-hidden-cost-in-observability
+  type: blog
+  supports: []
+  fetched_title: How to Cut Observability Costs Without Losing Visibility | Grepr
+    Blog
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.elastic.co/blog/2026-observability-trends-costs-business-impact
+  type: vendor
+  supports: []
+  fetched_title: 'Observability trends for 2026: Maturity, cost control, and driving
+    business value | Elastic Blog'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.polarsignals.com/blog/posts/2024/08/13/parca-opentelemetry-bright-future
+  type: blog
+  supports: []
+  fetched_title: Parca + OpenTelemetry = Bright Future | Polar Signals
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.parca.dev/
+  type: docs
+  supports: []
+  fetched_title: Parca - Open Source infrastructure-wide continuous profiling
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://uptrace.dev/tools/continuous-profiling-tools
+  type: blog
+  supports: []
+  fetched_title: 7 Continuous Profiling Tools to Boost Your Performance Insights |
+    Uptrace
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  - C-C-disconfirm
+  url: https://chronosphere.io/learn/distributed-tracing-how-to-fix/
+  type: blog
+  supports: []
+  fetched_title: 'Distributing Tracing: How to Fix | Chronosphere'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-17
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - theorist
+  report_ids:
+  - A-A6
+  - B-B-dive
+  - C-C-disconfirm
+  url: https://www.datadoghq.com/architecture/mastering-distributed-tracing-data-volume-challenges-and-datadogs-approach-to-efficient-sampling/
+  type: vendor
+  supports: []
+  fetched_title: Mastering Distributed Tracing | Datadog
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-18
+  support_count: 2
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - practitioner
+  report_ids:
+  - A-A6
+  - C-C-omission
+  url: https://last9.io/blog/challenges-of-distributed-tracing/
+  type: blog
+  supports: []
+  fetched_title: 'Distributed Tracing 101: Definition, Working and Implementation
+    | Last9'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://martinuke0.github.io/posts/2026-05-30-mastering-opentelemetry-context-propagation-implementation-header-standards-and-distributed-trace-continuity-across-microservices/
+  type: blog
+  supports: []
+  fetched_title: 'Mastering OpenTelemetry Context Propagation: Implementation, Header
+    Standards, and Distributed Trace Continuity across Microservices | martinuke0''s
+    Blog'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://coroot.com/blog/opentelemetry-for-go-measuring-the-overhead/
+  type: blog
+  supports: []
+  fetched_title: 'OpenTelemetry for Go: measuring the overhead | Coroot Blog'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://opentelemetry.io/blog/2023/perf-testing/
+  type: docs
+  supports: []
+  fetched_title: OTel component performance benchmarks | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://coralogix.com/guides/observability/distributed-tracing/
+  type: docs
+  supports: []
+  fetched_title: 'Distributed Tracing: Concepts, Pros/Cons & Best Practices [2025
+    Guide] - Coralogix'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://thenewstack.io/what-you-need-know-about-distributed-tracing-and-sampling/
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 404: Not Found'
+- id: sl-A-A6-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  - C-C-disconfirm
+  url: https://thenewstack.io/distributed-tracing-sampling-opentelemetry/
+  type: blog
+  supports: []
+  fetched_title: 'Sampling: the philosopher''s stone of distributed tracing - The
+    New Stack'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch01.html
+  type: standard
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-A-A6-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://arxiv.org/html/2406.06975
+  type: primary_paper
+  supports: []
+  fetched_title: 'TraceMesh: Scalable and Streaming Sampling for Distributed Traces'
+  retrieved_at: '2026-08-20'
+- id: sl-A-A6-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - A-A6
+  url: https://charity.spicytakes.org/
+  type: blog
+  supports: []
+  fetched_title: Charity Majors - Observability, engineering management, and the engineer-manager
+    pendulum
+  retrieved_at: '2026-08-20'
+- id: sl-B-B-dive-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/html/2604.16810
+  type: primary_paper
+  supports: []
+  fetched_title: 'Gleaner: A Semantically-Rich and Efficient Online Sampler for Microservice
+    Diagnostics'
+  retrieved_at: '2026-08-20'
+- id: sl-B-B-dive-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2509.26336
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://www.dash0.com/knowledge/w3c-trace-context-traceparent-tracestate
+  type: docs
+  supports: []
+  fetched_title: 'W3C Trace Context Explained: Traceparent & Tracestate · Dash0'
+  retrieved_at: '2026-08-20'
+- id: sl-B-B-dive-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://www.cncf.io/blog/2024/11/12/jaeger-v2-released-opentelemetry-in-the-core/
+  type: docs
+  supports: []
+  fetched_title: 'Jaeger v2 released: OpenTelemetry in the core! | CNCF'
+  retrieved_at: '2026-08-20'
+- id: sl-B-B-dive-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://oneuptime.com/blog/post/2026-02-06-propagate-trace-context-message-queues/view
+  type: blog
+  supports: []
+  fetched_title: How to Propagate Trace Context Across Message Queues (Kafka, RabbitMQ,
+    SQS)
+  retrieved_at: '2026-08-20'
+- id: sl-B-B-dive-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://logz.io/learn/sampling-in-distributed-tracing-guide/
+  type: blog
+  supports: []
+  fetched_title: The Complete Guide to Sampling in Distributed Tracing | Logz.io
+  retrieved_at: '2026-08-20'
+- id: sl-B-B-dive-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://www.groundcover.com/guides/what-is-sampling-in-observability
+  type: blog
+  supports: []
+  fetched_title: What Is Sampling in Observability and Why It's a Problem
+  retrieved_at: '2026-08-20'
+- id: sl-B-B-dive-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2202.05769
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-3
+  support_count: 2
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - theorist
+  report_ids:
+  - B-B-dive
+  - C-C-disconfirm
+  url: https://www.usenix.org/system/files/nsdi23-zhang-lei.pdf
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-4
+  support_count: 2
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - theorist
+  report_ids:
+  - B-B-dive
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2406.06975
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-5
+  support_count: 2
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  - theorist
+  report_ids:
+  - B-B-dive
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2411.04605
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://dl.acm.org/doi/pdf/10.1145/3729351
+  type: primary_paper
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-B-B-dive-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2405.15645
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://arxiv.org/pdf/2107.07703
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-B-B-dive-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - theorist
+  report_ids:
+  - B-B-dive
+  url: https://opentelemetry.io/docs/concepts/sampling/
+  type: docs
+  supports: []
+  fetched_title: Sampling | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-disconfirm-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://dl.acm.org/doi/10.1145/3680256.3721316
+  type: primary_paper
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-C-C-disconfirm-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2502.06318
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://hydrolix.io/glossary/cardinality-explosion/
+  type: vendor
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-C-C-disconfirm-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://openobserve.ai/blog/prometheus-data-cardinality/
+  type: vendor
+  supports: []
+  fetched_title: 'The Prometheus Cardinality Bomb: Causes, Impact & How to Fix It'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-disconfirm-3
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://dl.acm.org/doi/pdf/10.1145/3357223.3362736
+  type: primary_paper
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-C-C-disconfirm-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://arxiv.org/pdf/2508.11342
+  type: primary_paper
+  supports: []
+  dropped_reason: non-textual content-type 'application/pdf'
+- id: sl-C-C-disconfirm-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://onlinelibrary.wiley.com/doi/full/10.1002/spe.3317
+  type: primary_paper
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-C-C-disconfirm-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - contrarian-seed
+  report_ids:
+  - C-C-disconfirm
+  url: https://link.springer.com/article/10.1007/s10723-021-09551-5
+  type: primary_paper
+  supports: []
+  fetched_title: Client Challenge
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-0
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.apica.io/blog/what-is-distributed-tracing-how-it-works-and-best-practices/
+  type: vendor
+  supports: []
+  fetched_title: 'Distributed Tracing Guide 2026: How It Works & Best Practices |
+    Apica'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-1
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://opentelemetry.io/docs/concepts/observability-primer/
+  type: docs
+  supports: []
+  fetched_title: Observability primer | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-10
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://opentelemetry.io/blog/2025/go-auto-instrumentation-beta/
+  type: blog
+  supports: []
+  fetched_title: Announcing the Beta Release of OpenTelemetry Go Auto-Instrumentation
+    using eBPF | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-11
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://metoro.io/blog/top-ebpf-observability-tools
+  type: blog
+  supports: []
+  fetched_title: Top 8 eBPF Observability Tools in 2026
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-12
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://dev.to/linou518/ebpf-in-2026-the-kernel-revolution-powering-cloud-native-security-and-observability-22jd
+  type: blog
+  supports: []
+  fetched_title: 'eBPF in 2026: The Kernel Revolution Powering Cloud-Native Security
+    and Observability - DEV Community'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-13
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-02-10-ebpf-with-opentelemetry-auto-instrumentation/view
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 404: Not Found'
+- id: sl-C-C-omission-14
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://thenewstack.io/trace-based-testing-for-a-distributed-world/
+  type: blog
+  supports: []
+  fetched_title: Trace-Based Testing for a Distributed World - The New Stack
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-15
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-01-30-trace-based-testing-details/view
+  type: blog
+  supports: []
+  fetched_title: How to Create Trace-Based Testing Details
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-16
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-02-06-trace-based-testing-tracetest-opentelemetry-cicd/view
+  type: blog
+  supports: []
+  fetched_title: How to Set Up Trace-Based Testing with Tracetest
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-17
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-02-02-distributed-tracing-context-propagation/view
+  type: blog
+  supports: []
+  fetched_title: How to Implement Distributed Tracing Context Propagation
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-18
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-02-06-baggage-pass-business-context-across-service-boundaries/view
+  type: blog
+  supports: []
+  fetched_title: How to Use Baggage to Pass Business Context Across Service Boundaries
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-19
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-02-06-otel-baggage-cross-cutting/view
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 404: Not Found'
+- id: sl-C-C-omission-2
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://uptrace.dev/comparisons/observability-tools-pricing
+  type: docs
+  supports: []
+  fetched_title: Observability Tools Pricing Comparison [2026] | Uptrace
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-20
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://codelit.io/blog/distributed-tracing-context-propagation
+  type: blog
+  supports: []
+  fetched_title: Trace Context Propagation — W3C Headers, B3, Baggage, and Cross-Service
+    Correlation | Codelit.io
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-22
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.w3.org/TR/baggage/
+  type: standard
+  supports: []
+  dropped_reason: disallowed by robots.txt
+- id: sl-C-C-omission-23
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://stackgen.com/blog/top-10-managed-open-source-observability-solutions-2026
+  type: blog
+  supports: []
+  fetched_title: Top 10 Managed Open-Source Observability Solutions in 2026
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-24
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://sreschool.com/blog/sidecar/
+  type: blog
+  supports: []
+  fetched_title: What is Sidecar? Meaning, Architecture, Examples, Use Cases, and
+    How to Measure It (2026 Guide) - SRE School
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-25
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.sysdesai.com/learn/deployment-operations/sidecar-observability
+  type: blog
+  supports: []
+  fetched_title: Sidecar for Observability — Deployment & Operations Patterns | SysDesAi
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-26
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://fusion-reactor.com/blog/the-challenges-of-implementing-distributed-tracing-in-legacy-systems/
+  type: blog
+  supports: []
+  fetched_title: 'Implementing Distributed Tracing: Challenges and Strategies - FusionReactor
+    Observability & APM'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-27
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://medium.com/@platform.engineers/distributed-tracing-for-monoliths-gaining-visibility-into-application-behavior-4745cae566cc
+  type: blog
+  supports: []
+  fetched_title: Medium
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-29
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://openobserve.ai/blog/logs-traces-metrics-correlation/
+  type: blog
+  supports: []
+  fetched_title: 'Logs Traces Metrics Correlation: A Practical Guide for SREs'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-30
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.atatus.com/blog/logging-traces-metrics-observability/
+  type: blog
+  supports: []
+  fetched_title: 'Logs vs Metrics vs Traces: The Complete Observability Guide [2026]'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-31
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://openobserve.ai/blog/full-stack-observability-logs-metrics-traces/
+  type: blog
+  supports: []
+  fetched_title: 'Full-Stack Observability: Connecting Logs, Metrics, and Traces'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-32
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.dynatrace.com/news/blog/correlating-logs-and-traces-with-observability/
+  type: vendor
+  supports: []
+  fetched_title: Correlating logs and traces with full-stack observability
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-33
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://docs.datadoghq.com/serverless/aws_lambda/distributed_tracing/
+  type: docs
+  supports: []
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-34
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://buildfastwith.ai/ai-serverless-edge-computing
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 522: <none>'
+- id: sl-C-C-omission-35
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://aws.amazon.com/lambda/edge/
+  type: docs
+  supports: []
+  fetched_title: Edge Computing| CDN, Global Serverless Code, Distribution | AWS Lambda@Edge
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-36
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://opentelemetry.io/docs/zero-code/obi/
+  type: docs
+  supports: []
+  fetched_title: OpenTelemetry eBPF Instrumentation | OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-37
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-02-06-w3c-baggage-propagation-opentelemetry/view
+  type: blog
+  supports: []
+  fetched_title: How to Configure W3C Baggage Propagation in OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-38
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://docs.solace.com/Features/Distributed-Tracing/Distributed-Tracing-Context-Propagation.htm
+  type: docs
+  supports: []
+  fetched_title: Context Propagation for Distributed Tracing
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-4
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://monitoringcost.com/observability-cost-as-percent-of-cloud
+  type: vendor
+  supports: []
+  fetched_title: 'Observability Cost as % of Cloud Spend: 7-12% Median (2026) | MonitoringCost.com'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-5
+  support_count: 1
+  novelty: null
+  salience: null
+  status: dropped
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://medium.com/@alokrahuldevops/day-107-sampling-strategies-in-opentelemetry-what-they-are-why-they-matter-and-why-ai-311ee7e9676a
+  type: blog
+  supports: []
+  dropped_reason: 'HTTPError: HTTP Error 403: Forbidden'
+- id: sl-C-C-omission-6
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://opentelemetry.io/blog/2022/tail-sampling/
+  type: blog
+  supports: []
+  fetched_title: 'Tail Sampling with OpenTelemetry: Why it’s useful, how to do it,
+    and what to consider | OpenTelemetry'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-7
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://oneuptime.com/blog/post/2026-01-25-tail-based-sampling-opentelemetry/view
+  type: blog
+  supports: []
+  fetched_title: How to Implement Tail-Based Sampling in OpenTelemetry
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-8
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://secureprivacy.ai/blog/gdpr-compliance-2026
+  type: blog
+  supports: []
+  fetched_title: 'GDPR Compliance in 2026: The Complete Guide | Secure Privacy Blog'
+  retrieved_at: '2026-08-20'
+- id: sl-C-C-omission-9
+  support_count: 1
+  novelty: null
+  salience: null
+  status: accepted
+  provenance_origin: discovered
+  surfaced_by:
+  - practitioner
+  report_ids:
+  - C-C-omission
+  url: https://www.tjc-group.com/blogs/data-privacy-in-2026-how-gdpr-compliance-landscape-is-evolving/
+  type: blog
+  supports: []
+  fetched_title: 'Data privacy in 2026: How GDPR compliance landscape is evolving
+    - TJC Group'
+  retrieved_at: '2026-08-20'

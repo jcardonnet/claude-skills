@@ -1,0 +1,449 @@
+[
+  {
+    "id": "A-A1-s1",
+    "url": "https://arxiv.org/abs/1603.09320",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "HNSW foundational paper defining hierarchical navigable small worlds",
+    "fetched_title": "[1603.09320] Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s2",
+    "url": "https://github.com/NGT-labs/NGT",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "NGT v2.4.0 official repo with quantization and distance metrics",
+    "requested_url": "https://github.com/yahoojapan/ngt",
+    "fetched_title": "GitHub - NGT-labs/NGT: Nearest Neighbor Search with Neighborhood Graph and Tree for High-dimensional Data \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s3",
+    "url": "https://github.com/nmslib/hnswlib",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "hnswlib v0.9.0 reference HNSW implementation, header-only C++",
+    "fetched_title": "GitHub - nmslib/hnswlib: Header-only C++/python library for fast approximate nearest neighbors \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s4",
+    "url": "https://ieeexplore.ieee.org/document/5432202/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Product Quantization foundational paper (J\u00e9gou et al. 2010)",
+    "dropped_reason": "fetched but empty after text extraction"
+  },
+  {
+    "id": "A-A1-s5",
+    "url": "https://github.com/facebookresearch/faiss",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Faiss v1.13.0 official repository with IVF, PQ, HNSW indices",
+    "fetched_title": "GitHub - facebookresearch/faiss: A library for efficient similarity search and clustering of dense vectors. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s6",
+    "url": "https://arxiv.org/abs/2401.08281",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Faiss library paper (Douze et al., v4 Oct 2025 revision)",
+    "fetched_title": "[2401.08281] The Faiss library",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s7",
+    "url": "https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Meta AI engineering blog on Faiss design and deployment",
+    "fetched_title": "Faiss: A library for efficient similarity search - Engineering at Meta",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s8",
+    "url": "https://github.com/spotify/annoy",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Annoy random projection forest implementation, now legacy",
+    "fetched_title": "GitHub - spotify/annoy: Approximate Nearest Neighbors in C++/Python optimized for memory usage and loading/saving to disk \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s9",
+    "url": "https://pypi.org/project/annoy/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Annoy PyPI package and usage documentation",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s10",
+    "url": "https://github.com/google-research/google-research/tree/master/scann",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ScaNN v1.4.0 hybrid quantization approach by Google Research",
+    "fetched_title": "google-research/scann at master \u00b7 google-research/google-research \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s11",
+    "url": "https://arxiv.org/abs/2102.08942",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "LSH survey covering algorithm taxonomy and modern extensions",
+    "fetched_title": "[2102.08942] A Survey on Locality Sensitive Hashing Algorithms and their Applications",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s12",
+    "url": "http://infolab.stanford.edu/~bawa/Pub/similarity.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "LSH Forest paper (Bawa et al.) with O(1) query complexity",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s13",
+    "url": "https://github.com/pgvector/pgvector",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "pgvector 0.8.0 PostgreSQL extension supporting HNSW and IVF",
+    "fetched_title": "GitHub - pgvector/pgvector: Open-source vector similarity search for Postgres \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s14",
+    "url": "https://redis.io/blog/vector-search-database-news-2026-guide/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Redis Stack vector search with HNSW default and FLAT exact mode",
+    "fetched_title": "Vector Search Database: News & 2026 Guide",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s15",
+    "url": "https://weaviate.io/blog/vector-search-explained",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Weaviate HNSW implementation with ACORN filtered search",
+    "fetched_title": "Vector Search Explained | Weaviate",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s16",
+    "url": "https://milvus.io/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Milvus vector data management with multi-algorithm support",
+    "dropped_reason": "HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nMoved Temporarily"
+  },
+  {
+    "id": "A-A1-s17",
+    "url": "https://github.com/qdrant/qdrant",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Qdrant v1.16+ with GPU acceleration and quantization variants",
+    "fetched_title": "GitHub - qdrant/qdrant: Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/ \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s18",
+    "url": "https://www.emergentmind.com/topics/chromadb",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ChromaDB HNSW implementation with parameter documentation",
+    "fetched_title": "ChromaDB: Scalable Vector Database",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s19",
+    "url": "https://www.pinecone.io/blog/hnsw-not-enough/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Pinecone clarification: proprietary slab-based selection, not HNSW",
+    "fetched_title": "Great Algorithms Are Not Enough | Pinecone",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s20",
+    "url": "https://papers.nips.cc/paper_files/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "DiskANN NeurIPS 2019 paper on SSD-based billion-scale search",
+    "requested_url": "https://papers.nips.cc/paper/9527-rand-nsg-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node",
+    "fetched_title": "DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s21",
+    "url": "https://www.microsoft.com/en-us/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "DiskANN official Microsoft Research publication page",
+    "fetched_title": "DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node - Microsoft Research",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s22",
+    "url": "https://engineering.atspotify.com/2023/10/introducing-voyager-spotifys-new-nearest-neighbor-search-library",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Voyager 2023: HNSW-based successor to Spotify's Annoy",
+    "fetched_title": "Introducing Voyager: Spotify\u2019s New Nearest-Neighbor Search Library | Spotify Engineering",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s23",
+    "url": "https://ann-benchmarks.com/index.html",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ANN-Benchmarks live benchmark: 37 algorithms, 10 datasets, 4 metrics",
+    "requested_url": "https://ann-benchmarks.com/",
+    "fetched_title": "ANN-Benchmarks",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s24",
+    "url": "https://github.com/erikbern/ann-benchmarks",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ANN-Benchmarks open source repository and dataset links",
+    "fetched_title": "GitHub - erikbern/ann-benchmarks: Benchmarks of approximate nearest neighbor libraries in Python \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s25",
+    "url": "https://arxiv.org/abs/1807.05614",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ANN-Benchmarks paper (Aum\u00fcller et al. 2018, Information Systems vol 87)",
+    "fetched_title": "[1807.05614] ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s26",
+    "url": "https://dl.acm.org/doi/10.14778/3476249.3476255",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Wang et al. VLDB 2021: comprehensive graph-based ANN survey 13 algorithms",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A1-s27",
+    "url": "https://aws.amazon.com/blogs/big-data/cost-optimized-vector-database-introduction-to-amazon-opensearch-service-quantization-techniques/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "AWS: OpenSearch quantization techniques (scalar, product, binary)",
+    "fetched_title": "Cost Optimized Vector Database: Introduction to Amazon OpenSearch Service quantization techniques | AWS Big Data Blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s28",
+    "url": "https://opensearch.org/blog/opensearch-project-roadmap-2024-2025/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "OpenSearch 2024-2025 roadmap: disk optimization, quantization roadmap",
+    "fetched_title": "OpenSearch Project Roadmap 2024\u20132025 - OpenSearch",
+    "retrieved_at": "2026-08-21"
+  }
+]

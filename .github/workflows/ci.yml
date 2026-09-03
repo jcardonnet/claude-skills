@@ -2,7 +2,34 @@ name: skills-ci
 on: { push: {}, pull_request: {} }
 
 jobs:
+  # Which skills did this change touch? Everything below runs only for those, so a one-skill PR
+  # does not pay for the whole monorepo. Repo-level files (tools/, pyproject, the workflow itself)
+  # count as touching every skill, since they can break any of them.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      deep-primer: ${{ steps.filter.outputs.deep-primer }}
+      shared: ${{ steps.filter.outputs.shared }}
+    steps:
+      - uses: actions/checkout@v4
+      # SHA-pinned (Sonar S7637): a third-party action referenced by moving tag can be repointed at
+      # new code without the ref changing. v3 = 0e4a8c6.
+      - uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3
+        id: filter
+        with:
+          filters: |
+            deep-primer:
+              - 'skills/deep-primer/**'
+            shared:
+              - 'tools/**'
+              - 'shared/**'
+              - 'pyproject.toml'
+              - 'Makefile'
+              - '.github/workflows/ci.yml'
+
   build-validate-bundle:
+    needs: changes
+    if: needs.changes.outputs.deep-primer == 'true' || needs.changes.outputs.shared == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,11 +53,45 @@ jobs:
             exit 1
           fi
 
+      # spaCy + a model, so R-PROSE-01's NATIVE entity-grid path actually runs here. Without one it
+      # silently degrades to the warn-only fallback, and that fallback was the only thing CI had
+      # ever exercised — the native path's failures were invisible everywhere. Installing it locally
+      # immediately surfaced 5, of which 3 were defects in the check itself (pronominal subjects
+      # counted as new entities, `sent.root` returning a verb, Toulmin labels wrecking the parse)
+      # and 2 were real given→new breaks in the reference fixture.
+      # Deliberately NOT the `[nlp]` extra: that pulls fastcoref -> torch (~GBs) for a coref feature
+      # that is off by default. spaCy plus en_core_web_md is ~50MB and is what the lint needs.
+      - name: spaCy model (exercise the native prose path)
+        run: |
+          pip install 'spacy>=3.8.15'
+          python -m spacy download en_core_web_md
+
       # --- structural validation + unit tests --------------------------------
-      - name: validate skills
-        run: python tools/validate_skill.py skills/*
+      - name: validate skills (incl. lockstep idempotence)
+        run: python tools/validate_skill.py --check-build skills/*
       - name: unit tests
-        run: pytest -q
+        run: python -m pytest -q
+
+      # --- enforcement gate ---------------------------------------------------
+      # A registry rule with no dispatched implementation reports `skip`, which is NOT blocking —
+      # so the lint report reads clean while the rule goes unenforced. Six MUST rules were dark
+      # that way before Stage A. --strict makes an unenforced MUST an error.
+      - name: no unenforced MUST rules
+        run: |
+          python skills/deep-primer/scripts/lint.py \
+            skills/deep-primer/tests/fixtures/document-ir.full.yaml \
+            --concept-map skills/deep-primer/tests/fixtures/concept-map.full.yaml \
+            --ledger skills/deep-primer/tests/fixtures/source-ledger.full.yaml \
+            --strict --out lint-report.json
+
+      # --- eval harness -------------------------------------------------------
+      # --strict is the coverage ratchet. `enforcement_coverage` had been reported since Prompt 7,
+      # but nothing ever failed on it — a rule could go dark without turning anything red, the same
+      # hole as the lint gate above, one tier up. It caught R-PROJ-04 on its first run.
+      - name: eval (coverage ratchet)
+        run: python skills/deep-primer/scripts/eval.py --strict --out eval-report.json
+      - uses: actions/upload-artifact@v4
+        with: { name: eval-report, path: eval-report.json, if-no-files-found: warn }
 
       # --- bundle smoke test --------------------------------------------------
       # Every skill must emit a self-contained, structurally-valid bundle (no shared/
@@ -39,6 +100,3 @@ jobs:
         run: python tools/bundle.py skills/* --out dist/ --zip
       - uses: actions/upload-artifact@v4
         with: { name: skill-bundles, path: dist/*.zip, if-no-files-found: ignore }
-
-# TODO (Prompt 8): add dorny/paths-filter so build/validate/eval run only for CHANGED
-# skills on large PRs, and add `python skills/<skill>/scripts/eval.py` once Prompt 7 lands.

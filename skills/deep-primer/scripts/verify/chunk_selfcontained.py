@@ -13,27 +13,31 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ir.schema import ConceptMap, DocumentIR, SourceLedger  # noqa: E402
-from render.render_llm_md import deanaphorize, kept_blocks  # noqa: E402
-from verify._entailment import Entailment, resolve_backend  # noqa: E402
-
-_LEAD_ANAPHOR = re.compile(r"^(this|that|these|those|it|they|such)\b", re.IGNORECASE)
-_CROSSREF = re.compile(
-    r"\((?:see|cf\.?)[^)]*\)"
-    r"|\bas (?:shown|seen|noted|described|discussed|mentioned) (?:above|below|earlier|later|previously)\b"
-    r"|\bsee (?:above|below|figure\s+\d+|section\s+[\w.]+)\b",
-    re.IGNORECASE,
+from render.render_llm_md import (  # noqa: E402
+    _ANAPHOR_LEAD,
+    _CROSSREF,
+    _referent_map,
+    distilled_segments,
+    kept_blocks,
 )
+from verify._entailment import Entailment, resolve_backend  # noqa: E402
 
 
 def has_dangling_anaphora(text: str) -> bool:
-    return bool(_LEAD_ANAPHOR.match(text.strip())) or bool(_CROSSREF.search(text))
+    """The producer's own patterns, imported rather than restated.
+
+    This module used to keep a `_LEAD_ANAPHOR` / `_CROSSREF` pair of its own, written to match
+    `render_llm_md`'s. A verifier that re-declares the producer's definition stops verifying it the
+    moment either side is edited, and R-PROJ-04 is precisely the claim that `deanaphorize` left
+    nothing dangling — which requires both to agree on what dangling means.
+    """
+    return bool(_ANAPHOR_LEAD.match(text.strip())) or bool(_CROSSREF.search(text))
 
 
 def _claim_text(ledger: SourceLedger | None) -> dict[str, str]:
@@ -49,14 +53,19 @@ def verify(
     backend: Entailment | None = None,
 ) -> dict:
     backend = backend or resolve_backend("auto")
-    referents = {c.concept_id: c.canonical_term for c in concept_map.concepts} if concept_map else {}
+    referents = _referent_map(concept_map)
     claims = _claim_text(ledger)
 
     verdicts: list[dict] = []
     for sec, b in kept_blocks(ir):
-        referent = referents.get(b.concept or sec.concept or "") or sec.title.split(",")[0]
-        chunk = deanaphorize(b.caption if b.role.value == "figure" else (b.text or ""), referent)
-        dangling = has_dangling_anaphora(chunk)
+        # What the projection ACTUALLY emits for this block, from the projection itself. Re-deriving
+        # it here as `b.text or ""` verified a string render_llm_md never produced: empty for every
+        # card and contested block, and un-de-anaphorized for figures.
+        segments = distilled_segments(sec, b, referents)
+        chunk = "\n".join(segments)
+        # Per segment, not on the join: `_ANAPHOR_LEAD` is anchored at `^`, so a card whose `idea`
+        # opens "This bounds recall" hides behind the `Claim:` label of the line before it.
+        dangling = any(has_dangling_anaphora(s) for s in segments)
         resolvable = [cid for cid in b.claim_ids if cid in claims]
         entails = all(backend.supports(chunk, claims[cid]) for cid in resolvable) if resolvable else True
         verdicts.append({
@@ -75,6 +84,11 @@ def verify(
         "blocking": bool(bad),
         "verdicts": verdicts,
         "failures": [v["block_id"] for v in bad],
+        # Reported separately because the two halves have different standing. Dangling anaphora is a
+        # deterministic regex verdict and means the same thing on every backend; entailment is only
+        # meaningful on a real one, since the lexical proxy scores word overlap against a paraphrase.
+        # A caller that gates on the whole verdict either gates on the proxy or gates on nothing.
+        "dangling_failures": [v["block_id"] for v in verdicts if v["dangling_anaphora"]],
     }
 
 

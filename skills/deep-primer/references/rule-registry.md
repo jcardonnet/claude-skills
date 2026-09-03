@@ -22,6 +22,8 @@ The generalization layer — set once per primer; rules reference these.
 - **`target_domain`** (str) — The primer's subject (the adjacent domain being bridged into).
 - **`seniority_band`** (enum) *(values: early_career, mid_senior, staff_plus)* — Scales expertise-reversal suppression. staff_plus = maximal scaffolding suppression; early_career = one opt-in worked example per core concept permitted.
 - **`length_budget`** (str|int) — Target length. Drives depth allocation via the ledger-salience proxy (claim-frequency / centrality-in-claims), since V1 has no concept graph.
+- **`user_structure`** (list[str]|null) — OPTIONAL. An explicit section structure supplied by the user. Authoritative for top-level coverage and order (R-ARCH-07); each section declares the entry it realizes via `maps_to`, so headings stay predictive claims rather than copied labels. The concept-map still drives depth within sections.
+- **`reference_case`** (str|null) — OPTIONAL. A single concrete artifact every claim is grounded against (R-EXPERT-03). A contrastive anchor, not a worked example — R-EXPERT-01 suppresses procedural walkthroughs, never the reference case.
 
 ## Circuit-breaker & calibration defaults
 
@@ -49,7 +51,7 @@ The highest-leverage generation-time MUSTs the generator holds in context. Mecha
 - **R-MV-01** — Multi-view per core concept
 - **R-PROSE-01** — Given-new information flow
 - **R-PROSE-02** — Trade-offs as word-choice
-- **R-EXPERT-01** — No worked examples in the primary layer
+- **R-EXPERT-01** — No procedural walkthroughs in the primary layer
 - **R-VOCAB-01** — Terminology univocity
 - **R-RECALL-02** — Generation-based, calibrated recall
 - **R-ART-03** — Toulmin recommendation blocks
@@ -61,7 +63,7 @@ The highest-leverage generation-time MUSTs the generator holds in context. Mecha
 ## Rules by category
 
 - [PARAM — Parameters & calibration](#param) (2)
-- [ARCH — Document architecture](#arch) (5)
+- [ARCH — Document architecture](#arch) (6)
 - [SCENT — Headings as information scent](#scent) (2)
 - [CARD — The at-a-glance card](#card) (3)
 - [SUMM — Fractal summary discipline](#summ) (4)
@@ -69,13 +71,13 @@ The highest-leverage generation-time MUSTs the generator holds in context. Mecha
 - [MV — Multi-view (cognitive flexibility)](#mv) (1)
 - [PROSE — Prose & tone](#prose) (6)
 - [VOCAB — Vocabulary & univocity](#vocab) (2)
-- [EXPERT — Expertise reversal](#expert) (2)
+- [EXPERT — Expertise reversal](#expert) (3)
 - [RECALL — Retrieval practice](#recall) (2)
 - [ART — Operational artifacts](#art) (6)
 - [EVID — Empirical claims & epistemic honesty](#evid) (3)
 - [GROUND — Anti-hallucination / citation grounding](#ground) (5)
 - [FIG — Figures & diagrams](#fig) (5)
-- [XREF — Cross-domain mapping & cross-referencing](#xref) (3)
+- [XREF — Cross-domain mapping & cross-referencing](#xref) (4)
 - [PROJ — IR-first & projections](#proj) (6)
 - [DISC — Discovery campaign (recall augmentation)](#disc) (6)
 - [CONV — Convergence guard (escalate loop)](#conv) (2)
@@ -140,6 +142,14 @@ Total length stays within length_budget; allocate depth by ledger-salience — h
 - **Counters:** LLM ignores the length budget and pads every section to similar length regardless of salience.
 - **Phase:** 2,3,7 · **Evidence:** styleguide §6; EM Part I §2 (minimalism)
 - **Params:** length_budget
+
+#### R-ARCH-07 — User-specified structure is authoritative
+`MUST` · `hard_lint` · *engineering*  
+When the user supplies an explicit section structure, it governs the top-level outline: every entry is realized by exactly one section, in the given order, and no top-level section is invented outside it. Headings may still be rewritten as predictive claims (R-SCENT-01) provided each section declares which entry it realizes via `maps_to`. The concept-map continues to drive depth WITHIN those sections.  
+- **Check (hard lint):** `checks/structure_coverage.py::user_structure_respected` — when parameters.user_structure is set: every entry claimed by exactly one section via maps_to, order preserved, no unmapped top-level section
+- **Counters:** The derived outline quietly replaces the structure the user asked for, or the structure is honored only by copying the user's labels verbatim (which then collide with R-SCENT-01).
+- **Phase:** 2,3,7 · **Evidence:** dry-run gap G6
+- **Params:** user_structure
 
 <a id='scent'></a>
 
@@ -333,14 +343,23 @@ Give failure modes, patterns, and tiers short evocative names and reuse them as 
 
 ### EXPERT — Expertise reversal
 
-#### R-EXPERT-01 — No worked examples in the primary layer
+#### R-EXPERT-01 — No procedural walkthroughs in the primary layer
 `MUST` · `soft_critic` · *load_bearing_empirical* · **CORE**  
-For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step worked examples; worked examples appear only behind opt-in deeper layers, scaled by seniority_band.  
-- **Check (critic · expertise-calibration pass):** “Is the primary layer free of step-by-step worked examples (above early_career), using contrast instead? y/n”
+For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step PROCEDURAL walkthroughs ('first do X, then do Y'); such walkthroughs appear only behind opt-in deeper layers, scaled by seniority_band. This does NOT suppress a running reference case (R-EXPERT-03): grounding a claim against a shared concrete artifact is contrastive evidence, not scaffolding.  
+- **Check (critic · expertise-calibration pass):** “Is the primary layer free of step-by-step procedural walkthroughs (above early_career), using contrast instead? y/n”
 - **PASS looks like:** The API is the same three calls as any datastore; the only new part is query-by-vector — taught by contrast, no install-step walkthrough.
 - **Counters:** LLM defaults to tutorial-style scaffolding (its training distribution).
-- **Phase:** 3,4,7 · **Evidence:** EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003
+- **Phase:** 3,4,7 · **Evidence:** EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003; dry-run gap G2 (narrowed to procedural)
 - **Params:** seniority_band
+
+#### R-EXPERT-03 — Running reference case
+`SHOULD` · `soft_critic` · *convergent_craft*  
+When a reference_case is supplied, ground claims against that one shared concrete artifact throughout, and name it where a claim is checked against it. A reference case is a contrastive anchor, not a worked example: it shows what a claim predicts about a real artifact rather than walking the reader through a procedure. Never suppress it as scaffolding (R-EXPERT-01).  
+- **Check (critic · expertise-calibration pass):** “When a reference_case is supplied, are claims grounded against it as a contrastive anchor rather than replaced by a procedural walkthrough? y/n”
+- **PASS looks like:** 'On the reference drawing, 12 of ~80 callouts have kinked leaders — which is where the straight-ray heuristic loses attribution' — the claim is checked against the shared artifact, no step-by-step.
+- **Counters:** Expertise-reversal suppression over-fires and strips the concrete grounding the reader needs to check a claim.
+- **Phase:** 3,4,7 · **Evidence:** dry-run gap G2; EM Part II §7 (CFT — multiple concrete cases for advanced learners)
+- **Params:** reference_case, seniority_band
 
 #### R-EXPERT-02 — Scaffolding behind explicit gates
 `SHOULD` · `soft_critic` · *load_bearing_empirical*  
@@ -545,6 +564,16 @@ Every internal cross-reference resolves; nav and TOC are in sync with headings; 
 - **Counters:** LLM emits broken refs and phantom 'see Figure X' pointers.
 - **Phase:** 7 · **Evidence:** styleguide §11,§14; deep-primer Phase 4 self-check
 
+#### R-XREF-04 — Anchor resolution when home ~= target
+`MUST` · `soft_critic` · *convergent_craft*  
+When home_domain and target_domain are the same or overlapping, resolve home_anchor to the nearest ADJACENT technique or sub-field the reader already owns - never to the concept itself. The bridge-builder perspective becomes prior-art transfer: which neighbouring method does this borrow from, and where does the borrowing break? An anchor that restates the concept in its own terms is degenerate and fires no advance organizer.  
+- **Check (critic · structure pass):** “Is each card's home_anchor a genuinely adjacent technique the reader already owns, rather than a restatement of the concept itself? y/n”
+- **PASS looks like:** For a reader who already does instance segmentation, the anchor for leader-line following is ray casting in graphics - an adjacent technique - not 'segmentation', which is the concept restated.
+- **Also (hard):** `checks/univocity_terms.py::home_anchor_distinct`
+- **Counters:** With home ~= target the bridge metaphor degenerates into 'X is like X', and the card's advance-organizer effect never fires.
+- **Phase:** 1,2,3 · **Evidence:** dry-run gap G1; EM Part I §1 (organizers fire only by activating PRIOR knowledge); Gentner structure-mapping
+- **Params:** home_domain, target_domain
+
 #### R-XREF-03 — Edges realized as cross-references
 `SHOULD` · `soft_critic` · *convergent_craft*  
 Important concept-map relations are realized as cross-references in prose, so the document reads as a navigable web.  
@@ -611,9 +640,9 @@ Discovery output enters the pipeline only as leads: an accepted topic-lead becom
 
 #### R-DISC-02 — Framing diversity per wave
 `MUST` · `hard_lint` · *convergent_craft*  
-Each discovery wave runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), with >=1 deliberately orthogonal framing (contrarian / adjacent-field) per wave; inter-run novelty is measured and redundant archetypes pruned.  
-- **Check (hard lint):** `checks/discovery.py::framing_diversity` — each wave's brief manifest covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal
-- **Counters:** Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost.
+The BREADTH wave (A) runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), including >=1 deliberately orthogonal framing (contrarian / adjacent-field). Later waves are targeted follow-ups and carry no floor, but every wave's briefs must occupy DISTINCT cells; inter-run novelty is measured and redundant archetypes pruned.  
+- **Check (hard lint):** `checks/discovery.py::framing_diversity` — wave A covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal; every wave's briefs occupy distinct cells
+- **Counters:** Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost. Scoped to wave A (G10): forcing the floor onto a narrow follow-up wave would manufacture exactly that padding.
 - **Phase:** 1 · **Evidence:** design (diversity is the lever; blind-spot decorrelation)
 
 #### R-DISC-03 — Saturation-gated termination

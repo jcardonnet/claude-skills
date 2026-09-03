@@ -1,0 +1,63 @@
+# Concept-map for spec-05-clinical-trial-design.
+#
+# THE THREE CONCEPTS ARE GROUNDED, and one of them was RENAMED to say what the sources actually
+# support. This map previously led with `alpha-spending` / "alpha spending function". The 2026-08-21
+# campaign retrieved 131 documents on adaptive trial design and not one of them discusses an alpha
+# spending function, O'Brien-Fleming or Lan-DeMets boundaries. What the corpus does carry, in
+# depth, is the modern generalisation of the same accounting: the CONDITIONAL ERROR FUNCTION, which
+# states the maximum type I error still reachable given whatever the interim data turned out to be.
+# Renaming the concept is the grounding; keeping the old name and citing conditional-error claims
+# underneath it would have been precisely the failure GAPS.md G17 describes, one level up.
+#
+# Each concept is realized in >=3 distinct modes across the IR so R-MV-01 passes, and each
+# home_anchor names an ADJACENT technique the applied statistician already owns rather than the
+# concept restated (R-XREF-04). Every source_id and claim_id below resolves into
+# tests/fixtures/spec05/source-ledger.yaml, and every one of that ledger's 34 claims is mapped to
+# exactly one concept here.
+concepts:
+  - concept_id: conditional-error-function
+    canonical_term: "conditional error function"
+    aliases: ["CEF", "critical value function"]
+    home_anchor: "a multiple-comparison budget split across contrasts declared before the data"
+    fidelity_boundary: "breaks because the split is not fixed in advance — the function reports only how much error a given interim outcome leaves behind, and the second stage is designed after seeing it"
+    epistemic_status: settled
+    salience: 0.9
+    representation_modes:
+      - {mode: mental_model, block_ref: card-cef}
+      - {mode: tradeoff, block_ref: matrix-cef}
+      - {mode: cost, block_ref: toulmin-cef}
+      - {mode: architecture, block_ref: fig-cef}
+      - {mode: failure, block_ref: body-cef-pre}
+    source_ids: [b42f6bdc4c163fb4259fad0399504ff443c71998, 64ab25940d44e96401ad8256567d6a9af398d074, 52e7543fccd0f1ec2aca26ca9f7834481c851371, c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb, 71047f73f17ae532f5113b463247fc7e3d981aef, 5426dd096a626a9b4e81a8571e3c36738b087bdd]
+    claim_ids: [C-b42f6bdc-4, C-b42f6bdc-10, C-b42f6bdc-11, C-b42f6bdc-12, C-b42f6bdc-15, C-b42f6bdc-19, C-b42f6bdc-23, C-64ab2594-3, C-64ab2594-10, C-64ab2594-13, C-64ab2594-19, C-52e7543f-6, C-52e7543f-7, C-c013edc2-7, C-c013edc2-23, C-71047f73-2, C-5426dd09-9]
+
+  - concept_id: sample-size-reestimation
+    canonical_term: "sample-size re-estimation"
+    aliases: ["SSR"]
+    home_anchor: "a power calculation redone on a pilot's variance estimate"
+    fidelity_boundary: "breaks because the pilot data are this trial's own data, so the estimate feeds back into the test that will be reported"
+    epistemic_status: contested
+    salience: 0.75
+    representation_modes:
+      - {mode: mental_model, block_ref: card-ssr}
+      - {mode: tradeoff, block_ref: toulmin-ssr}
+      - {mode: failure, block_ref: failures-ssr}
+      - {mode: benchmark, block_ref: fig-ssr}
+      - {mode: architecture, block_ref: body-ssr}
+    source_ids: [07c9a42632db2304755b95778286b7bef2a0a5d4, e000d90cf92d65ce0d3f2a9066c1d615ff4ed907, b42f6bdc4c163fb4259fad0399504ff443c71998, 64ab25940d44e96401ad8256567d6a9af398d074]
+    claim_ids: [C-07c9a426-1, C-07c9a426-2, C-07c9a426-3, C-e000d90c-2, C-e000d90c-4, C-e000d90c-7, C-b42f6bdc-8, C-b42f6bdc-9, C-64ab2594-8, C-64ab2594-12]
+
+  - concept_id: futility-boundary
+    canonical_term: "futility boundary"
+    aliases: ["nonbinding stop"]
+    home_anchor: "the acceptance region of a sequential probability ratio test"
+    fidelity_boundary: "breaks because crossing the region is advisory here, so a charter and a committee decide rather than the arithmetic"
+    epistemic_status: contested
+    salience: 0.55
+    representation_modes:
+      - {mode: mental_model, block_ref: card-futility}
+      - {mode: tradeoff, block_ref: aid-futility}
+      - {mode: failure, block_ref: body-futility}
+      - {mode: cost, block_ref: body-futility-limits}
+    source_ids: [8137885ca54412cc0e3cf5246a01b4967b3be8e4, c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb, 5426dd096a626a9b4e81a8571e3c36738b087bdd, 3667249d034630906a64cb3915053ab7ce22ec69]
+    claim_ids: [C-8137885c-6, C-8137885c-20, C-c013edc2-21, C-5426dd09-12, C-5426dd09-15, C-3667249d-9, C-3667249d-20]

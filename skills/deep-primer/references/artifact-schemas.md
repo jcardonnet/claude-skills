@@ -93,7 +93,9 @@ concepts:
   - concept_id: "hnsw"
     canonical_term: "HNSW"
     aliases: ["hierarchical navigable small world"]   # only these surface forms allowed (univocity)
-    home_anchor: "<the home-domain analogue>"
+    home_anchor: "<the home-domain analogue>"   # when home ~= target, the nearest ADJACENT
+                                                # technique/sub-field, never the concept restated
+                                                # (R-XREF-04)
     fidelity_boundary: "<where the analogy breaks>"
     epistemic_status: settled                          # settled | contested | speculative
     salience: 0.82                                     # centrality-in-claims proxy; drives depth
@@ -151,20 +153,98 @@ Under IR-first, Phase 3 emits a structured **document IR**, not HTML. Lints, cri
 ```yaml
 # document-ir.yaml (canonical)
 meta: {parameters, ledger_snapshot, model_versions, generated_at}
-sections:
+front_matter:                              # prose BEFORE the first h2 — belongs to no section
+  - {block_id: scope-and-decisions, role: body, text: "..."}
+sections:                                  # h2
   - block_id: sec-maskfree
     title: "Pixel masks are usually wasted work for BOM linkage"
     concept: mask-free-linkage
+    maps_to: "Segmentation approaches"     # only when the user supplied a structure (R-ARCH-07)
     blocks:
       - {block_id: lede-maskfree,   role: lede,    text: "...", claim_ids: [C1], provenance: inferred}
-      - {block_id: card-maskfree,   role: card,    text: "...", concept: mask-free-linkage, mode: mental_model, claim_ids: [C1]}
+      - block_id: card-maskfree                    # role=card carries TYPED rows (R-CARD-02)
+        role: card
+        concept: mask-free-linkage
+        mode: mental_model
+        claim_ids: [C1, C7]
+        rows: {idea: "...", home_anchor: "...", whats_new_vs_renamed: "...",
+               reach_for_when: "...", skip_when: "...", key_exemplar: "...", confidence: "..."}
+        row_claims: {idea: [C1], key_exemplar: [C7]}   # OPTIONAL — which claim supports which row
       - {block_id: rec-maskfree,    role: toulmin, text: "...", claim_ids: [C1,C7], provenance: verified, source_ids: ["<...>"]}
+      - {block_id: mtx-maskfree,    role: matrix,  artifact_kind: decision_matrix, text: "..."}
       - {block_id: fig-maskfree,    role: figure,  mode: tradeoff, caption: "Figure 3: ...", svg_ref: "assets/..."}
-      - {block_id: recall-maskfree, role: recall,  text: "..."}        # pedagogical → dropped in llm_md
+      - block_id: recall-maskfree                  # pedagogical → dropped whole in llm_md
+        role: recall
+        items:                                     # exactly 3 (R-RECALL-01); >=1 cross_domain (R-RECALL-02)
+          - {question: "...", answer: "...", cross_domain: true, claim_ids: [C1]}
+          - {question: "...", answer: "..."}
+          - {question: "...", answer: "..."}
+```
+
+### Per-unit citation attribution (optional)
+`claim_ids` on a block says WHICH claims it cites and never WHAT FOR, so the verifier tested every
+claim against every claim-bearing row: a general quote cited for a specific claim could be credited
+through a row it has nothing to do with. That is the over-citation `eval-rubric.yaml` records on
+spec-01, and the metric meant to catch it could not see it.
+
+Three optional fields say what for — `row_claims` on a card, `claim_ids` on a recall item, and
+`claim_ids` on a contested framing. Each must be a **subset of the block's `claim_ids`**, which
+stays the authoritative citation list (it is what the HTML projection prints and what R-GROUND-01
+resolves against the ledger). A block that declares nothing keeps the every-claim-against-every-row
+behaviour, so adding attribution re-scores no existing artifact; a claim attributed to no unit at
+all is scored as decorative, which is what it is.
+
+```yaml
+    subsections:                           # h3 — each carries exactly ONE `summary` block (the sub-sum)
+      - block_id: sub-leaders
+        title: "Leader geometry resolves attribution where pixels cannot"
+        concept: leader-anchoring
+        blocks:
+          - {block_id: subsum-leaders, role: summary, text: "..."}          # the 1:1 sub-sum
+          - {block_id: body-leaders,   role: body, text: "...", heading: "An h4 label"}
 ```
 `role ∈ {lede, card, summary, body, toulmin, matrix, figure, recall, glossary, further_reading, contested}`;
-`provenance ∈ {verified, inferred, unverified}` (the G4 axis; surfaced inline in both projections, `R-PROJ-05`).
-Lints run on this structure — no brittle HTML parsing.
+`provenance ∈ {verified, inferred, unverified}` (the G4 axis; surfaced inline in both projections, `R-PROJ-05`);
+`artifact_kind ∈ {decision_matrix, checklist, failure_catalog, decision_aid}` — the four operational
+artifacts, kept distinct (`R-ART-01`).
+
+**`maps_to` and user-supplied structure.** When `parameters.user_structure` is set it governs the
+top-level outline (`R-ARCH-07`): every entry is realized by exactly one section, in order. The
+mapping is declared rather than inferred from headings, because copying the user's labels verbatim
+would collide with `R-SCENT-01` — so the heading stays a predictive claim and `maps_to` records
+which entry it realizes. The concept-map still drives depth *within* each section.
+
+**`front_matter` — the opening that belongs to no section.** `R-ARCH-01` (MUST) requires the primer
+to open on a scope-and-decisions contract: who it is for, what is in and out of scope, and which
+editorial decisions shaped it. That prose precedes the first h2, so it is not section content — and
+it cannot be modelled as one. `R-CONSIST-01` requires *every* section to carry a lede, a card and a
+recall block, and a scope contract has no business carrying any of them; a seventh section would
+either fail that rule or pad the document with apparatus nobody asked for. Nor can it live in `meta`,
+which is parameters rather than prose: prose parked there renders to the page while every prose lint
+walks `sections` and never sees it — a MUST rule the artifact could satisfy on the page and fail in
+the IR at the same time.
+
+So the IR carries a top-level `front_matter: list[Block]`. `flatten_blocks()` yields it first, which
+is what puts it in front of every lint, both renderers and the critics without each of them
+learning about it. Consumers that reason about *placement* rather than content do have to handle it:
+`render_html` emits it as a `<header class="front-matter">` (never a `<section>`, or nav and the
+depth-fold would pick it up), the LLM-MD projection carries it with a `None` section referent, the
+judge's outline skips it, and `length_budget` spends its words against the budget while keeping them
+out of the section-uniformity statistic — a scope opening is *expected* to be shorter than a
+section, and folding it in would read as salience.
+
+**Three levels, and why h4 is not one of them.** h2 is a `section`, h3 a `subsection`; **h4 is a
+`heading` attribute on a body block, never a container**. `R-ARCH-05` requires h4 to stay out of
+nav/TOC, and modelling it as an attribute makes that structural rather than checked — the renderer
+builds nav from containers, so an h4 cannot leak in.
+
+Role-scoped fields (`rows` on card, `items` on recall, `artifact_kind` on matrix, `framings` on
+contested) are structural invariants enforced by `validate_ir`. Their *presence* requirements — a
+card must carry all seven rows, a section exactly three recall items, a document all four artifacts —
+are registry rules enforced by `scripts/lint.py`, where blocking derives from priority.
+
+Lints run on this structure — no brittle HTML parsing. `DocumentIR.flatten_blocks()` recurses into
+subsections, so every consumer (lints, both renderers, verify, critics) sees subsection content.
 
 ## Projections — one IR, two renderings
 Both artifacts are pure functions of the IR and **share block_ids** (`R-PROJ-02`), so a claim cited as `[block: rec-maskfree]` resolves in either.
@@ -212,6 +292,27 @@ terminal_decision: render-contested
 ```
 `c_k` = structural distance between the cycle K-1 and K concept-maps; `rho` = c_k / c_(k-1); `tau` = the rising escalate threshold at that cycle. Regimes: `converged` (rho<0.5 or maps collapse to one cluster → footnote residual), `contested` (rho≥~0.7, 2–3 stable clusters → render them), `chaotic` (>3 clusters → scope/diversity flag), `coherent` (loop exited with no structural finding).
 
+`decision ∈ {draft, deepen, escalate, stop}`. Only `escalate` opens a new cycle; `deepen` refines
+in place and is separately bounded by `MAX_DIVES`, without which a run of sub-tau findings would
+never escalate and never end. The final entry is always `stop`.
+
+**What the edit weights apply to.** The registry fixes the weights; the V1 concept-map has no
+explicit relation graph, so `research/convergence.py` fixes what they measure:
+
+| Weight | Charged when |
+|---|---|
+| `concept_split_merge` (4) | a concept in one map has no counterpart in the other |
+| `edge_add_remove` (2) | a claim present in both maps moved between concepts |
+| `leaf_add_remove` (1) | a claim entered or left the map entirely |
+| `home_anchor_or_framing` (6) | a matched concept's anchor or epistemic status changed |
+| `section_add_remove_reorder` (4) | the salience ordering of the *matched* concepts changed |
+| `alias_rename` (0) | term/alias changes on an otherwise identical concept |
+
+Concepts are matched **across cycles by claim-set overlap**, never by `concept_id` or term:
+curation regenerates ids and may rename a concept, and a rename is cosmetic while a claim
+regrouping is structural — so identity has to follow the evidence, not the label. Ordering is
+compared over matched concepts only, so a split is not charged twice.
+
 **`contested-structure`** — an IR block (`role: contested`) emitted when `terminal_regime == contested`; renders via the conflict/tradeoff modes (`R-MV`, Toulmin rebuttal).
 ```yaml
 - block_id: contested-structure
@@ -247,11 +348,19 @@ instructions:                     # standing, on every brief
 ```yaml
 topic_leads:
   - {id: tl-07, concept: "late-interaction reranking", why: "...", surfaced_by: [structure, source-authority],
-     support_count: 2, novelty: 0.8, salience: high, status: accepted, provenance_origin: discovered}  # new plan question; =user for directive-seeded topics
+     support_count: 2, novelty: 0.8, salience: high, status: accepted, provenance_origin: discovered,
+     report_ids: [a-3f9c1b2e]}   # new plan question; =user for directive-seeded topics
 source_leads:
-  - {id: sl-12, url: "...", type: primary, supports: [tl-07], support_count: 3, status: accepted, provenance_origin: discovered}  # -> fetch candidate
+  - {id: sl-12, url: "...", type: primary, supports: [tl-07], support_count: 3, status: accepted,
+     provenance_origin: discovered, report_ids: [a-3f9c1b2e]}   # -> fetch candidate
 # status in {accepted, flagged, dropped}; flagged = high-salience singleton (rare-gem-vs-noise -> you/judge)
+# report_ids: the frozen discovery-snapshot/report-<id>.md each lead came from (R-DISC-05).
+# support_count counts DISTINCT FRAMINGS, not mentions — five briefs sharing one framing are one
+# blind spot, not five confirmations, so they must not inflate a lead's support.
 ```
+**Lead identity.** Source leads are matched by normalized URL (scheme/`www.`/trailing-slash
+insensitive); topic leads by text similarity. Fuzzy-matching URLs would collapse two papers on one
+host into a single lead, understating novelty and stopping the campaign early.
 
 **`discovery-log.yaml`** — per-wave audit + saturation trail.
 ```yaml

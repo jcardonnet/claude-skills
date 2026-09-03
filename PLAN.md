@@ -1,0 +1,372 @@
+# PLAN.md — implementing the pending deep-primer work
+
+Refines and re-sequences the remainder of `CLAUDE_CODE_PROMPTS.md`. It **inserts a new Stage A
+(“Prompt 2b”)** that the original prompt list does not contain, then runs Prompts 6a → 6 → 6b → 7 → 8.
+Standing rules still apply: **lockstep** (edit `rule-registry.yaml`, run `bash tools/build.sh`, never
+hand-edit generated files) and **IR-first** (lints and critics read the IR; HTML and LLM-MD are
+projections). Paths are relative to `skills/deep-primer/` unless noted.
+
+---
+
+## Context — why this plan exists
+
+The repo state is ahead of its own documentation: Prompts 0–5 and most of Prompt 8 are implemented
+(81 tests pass, `make build` is idempotent, `bundle.py` is real), while `CLAUDE.md` and `README.md`
+still describe `scripts/` as stubs.
+
+More consequentially, **Prompt 2's lint layer is only partly wired.** Running the linter against the
+fixture IR shows nine checks reporting `skip` — six of them MUST — plus a tenth that is never
+dispatched at all:
+
+```
+$ python scripts/lint.py tests/fixtures/document-ir.yaml \
+      --concept-map tests/fixtures/concept-map.yaml --ledger tests/fixtures/source-ledger.yaml
+BLOCKING — fail=2 warn=3 pass=9 skip=9
+```
+
+| Rule | Priority | Check ref | Why it doesn't run |
+|---|---|---|---|
+| `R-PARAM-01` | MUST | `structure_coverage.py::params_present` | not implemented |
+| `R-ARCH-05` | MUST | `structure_coverage.py::heading_hierarchy` | IR has no subsection level |
+| `R-CARD-02` | MUST | `structure_coverage.py::card_rows` | card is free text, no typed rows |
+| `R-RECALL-01` | MUST | `structure_coverage.py::recall_count` | recall is one block, not three items |
+| `R-ART-01` | MUST | `structure_coverage.py::operational_artifacts` | no artifact typing on blocks |
+| `R-GROUND-01` | MUST | `citation_quality.py::resolves_to_ledger` | implemented, but not wired into a pass |
+| `R-SUMM-02` | SHOULD | `structure_coverage.py::summary_budgets` | needs h3 ↔ sub-sum pairing |
+| `R-DEPTH-02` | SHOULD | `parse_primer.py::depth_dial_present` | not implemented; mis-tagged as `input: ir` |
+| `R-FIG-04` | SHOULD | `parse_primer.py::figure_a11y` | not implemented; mis-tagged as `input: ir` |
+| `R-SCENT-01` | MUST | `structure_coverage.py::banned_heading_terms` | `also_hard_lint` companions are never dispatched |
+
+Two root causes, not ten:
+
+1. **The V1 IR under-models the field-guide layer the registry assumes.** `Section.blocks` is a flat
+   list — there is no h3 subsection, no typed card row, no three-item recall, no distinction among the
+   four operational artifacts. `structure_coverage.py`'s docstring defers these to "Prompt 4 or a later
+   IR extension"; Prompt 4 shipped without picking them up, so the deferral has no owner.
+2. **Nothing dispatches non-IR checks.** `lint.py::_ir_hard` correctly scopes the IR pass (per
+   `RECONCILE.md`), but the ten rules tagged `input: html | projections | llm_md | ledger |
+   discovery-log | convergence-log | snapshot` have no runner, and `also_hard_lint` companions are
+   documented in `lint.py`'s docstring but absent from its code.
+
+The failure mode is silent: `skip` is not blocking, so `lint-report.json` reads clean while roughly a
+third of the structural contract goes unenforced. Everything downstream — Prompt 7's threshold
+calibration, critic-vs-human divergence, the delivered quality card — consumes that report. Calibrating
+against it today would calibrate against a hole.
+
+**Intended outcome.** Every registry rule either runs or is *visibly* unenforceable; the research arc
+(the primer's quality ceiling, never yet exercised) is implemented and testable offline; the eval
+harness scores a spec end-to-end with real numbers behind the TODO thresholds; and CI cannot let this
+class of silent gap recur.
+
+## Decisions taken
+
+| Decision | Choice |
+|---|---|
+| Structural lint gap | **Extend the IR** — keeps IR-first intact; lints never parse HTML |
+| Open GAPS.md items | **Apply G2 only** (reference-case affordance). G1 and G6 stay open |
+| Live research runs | **Build against frozen fixtures**; the live spec-01 campaign is Stage G, triggered separately |
+| Scope | **Everything remaining, dependency-ordered** |
+
+---
+
+## Stage A — Prompt 2b: close the IR ↔ registry structural gap — **DONE**
+
+The prerequisite for every later stage, because Prompt 7 calibrates against the lint report.
+
+**Outcome:** the IR pass dispatches 20 checks with **zero skips** (was 9 skips / 6 unenforced MUSTs);
+`document-ir.full.yaml` lints `fail=0 warn=0 skip=0`. Two extras surfaced during the work and were
+fixed: the template named its own placeholders *with braces* inside its header comment, so
+`str.replace` injected a second copy of the whole document into that comment (harmless to the DOM —
+BeautifulSoup ignores comment content — but it doubled file size and would corrupt the page if any
+content contained `-->`); and `render_llm_md.kept_blocks` iterated `sec.blocks`, which would have
+dropped every subsection block from the MD projection and broken R-PROJ-02 alignment the moment
+subsections existed.
+
+### A1 · Extend the IR (`scripts/ir/schema.py`)
+
+```python
+class CardRows(BaseModel):            # R-CARD-02's seven required rows
+    idea: str
+    home_anchor: str                  # R-XREF-01 — the analogue leads
+    whats_new_vs_renamed: str
+    reach_for_when: str
+    skip_when: str                    # R-CARD-03
+    key_exemplar: str
+    confidence: str
+
+class RecallItem(BaseModel):
+    question: str
+    answer: str
+    cross_domain: bool = False        # R-RECALL-02 wants >= 1 per section
+
+ArtifactKind = Literal["decision_matrix", "checklist", "failure_catalog", "decision_aid"]
+
+class Subsection(BaseModel):          # h3
+    block_id: str
+    title: str
+    concept: str | None = None
+    blocks: list[Block] = []
+
+# Block gains: rows (role=card) · items (role=recall) · artifact_kind (role=matrix)
+#              heading (an h4 label on a body block)
+# Section gains: subsections: list[Subsection] = []
+```
+
+Two deliberate modelling calls:
+
+- **h4 is a `Block.heading` attribute, not a container.** `R-ARCH-05` requires h4 to be absent from
+  nav/TOC; modelling it as a block attribute makes that invariant structural rather than checked.
+- **Recall is one block carrying three `items`,** not three blocks — block-ids stay stable and the
+  `llm_md` role filter still drops the whole thing in one move.
+
+`flatten_blocks()` and `all_block_ids()` must recurse into subsections. **This is the widest blast
+radius in the plan** — lints, both renderers, `check_alignment`, `verify/*`, and `run_critics` all call
+them. Keep the method signatures and return contracts identical so no caller changes.
+
+New `validate_ir` invariants: `role=card ⇒ rows`; `role=recall ⇒ len(items) == 3`; `artifact_kind` only
+on `role=matrix`; block-id uniqueness across the nested tree.
+
+### A2 · Renderers follow the IR
+
+- `render/render_html.py` — emit `<h3>` per subsection; `<dl>` card rows (finishes the
+  `assets/card-template.html` stub); three `<details>` from `items`; `data-artifact-kind`. Nav/TOC
+  builds from h2 + h3 only.
+- `render/render_llm_md.py` — card distillation reads `rows` (drop the advance-organizer hook per
+  `R-PROJ-03`, keep the anchor where it carries information); recall still dropped whole;
+  `artifact_kind` surfaces in the block header.
+- `utils/parse_primer.py` — read nested block-ids back; add `depth_dial_present` and `figure_a11y`.
+- Update the golden-file tests and `tests/fixtures/document-ir.yaml`.
+
+### A3 · Implement the missing checks
+
+In `checks/structure_coverage.py`: `params_present`, `heading_hierarchy`, `card_rows`,
+`summary_budgets`, `recall_count`, `operational_artifacts`, `banned_heading_terms`; and extend
+`layer_coverage` to enforce the h3 ↔ sub-sum 1:1 clause it currently defers. A `summary` block *inside*
+a `Subsection` is the sub-sum, which unifies the `R-SUMM-02` and `R-CONSIST-01` clauses into one check.
+
+Registry edits (then `build.sh`): retag `R-DEPTH-02` and `R-FIG-04` as `input: html`.
+
+### A4 · Registry-driven pass runner + strict mode
+
+New `scripts/run_checks.py` (or `lint.py --pass`), dispatching by `check.input`: `ir`, `html`,
+`projections`, `llm_md`, `ledger`, `discovery-log`, `convergence-log`, `snapshot`. It also dispatches
+`also_hard_lint` companions **regardless of the parent rule's enforcement** (`R-SCENT-01` is
+`soft_critic`, which is why its companion is invisible today).
+
+Add a `coverage` block to `lint-report.json` — `rules_total / ran / skipped` — and a **`--strict` mode
+where a `skip` on a MUST rule is an error**. Wire `--strict` into CI. This is the regression guard for
+exactly the bug this stage fixes.
+
+### A5 · Apply G2 (registry + lockstep)
+
+Narrow `R-EXPERT-01` to *procedural* walkthroughs and add the running **reference-case** affordance, so
+"ground every claim against the reference drawing" is not suppressed as a worked example. Add
+`reference_case` to the registry `parameters` block — `spec-02` already carries the key. Regenerate via
+`build.sh`, confirm idempotent, mark G2 **RESOLVED** in `GAPS.md`.
+
+### A6 · Fix the documentation drift
+
+Rule count is **76**, not 61 (`SKILL.md`) or 67 (`CLAUDE.md`, `README.md`). Refresh `README.md`'s Status
+section and `SKILL.md`'s `[Claude Code phase]` markers. `SKILL.md` says "four parameters" but lists six
+— `params_present` requires the four registry-defined ones and treats `outputs` / `seed_sources` as
+optional.
+
+**Verify A:** `pytest` green · `scripts/lint.py <fixture> --strict` reports zero MUST skips ·
+`make build` idempotent · `validate_skill.py` clean · render goldens + `check_alignment` pass.
+
+---
+
+## Stage B — Prompt 6a: discovery campaign — **DONE**
+
+**Outcome:** the cascade runs end-to-end offline against a frozen snapshot and saturates
+deterministically (wave A: 27 novel of 60 → continue; wave B: 2 of 18 → below threshold → stop).
+The R-DISC-04 split holds: `wave_briefs` guarantees the R-DISC-02 diversity invariant *in code*
+(a model asked to "be diverse" reliably produces cosmetically-different briefs sharing a blind
+spot), and stopping is decided by the saturation metric, never by a model's opinion that it has
+found enough. Two design corrections during the work: source leads are matched by **normalized
+URL** rather than text similarity (fuzzy-matching collapsed two papers on one host into one lead,
+understating novelty and stopping the campaign early), and `leads_new` counts genuinely-novel
+leads deduped within the wave rather than a delta in accepted count. Registry fix: `R-DISC-06`
+retagged `input: discovery-leads` (it was `discovery-log`, which is not what the check reads).
+
+Reuse the **Protocol + deterministic stub** pattern already proven in `critics/run_critics.py` and
+`verify/_entailment.py`: pure code is hermetic and unit-tested; every model/tool call sits behind an
+injectable seam with an offline default.
+
+- `research/discovery.py` (pure, `R-DISC-04`) — `cluster_leads`, `support_count`, `novelty`,
+  `saturation`, `framing_diversity`. No embeddings offline: cluster on normalized-token Jaccard, with an
+  embedding backend behind a `resolve_backend`-style seam. Must be seed-free so eval replays reproduce.
+- `research/planner.py` (model-judged) — `route_seeds`, `assess_topic`, `wave_briefs`, `extract_leads`,
+  `triage_leads`, then the cascade `front_load_campaign` (Wave A→B→C) and `re_front_load`.
+- `research/deep_research.py::run_brief` — backend adapter; `/deep-research` preferred, local
+  `retrieval_loop` fallback, selected per `CAPABILITIES.md`; freezes `discovery-snapshot/report-<id>.md`.
+- `checks/discovery.py` — `framing_diversity`, `saturation_terminal`, `snapshot_complete`,
+  `seed_handling`. **Registry fix:** `R-DISC-06`'s `seed_handling` is tagged `input: discovery-log` but
+  its detail and signature read `discovery-leads`; retag.
+- Fixtures: `discovery-log.yaml`, `discovery-leads.yaml`, a minimal `discovery-snapshot/`.
+
+**Verify B:** a synthetic three-wave campaign saturates (novel-fraction falls below threshold), triage
+honours the `R-DISC-06` seed exemption, and the three lints pass on good fixtures / fail on bad ones.
+
+## G1 + G6 — the remaining registry decisions — **DONE**
+
+Applied ahead of Stage C, since both bite there.
+
+- **G1** → new **`R-XREF-04`**: when `home_domain` ≈ `target_domain`, `home_anchor` resolves to the
+  nearest *adjacent* technique or sub-field, never the concept restated. Soft-critic judgment
+  ("is this anchor genuinely adjacent?") plus a deterministic `also_hard_lint` companion,
+  `univocity_terms.py::home_anchor_distinct`, catching the detectable failure — an anchor equal to
+  or contained in its own canonical term/aliases. `research-perspectives.md` re-aims bridge-builder
+  at prior-art transfer for this case.
+- **G6** → new **`R-ARCH-07`** + a `user_structure` parameter + `Section.maps_to`. The user's
+  structure governs top-level coverage and order. The mapping is **declared, not inferred from
+  headings**: copying the user's labels verbatim would collide with `R-SCENT-01`, so the heading
+  stays a predictive claim and `maps_to` records which entry it realizes. The concept-map still
+  drives depth within sections. Deterministic (hard_lint, MUST) — it checks the mapping, not strings.
+
+## Stage C — Prompt 6: grounding loop — **DONE**
+
+**Outcome:** the R-DISC-01 firewall is now *mechanical* rather than conventional. `anchor_claims`
+is a pure gate around the model's proposals: a claim reaches the ledger only if its quote appears
+**verbatim in a document we actually fetched**, is ≤15 words, and carries its source. A claim
+lifted from a discovery report's prose cannot pass it, which is the anti-fabrication floor
+(R-GROUND-01) and the leads-not-evidence firewall in one check. Corroboration, recency and
+conflict are computed rather than asserted, and `curate.py` derives the concept-map **from the
+ledger**, never from a report's taxonomy — the same firewall applied to shape. `kb.py` stays a
+documented V2 deferral. Two fixes found by running it: the version regex required a capitalized
+name, silently missing `pgvector`/`numpy`/`spaCy` (now filtered by version shape instead), and the
+reference ledger had a `contested` claim with nothing recorded as contradicting it — caught by the
+new ledger lint on its first run.
+
+## Stage C — Prompt 6: grounding loop (original plan)
+
+- `retrieval_loop.py`, `claim_extractor.py`, `recency.py`, `coverage.py` — tool-loops behind the same
+  seam. `kb.py` stays a documented V2 deferral.
+- `checks/ledger.py::provenance_fields` (`R-GROUND-05`) — pure and testable now.
+- Populate `corroboration_count` / `corroborated_by` / `as_of_date` / `provenance_origin` (the fields
+  `RECONCILE.md` added to the model but deliberately left unpopulated).
+- **Assert the `R-DISC-01` firewall in tests:** a discovery lead is a pointer, never provenance — every
+  ledger claim requires an independent fetch and its own ≤15-word quote.
+
+**Verify C:** a recorded-fixture run turns accepted leads into a populated ledger + concept-map; the
+ledger lint catches a claim with two sources and no `corroboration_count`.
+
+## Stage D — Prompt 6b: convergence guard — **DONE**
+
+**Outcome:** the loop provably terminates. Three bounds do it: `tau` rises per cycle and becomes
+`+inf` at `K_MAX`, `escalate` additionally requires `cycle < K_MAX` (the cap is the guarantee and
+should not rest on a float comparison against infinity), and the deepen path is separately capped
+by `MAX_DIVES` — without which a run of sub-tau findings never escalates and never ends. A
+synthetic oscillating trajectory classifies `contested`, emits the `role: contested` block, and
+sets `contested: true` on every cycle map; the R-CONV-01 lint additionally fails a log that
+*records* `contested` while rendering no block, since that would drop the disagreement silently.
+One bug found: `struct_distance` ordered concepts by `canonical_term`, so a pure rename read as a
+reorder and cost 4 — the exact cosmetic-vs-structural confusion `alias_rename: 0` exists to
+prevent. Ordering is now compared over matched concepts, matched by claim-set overlap.
+
+## Stage D — Prompt 6b: convergence guard (original plan)
+
+Entirely pure, so it is the most testable stage: `tau`, `struct_distance` (via the given `EDIT_WEIGHTS`),
+`escalate`, `classify_trajectory`, `contested_framings`, plus `checks/convergence.py::terminal_state`.
+The model-judged `scan_for_structural` / `implied_edits` go in `planner.py`, never in `convergence.py`
+(`R-CONV-02`).
+
+**Verify D:** a converging trajectory footnotes; a synthetic oscillating one emits a `role: contested`
+block and sets `concept_map.contested = true`; a property test proves the loop never exceeds `K_MAX`.
+
+## Stage E — Prompt 7: eval harness — **DONE**
+
+**Outcome:** six specs spanning bands, budgets, domains and the G1/G6/seed paths; `eval.py` scores
+every deterministic tier and reports **enforcement coverage per tier** (hard_lint 27/32,
+model_verified 2/3, soft_critic 2/35 — a bare 39% would read as "two-thirds broken" when it is
+mostly "critics need a judge model"). Three honesty properties are the point: a spec with no
+artifact reports `not_generated` rather than passing; an expected rule that never *ran* is not a
+pass, and the report classifies **why** (judge gap vs missing artifact vs a real silent skip); and
+
+**the harness REFUSES to propose thresholds from the offline lexical backend.** That refusal is the
+main finding of the stage. The proxy scores word overlap between a ≤15-word quote and a paraphrased
+block, and `R-GROUND-01` *requires* paraphrase — so the observed recall 0.14 / precision 0.13 are
+what a **compliant** primer produces, not evidence of bad citations. Writing that floor into
+`eval-rubric.yaml` would have silently disabled the citation check. The rubric TODOs stay TODOs
+until a run with the NLI or Claude backend (Stage G); a test guards them against being lowered.
+
+Also implemented the `llm_md` pass (`R-PROJ-03`, `R-PROJ-06`) and wired the deterministic
+`R-PROJ-02` alignment check into eval — three more rules that were quietly unexercised.
+
+## Stage E — Prompt 7: eval harness (original plan)
+
+Author 5–8 specs spanning domain / seniority / length (keep `spec-01` and `spec-02`; add one with
+`seed_sources` and one non-software topic). Implement `scripts/eval.py` over the specs +
+`eval-rubric.yaml`, scoring all three tiers per-spec. Then settle the deferred TODOs against real
+numbers: `per_run_token_cap`, `citation_recall`, `citation_precision`, recency thresholds.
+
+**Verify E:** `make eval` scores `spec-01` end-to-end and reports concrete pass/fail per rule with
+proposed threshold values.
+
+## Stage F — Prompt 8: remaining plumbing — **DONE**
+
+`validate_skill.py --check-build` regenerates the lockstep files **in a temp copy** and diffs — a
+validator that mutates the tree it validates can turn a red run green just by running. Verified
+negatively: hand-editing `rule-registry.md` makes it fail. CI gains `dorny/paths-filter` (repo-level
+files count as touching every skill), the eval step, and an explicit **unenforced-MUST gate**
+running `lint.py --strict`. `run_manifest.py` implements the phase ledger `SKILL.md` promised:
+timestamps are injected rather than read from the clock so a replayed run is byte-identical, and
+`resume_from()` returns the first incomplete phase rather than the one after the last complete one
+— phase 8 consumes what phase 3 produced, so a gap must be re-run, not skipped.
+
+Both `Makefile` and CI now invoke `python -m pytest`: bare `pytest` resolved to a different
+interpreter in this container and failed on a missing dependency, and `python -m` guarantees the
+same environment as `python`.
+
+## Stage F — Prompt 8: remaining plumbing (original plan)
+
+Add the build-idempotence check to `tools/validate_skill.py`; add `dorny/paths-filter` so CI runs only
+changed skills and add the eval step; make `make eval` real; implement the `run-manifest.json` phase
+ledger `SKILL.md` promises but nothing writes.
+
+## Stage G — the live run — **BLOCKED BY ENVIRONMENT (not started)**
+
+A real `/deep-research` campaign + grounding run on `spec-01`, producing a genuine
+`discovery-snapshot/` and populated ledger — the prompts' stated done-criteria for 6a/6.
+
+**It cannot run in the Claude Code web container.** Outbound egress to general hosts is refused by
+the environment's network proxy — `curl https://arxiv.org` returns `CONNECT tunnel failed, 403`, and
+the harness fetcher returns `EGRESS_BLOCKED`; only package registries (pypi, npm) are reachable. So
+there is no path to live research here regardless of budget, which is what the "build now, live run
+later" decision anticipated.
+
+Everything Stage G needs is in place and exercised offline against frozen artifacts: the campaign
+cascade with a `ReplayBackend`, the grounding loop with a `ReplayFetcher`, and an eval harness that
+refuses to propose citation thresholds until a real entailment backend has scored a run. To do it:
+
+1. run from an environment with web egress (a local Claude Code session, or a cloud environment
+   whose network policy allows it);
+2. `front_load_campaign(..., backend=CallableBackend(<invoke /deep-research>))` → a real
+   `discovery-snapshot/`;
+3. ground it with a live `Fetcher`, then `python scripts/eval.py --spec spec-01-rag-chunking`
+   with the NLI or Claude entailment backend;
+4. take the proposed `citation_recall` / `citation_precision` and settle the rubric TODOs, plus
+   `per_run_token_cap` from the observed spend.
+
+---
+
+## Risks and open items
+
+- **`flatten_blocks()` recursion is the one change that can break everything quietly.** Land A1 with the
+  full test suite green before touching renderers, and add a test asserting nested block-ids appear in
+  both projections.
+- **G1 and G6 remain open** (`GAPS.md`). G1 (home ≈ target) bites in Stage C's `planner.py` — `spec-02`
+  exercises it. G6 (user-specified structure is authoritative) bites when the outline maps onto a
+  user-supplied skeleton. Both are small registry edits; decide before Stage C.
+- **Offline lead clustering trades quality for determinism.** Jaccard will over-split near-duplicate
+  leads that embeddings would merge. Acceptable for tests; note it as a Stage G calibration item.
+- **`CAPABILITIES.md` is gitignored and absent in a fresh container** — run `make probe` first, or the
+  NLP-dependent lints silently take their fallback path.
+- **Google-Fonts links in `primer-template.html`** sit oddly with "self-contained HTML artifact."
+  Not in scope here; worth a later decision.
+- **SonarCloud's quality gate is red and parked as advisory** (`C Security Rating on New Code`).
+  The finding is visible only on the SonarCloud dashboard, which this environment's egress proxy
+  blocks; the check-run carries no annotations, and neither `ruff --select S` nor `bandit` over the
+  diff reproduces it (their only hits are pre-existing and non-vulnerability). Resolve before the
+  PR leaves draft — either paste the finding or scope the gate. The real gate,
+  `build-validate-bundle`, is green.

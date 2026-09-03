@@ -1,0 +1,451 @@
+[
+  {
+    "id": "A-A4-s1",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "FDA final guidance (2018) on adaptive design principles, type I error control, pre-specification",
+    "fetched_title": "Adaptive Design Clinical Trials for Drugs and Biologics Guidance for Industry | FDA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s2",
+    "url": "https://www.fda.gov/media/78495/download",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "FDA 2018 guidance document PDF: foundational regulatory framework for adaptive trials",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s3",
+    "url": "https://www.ema.europa.eu/en/methodological-issues-confirmatory-clinical-trials-planned-adaptive-design-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "EMA CHMP/EWP/2459/02 (2007): seminal regulatory reflection paper on adaptive design methodology",
+    "fetched_title": "Methodological issues in confirmatory clinical trials planned with an adaptive design - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s4",
+    "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/ich-e20-guideline-adaptive-designs-clinical-trials-step-2b_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "ICH E20 Step 2B (June 2025): global harmonized guideline for adaptive design confirmatory trials",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s5",
+    "url": "https://www.federalregister.gov/documents/2025/09/30/2025-18897/e20-adaptive-designs-for-clinical-trials-international-council-for-harmonisation-draft-guidance-for",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Federal Register notice on ICH E20 adoption; official US regulatory acknowledgment",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s6",
+    "url": "https://www.bath.ac.uk/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Christopher Jennison home page: leading researcher on group sequential and adaptive design methods",
+    "requested_url": "https://people.bath.ac.uk/mascj/",
+    "fetched_title": "University of Bath",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s7",
+    "url": "https://www.routledge.com/Group-Sequential-and-Adaptive-Methods-for-Clinical-Trials/Jennison-Turnbull/p/book/9781584888475",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Jennison & Turnbull 2025 (2nd edition): canonical text on group sequential and adaptive methods",
+    "fetched_title": "Group Sequential and Adaptive Methods for Clinical Trials - 2nd Editio",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s8",
+    "url": "https://arxiv.org/pdf/2303.01040",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Jennison & Turnbull introduction to group sequential methods: planning and optimization",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s9",
+    "url": "https://link.springer.com/content/pdf/10.1007/978-0-387-44970-8.pdf",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Proschan, Lan & Wittes Statistical Monitoring: foundational unified approach to interim analysis",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s10",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/pst.70042",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Granholm et al. 2025 Pharmaceutical Statistics: comprehensive Bayesian adaptive RCT design guide",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A4-s11",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12509790/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Granholm 2025 practical guide to designing Bayesian adaptive randomised trials (PMC full text)",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s12",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9579551/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "RECOVERY trial DMC experience: real-world adaptive platform trial governance and regulatory lessons",
+    "fetched_title": "Checking your browser - reCAPTCHA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s13",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8011600/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Efficient adaptive designs for COVID-19 interventions: platform trial design under regulatory pressure",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s14",
+    "url": "https://www.medrxiv.org/content/10.1101/2022.05.05.22274628.full.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "I-SPY COVID adaptive platform trial: operational implementation of adaptive design principles",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A4-s15",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4196072/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "EMA scientific advice letters survey: adaptive designs in European marketing authorization (2011\u20132013)",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s16",
+    "url": "https://link.springer.com/article/10.1186/s13063-018-3012-x",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Adaptive designs from scientific advice to EMA marketing authorization: regulatory pathway survey",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s17",
+    "url": "https://arxiv.org/pdf/2501.08765",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Designing and evaluating advanced adaptive randomised clinical trials: 2025 practical methodology",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s18",
+    "url": "https://arxiv.org/pdf/2602.06379",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "E-values for adaptive clinical trials: anytime-valid monitoring methods in practice (2026)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s19",
+    "url": "https://arxiv.org/pdf/2602.17592",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "BMW Bayesian model-assisted adaptive design for win ratio (February 2026)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s20",
+    "url": "https://arxiv.org/pdf/2503.09226",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Machine learning integration in regulatory-confirmed adaptive trials (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s21",
+    "url": "https://cran.r-project.org/web/packages/rpact/index.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "rpact CRAN package: latest version 4.4.0 (2026-03-04) for adaptive trial design/analysis",
+    "fetched_title": "CRAN: Package rpact",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s22",
+    "url": "https://github.com/rpact-com/rpact/releases",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "rpact GitHub releases: version history and changelog for adaptive design software",
+    "fetched_title": "Releases \u00b7 rpact-com/rpact \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s23",
+    "url": "https://www.rpact.org/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "rpact official documentation and quick-start guide for confirmatory adaptive designs",
+    "fetched_title": "rpact: Confirmatory Adaptive Clinical Trial Design, Simulation, and Analysis \u2013 RPACT",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s24",
+    "url": "https://kkmann.github.io/adoptr/articles/adoptr_jss.html",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "adoptr R package JSS paper: optimal adaptive design for two-stage trials with normal outcomes",
+    "fetched_title": "The adoptr Package: Adaptive Optimal Designs for Clinical Trials in R \u2022 adoptr",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s25",
+    "url": "https://www.jstatsoft.org/article/view/v098i09",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "adoptr Journal of Statistical Software publication: adaptive optimal design methodology",
+    "fetched_title": "The adoptr Package: Adaptive Optimal Designs for Clinical Trials in R\n\t\t\t\t\t\t\t| Journal of Statistical Software",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A4-s26",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3287799/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "ASD R package for adaptive seamless designs: simulation-based design implementation tool",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s27",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6556760/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "HECT (Highly Efficient Clinical Trials Simulator): platform trial planning web application",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s28",
+    "url": "https://arxiv.org/pdf/1906.05603",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Review of available software for adaptive clinical trial design: comprehensive tool landscape (2019)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s29",
+    "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-methodological-issues-confirmatory-clinical-trials-planned-adaptive-design_en.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "EMA reflection paper PDF (CHMP/EWP/2459/02): complete regulatory methodology guidance",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  }
+]

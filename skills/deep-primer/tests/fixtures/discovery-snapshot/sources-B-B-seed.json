@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://example.org/source-authority-0",
+    "type": "primary"
+  },
+  {
+    "url": "https://example.org/source-authority-1",
+    "type": "primary"
+  }
+]

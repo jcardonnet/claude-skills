@@ -34,7 +34,8 @@ All question text uses placeholders the planner fills: `{target_domain}`, `{home
 
 ### bridge-builder — map the target back to what the reader knows
 - **Feeds:** conceptual foundations; cross-domain connections; every card's anchor row.
-- **Serves:** `R-CARD-01`, `R-XREF-01`, `R-MV-01` (the home-domain-analogue representation mode).
+- **Serves:** `R-CARD-01`, `R-XREF-01`, `R-XREF-04`, `R-MV-01` (the home-domain-analogue representation mode).
+- **When `home_domain` ≈ `target_domain`, this perspective becomes _prior-art transfer_** (`R-XREF-04`). The reader already lives in the target domain, so "the closest analogue in your home domain" degenerates into *X is like X* and the advance organizer never fires. Re-aim the seed questions at the nearest **adjacent technique or sub-field** the reader already owns: which neighbouring method does `{concept}` borrow from, what did that borrowing assume, and where does it break here? Substitute `{adjacent}` for `{home_domain}` in the questions below.
 - **Seed questions:**
   - What is `{concept}` in `{target_domain}`, and what is its closest precise analogue in `{home_domain}`?
   - Which `{home_domain}` intuitions transfer to `{concept}`, and at exactly what point does the analogy break (the **fidelity boundary**)?

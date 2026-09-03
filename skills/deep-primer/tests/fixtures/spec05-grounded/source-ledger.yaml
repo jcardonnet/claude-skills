@@ -1,0 +1,3826 @@
+sources:
+- source_id: 12a435a29efddc3d1ccbd7bffbddd76a5b1012aa
+  url: https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry
+  title: Adaptive Design Clinical Trials for Drugs and Biologics Guidance for Industry
+    | FDA
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: ce33bedabf02f9c7a5ebb03ae0c16f8e272305e6
+  claims:
+  - claim_id: C-12a435a2-1
+    text: The document was last updated on November 29, 2019.
+    quote: 'Content current as of: 11/29/2019'
+    location: char 1672 of 1805 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-12a435a2-2
+    text: The document addresses Bayesian adaptive trials and complex trials that
+      rely on computer simulations for design.
+    quote: including Bayesian adaptive and complex trials that rely on computer simulations
+    location: char 1177 of 1805 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-12a435a2-3
+    text: The guidance describes principles for designing, conducting, and reporting
+      adaptive clinical trials.
+    quote: describes important principles for designing, conducting, and reporting
+      the results from an adaptive clinical trial
+    location: char 916 of 1805 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-12a435a2-4
+    text: The document applies to drugs and biologics.
+    quote: Adaptive Design Clinical Trials for Drugs and Biologics
+    location: char 0 of 1805 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-12a435a2-5
+    text: The guidance targets sponsors and applicants submitting INDs, NDAs, or BLAs.
+    quote: sponsors and applicants submitting investigational new drug applications
+      (INDs), new drug applications (NDAs)
+    location: char 584 of 1805 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-12a435a2-6
+    text: The guidance advises on types of information to submit for FDA evaluation
+      of adaptive trials.
+    quote: advises sponsors on the types of information to submit to facilitate FDA
+      evaluation
+    location: char 1051 of 1805 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-12a435a2-8
+    text: The docket number for this guidance document is FDA-2018-D-3124.
+    quote: 'Docket Number: FDA-2018-D-3124'
+    location: char 398 of 1805 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 6d3c5917fa144d51478cb073e62d1e952e27355f
+  url: https://link.springer.com/article/10.1186/s12874-024-02272-9
+  title: Client Challenge
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: bda1c1b1ceb63629ce96d923be16496304c7514e
+  claims: []
+- source_id: c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+  url: https://trialsjournal.biomedcentral.com/articles/10.1186/1745-6215-15-383
+  title: Client Challenge
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: bda1c1b1ceb63629ce96d923be16496304c7514e
+  claims:
+  - claim_id: C-c6bbb1fa-1
+    text: Browser extensions can interfere with website loading
+    quote: This may be due to a browser extension
+    location: char 61 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 81f7c6f63320efd84f021e351687ae8a8477b32f
+    - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c6bbb1fa-2
+    text: Network issues can prevent website content from loading
+    quote: network issues
+    location: char 101 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c6bbb1fa-3
+    text: Browser settings can affect website loading
+    quote: browser settings
+    location: char 120 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c6bbb1fa-4
+    text: Ad blockers can interfere with website functionality
+    quote: disable any ad blockers
+    location: char 168 of 226 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 81f7c6f63320efd84f021e351687ae8a8477b32f
+    - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c6bbb1fa-5
+    text: Using a different browser can resolve website loading issues
+    quote: try using a different browser
+    location: char 196 of 226 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 81f7c6f63320efd84f021e351687ae8a8477b32f
+    - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+  url: https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-018-3012-x
+  title: Client Challenge
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: bda1c1b1ceb63629ce96d923be16496304c7514e
+  claims:
+  - claim_id: C-f1e4bacf-1
+    text: Browser extensions can prevent website content from loading.
+    quote: This may be due to a browser extension
+    location: char 61 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 81f7c6f63320efd84f021e351687ae8a8477b32f
+    - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f1e4bacf-4
+    text: Ad blockers can prevent website content from loading.
+    quote: disable any ad blockers
+    location: char 168 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 81f7c6f63320efd84f021e351687ae8a8477b32f
+    - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-f1e4bacf-5
+    text: Using a different browser can resolve website loading failures.
+    quote: try using a different browser
+    location: char 196 of 226 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - 81f7c6f63320efd84f021e351687ae8a8477b32f
+    - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 3d02c8751ae9aa618b6b973540a39ffadd5fc91e
+  url: https://www.ncbi.nlm.nih.gov/books/NBK603603/
+  title: 'Platform, Basket, and Umbrella Trial Designs: Stakeholder Perspectives of
+    Novel Therapeutics - NCBI Bookshelf'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: e7bb353093c38e1492bc54ade6ca9b55fe92fddd
+  claims:
+  - claim_id: C-3d02c875-1
+    text: Basket trials should target driver mutations, not bystander or passenger
+      mutations.
+    quote: the target mutation or molecular target should be a driver clinical mutation
+    location: char 8922 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-2
+    text: BRAF B600E has a pathogenic role in malignant melanoma and hairy cell leukemia.
+    quote: BRAF mutation B600E, which has a pathogenic role in malignant melanoma
+      and hairy cell leukemia
+    location: char 9879 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-3
+    text: BRAF mutation inhibitors did not achieve the same efficacy in other cancer
+      types as in melanoma.
+    quote: the same effect was not observed
+    location: char 10059 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-4
+    text: Basket trials enable efficient evaluation of a single molecular target across
+      multiple tumor histologies.
+    quote: an entire group with the same target to be evaluated in a tumour histology-agnostic
+      fashion
+    location: char 10292 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-5
+    text: Basket trials are valuable for rare cancers where standalone randomized
+      trials are not feasible.
+    quote: conduct a standalone clinical trial compared to standard therapy is limited
+      or perhaps nonexistent
+    location: char 10591 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-6
+    text: Umbrella trial designs require a precise disease definition including histology,
+      pathology, and stage.
+    quote: start with a precise definition of the underlying disease, including the
+      histology or pathology, stage
+    location: char 10890 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-9
+    text: Platform trials test multiple interventions against a common control group
+      using Bayesian decision rules for efficacy or futility assessment
+    quote: test several interventions against a common control group
+    location: char 12269 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-10
+    text: Platform trials enable parallel biomarker stratification to study different
+      investigational targets simultaneously
+    quote: allows for biomarker strata to be run in parallel to study different investigational
+      targets
+    location: char 12856 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-11
+    text: Platform trials lack true randomization to control groups
+    quote: there is no true randomization
+    location: char 13226 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-12
+    text: Health Canada's regulatory review typically does not evaluate where treatments
+      fit into treatment algorithms
+    quote: Health Canada does not typically consider where a treatment could fit into
+      a treatment algorithm
+    location: char 14193 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-13
+    text: Standard of care for tumor-agnostic treatments varies by tumor type or histology
+    quote: standard of care varies by tumour type or histology
+    location: char 14598 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-14
+    text: Canadian HTA decision-making requires alignment across 15 jurisdictions
+      on real-world evidence policies
+    quote: there are 15 jurisdictions in Canada that need to align
+    location: char 14676 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-15
+    text: Changes to standard of care over time can limit the validity of trial comparisons
+    quote: changes to standard of care over time can limit comparisons
+    location: char 13580 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-16
+    text: Generating additional clinical evidence for HTA resubmission could require
+      4 to 5 years
+    quote: the generation of additional data could take 4 to 5 years
+    location: char 19853 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-17
+    text: Private payers follow a similar evaluation approach as CADTH when assessing
+      new treatments.
+    quote: private payers follow a similar approach to CADTH when evaluating new treatments
+    location: char 24648 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-18
+    text: Productivity data are critical for private payers because their focus is
+      on working patients.
+    quote: productivity data are always important given that the target audience is
+      the working patient population
+    location: char 24730 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-19
+    text: Payers use budget impact analysis and market share evaluations to measure
+      financial effects of therapies.
+    quote: budget impact analysis, pricing, and market share evaluations are considered
+      to measure the financial impact
+    location: char 24924 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-20
+    text: Novel trial designs offer advantages including efficiency and improved disease
+      understanding.
+    quote: these trial designs have their own advantages (e.g., efficiency, better
+      understanding of disease)
+    location: char 25628 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-21
+    text: Novel trial designs have limitations including non-comparative data and
+      small sample sizes.
+    quote: and limitations (e.g., non-comparative data, small sample size)
+    location: char 25726 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-22
+    text: Coverage with evidence development and real-world data collection can address
+      data gaps at submission.
+    quote: coverage with evidence development and RWD collection could be used to
+      fill data gaps
+    location: char 26165 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-23
+    text: Patient engagement in trial design and evidence evaluation is critical to
+      health technology assessment.
+    quote: patient engagement in designing trials, evaluating evidence, or collecting
+      RWD is critical
+    location: char 26651 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3d02c875-24
+    text: Both public and private payers struggle with interpreting uncertain clinical
+      evidence in evaluation.
+    quote: private payers, like public payers, are challenged with interpretation
+      of sometimes uncertain clinical evidence
+    location: char 25104 of 34353 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 475386b384ca4201453373ffc3b9ca9ce87c09ed
+  url: https://www.ncbi.nlm.nih.gov/books/NBK603602/
+  title: 'Platform, Basket, and Umbrella Trial Designs: Issues Around Health Technology
+    Assessment of Novel Therapeutics - NCBI Bookshelf'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 4e2b3e0e9352cdd67c73798c7b8a11ba404af805
+  claims:
+  - claim_id: C-475386b3-2
+    text: Umbrella trials test multiple targeted therapies in patients with one tumor
+      type stratified by molecular alteration
+    quote: Umbrella trials simultaneously test multiple targeted therapies among patients
+      who share a single tumour type
+    location: char 2773 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-4
+    text: A 2019 systematic review identified 49 basket trials, 18 umbrella trials,
+      and 16 platform trials
+    quote: A 2019 systematic review identified 49 basket trials, 18 umbrella trials,
+      and 16 platform trials
+    location: char 3138 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-7
+    text: Noncomparative trial designs make it difficult to rigorously evaluate adverse
+      effects
+    quote: With noncomparative designs it is also challenging to rigorously evaluate
+      side effects
+    location: char 5624 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-8
+    text: Real-world data cannot replace properly conducted clinical trials
+    quote: RWD cannot replace properly conducted clinical trials
+    location: char 11918 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-9
+    text: Health economics aims to maximize population health subject to limited budget
+      and infrastructure resources.
+    quote: maximize population health given a constrained budget and health care infrastructure
+    location: char 12315 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-10
+    text: Economic evaluation must compare a new technology to its next best available
+      alternative.
+    quote: incremental costs and incremental benefits of a technology compared to
+      its next best alternative
+    location: char 13023 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-11
+    text: Platform, basket, and umbrella trials require separate economic analysis
+      for each treatment-indication pair.
+    quote: economic evaluation requires a separate analysis for each potential treatment
+      and indication
+    location: char 13598 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-12
+    text: Basket and umbrella trials without comparator arms face challenges in identifying
+      meaningful treatment effects.
+    quote: This can be difficult in basket and umbrella trials without a comparator
+      arm
+    location: char 14128 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-13
+    text: Without a comparison arm, treatment benefit cannot be separated from prognosis
+      differences caused by biomarker status.
+    quote: treatment benefit cannot be reasonably separated from differences in prognosis
+      attributable to the biomarker
+    location: char 14559 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-14
+    text: Survival analysis in basket trials violates core statistical assumptions
+      because the sample is heterogeneous.
+    quote: Survival analysis on basket trials violates these core assumptions in numerous
+      ways
+    location: char 15531 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-15
+    text: Ignoring heterogeneity in health state populations causes systematic over-
+      or underestimation of cost-effectiveness.
+    quote: lead to over- or underestimation of the cost-effectiveness of treatments
+    location: char 18708 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-16
+    text: Individual ICERs must not be mathematically averaged across subpopulations
+      or indications.
+    quote: ICERs themselves should not be averaged across subpopulations or indications
+      as it is mathematically incorrect
+    location: char 23212 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-17
+    text: In Canada, the commonly cited willingness-to-pay threshold for health technology
+      assessment is $50,000 per QALY gained.
+    quote: the commonly cited willingness-to-pay threshold of $50,000 per QALY gained
+    location: char 26060 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-18
+    text: A proton beam synchrotron may be cost-effective when used across 10 to 15
+      indications but not a single indication.
+    quote: it may be cost-effective if it were to be used for 10 to 15 indications
+    location: char 26809 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-19
+    text: Patients in a discrete choice experiment valued a precision medicine test
+      with expert consensus at $1,100 versus limited consensus.
+    quote: was $1,100, reflecting a strong preference for consensus among experts
+    location: char 32487 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-20
+    text: Survey respondents were willing to pay $265 additional for a precision medicine
+      test with greater certainty around life expectancy.
+    quote: a patient would pay an additional $265 for a test
+    location: char 32714 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-21
+    text: A predictive model of 21-gene recurrence score assay uptake achieved correlation
+      coefficients greater than 0.90 with real-world data.
+    quote: with correlation coefficients of greater than 0.90 and a root-mean-squared
+      error of 0.11
+    location: char 33250 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-475386b3-22
+    text: The Incremental Cost-Effectiveness Ratio is only one aspect of the Canadian
+      pCODR deliberative framework.
+    quote: The ICER is only 1 aspect of the deliberative framework
+    location: char 30407 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-23
+    text: Patient preferences in health technology assessment are not captured using
+      methodologically rigorous approaches.
+    quote: they are not captured in a way that is methodologically oriented
+    location: char 30765 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-475386b3-24
+    text: Autonomy in clinical trials is most commonly operationalized through informed
+      consent procedures.
+    quote: the principle of autonomy is most commonly operationalized through the
+      practice of informed consent
+    location: char 34801 of 55059 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 8137885ca54412cc0e3cf5246a01b4967b3be8e4
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3570871/
+  title: 'An Adaptive, Dose-Finding, Seamless Phase 2/3 Study of a Long-Acting Glucagon-Like
+    Peptide-1 Analog (Dulaglutide): Trial Design and Baseline Characteristics - PMC'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 1df31d5b9bd63698d74099d4a4743c88691109b1
+  claims:
+  - claim_id: C-8137885c-1
+    text: Dulaglutide is formulated as a once-weekly glucagon-like peptide-1 analog.
+    quote: Dulaglutide (dula, LY2189265) is a once-weekly glucagon-like peptide-1
+      analog in development
+    location: char 2694 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-2
+    text: The trial uses two distinct randomization schemes to divide the study into
+      two stages.
+    quote: The study is divided into two stages based on two randomization schemes
+    location: char 2976 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-3
+    text: Mean heart rate increases in a dose-dependent manner at dulaglutide doses
+      of 1 mg or higher.
+    quote: Small dose-dependent increases were observed in mean heart rate (HR) at
+      doses ≥1 mg
+    location: char 4301 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-4
+    text: Mean diastolic blood pressure increases in a dose-dependent manner at dulaglutide
+      doses of 3 mg or higher.
+    quote: in mean diastolic blood pressure (DBP) at doses ≥3 mg
+    location: char 4395 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-5
+    text: An adaptive seamless phase 2/3 design could reduce development timeline
+      by 9 to 12 months compared to sequential trials.
+    quote: This approach could reduce the development time line by approximately 9
+      to 12 months
+    location: char 7904 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-6
+    text: Stage 1 of the trial aims to identify up to two safe and efficacious dulaglutide
+      doses or declare futility.
+    quote: identify up to 2 safe and efficacious doses of dula
+    location: char 11185 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-7
+    text: AWARD-5 is a 24-month parallel trial comparing dulaglutide with sitagliptin
+      in patients with type 2 diabetes on metformin.
+    quote: 24-month, parallel clinical trial comparing dula with sitagliptin
+    location: char 9796 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-8
+    text: Seven different doses of dulaglutide are tested during stage 1 of the trial.
+    quote: Seven doses of dula will be evaluated in stage 1 along with comparators
+    location: char 10451 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-9
+    text: Approximately 89% of simulated studies demonstrated statistical significance
+      for the primary efficacy analysis.
+    quote: approximately 89% of the studies simulated were statistically significant
+    location: char 12789 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-10
+    text: 'The adaptive dose selection algorithm balanced four key efficacy and safety
+      measures: HbA1c, weight, heart rate, and diastolic blood pressure.'
+    quote: HbA1c, weight, HR, and DBP were the four key measures
+    location: char 13343 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-11
+    text: The trial evaluated seven distinct dulaglutide doses ranging from 0.25 to
+      3.0 milligrams.
+    quote: 7 doses (0.25, 0.5, 0.75, 1.0, 1.5, 2.0, and 3.0 mg)
+    location: char 14527 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-8137885c-12
+    text: Nausea and vomiting were excluded from the adaptive algorithm because they
+      cannot be easily quantified, despite being common GLP-1 side effects.
+    quote: they are not easily quantified and thus were not included in the algorithm
+    location: char 13981 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-13
+    text: Eligible patients were aged 18 to 75 years with type 2 diabetes mellitus.
+    quote: Eligible patients are those aged 18 to 75 years with T2DM
+    location: char 15872 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-15
+    text: Patients were required to tolerate metformin at a dose of at least 1500
+      mg/day before randomization.
+    quote: Patients must tolerate Met at a dose of at least 1500 mg/day
+    location: char 16926 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-16
+    text: The initial burn-in phase enrolled 45 patients who were allocated equally
+      across nine treatment arms.
+    quote: The first 45 patients will be allocated equally across the nine treatment
+      arms
+    location: char 17788 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-17
+    text: The first patient was randomized in October 2008.
+    quote: The first patient was randomized in October 2008
+    location: char 26756 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-18
+    text: The initial burn-in phase lasted approximately 9 weeks and enrolled 47 patients.
+    quote: the burn-in period, which lasted approximately 9 weeks, during which time
+      47 patients enrolled
+    location: char 26822 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-19
+    text: The adaptive algorithm was updated every 2 weeks using accumulated HbA1c,
+      weight, heart rate, and diastolic blood pressure data.
+    quote: The algorithm was updated every 2 weeks using accumulated HbA1c, weight,
+      HR, and DBP data
+    location: char 27066 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-20
+    text: The Data Monitoring Committee reviewed algorithm performance every two months.
+    quote: The DMC reviewed the performance of the algorithm bimonthly
+    location: char 27460 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-21
+    text: 'Two dulaglutide doses were selected: 0.75 mg and 1.5 mg.'
+    quote: The dula doses selected were 0.75 mg and 1.5 mg
+    location: char 28227 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-8137885c-22
+    text: A total of 1,202 patients were randomized across both trial stages combined.
+    quote: 1202 patients were randomized (stages 1 and 2 combined)
+    location: char 28945 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-8137885c-23
+    text: This trial was the first adaptive, dose-finding, seamless phase 2/3 confirmatory
+      trial design.
+    quote: this is the first adaptive, dose-finding, inferentially seamless phase
+      2/3 trial
+    location: char 29895 of 44088 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 81f7c6f63320efd84f021e351687ae8a8477b32f
+  url: https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0638-z
+  title: Client Challenge
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: bda1c1b1ceb63629ce96d923be16496304c7514e
+  claims:
+  - claim_id: C-81f7c6f6-1
+    text: Browser extensions can interfere with website functionality and prevent
+      page content from loading.
+    quote: This may be due to a browser extension
+    location: char 61 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+    - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-81f7c6f6-4
+    text: Verifying network connection status is a recommended troubleshooting step
+      for loading failures.
+    quote: Please check your connection
+    location: char 138 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-81f7c6f6-5
+    text: Ad blocker browser extensions can interfere with page loading and should
+      be disabled for troubleshooting.
+    quote: disable any ad blockers
+    location: char 168 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+    - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-81f7c6f6-6
+    text: Attempting to load a page in a different web browser can help diagnose loading
+      issues.
+    quote: try using a different browser
+    location: char 196 of 226 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 3
+    corroborated_by:
+    - c6bbb1fa1cbcd892bdfc47533d87446e8fa4e9fc
+    - f1e4bacfef7774ddd29aef4486a8b32f5a0b9cf9
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: b2a7a96dedd096fbc50a1ba0673cea72a772512b
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7531353/
+  title: An Adaptive Bayesian Design for Personalized Dosing in a Cancer Prevention
+    Trial - PMC
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 780834d177203dbfc7f1ce39bdba51999af698c9
+  claims:
+  - claim_id: C-b2a7a96d-1
+    text: The clinical trial was registered with identifier NCT01860352
+    quote: registered at www.clinicaltrials.gov NCT01860352
+    location: char 5185 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-2
+    text: Study participants were enrolled between 2013 and 2015
+    quote: Subjects were enrolled in the study between 2013 and 2015
+    location: char 4588 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-3
+    text: Data analysis was carried out in 2016
+    quote: data analysis was carried out in 2016
+    location: char 4655 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-4
+    text: Mean target fish oil dose decreased from 6.63 g/day to 4.06 g/day across
+      three model iterations
+    quote: significantly decreased from 6.63 g/day (Model 1) to 4.06 g/day
+    location: char 4792 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-5
+    text: Dynamic Bayesian modeling reduced the average dose by approximately 1.38
+      g/day compared to static dosing
+    quote: the dynamic modeling reduced the dose significantly by about 1.38 g/day,
+      on average
+    location: char 4944 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-6
+    text: Trial participants were required to be between 25 and 75 years old
+    quote: Trial participants were aged 25–75 years
+    location: char 10425 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-7
+    text: The omega-3 supplement was provided as 1-gram capsules
+    quote: supplement was provided in the form of 1 g capsules
+    location: char 11245 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-8
+    text: A preliminary study in F-344 rats demonstrated a strong log-linear relationship
+      between serum EPA:AA and colonic PGE2
+    quote: preliminary study in F-344 rats showed that serum EPA:AA had a strong log-linear
+      relationship
+    location: char 9791 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-10
+    text: The Bayesian model parameters were updated after accumulating data from
+      every 10 to 15 subjects until stabilization occurred.
+    quote: model was updated following a Bayesian algorithm after data on every ten
+      to 15 subjects
+    location: char 4458 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-11
+    text: The initial slope parameter estimate from 54 rodent subjects was −1.38.
+    quote: Based on data on 54 rodents, the slope was estimated to be −1.38
+    location: char 18659 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-13
+    text: Model 2 dosing (animal data plus 10 human subjects) reduced average pill
+      burden by 1.7 pills/day compared to animal-only dosing.
+    quote: For Model 2, the average reduction was 1.7 (SD=1.4) pills/day
+    location: char 20330 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-14
+    text: Model 3 dosing (animal data plus 18 human subjects) reduced average pill
+      burden by 1.38 pills/day compared to animal-only dosing.
+    quote: for Model 3, the mean reduction was 1.38 (SD=0.8) pills/day
+    location: char 20400 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-16
+    text: Subject enrollment for the study occurred between 2013 and 2015.
+    quote: Subjects were enrolled in the study between 2013 and 2015
+    location: char 4588 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-17
+    text: The Harris–Benedict dosing formula incorporates height, weight, and BMI
+      as input variables.
+    quote: the Harris–Benedict dosing formula takes height and weight (and hence BMI)
+      into account
+    location: char 24061 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-19
+    text: Bayesian estimates weighted animal and human data at rates proportional
+      to their respective statistical precision.
+    quote: animal model–based estimates at a rate proportional to the respective precision
+    location: char 24564 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-20
+    text: Early in the human trial, animal model estimates had higher statistical
+      precision than human-only estimates due to larger sample size.
+    quote: the estimates based on animal data tended to have more precision
+    location: char 24743 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-21
+    text: As the human trial accumulated more data, the statistical contribution from
+      animal data became less dominant in the combined model.
+    quote: With the acquisition of more human data, the contribution from the animal
+      data became less
+    location: char 24882 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-22
+    text: Future methodological work must define an early termination point before
+      Bayesian model validation on a held-out test set.
+    quote: In future work, an early termination point for the Bayesian updating needs
+      to be defined
+    location: char 24995 of 34283 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-23
+    text: Power priors with fractional exponent values (0 < α ≤ 1) can reduce the
+      statistical weight assigned to animal data in hierarchical models.
+    quote: the likelihood of the animal data is raised to a fractional power, α
+    location: char 25252 of 34283 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b2a7a96d-24
+    text: The Bayesian methodology for translating animal data findings to clinical
+      trials can serve as a foundation for personalized dosing optimization in future
+      studies.
+    quote: The Bayesian methodology described herein demonstrating translation of
+      animal data to a clinical trial
+    location: char 25479 of 34283 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: b4f977acdf7e85c3198dabd6f332f768bcd55a71
+  url: https://link.springer.com/article/10.1186/s12874-024-02247-w
+  title: Client Challenge
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: bda1c1b1ceb63629ce96d923be16496304c7514e
+  claims: []
+- source_id: 42dca0badf006411b4ed256e4a4ae37aef1ff7da
+  url: https://www.innovative-ctu.ucl.ac.uk/our-research/methodology/design/multi-arm-multi-stage-mams-platform-trials/
+  title: Multi-Arm Multi-Stage (MAMS) platform trials | UCL Innovative Clinical Trials
+    Unit
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: f03f8eb99817240ad4a5166b606befe164f6f592
+  claims:
+  - claim_id: C-42dca0ba-1
+    text: STAMPEDE recruited almost 12,000 patients across more than 120 clinical
+      sites
+    quote: Recruited almost 12,000 patients in more than 120 sites
+    location: char 1802 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-42dca0ba-2
+    text: STAMPEDE tested 10 different treatment approaches
+    quote: Tested 10 different treatment approaches
+    location: char 1858 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-42dca0ba-3
+    text: STAMPEDE led to improvements in the standard of care for prostate cancer
+      four times
+    quote: Led to improvements in the standard of care for prostate cancer four times
+    location: char 1899 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-42dca0ba-4
+    text: Prostate cancer patients now live up to four years longer on average than
+      when STAMPEDE started in 2005
+    quote: men diagnosed with prostate cancer now live up to four years longer on
+      average
+    location: char 2114 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-42dca0ba-5
+    text: More than 84 published trials have used the MAMS platform design
+    quote: more than 84 published trials that used the MAMS-Platform design
+    location: char 1135 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-42dca0ba-6
+    text: RECOVERY was a MAMS platform trial enrolling hospitalized Covid-19 patients
+    quote: RECOVERY trial in patients hospitalised for Covid-19
+    location: char 1243 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-42dca0ba-7
+    text: MAMS designs reduce costs by eliminating the need for separate trials per
+      treatment
+    quote: there is no need to set up a new trial for each new treatment available
+    location: char 638 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-42dca0ba-8
+    text: MAMS designs require fewer total participants than traditional trial designs
+    quote: fewer number of participants are required overall
+    location: char 742 of 7190 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 07c9a42632db2304755b95778286b7bef2a0a5d4
+  url: https://www.statsols.com/guides/sample-size-re-estimation-in-clinical-trials
+  title: Guide to Sample Size Re-Estimation in Clinical Trials
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 3b4926a2ada3eeefd2dc424121e737fdcdf4f564
+  claims:
+  - claim_id: C-07c9a426-1
+    text: Sample Size Re-Estimation is an adaptive trial design method that allows
+      sample size adjustments at interim points.
+    quote: Sample Size Re-Estimation (SSR) is a type of adaptive trial design
+    location: char 2150 of 4400 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-07c9a426-2
+    text: Sample size re-estimation approaches divide into blinded and unblinded methods.
+    quote: Sample Size Re-Estimation can largely be split into two areas
+    location: char 2474 of 4400 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-07c9a426-3
+    text: Unblinded sample size re-estimation addresses uncertainty about the magnitude
+      of initial effect size estimates.
+    quote: aims to address any uncertainty regarding the magnitude of the initial
+      effect size estimate
+    location: char 3027 of 4400 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-07c9a426-4
+    text: Use of sample size re-estimation in clinical trials has become increasingly
+      common and important.
+    quote: Its use has become increasingly common and important in the clinical trial
+      landscape
+    location: char 2302 of 4400 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-07c9a426-5
+    text: Adaptive trial designs involve unique and complex challenges.
+    quote: Due to the complex nature of these adaptive trials, some unique challenges
+      are faced
+    location: char 2388 of 4400 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 71047f73f17ae532f5113b463247fc7e3d981aef
+  url: https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline
+  title: ICH E20 adaptive designs for clinical trials - Scientific guideline | European
+    Medicines Agency (EMA)
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 541d4facc73f1378c481706eeba241982dbd9a78
+  claims:
+  - claim_id: C-71047f73-1
+    text: The guideline provides guidance on adaptive designs for confirmatory clinical
+      trials.
+    quote: guidance on confirmatory clinical trials planned with an adaptive design
+    location: char 258 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-71047f73-2
+    text: Adaptive trial designs allow pre-specified modifications based on interim
+      analysis.
+    quote: allowing pre-specified modifications of the trial design based on an interim
+      analysis
+    location: char 388 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-71047f73-3
+    text: Adaptive designs are implemented within the context of overall development
+      programme.
+    quote: within the context of its overall development programme
+    location: char 331 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-71047f73-4
+    text: The guideline discusses opportunities for applying Bayesian methodology.
+    quote: the guideline discusses opportunities for the application of Bayesian methodology
+    location: char 510 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-71047f73-5
+    text: The guideline document was published on 30 June 2025.
+    quote: 'First published: 30/06/2025'
+    location: char 1325 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-71047f73-6
+    text: The public consultation period ran from 30 June 2025 to 30 November 2025.
+    quote: 30/06/2025 to 30/11/2025
+    location: char 955 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-71047f73-7
+    text: The guideline has reference number EMA/CHMP/ICH/206586/2025.
+    quote: EMA/CHMP/ICH/206586/2025
+    location: char 998 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-71047f73-8
+    text: A comments overview document was first published on 16 February 2026.
+    quote: 'First published: 16/02/2026'
+    location: char 1541 of 1729 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: d60e11415860c16c5f129649f8db23c26fea2d6a
+  url: https://cran.r-project.org/web/packages/escalation/index.html
+  title: 'CRAN: Package escalation'
+  authors: []
+  venue: null
+  date: null
+  type: vendor
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 75b526aec0a9594a2a5362fb9b43cfd1c7cbe353
+  claims:
+  - claim_id: C-d60e1141-1
+    text: The escalation package version is 0.2.3
+    quote: 'Version: 0.2.3'
+    location: char 1512 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-d60e1141-2
+    text: The escalation package was published on 2025-10-08
+    quote: 'Published: 2025-10-08'
+    location: char 1791 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d60e1141-3
+    text: The escalation package depends on magrittr
+    quote: 'Depends: magrittr'
+    location: char 1527 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d60e1141-4
+    text: The escalation package requires tidyr version 1.0 or higher
+    quote: tidyr (≥ 1.0)
+    location: char 1562 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-d60e1141-5
+    text: The escalation package is licensed under GPL version 3 or higher
+    quote: 'License: GPL (≥ 3)'
+    location: char 2084 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d60e1141-6
+    text: The escalation package implements the continual reassessment method by O'Quigley
+      et al. 1990
+    quote: continual reassessment method (CRM) by O'Quigley et al. (1990)
+    location: char 229 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d60e1141-7
+    text: The escalation package does not require compilation
+    quote: 'NeedsCompilation: no'
+    location: char 2184 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-d60e1141-8
+    text: The escalation package supports stopping when a toxicity condition is met
+    quote: stopping when a toxicity condition is met
+    location: char 1055 of 3576 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 2e49a0e1761a6046e2c9d5c101532ecd33860d9b
+  url: https://www.berryconsultants.com/software
+  title: Clinical Trial Software | Bayesian Simulation & Analysis Tools | Berry Consultants
+  authors: []
+  venue: null
+  date: null
+  type: vendor
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 3812cfb3dd9706b91b9f62140137e27188420049
+  claims:
+  - claim_id: C-2e49a0e1-1
+    text: FACTS supports trial designs ranging from phase 1 dose escalation through
+      adaptive Bayesian platform trials
+    quote: phase 1 dose escalation trials to adaptive Bayesian platform trial designs
+    location: char 1013 of 4367 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2e49a0e1-2
+    text: FACTS provides building blocks to combine multiple trial adaptations within
+      a single trial
+    quote: FACTS provides the building blocks for you to combine many adaptations
+      in a single trial
+    location: char 1209 of 4367 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2e49a0e1-5
+    text: ADDPLAN is the first commercial implementation of MCP-Mod methodology endorsed
+      by FDA and EMA
+    quote: The first commercial implementation of MCP-Mod, which is endorsed by the
+      FDA and EMA
+    location: char 2640 of 4367 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2e49a0e1-7
+    text: FACTS includes Bayesian models, response adaptive randomization, multiple
+      imputation, and dose response models
+    quote: Bayesian models, response adaptive randomization, multiple imputation,
+      and dose response models
+    location: char 1778 of 4367 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-2e49a0e1-8
+    text: Berry offers software for designing and analyzing classical clinical trials
+      across Phases 1 to 4
+    quote: Proven software for designing and analyzing classical clinical trials across
+      Phases 1 to 4
+    location: char 452 of 4367 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 97d6340883941a0a078f93e5ac89b45305e63e7b
+  url: https://cytel.com/solutions/clinical-trial-design/software-for-trial-design/
+  title: Clinical Trial Optimization Software | Cytel
+  authors: []
+  venue: null
+  date: null
+  type: vendor
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 9fbbe17a52c05c329fa0e8dd6b9e7bfc571e3d54
+  claims: []
+- source_id: c514afefdc920c3b975799524f61353e336a5668
+  url: https://www.routledge.com/Bayesian-Adaptive-Methods-for-Clinical-Trials/Berry-Carlin-Lee-Muller/p/book/9781032922058
+  title: Bayesian Adaptive Methods for Clinical Trials - 1st Edition - Scott M.
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 4e06e567a72687bcafc3850faec98ec1f285cf4d
+  claims:
+  - claim_id: C-c514afef-1
+    text: The book was published in 2010.
+    quote: Copyright 2010
+    location: char 295 of 9258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c514afef-2
+    text: This is the first edition of the book.
+    quote: 1st Edition
+    location: char 48 of 9258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c514afef-3
+    text: The book is 324 pages long.
+    quote: 324 Pages
+    location: char 310 of 9258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c514afef-4
+    text: The book was published by CRC Press.
+    quote: by CRC Press
+    location: char 341 of 9258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c514afef-6
+    text: The book includes case studies of the BATTLE and ISPY-2 trials.
+    quote: 'Case studies: BATTLE and ISPY-2'
+    location: char 3572 of 9258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c514afef-7
+    text: The book includes a case study of an ablation device used to treat atrial
+      fibrillation.
+    quote: 'Case study: Ablation device to treat atrial fibrillation'
+    location: char 3849 of 9258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c514afef-8
+    text: R and WinBUGS code examples from the book are available on supporting websites.
+    quote: The R and WinBUGS codes used throughout are available on supporting websites
+    location: char 2606 of 9258 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+  url: https://intuitionlabs.ai/articles/adaptive-clinical-trial-design
+  title: 'Adaptive Trial Design: A Guide to Flexible Clinical Trials | IntuitionLabs'
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 83eff8b56fbc41aeacabefdc3ccaeadedf7a16ec
+  claims:
+  - claim_id: C-c013edc2-2
+    text: The ICH E20 guideline on adaptive trials reached Step 2b draft status in
+      June 2025 and is expected to finalize in 2026.
+    quote: ICH E20 guideline on adaptive trials, which reached Step 2b draft in June
+      2025
+    location: char 2223 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - fdf6820dcc0317ee58cf602f8283b0e4d5b46c7f
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-3
+    text: Model-based simulations project adaptive designs could reduce per-drug R&D
+      costs by 10-14% if Phase III success rates improve.
+    quote: 10–14% reductions in per-drug R&D cost if Phase III success rates improve
+    location: char 3170 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-4
+    text: I-SPY 2 is an oncology adaptive platform trial using adaptive randomization
+      across 10 biomarker-defined subtypes.
+    quote: I-SPY 2 (adaptive randomization across 10 biomarker-defined subtypes)
+    location: char 3510 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-5
+    text: The RECOVERY COVID-19 platform trial enrolled more than 48,500 patients.
+    quote: enrolled >48,500 patients
+    location: char 3436 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-6
+    text: The FDA issued Bayesian methodology guidance in January 2026.
+    quote: FDA's January 2026 Bayesian methodology guidance
+    location: char 16005 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-7
+    text: Adaptive trials require prospectively planned interim analyses with decision
+      rules rather than ad hoc protocol modifications.
+    quote: prospectively planned opportunity for modification of one or more specified
+      aspects
+    location: char 6027 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 71047f73f17ae532f5113b463247fc7e3d981aef
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-8
+    text: Traditional fixed-design RCTs specify sample size, number of treatment arms,
+      and statistical analysis plan upfront without protocol alterations.
+    quote: specify all aspects of the trial upfront – including sample size, number
+      of treatment arms
+    location: char 4853 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-9
+    text: FDA released draft guidance on clinical trial adaptive designs in 2010.
+    quote: FDA releases a draft guidance on Adaptive Design for Clinical Trials
+    location: char 12199 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-10
+    text: FDA issued final guidance on adaptive designs for drugs and biologics in
+      2019.
+    quote: FDA issues its Final Guidance on adaptive designs (Drugs & Biologics)
+    location: char 12691 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-11
+    text: Only 9% of 142 published adaptive trials through 2015 were Phase III studies.
+    quote: among 142 published adaptive trials (up to 2015), only 9% were Phase III
+    location: char 14004 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-12
+    text: The ICH Assembly endorsed the Step 2b draft of the E20 guideline in June
+      2025.
+    quote: ICH Assembly endorsed the Step 2b draft in June 2025
+    location: char 12968 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-15
+    text: Model-based approaches like CRM have largely replaced traditional 3+3 designs
+      in dose-finding studies.
+    quote: Traditional 3+3 designs have been largely replaced by model-based approaches
+    location: char 18533 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-16
+    text: ICH E20 is anticipated to be finalized as a Step 4 guideline in 2026.
+    quote: Finalization as a Step 4 guideline is anticipated in 2026
+    location: char 13142 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-18
+    text: Seamless Phase II/III trials shorten development by eliminating pauses between
+      phases.
+    quote: Shortens development by not pausing between phases; uses all data
+    location: char 24660 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 8137885ca54412cc0e3cf5246a01b4967b3be8e4
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-19
+    text: Adaptive randomization biases results when patient characteristics trend
+      over the trial duration.
+    quote: Any time trends in patient characteristics can bias the results
+    location: char 29621 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-20
+    text: Naive Bayesian designs with unadjusted priors inflate Type I error rates.
+    quote: naive Bayesian designs with unadjusted priors can inflate Type I error
+    location: char 28419 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-21
+    text: Only 32% of published adaptive trials reported an independent Data Monitoring
+      Committee.
+    quote: only ~32% of published adaptive trials reported an independent DMC
+    location: char 32891 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-22
+    text: Blinded interim analyses were reported in only 6% of surveyed adaptive trials.
+    quote: were used in only ~6% of trials surveyed
+    location: char 33289 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-23
+    text: FDA requires adaptive confirmatory trials to maintain Type I error at nominal
+      levels like 5%.
+    quote: the overall Type I error rate must remain at the nominal level (e.g. 5%)
+    location: char 26858 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-c013edc2-24
+    text: Conditional error approach fixes the stage-1 p-value then computes a new
+      stage-2 threshold.
+    quote: the conditional error approach fixes the stage-1 p-value and computes a
+      new threshold
+    location: char 27683 of 74601 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 52e7543fccd0f1ec2aca26ca9f7834481c851371
+  url: https://www.ema.europa.eu/en/ich-e6-good-clinical-practice-scientific-guideline
+  title: ICH E6 Good clinical practice - Scientific guideline | European Medicines
+    Agency (EMA)
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 0c077adde40094919a652bdcd7dfd391700e3782
+  claims:
+  - claim_id: C-52e7543f-1
+    text: The principles and Annex 1 of ICH E6(R3) took effect on 23 July 2025 following
+      adoption by ICH and CHMP.
+    quote: adopted by ICH and CHMP came into effect on 23 July 2025
+    location: char 2840 of 6545 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-52e7543f-2
+    text: Annex 2 of ICH E6(R3) will become effective on 15 January 2027.
+    quote: will come into effect on 15 January 2027
+    location: char 2997 of 6545 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-52e7543f-3
+    text: Annex 2 received adoption from ICH on 3 June 2026 and CHMP on 25 June 2026.
+    quote: ICH adoption on 3 June 2026 and CHMP adoption on 25 June 2026
+    location: char 2931 of 6545 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-52e7543f-5
+    text: Annex 2 covers pragmatic clinical trials and decentralized clinical trials.
+    quote: covers designs such as pragmatic clinical trials and decentralized clinical
+      trials
+    location: char 2321 of 6545 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-52e7543f-6
+    text: ICH E6(R3) encourages a risk-based and proportionate approach to conducting
+      clinical trials.
+    quote: encourages a risk-based and proportionate approach to conducting clinical
+      trials
+    location: char 1204 of 6545 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-52e7543f-7
+    text: ICH E6 establishes an international standard for the design, conduct, recording,
+      and reporting of clinical trials.
+    quote: establishes an international standard for the design, conduct, recording,
+      and reporting of clinical trials
+    location: char 212 of 6545 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-52e7543f-8
+    text: ICH E6(R3) builds on key concepts outlined in ICH E8(R1).
+    quote: ICH E6(R3) guideline builds on key concepts outlined in ICH E8(R1)
+    location: char 3039 of 6545 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: e000d90cf92d65ce0d3f2a9066c1d615ff4ed907
+  url: https://arxiv.org/abs/1803.10130
+  title: '[1803.10130] Blinded and unblinded sample size re-estimation in crossover
+    trials balanced for period'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: ac3f2453f1ef4534ae9d1a1af1d9625e6dbe0135
+  claims:
+  - claim_id: C-e000d90c-1
+    text: Sample size determination in crossover trials depends on the specification
+      of variance components.
+    quote: sample size required by a crossover trial typically depends on the specification
+    location: char 613 of 4573 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e000d90c-2
+    text: Uncertainty about variance parameters at design stage creates risk that
+      a trial may be under- or over-powered.
+    quote: Uncertainty about the value of these parameters at the design stage means
+      that
+    location: char 730 of 4573 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e000d90c-3
+    text: The paper proposes multiple approaches for sample size re-estimation in
+      multi-treatment crossover trials.
+    quote: we propose and compare several approaches for this in multi-treatment crossover
+      trials
+    location: char 1053 of 4573 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e000d90c-4
+    text: Regulators prefer re-estimation procedures that maintain blinding of treatment
+      allocations.
+    quote: regulators favour re-estimation procedures to maintain the blinding of
+      the treatment allocations
+    location: char 1155 of 4573 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e000d90c-5
+    text: When patients are equally allocated to period-balanced sequences, block
+      randomization estimators are unbiased.
+    quote: provided an equal number of patients are allocated to sequences that are
+      balanced
+    location: char 1400 of 4573 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e000d90c-6
+    text: The paper provides a formula for calculating bias in simple randomization
+      estimators.
+    quote: We further provide a formula for the bias of the estimators following simple
+      randomisation
+    location: char 1562 of 4573 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-e000d90c-7
+    text: Simulation results show blinded re-estimation procedures perform similarly
+      to unblinded approaches in many cases.
+    quote: the performance of the proposed blinded procedures is in many cases similar
+      to
+    location: char 1904 of 4573 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: b42f6bdc4c163fb4259fad0399504ff443c71998
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6680191/
+  title: 'Twenty‐five years of confirmatory adaptive designs: opportunities and pitfalls
+    - PMC'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 5216803a36d8790d399cf03f069bb95bf4b639e3
+  claims:
+  - claim_id: C-b42f6bdc-1
+    text: An article by Peter Bauer titled 'Multistage testing with adaptive designs'
+      was published in 1989 in a German-language journal.
+    quote: appeared 1989 in the German journal
+    location: char 3044 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-2
+    text: Bauer and Köhne published a significant methodological paper on adaptive
+      designs in the journal Biometrics in 1994.
+    quote: the publication by Bauer and Köhne 1994 in Biometrics
+    location: char 3386 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-4
+    text: Group sequential trials are considered to be a special case of the more
+      general adaptive designs.
+    quote: group sequential trials can be considered as a special case of the more
+      general
+    location: char 7792 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-5
+    text: From 1999 onwards, the research focus in adaptive design methodology shifted
+      to treatment selection and multiple testing.
+    quote: from 1999 on by treatment selection and multiple testing
+    location: char 5778 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-6
+    text: Adaptive design methodology became the subject of major regulatory guidance
+      documents in both the United States and Europe.
+    quote: have become the subject of two major regulatory guidance documents in the
+      US and Europe
+    location: char 3854 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-7
+    text: Blinded interim analysis methods were developed in parallel and contemporaneously
+      with unblinded adaptive design methods.
+    quote: started more or less at the same time as unblinded methods
+    location: char 6688 of 127546 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-8
+    text: Sample size reassessment was the major focus of adaptive design research
+      during the early days of the field.
+    quote: early days, the major focus was on sample size reassessment
+    location: char 5708 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-9
+    text: Study planning typically relies on information that is generally not available
+      with the required precision when protocols are written.
+    quote: relies on various information, which is generally not available with the
+      required precision
+    location: char 12666 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-10
+    text: All adaptive design modifications must be formally documented through scheduled
+      amendments to the study protocol.
+    quote: All the adaptation performed are documented in a prescheduled amendment
+      of the study.
+    location: char 13520 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-11
+    text: The study protocol must explicitly prespecify which types of adaptations
+      are intended to be performed.
+    quote: The study protocol has to describe which types of adaptations are intended
+    location: char 13769 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-12
+    text: Conditional error functions enable calculation of the maximum Type I error
+      rate achievable from any interim outcome.
+    quote: calculating the maximum type I error rate conditional on the observed data
+      at interim
+    location: char 15230 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-15
+    text: The first-stage design parameters including sample size and test statistic
+      must be prespecified before trial initiation.
+    quote: the design of the first stage has to be prespecified
+    location: char 23564 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-17
+    text: Switching from non-parametric to parametric tests between stages creates
+      ambiguity in interpreting final rejection of combined tests
+    quote: one has to be very careful in interpreting a final rejection of the combination
+      test
+    location: char 24712 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-19
+    text: Type I error control via conditional error function requires the second-stage
+      p-value distribution to be stochastically larger than or equal to uniform
+    quote: is under H stochastically larger or equal to the uniform distribution
+    location: char 26628 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-b42f6bdc-23
+    text: Type I error control in multiple testing requires bounding the probability
+      of falsely rejecting at least one true hypothesis
+    quote: probability to reject at least one true hypotheses should be bounded by
+      α
+    location: char 31652 of 127546 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 5426dd096a626a9b4e81a8571e3c36738b087bdd
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: e97e189a6e844854ac748c47fbc2ce5bfd68be56
+  url: https://pubmed.ncbi.nlm.nih.gov/31066093/
+  title: pubmed.ncbi.nlm.nih.gov
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 0b5fa0c9f802d759295ddf0a8cb0e15754b949eb
+  claims:
+  - claim_id: C-e97e189a-1
+    text: PubMed requires cookies to be enabled to access content.
+    quote: Cookies must be enabled
+    location: char 24 of 124 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 64ab25940d44e96401ad8256567d6a9af398d074
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11536650/
+  title: New results on optimal conditional error functions for adaptive two-stage
+    designs - PMC
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 089d87a8ec08ffefc060f0325280186c5ef03006
+  claims:
+  - claim_id: C-64ab2594-1
+    text: Variational calculus techniques can be applied to derive optimal conditional
+      error functions.
+    quote: techniques from variational calculus can be applied to derive existing
+      optimal conditional error functions
+    location: char 2339 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-3
+    text: Conditional error functions and critical value functions are mathematically
+      equivalent.
+    quote: conditional error function and the critical value function are equivalent
+    location: char 8695 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-4
+    text: Outcome variables are assumed to be normally distributed in this model.
+    quote: The outcomes of interest are assumed to be normally distributed
+    location: char 6622 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-5
+    text: An adaptive two-stage design is characterized as a five-tuple of parameters.
+    quote: an adaptive two-stage design can be seen as a five-tuple
+    location: char 7778 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-8
+    text: Variational calculus cannot be applied to optimize the promising zone design.
+    quote: case where this variational approach is not applicable, namely the optimal
+      promising zone design
+    location: char 5524 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-10
+    text: The Euler-Lagrange equation approach does not yield a closed-form solution
+      for the optimal conditional error function.
+    quote: by means of the Euler Lagrange equation does not yield a closed formula
+    location: char 15849 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-12
+    text: The sample size recalculation rule was developed by Proschan and Hunsberger.
+    quote: This can be achieved by the sample size recalculation rule of Proschan
+      and Hunsberger
+    location: char 13478 of 46513 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-13
+    text: Point-wise maximization of conditional power is equivalent to maximizing
+      overall power.
+    quote: point-wise maximization of the conditional power is equivalent to maximizing
+      the overall power
+    location: char 21213 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-64ab2594-19
+    text: The design controlled the type I error rate at α = 0.025.
+    quote: The type I error rate is to be controlled at level α = 0.025
+    location: char 25231 of 46513 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+- source_id: 3eb8e442d7e099d27c56034643b48331dfe3c42f
+  url: https://arxiv.org/html/2508.16552
+  title: 'Data Gluttony: Epistemic Risks, Dependent Testing and Data Reuse in Large
+    Datasets'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 13b671082c2ea9e36d7aee5c0687094892f94d5c
+  claims:
+  - claim_id: C-3eb8e442-1
+    text: Data reuse creates positive dependence among inferential tasks leading to
+      cascading errors.
+    quote: data reuse leads to positive dependence among the inferential tasks and
+      cascading inferential errors
+    location: char 907 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-2
+    text: Data gluttony is defined as using all available data meeting study inclusion
+      criteria.
+    quote: Common practice is for investigators to use all data meeting the inclusion
+      criteria
+    location: char 1009 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-3
+    text: Data reuse changes the shape of the distribution of inferential errors.
+    quote: data reuse affects the shape of the distribution of inferential errors
+    location: char 1294 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-5
+    text: Statistical power and precision exhibit diminishing marginal returns with
+      increasing sample size.
+    quote: diminishing marginal returns in power and precision in sample size
+    location: char 2331 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-7
+    text: The paper proposes research portfolio optimization and data temperance as
+      remedies.
+    quote: research portfolio optimization and what we term data temperance
+    location: char 1574 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-8
+    text: Large datasets enable improved statistical power and precision through larger
+      sample sizes.
+    quote: increased sample size allows for improved power, precision, and training
+      data
+    location: char 3315 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-9
+    text: Portfolio-level utility remains invariant regardless of whether individual
+      studies have independent or dependent error events, as long as marginal error
+      rates are fixed.
+    quote: invariant under the dependence of the underlying error events
+    location: char 14141 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-10
+    text: 'The standard linear utility function for Type I errors exhibits risk neutrality:
+      it treats any combination of studies with the same expected error count equivalently,
+      regardless of their dependence structure.'
+    quote: it is risk-neutral in the expected number of Type I errors
+    location: char 14300 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-12
+    text: Reusing the same data across multiple statistical tests produces positively
+      dependent error events, whereas using disjoint data ensures independence of
+      test procedures.
+    quote: the reuse of data can result in positively dependent testing procedures
+    location: char 15545 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-18
+    text: Reusing the same data across multiple test statistics causes them to become
+      positively dependent
+    quote: data reuse results in positively dependent testing procedures
+    location: char 30130 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-19
+    text: In Example 7, using a shared control group led to high pairwise correlation
+      between test statistics while disjoint controls yielded independent tests
+    quote: test statistics had high pairwise correlation whereas the tests in Design
+      2 were independent
+    location: char 31564 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-20
+    text: Example 7 Design 1 with shared control achieved a Type I error frequency
+      of 0.05104
+    quote: Design 1 had a Type I error frequency of 0.05104
+    location: char 31427 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-21
+    text: Example 7 Design 2 with disjoint controls achieved a Type I error frequency
+      of 0.05124
+    quote: Design 2 had a false rejection rate of 0.05124
+    location: char 31490 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-3eb8e442-23
+    text: In Example 8, the Pearson correlation between log-rank test statistics at
+      two survival timepoints was 0.9726
+    quote: the Pearson correlation between the log-rank test statistics was 0.9726
+    location: char 34219 of 94564 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+- source_id: 593bfe1b5d4aa95188b46c8774a2b29c81c95951
+  url: https://www.ema.europa.eu/en/methodological-issues-confirmatory-clinical-trials-planned-adaptive-design-scientific-guideline
+  title: Methodological issues in confirmatory clinical trials planned with an adaptive
+    design - Scientific guideline | European Medicines Agency (EMA)
+  authors: []
+  venue: null
+  date: null
+  type: standard
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 06cda226c593335e8553cffb361df3b53a9291f0
+  claims:
+  - claim_id: C-593bfe1b-1
+    text: The document focuses on opportunities for interim trial design modifications.
+    quote: focuses on the opportunities for interim trial design modifications
+    location: char 320 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-593bfe1b-2
+    text: The guideline addresses pitfalls that must be considered when flexibility
+      is introduced into trials.
+    quote: pitfalls that must be considered as soon as any kind of flexibility is
+      introduced
+    location: char 425 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-593bfe1b-3
+    text: The current version has reference number CHMP/EWP/2459/02.
+    quote: CHMP/EWP/2459/02
+    location: char 882 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-593bfe1b-4
+    text: The legal effective date of the current version is October 1, 2007.
+    quote: 01/10/2007
+    location: char 921 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-593bfe1b-5
+    text: The current version was first published on October 18, 2007.
+    quote: 18/10/2007
+    location: char 979 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-593bfe1b-6
+    text: The current effective version is a reflection paper on adaptive design in
+      confirmatory trials.
+    quote: Reflection paper on methodological issues in confirmatory clinical trials
+      planned with an adaptive design
+    location: char 750 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-593bfe1b-7
+    text: A draft version underwent consultation that has since closed.
+    quote: 'Draft: consultation closed'
+    location: char 1156 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-593bfe1b-8
+    text: The draft version was first published on March 23, 2006.
+    quote: 23/03/2006
+    location: char 1264 of 1693 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: fdf6820dcc0317ee58cf602f8283b0e4d5b46c7f
+  url: https://pharmaphorum.com/rd/ich-e20-draft-guideline-2025-adaptive-clinical-trials
+  title: On the ICH E20 draft guideline (2025) for adaptive clinical trials | pharmaphorum
+  authors: []
+  venue: null
+  date: null
+  type: blog
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 938814c56dbc6dc5fc15efb63a712080fa0f6603
+  claims:
+  - claim_id: C-fdf6820d-1
+    text: The ICH E20 is a draft guideline from 2025.
+    quote: ICH E20 draft guideline (2025)
+    location: char 7 of 102 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-fdf6820d-2
+    text: The ICH E20 guideline addresses adaptive clinical trials.
+    quote: ICH E20 draft guideline (2025) for adaptive clinical trials
+    location: char 7 of 102 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - c013edc2ce9b67b7d54fc8a8a238089b42d6ffeb
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: eedc3669dbe6406717c8ae4cf8a5eef35b7d6589
+  url: https://pubmed.ncbi.nlm.nih.gov/41989356/
+  title: pubmed.ncbi.nlm.nih.gov
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 0b5fa0c9f802d759295ddf0a8cb0e15754b949eb
+  claims:
+  - claim_id: C-eedc3669-1
+    text: The website requires cookies to be enabled before accessing content
+    quote: Cookies must be enabled
+    location: char 24 of 124 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-eedc3669-2
+    text: Users must reload the page after enabling cookies to proceed
+    quote: reload this page to continue
+    location: char 95 of 124 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 3667249d034630906a64cb3915053ab7ce22ec69
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12333484/
+  title: 'Confidence Intervals for Adaptive Trial Designs I: A Methodological Review
+    - PMC'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: f69ea45e30344403fbb1aba37685a2ee4145e935
+  claims:
+  - claim_id: C-3667249d-1
+    text: Conventional confidence intervals are prone to undercoverage in adaptive
+      trial designs.
+    quote: Conventional CIs of the treatment effects are prone to undercoverage
+    location: char 2971 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-2
+    text: Adaptive designs allow prospectively planned modifications to trial protocols
+      based on accumulating data.
+    quote: An adaptive design (AD) is a clinical trial design that allows for prospectively
+      planned modifications
+    location: char 4052 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-3
+    text: The independent increment structure provides a mathematically tractable
+      joint distribution of test statistics.
+    quote: This allows a mathematically tractable expression for the joint distribution
+      of the test statistics
+    location: char 6037 of 96506 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-4
+    text: FDA guidance notes confidence intervals may lack correct coverage probabilities
+      in adaptive trials.
+    quote: confidence intervals for the primary and secondary endpoints may not have
+      correct coverage probabilities
+    location: char 8604 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-5
+    text: Standard CI methods rest on distributional assumptions that cease to hold
+      in adaptive designs.
+    quote: standard CIs are often constructed based on distributional assumptions
+      that are no longer met
+    location: char 11857 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-6
+    text: The sample space in adaptive trials becomes multi-dimensional rather than
+      one-dimensional.
+    quote: the outcome sample space is no longer one‐dimensional but multi‐dimensional
+    location: char 11706 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-7
+    text: This paper is the first of two works reviewing confidence interval methods
+      for adaptive trials.
+    quote: This paper is the first in a two‐part series that explores CIs for adaptive
+      trials
+    location: char 3197 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-8
+    text: FDA recommends confidence intervals be presented with cautions about their
+      interpretation in adaptive trials.
+    quote: confidence intervals should be presented with appropriate cautions regarding
+      their interpretation
+    location: char 8751 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-9
+    text: Standard confidence intervals assume an underlying normal distribution,
+      but adaptive design stopping rules violate this assumption.
+    quote: the standard CI assumes an underlying normal distribution
+    location: char 12133 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-10
+    text: In adaptive designs, test decisions and CI-based decisions about the null
+      effect may diverge, creating interpretation problems.
+    quote: a test decision and the decision derived from the standard CI
+    location: char 12419 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-11
+    text: Maximum likelihood estimators in adaptive designs are potentially biased
+      and systematically deviate from true parameter values.
+    quote: the MLE after an AD is potentially biased
+    location: char 12774 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-12
+    text: Standard confidence intervals in adaptive designs produce coverage that
+      is often lower than the nominal level.
+    quote: tends to produce incorrect coverage, often lower than the desired nominal
+      coverage
+    location: char 13051 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-13
+    text: The level of incorrect CI coverage in adaptive designs depends on treatment
+      effect magnitude, adaptation type, and decision rules.
+    quote: can be impacted by many factors including the magnitude of the underlying
+      treatment effect
+    location: char 13290 of 96506 (normalized)
+    confidence: medium
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-14
+    text: Nominal and actual coverage are equal when all assumptions used to derive
+      a confidence interval are satisfied.
+    quote: this nominal coverage probability will equal the (actual/true) coverage
+      probability
+    location: char 14950 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-15
+    text: Stagewise ordering in confidence interval construction produces true intervals
+      and is consistent with group sequential test decisions.
+    quote: based on stagewise ordering, because this always produces true intervals
+    location: char 21054 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-17
+    text: Bootstrap confidence intervals are created by repeatedly sampling the data
+      with replacement to build an estimate distribution.
+    quote: The bootstrap method will sample from the data (with replacement) repeatedly
+    location: char 25017 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-20
+    text: Repeated confidence intervals preserve simultaneous coverage probability
+      at the chosen significance level across all interim analyses.
+    quote: simultaneous coverage probability is maintained at level 1 − α
+    location: char 31802 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 5426dd096a626a9b4e81a8571e3c36738b087bdd
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-21
+    text: Repeated CIs are generally wider than final CIs, with larger differences
+      at earlier interim analyses.
+    quote: RCIs will typically be wider than final CIs, particularly for earlier interim
+      analyses
+    location: char 32597 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-22
+    text: Individual confidence intervals computed separately do not necessarily maintain
+      overall simultaneous coverage probability across multiple hypotheses.
+    quote: the overall or simultaneous coverage probability of the J CIs is not necessarily
+      controlled
+    location: char 34067 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-3667249d-23
+    text: A Scopus database search in April 2025 identified 366 papers on adaptive
+      trial confidence interval methods.
+    quote: Our search strategy retrieved a total of 366 papers
+    location: char 29819 of 96506 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 5426dd096a626a9b4e81a8571e3c36738b087bdd
+  url: https://arxiv.org/html/2605.03554v1
+  title: Communicating results in trials with multiple hypotheses or adaptive design
+    features
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: f1a1887609607ea2c0d47d66d0154a9599c1f45f
+  claims:
+  - claim_id: C-5426dd09-1
+    text: 'Multiplicity in clinical trials can arise from four distinct sources: multiple
+      looks at data, multiple endpoints, multiple populations, or multiple treatment
+      comparisons.'
+    quote: multiplicity can come from at least four different sources
+    location: char 3762 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-2
+    text: Type 1 error control is implemented across multiple hypotheses to control
+      the chance of false positive decisions.
+    quote: Type 1 error control across the multiple hypotheses is implemented
+    location: char 2286 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - b42f6bdc4c163fb4259fad0399504ff443c71998
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-3
+    text: Per comparison inference is straightforward to implement and is the most
+      commonly reported approach.
+    quote: Per comparison inference is typically straightforward to implement and
+      most commonly reported
+    location: char 10844 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-4
+    text: Sequentially rejective multiple testing strategies rely on one-sided tests.
+    quote: sequentially rejective multiple testing strategies rely on one-sided tests
+    location: char 11730 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-5
+    text: Two-sided confidence intervals are more informative than one-sided tests
+      and are commonly reported.
+    quote: two-sided confidence intervals are more informative and commonly reported
+    location: char 11844 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-7
+    text: During drug development, stakeholder focus shifts from hypothesis testing
+      to quantification of treatment effects.
+    quote: the focus of stakeholders shifts from hypothesis testing to quantification
+      of effects
+    location: char 9486 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-8
+    text: Methodological reliability requires that results can support interpretations
+      with an acceptable level of uncertainty.
+    quote: results can support an interpretation with an acceptable level of uncertainty
+    location: char 5251 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-9
+    text: Multiplicity-adjusted inference requires a pre-defined type 1 error control
+      strategy to be valid and interpretable.
+    quote: multiplicity-adjusted inference is only valid and interpretable within
+      the framework
+    location: char 12118 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - b42f6bdc4c163fb4259fad0399504ff443c71998
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-10
+    text: Endpoints excluded from the pre-specified multiplicity scheme cannot use
+      multiplicity-adjusted inference.
+    quote: adjusted inference is not available for endpoints which are not part of
+      the pre-specified multiplicity
+    location: char 12269 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-11
+    text: Hierarchical and graphical multiple testing procedures often produce uninformative
+      multiplicity-adjusted confidence intervals.
+    quote: multiplicity-adjusted confidence intervals are often not informative
+    location: char 13250 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-12
+    text: Treatment effect estimates from group-sequential trials stopped early for
+      efficacy show substantial conditional bias.
+    quote: conditional bias for trials stopped early for efficacy can be substantial
+    location: char 16180 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-14
+    text: Conditional bias-adjusted estimators reduce but cannot completely eliminate
+      bias in treatment effect estimates.
+    quote: conditional bias-adjusted estimators only reduce but do not remove bias
+    location: char 16985 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-15
+    text: Repeated confidence intervals across multiple interim analyses are conservative
+      in their coverage.
+    quote: repeated confidence intervals are conservative
+    location: char 18836 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: 2
+    corroborated_by:
+    - 3667249d034630906a64cb3915053ab7ce22ec69
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-16
+    text: Current standard practice in group-sequential trials is reporting unadjusted
+      results despite available adjustment methods.
+    quote: common practice is to simply report unadjusted results
+    location: char 15542 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: '2026-08-21'
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-17
+    text: Trial participants are followed for 18 months in the Alzheimer's disease
+      study.
+    quote: patients are followed up for 18 months
+    location: char 24188 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-19
+    text: A hierarchical testing procedure tests endpoints sequentially.
+    quote: hierarchical testing procedure is implemented, whereby the endpoints are
+      tested sequentially
+    location: char 24304 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-20
+    text: Endpoints are analyzed using analysis of covariance with treatment as the
+      main covariate.
+    quote: an analysis of covariance model with treatment as the main covariate
+    location: char 24587 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-5426dd09-24
+    text: The PFS final analysis is conducted after 230 observed events.
+    quote: final analysis after the observation of 230 PFS events
+    location: char 31557 of 60383 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+- source_id: 0da9561be7d6961c528948abb18cc28e0c0144c4
+  url: https://arxiv.org/html/2606.08642
+  title: 'A Practical Framework for Sensitivity Analysis in Externally
+
+    Controlled Trials: An Illustration with a Bayesian Hybrid Evidence Synthesis
+
+    Case Study'
+  authors: []
+  venue: null
+  date: null
+  type: primary_paper
+  credibility: null
+  provenance_origin: discovered
+  retrieved_at: '2026-08-21'
+  content_hash: 152feca4d4de5f33ff1deaeee44b6f8848c5e37c
+  claims:
+  - claim_id: C-0da9561b-1
+    text: Externally controlled trials are used when concurrent randomized controls
+      are infeasible or unethical.
+    quote: used when concurrent randomized controls are infeasible or unethical
+    location: char 773 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-2
+    text: Regulatory guidance from FDA, EMA, and NMPA requires sensitivity analysis
+      of borrowing assumptions.
+    quote: Regulatory guidance from the FDA, EMA, and NMPA calls for sensitivity analysis
+      of borrowing assumptions
+    location: char 843 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-3
+    text: The sensitivity analysis framework comprises eight modular analyses labeled
+      S1 through S8.
+    quote: The framework comprises eight modular analyses
+    location: char 1230 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-4
+    text: The framework is method-agnostic and applies to both Bayesian and frequentist
+      borrowing.
+    quote: It is method-agnostic and applies to both Bayesian and frequentist borrowing
+    location: char 1479 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-7
+    text: Hybrid evidence synthesis combining patient-level and aggregate data introduces
+      uncertainties including digitization error and ecological bias.
+    quote: Hybrid synthesis introduces additional uncertainties, such as digitization
+      error, ecological bias from aggregation
+    location: char 4554 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-8
+    text: 'The sensitivity framework is organized around three pillars: appropriateness,
+      value, and robustness of borrowing conclusions.'
+    quote: a three-pillar sensitivity analysis framework organized around the questions
+      of appropriateness, value, and robustness
+    location: char 5718 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-9
+    text: In Bayesian implementations, posterior predictive checks serve as model
+      diagnostics.
+    quote: The Bayesian implementation is the posterior predictive check
+    location: char 12070 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-10
+    text: I^2 measures the percentage of variability due to heterogeneity rather than
+      chance.
+    quote: I^{2} (percentage of variability due to heterogeneity rather than chance)
+    location: char 12259 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-12
+    text: The no-borrowing sensitivity analysis fits the model using only internal
+      individual patient data.
+    quote: the model is fit using only the internal individual patient data (IPD)
+    location: char 13664 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-13
+    text: Effective sample size decomposition translates external source precision
+      into an intuitive patient-equivalent metric.
+    quote: translating the precision contributed by each external source into an intuitive
+      metric
+    location: char 14315 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-14
+    text: Borrowing-control sensitivity tests whether conclusions result from analyst-chosen
+      parameters or from the data.
+    quote: tests whether conclusions are driven by analyst-chosen input paramters
+      that control the strength of borrowing
+    location: char 15243 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-15
+    text: Borrowing mechanism sensitivity involves substituting an entirely different
+      borrowing framework than the primary analysis.
+    quote: Borrowing mechanism sensitivity (S7) asks whether substituting an entirely
+      different borrowing framework changes the conclusion
+    location: char 16661 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-16
+    text: Small tipping points in data perturbation indicate fragility of the conclusion.
+    quote: A small tipping point signals fragility and should be reported transparently
+    location: char 16583 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-17
+    text: The primary endpoint is calculated as the percentage change in biomarker
+      level from each patient's baseline value.
+    quote: clinical score, defined as the proportion change of biomarker value from
+      baseline
+    location: char 25555 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-23
+    text: The model combines a rapid saturation curve for early response with a linear
+      component for long-term drift.
+    quote: sigmoidal Emax term for the rapid early response and stabilization, and
+      a linear long-term trend
+    location: char 26749 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered
+  - claim_id: C-0da9561b-24
+    text: Patient-level baseline biomarker value was included as a covariate to control
+      for baseline heterogeneity across data sources.
+    quote: inclusion of patient-level baseline biomarker as a covariate in the model
+    location: char 25877 of 115149 (normalized)
+    confidence: high
+    contested: false
+    contradicts: []
+    corroboration_count: null
+    corroborated_by: []
+    as_of_date: null
+    provenance_origin: discovered

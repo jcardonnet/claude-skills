@@ -18,6 +18,20 @@ from typing import Any
 from ir.schema import ConceptMap, DocumentIR, SourceLedger
 
 
+class CheckNotApplicable(Exception):
+    """A check declaring it had nothing to run against — its companion artifact was not supplied.
+
+    `[]` means "I looked and found no violations". Four MUST checks used it to mean "I was given
+    nothing to look at": `_resolves_to_ledger` without a ledger, and `canonical_terms`,
+    `home_anchor_distinct` and `modes_per_concept` without a concept-map. Those two facts read
+    identically in the report, so an IR-only lint was indistinguishable from a clean full one and
+    the four rules were still credited as exercised coverage.
+
+    Raising this maps the finding to `skip` — already the dispatcher's word for "this rule did not
+    actually run", already excluded from coverage, and already feeding `unenforced_musts`.
+    """
+
+
 @dataclass
 class Violation:
     block_id: str | None

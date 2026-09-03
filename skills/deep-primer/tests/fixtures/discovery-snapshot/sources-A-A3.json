@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://example.org/recency-frontier-0",
+    "type": "primary"
+  },
+  {
+    "url": "https://example.org/recency-frontier-1",
+    "type": "primary"
+  },
+  {
+    "url": "https://example.org/recency-frontier-2",
+    "type": "primary"
+  },
+  {
+    "url": "https://example.org/recency-frontier-3",
+    "type": "primary"
+  }
+]

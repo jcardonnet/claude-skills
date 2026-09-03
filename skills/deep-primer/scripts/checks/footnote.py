@@ -17,7 +17,10 @@ _MARKER_RE = re.compile(r"\[\^([^\]]+)\](?!:)")
 
 
 def footnote_balance(ctx: LintContext) -> list[Violation]:
-    text = "\n".join(b.text or "" for b in ctx.ir.flatten_blocks())
+    # `b.text` is None for a card, a recall block and a contested block, so a marker written into a
+    # card row had no definition to be missing FROM and the check could not fail there. Segments are
+    # newline-joined because `_DEF_RE` is line-anchored.
+    text = "\n".join(seg for b in ctx.ir.flatten_blocks() for seg in b.prose_segments)
     defs = set(_DEF_RE.findall(text))
     markers = set(_MARKER_RE.findall(text))
 

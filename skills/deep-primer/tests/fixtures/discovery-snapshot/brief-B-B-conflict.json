@@ -1,0 +1,18 @@
+{
+  "wave": "B",
+  "framing": "debates",
+  "angle": "by-failure-mode",
+  "source_class": null,
+  "stance": "against-dominant",
+  "questions": [
+    "Claim: the dominant claim. Counter-claim: not-the dominant claim. Find the deciding evidence and why the two camps disagree."
+  ],
+  "instructions": [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs"
+  ],
+  "brief_id": "B-B-conflict",
+  "seed_ref": null
+}

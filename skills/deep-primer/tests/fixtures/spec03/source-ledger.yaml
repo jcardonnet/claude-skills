@@ -1,0 +1,386 @@
+# Source-ledger for spec-03-observability-tracing.
+#
+# THESE SOURCES ARE REAL. Every source_id, url, title, content_hash, claim_id, claim text and quote
+# below was produced by an actual Phase 1/1a campaign (2026-08-20) and is copied VERBATIM from
+# tests/fixtures/spec03-grounded/source-ledger.yaml, which holds the full run: 143 source leads,
+# 128 documents fetched, 30 extracted, 271 claims kept. The 13 sources and 41 claims here are the
+# subset the primer actually cites. The full-hex source_ids are kept precisely so any claim can be
+# grepped back to the campaign output it came from.
+#
+# Three fields were HAND-FILLED after the run because the pipeline drops them, not because they were
+# judged: `type`, `date` and `credibility`. `retrieval_loop.fetch_source_leads` never copies
+# `lead.type` onto the fetched document, so every campaign source lands with type/date/credibility
+# null. `date` is filled only where the document itself evidences one (both oneuptime posts carry
+# 2026-02-06 in their URL; the OpenTelemetry cardinality post carries 2026). `type` is left null for
+# the three GitHub issue/discussion threads: SourceType has no bucket for community discussion, and
+# calling a thread `docs` or `blog` would be a worse lie than an absent value. No lint reads either
+# field — they feed the source-quality critics (R-EVID-02/03).
+#
+# Only TWO corroboration pairs are recorded, and both are cross-organisation. They were found by
+# reading, because the 2026-08-20 campaign's own corroborate() pass found 0 of 271: it ran on the
+# lexical similarity backend, which cannot see that two sources agree unless they agree in the same
+# words. That backend is now a fallback rather than the default (ClaudeCorroborationGrouper), and a
+# replay of this same ledger through the model path finds 17 — so treat the count below as what one
+# careful reader marked, not as the pipeline's ceiling. Several other pairs LOOK corroborating and are deliberately not marked: the two B3
+# claims live in the same repository, and the two load-balancing-exporter claims are both oneuptime
+# posts. Same-origin agreement is not corroboration (R-EVID-03).
+#
+# No claim is marked `contested`. The campaign found no contradiction across 30 sources, and
+# manufacturing one would make this fixture assert something the literature does not.
+# `contested`/`contradicts` coverage lives in tests/fixtures/source-ledger.yaml and specs 04-06.
+#
+# Quotes are <=15 words (R-GROUND-01). They are NOT lexically close to the blocks that cite them —
+# R-GROUND-01 requires the prose to be a paraphrase, so the offline lexical entailment proxy scores
+# them low by design. citation_quality gates `verified_recall`/`verified_precision` only when a real
+# entailment backend is present; offline, only resolves_to_ledger / scoreable / ungrounded_share bind.
+sources:
+  - source_id: bd3da1a2855aa88a7bae89fbf1d3a205c89a95df
+    url: "https://opentelemetry.io/docs/concepts/signals/"
+    title: "Signals | OpenTelemetry"
+    authors: []
+    venue: "OpenTelemetry"
+    date: null
+    type: docs
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "50d3e9b161d861b07970ffbba4f4c5255e06bd22"
+    claims:
+      - claim_id: C-bd3da1a2-6
+        text: "Traces represent the path of a request through an application."
+        quote: "The path of a request through your application."
+        confidence: high
+
+  - source_id: c33bab732ffdab0be4a4d077705eae94c77ddbb0
+    url: "https://www.jaegertracing.io/docs/2.20/architecture/"
+    title: "Architecture | Jaeger"
+    authors: []
+    venue: "Jaeger"
+    date: null
+    type: docs
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "58ae2db8c4ffacbee894364f4666788232cefbfc"
+    claims:
+      - claim_id: C-c33bab73-8
+        text: "Dropping spans with the Filter Processor may cause broken traces."
+        quote: "Allows dropping spans and span events from the collector (⚠️ may cause broken traces)"
+        confidence: high
+
+  - source_id: a04e4429e1c16d429c3b26135ddd11a7341deef5
+    url: "https://github.com/openzipkin/b3-propagation"
+    title: "GitHub - openzipkin/b3-propagation"
+    authors: []
+    venue: "OpenZipkin"
+    date: null
+    type: standard
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "b2b8a320f450ea9f587db3ebb8d79911df87745a"
+    claims:
+      - claim_id: C-a04e4429-5
+        text: "X-B3-Sampled value of 1 encodes an accept sampling decision"
+        quote: "An accept sampling decision is encoded as X-B3-Sampled: 1"
+        confidence: high
+      - claim_id: C-a04e4429-9
+        text: "TraceId must be included in B3 propagation headers."
+        quote: "TraceId is required."
+        confidence: high
+      - claim_id: C-a04e4429-10
+        text: "SpanId is encoded as exactly 16 lowercase hexadecimal characters."
+        quote: "The second position of the b3 value is the 16 lower-hex character SpanId."
+        confidence: high
+      - claim_id: C-a04e4429-15
+        text: "JMS messaging systems must use only the single-header b3 format."
+        quote: "As such, only the single header format b3 should be used with JMS."
+        confidence: high
+
+  - source_id: 877e19dce35fbd5cb39364df6f656dcf5a9ef056
+    url: "https://github.com/openzipkin/b3-propagation/blob/master/RATIONALE.md"
+    title: "b3-propagation/RATIONALE.md at master"
+    authors: []
+    venue: "OpenZipkin"
+    date: null
+    type: standard
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "e2ff792520e0ff4848835c54c64a19e04af9ed58"
+    claims:
+      - claim_id: C-877e19dc-2
+        text: "Trace ID and span ID are the only mandatory fields in the B3 format."
+        quote: "The trace ID and span ID fields are the only mandatory fields."
+        confidence: high
+      - claim_id: C-877e19dc-6
+        text: "Using hyphenated prefixed headers like X-B3- is an antipattern."
+        quote: "using prefixed headers X-B3- is an antipattern."
+        confidence: high
+      - claim_id: C-877e19dc-7
+        text: "The single-header b3 format solves propagation compatibility problems caused by hyphenated headers in JMS."
+        quote: "solves propagation concerns a prefixed format causes with JMS"
+        confidence: high
+
+  # A GitHub issue thread: no SourceType bucket fits community discussion, so `type` stays null.
+  - source_id: 28ed2da2964b6fd6fb05e25509355db789fd1efd
+    url: "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7457"
+    title: "Zipkin B3 trace context to W3C trace context migration"
+    authors: []
+    venue: "GitHub / open-telemetry"
+    date: null
+    type: null
+    credibility: low
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "fdb04ce42f3e21301fa3492b2173d4f65aedc16b"
+    claims:
+      - claim_id: C-28ed2da2-3
+        text: "Trace context metadata can be embedded in event messages for correlation"
+        quote: "adding the traceContextMap in events meta"
+        confidence: high
+      - claim_id: C-28ed2da2-4
+        text: "Kafka and gRPC are used for distributed event-based application communication"
+        quote: "events sent to/from a kafka/grpc based application"
+        confidence: high
+      - claim_id: C-28ed2da2-6
+        text: "The migration from Zipkin B3 to W3C trace context must avoid breaking existing integrations"
+        quote: "correlate these zipkins-b3-traceId to w3c one's without any breaking change"
+        confidence: high
+
+  - source_id: 7290a7dcd6d4f3c9291a140f2871de66d6994ef8
+    url: "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md"
+    title: "OTEP 0235: Sampling threshold in TraceState"
+    authors: []
+    venue: "OpenTelemetry specification"
+    date: null
+    type: standard
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "ff3123eef68291e00a805184db6f64ad2447b12a"
+    claims:
+      # cross-organisation corroboration: the OTEP states the rule, the spec page states its effect
+      - claim_id: C-7290a7dc-8
+        text: "A downstream sampler must set the output threshold to the maximum of the input threshold and its chosen threshold."
+        quote: "sampler MUST output the span with a th equal to max(input th, chosen th)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [e6b2e631449fefb10e505ee770c414f4f136462a]
+
+  - source_id: e6b2e631449fefb10e505ee770c414f4f136462a
+    url: "https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/"
+    title: "TraceState: Probability Sampling | OpenTelemetry"
+    authors: []
+    venue: "OpenTelemetry specification"
+    date: null
+    type: standard
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "86359221106313f2cf1b4065887a9c3f9092201b"
+    claims:
+      - claim_id: C-e6b2e631-9
+        text: "Downstream samplers can raise the applied threshold but cannot lower it"
+        quote: "Downstream samplers are able to raise the applied threshold, but they cannot lower"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [7290a7dcd6d4f3c9291a140f2871de66d6994ef8]
+
+  # Vendor. The 2.4 GB span-buffer figure below is one vendor's worked example with no independent
+  # corroboration in this ledger, and the primer says so where it cites it (R-EVID-03).
+  - source_id: 80b1f67ba2163d7cd2706a03842898479a051b64
+    url: "https://oneuptime.com/blog/post/2026-02-06-head-based-vs-tail-based-sampling-opentelemetry/view"
+    title: "How to Choose Between Head-Based and Tail-Based Sampling in OpenTelemetry"
+    authors: []
+    venue: "OneUptime"
+    date: "2026-02-06"
+    type: vendor
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "a699bbe21fb3ebc465a3e50f7576c4e694c94689"
+    claims:
+      - claim_id: C-80b1f67b-1
+        text: "Head-based sampling makes the sampling decision before any spans are recorded in the trace."
+        quote: "Head-based sampling makes the keep-or-drop decision at the very start of a trace"
+        confidence: high
+      - claim_id: C-80b1f67b-2
+        text: "The W3C traceparent header is used to propagate sampling decisions to downstream services."
+        quote: "The decision propagates through the W3C traceparent header."
+        confidence: high
+      - claim_id: C-80b1f67b-3
+        text: "Tail-based sampling decisions are made in the OpenTelemetry Collector, not in application SDKs."
+        quote: "This happens in the OpenTelemetry Collector, not in your application code."
+        confidence: high
+      - claim_id: C-80b1f67b-4
+        text: "The Collector's decision_wait parameter should be set to 2-3 times the application's p99 latency."
+        quote: "A good starting point is 2 to 3 times your p99 latency."
+        confidence: high
+      - claim_id: C-80b1f67b-6
+        text: "Tail-based sampling in OpenTelemetry requires load balancers to route traffic by trace ID."
+        quote: "This requires a load balancing strategy based on trace ID."
+        confidence: high
+      # a sized worked example, so it dates: as_of_date records when it was verified current
+      - claim_id: C-80b1f67b-7
+        text: "Tail-based sampling with 5,000 traces per second, 30-second wait, 8 spans per trace, and 2KB per span requires approximately 2.4GB of memory."
+        quote: "that works out to roughly 2.4 GB just for the span buffer."
+        confidence: high
+        as_of_date: 2026-08-20
+      - claim_id: C-80b1f67b-8
+        text: "A microservices application handling 10,000 requests per second generates hundreds of thousands of spans per second."
+        quote: "handling 10,000 requests per second can generate hundreds of thousands of spans per second."
+        confidence: high
+
+  - source_id: a9fc4c7a6ce2a62da1bf8294225b6a5d89bc4d6c
+    url: "https://oneuptime.com/blog/post/2026-02-06-latency-based-sampling-capture-slow-traces/view"
+    title: "How to Implement Latency-Based Sampling to Capture Slow Traces"
+    authors: []
+    venue: "OneUptime"
+    date: "2026-02-06"
+    type: vendor
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "95b929eb2b7c5ce721b51cad0dec9f7eaf09e2b7"
+    claims:
+      - claim_id: C-a9fc4c7a-2
+        text: "Head sampling decides whether to sample a trace before the first span is even complete."
+        quote: "makes the keep-or-drop decision at the beginning of a trace, before the first span"
+        confidence: high
+      - claim_id: C-a9fc4c7a-4
+        text: "Tail sampling requires buffering all spans in memory while waiting for the sampling decision."
+        quote: "tail sampling requires holding all spans in memory until the decision is made"
+        confidence: high
+      - claim_id: C-a9fc4c7a-5
+        text: "All spans belonging to a single trace must be processed by the same collector instance for tail sampling to work correctly."
+        quote: "all spans for a given trace must be processed by the same collector instance"
+        confidence: high
+      - claim_id: C-a9fc4c7a-6
+        text: "Load-balancing exporters solve the single-collector requirement by routing all spans with the same trace ID to the same downstream collector."
+        quote: "This exporter routes all spans with the same trace ID to the same downstream collector"
+        confidence: high
+      - claim_id: C-a9fc4c7a-7
+        text: "The tail sampling processor applies OR logic across policies: a trace is kept if any single policy evaluates to keep."
+        quote: 'If any policy says "keep," the trace is kept.'
+        confidence: high
+
+  - source_id: 36976b07dc28e845134e228893af52e30717adfe
+    url: "https://opentelemetry.io/blog/2026/cardinality-limits-in-opentelemetry/"
+    title: "Metric cardinality limits in OpenTelemetry: a practical guide"
+    authors: []
+    venue: "OpenTelemetry blog"
+    date: "2026"
+    type: blog
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "cbb5a34017c246571a5e2faf02a8988a7ad334d9"
+    claims:
+      - claim_id: C-36976b07-1
+        text: "The default aggregation cardinality limit is 2000 combinations per metric stream."
+        quote: "The default aggregation cardinality limit is 2000 combinations per metric stream."
+        confidence: high
+      - claim_id: C-36976b07-2
+        text: "When a metric stream overflows, total counts remain correct but queries filtered by attributes can undercount."
+        quote: "the total value remains correct, while queries that filter or group by attributes can undercount"
+        confidence: high
+      - claim_id: C-36976b07-8
+        text: "The SDK cardinality limit does not bound backend cardinality across a fleet."
+        quote: "The SDK cap does not bound backend cardinality."
+        confidence: high
+      - claim_id: C-36976b07-9
+        text: "When cardinality limits are exceeded, measurement values are retained in the overflow data point rather than discarded entirely."
+        quote: "The values are still included in the overflow data point"
+        confidence: high
+      - claim_id: C-36976b07-10
+        text: "When cardinality limits cause overflow, the original measurement attribute set is what is lost rather than the values themselves."
+        quote: "What is lost is the original measurement attribute set"
+        confidence: high
+
+  - source_id: ed606ca486ad9f76419e5ed22310a231c4ac01bf
+    url: "https://www.systemshardening.com/articles/observability/prometheus-cardinality-dos-defence/"
+    title: "Defending Prometheus Against High-Cardinality Label Injection and DoS"
+    authors: []
+    venue: "Systems Hardening"
+    date: null
+    type: blog
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "f83f34c5d7dc8c5e40be444976804db063cde8d4"
+    claims:
+      - claim_id: C-ed606ca4-1
+        text: "Prometheus stores all time series in memory"
+        quote: "Prometheus stores all time series in memory."
+        confidence: high
+      - claim_id: C-ed606ca4-2
+        text: "Each unique combination of metric name and label values constitutes a separate time series"
+        quote: "Each unique combination of metric name and label values constitutes a separate time series."
+        confidence: high
+      - claim_id: C-ed606ca4-5
+        text: "Roughly 1 GB of memory is allocated per 100,000 time series"
+        quote: "Prometheus to allocate ~1 GB of memory per 100,000 time series"
+        confidence: medium
+      # version-bearing, so R-GROUND-05 requires an as_of_date
+      - claim_id: C-ed606ca4-6
+        text: "Prometheus 2.45 and later support global time series limits via storage configuration"
+        quote: "For Prometheus 2.45+, use the storage-level limit:"
+        confidence: high
+        as_of_date: 2026-08-20
+      - claim_id: C-ed606ca4-7
+        text: "Applications can bound metric cardinality by normalizing dynamic path segments to placeholders"
+        quote: "Replace dynamic path segments with a placeholder."
+        confidence: high
+      - claim_id: C-ed606ca4-9
+        text: "Prometheus runs out of memory when cardinality attacks occur before limits are set."
+        quote: "Prometheus OOMs; all monitoring goes dark"
+        confidence: high
+
+  # A GitHub discussion thread: `type` stays null for the same reason as the issue above.
+  - source_id: 841df5cd70826525d0f64183d6cd107385236948
+    url: "https://github.com/open-telemetry/opentelemetry-specification/discussions/3554"
+    title: "Span attributes cardinality - Discussion #3554"
+    authors: []
+    venue: "GitHub / open-telemetry"
+    date: null
+    type: null
+    credibility: low
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "705e3944aeabd14533b0d4138e268fa894705dec"
+    claims:
+      # cross-organisation corroboration: a spec discussion and a spec issue, independently raised
+      - claim_id: C-841df5cd-1
+        text: "Metrics and logs suffer degradation when attribute cardinality is high"
+        quote: "metrics and logs suffer when cardinality is high"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [6c8aa937aa56de5954b9421375c0bf1716fe60ff]
+      - claim_id: C-841df5cd-4
+        text: "Combinations of predefined span attributes like client IP, host identifier, and route often uniquely identify individual spans"
+        quote: "together will often uniquely identify a span"
+        confidence: medium
+
+  - source_id: 6c8aa937aa56de5954b9421375c0bf1716fe60ff
+    url: "https://github.com/open-telemetry/opentelemetry-specification/issues/2775"
+    title: "Refine which attributes of Resource contribute to Metric Identity - Issue #2775"
+    authors: []
+    venue: "GitHub / open-telemetry"
+    date: null
+    type: null
+    credibility: low
+    provenance_origin: discovered
+    retrieved_at: "2026-08-20"
+    content_hash: "e89ca7ebde52901d8cc7c8602e06870fb089ec63"
+    claims:
+      - claim_id: C-6c8aa937-3
+        text: "Process pid and parent_pid attributes churn between instances of an application, causing higher cardinality"
+        quote: "known to churn between instances of an application and would lead to higher cardinality"
+        confidence: high
+      - claim_id: C-6c8aa937-7
+        text: "Metric time-series databases have known cardinality implementation issues"
+        quote: "known issues in metric time-series database implementation around cardinality"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [841df5cd70826525d0f64183d6cd107385236948]

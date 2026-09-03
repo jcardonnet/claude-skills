@@ -1,0 +1,328 @@
+[
+  {
+    "id": "C-C-source-completeness-s1",
+    "url": "https://www.fda.gov/media/78495/download",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "FDA's December 2019 final guidance on adaptive design fundamentals, Type I error control, and documentation requirements",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-source-completeness-s2",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Searchable FDA guidance index for adaptive trial design across drug and biologic development",
+    "fetched_title": "Adaptive Design Clinical Trials for Drugs and Biologics Guidance for Industry | FDA",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s3",
+    "url": "https://www.federalregister.gov/documents/2025/09/30/2025-18897/e20-adaptive-designs-for-clinical-trials-international-council-for-harmonisation-draft-guidance-for",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "ICH E20 draft (Step 2b, June 2025) \u2013 first harmonized international standard for confirmatory adaptive trials",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-source-completeness-s4",
+    "url": "https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "EMA's endorsed ICH E20 guideline page with implementation resources",
+    "fetched_title": "ICH E20 adaptive designs for clinical trials - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s5",
+    "url": "https://www.ema.europa.eu/en/methodological-issues-confirmatory-clinical-trials-planned-adaptive-design-scientific-guideline",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "EMA 2007 reflection paper establishing Type I error control as regulatory prerequisite for adaptive confirmatory trials",
+    "fetched_title": "Methodological issues in confirmatory clinical trials planned with an adaptive design - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s6",
+    "url": "https://www.fda.gov/media/108698/download",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "FDA's ICH E9(R1) addendum on estimands and sensitivity analysis \u2013 foundational for adaptive design interpretation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-source-completeness-s7",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10802140/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "PMC primer on ICH E9(R1) estimands framework underlying modern adaptive trial specification",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-source-completeness-s8",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6739232/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Familywise error control in multi-armed response-adaptive trials \u2013 peer-reviewed statistical foundations",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-source-completeness-s9",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4369921/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Comprehensive review of adaptive design methods applied to oncology trials with regulatory perspective",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-source-completeness-s10",
+    "url": "https://ojrd.biomedcentral.com/articles/10.1186/1750-1172-3-11",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "2008 Orphanet comprehensive review of adaptive methods and regulatory constraints for rare diseases",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s11",
+    "url": "https://trialsjournal.biomedcentral.com/articles/10.1186/1745-6215-15-383",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Survey of 152 EMA scientific advice letters on adaptive trial designs \u2013 empirical regulatory data",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s12",
+    "url": "https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-018-3012-x",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "EMA marketing authorization outcomes for adaptive designs with regulatory review patterns",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s13",
+    "url": "https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-020-01042-7",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Bayesian interim analyses without adjustment \u2013 regulatory perspectives on frequentist operating characteristics",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s14",
+    "url": "https://www.routledge.com/Group-Sequential-and-Adaptive-Methods-for-Clinical-Trials/Jennison-Turnbull/p/book/9781584888475",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Jennison & Turnbull 2nd edition (2026) \u2013 comprehensive monograph on statistical methods, recent methodological advances",
+    "fetched_title": "Group Sequential and Adaptive Methods for Clinical Trials - 2nd Editio",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s15",
+    "url": "https://www.routledge.com/Adaptive-Design-Methods-in-Clinical-Trials/Chow-Chang/p/book/9781032477602",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Chow & Chang 2nd edition (2024) \u2013 practical guide to design principles and regulatory submissions",
+    "fetched_title": "Adaptive Design Methods in Clinical Trials - 2nd Edition - Shein-Chung",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s16",
+    "url": "https://arxiv.org/pdf/2501.08765",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Advanced adaptive randomized trials practical guide (January 2025) \u2013 recent methodological state-of-art",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-source-completeness-s17",
+    "url": "https://arxiv.org/pdf/2312.15222",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Type I error rate control in Bayesian clinical trial designs \u2013 emerging frequentist-Bayesian integration",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-source-completeness-s18",
+    "url": "https://arxiv.org/pdf/1803.05384",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Familywise error control in multi-armed response-adaptive trials with theoretical foundations",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-source-completeness-s19",
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMra1510061",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "NEJM perspective on adaptive designs with clinical trial examples and regulatory context",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "C-C-source-completeness-s20",
+    "url": "https://www.nature.com/articles/s41746-025-01674-3",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "npj Digital Medicine (2025) on AI-driven adaptive systems in clinical deployment \u2013 emerging regulatory frontier",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-source-completeness-s21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16134130/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "C-C-source-completeness"
+    ],
+    "why": "Lachin's classical review of futility stopping methods based on conditional power",
+    "fetched_title": "pubmed.ncbi.nlm.nih.gov",
+    "retrieved_at": "2026-08-21"
+  }
+]

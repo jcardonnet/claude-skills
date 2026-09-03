@@ -30,8 +30,12 @@ def xrefs_resolve(ctx: LintContext) -> list[Violation]:
 
     out: list[Violation] = []
     for b in ctx.ir.flatten_blocks():
-        text = b.text or ""
-        # caption text also references nothing here; only prose carries refs
+        # Every span the block puts on the page, not just `b.text` — which is None for a card, a
+        # recall block and a contested block, so a phantom reference in a card row was unreportable
+        # and this check could not fail there. Captions are scanned too: a caption is prose, and a
+        # `Figure N` inside one is already registered as a DEFINITION by the loop above, so a
+        # self-reference resolves rather than firing.
+        text = "\n".join(b.prose_segments)
         for num in _FIG_REF_RE.findall(text):
             if num not in fig_defs:
                 out.append(Violation(b.block_id, f"phantom reference to Figure {num} (no figure caption defines it)"))

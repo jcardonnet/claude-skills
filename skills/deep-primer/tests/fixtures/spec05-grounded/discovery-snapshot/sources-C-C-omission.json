@@ -1,0 +1,455 @@
+[
+  {
+    "id": "C-C-omission-s1",
+    "url": "https://www.fda.gov/media/78495/download",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "FDA 2019 adaptive design guidance; foundational frequentist framework",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s2",
+    "url": "https://www.federalregister.gov/documents/2026/01/12/2026-00325/use-of-bayesian-methodology-in-clinical-trials-of-drug-and-biological-products-draft-guidance-for",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "FDA January 2026 Bayesian guidance; prior specification requirements, operating characteristics",
+    "dropped_reason": "redirected to https://unblock.federalregister.gov/, disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s3",
+    "url": "https://www.ema.europa.eu/en/methodological-issues-confirmatory-clinical-trials-planned-adaptive-design-scientific-guideline",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "EMA 2007 guidance; Type I error control, DMC governance, international harmonization",
+    "fetched_title": "Methodological issues in confirmatory clinical trials planned with an adaptive design - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s4",
+    "url": "https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "ICH E20 draft (Step 2b); unified FDA/EMA/ICH harmonization attempt",
+    "fetched_title": "ICH E20 adaptive designs for clinical trials - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s5",
+    "url": "https://www.fda.gov/media/155403/download",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "FDA 2020 guidance on complex trial designs; pre-submission, master protocols, simulation requirements",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s6",
+    "url": "https://link.springer.com/article/10.1186/s12916-018-1017-7",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Thorlund et al., BMC Medicine 2018; comprehensive adaptive design review, reporting requirements",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s7",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4282114/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Type I error inflation under adaptive arm selection; multiplicity failures",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s8",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9303654/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Conditional power and Type I error in sample size re-estimation; unblinded SSR pitfalls",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s9",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11577695/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Adaptive enrichment designs; biomarker-driven trial methodology and operational challenges",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s10",
+    "url": "https://link.springer.com/article/10.1007/s11017-019-09481-0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Outcome-adaptive randomization ethics; fairness and autonomy concerns in response-adaptive designs",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s11",
+    "url": "https://arxiv.org/pdf/2005.00564",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Response-adaptive randomization practitioner challenges; enrollment impact and real-world constraints",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s12",
+    "url": "https://arxiv.org/html/2410.02050",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "BATSS R package (October 2025); Bayesian adaptive trial simulation, tool comparison",
+    "fetched_title": "A fast, flexible simulation framework for Bayesian adaptive\ndesigns - the R package BATSS",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s13",
+    "url": "https://arxiv.org/abs/2601.14701",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Regulatory expectations for Bayesian methods (January 2026); FDA 2026 guidance implementation",
+    "fetched_title": "[2601.14701] Regulatory Expectations for Bayesian Methods in Drug and Biologic Clinical Trials: A Practical Perspective on FDA's 2026 Draft Guidance",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s14",
+    "url": "https://arxiv.org/pdf/2602.06379",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "E-values for adaptive trials (February 2026); anytime-valid monitoring alternatives",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s15",
+    "url": "https://www.equator-network.org/reporting-guidelines/the-adaptive-designs-consort-extension-ace-statement/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "CONSORT ACE extension; adaptive trial reporting checklist and transparency requirements",
+    "fetched_title": "The adaptive designs CONSORT extension (ACE) statement: a checklist with explanation and elaboration guideline for reporting randomised trials that use an adaptive design | EQUATOR Network",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s16",
+    "url": "https://www.nature.com/articles/s41591-025-03635-5",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "CONSORT 2025 Statement; updated reporting guidelines incorporating adaptive design extension",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s17",
+    "url": "https://www.recoverytrial.net/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "RECOVERY trial case study; large platform trial, adaptive arm drop, regulatory outcomes",
+    "fetched_title": "Welcome \u2014 RECOVERY Trial",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s18",
+    "url": "https://www.remapcap.org/what-is-an-adaptive-trial",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "REMAP-CAP trial case study; multifactorial adaptive design, international coordination challenges",
+    "fetched_title": "What is an adaptive trial? \u2014 REMAP-CAP Trial",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s19",
+    "url": "https://www.ispytrials.org/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "I-SPY 2 trial case study; Bayesian adaptive randomization in oncology, operational burden",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s20",
+    "url": "https://cytel.com/east-horizon/",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Cytel EAST software (2024\u20132025); adaptive design simulation tool limitations and capabilities",
+    "fetched_title": "Cytel East Horizon | East & Solara | Integrated Trial Design",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s21",
+    "url": "https://cran.r-project.org/web/packages/brms/index.html",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "brms R package; Bayesian inference via Stan, computational performance for adaptive trials",
+    "fetched_title": "CRAN: Package brms",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s22",
+    "url": "https://www.iconplc.com/insights/blog/2025/04/14/understanding-new-draft-fda-guidance-data-monitoring-committees",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "ICON blog (April 2025); DMC governance, blinding procedures, operational bias control",
+    "fetched_title": "Adaptive trials and the new draft FDA guidance on data monitoring committees | ICON",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s23",
+    "url": "https://www.appliedclinicaltrialsonline.com/view/fda-issues-draft-guidance-advance-bayesian-methods-clinical-trials",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Applied Clinical Trials (January 2026); FDA Bayesian guidance summary and implementation",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "C-C-omission-s24",
+    "url": "https://www.worldwide.com/blog/2024/08/effective-oncology-adaptive-trial-design/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Worldwide (August 2024); adaptive trial design for oncology, site training and operational burden",
+    "fetched_title": "Establishing Effective Adaptive Trial Designs for Oncology",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s25",
+    "url": "https://www.wcgclinical.com/insights/elevate-training-to-overcome-site-burden-and-reduce-protocol-deviations-by-35-50/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "WCG Clinical (2025); site training burden quantification, protocol deviation reduction strategies",
+    "fetched_title": "Elevate Training to Overcome Site Burden and Reduce Protocol Deviations by 35-50% | WCG",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s26",
+    "url": "https://www.fortrea.com/insights/clinical-trial-complexity-innovation",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Fortrea (2025); site activation rates, decentralized trial complexity, adaptive trial challenges",
+    "fetched_title": "Innovation in Clinical Trials: Addressing Complexity & Improving Productivity | Fortrea Insights",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s27",
+    "url": "https://acrpnet.org/2025/10/14/unveiling-2025s-biggest-site-challenges-data-driven-insights-to-optimize-site-success",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "ACRP 2025 Site Challenge Survey; investigator burden, protocol complexity as #1 challenge",
+    "requested_url": "https://acrpnet.org/2025/10/14/unveiling-2025s-biggest-site-challenges-data-driven-insights-to-optimize-site-success/",
+    "fetched_title": "Unveiling 2025\u2019s Biggest Site Challenges: Data-Driven Insights to Optimize Site Success - ACRP",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s28",
+    "url": "https://www.plos.org/plosone/article/2025/adaptive-informed-consent",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "PLOS One scoping review (2025); informed consent for adaptive designs, enrollment impact",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "C-C-omission-s29",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8923476/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "PANDA Sheffield; operational bias and investigator conduct under interim data knowledge",
+    "dropped_reason": "disallowed by robots.txt"
+  }
+]

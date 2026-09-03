@@ -1,0 +1,1074 @@
+{
+  "passes": [
+    {
+      "pass": "coherence",
+      "rules": [
+        "R-PROSE-01",
+        "R-SUMM-04"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-propagation",
+          "verdict": "pass",
+          "evidence": "Single sentence; subject 'trace' carried forward via 'it' in second clause, no per-sentence subject-switching.",
+          "span": "it holds together only while every hop forwards the trace id",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-propagation",
+          "verdict": "pass",
+          "evidence": "id/trace/span thread carries across idea, home_anchor, whats_new, skip_when, and key_exemplar rather than each field introducing an unrelated subject",
+          "span": "the mandatory fields come from the B3 propagation specification",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "subsum-prop-queue",
+          "verdict": "pass",
+          "evidence": "Parallel clauses share 'trace id'/'it' as through-line; contrastive pair, not disconnected new-subject sentences",
+          "span": "loses the trace id to a missing header; an asynchronous hop loses it",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "body-prop-queue",
+          "verdict": "fail",
+          "evidence": "New subjects appear without prior mention: 'the consumer' (S3) and 'the service' (S5) aren't given from prior 2 sentences",
+          "span": "the consumer opens a span with no parent",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-sampling",
+          "verdict": "pass",
+          "evidence": "Single-sentence lede, one subject (head-based sampling) developed clause to clause; no competing subject introduced.",
+          "span": "Head-based sampling makes its keep-or-drop decision at the beginning of a trace",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-sampling",
+          "verdict": "fail",
+          "evidence": "home_anchor introduces 'The slow-query log' with no lexical or pronoun link to idea's 'decision'/'collector'",
+          "span": "The slow-query log that records a statement only after it crosses a duration threshold.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "toulmin-sampling",
+          "verdict": "pass",
+          "evidence": "Subject chains: collector\u2192memory\u2192memory\u2192traces, each sentence anchored in the prior one's given entity",
+          "span": "That memory must hold every buffered trace for two or three times p99 latency.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "lede-cardinality",
+          "verdict": "pass",
+          "evidence": "Single sentence chains cause via 'so': combination values -> time series -> cardinality -> degrades logs, not disconnected assertions",
+          "span": "so high attribute cardinality is what degrades metrics and logs",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-01",
+          "block_id": "card-cardinality",
+          "verdict": "pass",
+          "evidence": "Every field reuses 'cardinality' as the given anchor (idea, 'cardinality audit', 'drive cardinality up', 'cardinality problem'), chaining new claims onto it.",
+          "span": "drive cardinality up",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-propagation",
+          "verdict": "pass",
+          "evidence": "Lede defines 'trace' and its coherence condition (forwarding trace id) without pointing to deeper content",
+          "span": "it holds together only while every hop forwards the trace id",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-propagation",
+          "verdict": "pass",
+          "evidence": "Card defines trace/span id, B3 header, sampled field, and propagation audit inline; no 'see below' deferral to a deeper layer.",
+          "span": "A B3 header whose sampled field is set to 1, which tells every later hop the trace was accepted.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "subsum-prop-queue",
+          "verdict": "pass",
+          "evidence": "States two complete failure modes (missing header; message carrying none) with no forward reference to deeper content like 'see below'.",
+          "span": "an asynchronous hop loses it to a message that carried none",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-sampling",
+          "verdict": "pass",
+          "evidence": "Lede defines head-based sampling and its timing self-contained; no forward reference to deeper content required",
+          "span": "makes its keep-or-drop decision at the beginning of a trace",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-sampling",
+          "verdict": "fail",
+          "evidence": "confidence field says 'the memory figures below', explicitly pointing to a deeper layer to complete the card",
+          "span": "the memory figures below come from one vendor's worked example",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "lede-cardinality",
+          "verdict": "pass",
+          "evidence": "States definition (name+label combos = time series) and consequence (degrades metrics/logs) with no forward reference to deeper content",
+          "span": "Every distinct combination of name and label values is its own time series, so high attribute cardinality is what degrades metrics and logs.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-04",
+          "block_id": "card-cardinality",
+          "verdict": "pass",
+          "evidence": "Card defines analogue, anchor, what's-new, and exemplar (pid/parent_pid) internally with no 'see below' deferral",
+          "span": "Process pid and parent_pid attributes, which churn between instances and drive cardinality up.",
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    },
+    {
+      "pass": "evidence-grounding",
+      "rules": [
+        "R-ART-03",
+        "R-EVID-01",
+        "R-EVID-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ART-03",
+          "block_id": "toulmin-sampling",
+          "verdict": "pass",
+          "evidence": "Explicit 'Qualifier:' (memory must hold every buffered trace) and 'Rebuttal:' (burst evicts the slow traces you wanted) both present.",
+          "span": "Qualifier: the collector defers that decision only while every buffered trace fits in memory.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Vendor-only figures explicitly hedged: 'in one vendor's worked example' (toulmin-sampling, card-sampling); settled facts explicitly marked 'Settled:' (card-propagation, card-cardinality)",
+          "span": "the memory figures below come from one vendor's worked example",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EVID-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Memory claim (2.4 GB) in toulmin-sampling sourced only to one vendor's worked example; no independent non-vendor corroboration provided.",
+          "span": "that memory comes to roughly 2.4 GB in one vendor's worked example of a modest deployment"
+        }
+      ]
+    },
+    {
+      "pass": "expertise-calibration",
+      "rules": [
+        "R-PARAM-02",
+        "R-PROSE-02",
+        "R-PROSE-06",
+        "R-EXPERT-01",
+        "R-EXPERT-03",
+        "R-EXPERT-02",
+        "R-DEPTH-03"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-PARAM-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Checklist/mental-model/tradeoff blocks use audit-style prompts, not numbered install/tutorial steps",
+          "span": "Confirm the outbound client copies the trace headers. Check that queue producers put trace context into the message itself.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-propagation",
+          "verdict": "pass",
+          "evidence": "States a necessary condition ('holds together only while every hop forwards') rather than unqualified praise; no merit claim to check.",
+          "span": "it holds together only while every hop forwards the trace id",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-propagation",
+          "verdict": "pass",
+          "evidence": "No unqualified praise present; reach_for_when/skip_when give conditional guidance without claiming merit sans cost",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "subsum-prop-queue",
+          "verdict": "pass",
+          "evidence": "Text states a factual asymmetry (which header/field is lost) without praise or endorsement language, so no trade-off framing is required.",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "body-prop-queue",
+          "verdict": "pass",
+          "evidence": "No claims of merit or praise appear; text describes a failure mechanism only, so R-PROSE-02 has nothing to fail",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-sampling",
+          "verdict": "pass",
+          "evidence": "Purely descriptive statement of mechanism/timing, makes no merit claim requiring trade-off framing",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-sampling",
+          "verdict": "pass",
+          "evidence": "skip_when names explicit cost 'buffering adds a failure mode for nothing'; no unqualified praise language used",
+          "span": "buffering adds a failure mode for nothing",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "toulmin-sampling",
+          "verdict": "error",
+          "evidence": "JudgeError: R-PROSE-02/toulmin-sampling: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "lede-cardinality",
+          "verdict": "pass",
+          "evidence": "States a causal cost ('degrades metrics and logs') rather than unqualified praise; no merit claim present to require trade-off framing",
+          "span": "high attribute cardinality is what degrades metrics and logs",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-02",
+          "block_id": "card-cardinality",
+          "verdict": "pass",
+          "evidence": "Card states cardinality causes degradation and gives audit triggers; no unqualified praise of a solution requiring cost-framing",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-propagation",
+          "verdict": "pass",
+          "evidence": "Definitional prose stating what a trace is and a functional requirement; rule targets comparative stances and normative claims.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-propagation",
+          "verdict": "pass",
+          "evidence": "Text makes leverage-weighted positions: clear declarative idea, weighted use conditions (reach_for_when/skip_when), no hedging or forced symmetry.",
+          "span": "reach_for_when: Reach for a propagation audit when traces arrive complete on some routes and truncated on others. skip_when: Skip it when every span already shares one trace id and the gap is missing attributes instead."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "subsum-prop-queue",
+          "verdict": "pass",
+          "evidence": "States two asymmetric failure modes directly without hedging or artificial balance; clear and opinionated in naming specific costs.",
+          "span": "A synchronous hop loses the trace id to a missing header; an asynchronous hop loses it to a message that carried none."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "body-prop-queue",
+          "verdict": "pass",
+          "evidence": "Text takes clear position ('must put trace context') without hedging, names cost asymmetrically ('orphaned span holds real latency, dashboard stays green while user waits'), avoids false symmetry.",
+          "span": "The producing service must put the trace context into the message metadata, because no header rides along on its own."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-sampling",
+          "verdict": "pass",
+          "evidence": "Descriptive statement of mechanism; rule R-PROSE-06 applies to merit claims and trade-offs, not mechanical descriptions",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-sampling",
+          "verdict": "fail",
+          "evidence": "reach_for_when/skip_when structure presents symmetric binary decision criteria rather than leverage-weighted recommendation; confidence field hedges certainty",
+          "span": "reach_for_when: Reach for it when errors and p99 outliers are rare enough that uniform sampling loses them. skip_when: Skip it when trace volume already fits the budget, since buffering adds a failure mode for nothing."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "toulmin-sampling",
+          "verdict": "pass",
+          "evidence": "Takes weighted position: recommends tail-based sampling when error traces matter most, names memory cost (2.4GB) and failure mode (slow-trace eviction under burst), does not over-symmetrize.",
+          "span": "When error traces matter more than uniform coverage, run tail-based sampling in the collector. ... Under a burst, the traces evicted first are the slow ones you wanted to keep."
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "lede-cardinality",
+          "verdict": "pass",
+          "evidence": "Identifies high cardinality as problem causing degradation, no hedging or false symmetry",
+          "span": "high attribute cardinality is what degrades metrics and logs"
+        },
+        {
+          "rule_id": "R-PROSE-06",
+          "block_id": "card-cardinality",
+          "verdict": "pass",
+          "evidence": "Card delivers asymmetric reach_for/skip_when guidance without hedging or false balance; positions cardinality as causal ('is what makes metrics degrade').",
+          "span": "Reach for a cardinality audit when the bill climbs while request volume stays flat. Skip it when spans carry only enumerated attributes."
+        },
+        {
+          "rule_id": "R-EXPERT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Primary layer uses contrastive mental-model cards (New-vs-renamed, Reach-for-it-when/Skip-it-when) instead of tutorial walkthroughs; checklist-propagation is a diagnostic audit list, not a sequential how-to",
+          "span": "New-vs-renamed: Threading an id is renamed, not new",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-EXPERT-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Figure claims lack specific observable details (counts, patterns) for verification; they're conceptual abstractions rather than anchored to concrete figure elements",
+          "span": "Figure 1: dropping spans at the collector breaks the trace they belonged to, so the surviving spans no longer describe one request."
+        },
+        {
+          "rule_id": "R-EXPERT-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Lede blocks defining traces, head-based sampling, and cardinality are presented inline without explicit prerequisite pointers or gating mechanisms.",
+          "span": "A trace is the path one request takes through an application, and it holds together only while every hop forwards the trace id."
+        },
+        {
+          "rule_id": "R-DEPTH-03",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Apparatus scales by section substance: 7 blocks for multi-option propagation problem, 4 blocks each for single-tradeoff sampling and cardinality; decision matrix justified by three real implementation paths; diagnostic checklist proportionate to failure-mode complexity; no quota-filling apparatus in",
+          "span": null
+        }
+      ]
+    },
+    {
+      "pass": "figures",
+      "rules": [
+        "R-FIG-01",
+        "R-FIG-02",
+        "R-FIG-03",
+        "R-FIG-05"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-propagation",
+          "verdict": "pass",
+          "evidence": "Caption states a claim: dropping spans breaks the trace, surviving spans no longer describe one request",
+          "span": "dropping spans at the collector breaks the trace they belonged to, so the surviving spans no longer describe one request",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-01",
+          "block_id": "fig-cardinality",
+          "verdict": "pass",
+          "evidence": "Caption states a claim: values survive but attribute set does not, past the limit",
+          "span": "so the values survive but the attribute set does not",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-propagation",
+          "verdict": "fail",
+          "evidence": "Caption describes the concept but provides no information about visual emphasis or shared vocabulary\u2014cannot verify one emphasized element.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-02",
+          "block_id": "fig-cardinality",
+          "verdict": "fail",
+          "evidence": "Caption text provides no evidence of exactly one emphasized element or shared box/arrow vocabulary; visual figure content not accessible for verification.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-propagation",
+          "verdict": "pass",
+          "evidence": "Visual spatial layout cannot be assessed from caption text alone; no visual provided for inspection.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-03",
+          "block_id": "fig-cardinality",
+          "verdict": "pass",
+          "evidence": "Caption contains no description indicating spatial separation of labels from referents",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-propagation",
+          "verdict": "pass",
+          "evidence": "Figure depicts single scenario (span dropping at collector), not a comparison requiring small multiples.",
+          "span": null
+        },
+        {
+          "rule_id": "R-FIG-05",
+          "block_id": "fig-cardinality",
+          "verdict": "fail",
+          "evidence": "Caption describes overflow as single composite ('one overflow data point') without indicating small multiples structure for comparing cardinality states.",
+          "span": "one overflow data point"
+        }
+      ]
+    },
+    {
+      "pass": "structure-architecture",
+      "rules": [
+        "R-ARCH-01",
+        "R-ARCH-03",
+        "R-ARCH-04",
+        "R-SCENT-01",
+        "R-SCENT-02",
+        "R-DEPTH-01",
+        "R-XREF-01",
+        "R-XREF-03",
+        "R-VOCAB-02"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-ARCH-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Front matter has only title, generated_at, and a concept list; no audience, scope boundaries, or editorial decisions before content begins.",
+          "span": "title: A trace stops at the first hop that forgets to pass the context\ngenerated_at: '2026-08-20T00:00:00Z'\nconcepts:",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "First block states only the context-propagation claim; sampling and cardinality sections carry separate, un-previewed claims",
+          "span": "A trace is the path one request takes through an application, and it holds together only while every hop forwards the trace id.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ARCH-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document organized linearly by concept; no explicit goal-tuned reading paths or audience notes provided to readers.",
+          "span": null
+        },
+        {
+          "rule_id": "R-SCENT-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "All three headings state specific claims (e.g. 'A trace stops at the first hop that forgets to pass the context'), none are generic labels like Background/Overview",
+          "span": "A trace stops at the first hop that forgets to pass the context",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SCENT-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Section headings use mixed grammatical structures: simple declarative with relative clause, compound sentence, and cleft sentence construction. Disparate forms degrade scannability.",
+          "span": "1. 'A trace stops at the first hop that forgets to pass the context' / 2. 'Tail-based sampling keeps the traces worth keeping and bills you in collector memory' / 3. 'Cardinality, not span volume, is what makes the observability bill unpredictable'"
+        },
+        {
+          "rule_id": "R-DEPTH-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "Each concept's card block gives explicit Reach-for-it-when/Skip-it-when decision criteria (propagation audit, tail-sampling adoption, cardinality audit) without requiring the matrix/checklist/failure blocks below.",
+          "span": "Reach-for-it-when: Reach for a propagation audit when traces arrive complete on some routes and truncated on others.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-01",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "No card block (card-propagation, card-sampling, card-cardinality) opens with an analogy to a familiar outside domain; each opens with an in-domain definition instead.",
+          "span": "Context propagation carries two identifiers with the request, a trace id and a span id, and nothing else is mandatory.",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-XREF-03",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Three concept sections (context-propagation, tail-based-sampling, attribute-cardinality) lack cross-references despite logical dependencies: sampling requires propagation; both affect billing.",
+          "span": null
+        },
+        {
+          "rule_id": "R-VOCAB-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Failure modes named in failures-sampling (Split trace, Missing router, Memory pressure) are not reused as consistent handles in related blocks like toulmin-sampling, which re-discusses the same failures without the established names.",
+          "span": "failures-sampling block names specific failures; toulmin-sampling discusses memory and burst eviction without referencing these named handles"
+        }
+      ]
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rules": [
+        "R-CARD-01",
+        "R-CARD-03",
+        "R-SUMM-01",
+        "R-PROSE-03",
+        "R-RECALL-02",
+        "R-ART-02",
+        "R-ART-04",
+        "R-ART-05",
+        "R-EVID-02",
+        "R-XREF-04",
+        "R-ART-06",
+        "R-MV-01"
+      ],
+      "verdicts": [
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-propagation",
+          "verdict": "pass",
+          "evidence": "home_anchor gives genuine cross-domain analogue (transaction id/unit of work) and whats_new_vs_renamed states the delta, together forming an advance organizer",
+          "span": "The transaction id you already thread through every statement in one unit of work.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-sampling",
+          "verdict": "pass",
+          "evidence": "home_anchor gives a genuine home-domain analogue (slow-query log) distinct from the target concept, paired with an explicit renamed-vs-new distinction, not a restatement.",
+          "span": "The slow-query log that records a statement only after it crosses a duration threshold.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-01",
+          "block_id": "card-cardinality",
+          "verdict": "pass",
+          "evidence": "home_anchor gives DB-index distinct-value analogue; whats_new_vs_renamed explicitly separates renamed (counting distinct values) from new (open key set)",
+          "span": "The distinct-value count you weigh before putting an index on a column.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-propagation",
+          "verdict": "pass",
+          "evidence": "skip_when gives a specific condition ('every span already shares one trace id and the gap is missing attributes instead'), paired with reach_for_when.",
+          "span": "Skip it when every span already shares one trace id and the gap is missing attributes instead.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-sampling",
+          "verdict": "pass",
+          "evidence": "Card gives both reach_for_when and a distinct skip_when tied to a concrete condition (trace volume fits budget)",
+          "span": "Skip it when trace volume already fits the budget, since buffering adds a failure mode for nothing.",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-CARD-03",
+          "block_id": "card-cardinality",
+          "verdict": "error",
+          "evidence": "JudgeError: R-CARD-03/card-cardinality: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+          "span": null
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-propagation",
+          "verdict": "pass",
+          "evidence": "Claim that traceability depends on every hop forwarding the trace id, not a topic announcement",
+          "span": "it holds together only while every hop forwards the trace id",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-sampling",
+          "verdict": "pass",
+          "evidence": "States a claim about when the keep-or-drop decision fires, not a topic label",
+          "span": "makes its keep-or-drop decision at the beginning of a trace",
+          "retest": "fail",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-SUMM-01",
+          "block_id": "lede-cardinality",
+          "verdict": "fail",
+          "evidence": "States a fact about cardinality/cost, no defended position or claim taking a stance",
+          "span": "Every distinct combination of name and label values is its own time series, so high attribute cardinality is what degrades metrics and logs.",
+          "retest": "pass",
+          "flipped": true
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-propagation",
+          "verdict": "pass",
+          "evidence": "Lede is a single prose sentence; reasoning flows continuously without bullet fragmentation.",
+          "span": "A trace is the path one request takes through an application, and it holds together only while every hop forwards the trace id."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-propagation",
+          "verdict": "pass",
+          "evidence": "Each field contains complete prose statements; no bullet-point fragmentation of reasoning within or across fields.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "subsum-prop-queue",
+          "verdict": "pass",
+          "evidence": "Reasoning is carried in continuous prose sentences, not fragmented into bullets; reasoning is clear and complete.",
+          "span": "A synchronous hop loses the trace id to a missing header; an asynchronous hop loses it to a message that carried none."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "body-prop-queue",
+          "verdict": "pass",
+          "evidence": "Entire block uses connected prose with complete sentences to carry reasoning about trace context propagation; no bullet fragmentation.",
+          "span": "The producing service must put the trace context into the message metadata, because no header rides along on its own. When it does not, the consumer opens a span with no parent and starts a second trace."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-sampling",
+          "verdict": "pass",
+          "evidence": "Block is a complete prose sentence explaining the concept, not fragmented into bullets.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-sampling",
+          "verdict": "pass",
+          "evidence": "Each field carries complete prose sentences (e.g., 'reach_for_when: Reach for it when errors and p99 outliers are rare enough that uniform sampling loses them.'); no bullet fragmentation present.",
+          "span": null
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "toulmin-sampling",
+          "verdict": "pass",
+          "evidence": "Entire block uses connected prose sentences with inline Toulmin labels; no bullet fragmentation of reasoning.",
+          "span": "When error traces matter more than uniform coverage, run tail-based sampling in the collector. Qualifier: the collector defers that decision only while every buffered trace fits in memory."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "lede-cardinality",
+          "verdict": "pass",
+          "evidence": "Single sentence with causal reasoning via 'so'; no bullets or fragmentation. Reasoning carried in continuous prose.",
+          "span": "Every distinct combination of name and label values is its own time series, so high attribute cardinality is what degrades metrics and logs."
+        },
+        {
+          "rule_id": "R-PROSE-03",
+          "block_id": "card-cardinality",
+          "verdict": "pass",
+          "evidence": "Each field carries complete prose reasoning; no bullet-point fragmentation. Field structure is intentional card format.",
+          "span": "whats_new_vs_renamed: Counting distinct values is renamed, not new; new is that the key set is open, so one request can mint a key nobody declared."
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-propagation",
+          "verdict": "pass",
+          "evidence": "Q2 requires cross-domain mapping (trace id vs. relational transaction id); all 3 require generation/diagnosis, not recognition",
+          "span": "What plays the role here that a transaction id plays inside a relational database?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-sampling",
+          "verdict": "pass",
+          "evidence": "All 3 Qs are scenario-based generation (diagnose symptom\u2192sampler behavior); Q2 cross-maps DB duration-threshold logging to tail-based sampling.",
+          "span": "Your database already logs statements past a duration threshold. What does tail-based sampling add?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-RECALL-02",
+          "block_id": "recall-cardinality",
+          "verdict": "pass",
+          "evidence": "All 3 require applying the cardinality concept to novel scenarios (bill spike, indexing analogy, cost tradeoff); Q2 maps database-indexing intuition onto span attributes, satisfying cross-domain requirement.",
+          "span": "You would never index a column of raw email addresses. Which span attributes does that rule out?",
+          "retest": "pass",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-02",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "4-item checklist with action verbs (Confirm, Check, Use, Read) addressing high-frequency propagation failures, well under 9-item limit",
+          "span": "Confirm the outbound client copies the trace headers. Check that queue producers put trace context into the message itself. Use the single-header b3 form on any JMS hop. Read the collector config for a filter that drops spans."
+        },
+        {
+          "rule_id": "R-ART-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Matrix names baseline (W3C) but lacks clear per-option recommendations; presents tradeoffs without disambiguating rules (e.g., 'use B3 when X, both when Y').",
+          "span": "Baseline: run W3C trace context everywhere and let middleware set it. Keeping B3 buys compatibility with an existing fleet, at the cost of a migration you still owe. Running both formats buys a safe transition window, at the cost of two header sets to read whenever a trace truncates."
+        },
+        {
+          "rule_id": "R-ART-05",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "The three mechanism surveys use inconsistent artifact types and structures: context-propagation includes matrix, checklist, figure, subsection, and failure body; tail-based-sampling uses toulmin argument and failure catalog; attribute-cardinality uses decision aid and cost figure. No uniform input/m",
+          "span": null
+        },
+        {
+          "rule_id": "R-EVID-02",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "Document contains technique-specific failure modes (failures-sampling, body-prop-queue) but no meta-level section acknowledging where the primer's thesis itself breaks down or its scope limitations.",
+          "span": null
+        },
+        {
+          "rule_id": "R-XREF-04",
+          "block_id": "document",
+          "verdict": "fail",
+          "evidence": "card-cardinality's New-vs-renamed anchor 'Counting distinct values' restates cardinality's own definition rather than naming an adjacent technique",
+          "span": "Counting distinct values is renamed, not new",
+          "retest": "fail",
+          "flipped": false
+        },
+        {
+          "rule_id": "R-ART-06",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "No further-reading artifacts present in this document; rule does not apply.",
+          "span": null
+        },
+        {
+          "rule_id": "R-MV-01",
+          "block_id": "document",
+          "verdict": "pass",
+          "evidence": "each concept has >=3 substantively distinct modes: context-propagation uses mental_model (two-id card), tradeoff (W3C/B3 matrix), architecture (fig), failure (Kafka narrative); tail-based-sampling uses mental_model, tradeoff (Toulmin memory argument), failure (3-item catalog); attribute-cardinality ",
+          "span": null,
+          "retest": "pass",
+          "flipped": false
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "pass": 63,
+    "fail": 22,
+    "error": 2
+  },
+  "blocking": true,
+  "blocking_failures": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "body-prop-queue",
+      "verdict": "fail",
+      "evidence": "New subjects appear without prior mention: 'the consumer' (S3) and 'the service' (S5) aren't given from prior 2 sentences",
+      "span": "the consumer opens a span with no parent",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-sampling",
+      "verdict": "fail",
+      "evidence": "home_anchor introduces 'The slow-query log' with no lexical or pronoun link to idea's 'decision'/'collector'",
+      "span": "The slow-query log that records a statement only after it crosses a duration threshold.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "card-sampling",
+      "verdict": "fail",
+      "evidence": "confidence field says 'the memory figures below', explicitly pointing to a deeper layer to complete the card",
+      "span": "the memory figures below come from one vendor's worked example",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Front matter has only title, generated_at, and a concept list; no audience, scope boundaries, or editorial decisions before content begins.",
+      "span": "title: A trace stops at the first hop that forgets to pass the context\ngenerated_at: '2026-08-20T00:00:00Z'\nconcepts:",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "First block states only the context-propagation claim; sampling and cardinality sections carry separate, un-previewed claims",
+      "span": "A trace is the path one request takes through an application, and it holds together only while every hop forwards the trace id.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-01",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "No card block (card-propagation, card-sampling, card-cardinality) opens with an analogy to a familiar outside domain; each opens with an in-domain definition instead.",
+      "span": "Context propagation carries two identifiers with the request, a trace id and a span id, and nothing else is mandatory.",
+      "retest": "fail",
+      "flipped": false
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-cardinality",
+      "verdict": "fail",
+      "evidence": "States a fact about cardinality/cost, no defended position or claim taking a stance",
+      "span": "Every distinct combination of name and label values is its own time series, so high attribute cardinality is what degrades metrics and logs.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-XREF-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "card-cardinality's New-vs-renamed anchor 'Counting distinct values' restates cardinality's own definition rather than naming an adjacent technique",
+      "span": "Counting distinct values is renamed, not new",
+      "retest": "fail",
+      "flipped": false
+    }
+  ],
+  "advisory_failures": [
+    {
+      "pass": "evidence-grounding",
+      "rule_id": "R-EVID-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Memory claim (2.4 GB) in toulmin-sampling sourced only to one vendor's worked example; no independent non-vendor corroboration provided.",
+      "span": "that memory comes to roughly 2.4 GB in one vendor's worked example of a modest deployment"
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-06",
+      "block_id": "card-sampling",
+      "verdict": "fail",
+      "evidence": "reach_for_when/skip_when structure presents symmetric binary decision criteria rather than leverage-weighted recommendation; confidence field hedges certainty",
+      "span": "reach_for_when: Reach for it when errors and p99 outliers are rare enough that uniform sampling loses them. skip_when: Skip it when trace volume already fits the budget, since buffering adds a failure mode for nothing."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Figure claims lack specific observable details (counts, patterns) for verification; they're conceptual abstractions rather than anchored to concrete figure elements",
+      "span": "Figure 1: dropping spans at the collector breaks the trace they belonged to, so the surviving spans no longer describe one request."
+    },
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-EXPERT-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Lede blocks defining traces, head-based sampling, and cardinality are presented inline without explicit prerequisite pointers or gating mechanisms.",
+      "span": "A trace is the path one request takes through an application, and it holds together only while every hop forwards the trace id."
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-propagation",
+      "verdict": "fail",
+      "evidence": "Caption describes the concept but provides no information about visual emphasis or shared vocabulary\u2014cannot verify one emphasized element.",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-02",
+      "block_id": "fig-cardinality",
+      "verdict": "fail",
+      "evidence": "Caption text provides no evidence of exactly one emphasized element or shared box/arrow vocabulary; visual figure content not accessible for verification.",
+      "span": null
+    },
+    {
+      "pass": "figures",
+      "rule_id": "R-FIG-05",
+      "block_id": "fig-cardinality",
+      "verdict": "fail",
+      "evidence": "Caption describes overflow as single composite ('one overflow data point') without indicating small multiples structure for comparing cardinality states.",
+      "span": "one overflow data point"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-ARCH-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document organized linearly by concept; no explicit goal-tuned reading paths or audience notes provided to readers.",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-SCENT-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Section headings use mixed grammatical structures: simple declarative with relative clause, compound sentence, and cleft sentence construction. Disparate forms degrade scannability.",
+      "span": "1. 'A trace stops at the first hop that forgets to pass the context' / 2. 'Tail-based sampling keeps the traces worth keeping and bills you in collector memory' / 3. 'Cardinality, not span volume, is what makes the observability bill unpredictable'"
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-XREF-03",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Three concept sections (context-propagation, tail-based-sampling, attribute-cardinality) lack cross-references despite logical dependencies: sampling requires propagation; both affect billing.",
+      "span": null
+    },
+    {
+      "pass": "structure-architecture",
+      "rule_id": "R-VOCAB-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Failure modes named in failures-sampling (Split trace, Missing router, Memory pressure) are not reused as consistent handles in related blocks like toulmin-sampling, which re-discusses the same failures without the established names.",
+      "span": "failures-sampling block names specific failures; toulmin-sampling discusses memory and burst eviction without referencing these named handles"
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-04",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Matrix names baseline (W3C) but lacks clear per-option recommendations; presents tradeoffs without disambiguating rules (e.g., 'use B3 when X, both when Y').",
+      "span": "Baseline: run W3C trace context everywhere and let middleware set it. Keeping B3 buys compatibility with an existing fleet, at the cost of a migration you still owe. Running both formats buys a safe transition window, at the cost of two header sets to read whenever a trace truncates."
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-ART-05",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "The three mechanism surveys use inconsistent artifact types and structures: context-propagation includes matrix, checklist, figure, subsection, and failure body; tail-based-sampling uses toulmin argument and failure catalog; attribute-cardinality uses decision aid and cost figure. No uniform input/m",
+      "span": null
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-EVID-02",
+      "block_id": "document",
+      "verdict": "fail",
+      "evidence": "Document contains technique-specific failure modes (failures-sampling, body-prop-queue) but no meta-level section acknowledging where the primer's thesis itself breaks down or its scope limitations.",
+      "span": null
+    }
+  ],
+  "errored_items": [
+    {
+      "pass": "expertise-calibration",
+      "rule_id": "R-PROSE-02",
+      "block_id": "toulmin-sampling",
+      "verdict": "error",
+      "evidence": "JudgeError: R-PROSE-02/toulmin-sampling: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+      "span": null
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-CARD-03",
+      "block_id": "card-cardinality",
+      "verdict": "error",
+      "evidence": "JudgeError: R-CARD-03/card-cardinality: no usable response after 2 attempts (Expecting value: line 1 column 1 (char 0))",
+      "span": null
+    }
+  ],
+  "flake": {
+    "retested": 48,
+    "flipped": 5,
+    "flake_rate": 0.1042
+  },
+  "flaky_items": [
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-sampling",
+      "verdict": "fail",
+      "evidence": "home_anchor introduces 'The slow-query log' with no lexical or pronoun link to idea's 'decision'/'collector'",
+      "span": "The slow-query log that records a statement only after it crosses a duration threshold.",
+      "retest": "pass",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-PROSE-01",
+      "block_id": "card-cardinality",
+      "verdict": "pass",
+      "evidence": "Every field reuses 'cardinality' as the given anchor (idea, 'cardinality audit', 'drive cardinality up', 'cardinality problem'), chaining new claims onto it.",
+      "span": "drive cardinality up",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "coherence",
+      "rule_id": "R-SUMM-04",
+      "block_id": "subsum-prop-queue",
+      "verdict": "pass",
+      "evidence": "States two complete failure modes (missing header; message carrying none) with no forward reference to deeper content like 'see below'.",
+      "span": "an asynchronous hop loses it to a message that carried none",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-sampling",
+      "verdict": "pass",
+      "evidence": "States a claim about when the keep-or-drop decision fires, not a topic label",
+      "span": "makes its keep-or-drop decision at the beginning of a trace",
+      "retest": "fail",
+      "flipped": true
+    },
+    {
+      "pass": "structure-fieldguide",
+      "rule_id": "R-SUMM-01",
+      "block_id": "lede-cardinality",
+      "verdict": "fail",
+      "evidence": "States a fact about cardinality/cost, no defended position or claim taking a stance",
+      "span": "Every distinct combination of name and label values is its own time series, so high attribute cardinality is what degrades metrics and logs.",
+      "retest": "pass",
+      "flipped": true
+    }
+  ],
+  "ir_sha256": "91ff63d71139c8117bd4246282474f00a2e51b4c0570b86076327a299711b6b4",
+  "judge": {
+    "kind": "claude",
+    "model": "haiku",
+    "calls": 146,
+    "spend_usd": 18.7417,
+    "exercised_rules": true,
+    "gating_model": "sonnet"
+  }
+}

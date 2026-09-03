@@ -1,0 +1,183 @@
+[
+  {
+    "id": "A-A5-s1",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-designs-clinical-trials-drugs-and-biologics-guidance-industry",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Authoritative FDA definition of adaptive designs; distinguishes well-understood vs. novel approaches; cites Pocock, O'Br",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Pocock+Group+sequential+methods+1977",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Pocock 1977 'Group sequential methods in the design and analysis of clinical trials' Biometrika 64(2):191\u2013199; foundatio",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=O%27Brien+Fleming+1979+multiple+testing",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "O'Brien & Fleming 1979 'A multiple testing procedure for clinical trials' Biometrics 35(3):549\u2013556; most cited frequenti",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Wald+Sequential+Tests+1945",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Wald 1945 'Sequential Tests of Statistical Hypotheses' Annals of Mathematical Statistics 16(2):117\u2013186; foundational SPR",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Armitage+Sequential+Medical+Trials+1975",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Armitage 1975 'Sequential Medical Trials' 2nd ed., Blackwell Scientific; first clinical translation of sequential analys",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Thompson+1933+On+the+likelihood+probability",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Thompson 1933 'On the likelihood that one unknown probability exceeds another' Biometrika 25:285\u2013294; original Thompson ",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Thall+Wathen+2007+Bayesian+randomization",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Thall & Wathen 2007 'Practical Bayesian adaptive randomization in clinical trials' European Journal of Cancer 43(5):859\u2013",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Page+1954+Continuous+inspection+CUSUM",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Page 1954 'Continuous inspection schemes' Biometrika 41:100\u2013115; foundational QC/CUSUM; cites Wald's SPRT; shows separat",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Chakraborty+Murphy+2014+Dynamic+treatment+regimes",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Chakraborty & Murphy 2014 'Dynamic treatment regimes' Annual Review of Biostatistics 5:33\u201351; foundational for sequentia",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/search/?term=Breiman+2001+Statistical+modeling+two+cultures",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Breiman 2001 'Statistical modeling: the two cultures' Statistical Science 16(3):199\u2013231; contrasts prediction vs. infere",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s11",
+    "url": "https://agilemanifesto.org/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Agile Manifesto 2001; primary source on agile values; explicitly emphasizes responding to change over following a plan (",
+    "fetched_title": "Manifesto for Agile Software Development",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A5-s12",
+    "url": "https://www.ema.europa.eu/en/search?search_api_fulltext=adaptive+clinical+trial+designs+2014",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "EMA guidance on adaptive clinical trial designs for European marketing authorization; parallel regulatory stance to FDA;",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  }
+]

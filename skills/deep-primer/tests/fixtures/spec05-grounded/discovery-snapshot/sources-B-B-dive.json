@@ -1,0 +1,142 @@
+[
+  {
+    "id": "B-B-dive-s1",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12460923/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "2025 registry of 652 RAR trials; 10% adoption, 22% sample size reduction, >50% reporting gaps",
+    "fetched_title": "Response adaptive randomisation in clinical trials: Current practice, gaps and future directions - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s2",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4288989/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Group sequential design vs. sample size re-estimation; regulatory conservatism on small samples",
+    "fetched_title": "A review and re-interpretation of a group-sequential approach to sample size re-estimation in two-stage trials - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s3",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6245528/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "EMA adaptive trial registry; 59 medicines tracked, secondary endpoint bias under adaptations",
+    "fetched_title": "Adaptive designs in clinical trials: from scientific advice to marketing authorisation to the European Medicine Agency - PMC",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s4",
+    "url": "https://www.ema.europa.eu/en/ich-e20-adaptive-designs-clinical-trials-scientific-guideline",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "ICH E20 Step 2b draft (June 2025); master protocols, Bayesian methods, finalization mid-2026",
+    "fetched_title": "ICH E20 adaptive designs for clinical trials - Scientific guideline | European Medicines Agency (EMA)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s5",
+    "url": "https://pharmaphorum.com/rd/ich-e20-draft-guideline-2025-adaptive-clinical-trials",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "ICH E20 scope: prospective planning, Type I error control, role segregation requirements",
+    "fetched_title": "On the ICH E20 draft guideline (2025) for adaptive clinical trials | pharmaphorum",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "B-B-dive-s6",
+    "url": "https://arxiv.org/pdf/2602.06379",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "E-values for adaptive trials; anytime-valid monitoring, frequentist error control without pre-specified stopping",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s7",
+    "url": "https://arxiv.org/pdf/2211.15620",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Point estimation under adaptive designs; bias in secondary endpoints, confidence interval coverage",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "B-B-dive-s8",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3248853/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Benefits, challenges, obstacles of adaptive designs; early stopping data insufficiency",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "B-B-dive-s9",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5829673/",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "theorist"
+    ],
+    "report_ids": [
+      "B-B-dive"
+    ],
+    "why": "Adaptive design clinical trials review 2000\u20132024; 50.5% sequential group, 17.1% sample size re-estimation",
+    "dropped_reason": "disallowed by robots.txt"
+  }
+]

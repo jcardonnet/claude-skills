@@ -9,7 +9,7 @@ has none) its section's concept.
 """
 from __future__ import annotations
 
-from checks._base import LintContext, Violation
+from checks._base import CheckNotApplicable, LintContext, Violation
 
 _MIN_MODES = 3
 
@@ -17,14 +17,21 @@ _MIN_MODES = 3
 def modes_per_concept(ctx: LintContext) -> list[Violation]:
     cm = ctx.concept_map
     if cm is None:
-        return []
+        raise CheckNotApplicable("R-MV-01 needs a concept-map; none was supplied")
 
+    # Walking `sec.blocks` alone never descended into an h3, so a document realizing three modes was
+    # reported as realizing one whenever two of them lived in a subsection — a MUST-level violation
+    # against a compliant primer. A subsection carries its own `concept`, so it is the nearer
+    # fallback for a block that declares none.
     realized: dict[str, set[str]] = {}
     for sec in ctx.ir.sections:
-        for b in sec.blocks:
+        scoped = [(b, sec.concept) for b in sec.blocks]
+        scoped += [(b, sub.concept or sec.concept)
+                   for sub in sec.subsections for b in sub.blocks]
+        for b, container_concept in scoped:
             if b.mode is None:
                 continue
-            cid = b.concept or sec.concept
+            cid = b.concept or container_concept
             if cid:
                 realized.setdefault(cid, set()).add(b.mode.value)
 

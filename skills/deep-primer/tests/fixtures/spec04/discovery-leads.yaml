@@ -1,0 +1,178 @@
+# Discovery-leads for spec-04-seeded-vector-index — the artifact R-DISC-06 (seed_handling) reads.
+#
+# THE URLS ARE REAL NOW (2026-08-21 campaign). Every url below was surfaced by that run, and the
+# five accepted leads are the five ledger sources the primer cites (source-ledger.yaml). The
+# campaign's own lead id is recorded in a comment beside each one so any lead can be grepped back
+# to spec04-grounded/discovery-leads.yaml.
+#
+# WHAT IS STILL HAND-ASSIGNED, AND WHY. The campaign leaves `novelty` and `salience` null on all
+# 155 leads and produced 0 topic_leads, because the discovery `Judge` seam has no live
+# implementation — every real campaign so far has run `StubJudge`. Its 64 dropped leads are all
+# fetch failures (`dropped_reason: disallowed by robots.txt` and friends), not triage judgements.
+# So the fields that encode a JUDGEMENT — novelty, salience, support/why on topic_leads, and the
+# triage `status: dropped` on sl-marketing — are authored here. The fields that encode RETRIEVAL —
+# url, type, provenance_origin, surfaced_by, report_ids — come from the run. That split is the
+# honest boundary of what this fixture can currently assert, and it is the reason R-DISC-06 needs
+# a live judge before it is exercised end to end rather than block by block.
+#
+# What it exercises is the seed contract, in all three of its parts:
+#
+#   consulted   — the url seed `https://arxiv.org/abs/1603.09320` is present as an accepted
+#                 source_lead with provenance_origin: user, and the author directive "Y. Malkov"
+#                 (that paper's first author) seeded a targeted brief whose topic_lead is likewise
+#                 marked user.
+#   exempt      — `sl-marketing` shows what triage-drop looks like (low salience, no support,
+#                 status: dropped). The seed carries a comparable singleton profile and is NOT
+#                 dropped; that asymmetry IS the rule.
+#   still graded — the seed keeps support_count 1 rather than being promoted. Its strong claim
+#                 (C-9f257979-6) is contested in the ledger and renders through `contested-graph`.
+#
+# The campaign itself is the counter-example that motivates all of this: it ran with the OLD seed,
+# `https://example.org/hnsw-paper`, which cannot be fetched. `triage_leads` checks fetch-failure
+# BEFORE it applies the R-DISC-06 exemption, so the seed was dropped before the rule could see it,
+# and the real paper entered by ordinary discovery instead — campaign lead sl-A-A1-0, support 4,
+# provenance_origin: DISCOVERED. Compare that to sl-seed-hnsw below, which is the same URL as the
+# rule intends it: accepted on the user's authority, marked user, support_count 1.
+#
+# report_ids name reports in a frozen discovery-snapshot/ (R-DISC-05). No snapshot directory ships
+# with this fixture, so the snapshot pass does not run here; the ids record the linkage the real
+# campaign would freeze.
+topic_leads:
+  # The author directive. kind=author seeds a BRIEF, not a source, so the topic it surfaced is what
+  # carries provenance_origin: user back into the plan.
+  - id: tl-seed-author
+    concept: "graph construction parameters and their effect on reachable recall"
+    why: "author-directive seed: survey this author's work on navigable graph indexes"
+    support_count: 1
+    novelty: 0.4
+    salience: high
+    status: accepted
+    provenance_origin: user
+    surfaced_by: [seed-author]
+    report_ids: [B-seed-1]
+  - id: tl-memory-ceiling
+    concept: "index choice conditioned on a resident-memory ceiling"
+    why: "three framings independently framed the choice as memory-bound rather than index-bound"
+    support_count: 3
+    novelty: 0.8
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [structure, source-authority, adjacent-field]
+    report_ids: [A-A1, A-A4, A-A5]
+  - id: tl-recall-drift
+    concept: "recall drift under incremental insertion"
+    why: "surfaced only under the debates framing, which is what routes it to the contested view"
+    support_count: 2
+    novelty: 0.7
+    salience: medium
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [debates, recency-frontier]
+    report_ids: [A-A2, A-A3]
+  - id: tl-gpu-bruteforce
+    concept: "GPU-resident exhaustive scan as an index replacement"
+    why: "one framing only, and out of scope for a CPU-served corpus"
+    support_count: 1
+    novelty: 0.9
+    salience: low
+    status: dropped
+    provenance_origin: discovered
+    surfaced_by: [recency-frontier]
+    report_ids: [A-A3]
+
+source_leads:
+  # THE URL SEED. Accepted on the user's authority (exempt from the salience gate), marked user,
+  # and graded like anything else: support_count 1, one framing, one report.
+  # Campaign lead sl-A-A1-0 — same URL, but reached by discovery with support_count 4 and
+  # provenance_origin: discovered, because the run's seed pointed at an unfetchable example.org URL.
+  - id: sl-seed-hnsw
+    url: "https://arxiv.org/abs/1603.09320"
+    type: primary_paper
+    support_count: 1
+    novelty: 0.3
+    salience: high
+    status: accepted
+    provenance_origin: user
+    surfaced_by: [seed-url]
+    supports: [tl-seed-author, tl-memory-ceiling]
+    report_ids: [B-seed-1]
+  # Campaign lead sl-A-A2-6.
+  - id: sl-survey
+    url: "https://arxiv.org/html/2505.17152"
+    type: primary_paper
+    support_count: 3
+    novelty: 0.6
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [debates, source-authority, adjacent-field]
+    supports: [tl-memory-ceiling, tl-recall-drift]
+    report_ids: [A-A2]
+  # Campaign lead sl-A-A1-19.
+  - id: sl-diskann
+    url: "https://papers.nips.cc/paper_files/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html"
+    type: primary_paper
+    support_count: 2
+    novelty: 0.5
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [structure]
+    supports: [tl-memory-ceiling]
+    report_ids: [A-A1]
+  # Campaign lead sl-A-A2-5.
+  - id: sl-streaming-quantization
+    url: "https://arxiv.org/html/2512.18335"
+    type: primary_paper
+    support_count: 2
+    novelty: 0.8
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [debates]
+    supports: [tl-memory-ceiling, tl-recall-drift]
+    report_ids: [A-A2]
+  # The vendor half of the R-EVID-03 pair: AWS writing about its own OpenSearch Service.
+  # Campaign lead sl-A-A1-26, which the campaign typed `blog`; the fixture types it `vendor`, on
+  # the same reasoning the ledger records.
+  - id: sl-vendor-bench
+    url: "https://aws.amazon.com/blogs/big-data/cost-optimized-vector-database-introduction-to-amazon-opensearch-service-quantization-techniques/"
+    type: vendor
+    support_count: 1
+    novelty: 0.5
+    salience: medium
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [structure]
+    supports: [tl-memory-ceiling]
+    report_ids: [A-A1]
+  # The independent report R-EVID-03 wants standing beside the vendor number above.
+  # Campaign lead sl-A-A2-2.
+  - id: sl-independent-bench
+    url: "https://ranjankumar.in/hnsw-vector-search-recall-production"
+    type: blog
+    support_count: 2
+    novelty: 0.7
+    salience: high
+    status: accepted
+    provenance_origin: discovered
+    surfaced_by: [debates]
+    supports: [tl-memory-ceiling, tl-recall-drift]
+    report_ids: [A-A2]
+  # Triage-drop, shown for contrast: a discovered singleton with no support and low salience goes.
+  # The seed above has a comparable profile and stays.
+  # This URL is real and the campaign ACCEPTED it (a vendor news round-up, support_count 1). The
+  # `dropped` status is authored here, because the campaign has no live judge to drop anything on
+  # salience — see the header. It is the one status in this file that a run did not produce.
+  - id: sl-marketing
+    url: "https://redis.io/blog/vector-search-database-news-2026-guide/"
+    type: vendor
+    support_count: 0
+    novelty: 0.2
+    salience: low
+    status: dropped
+    provenance_origin: discovered
+    surfaced_by: [recency-frontier]
+    supports: []
+    report_ids: [A-A3]

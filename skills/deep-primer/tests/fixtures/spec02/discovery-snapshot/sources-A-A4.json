@@ -1,0 +1,416 @@
+[
+  {
+    "id": "A-A4-s1",
+    "url": "https://cdn.standards.iteh.ai/samples/69129/38e651842df746fd990d29679e3c2e98/ISO-128-2-2020.pdf",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "ISO 128-2:2020 \u2014 authoritative normative framework for leader lines, line types, and annotation conventions",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s2",
+    "url": "https://cadsetterout.com/drawing-standards/technical-drawing-standards-leader-lines/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Technical drawing standards documentation on leader line best practices and ISO 128 compliance",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s3",
+    "url": "https://www.iso.org/standard/43883.html",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "ISO 7573:2008 \u2014 standard for technical product documentation parts lists",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s4",
+    "url": "https://s1000d.org/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "S1000D specification \u2014 authoritative source for aerospace/defense parts catalogue and illustrated data standards",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s5",
+    "url": "https://datamission.co.uk/s1000d/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "S1000D implementation guide covering parts data modules and interactive callout hotspots",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s6",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11086207/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Peer-reviewed framework for structural analysis and object detection in hand-drawn engineering sketches (2024)",
+    "fetched_title": "A Computer Vision Framework for Structural Analysis of Hand-Drawn Engineering Sketches - PMC",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s7",
+    "url": "https://www.researchgate.net/publication/343692878_The_Computer_Vision-based_Tolerancing_Callout_Detection_Model",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Seminal work on computer vision-based tolerancing callout detection in engineering drawings",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s8",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-030-86198-8_6",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Graph-based object detection enhancement for symbolic engineering drawings (Springer Nature, 2023)",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s9",
+    "url": "https://link.springer.com/10.1007/978-3-032-09700-2_19",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "End-to-end pipeline from 2D drafting annotations to 3D manufacturing information (PLM 2025 conference)",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s10",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/08839514.2024.2406712",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Few-shot symbol detection in engineering drawings using deep learning (2024)",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A4-s11",
+    "url": "https://arxiv.org/pdf/2212.14232",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "GPTR: Gestalt-Perception Transformer for diagram object detection (2023)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s12",
+    "url": "https://arxiv.org/pdf/2601.13299",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Enginuity: open multi-domain dataset of complex engineering diagrams (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s13",
+    "url": "https://arxiv.org/pdf/2401.17904",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Hi-SAM: hierarchical text segmentation using Segment Anything Model for layout analysis (2024)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s14",
+    "url": "https://arxiv.org/pdf/2603.25168",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "ET-SAM: efficient point-prompt prediction for text detection and layout analysis (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s15",
+    "url": "https://arxiv.org/pdf/2504.04085",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "DocSAM: unified document image segmentation via query decomposition (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s16",
+    "url": "https://arxiv.org/pdf/2509.11720",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Advanced layout analysis models for Docling \u2014 modern document understanding toolkit (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s17",
+    "url": "https://arxiv.org/pdf/2501.17887",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Docling: efficient open-source toolkit for AI-driven document conversion (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s18",
+    "url": "https://arxiv.org/pdf/2507.09861",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Survey on multimodal large language models for visually rich document understanding (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s19",
+    "url": "https://www.mdpi.com/2075-1702/11/8/802",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Integration of deep learning for automatic recognition of 2D engineering drawings (2023)",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s20",
+    "url": "https://www.mdpi.com/2076-3417/13/15/8816",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Symbol recognition system for single-line diagrams using deep learning (2024)",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A4-s21",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12089597/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Hand-drawn diagram recognition through machine learning and deep learning integration",
+    "fetched_title": "Enhancing hand-drawn diagram recognition through the integration of machine learning and deep learning techniques - PMC",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s22",
+    "url": "https://motenv.wordpress.com/2024/09/19/identification-numbers-and-parts-lists-in-technical-and-engineering-drawings/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Practitioner guide on identification numbers, balloons, and leader lines in parts lists (2024)",
+    "fetched_title": "Identification Numbers and Parts Lists in Technical & Engineering Drawings \u2013 MoTEnv \u2014 MTEC",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s23",
+    "url": "https://skybrary.aero/articles/illustrated-parts-catalogue-ipc",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Aviation safety authority documentation on illustrated parts catalogue standards and practices",
+    "fetched_title": "Illustrated Parts Catalogue (IPC) | SKYbrary Aviation Safety",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s24",
+    "url": "https://www.wilson-publications.co.uk/illustrated-parts-manuals/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Technical publication practitioner guidance on illustrated parts manual design and layout",
+    "fetched_title": "Illustrated Parts Manuals That Reduce Downtime | Wilson Publications",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s25",
+    "url": "https://www.docsie.io/blog/glossary/annotated-screenshots/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Best practices for annotated screenshots and callout design in documentation (2026)",
+    "fetched_title": "Annotated Screenshots: Definition, Examples & Best Practices (2026)",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A4-s26",
+    "url": "https://arxiv.org/pdf/2604.07691",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Design study on annotations in visualization \u2014 practitioner and educator perspectives (2025)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A4-s27",
+    "url": "https://docs.ultralytics.com/models/sam",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "source-authority"
+    ],
+    "report_ids": [
+      "A-A4"
+    ],
+    "why": "Segment Anything Model documentation and deployment guide (current version, 2025)",
+    "fetched_title": "Segment Anything Model (SAM) | Ultralytics",
+    "retrieved_at": "2026-08-16"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "wave": "C",
+  "framing": "practitioner",
+  "angle": "by-application",
+  "source_class": null,
+  "stance": null,
+  "questions": [
+    "A primer on distributed tracing and the observability stack currently covers: . What important aspects are missing?"
+  ],
+  "instructions": [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs"
+  ],
+  "brief_id": "C-C-omission",
+  "seed_ref": null
+}

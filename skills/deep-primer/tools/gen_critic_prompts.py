@@ -27,6 +27,22 @@ MEMBERS = {
  'figures':                 soft_by_pass.get('figures', []),
 }
 
+# MEMBERS is keyed on six hard-coded pass names, each read out of `soft_by_pass` with a `.get(...,
+# [])` default — so a soft_critic rule whose `check.pass` is not one of those six lands in no
+# prompt, is never sent to a judge, and produces no verdict. The registry says the rule is enforced
+# by the critic tier and the critic tier has never heard of it.
+_soft = {r['id'] for r in reg['rules'] if r['enforcement'] == 'soft_critic'}
+_assigned = [rid for ids in MEMBERS.values() for rid in ids]
+_orphans = sorted(_soft - set(_assigned))
+if _orphans:
+    raise SystemExit(
+        f"gen_critic_prompts: soft_critic rule(s) {_orphans} have a check.pass that no prompt "
+        f"claims, so they would never be judged. Known passes: {sorted(MEMBERS)}. Fix the rule's "
+        f"check.pass or add it to a group, then re-run tools/build.sh.")
+_dupes = sorted({rid for rid in _assigned if _assigned.count(rid) > 1})
+if _dupes:
+    raise SystemExit(f"gen_critic_prompts: rule(s) {_dupes} appear in more than one pass.")
+
 PASS_TITLE = {
  'structure-architecture': 'Structure — architecture & navigation',
  'structure-fieldguide':   'Structure — field-guide layer & artifacts',
@@ -83,7 +99,7 @@ PREAMBLE = """You are a **scoped critic** for the {ptitle} pass. You judge ONLY 
 - Return a **binary** verdict — `pass` or `fail` — for each rubric item against a specific block. **Never** score holistic "quality", "thoroughness", or "how good"; holistic scoring rewards length and self-preference and is prohibited (`R-REJECT-05`).
 - **Block enumeration:** you are given the primer's block list (id + type) from the parsed AST. Apply each rule only to the block types it targets — card rules to card blocks, heading rules to headings, figure rules to figures, document-level rules to `"document"`. One verdict per (rule x applicable block).
 - **Length is not evidence of compliance.** A shorter block that satisfies the rule passes over a longer one that does not.
-- **Pointwise, not pairwise.** These are pointwise verdicts; the reliability control is **test-retest** — judge each gating item **twice** and return `unstable` on disagreement. **Swap-and-average applies only when you are explicitly comparing two candidate revisions** (a pairwise call), never to a pointwise verdict.
+- **Pointwise, not pairwise.** These are pointwise verdicts. You may be asked the same (rule, block) twice; **answer it independently each time** — do not try to recall or match a previous answer. The harness gates on the first verdict and records the second as a stability measurement, so a forced-consistent second answer destroys the only signal it carries. **Swap-and-average applies only when you are explicitly comparing two candidate revisions** (a pairwise call), never to a pointwise verdict.
 - Cite the `rule_id`, the `block_id`, and a one-line factual `evidence` string (plus a short `span` where useful). Keep evidence factual, never graded.
 - Rationale for each rule is in `references/evidence-map.md`; full contrast pairs are in `references/exemplars.md`."""
 
@@ -91,7 +107,7 @@ OUTPUT = """## Output
 Return one JSON object:
 ```json
 {{"pass":"{passname}","verdicts":[
-  {{"rule_id":"R-XXX-00","block_id":"<id or 'document'>","verdict":"pass|fail|unstable","evidence":"<one factual line>","span":"<optional short quote>"}}
+  {{"rule_id":"R-XXX-00","block_id":"<id or 'document'>","verdict":"pass|fail","evidence":"<one factual line>","span":"<optional short quote>"}}
 ]}}
 ```
 Emit a verdict for every rule in this file against every block it applies to. Do not add commentary outside the JSON."""

@@ -1,0 +1,418 @@
+[
+  {
+    "id": "A-A3-s1",
+    "url": "https://github.com/vibrantlabsai/ragas",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Official RAGAS v0.4.3 repo; metric expansion documentation; maintained reference implementation",
+    "fetched_title": "GitHub - vibrantlabsai/ragas: Supercharge Your LLM Application Evaluations \ud83d\ude80 \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s2",
+    "url": "https://arxiv.org/abs/2309.15217",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "RAGAS original framework paper; foundational four metrics (faithfulness, answer relevance, context precision/recall)",
+    "fetched_title": "[2309.15217] Ragas: Automated Evaluation of Retrieval Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s3",
+    "url": "https://deepeval.com/changelog",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Official DeepEval changelog tracking v3.6\u2013v3.9 releases (Oct 2025\u2013Apr 2026) with metrics and integrations",
+    "fetched_title": "Welcome to Changelogs! | DeepEval - The LLM Evaluation Framework",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s4",
+    "url": "https://github.com/confident-ai/deepeval",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Official DeepEval repository; 50+ metrics, pytest integration, OpenTelemetry support",
+    "fetched_title": "GitHub - confident-ai/deepeval: The LLM Evaluation Framework \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s5",
+    "url": "https://github.com/truera/trulens",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Official TruLens repo; OpenTelemetry-first v1.5.0+ architecture; semantic conventions documentation",
+    "fetched_title": "GitHub - truera/trulens: Evaluation and Tracking for LLM Experiments and AI Agents \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s6",
+    "url": "https://github.com/langfuse/langfuse",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Official Langfuse repo; v4.0 observations-centric model; LLM-as-judge evaluators, human annotation queues",
+    "fetched_title": "GitHub - langfuse/langfuse: \ud83e\udea2 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. \ud83c\udf4aYC W23 \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s7",
+    "url": "https://arxiv.org/abs/2510.26160",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "CRAG-MM paper (Oct 2025); 6.5K+ multimodal/multi-turn conversations, 13 domains, KDD Cup 2025 benchmark",
+    "fetched_title": "[2510.26160] CRAG-MM: Multi-modal Multi-turn Comprehensive RAG Benchmark",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s8",
+    "url": "https://aclanthology.org/2025.acl-long.418.pdf",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "RAGEval: domain-specific evaluation generation (ACL 2025); completeness/hallucination/irrelevance metrics",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A3-s9",
+    "url": "https://github.com/OpenBMB/RAGEval",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Official RAGEval repository; schema-based synthetic generation pipeline; DragonBall multilingual dataset",
+    "fetched_title": "GitHub - OpenBMB/RAGEval \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s10",
+    "url": "https://arxiv.org/abs/2406.04744",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "CRAG original paper (June 2024); 4,409 QA pairs, 5 finance/sports/music/movies domains; v2 Nov 2024",
+    "fetched_title": "[2406.04744] CRAG -- Comprehensive RAG Benchmark",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s11",
+    "url": "https://arxiv.org/abs/2407.11005",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "RAGBench: 100K+ examples, TRACe metrics for explainability, 5 industry domains",
+    "fetched_title": "[2407.11005] RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s12",
+    "url": "https://arxiv.org/abs/2504.15800",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "FinDER: 5,703 financial QA triplets (April 2025); ACM AI Finance Conference 2026 published",
+    "fetched_title": "[2504.15800] FinDER: Financial Dataset for Question Answering and Evaluating Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s13",
+    "url": "https://arxiv.org/abs/2603.06198",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "LIT-RAGBench: generator capabilities (integration, reasoning, logic, table, abstention) March 2026",
+    "fetched_title": "[2603.06198] LIT-RAGBench: Benchmarking Generator Capabilities of Large Language Models in Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s14",
+    "url": "https://arxiv.org/abs/2603.19281",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "URAG: uncertainty quantification benchmark across healthcare, programming, science, math (March 2026)",
+    "fetched_title": "[2603.19281] URAG: A Benchmark for Uncertainty Quantification in Retrieval-Augmented Large Language Models",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s15",
+    "url": "https://arxiv.org/abs/2504.18024",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "SMARTFinRAG: interactive financial RAG benchmark (April 2025); live ingestion and reproducible evaluation",
+    "fetched_title": "[2504.18024] SMARTFinRAG: Interactive Modularized Financial RAG Benchmark",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s16",
+    "url": "https://arxiv.org/abs/2504.14891",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Comprehensive RAG Evaluation Survey: system performance, factuality, safety, efficiency (April 2025)",
+    "fetched_title": "[2504.14891] Retrieval Augmented Generation Evaluation in the Era of Large Language Models: A Comprehensive Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s17",
+    "url": "https://link.springer.com/article/10.1007/s42979-026-05134-x",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Springer Nature: structured evaluation framework for RAG-enhanced LLMs (2026)",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s18",
+    "url": "https://arxiv.org/abs/2507.18910",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Systematic RAG review: retrieval mechanisms, fusion strategies, security-hardened small systems (July 2025)",
+    "fetched_title": "[2507.18910] A Systematic Review of Key Retrieval-Augmented Generation (RAG) Systems: Progress, Gaps, and Future Directions",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s19",
+    "url": "https://arxiv.org/abs/2508.02994",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Agent-as-Judge: multi-agent debate frameworks for LLM evaluation (Aug 2025)",
+    "fetched_title": "[2508.02994] When AIs Judge AIs: The Rise of Agent-as-a-Judge Evaluation for LLMs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s20",
+    "url": "https://arxiv.org/abs/2603.21654",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "RAG Security Review: 3 threat categories, input/output-side defenses, 40+ attack vectors (March 2026)",
+    "fetched_title": "[2603.21654] Towards Secure Retrieval-Augmented Generation: A Comprehensive Review of Threats, Defenses and Benchmarks",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s21",
+    "url": "https://arxiv.org/abs/2604.08304",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "RAG Attack/Defense Taxonomy: threats, defenses, future directions (2026)",
+    "fetched_title": "[2604.08304] Securing Retrieval-Augmented Generation: A Taxonomy of Attacks, Defenses, and Future Directions",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s22",
+    "url": "https://arxiv.org/abs/2504.12323",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Fairness in RAG: bias exacerbation in models <8B params; FairFT and FairFilter mitigation (April 2025)",
+    "fetched_title": "[2504.12323] The Other Side of the Coin: Exploring Fairness in Retrieval-Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s23",
+    "url": "https://arxiv.org/abs/2603.09891",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "TREC 2025 RAG Track: long narrative queries, multi-layered evaluation, attribution verification",
+    "fetched_title": "[2603.09891] Overview of the TREC 2025 Retrieval Augmented Generation (RAG) Track",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s24",
+    "url": "https://arxiv.org/abs/2602.10024",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "TREC 2025 RAGTIME: temporal and dynamic aspects of RAG evaluation",
+    "fetched_title": "[2602.10024] Overview of the TREC 2025 RAGTIME Track",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s25",
+    "url": "https://github.com/hkuds/lightrag",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "LightRAG (EMNLP 2025): integrated RAGAS for evaluation framework",
+    "fetched_title": "GitHub - HKUDS/LightRAG: [EMNLP2025] LightRAG: Simple and Fast Retrieval-Augmented Generation \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A3-s26",
+    "url": "https://huggingface.co/crag-mm-2025/datasets",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "CRAG-MM dataset on HuggingFace: 6.5K single-turn + 2K multi-turn, 5K images",
+    "requested_url": "https://huggingface.co/datasets/crag-mm-2025/",
+    "fetched_title": "crag-mm-2025 (CRAG - MM Challenge 2025)",
+    "retrieved_at": "2026-08-21"
+  }
+]

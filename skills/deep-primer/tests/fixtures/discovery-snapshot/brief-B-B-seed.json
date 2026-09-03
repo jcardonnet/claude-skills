@@ -1,0 +1,18 @@
+{
+  "wave": "B",
+  "framing": "source-authority",
+  "angle": null,
+  "source_class": "primary",
+  "stance": null,
+  "questions": [
+    "Survey the work of J. Doe on retrieval-augmented generation. Summarize key claims and where they sit relative to the consensus."
+  ],
+  "instructions": [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs"
+  ],
+  "brief_id": "B-B-seed",
+  "seed_ref": "J. Doe"
+}

@@ -7,8 +7,141 @@ model_verified:    # scripts/verify/* (citation recall/precision; chunk self-con
   weight: 1.0
   source: verify-report.json
   thresholds:
+    # SETTLED, on the `verified_*` pair — see the note below for why not the overall numbers.
+    #
+    # Getting here took fixing the metric three times, because every early reading was measuring
+    # the instrument rather than the primer:
+    #   - `inferred` blocks sat in the same denominator as `verified` ones, so honest labelling
+    #     scored identically to fabrication;
+    #   - cards were compared against "" (their content is typed rows, not `text`);
+    #   - a card is seven rows against a <=15-word quote cap, so nothing could entail the
+    #     concatenation and every card failed structurally. Entailment now runs per claim-bearing
+    #     ROW, which took spec-01 from 2/7 to 4/7 — the two blocks that flipped are exactly the
+    #     two cards.
+    #
+    # Final calibration (sonnet, --entailment-votes 3, per-unit; 3 split ballots in 32 pairs, ~9%):
+    #     spec-01  verified_recall 0.57 (4/7)   verified_precision 0.50   inferred_share 0.00
+    #     spec-02  verified_recall 0.00 (0/2)   verified_precision 0.00   inferred_share 0.85
+    #
+    # The floor below is deliberately NOT fitted to those observations. min-0.05 would put the bar
+    # under the worst artifact — a gate that cannot fail. It is set from PRINCIPLE: a block that
+    # declares itself `verified` and is not entailed by its own citation is a defect, so the bar is
+    # near-total. Both current artifacts fail it, and that is the correct result, not a mis-set bar:
+    #   - spec-01 over-cites on matrix-chunking, body-chunk-size and toulmin-reranking — a general
+    #     quote attached to a specific claim it does not support;
+    #   - spec-02 labels body-leader-breaks and fig-anchor `verified` when neither entails; they
+    #     should be `inferred` like the other eleven.
+    # Fix the artifacts, do not lower the bar.
+    verified_recall: 0.95
+    verified_precision: 0.90
+    #
+    # The counterpart, and the reason it is needed: verified_recall is VACUOUS for a primer with no
+    # verified blocks — nothing claims to be grounded, so nothing can fail. spec-02 is exactly that
+    # after its correction (13 claim-bearing blocks, all `inferred`), and it would otherwise sail
+    # through a grounding gate by declining to claim any grounding at all.
+    #
+    # This is the one number here set by judgement rather than principle, so it is the one to
+    # revisit as specs accumulate. The reasoning: a primer needs a grounded SPINE. spec-01 keeps its
+    # ledes and cards verified (4/7 = 0.43 inferred) while its matrix, body elaboration and Toulmin
+    # argumentation are synthesis — that shape is what a compliant primer looks like. 0.60 admits it
+    # with headroom and still fails a primer that is entirely synthesis.
+    max_inferred_share: 0.60
+    #
+    # --- per-primer-type composition (supersedes the single number above) ----------------------
+    # `max_inferred_share` is ONE number for every primer, and G13 recorded why that is wrong: a
+    # primer whose target has no literature cannot ground what a survey grounds. The cap now keys
+    # on `parameters.primer_type`; the scalar above remains the fallback for a spec that declares
+    # no type, so nothing regresses to unchecked.
+    #
+    # WHAT THE SIX SPECS ACTUALLY SHOW (measured 2026-08-21, after all four grounding campaigns):
+    #
+    #   spec   ungrounded   spine (lede+card) verified
+    #   03       0.4000            6/6
+    #   01       0.4286            4/4
+    #   04       0.4444            6/6
+    #   06       0.4545            8/8
+    #   05       0.5714            6/6
+    #   02       1.0000            0/4
+    #
+    # Two findings, and they change the instrument rather than the number.
+    #
+    # (1) `ungrounded_share` is CONFOUNDED WITH APPARATUS DENSITY. spec-05 scores worst of the five
+    #     (0.57) while having the most complete spine of any spec — ledes, cards AND summaries all
+    #     verified. It scores high only because it carries more matrix, figure and body blocks, and
+    #     every one of those is legitimately synthesis. A primer is therefore penalised for being
+    #     thorough, which is not what a grounding threshold should measure. Tightening the survey
+    #     cap to "fit" 0.57 would fail a correctly-composed primer: the inverse of `fix the
+    #     artifacts, do not lower the bar`, and just as wrong.
+    #
+    # (2) THE OUTLIER IS STRUCTURAL, NOT EXTREME. spec-02 is not "the top of a continuum" — the
+    #     other five ground 26/26 of their spine blocks and it grounds 0/4. That is a different
+    #     kind of document, and a scalar cap can only see it as a larger number.
+    #
+    # So the per-type entry carries a PAIR: the composition cap, plus a floor on the grounded SPINE
+    # the cap's original comment already argued for ("a primer needs a grounded SPINE") but never
+    # measured. Spine = blocks with role `lede` or `card` in the composition population.
+    #
+    # NEITHER TYPE ADMITS spec-02, and that is the answer to G13 rather than an oversight. The
+    # question G13 asks is what a primer may claim when its sources ground nothing; the answer is
+    # that no primer type licenses grounding nothing. Even with no literature for the composed
+    # task, the ADJACENT-FIELD foundations a frontier primer builds on are citable — spec-02's own
+    # ledger is 13 home-domain technique papers — so its ledes and cards can be grounded even
+    # though its conclusions cannot. 0/4 is a defect under any type. Fix the artifact.
+    #
+    # The numbers are set from principle, not fitted to the observations:
+    #   survey.max_ungrounded_share 0.60 — unchanged, and deliberately: the observed survey max is
+    #     0.57 (spec-05) and that artifact is correctly composed, so there is nothing to tighten
+    #     against. Moving it would be churn dressed as calibration.
+    #   survey.min_spine_grounded 0.90 — all five surveys are at 1.00. A floor AT 1.00 is brittle
+    #     (one legitimately un-citable lede fails the run), so this takes the same near-total shape
+    #     as verified_recall 0.95 rather than the observed maximum.
+    #   frontier.max_ungrounded_share 0.85 — derived, not observed (n=1, and that one is a defect).
+    #     A frontier primer that grounds its spine and nothing else lands near 0.6-0.75 on these
+    #     documents' shapes; 0.85 admits that with headroom and still fails 1.00. A cap at 1.00
+    #     would be a gate that cannot fail — the trap eval-rubric.yaml names two sections up.
+    #   frontier.min_spine_grounded 0.50 — half the spine, because the adjacent-field foundations
+    #     are citable even when the composed task is not.
+    #
+    # TWO TYPES, NOT THREE. A third bucket (an `applied`/regulated middle, which spec-05 might have
+    # motivated) would be invented from ZERO observations: finding (1) explains spec-05's 0.57 as
+    # apparatus density, not as a distinct grounding regime. Add one when a spec demands it.
+    composition_by_primer_type:
+      survey:
+        max_ungrounded_share: 0.60
+        min_spine_grounded: 0.90
+      frontier:
+        max_ungrounded_share: 0.85
+        min_spine_grounded: 0.50
+    default_primer_type: survey
+    #
+    # The legacy pair stays for the pre-partition report shape and is NOT what --strict gates on.
+    # It mixes declared synthesis with claimed grounding, so no value of it means anything.
     citation_recall: 0.75      # TODO: tune against real runs (registry budgets)
     citation_precision: 0.90   # TODO
 human_overlay:     # spot-checked, calibrates the soft critics
   weight: 1.0
   divergence_recalibrate_threshold: 0.25
+
+# --- the coverage ratchet (what `eval.py --strict` enforces) ------------------
+# Stage A's finding was that an unenforced rule is indistinguishable from a passing one. The report
+# has carried `enforcement_coverage` since Prompt 7, but nothing ever FAILED on it — measured, never
+# gated, which is the same shape of hole one tier up.
+#
+# These are a RATCHET, not an aspiration: every number is what the offline run actually achieves
+# today, so the gate locks in current coverage and fails the moment it regresses. Raise a floor when
+# real coverage rises (Stage G artifacts, a wired judge). Never lower one to make a red run green —
+# that is precisely the silent erosion this exists to catch.
+#
+# Counts, not fractions: the registry grows. A fractional floor weakens itself every time a rule is
+# added, so the gate would quietly loosen exactly when the surface got larger.
+coverage_floor:
+  hard_lint: 32       # 32/32. R-CONV-01 was the last one dark, and was NOT closed by handing
+                      # run_convergence_loop the scripted judge — that replays findings it was told
+                      # in advance. research/claude_structure_judge.py judges the real map instead.
+  model_verified: 3   # 3/3 — R-PROJ-04 was dark until the gate caught it; keep it that way
+  soft_critic: 35     # 35/35 — was 2/35 until the tier got a real judge; never let it slide back
+  human: 9            # 9/9 — NOT a review pass. Every one of these turned out to assert
+                      # something about the CODEBASE (four prohibitions, five architecture
+                      # invariants), so checks/conformance.py checks them against the source
+                      # tree. Each check is proved falsifiable by a negative test; 9/9 on a
+                      # clean tree is otherwise indistinguishable from nine tautologies.

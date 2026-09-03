@@ -1,0 +1,18 @@
+{
+  "wave": "A",
+  "framing": "adjacent-field",
+  "angle": null,
+  "source_class": null,
+  "stance": null,
+  "questions": [
+    "What adjacent fields does callout/leader-line reading and exploded-view part segmentation for parts catalogues borrow from, resemble, or get confused with? Where are the false friends?"
+  ],
+  "instructions": [
+    "prioritize primary / non-vendor sources",
+    "report the count of independent supporting sources per key claim, and flag any disagreement",
+    "pin the latest version + release date of every named tool",
+    "return sources with URLs"
+  ],
+  "brief_id": "A-A5",
+  "seed_ref": null
+}

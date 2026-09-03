@@ -3,9 +3,46 @@ id: spec-01-rag-chunking
 parameters:
   home_domain: ["classical IR", "databases"]
   target_domain: "retrieval-augmented generation chunking strategies"
+  # G13: the composition gate is per primer type. `survey` = an established body of work exists
+  # to ground the spine against, which is the ordinary case.
+  primer_type: survey
   seniority_band: staff_plus
   length_budget: 6000
   outputs: [html, llm_md]
+# Until a real generation exists (Stage G), spec-01 scores the reference artifact — the same
+# complete field-guide IR the structural tests use. Paths resolve from the skill root; a bundled
+# skill drops tests/, so eval reports `not_generated` there rather than failing.
+artifact:
+  ir: tests/fixtures/document-ir.full.yaml
+  concept_map: tests/fixtures/concept-map.full.yaml
+  ledger: tests/fixtures/source-ledger.full.yaml
+  # A real critic run over the IR above — 77 scoped binary verdicts, no stub. This is what carries
+  # the soft_critic tier at 35/35; the tier was fully wired from Stage A and simply never judged.
+  # Frozen for the same reason the discovery snapshot is: eval must score the same verdicts every
+  # time, not whatever a judge decided that morning.
+  #
+  # Judged with haiku on the advisory rules and SONNET on the gating (MUST) tier, because a
+  # calibration sweep measured haiku disagreeing with itself on 6/21 gating items — a coin flip on
+  # rules that block — against sonnet's 1/21, with two haiku hard-FAILs that sonnet passed. The
+  # tiered run bears that out: self-disagreement dropped 6 -> 1. That run predates single-verdict
+  # gating, so its one disagreement is recorded as an 'unstable' verdict rather than a flip; it is
+  # left as judged, because re-judging a paid report to restate its schema buys nothing.
+  # Regenerate with
+  #   scripts/critics/run_critics.py <ir> --judge claude --gating-model sonnet --out <here>
+  # (119 calls, ~$11.89-equivalent, ~40 min — gating rules are judged twice, hence calls > verdicts).
+  #
+  # That is 5% MORE calls than the run it replaced for 33% LESS spend ($17.85 -> $11.89), which is
+  # the `--tools ""` default on ClaudeCli showing up as a number: every `claude -p` is a cold session
+  # re-paying the harness preamble, ~37.8k tokens with the default tool set against ~15.9k with none,
+  # and a critic judging a block of text needs no tools at all.
+  #
+  # The report carries `ir_sha256` of the IR it judged, and eval REFUSES to credit it as coverage
+  # if that no longer matches — a frozen report whose IR has moved on describes a document that no
+  # longer exists. That guard fired for real: the previous report was judged before `f80ff65`
+  # relabelled three blocks `verified` -> `inferred`, the document unit every document-scoped critic
+  # reads prints `provenance:` into each block heading, and 33 of 35 rules were being credited from a
+  # run of a different document. This report is stamped with the digest of the IR beside it.
+  critic_report: tests/fixtures/critic-report.full.json
 expect:
   must_pass: [R-ARCH-03, R-SCENT-01, R-CARD-01, R-MV-01, R-GROUND-01, R-PROJ-02]
   notes: "bridge from IR/db background; decision matrix on chunkers; mask-free analogue not relevant here"

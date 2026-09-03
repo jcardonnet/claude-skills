@@ -1,0 +1,277 @@
+[
+  {
+    "id": "A-A5-s1",
+    "url": "https://arxiv.org/pdf/2504.14891",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Comprehensive RAG evaluation survey 2025; establishes retrieval-generation separation necessity",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s2",
+    "url": "https://arxiv.org/html/2309.15217v1",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "RAGAS framework paper 2023; reference-free metric design; human correlation analysis",
+    "fetched_title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A5-s3",
+    "url": "https://arxiv.org/pdf/2407.13193",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "RAG retrieval survey 2024; cross-field metric confusion documentation",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s4",
+    "url": "https://nlp.stanford.edu/IR-book/pdf/08eval.pdf",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Stanford IR textbook chapter; foundational IR evaluation philosophy and graded relevance",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s5",
+    "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=51229",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "TREC standards; pooling methodology and information retrieval evaluation framework",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s6",
+    "url": "https://arxiv.org/pdf/2305.12421",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "NeurIPS 2023; SQuAD metric failures on open-QA; paraphrase and semantic equivalence",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s7",
+    "url": "https://sh-tsang.medium.com/brief-review-squad-100-000-questions-for-machine-comprehension-of-text-f191c6b670b8",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "SQuAD benchmark design and token-level F1 limitations for modern QA",
+    "dropped_reason": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "A-A5-s8",
+    "url": "https://arxiv.org/pdf/1904.09675",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "BERTScore ICLR 2020; semantic metric design; reference dependency and configuration",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s9",
+    "url": "https://arxiv.org/pdf/2006.14799",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Text generation evaluation survey; metric task-specificity (BLEU vs. ROUGE)",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s10",
+    "url": "https://arxiv.org/abs/2501.12011",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Reference-free evaluation survey 2025; human correlation trade-offs; practical limitations",
+    "fetched_title": "[2501.12011] Reference-free Evaluation Metrics for Text Generation: A Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A5-s11",
+    "url": "https://arxiv.org/pdf/2508.03860",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Hallucination and factuality review 2025; faithfulness evaluation methodologies",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s12",
+    "url": "https://arxiv.org/pdf/2503.16541",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Poly-FEVER 2025; NLI-based fact verification; entailment classification for RAG",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s13",
+    "url": "https://arxiv.org/html/2604.25923",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Evaluation taxonomy 2024; metric function confusion across NLP fields; systematic classification",
+    "fetched_title": "Evaluation Revisited: A Taxonomy of Evaluation Concerns in Natural Language Processing",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A5-s14",
+    "url": "https://arxiv.org/pdf/2506.18213",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "AI capability evaluation 2025; Goodhart's Law and metric gaming; perverse incentives",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s15",
+    "url": "https://arxiv.org/pdf/2410.09638",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Goodhart's Law formalization 2024; measure-target collapse in evaluation systems",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A5-s16",
+    "url": "https://kili-technology.com/blog/rag-evaluation-guide-measuring-retrieval-and-generation-as-separate-problems",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Practical RAG evaluation guide; retrieval-generation orthogonality; metric independence",
+    "fetched_title": "RAG Evaluation Methods: Separate Retrieval from Generation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A5-s17",
+    "url": "https://deepchecks.com/retrieval-vs-answer-quality-rag-evaluation/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "RAG evaluation methodology; faithfulness-relevance trade-off; practical case studies",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s18",
+    "url": "https://www.confident-ai.com/blog/llm-evaluation-metrics-everything-you-need-for-llm-evaluation",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "LLM evaluation metrics 2025; metric limitations for LLM outputs; semantic vs. surface trade-offs",
+    "fetched_title": "LLM Evaluation Metrics: The Ultimate LLM Evaluation Guide - Confident AI",
+    "retrieved_at": "2026-08-21"
+  }
+]

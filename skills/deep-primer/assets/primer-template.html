@@ -12,7 +12,9 @@
                 (un-folds) the target's ancestors. JS-off degrades gracefully to everything visible.
        figures: framed box; SVG .stroke/.fill/.accent restyled to the box look; .dbox/.darrow vocabulary shipped.
        callouts: .co / .co.good / .co.bad / .co.warn shipped (inert until the renderer emits them).
-     RENDERER CONTRACT PRESERVED: {{ title }}, {{ blocks }}, {{ footnotes }}, {{ primer_meta }};
+     RENDERER CONTRACT PRESERVED: the title / blocks / footnotes / primer_meta placeholders
+       (named here WITHOUT their braces on purpose — render_html.py substitutes every literal
+       occurrence, so spelling one out in this comment would inject a second copy of the document);
        data-depth (body) + data-tierlevel (on <section>, <h3>, and content blocks); classes .lede .card
        .toulmin .recall .prov .prov-verified .prov-unverified sup.fn .refs; SVG .stroke .fill .accent;
        #primer-meta JSON; #controls button ids. The folding assumes the renderer wraps each h2 in <section>

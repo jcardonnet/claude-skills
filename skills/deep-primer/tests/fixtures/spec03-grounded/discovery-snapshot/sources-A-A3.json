@@ -1,0 +1,323 @@
+[
+  {
+    "id": "A-A3-s1",
+    "url": "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.45.0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Go SDK v1.45.0 breaking changes: Log API restructure, OTLP HTTP endpoint path changes",
+    "fetched_title": "Release Release v1.45.0/v0.67.0/v0.21.0/v0.0.18 \u00b7 open-telemetry/opentelemetry-go \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s2",
+    "url": "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.65.0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Java SDK v1.65.0 removes Zipkin exporter and deprecates OpenCensus shim",
+    "fetched_title": "Release Version 1.65.0 \u00b7 open-telemetry/opentelemetry-java \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s3",
+    "url": "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.10.0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "JavaScript SDK v2.10.0 marks Jaeger propagator for removal (~Sept 2026)",
+    "fetched_title": "Release v2.10.0 \u00b7 open-telemetry/opentelemetry-js \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s4",
+    "url": "https://github.com/open-telemetry/opentelemetry-collector/releases",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Collector v1.65.0 breaking API changes in config type handling",
+    "fetched_title": "Releases \u00b7 open-telemetry/opentelemetry-collector \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s5",
+    "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.159.0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Collector Contrib v0.159.0 removes Kafka Topics Observer, updates dynamic sampling",
+    "fetched_title": "Release v0.159.0 \u00b7 open-telemetry/opentelemetry-collector-contrib \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s6",
+    "url": "https://github.com/jaegertracing/jaeger/releases/tag/v2.20.0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Jaeger v2.20.0 drops ES v6 support, adds native trace summaries",
+    "fetched_title": "Release Release v2.20.0 \u00b7 jaegertracing/jaeger \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s7",
+    "url": "https://github.com/jaegertracing/jaeger/releases/tag/v2.19.0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Jaeger v2.19.0 architectural shift to /api/v3/trace-summaries endpoint",
+    "fetched_title": "Release Release v2.19.0 \u00b7 jaegertracing/jaeger \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s8",
+    "url": "https://github.com/grafana/tempo/releases/tag/v3.0.3",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Tempo v3.0.3 security updates: Go 1.26.5, gRPC v1.82.1, multiple CVE patches",
+    "fetched_title": "Release v3.0.3 \u00b7 grafana/tempo \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s9",
+    "url": "https://github.com/SigNoz/signoz/releases/tag/v0.138.0",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "SigNoz v0.138.0 semantic convention support, v0.137.0 deprecates V1 APIs",
+    "fetched_title": "Release v0.138.0 \u00b7 SigNoz/signoz \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s10",
+    "url": "https://opencensus.io/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "OpenCensus archived July 31, 2023; official migration path to OpenTelemetry",
+    "fetched_title": "OpenCensus",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s11",
+    "url": "https://opentracing.io/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "OpenTracing archived; official recommendation to migrate to OpenTelemetry",
+    "fetched_title": "The OpenTracing project",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s12",
+    "url": "https://github.com/open-telemetry/opentelemetry-specification/releases",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "OTEL Specification v1.60.0 (Aug 7, 2025) adds Entity support, OTLP config enhancements",
+    "fetched_title": "Releases \u00b7 open-telemetry/opentelemetry-specification \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s13",
+    "url": "https://opentelemetry.io/blog/2025/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "2025 announcements: eBPF tooling, Go auto-instrumentation, Kubernetes metrics migration",
+    "fetched_title": "2025 | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s14",
+    "url": "https://opentelemetry.io/blog/2026/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "2026 milestones: CNCF graduation, declarative config stable, profiles alpha, Arrow Phase 2",
+    "fetched_title": "2026 | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s15",
+    "url": "https://github.com/open-telemetry/opentelemetry-kotlin/releases",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "New Kotlin SDK v0.6.0 (July 28, 2025) in development status for JVM platforms",
+    "fetched_title": "Releases \u00b7 open-telemetry/opentelemetry-kotlin \u00b7 GitHub",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s16",
+    "url": "https://opentelemetry.io/docs/collector/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Collector architecture documentation confirms collector-first pattern recommendation",
+    "fetched_title": "Collector | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s17",
+    "url": "https://w3c.github.io/trace-context/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "W3C Trace Context stable specification; recommended propagation standard",
+    "fetched_title": "Trace Context",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s18",
+    "url": "https://opentelemetry.io/docs/specs/otel/profiles/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "OTEL Profiles specification in alpha status; not yet production-ready",
+    "fetched_title": "OpenTelemetry Profiles | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s19",
+    "url": "https://opentelemetry.io/docs/specs/otel/baggage/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "OTEL Baggage specification stable; widely implemented across SDKs",
+    "fetched_title": "Baggage | OpenTelemetry",
+    "retrieved_at": "2026-08-20"
+  },
+  {
+    "id": "A-A3-s20",
+    "url": "https://www.jaegertracing.io/docs/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "recency-frontier"
+    ],
+    "report_ids": [
+      "A-A3"
+    ],
+    "why": "Jaeger documentation confirming collector gRPC receiver as modern deployment pattern",
+    "requested_url": "https://jaegertracing.io/docs/",
+    "fetched_title": "Documentation | Jaeger",
+    "retrieved_at": "2026-08-20"
+  }
+]

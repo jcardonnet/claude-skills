@@ -1,0 +1,183 @@
+- wave: A
+  framing: structure
+  angle: by-method-family
+  source_class: null
+  stance: null
+  questions:
+  - 'Map the full landscape of callout/leader-line reading and exploded-view part
+    segmentation for parts catalogues: subfields, the canonical taxonomy, and how
+    practitioners carve it up.'
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: A-A1
+  seed_ref: null
+- wave: A
+  framing: debates
+  angle: by-failure-mode
+  source_class: null
+  stance: null
+  questions:
+  - What are the live controversies and open problems in callout/leader-line reading
+    and exploded-view part segmentation for parts catalogues? Where is there no consensus?
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: A-A2
+  seed_ref: null
+- wave: A
+  framing: recency-frontier
+  angle: null
+  source_class: latest-release
+  stance: null
+  questions:
+  - What changed in callout/leader-line reading and exploded-view part segmentation
+    for parts catalogues in the last 6-12 months - new releases, SOTA shifts, deprecated
+    approaches?
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: A-A3
+  seed_ref: null
+- wave: A
+  framing: source-authority
+  angle: null
+  source_class: primary
+  stance: null
+  questions:
+  - The most authoritative primary sources, seminal works, key recent papers, and
+    best practitioner writeups on callout/leader-line reading and exploded-view part
+    segmentation for parts catalogues.
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: A-A4
+  seed_ref: null
+- wave: A
+  framing: adjacent-field
+  angle: null
+  source_class: null
+  stance: null
+  questions:
+  - What adjacent fields does callout/leader-line reading and exploded-view part segmentation
+    for parts catalogues borrow from, resemble, or get confused with? Where are the
+    false friends?
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: A-A5
+  seed_ref: null
+- wave: A
+  framing: contrarian-seed
+  angle: null
+  source_class: null
+  stance: against-dominant
+  questions:
+  - Make the strongest case against the dominant approach in callout/leader-line reading
+    and exploded-view part segmentation for parts catalogues. What do skeptics argue,
+    and on what evidence?
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: A-A6
+  seed_ref: null
+- wave: B
+  framing: theorist
+  angle: by-method-family
+  source_class: primary
+  stance: null
+  questions:
+  - 'Deep dive on the residual gap within callout/leader-line reading and exploded-view
+    part segmentation for parts catalogues: mechanism, tradeoffs, when it fails, current
+    best practice, primary sources.'
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: B-B-dive
+  seed_ref: null
+- wave: B
+  framing: debates
+  angle: by-failure-mode
+  source_class: null
+  stance: against-dominant
+  questions:
+  - 'Claim: the dominant claim. Counter-claim: not-the dominant claim. Find the deciding
+    evidence and why the two camps disagree.'
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: B-B-conflict
+  seed_ref: null
+- wave: C
+  framing: practitioner
+  angle: by-application
+  source_class: null
+  stance: null
+  questions:
+  - 'A primer on callout/leader-line reading and exploded-view part segmentation for
+    parts catalogues currently covers: . What important aspects are missing?'
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: C-C-omission
+  seed_ref: null
+- wave: C
+  framing: contrarian-seed
+  angle: by-failure-mode
+  source_class: null
+  stance: against-dominant
+  questions:
+  - 'Key claims of a primer on callout/leader-line reading and exploded-view part
+    segmentation for parts catalogues: . Find the strongest evidence any are wrong
+    or overstated.'
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: C-C-disconfirm
+  seed_ref: null
+- wave: C
+  framing: adjacent-field
+  angle: null
+  source_class: primary
+  stance: null
+  questions:
+  - 'Sources a primer on callout/leader-line reading and exploded-view part segmentation
+    for parts catalogues cites: . What authoritative sources are NOT in this list?'
+  instructions:
+  - prioritize primary / non-vendor sources
+  - report the count of independent supporting sources per key claim, and flag any
+    disagreement
+  - pin the latest version + release date of every named tool
+  - return sources with URLs
+  brief_id: C-C-source-completeness
+  seed_ref: null

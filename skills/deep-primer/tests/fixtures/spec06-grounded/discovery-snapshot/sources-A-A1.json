@@ -1,0 +1,319 @@
+[
+  {
+    "id": "A-A1-s1",
+    "url": "https://arxiv.org/pdf/2504.14891",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Latest comprehensive RAG evaluation survey, April 2025; covers LLM-era innovations",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s2",
+    "url": "https://arxiv.org/abs/2405.07437",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Unified evaluation process (AUEPORA) framework; May 2024 taxonomy and organization",
+    "fetched_title": "[2405.07437] Evaluation of Retrieval-Augmented Generation: A Survey",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s3",
+    "url": "https://arxiv.org/pdf/2407.13193",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "RAG architecture and evaluation frameworks survey; July 2024 peer-reviewed",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s4",
+    "url": "https://arxiv.org/pdf/2407.11005",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "RAGBench + TRACe framework; 100k dataset, fine-tuned model vs LLM judge comparison",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s5",
+    "url": "https://arxiv.org/abs/2401.17043",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "CRUD-RAG functional taxonomy; Jan 2024 component variation testing framework",
+    "fetched_title": "[2401.17043] CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s6",
+    "url": "https://aclanthology.org/2024.naacl-long.20/",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "ARES lightweight LM judges; NAACL 2024 peer-reviewed; prediction-powered inference",
+    "fetched_title": "ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems - ACL Anthology",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s7",
+    "url": "https://arxiv.org/pdf/2411.09607",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "AutoNuggetizer atomic fact detection; TREC 2024 standard nugget creation method",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "A-A1-s8",
+    "url": "https://trec-rag.github.io",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "NIST-endorsed TREC 2024 RAG Track; official production evaluation standard",
+    "fetched_title": "TREC RAG \u00b7 Retrieval-Augmented Generation Track - RAG",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s9",
+    "url": "https://github.com/facebookresearch/CRAG/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Meta KDD Cup 2024 benchmark; 4,409 QA pairs, 8 question types, industrial standard",
+    "fetched_title": "GitHub - facebookresearch/CRAG: Comprehensive benchmark for RAG \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s10",
+    "url": "https://github.com/beir-cellar/beir",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Heterogeneous IR benchmark; 15+ datasets; zero-shot retrieval evaluation standard",
+    "fetched_title": "GitHub - beir-cellar/beir: A Heterogeneous Benchmark for Information Retrieval. Easy to use, evaluate your models across 15+ diverse IR datasets. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s11",
+    "url": "https://github.com/embeddings-benchmark/mteb",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "MTEB v2.0 multilingual embedding benchmark; 1000+ languages, long-document evaluation",
+    "fetched_title": "GitHub - embeddings-benchmark/mteb: MTEB: State-of-the-art evaluation of embeddings across languages and modalities \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s12",
+    "url": "https://rajpurkar.github.io/SQuAD-explorer/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "SQuAD 100k QA benchmark; standard EM/F1 metrics for reading comprehension",
+    "fetched_title": "The Stanford Question Answering Dataset",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s13",
+    "url": "https://docs.ragas.io/en/stable/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "RAGAS framework documentation; v0.3.4+; core open-source RAG evaluation tool",
+    "requested_url": "https://docs.ragas.io",
+    "fetched_title": "Ragas",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s14",
+    "url": "https://deepeval.com",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "DeepEval v2024+ documentation; 50+ metrics; RAGAS metric reimplementation",
+    "fetched_title": "DeepEval - The LLM Evaluation Framework",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s15",
+    "url": "https://www.trulens.org",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "TruLens production monitoring; Snowflake acquisition May 2024; OpenTelemetry",
+    "fetched_title": "TruLens: Evals and Tracing for AI Agents",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s16",
+    "url": "https://github.com/deepset-ai/haystack",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Haystack v2.x transparent RAG pipelines; audit trails for regulated industries",
+    "fetched_title": "GitHub - deepset-ai/haystack: Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s17",
+    "url": "https://docs.langchain.com/langsmith/evaluate-rag-tutorial",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "LangChain LangSmith RAG evaluation tutorial; RAGAS metrics wrapper, diagnostics",
+    "fetched_title": "Evaluate a RAG application - Docs by LangChain",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s18",
+    "url": "https://evalscope.readthedocs.io/en/latest/blog/RAG/RAG_Evaluation.html",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "EvalScope RAG evaluation documentation; framework guidance and best practices",
+    "fetched_title": "RAG Evaluation Survey: Framework, Metrics, and Methods | EvalScope",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s19",
+    "url": "https://docs.ragas.io/en/v0.3.4/howtos/integrations/_llamaindex/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "RAGAS LlamaIndex integration; RAGChecker claim decomposition component",
+    "fetched_title": "LlamaIndex RAG - Ragas",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "A-A1-s20",
+    "url": "https://github.com/YHPeter/Awesome-RAG-Evaluation",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "structure"
+    ],
+    "report_ids": [
+      "A-A1"
+    ],
+    "why": "Curated RAG evaluation resources; comprehensive taxonomy and tool directory",
+    "fetched_title": "GitHub - YHPeter/Awesome-RAG-Evaluation: The official repository for the paper: Evaluation of Retrieval-Augmented Generation: A Survey. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  }
+]

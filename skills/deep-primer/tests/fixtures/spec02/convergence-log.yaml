@@ -1,0 +1,16 @@
+k_max: 3
+cycles:
+- cycle: 0
+  c_k: null
+  rho: null
+  tau: 4.0
+  finding: initial
+  decision: draft
+- cycle: 0
+  c_k: null
+  rho: null
+  tau: 4.0
+  finding: terminal
+  decision: stop
+terminal_regime: coherent
+terminal_decision: draft

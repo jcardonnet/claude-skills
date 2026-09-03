@@ -1,0 +1,310 @@
+[
+  {
+    "id": "A-A5-s1",
+    "url": "https://www.iso.org/standard/70649.html",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "ISO 128-2:2020 technical drawing standards; leader lines, callout conventions",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s2",
+    "url": "https://www.iso.org/standard/70634.html",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "ISO 128-1:2020 technical drawing general principles; foundational standard",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s3",
+    "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821600",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "STEP (ISO 10303) documentation and CAD data exchange; assembly geometry source",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s4",
+    "url": "https://www.iso.org/standard/45168.html",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "ISO 13584 (PLIB) parts library ontology; component relationships and classification",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s5",
+    "url": "https://docs.ultralytics.com/models/yolov11/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "YOLO v11 (2024) region detection baseline; document layout analysis tool",
+    "fetched_title": "Ultralytics YOLO11 | Ultralytics",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A5-s6",
+    "url": "https://huggingface.co/microsoft/layoutlmv3-base",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "LayoutLMv3 document understanding; spatial region detection and classification",
+    "fetched_title": "microsoft/layoutlmv3-base \u00b7 Hugging Face",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A5-s7",
+    "url": "https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.7/doc/doc_en/technical_innovation_en.md",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Technical drawing OCR and layout analysis; document-specific computer vision",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s8",
+    "url": "https://www.oasis-open.org/committees/dita/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "DITA 2.0 technical documentation standard; modular document structure, version control",
+    "fetched_title": "DITA TC: Darwin Information Typing Architecture | OASIS",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A5-s9",
+    "url": "https://www.s1000d.org/",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "S1000D aerospace technical documentation; assembly instructions and parts lists",
+    "dropped_reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.s1000d.org'. (_ssl.c:1028)>"
+  },
+  {
+    "id": "A-A5-s10",
+    "url": "https://www.omg.org/spec/UML/2.5.1/",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "UML 2.5 specification; contrast case (topology-based vs. geometry-based)",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s11",
+    "url": "https://arxiv.org/abs/2107.14941",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "LayoutLMv3 technical paper; document layout understanding methodology",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s12",
+    "url": "https://arxiv.org/abs/1512.02325",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Faster R-CNN; region detection baseline for document/drawing analysis",
+    "fetched_title": "[1512.02325] SSD: Single Shot MultiBox Detector",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A5-s13",
+    "url": "https://arxiv.org/abs/2004.14197",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Semantic segmentation survey; clarifies CV assumptions vs. technical drawing requirements",
+    "fetched_title": "[2004.14197] A deformation of Robert-Wagner foam evaluation and link homology",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A5-s14",
+    "url": "https://qwenlm.github.io/blog/qwen-vl-plus/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Qwen3-VL (Jan 2026) vision-language model; text-image semantic linking",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s15",
+    "url": "https://github.com/THUDM/ChatGLM-6B",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "GLM-4.5V multimodal model; vision-language understanding for annotation linking",
+    "fetched_title": "GitHub - zai-org/ChatGLM-6B: ChatGLM-6B: An Open Bilingual Dialogue Language Model | \u5f00\u6e90\u53cc\u8bed\u5bf9\u8bdd\u8bed\u8a00\u6a21\u578b \u00b7 GitHub",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A5-s16",
+    "url": "https://docs.mistral.ai/capabilities/vision/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Pixtral 12B (Mistral, Apache 2.0); open-source vision-language model",
+    "fetched_title": "Vision | Mistral Docs",
+    "retrieved_at": "2026-08-16"
+  },
+  {
+    "id": "A-A5-s17",
+    "url": "https://www.iso.org/standard/77039.html",
+    "type": "standard",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "ISO 21600:2019 mechanical digital manuals; parts catalog documentation standard",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s18",
+    "url": "https://conorpp.github.io/detecting-lines-on-technical-drawings/",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Technical drawing-specific edge detection; explains CV method failure modes",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "A-A5-s19",
+    "url": "https://en.wikipedia.org/wiki/Technical_illustration",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "Technical illustration history and principles; exploded-view technique origins",
+    "dropped_reason": "disallowed by robots.txt"
+  },
+  {
+    "id": "A-A5-s20",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "adjacent-field"
+    ],
+    "report_ids": [
+      "A-A5"
+    ],
+    "why": "WCAG 2.2:2024 accessibility standards; callout and annotation labeling requirements",
+    "fetched_title": "Understanding WCAG 2.2 | WAI | W3C",
+    "retrieved_at": "2026-08-16"
+  }
+]

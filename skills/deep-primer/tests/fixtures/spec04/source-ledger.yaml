@@ -1,0 +1,349 @@
+# Source-ledger for spec-04-seeded-vector-index.
+#
+# THESE SOURCES ARE REAL. Every source_id, url, title, content_hash, claim_id, claim text and quote
+# below was produced by an actual Phase 1/1a campaign (2026-08-21) and is copied VERBATIM from
+# tests/fixtures/spec04-grounded/source-ledger.yaml, which holds the full run: 155 source leads,
+# 30 sources extracted, 333 claims kept. The 6 sources and 27 claims here are the 23 claims the
+# primer actually cites plus the 4 that supply their corroboration — `corroborated_by` holds
+# source_ids, so the corroborating claim itself is carried too, or the count would be an assertion
+# rather than something a reader can check. The full-hex source_ids are kept precisely so any claim
+# can be grepped back to the campaign output it came from.
+#
+# THE SEED IS NOW A REAL PAPER. This fixture previously carried `s-seed`, a synthetic stand-in for
+# `https://example.org/hnsw-paper`. That URL cannot be fetched, and `triage_leads` checks
+# fetch-failure BEFORE it applies the R-DISC-06 exemption, so on any real campaign the seed was
+# dropped before the rule it exists to exercise could see it — R-DISC-06 was passing against a
+# hand-built artifact and could not have passed against a run. The seed now points at
+# arXiv 1603.09320, the actual Hierarchical NSW paper, which the 2026-08-21 campaign already
+# retrieved by ordinary discovery as source 9f257979. Both halves of the seed are real as a result:
+# the url directive resolves to a fetchable paper, and the author directive "Y. Malkov" names that
+# paper's first author rather than a fictional one.
+#
+# 9f257979 carries provenance_origin=user on the SOURCE and on its CLAIMS. It is graded like any
+# other source, and it is not promoted past its evidence:
+#   - C-9f257979-4 (logarithmic scaling) is corroborated twice, across organisations, and is
+#     asserted.
+#   - C-9f257979-6 (outperforms prior open-source approaches) is the seed's strong claim, and it
+#     stays singly-supported and `contested`. It is a 2016 statement about the then-open-source
+#     state of the art; C-e995dd02-10 reports that at billion scale in 2026 a different index is
+#     the only one meeting the target. That is not a refutation, it is a scale bound the seed does
+#     not state — which is exactly why it renders through `contested-graph` as two framings
+#     instead of being asserted (R-DISC-06: authoritative for INCLUSION, never for truth).
+#
+# Three DESCRIPTIVE fields were HAND-FILLED after the run because the pipeline never sets them, not
+# because they were judged: `date`, `credibility` and `authors`. `type` is NOT hand-filled —
+# `retrieval_loop.fetch_source_leads` does carry `lead.type` onto the fetched document, so every
+# campaign source arrives already typed and the values below are the run's own.
+# `date` is filled only where the document itself evidences one: the four arXiv/NeurIPS ids encode
+# their own year and month (1603 -> 2016-03, 2505 -> 2025-05, 2512 -> 2025-12, and the DiskANN URL
+# carries /paper/2019/). It is left null for the two web pages, which carry no date we retrieved.
+# `authors` is filled only for the seed paper, because the seed's author directive names one.
+#
+# FIVE EVIDENCE-GRADING FIELDS ARE ALSO AUTHORED, and unlike the three above they are judgements, so
+# they are listed separately: `contested`, `contradicts`, `corroboration_count`, `corroborated_by`
+# and `provenance_origin`. The first two are authored ENTIRELY. `claim_extractor.mark_conflicts`
+# exists and records disagreement symmetrically, but `run_campaign.py` never calls it — line 40
+# imports `build_ledger`, `corroborate` and `mark_recency` and stops there — so no campaign has ever
+# set `contested` on any claim. Across the three real runs to date (spec-03 281 claims, spec-04 333,
+# spec-05 283) the field is 0 in all 897. The two contested pairs below were therefore judged by a
+# reader of the two claims, not produced by the run, and the reasoning for the 9f257979-4/e995dd02-10
+# pair is written out above so it can be disagreed with. See GAPS.md G16.
+#
+# Corroboration is a weaker case of the same thing. The campaign DOES corroborate — 20 of its 333
+# claims — but only one of the claims kept here (C-9f257979-4) carried a run-produced count, and it
+# was raised from 2 to 3. The other 24 counts and 9 `corroborated_by` lists were authored, by the
+# rule stated in the next paragraph. `provenance_origin` differs everywhere: the run marks all 27
+# `discovered`, and the seed's 4 are re-marked `user` while the rest are cleared to null, which is
+# the point of the seed exercise. NOTHING here is a promotion — an authored corroboration link is a
+# claim a reader can check by grepping the two source_ids, and every one of them resolves.
+#
+# b43b6852 is typed `vendor`, not the `blog` the campaign recorded: it is AWS writing about Amazon
+# OpenSearch Service, its own product. R-EVID-03 wants a performance claim from such a source to
+# have an independent non-vendor measurement beside it, and C-b43b6852-16 ("up to 90% cost
+# reduction") has one in C-e995dd02-12, an independent engineering blog reporting that the recall
+# target those numbers are quoted at costs 2-3x more latency in production than in benchmarks.
+#
+# The rule for those authored links: corroboration is marked only where the two sources are from
+# DIFFERENT organisations, the same discipline spec-03's ledger follows. Same-origin agreement is
+# not corroboration (R-EVID-03).
+#
+# Quotes are <=15 words (R-GROUND-01). They are NOT lexically close to the blocks that cite them —
+# R-GROUND-01 requires the prose to be a paraphrase, so the offline lexical entailment proxy scores
+# them low by design. citation_quality gates `verified_recall`/`verified_precision` only when a real
+# entailment backend is present; offline, only resolves_to_ledger / scoreable / ungrounded_share bind.
+sources:
+  # ---- THE SEED (R-DISC-06). provenance_origin=user on the source and every claim. ----
+  - source_id: 9f25797951917c61969c66e225308666881d5cb2
+    url: "https://arxiv.org/abs/1603.09320"
+    title: "[1603.09320] Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
+    authors: ["Yu. A. Malkov", "D. A. Yashunin"]
+    venue: "arXiv"
+    date: "2016-03"
+    type: primary_paper
+    credibility: high
+    provenance_origin: user
+    retrieved_at: "2026-08-21"
+    content_hash: "3ddfec8e1c29645c9404cdb4b6f8a7883dd0ee7f"
+    claims:
+      - claim_id: C-9f257979-4
+        text: "HNSW search achieves logarithmic complexity scaling."
+        quote: "allows a logarithmic complexity scaling"
+        location: "char 1634 of 5054 (normalized)"
+        confidence: high
+        provenance_origin: user
+        corroboration_count: 3
+        corroborated_by:
+          - dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+          - e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+      - claim_id: C-9f257979-1
+        text: "HNSW is based on navigable small world graphs with controllable hierarchy."
+        quote: "navigable small world graphs with controllable hierarchy (Hierarchical NSW, HNSW)"
+        location: "char 756 of 5054 (normalized)"
+        confidence: high
+        provenance_origin: user
+        corroboration_count: 1
+      - claim_id: C-9f257979-7
+        text: "HNSW builds incrementally as a multi-layer structure."
+        quote: "incrementally builds a multi-layer structure"
+        location: "char 1043 of 5054 (normalized)"
+        confidence: high
+        provenance_origin: user
+        corroboration_count: 1
+      # The seed's strong claim, and the one the discovered evidence bounds. A seed is
+      # authoritative for INCLUSION, never for truth: this stays contested + singly-supported and
+      # renders through `contested-graph`, not as a settled assertion (R-DISC-06).
+      - claim_id: C-9f257979-6
+        text: "HNSW outperforms prior open-source vector-only approaches."
+        quote: "strongly outperform previous opensource state-of-the-art vector-only approaches"
+        location: "char 1944 of 5054 (normalized)"
+        confidence: medium
+        provenance_origin: user
+        corroboration_count: 1
+        contested: true
+        contradicts: [C-e995dd02-10]
+
+  - source_id: e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6
+    url: "https://ranjankumar.in/hnsw-vector-search-recall-production"
+    title: "HNSW Vector Search Recall Failures in Production | Ranjan Kumar"
+    authors: []
+    venue: null
+    date: null
+    type: blog
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "c96f911247edb32f83a193e12b55b39d3ee990e0"
+    claims:
+      - claim_id: C-e995dd02-1
+        text: "HNSW achieves logarithmic search complexity with recall consistently above 95% out of the box on standard benchmarks."
+        quote: "logarithmic search complexity with recall consistently above 95% out of the box on standard benchmarks"
+        location: "char 1783 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [9f25797951917c61969c66e225308666881d5cb2]
+      - claim_id: C-e995dd02-3
+        text: "HNSW with 768-dimensional float32 vectors and M=40 connections costs approximately 3,232 bytes per vector."
+        quote: "for 768-dimensional float32 vectors with M=40 connections, each vector costs approximately 3,232 bytes"
+        location: "char 5438 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [b43b68520a9614f47acf5967551fc04e8c45a9eb]
+      - claim_id: C-e995dd02-17
+        text: "HNSW index memory consumption is approximately 4.8 GB per 1 million vectors."
+        quote: "~4.8 GB per 1M vecs"
+        location: "char 24013 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      # The billion-scale bound on the seed's strong claim. contested/contradicts are symmetric, so
+      # the disagreement is visible from either source (R-GROUND-05).
+      - claim_id: C-e995dd02-10
+        text: "DiskANN is the only algorithm achieving 95% recall at 5ms latency on billion-scale vector corpora."
+        quote: "It is the only algorithm that hits 95% recall at 5ms latency"
+        location: "char 16797 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6]
+        contested: true
+        contradicts: [C-9f257979-6]
+      # The independent non-vendor measurement R-EVID-03 wants beside C-b43b6852-16.
+      - claim_id: C-e995dd02-12
+        text: "Maintaining 0.95 recall at production scale can require 2-3 times higher latency than testing benchmarks."
+        quote: "The 0.95 recall target that looks comfortable in testing can require a 2-3x latency increase"
+        location: "char 18204 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 1
+        contested: true
+        contradicts: [C-b43b6852-16]
+      - claim_id: C-e995dd02-7
+        text: "IVF indexes cannot add vectors without rebuilding cluster centroids."
+        quote: "You cannot insert a vector into an IVF index without rebuilding the cluster centroids"
+        location: "char 7604 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      - claim_id: C-e995dd02-20
+        text: "IVF-PQ indexes should be reindexed after every 20% of corpus growth."
+        quote: "For IVF-PQ: after every 20% corpus update"
+        location: "char 25748 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      - claim_id: C-e995dd02-2
+        text: "HNSW recall degrades precisely on underrepresented neighborhoods in the graph."
+        quote: "degrades precisely on underrepresented neighborhoods in the graph"
+        location: "char 818 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      - claim_id: C-e995dd02-22
+        text: "A system has crossed its Recall Horizon when tail recall drops 10 or more points between 10% and 100% corpus size."
+        quote: "If tail recall drops 10+ points from 10% to 100% corpus, you have crossed"
+        location: "char 25398 of 30461 (normalized)"
+        confidence: high
+        corroboration_count: 1
+
+  # ---- The vendor source (R-EVID-03). Typed `vendor`: AWS on its own OpenSearch Service. ----
+  - source_id: b43b68520a9614f47acf5967551fc04e8c45a9eb
+    url: "https://aws.amazon.com/blogs/big-data/cost-optimized-vector-database-introduction-to-amazon-opensearch-service-quantization-techniques/"
+    title: "Cost Optimized Vector Database: Introduction to Amazon OpenSearch Service quantization techniques | AWS Big Data Blog"
+    authors: []
+    venue: "AWS Big Data Blog"
+    date: null
+    type: vendor
+    credibility: medium
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "f189edc075cce18197d68c9cb043470466630e10"
+    claims:
+      - claim_id: C-b43b6852-5
+        text: "HNSW memory consumption follows the formula 1.1 * (4 * d + 8 * m) * num_vectors bytes"
+        quote: "1.1 * (4 * d + 8 * m) * num_vectors bytes of memory"
+        location: "char 3383 of 24612 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6]
+      - claim_id: C-b43b6852-1
+        text: "Binary quantization enables a compression ratio of up to 32x"
+        quote: "enabling up to 32x compression during indexing"
+        location: "char 5247 of 24612 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      - claim_id: C-b43b6852-15
+        text: "For 1 billion vectors, product quantization reduces memory consumption to 184.8 GB with HNSW."
+        quote: "Compression techniques such as product quantization can reduce this to 184.8 GB"
+        location: "char 20250 of 24612 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      # A vendor performance claim: carries as_of_date because it names a version-shaped number
+      # (R-GROUND-04/05), and is NOT allowed to stand alone — R-EVID-03 wants an independent
+      # non-vendor measurement beside it, which is C-e995dd02-12.
+      - claim_id: C-b43b6852-16
+        text: "Product quantization provides up to 90 percent cost reduction compared to uncompressed HNSW vector search."
+        quote: "product quantization offers up to 90% cost reduction compared to the baseline HNSW"
+        location: "char 22113 of 24612 (normalized)"
+        confidence: high
+        as_of_date: "2026-08-21"
+        corroboration_count: 1
+        contested: true
+        contradicts: [C-e995dd02-12]
+
+  - source_id: 2f7ae826badaf71e66bb483e304b3c103f2ba5bb
+    url: "https://arxiv.org/html/2512.18335"
+    title: "Quantization for Vector Search under Streaming Updates"
+    authors: []
+    venue: "arXiv"
+    date: "2025-12"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "7c95bfbc2252066a21b4f1251cd305e49510a3e5"
+    claims:
+      - claim_id: C-2f7ae826-4
+        text: "Product Quantization divides vector dimensions into subspaces and applies k-means clustering within each subspace independently."
+        quote: "partitions vector dimensions into subspaces, applies k-means clustering within each subspace"
+        location: "char 4532 of 149211 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      - claim_id: C-2f7ae826-3
+        text: "Vector datasets for large-scale search are typically too large or expensive to store entirely in main memory."
+        quote: "These datasets tend to be too large or too expensive to fit in main memory"
+        location: "char 2287 of 149211 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6]
+      - claim_id: C-2f7ae826-1
+        text: "Large-scale vector databases store quantized data in main memory for fast access while keeping full-precision data on disk."
+        quote: "store a quantized dataset in main memory for fast access, and full precision"
+        location: "char 546 of 149211 (normalized)"
+        confidence: high
+        corroboration_count: 1
+      - claim_id: C-2f7ae826-7
+        text: "Quantization methods that do not adapt to changing data distributions experience declining search recall over time."
+        quote: "recall drop as the stream progresses, due to their non-adaptability"
+        location: "char 11697 of 149211 (normalized)"
+        confidence: high
+        corroboration_count: 1
+
+  - source_id: dd839b846e5a4814eaf468c4a30c5a83e76e88ed
+    url: "https://arxiv.org/html/2505.17152"
+    title: "LSM-VEC: A Large-Scale Disk-Based System for Dynamic Vector Search"
+    authors: []
+    venue: "arXiv"
+    date: "2025-05"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "336ea096ec8b71afe1054b2272538f4ba6d7e55f"
+    claims:
+      - claim_id: C-dd839b84-9
+        text: "HNSW achieves near-logarithmic search complexity with high recall performance."
+        quote: "HNSW achieves near-logarithmic search complexity and high recall"
+        location: "char 13693 of 69375 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [9f25797951917c61969c66e225308666881d5cb2]
+      - claim_id: C-dd839b84-11
+        text: "HNSW's design assumes the entire graph structure resides in memory."
+        quote: "HNSW assumes that the entire graph resides in RAM"
+        location: "char 13768 of 69375 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6]
+      - claim_id: C-dd839b84-12
+        text: "DiskANN is fundamentally a static index that cannot efficiently support dynamic updates."
+        quote: "it is fundamentally a static index"
+        location: "char 14777 of 69375 (normalized)"
+        confidence: high
+        corroboration_count: 1
+
+  - source_id: f8ce5bbfc4a26dbcfdbbf3bc1718b9dbc607ccf6
+    url: "https://papers.nips.cc/paper_files/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html"
+    title: "DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node"
+    authors: []
+    venue: "NeurIPS"
+    date: "2019"
+    type: primary_paper
+    credibility: high
+    provenance_origin: discovered
+    retrieved_at: "2026-08-21"
+    content_hash: "a51d6fb60be2b2a449ae5160affacf7f799fbe62"
+    claims:
+      - claim_id: C-f8ce5bbf-7
+        text: "Current approximate nearest neighbor search algorithms require storing indices in main memory"
+        quote: "indices that must be stored in main memory"
+        location: "char 231 of 1899 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [dd839b846e5a4814eaf468c4a30c5a83e76e88ed]
+      - claim_id: C-f8ce5bbf-5
+        text: "Competing algorithms like FAISS and IVFOADC plateau at approximately 50% recall-at-1 on billion-point datasets"
+        quote: "FAISS and IVFOADC+G+P plateau at around 50% 1-recall@1"
+        location: "char 1033 of 1899 (normalized)"
+        confidence: high
+        corroboration_count: 2
+        corroborated_by: [e995dd02cfa1c9c4370715f2ee2f083a4ff70bc6]
+      - claim_id: C-f8ce5bbf-1
+        text: "DiskANN can index and search a billion-point database on a single workstation using 64GB RAM and an SSD"
+        quote: "with just 64GB RAM and an inexpensive solid-state drive"
+        location: "char 519 of 1899 (normalized)"
+        confidence: high
+        corroboration_count: 1

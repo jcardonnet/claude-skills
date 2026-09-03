@@ -38,6 +38,8 @@ def _data_attrs(b: Block) -> str:
         a.append(f'data-concept="{_esc(b.concept)}"')
     if b.mode:
         a.append(f'data-mode="{b.mode.value}"')
+    if b.artifact_kind:
+        a.append(f'data-artifact-kind="{b.artifact_kind.value}"')
     if b.provenance:
         a.append(f'data-provenance="{b.provenance.value}"')
     if b.claim_ids:
@@ -90,6 +92,42 @@ def _contested_html(b: Block, attrs: str, fn_index: dict[str, int]) -> str:
             f'{"".join(panels)}</div>')
 
 
+_CARD_ROW_LABELS = (
+    ("home_anchor", "If you know"),      # R-XREF-01: the analogue leads the card
+    ("idea", "Idea"),
+    ("whats_new_vs_renamed", "New vs renamed"),
+    ("reach_for_when", "Reach for it when"),
+    ("skip_when", "Skip it when"),       # R-CARD-03
+    ("key_exemplar", "Key exemplar"),
+    ("confidence", "Confidence"),
+)
+
+
+def _card_html(b: Block, attrs: str, tail: str) -> str:
+    """R-CARD-02 as a <dl>. `home_anchor` is emitted first so the cross-domain mapping opens the
+    card (R-XREF-01). A card with no typed rows falls back to its prose — the lint reports it."""
+    if b.rows is None:
+        return f'<aside class="card" {attrs}>{_esc(b.text)}{tail}</aside>'
+    rows = "".join(
+        f'<dt>{_esc(label)}</dt><dd>{_esc(getattr(b.rows, field, "") or "")}</dd>'
+        for field, label in _CARD_ROW_LABELS
+    )
+    return f'<aside class="card" {attrs}><dl>{rows}</dl>{tail}</aside>'
+
+
+def _recall_html(b: Block, attrs: str) -> str:
+    """R-RECALL-01: three show-answer items. The block carries the id; each item is its own
+    <details> so a reader reveals answers one at a time."""
+    if not b.items:
+        return f'<details class="recall" {attrs}><summary>Check yourself</summary>{_esc(b.text)}</details>'
+    items = "".join(
+        f'<details class="recall-item"><summary>{_esc(it.question)}</summary>'
+        f'<p>{_esc(it.answer)}</p></details>'
+        for it in b.items
+    )
+    return f'<div class="recall" {attrs}>{items}</div>'
+
+
 def _block_html(b: Block, fn_index: dict[str, int]) -> str:
     attrs = _data_attrs(b)
     if b.role.value == "figure":
@@ -100,22 +138,36 @@ def _block_html(b: Block, fn_index: dict[str, int]) -> str:
         return _contested_html(b, attrs, fn_index)
     text = _esc(b.text)
     tail = _prov_span(b) + _footnote_sup(b, fn_index)
+    # h4 is a block attribute, never a container — that is what keeps it out of nav/TOC (R-ARCH-05)
+    h4 = f'<h4>{_esc(b.heading)}</h4>' if b.heading else ""
     if b.role.value == "lede":
         return f'<p class="lede" {attrs}>{text}{tail}</p>'
     if b.role.value == "card":
-        return f'<aside class="card" {attrs}>{text}{tail}</aside>'
-    if b.role.value == "toulmin":
-        return f'<div class="toulmin" {attrs}>{text}{tail}</div>'
+        return _card_html(b, attrs, tail)
     if b.role.value == "recall":
-        return f'<details class="recall" {attrs}><summary>Check yourself</summary>{text}</details>'
-    return f'<div class="{b.role.value}" {attrs}>{text}{tail}</div>'
+        return _recall_html(b, attrs)
+    if b.role.value == "toulmin":
+        return f'{h4}<div class="toulmin" {attrs}>{text}{tail}</div>'
+    return f'{h4}<div class="{b.role.value}" {attrs}>{text}{tail}</div>'
+
+
+def _subsection_html(sub, fn_index: dict[str, int]) -> str:
+    """An h3 subsection. Kept a flat sibling inside its section's <section> so the template's
+    depth-folding contract (h3s carrying their own data-tierlevel) still holds."""
+    attrs = [f'data-block-id="{_esc(sub.block_id)}"']
+    if sub.concept:
+        attrs.append(f'data-concept="{_esc(sub.concept)}"')
+    inner = "\n".join(_block_html(b, fn_index) for b in sub.blocks)
+    return f'<h3 {" ".join(attrs)} data-tierlevel="2">{_esc(sub.title)}</h3>\n{inner}'
 
 
 def _section_html(sec: Section, fn_index: dict[str, int]) -> str:
     attrs = [f'data-block-id="{_esc(sec.block_id)}"']
     if sec.concept:
         attrs.append(f'data-concept="{_esc(sec.concept)}"')
-    inner = "\n".join(_block_html(b, fn_index) for b in sec.blocks)
+    parts = [_block_html(b, fn_index) for b in sec.blocks]
+    parts += [_subsection_html(sub, fn_index) for sub in sec.subsections]
+    inner = "\n".join(parts)
     return f'<section {" ".join(attrs)}><h2>{_esc(sec.title)}</h2>\n{inner}\n</section>'
 
 
@@ -153,7 +205,14 @@ def render_html(
     if concept_map is not None and concept_map.contested:
         banner = ('<aside class="contested-banner" role="note">Competing organizing views: this '
                   'primer presents its structure as contested, not asserted.</aside>\n')
-    sections_html = banner + "\n".join(_section_html(sec, fn_index) for sec in ir.sections)
+    # R-ARCH-01: the scope-and-decisions opening renders before the first h2. A <header>, not a
+    # <section>, because the template auto-builds nav and the depth-fold from `h2`/`h3` inside a
+    # `section` — front matter carries neither, and giving it a container that implies both would
+    # put an empty rung in the TOC.
+    front_html = "\n".join(_block_html(b, fn_index) for b in ir.front_matter)
+    if front_html:
+        front_html = f'<header class="front-matter">\n{front_html}\n</header>\n'
+    sections_html = front_html + banner + "\n".join(_section_html(sec, fn_index) for sec in ir.sections)
     refs_html = _references_html(fn_index)
     doc_title = title or (ir.sections[0].title if ir.sections else "Primer")
 

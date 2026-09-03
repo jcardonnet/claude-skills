@@ -1,0 +1,338 @@
+[
+  {
+    "id": "C-C-disconfirm-s1",
+    "url": "https://arxiv.org/abs/2412.01940",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "ECIR 2026: Flat HNSW matches hierarchical performance, challenges necessity of hierarchy",
+    "fetched_title": "[2412.01940] Down with the Hierarchy: The 'H' in HNSW Stands for \"Hubs\"",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s2",
+    "url": "https://arxiv.org/abs/2409.17424",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Big ANN NeurIPS 2023 results: HNSW won zero specialized tracks; contradicts universal dominance claim",
+    "fetched_title": "[2409.17424] Results of the Big ANN: NeurIPS'23 competition",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s3",
+    "url": "https://arxiv.org/abs/2410.05752",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Oct 2024: Curse of dimensionality applies only to random data, not learned embeddings",
+    "fetched_title": "[2410.05752] Exploring the Meaningfulness of Nearest Neighbor Search in High-Dimensional Space",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s4",
+    "url": "https://arxiv.org/abs/2406.10938",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "DET-LSH 2024: 6\u00d7 faster indexing, 2\u00d7 faster queries; contradicts LSH is outdated narrative",
+    "fetched_title": "[2406.10938] DET-LSH: A Locality-Sensitive Hashing Scheme with Dynamic Encoding Tree for Approximate Nearest Neighbor Search",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s5",
+    "url": "https://arxiv.org/abs/2405.17813",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Elliott & Clark 2024: Insertion order changes recall \u00b112.8%, contradicts dimensionality-determines-choice",
+    "fetched_title": "[2405.17813] The Impacts of Data, Ordering, and Intrinsic Dimensionality on Recall in Hierarchical Navigable Small Worlds",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s6",
+    "url": "https://jmlr.org/papers/v25/23-0286.html",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "JMLR Vol. 25 (2024): ML framework for index selection; contradicts simple heuristic tables",
+    "fetched_title": "A Multilabel Classification Framework for Approximate Nearest Neighbor Search",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s7",
+    "url": "https://arxiv.org/abs/2505.17810",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "VIBE 2025: 21 implementations across 18 datasets; no algorithm dominates\u2014contradicts graph superiority",
+    "fetched_title": "[2505.17810] VIBE: Vector Index Benchmark for Embeddings",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s8",
+    "url": "https://arxiv.org/abs/2409.06464",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Thakur & Rehat 2024: Flat/inverted outperform HNSW on small collections; contradicts universal optimality",
+    "fetched_title": "[2409.06464] Operational Advice for Dense and Sparse Retrievers: HNSW, Flat, or Inverted Indexes?",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s9",
+    "url": "https://arxiv.org/abs/2407.07871",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Enhancing HNSW for Real-Time Updates (2024): Production systems need fast incremental updates",
+    "fetched_title": "[2407.07871] Enhancing HNSW Index for Real-Time Updates: Addressing Unreachable Points and Performance Degradation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s10",
+    "url": "https://arxiv.org/abs/2505.07621",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Bang for the Buck 2025: Quantization-based methods outperform HNSW on cost efficiency (cloud CPUs)",
+    "fetched_title": "[2505.07621] Bang for the Buck: Vector Search on Cloud CPUs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s11",
+    "url": "https://arxiv.org/abs/2602.23999",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "GPU-Native IVF-RaBitQ 2025: GPU acceleration shifts HNSW performance assumptions",
+    "fetched_title": "[2602.23999] GPU-Native Approximate Nearest Neighbor Search with IVF-RaBitQ: Fast Index Build and Search",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s12",
+    "url": "https://arxiv.org/abs/2101.12631",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Comprehensive ANN survey 2021+: Graph algorithms not universally superior",
+    "fetched_title": "[2101.12631] A Comprehensive Survey and Experimental Comparison of Graph-Based Approximate Nearest Neighbor Search",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s13",
+    "url": "https://github.com/erikbern/ann-benchmarks",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "ANN-Benchmarks maintained suite: Data shows dimensionality doesn't predict algorithm success",
+    "fetched_title": "GitHub - erikbern/ann-benchmarks: Benchmarks of approximate nearest neighbor libraries in Python \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s14",
+    "url": "https://big-ann-benchmarks.com/",
+    "type": "standard",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Official Big ANN NeurIPS 2023 competition results: 4 specialized tracks, HNSW won none",
+    "fetched_title": null,
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s15",
+    "url": "https://github.com/vector-index-bench/vibe",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "VIBE 2025 benchmark suite: 21 implementations, 18 datasets, reproducible results",
+    "fetched_title": "GitHub - vector-index-bench/vibe: Vector Index Benchmark for Embeddings (VIBE) is an extensible benchmark for approximate nearest neighbor search methods, or vector indexes, using modern embedding datasets. \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s16",
+    "url": "https://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Pinecone HNSW documentation: Represents dominant vendor narrative being contradicted",
+    "requested_url": "https://docs.pinecone.io/guides/indexes/",
+    "fetched_title": "Understanding pod-based indexes - Pinecone Docs",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s17",
+    "url": "https://docs.weaviate.io/weaviate/best-practices",
+    "type": "vendor",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Weaviate index best practices: Canonical example of HNSW-as-default positioning",
+    "fetched_title": "Best practices | Weaviate Documentation",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s18",
+    "url": "https://milvus.io/docs/hnsw.md",
+    "type": "vendor",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Milvus HNSW docs: Default recommendation contradicted by Big ANN filtered track results",
+    "dropped_reason": "HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nMoved Temporarily"
+  },
+  {
+    "id": "C-C-disconfirm-s19",
+    "url": "https://www.pingcap.com/article/approximate-nearest-neighbor-ann-search-explained-ivf-vs-hnsw-vs-pq/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "TiDB ANN guide: Example of vendor blog claim (HNSW reaches 95%+ recall) contradicted by filtering results",
+    "fetched_title": "Approximate Nearest Neighbor (ANN) Search Explained: IVF vs HNSW vs PQ | TiDB",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s20",
+    "url": "https://www.abhik.ai/concepts/embeddings/ann-comparison",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Abhik Sarkar ANN comparison: Independent performance analysis showing tradeoffs (HNSW memory vs. IVF speed)",
+    "fetched_title": "HNSW vs IVF-PQ vs LSH: Approximate Nearest Neighbor Algorithms Compared | Abhik Sarkar",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-disconfirm-s21",
+    "url": "https://arxiv.org/abs/2602.15488",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "contrarian-seed"
+    ],
+    "report_ids": [
+      "C-C-disconfirm"
+    ],
+    "why": "Efficient ANN under Multi-Attribute Filters (2025): Clustering outperforms graphs on filtered search",
+    "fetched_title": "[2602.15488] Efficient Approximate Nearest Neighbor Search under Multi-Attribute Range Filter",
+    "retrieved_at": "2026-08-21"
+  }
+]

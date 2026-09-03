@@ -1,0 +1,1484 @@
+concepts:
+- concept_id: c1-Core-RAG-evaluation-metrics
+  canonical_term: Core RAG evaluation metrics
+  aliases:
+  - four-dimensional evaluation framework
+  - faithfulness-relevance-precision-recall metrics
+  home_anchor: multi-label classification scoring rubrics
+  fidelity_boundary: RAG evaluation independently scores retrieval correctness and
+    generation grounding, whereas multi-label metrics evaluate overlapping label presence
+  epistemic_status: settled
+  salience: 0.4286
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 449b6cc33fce16dc983c007722566a3e86738fcf
+  - 8ee2ad4d316a9893170f5726fd67893be4787918
+  claim_ids:
+  - C-22c548bc-1
+  - C-22c548bc-4
+  - C-22c548bc-5
+  - C-22c548bc-7
+  - C-22c548bc-13
+  - C-22c548bc-16
+  - C-8ee2ad4d-4
+  - C-8ee2ad4d-5
+  - C-8ee2ad4d-6
+  - C-8ee2ad4d-10
+  - C-449b6cc3-4
+  - C-449b6cc3-5
+- concept_id: c2-Ragas-evaluation-framework
+  canonical_term: Ragas evaluation framework
+  aliases:
+  - Ragas toolkit
+  - Ragas
+  - Ragas framework
+  - reference-free evaluation
+  home_anchor: metric computation libraries
+  fidelity_boundary: Ragas automates LLM-based metric scoring with dataset tracking;
+    metric libraries compute fixed mathematical functions
+  epistemic_status: settled
+  salience: 0.75
+  representation_modes: []
+  source_ids:
+  - 093322df6a095d57c28ca6e646cf2aa4c8d6d331
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 35c24b59b22d7a7793ab42cf31546a81daa03eef
+  - 8ee2ad4d316a9893170f5726fd67893be4787918
+  - f110bea051e803126142fa710ea9e77a206403b4
+  - fd5d3f65535b9f837fa4aaeac7c0d6ade0e81a7c
+  claim_ids:
+  - C-093322df-2
+  - C-093322df-3
+  - C-093322df-4
+  - C-093322df-5
+  - C-093322df-6
+  - C-093322df-7
+  - C-093322df-8
+  - C-35c24b59-1
+  - C-35c24b59-2
+  - C-35c24b59-4
+  - C-35c24b59-5
+  - C-35c24b59-6
+  - C-22c548bc-8
+  - C-8ee2ad4d-3
+  - C-8ee2ad4d-7
+  - C-8ee2ad4d-8
+  - C-f110bea0-1
+  - C-fd5d3f65-2
+  - C-fd5d3f65-6
+  - C-fd5d3f65-7
+  - C-fd5d3f65-8
+- concept_id: c3-RAG-pipeline-architecture
+  canonical_term: RAG pipeline architecture
+  aliases:
+  - RAG system stages
+  - retrieval-generation workflow
+  home_anchor: sequential machine learning stages
+  fidelity_boundary: RAG stages couple retrieval precision to generation relevance;
+    ML pipelines independently optimize each stage
+  epistemic_status: settled
+  salience: 0.2143
+  representation_modes: []
+  source_ids:
+  - 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
+  - 449b6cc33fce16dc983c007722566a3e86738fcf
+  - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+  - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  - 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+  claim_ids:
+  - C-56cc8dbe-1
+  - C-56cc8dbe-4
+  - C-6b91aaf9-2
+  - C-4833d8ca-1
+  - C-449b6cc3-2
+  - C-4044d111-5
+- concept_id: c4-Document-chunking-strategies
+  canonical_term: Document chunking strategies
+  aliases:
+  - chunk granularity trade-offs
+  - semantic fragmentation
+  home_anchor: sliding-window feature extraction
+  fidelity_boundary: Chunking preserves semantic boundaries for retrieval; sliding
+    windows optimize signal-to-noise without semantic awareness
+  epistemic_status: settled
+  salience: 0.1429
+  representation_modes: []
+  source_ids:
+  - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  claim_ids:
+  - C-56cc8dbe-5
+  - C-56cc8dbe-6
+  - C-56cc8dbe-7
+  - C-56cc8dbe-9
+- concept_id: c5-Context-reranking
+  canonical_term: Context reranking
+  aliases:
+  - cross-encoder ranking
+  - two-stage retrieval refinement
+  home_anchor: learning-to-rank list reordering
+  fidelity_boundary: Reranking uses joint query-passage modeling; learning-to-rank
+    typically uses pairwise or listwise loss on independent scores
+  epistemic_status: settled
+  salience: 0.1786
+  representation_modes: []
+  source_ids:
+  - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  claim_ids:
+  - C-56cc8dbe-12
+  - C-56cc8dbe-13
+  - C-56cc8dbe-14
+  - C-92827b86-12
+  - C-92827b86-14
+- concept_id: c6-Advanced-retrieval-variants
+  canonical_term: Advanced retrieval variants
+  aliases:
+  - knowledge graph retrieval
+  - multi-hop retrieval optimization
+  - query reformulation methods
+  home_anchor: ensemble model aggregation
+  fidelity_boundary: Advanced retrieval exploits domain structure or learned filtering;
+    ensembles combine independent predictions
+  epistemic_status: settled
+  salience: 0.3929
+  representation_modes: []
+  source_ids:
+  - 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+  claim_ids:
+  - C-6b91aaf9-7
+  - C-6b91aaf9-9
+  - C-6b91aaf9-17
+  - C-6b91aaf9-18
+  - C-6b91aaf9-19
+  - C-6b91aaf9-20
+  - C-6b91aaf9-21
+  - C-6b91aaf9-23
+  - C-6b91aaf9-24
+  - C-6b91aaf9-3
+  - C-6b91aaf9-8
+- concept_id: c7-RAG-failure-modes
+  canonical_term: RAG failure modes
+  aliases:
+  - retrieval-generation mismatch
+  - hallucination and attribution problems
+  home_anchor: error propagation in pipelines
+  fidelity_boundary: RAG failures couple retrieval gaps to plausible generations;
+    pipeline errors are localized to single stages
+  epistemic_status: settled
+  salience: 0.2857
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 449b6cc33fce16dc983c007722566a3e86738fcf
+  - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+  - 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+  claim_ids:
+  - C-4833d8ca-3
+  - C-4833d8ca-4
+  - C-4833d8ca-8
+  - C-6b91aaf9-4
+  - C-6b91aaf9-6
+  - C-22c548bc-6
+  - C-22c548bc-2
+  - C-449b6cc3-3
+- concept_id: c8-Error-taxonomy
+  canonical_term: Error taxonomy
+  aliases:
+  - failure mode classification
+  - error type hierarchy
+  home_anchor: confusion matrix hierarchies
+  fidelity_boundary: RAG error taxonomy spans retrieval and generation hierarchically;
+    confusion matrices classify within single components
+  epistemic_status: settled
+  salience: 0.3571
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 449b6cc33fce16dc983c007722566a3e86738fcf
+  - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  claim_ids:
+  - C-56cc8dbe-17
+  - C-56cc8dbe-18
+  - C-56cc8dbe-19
+  - C-56cc8dbe-22
+  - C-56cc8dbe-23
+  - C-56cc8dbe-24
+  - C-22c548bc-11
+  - C-449b6cc3-1
+  - C-449b6cc3-7
+  - C-449b6cc3-8
+- concept_id: c9-LLM-as-judge-evaluation
+  canonical_term: LLM-as-judge evaluation
+  aliases:
+  - judge model scoring
+  - LLM-driven assessment
+  - LLM-based evaluation methods
+  - neural evaluation
+  - learned evaluation metrics
+  - reference-free LLM judgment
+  home_anchor: rule-based heuristic scoring
+  fidelity_boundary: LLM judges capture semantic nuance but show calibration drift;
+    rule-based scoring is deterministic and auditable
+  epistemic_status: settled
+  salience: 0.6429
+  representation_modes: []
+  source_ids:
+  - 4122c4ed8a779f447f9bc1371ff7954477d8beee
+  - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  - 96072ac0a9442594589eacb8b5f43e8fad807de1
+  - bacceb2058e4c277471f22402e8802f4a4b7b40a
+  - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+  claim_ids:
+  - C-92827b86-1
+  - C-4122c4ed-3
+  - C-4122c4ed-4
+  - C-4122c4ed-5
+  - C-4122c4ed-7
+  - C-4122c4ed-2
+  - C-92827b86-2
+  - C-bacceb20-4
+  - C-96072ac0-1
+  - C-96072ac0-2
+  - C-96072ac0-3
+  - C-96072ac0-4
+  - C-96072ac0-5
+  - C-96072ac0-6
+  - C-96072ac0-7
+  - C-d7ab3f9c-1
+  - C-d7ab3f9c-2
+  - C-d7ab3f9c-6
+- concept_id: c10-Evaluation-benchmarks
+  canonical_term: Evaluation benchmarks
+  aliases:
+  - RAG datasets
+  - test collections
+  home_anchor: labeled supervised learning corpora
+  fidelity_boundary: RAG benchmarks include dynamic retrieval indexes and generative
+    outputs; supervised corpora have fixed labeled examples
+  epistemic_status: settled
+  salience: 1.0
+  representation_modes: []
+  source_ids:
+  - 2000e83cf8614e3170b48a7b7fabb73ffe3c7fbb
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 4044d111f31fbb0faad1b6310e1ff1e5d81d9441
+  - 4122c4ed8a779f447f9bc1371ff7954477d8beee
+  - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  - 8ee2ad4d316a9893170f5726fd67893be4787918
+  claim_ids:
+  - C-2000e83c-2
+  - C-2000e83c-3
+  - C-2000e83c-4
+  - C-2000e83c-5
+  - C-2000e83c-6
+  - C-2000e83c-7
+  - C-2000e83c-8
+  - C-22c548bc-9
+  - C-22c548bc-10
+  - C-56cc8dbe-2
+  - C-56cc8dbe-3
+  - C-8ee2ad4d-12
+  - C-8ee2ad4d-17
+  - C-8ee2ad4d-18
+  - C-8ee2ad4d-19
+  - C-8ee2ad4d-21
+  - C-8ee2ad4d-22
+  - C-8ee2ad4d-23
+  - C-8ee2ad4d-24
+  - C-4044d111-1
+  - C-4044d111-2
+  - C-4044d111-3
+  - C-4044d111-4
+  - C-4044d111-6
+  - C-4044d111-7
+  - C-4044d111-8
+  - C-4122c4ed-1
+  - C-4122c4ed-6
+- concept_id: c11-Enterprise-RAG-evaluation
+  canonical_term: Enterprise RAG evaluation
+  aliases:
+  - business-context evaluation
+  - institutional ground truth
+  home_anchor: federated model evaluation
+  fidelity_boundary: Enterprise RAG grounds evaluation in institutional dashboards
+    and reports; federated evaluation orchestrates validation without centralizing
+    data
+  epistemic_status: settled
+  salience: 0.25
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+  claim_ids:
+  - C-22c548bc-14
+  - C-22c548bc-15
+  - C-22c548bc-20
+  - C-22c548bc-21
+  - C-22c548bc-22
+  - C-22c548bc-23
+  - C-6b91aaf9-22
+- concept_id: c12-Evaluation-data-management
+  canonical_term: Evaluation data management
+  aliases:
+  - synthetic evaluation data generation
+  - test set maintenance
+  home_anchor: continuous integration test suite upkeep
+  fidelity_boundary: RAG evaluation data requires synthetic generation from evolving
+    knowledge; CI test suites are human-curated and static
+  epistemic_status: settled
+  salience: 0.1786
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 4833d8ca9fe6f7f7fa403755fbb328a96de31328
+  claim_ids:
+  - C-4833d8ca-2
+  - C-4833d8ca-5
+  - C-4833d8ca-6
+  - C-4833d8ca-7
+  - C-22c548bc-19
+- concept_id: c13-Evaluation-tools
+  canonical_term: Evaluation tools
+  aliases:
+  - RAG evaluation platforms
+  - tracing and metric frameworks
+  home_anchor: MLOps monitoring and logging
+  fidelity_boundary: RAG evaluation tools operationalize metric computation with instrumentation;
+    MLOps monitors live system performance
+  epistemic_status: settled
+  salience: 0.5714
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  - 7f06660638cb09d79adf9e4f43fe015e743b9703
+  - 7f30a8430fed1334604eccf9879e203fd7b2e894
+  claim_ids:
+  - C-7f066606-1
+  - C-7f066606-2
+  - C-7f066606-3
+  - C-7f066606-4
+  - C-7f066606-5
+  - C-7f066606-6
+  - C-7f066606-7
+  - C-7f066606-8
+  - C-7f30a843-1
+  - C-7f30a843-2
+  - C-7f30a843-3
+  - C-7f30a843-4
+  - C-7f30a843-6
+  - C-7f30a843-7
+  - C-7f30a843-8
+  - C-22c548bc-18
+- concept_id: c14-RAG-motivation-and-limitations
+  canonical_term: RAG motivation and limitations
+  aliases:
+  - knowledge recency problem
+  - parametric knowledge constraints
+  home_anchor: fine-tuned model knowledge decay
+  fidelity_boundary: RAG addresses training-cutoff knowledge; fine-tuning manages
+    model drift but requires retraining for updates
+  epistemic_status: settled
+  salience: 0.1429
+  representation_modes: []
+  source_ids:
+  - 6b91aaf92316a1dce4ef8794e728ed35009cb31b
+  - 8ee2ad4d316a9893170f5726fd67893be4787918
+  claim_ids:
+  - C-6b91aaf9-1
+  - C-6b91aaf9-5
+  - C-8ee2ad4d-1
+  - C-8ee2ad4d-2
+- concept_id: c15-Evaluation-metric-validity
+  canonical_term: Evaluation metric validity
+  aliases:
+  - metric limitations
+  - hallucination mitigation techniques
+  home_anchor: supervised metric overfitting
+  fidelity_boundary: RAG metrics require validation against human judgment on semantic
+    criteria; supervised metrics can be gamed by mechanistic pattern matching
+  epistemic_status: settled
+  salience: 0.3214
+  representation_modes: []
+  source_ids:
+  - 56cc8dbef6959bc63ad65aa215bf902b18446cdb
+  - 8ee2ad4d316a9893170f5726fd67893be4787918
+  - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  claim_ids:
+  - C-92827b86-10
+  - C-92827b86-11
+  - C-92827b86-13
+  - C-92827b86-15
+  - C-92827b86-16
+  - C-8ee2ad4d-13
+  - C-8ee2ad4d-14
+  - C-8ee2ad4d-15
+  - C-56cc8dbe-15
+- concept_id: c16-RAG-system-architecture
+  canonical_term: RAG system architecture
+  aliases:
+  - hybrid retrieval-generation pipeline
+  - retrieval-augmented pipeline
+  - two-stage knowledge integration
+  - Retrieval-augmented generation systems
+  - RAG
+  - RAG systems
+  home_anchor: encoder-decoder neural architecture
+  fidelity_boundary: Encoder-decoder models couple feature extraction and output generation;
+    RAG systems keep retrieval and generation physically and temporally separate,
+    allowing independent failure diagnosis
+  epistemic_status: settled
+  salience: 0.3571
+  representation_modes: []
+  source_ids:
+  - 964231ec57389834e9f89b5a447be2e968a39342
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  - c99a2aabb21d9e939696bfc3e4419c436695d67b
+  - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+  - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  - f110bea051e803126142fa710ea9e77a206403b4
+  claim_ids:
+  - C-964231ec-1
+  - C-a29027ab-2
+  - C-d7ab3f9c-3
+  - C-d7ab3f9c-4
+  - C-c99a2aab-5
+  - C-c99a2aab-6
+  - C-e0cec4fc-4
+  - C-f110bea0-2
+  - C-f110bea0-3
+  - C-f110bea0-4
+- concept_id: c17-Ranking-based-retrieval-metrics
+  canonical_term: Ranking-based retrieval metrics
+  aliases:
+  - position-based IR metrics
+  - rank-aware evaluation metrics
+  home_anchor: ranking loss in learning-to-rank
+  fidelity_boundary: Learning-to-rank optimizes document ordering during training;
+    ranking metrics measure final retrieval ordering against fixed relevance judgments,
+    which don't reflect query-specific context retrieval coverage
+  epistemic_status: settled
+  salience: 0.2143
+  representation_modes: []
+  source_ids:
+  - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-92827b86-4
+  - C-92827b86-5
+  - C-92827b86-6
+  - C-92827b86-8
+  - C-b44bfdea-4
+  - C-92827b86-7
+- concept_id: c18-Context-relevance-and-recall
+  canonical_term: Context relevance and recall
+  aliases:
+  - passage sufficiency
+  - retrieval coverage
+  - context completeness
+  home_anchor: recall in binary classification
+  fidelity_boundary: Classification recall measures coverage of fixed label categories;
+    context recall measures whether retrieved chunks contain sufficient information
+    for an open-ended generation task
+  epistemic_status: settled
+  salience: 0.1429
+  representation_modes: []
+  source_ids:
+  - 964231ec57389834e9f89b5a447be2e968a39342
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+  - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  claim_ids:
+  - C-964231ec-10
+  - C-a29027ab-8
+  - C-d7ab3f9c-7
+  - C-e0cec4fc-8
+- concept_id: c19-Faithfulness-and-groundedness
+  canonical_term: Faithfulness and groundedness
+  aliases:
+  - hallucination detection
+  - grounding evaluation
+  - factual consistency
+  home_anchor: output correctness validation
+  fidelity_boundary: Correctness validation compares against ground-truth reference
+    answers; faithfulness and groundedness evaluate whether responses stay within
+    constraints of provided source material, independent of ground truth
+  epistemic_status: settled
+  salience: 0.2857
+  representation_modes: []
+  source_ids:
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+  - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  claim_ids:
+  - C-a29027ab-11
+  - C-a29027ab-12
+  - C-e0cec4fc-13
+  - C-e0cec4fc-15
+  - C-a29027ab-4
+  - C-a29027ab-5
+  - C-a29027ab-18
+  - C-d7ab3f9c-8
+- concept_id: c20-Answer-relevance-and-correctness
+  canonical_term: Answer relevance and correctness
+  aliases:
+  - generation quality
+  - response evaluation
+  - answer accuracy
+  home_anchor: supervised task accuracy
+  fidelity_boundary: Task accuracy is fixed per labeled example; answer relevance
+    can vary along multiple dimensions (topical fit, completeness, semantic similarity)
+    in reference-free and reference-based modes
+  epistemic_status: settled
+  salience: 0.25
+  representation_modes: []
+  source_ids:
+  - 964231ec57389834e9f89b5a447be2e968a39342
+  - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  claim_ids:
+  - C-964231ec-17
+  - C-e0cec4fc-3
+  - C-964231ec-20
+  - C-e0cec4fc-10
+  - C-e0cec4fc-5
+  - C-e0cec4fc-6
+  - C-e0cec4fc-14
+- concept_id: c21-Hypothetical-document-generation-for-ret
+  canonical_term: Hypothetical document generation for retrieval
+  aliases:
+  - HyDE
+  - query expansion via generation
+  - hypothetical answer embeddings
+  home_anchor: query expansion and reformulation
+  fidelity_boundary: Traditional query expansion uses synonyms or statistical term
+    associations; HyDE generates full synthetic document content to bridge query-document
+    embedding mismatch on abstract queries, introducing hallucination risk
+  epistemic_status: settled
+  salience: 0.2857
+  representation_modes: []
+  source_ids:
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  claim_ids:
+  - C-a29027ab-6
+  - C-a29027ab-9
+  - C-a29027ab-13
+  - C-a29027ab-14
+  - C-a29027ab-15
+  - C-a29027ab-7
+  - C-a29027ab-16
+  - C-a29027ab-17
+- concept_id: c22-Retrieval-algorithms-and-embedding-model
+  canonical_term: Retrieval algorithms and embedding models
+  aliases:
+  - lexical and dense retrieval
+  - embedding representations
+  - relevance ranking approaches
+  home_anchor: feature representation in supervised learning
+  fidelity_boundary: Feature representation is domain-general; retrieval embeddings
+    must capture task-specific and corpus-specific relevance signals that general
+    benchmarks do not predict
+  epistemic_status: settled
+  salience: 0.25
+  representation_modes: []
+  source_ids:
+  - 964231ec57389834e9f89b5a447be2e968a39342
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-964231ec-3
+  - C-964231ec-4
+  - C-964231ec-7
+  - C-d82e8275-4
+  - C-d82e8275-22
+  - C-d82e8275-13
+  - C-a29027ab-24
+- concept_id: c23-RAG-reliability-and-failure-decompositio
+  canonical_term: RAG reliability and failure decomposition
+  aliases:
+  - production reliability
+  - retrieval-generation error isolation
+  - failure mode diagnosis
+  home_anchor: fault isolation and system observability
+  fidelity_boundary: System observability isolates infrastructure components; RAG
+    fault isolation must distinguish retrieval errors (missing context) from generation
+    errors (hallucination despite context) without retraining or code changes
+  epistemic_status: settled
+  salience: 0.4643
+  representation_modes: []
+  source_ids:
+  - 964231ec57389834e9f89b5a447be2e968a39342
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-d82e8275-1
+  - C-d82e8275-2
+  - C-d82e8275-8
+  - C-d82e8275-15
+  - C-d82e8275-18
+  - C-a29027ab-3
+  - C-a29027ab-10
+  - C-964231ec-15
+  - C-d82e8275-7
+  - C-d82e8275-20
+  - C-a29027ab-21
+  - C-a29027ab-22
+  - C-a29027ab-23
+- concept_id: c24-Knowledge-base-curation-and-data-governa
+  canonical_term: Knowledge base curation and data governance
+  aliases:
+  - corpus quality
+  - data governance impact
+  - governed vs ungoverned knowledge
+  home_anchor: training data quality effects on model performance
+  fidelity_boundary: Training data quality is measured before model training; knowledge
+    base quality manifests at retrieval time and depends on ongoing curation, not
+    static labeling
+  epistemic_status: settled
+  salience: 0.1786
+  representation_modes: []
+  source_ids:
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-d82e8275-3
+  - C-d82e8275-6
+  - C-d82e8275-12
+  - C-d82e8275-17
+  - C-d82e8275-19
+- concept_id: c25-Generation-quality-factors
+  canonical_term: Generation quality factors
+  aliases:
+  - language model selection
+  - decoding strategies
+  - context window effects
+  home_anchor: model architecture and hyperparameter effects
+  fidelity_boundary: Model effects are measured per task; generation quality in RAG
+    depends on interaction with retrieved context, which is query-dependent and cannot
+    be isolated to the model alone
+  epistemic_status: settled
+  salience: 0.1786
+  representation_modes: []
+  source_ids:
+  - 964231ec57389834e9f89b5a447be2e968a39342
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-964231ec-12
+  - C-964231ec-13
+  - C-964231ec-14
+  - C-964231ec-16
+  - C-d82e8275-5
+- concept_id: c26-End-to-end-RAG-evaluation-design
+  canonical_term: End-to-end RAG evaluation design
+  aliases:
+  - pipeline evaluation
+  - production measurement
+  - benchmark design for retrieval-generation
+  home_anchor: integration testing and E2E test design
+  fidelity_boundary: Integration testing validates component composition; RAG evaluation
+    design must measure component interactions (e.g., retrieval quality enabling correct
+    generation) rather than components in isolation
+  epistemic_status: settled
+  salience: 0.5357
+  representation_modes: []
+  source_ids:
+  - 964231ec57389834e9f89b5a447be2e968a39342
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  - df8671bfa99551dc0f76a766a0c5de6da219eb7f
+  claim_ids:
+  - C-964231ec-23
+  - C-964231ec-24
+  - C-df8671bf-2
+  - C-df8671bf-3
+  - C-df8671bf-4
+  - C-964231ec-19
+  - C-964231ec-21
+  - C-a29027ab-20
+  - C-d82e8275-11
+  - C-d82e8275-24
+  - C-d82e8275-16
+  - C-964231ec-8
+  - C-964231ec-9
+  - C-964231ec-11
+  - C-964231ec-22
+- concept_id: c27-RAG-evaluation-dimensions
+  canonical_term: RAG evaluation dimensions
+  aliases:
+  - RAG metrics
+  - component evaluation
+  home_anchor: multi-task performance evaluation
+  fidelity_boundary: RAG evaluation measures quality of outputs from each system component
+    separately, whereas multi-task evaluation typically measures aggregate performance
+    on each task.
+  epistemic_status: settled
+  salience: 0.1071
+  representation_modes: []
+  source_ids:
+  - f110bea051e803126142fa710ea9e77a206403b4
+  claim_ids:
+  - C-f110bea0-5
+  - C-f110bea0-6
+  - C-f110bea0-7
+- concept_id: c28-MTEB
+  canonical_term: MTEB
+  aliases:
+  - embedding benchmark
+  - multilingual embedding leaderboard
+  home_anchor: multi-task model leaderboard
+  fidelity_boundary: MTEB tests standalone embedding models on isolated tasks; RAG
+    evaluation measures how embeddings perform as retrievers within an integrated
+    generation system.
+  epistemic_status: settled
+  salience: 0.2143
+  representation_modes: []
+  source_ids:
+  - ff1f5305ce1b3e247326f2812b6996f744c383f3
+  claim_ids:
+  - C-ff1f5305-1
+  - C-ff1f5305-2
+  - C-ff1f5305-3
+  - C-ff1f5305-4
+  - C-ff1f5305-5
+  - C-ff1f5305-6
+- concept_id: c29-SQuAD
+  canonical_term: SQuAD
+  aliases:
+  - Stanford Question Answering Dataset
+  - extractive QA benchmark
+  home_anchor: large-scale annotated corpus
+  fidelity_boundary: SQuAD's extractive QA task—where answers are text spans from
+    documents—differs from open-ended generative QA, limiting direct applicability
+    to evaluating generation-based systems.
+  epistemic_status: settled
+  salience: 0.6429
+  representation_modes: []
+  source_ids:
+  - e51fd25680bfc308e887f1f5a1b4ef0881fb17ba
+  claim_ids:
+  - C-e51fd256-2
+  - C-e51fd256-3
+  - C-e51fd256-4
+  - C-e51fd256-5
+  - C-e51fd256-6
+  - C-e51fd256-8
+  - C-e51fd256-9
+  - C-e51fd256-12
+  - C-e51fd256-14
+  - C-e51fd256-16
+  - C-e51fd256-17
+  - C-e51fd256-18
+  - C-e51fd256-19
+  - C-e51fd256-20
+  - C-e51fd256-21
+  - C-e51fd256-22
+  - C-e51fd256-23
+  - C-e51fd256-24
+- concept_id: c30-Position-aware-routing
+  canonical_term: Position-aware routing
+  aliases:
+  - order-invariant routing
+  - positional robustness
+  home_anchor: sequence position encoding strategies
+  fidelity_boundary: Standard position encodings assume bounded sequence lengths;
+    these techniques handle arbitrarily long retrieval contexts.
+  epistemic_status: settled
+  salience: 0.25
+  representation_modes: []
+  source_ids:
+  - f79418b2ee984f816eb75e4ecc365048d2bae361
+  claim_ids:
+  - C-f79418b2-1
+  - C-f79418b2-2
+  - C-f79418b2-3
+  - C-f79418b2-4
+  - C-f79418b2-5
+  - C-f79418b2-6
+  - C-f79418b2-7
+- concept_id: c31-LlamaIndex
+  canonical_term: LlamaIndex
+  aliases:
+  - data framework
+  - LLM data framework
+  home_anchor: data ingestion pipeline
+  fidelity_boundary: LlamaIndex is specialized for LLM applications and integrates
+    with RAG evaluation tools, whereas general-purpose data frameworks are domain-agnostic.
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - fd5d3f65535b9f837fa4aaeac7c0d6ade0e81a7c
+  claim_ids:
+  - C-fd5d3f65-1
+- concept_id: c32-faithfulness-evaluation
+  canonical_term: faithfulness evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  claim_ids:
+  - C-22c548bc-17
+- concept_id: c33-information-text-to-sql
+  canonical_term: information text-to-sql
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - 22c548bca734aa2677ccf9be6d95d8fb8745b90a
+  claim_ids:
+  - C-22c548bc-24
+- concept_id: c34-comparisons-encompasses
+  canonical_term: comparisons encompasses
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - 449b6cc33fce16dc983c007722566a3e86738fcf
+  claim_ids:
+  - C-449b6cc3-6
+- concept_id: c35-assessments-evaluation
+  canonical_term: assessments evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  claim_ids:
+  - C-92827b86-3
+- concept_id: c36-utilization-generation
+  canonical_term: utilization generation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - 92827b864473aa65d35ecae7c7d363ee655e6b8f
+  claim_ids:
+  - C-92827b86-9
+- concept_id: c37-observability-evaluation
+  canonical_term: observability evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  claim_ids:
+  - C-a29027ab-1
+- concept_id: c38-faithfulness-groundedness
+  canonical_term: faithfulness groundedness
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - a29027abc40701b6c95f56ba68f05e055a4bbe6e
+  claim_ids:
+  - C-a29027ab-19
+- concept_id: c39-evaluations-processes
+  canonical_term: evaluations processes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-1
+- concept_id: c40-open-source-enterprise
+  canonical_term: open-source enterprise
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-10
+- concept_id: c41-end-to-end-evaluation
+  canonical_term: end-to-end evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-11
+- concept_id: c42-model-agnostic-compatible
+  canonical_term: model-agnostic compatible
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-12
+- concept_id: c43-regressions-production
+  canonical_term: regressions production
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-13
+- concept_id: c44-component-level-system-level
+  canonical_term: component-level system-level
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-14
+- concept_id: c45-opentelemetry-evaluation
+  canonical_term: opentelemetry evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-15
+- concept_id: c46-evaluations-production
+  canonical_term: evaluations production
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-16
+- concept_id: c47-developers-deepeval
+  canonical_term: developers deepeval
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-2
+- concept_id: c48-companies-deepeval
+  canonical_term: companies deepeval
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-3
+- concept_id: c49-research-backed-evaluation
+  canonical_term: research-backed evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-4
+- concept_id: c50-first-class-multi-modal
+  canonical_term: first-class multi-modal
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-5
+- concept_id: c51-chain-of-thought-criteria-based
+  canonical_term: chain-of-thought criteria-based
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-6
+- concept_id: c52-directed-acyclic-graph-conditional
+  canonical_term: directed-acyclic-graph conditional
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-7
+- concept_id: c53-observability-integrates
+  canonical_term: observability integrates
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-8
+- concept_id: c54-applications-open-source
+  canonical_term: applications open-source
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b0b471f8aa4316141f0c277c9b5fde0f5662319a
+  claim_ids:
+  - C-b0b471f8-9
+- concept_id: c55-preprocessed-benchmark
+  canonical_term: preprocessed benchmark
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-1
+- concept_id: c56-combinations-benchmark
+  canonical_term: combinations benchmark
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-10
+- concept_id: c57-benchmarks-published
+  canonical_term: benchmarks published
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-13
+- concept_id: c58-implementations-reference
+  canonical_term: implementations reference
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-14
+- concept_id: c59-reproducible-leaderboard
+  canonical_term: reproducible leaderboard
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-16
+- concept_id: c60-required-python
+  canonical_term: required python
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-2
+- concept_id: c61-reranking-based-architectures
+  canonical_term: reranking-based architectures
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-3
+- concept_id: c62-benchmarks-published
+  canonical_term: benchmarks published
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-5
+- concept_id: c63-follow-up-published
+  canonical_term: follow-up published
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-6
+- concept_id: c64-framework-retrieval
+  canonical_term: framework retrieval
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-7
+- concept_id: c65-applications-industrial
+  canonical_term: applications industrial
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-8
+- concept_id: c66-information-evaluation
+  canonical_term: information evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - b44bfdeae2e8a733e5a7df95ce64657f45289f78
+  claim_ids:
+  - C-b44bfdea-9
+- concept_id: c67-llama-index-components
+  canonical_term: llama-index components
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - bacceb2058e4c277471f22402e8802f4a4b7b40a
+  claim_ids:
+  - C-bacceb20-1
+- concept_id: c68-faithfulness-evaluation
+  canonical_term: faithfulness evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - bacceb2058e4c277471f22402e8802f4a4b7b40a
+  claim_ids:
+  - C-bacceb20-3
+- concept_id: c69-components-evaluation
+  canonical_term: components evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - bacceb2058e4c277471f22402e8802f4a4b7b40a
+  claim_ids:
+  - C-bacceb20-5
+- concept_id: c70-meta-evaluation-fine-grained
+  canonical_term: meta-evaluation fine-grained
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - bacceb2058e4c277471f22402e8802f4a4b7b40a
+  claim_ids:
+  - C-bacceb20-6
+- concept_id: c71-integration-llama-index
+  canonical_term: integration llama-index
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - bacceb2058e4c277471f22402e8802f4a4b7b40a
+  claim_ids:
+  - C-bacceb20-7
+- concept_id: c72-flagembedding-evaluation
+  canonical_term: flagembedding evaluation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - bacceb2058e4c277471f22402e8802f4a4b7b40a
+  claim_ids:
+  - C-bacceb20-8
+- concept_id: c73-identifier-paper's
+  canonical_term: identifier paper's
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - c99a2aabb21d9e939696bfc3e4419c436695d67b
+  claim_ids:
+  - C-c99a2aab-1
+- concept_id: c74-revised-version
+  canonical_term: revised version
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - c99a2aabb21d9e939696bfc3e4419c436695d67b
+  claim_ids:
+  - C-c99a2aab-3
+- concept_id: c75-evaluation-proposes
+  canonical_term: evaluation proposes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - c99a2aabb21d9e939696bfc3e4419c436695d67b
+  claim_ids:
+  - C-c99a2aab-4
+- concept_id: c76-faithfulness-generation
+  canonical_term: faithfulness generation
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - c99a2aabb21d9e939696bfc3e4419c436695d67b
+  claim_ids:
+  - C-c99a2aab-7
+- concept_id: c77-authors-author
+  canonical_term: authors author
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - c99a2aabb21d9e939696bfc3e4419c436695d67b
+  claim_ids:
+  - C-c99a2aab-8
+- concept_id: c78-hallucinations-systems
+  canonical_term: hallucinations systems
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - d7ab3f9caad3656a8c2b87e46f1af12fdf12f287
+  claim_ids:
+  - C-d7ab3f9c-5
+- concept_id: c79-increased-failures
+  canonical_term: increased failures
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-d82e8275-10
+- concept_id: c80-hallucination-retrieval
+  canonical_term: hallucination retrieval
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-d82e8275-21
+- concept_id: c81-evaluations-processes
+  canonical_term: evaluations processes
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-d82e8275-23
+- concept_id: c82-production-according
+  canonical_term: production according
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - d82e8275aa9034f305abcdf1d441e96e56b022db
+  claim_ids:
+  - C-d82e8275-9
+- concept_id: c83-evaluation-sequential
+  canonical_term: evaluation sequential
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  claim_ids:
+  - C-e0cec4fc-2
+- concept_id: c84-sentences-answers
+  canonical_term: sentences answers
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  claim_ids:
+  - C-e0cec4fc-22
+- concept_id: c85-groundedness-documents
+  canonical_term: groundedness documents
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - e0cec4fc48ec1fc278bf0857885da3042409ccdf
+  claim_ids:
+  - C-e0cec4fc-7
+- concept_id: c86-comprehension-crowdsourced
+  canonical_term: comprehension crowdsourced
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - e51fd25680bfc308e887f1f5a1b4ef0881fb17ba
+  claim_ids:
+  - C-e51fd256-1
+- concept_id: c87-exactmatch-achieved
+  canonical_term: exactmatch achieved
+  aliases: []
+  home_anchor: null
+  fidelity_boundary: null
+  epistemic_status: settled
+  salience: 0.0357
+  representation_modes: []
+  source_ids:
+  - e51fd25680bfc308e887f1f5a1b4ef0881fb17ba
+  claim_ids:
+  - C-e51fd256-11
+cycle: null
+contested: false

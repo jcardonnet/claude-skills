@@ -1,0 +1,176 @@
+# Complete field-guide Document IR fixture (Stage A / Prompt 2b).
+#
+# Unlike document-ir.yaml (deliberately minimal and non-compliant — it drives the FAILING cases),
+# this one exercises the full contract and is expected to pass every structural hard_lint:
+# subsections with one sub-sum each, typed card rows, three recall items per section, all four
+# operational artifacts, >=3 representation modes per concept, and resolvable claim_ids.
+# Concepts and claims resolve against concept-map.full.yaml / source-ledger.full.yaml.
+meta:
+  parameters:
+    home_domain: [classical IR, databases]
+    target_domain: retrieval-augmented generation
+    seniority_band: staff_plus
+    length_budget: 300
+    outputs: [html, llm_md]
+  ledger_snapshot: [s-chunk, s-rerank]
+  model_versions: {generator: test-fixture, verifier: lexical}
+  generated_at: "2026-08-11T00:00:00Z"
+
+# R-ARCH-01 (MUST): the scope contract, before the first h2. It belongs to no section — every
+# section must carry lede + card + recall (R-CONSIST-01), and front matter has no business
+# carrying any of them — which is why the IR gained `front_matter` rather than a seventh section.
+# No provenance tag: this is editorial framing, not an assertion about the world, so it stays out
+# of the citation-composition population for the same reason the figures and checklists do.
+#
+# It cannot open "This primer is for ...": R-PROJ-04 forbids a distilled chunk from leading on a bare
+# demonstrative, and `deanaphorize` repairs that by substituting the SECTION's canonical term — which
+# front matter has none of, so the repair is unavailable here and the opening must stand alone.
+front_matter:
+  - block_id: scope-and-decisions
+    role: body
+    text: "Staff-plus engineers with classical IR and database instincts are the audience this primer expects, now that retrieval sits in front of a generator. The primer covers two stages only: how a corpus is split, and how the candidates it yields are ranked. It leaves out the embedding model, the index itself, and evaluation — that boundary was a decision, not an omission. Two further decisions shaped the material inside it. The first decision makes recall a ceiling, so splitting comes before ranking. The second decision spends depth on two concepts rather than surveying five."
+
+sections:
+  - block_id: sec-chunking
+    title: "Chunking caps recall before the embedder ever runs"
+    concept: chunking
+    blocks:
+      - block_id: lede-chunking
+        role: lede
+        text: "Chunking is the unit of retrieval, so a bad split caps recall no matter how good the embedder is."
+        claim_ids: [C-chunk-1]
+        provenance: verified
+        source_ids: [s-chunk]
+      - block_id: card-chunking
+        role: card
+        concept: chunking
+        mode: mental_model
+        claim_ids: [C-chunk-1]
+        provenance: verified
+        source_ids: [s-chunk]
+        # what the quote is cited FOR: the idea row. Undeclared, it was also credited through
+        # `key_exemplar` ("A 2k-token page split at headings"), which no source states.
+        row_claims:
+          idea: [C-chunk-1]
+        rows:
+          idea: "The chunk is the retrieval unit, and it bounds recall."
+          home_anchor: "Like choosing a row-versus-page granularity for a database index."
+          whats_new_vs_renamed: "Granularity is renamed, not new; what is new is that the unit is also the embedding scope."
+          reach_for_when: "Reach for smaller chunks when queries target specific facts."
+          skip_when: "Skip re-chunking when the failure is ordering rather than recall."
+          key_exemplar: "A 2k-token page split at headings."
+          confidence: "settled for the recall bound; contested for optimal size"
+      - block_id: matrix-chunking
+        role: matrix
+        artifact_kind: decision_matrix
+        mode: tradeoff
+        concept: chunking
+        text: "Baseline: split at headings. Fixed windows buy simplicity at the cost of severed context; semantic splits buy coherence at the cost of build time."
+        claim_ids: [C-chunk-1]
+        # inferred, not verified: entailment (sonnet, votes=3, per-row) says the cited quote does not support this block's assertion. The matrix's baseline recommendation, the table-specific elaboration and the Toulmin claim/qualifier/rebuttal are all synthesis GROUNDED IN the source rather than stated by it — which is exactly what `inferred` means.
+        provenance: inferred
+        source_ids: [s-chunk]
+      - block_id: checklist-chunking
+        role: matrix
+        artifact_kind: checklist
+        text: "Measure recall@k on real queries. Confirm no chunk severs a table. Verify the rebuild path exists."
+      - block_id: fig-chunking
+        role: figure
+        concept: chunking
+        mode: architecture
+        caption: "Figure 1: recall is bounded at the split step, so every later stage inherits that ceiling."
+        svg_ref: "assets/chunking.svg"
+      - block_id: recall-chunking
+        role: recall
+        items:
+          - question: "Your recall@10 is 0.6 and the reranker changes nothing. What does that tell you about the split?"
+            answer: "The relevant text is not in any retrieved chunk, so ordering cannot help; the ceiling is at the split."
+          - question: "In a database index, what plays the role the chunk plays here?"
+            answer: "The indexed unit — row versus page — which bounds what a lookup can return."
+            cross_domain: true
+          - question: "When is re-chunking the wrong fix?"
+            answer: "When recall is already high and the failure is ordering, which is a reranking problem."
+
+    subsections:
+      - block_id: sub-chunk-size
+        title: "Fixed-size windows lose the structure the corpus already gives you"
+        concept: chunking
+        blocks:
+          - block_id: subsum-chunk-size
+            role: summary
+            text: "Fixed windows are cheap and structure-blind; heading splits cost a parse and keep the author's own boundaries."
+          - block_id: body-chunk-size
+            role: body
+            mode: failure
+            concept: chunking
+            heading: "Where fixed windows sever context"
+            text: "A fixed window severs whatever straddles its boundary. Such a window hurts tables worst: the header row lands in one chunk, the data rows in another. Neither chunk is then answerable alone, and that failure stays invisible at index time. The failure surfaces only as unexplained recall loss, which is why the split deserves measurement before the embedder does."
+            claim_ids: [C-chunk-1]
+            # inferred, not verified: entailment (sonnet, votes=3, per-row) says the cited quote does not support this block's assertion. The matrix's baseline recommendation, the table-specific elaboration and the Toulmin claim/qualifier/rebuttal are all synthesis GROUNDED IN the source rather than stated by it — which is exactly what `inferred` means.
+            provenance: inferred
+            source_ids: [s-chunk]
+
+  - block_id: sec-reranking
+    title: "A reranker buys ordering, and only when recall is already there"
+    concept: reranking
+    blocks:
+      - block_id: lede-reranking
+        role: lede
+        text: "Reranking improves ordering but cannot recover a document retrieval never returned."
+        claim_ids: [C-rerank-1]
+        provenance: verified
+        source_ids: [s-rerank]
+      - block_id: card-reranking
+        role: card
+        concept: reranking
+        mode: mental_model
+        claim_ids: [C-rerank-1]
+        provenance: verified
+        source_ids: [s-rerank]
+        row_claims:
+          idea: [C-rerank-1]
+        rows:
+          idea: "A cheap recall stage hands candidates to an expensive precision stage."
+          home_anchor: "The cheap-filter-then-expensive-sort shape of a SQL query planner."
+          whats_new_vs_renamed: "The two-stage shape is renamed; the cross-encoder scoring a query-document pair is new."
+          reach_for_when: "Reach for it when top-k precision matters more than tail latency."
+          skip_when: "Skip it under a 100ms p99 budget, or when the failure is recall rather than ordering."
+          key_exemplar: "A cross-encoder over the top 100 candidates."
+          confidence: "settled for ordering gains; contested for end-task gains"
+      - block_id: toulmin-reranking
+        role: toulmin
+        concept: reranking
+        mode: tradeoff
+        text: "When top-k precision dominates tail latency, reach for a cross-encoder reranker. Qualifier: that reranker earns less as retrieval precision rises. Rebuttal: on high-QPS paths the per-pair cost dominates and the reranker becomes dead weight."
+        claim_ids: [C-rerank-1, C-rerank-2]
+        # inferred, not verified: entailment (sonnet, votes=3, per-row) says the cited quote does not support this block's assertion. The matrix's baseline recommendation, the table-specific elaboration and the Toulmin claim/qualifier/rebuttal are all synthesis GROUNDED IN the source rather than stated by it — which is exactly what `inferred` means.
+        provenance: inferred
+        source_ids: [s-rerank]
+      - block_id: failures-reranking
+        role: matrix
+        artifact_kind: failure_catalog
+        mode: failure
+        concept: reranking
+        text: "Confident-irrelevance: the reranker promotes a plausible-but-wrong passage. Latency cliff: per-pair cost scales with candidate count."
+      - block_id: aid-reranking
+        role: matrix
+        artifact_kind: decision_aid
+        # R-EVID-01: speculation must not wear the grammar of fact. The thresholds are operational
+        # judgement, not a measured finding, and the block cites nothing — so it says so.
+        text: "Operational heuristic, not a settled finding: below roughly 0.8 recall@k, fix retrieval first. Above it, with ordering complaints, add a reranker. Treat 100 candidates as a starting point to tune, not a measured optimum."
+      - block_id: fig-reranking
+        role: figure
+        concept: reranking
+        mode: benchmark
+        caption: "Figure 2 (illustrative shape, not measured data): precision climbs with candidate count while latency climbs faster, so the useful range ends early."
+        svg_ref: "assets/reranking.svg"
+      - block_id: recall-reranking
+        role: recall
+        items:
+          - question: "Retrieval returns the right document at rank 40 of 100. Reranker or re-chunk?"
+            answer: "Reranker — the document is present, so the failure is ordering, not recall."
+          - question: "What does a query planner's cheap-filter stage correspond to here?"
+            answer: "The bi-encoder recall stage that produces candidates for the expensive scorer."
+            cross_domain: true
+          - question: "Why does a reranker stop paying off as retrieval precision rises?"
+            answer: "It can only reorder what it is given, so its headroom shrinks as the ordering is already close to right."

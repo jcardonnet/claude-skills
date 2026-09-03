@@ -1,0 +1,407 @@
+[
+  {
+    "id": "C-C-omission-s1",
+    "url": "https://tullie.ai/blog/approximate-nearest-neighbors-algorithms",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Comprehensive ANN algorithm guide; identifies gaps in cost-benefit analysis, workload patterns, hybrid strategies",
+    "fetched_title": "A Comprehensive Guide to Approximate Nearest Neighbors Algorithms | Tullie Murrell",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s2",
+    "url": "https://www.abhik.ai/concepts/embeddings/ann-comparison",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Core trade-offs (HNSW recall vs. RAM, IVF memory vs. recall, LSH streaming vs. weak recall); frameworks for selection",
+    "fetched_title": "HNSW vs IVF-PQ vs LSH: Approximate Nearest Neighbor Algorithms Compared | Abhik Sarkar",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s3",
+    "url": "https://superlinked.com/blog/choosing-a-vector-database",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Production considerations: index rebuild costs, deletion handling, payload size impact, inference coordination",
+    "fetched_title": "A Practical Guide for Choosing a Vector Database | Superlinked Blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s4",
+    "url": "https://arxiv.org/pdf/2411.00970",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Incremental IVF index maintenance for streaming vector search; addresses update bottleneck",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s5",
+    "url": "https://arxiv.org/pdf/2503.00402",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Topology-aware localized update strategy for graph-based ANN; streaming index maintenance",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s6",
+    "url": "https://arxiv.org/html/2511.16681",
+    "type": "primary_paper",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Query-depth-adaptive indexing (SPI) for streaming RAG; production incremental indexing",
+    "fetched_title": "SPI: Query-Depth-Adaptive Indexing for Streaming RAG in Vector Databases",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s7",
+    "url": "https://arxiv.org/pdf/2604.16402",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "GRAB-ANNS: GPU-native bucketing for high-throughput hybrid search; hardware-specific optimization",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s8",
+    "url": "https://arxiv.org/pdf/2401.11324",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "BANG: Billion-scale ANN on single GPU; GPU optimization strategies",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s9",
+    "url": "https://arxiv.org/pdf/2605.16007",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Ascend-RaBitQ: heterogeneous NPU-CPU acceleration with 1-bit quantization; hardware-specific trade-offs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s10",
+    "url": "https://denser.ai/blog/hybrid-search-for-rag/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Hybrid search combining BM25 and dense vectors; fusion methods and performance gains (7.4% NDCG lift)",
+    "fetched_title": "Hybrid Search for RAG: Combining BM25 and Dense Vector Search (2026 Guide)",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s11",
+    "url": "https://www.premai.io/blog/hybrid-search-for-rag-bm25-splade-and-vector-search-combined/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "BM25, SPLADE, and vector search combination; complementary strengths and practical implementation",
+    "fetched_title": "Hybrid Search for RAG: BM25, SPLADE, and Vector Search Combined",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s12",
+    "url": "https://arxiv.org/pdf/2602.17914",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Learning-based query planning for filtered ANN; dynamic pre- vs. post-filtering selection",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s13",
+    "url": "https://arxiv.org/pdf/2606.14193",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Revisiting filtered ANN benchmarks; hardness-controlled evaluation of metadata filtering trade-offs",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s14",
+    "url": "https://zilliz.com/blog/understand-consistency-models-for-vector-databases",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Consistency models (strong, bound, session, eventual) in distributed vector databases; SLA implications",
+    "fetched_title": "Understanding Consistency Models for Vector Databases  - Zilliz blog",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s15",
+    "url": "https://milvus.io/ai-quick-reference/what-are-the-different-types-of-consistency-models-in-distributed-databases",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Tunable consistency levels in Milvus; trade-offs between latency and freshness",
+    "dropped_reason": "HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nMoved Temporarily"
+  },
+  {
+    "id": "C-C-omission-s16",
+    "url": "https://arxiv.org/pdf/2606.11690",
+    "type": "primary_paper",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Concurrency-aware cost estimation for LLM inference; relates latency SLAs to infrastructure cost",
+    "dropped_reason": "non-textual content-type 'application/pdf'"
+  },
+  {
+    "id": "C-C-omission-s17",
+    "url": "https://www.digitalocean.com/blog/llm-inference-tradeoffs",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "LLM inference trilemma (throughput, latency, cost); SLA-driven capacity planning",
+    "fetched_title": "The LLM Inference Trilemma: Throughput, Latency, Cost | DigitalOcean",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s18",
+    "url": "https://mbrenndoerfer.com/writing/product-quantization-ann-search",
+    "type": "blog",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Product quantization: 100\u00d7 compression using learned codebooks; asymmetric distance computation",
+    "dropped_reason": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "id": "C-C-omission-s19",
+    "url": "https://www.aimadetools.com/blog/quantization-tradeoffs-production/",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Quantization trade-offs: 4\u00d7 compression with 1% loss; Q4_K_M as production sweet spot",
+    "fetched_title": "Quantization Trade-offs in Production \u2014 4-bit vs 8-bit vs Full Precision",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s20",
+    "url": "https://dev.to/gabrielanhaia/embedding-drift-detection-a-50-line-monitor-for-production-rag-15dl",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Embedding drift detection for production RAG; monitoring strategies and re-indexing triggers",
+    "fetched_title": "Embedding Drift Detection: A 50-Line Monitor for Production RAG - DEV Community",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s21",
+    "url": "https://www.evidentlyai.com/blog/embedding-drift-detection",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "5 methods for detecting drift in ML embeddings; per-class distribution analysis",
+    "fetched_title": "5 methods to detect drift in ML embeddings",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s22",
+    "url": "https://medium.com/mlworks/ever-changing-embeddings-monitoring-drift-5b148c228192",
+    "type": "blog",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Tracking embedding drift; impacts of model updates on index freshness",
+    "fetched_title": "Medium",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s23",
+    "url": "https://pypi.org/project/faiss-cpu/",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "FAISS v1.15.0 release (Aug 3, 2026)",
+    "fetched_title": "Client Challenge",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s24",
+    "url": "https://milvus.io/docs/v2.6.x/release_notes.md",
+    "type": "docs",
+    "status": "dropped",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Milvus v2.6.16 (May 13, 2026) and v3.0.0-beta (May 9, 2026) release notes",
+    "dropped_reason": "HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nMoved Temporarily"
+  },
+  {
+    "id": "C-C-omission-s25",
+    "url": "https://github.com/qdrant/qdrant/releases",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "Qdrant v1.19.0 (Aug 4, 2026); v1.18 (May 12, 2026) introduced TurboQuant",
+    "fetched_title": "Releases \u00b7 qdrant/qdrant \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  },
+  {
+    "id": "C-C-omission-s26",
+    "url": "https://github.com/microsoft/DiskANN",
+    "type": "docs",
+    "status": "accepted",
+    "provenance_origin": "discovered",
+    "surfaced_by": [
+      "practitioner"
+    ],
+    "report_ids": [
+      "C-C-omission"
+    ],
+    "why": "DiskANN Rust rewrite with real-time updates, composable storage, multiple quantizers",
+    "fetched_title": "GitHub - microsoft/DiskANN: A vector indexing library to bring fast, fresh and filtered search to your database \u00b7 GitHub",
+    "retrieved_at": "2026-08-21"
+  }
+]

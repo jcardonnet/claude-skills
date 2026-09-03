@@ -1,0 +1,30 @@
+# Concept-map for document-ir.full.yaml. Each concept is realized in >=3 modes so R-MV-01 passes.
+concepts:
+  - concept_id: chunking
+    canonical_term: "chunking"
+    aliases: ["chunk splitting"]
+    home_anchor: "index granularity (row vs page)"
+    fidelity_boundary: "breaks where the chunk is also the embedding scope, which has no database analogue"
+    epistemic_status: settled
+    salience: 0.9
+    representation_modes:
+      - {mode: mental_model, block_ref: card-chunking}
+      - {mode: tradeoff, block_ref: matrix-chunking}
+      - {mode: architecture, block_ref: fig-chunking}
+      - {mode: failure, block_ref: body-chunk-size}
+    source_ids: [s-chunk]
+    claim_ids: [C-chunk-1]
+  - concept_id: reranking
+    canonical_term: "reranking"
+    aliases: ["rerank"]
+    home_anchor: "cheap filter then expensive sort"
+    fidelity_boundary: "breaks because the expensive stage scores pairs, not rows in isolation"
+    epistemic_status: contested
+    salience: 0.75
+    representation_modes:
+      - {mode: mental_model, block_ref: card-reranking}
+      - {mode: tradeoff, block_ref: toulmin-reranking}
+      - {mode: failure, block_ref: failures-reranking}
+      - {mode: benchmark, block_ref: fig-reranking}
+    source_ids: [s-rerank]
+    claim_ids: [C-rerank-1, C-rerank-2]

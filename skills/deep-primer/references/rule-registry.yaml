@@ -49,6 +49,12 @@ parameters:
   length_budget:
     type: "str|int"
     desc: "Target length. Drives depth allocation via the ledger-salience proxy (claim-frequency / centrality-in-claims), since V1 has no concept graph."
+  user_structure:
+    type: "list[str]|null"
+    desc: "OPTIONAL. An explicit section structure supplied by the user. Authoritative for top-level coverage and order (R-ARCH-07); each section declares the entry it realizes via `maps_to`, so headings stay predictive claims rather than copied labels. The concept-map still drives depth within sections."
+  reference_case:
+    type: "str|null"
+    desc: "OPTIONAL. A single concrete artifact every claim is grounded against (R-EXPERT-03). A contrastive anchor, not a worked example — R-EXPERT-01 suppresses procedural walkthroughs, never the reference case."
 
 # --- Circuit-breaker / calibration defaults (tune in the eval loop) ----------
 budgets:
@@ -276,7 +282,7 @@ rules:
     directive: "Emit the L1-L5 depth-dial controls and ensure each depth tier renders coherently."
     priority: SHOULD
     enforcement: hard_lint
-    check: {type: script, ref: "utils/parse_primer.py::depth_dial_present", detail: "depth toggles + tier classes present"}
+    check: {type: script, ref: "utils/parse_primer.py::depth_dial_present", input: html, detail: "depth toggles + tier classes present"}
     phase: [3,7]
     counters: "Static document with no disclosure control."
     evidence_grade: engineering
@@ -388,16 +394,28 @@ rules:
 
   # --- EXPERT: expertise reversal --------------------------------------------
   - id: R-EXPERT-01
-    title: "No worked examples in the primary layer"
-    directive: "For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step worked examples; worked examples appear only behind opt-in deeper layers, scaled by seniority_band."
+    title: "No procedural walkthroughs in the primary layer"
+    directive: "For mid_senior/staff_plus readers, the primary layer teaches by CONTRASTIVE COMPARISON (this-vs-that, home-vs-target), not step-by-step PROCEDURAL walkthroughs ('first do X, then do Y'); such walkthroughs appear only behind opt-in deeper layers, scaled by seniority_band. This does NOT suppress a running reference case (R-EXPERT-03): grounding a claim against a shared concrete artifact is contrastive evidence, not scaffolding."
     priority: MUST
     enforcement: soft_critic
-    check: {type: rubric, pass: expertise-calibration, question: "Is the primary layer free of step-by-step worked examples (above early_career), using contrast instead? y/n", pass_example: "The API is the same three calls as any datastore; the only new part is query-by-vector — taught by contrast, no install-step walkthrough."}
+    check: {type: rubric, pass: expertise-calibration, question: "Is the primary layer free of step-by-step procedural walkthroughs (above early_career), using contrast instead? y/n", pass_example: "The API is the same three calls as any datastore; the only new part is query-by-vector — taught by contrast, no install-step walkthrough."}
     phase: [3,4,7]
     counters: "LLM defaults to tutorial-style scaffolding (its training distribution)."
     evidence_grade: load_bearing_empirical
-    evidence_ref: "EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003"
+    evidence_ref: "EM Part I §5 + flag 2; Kalyuga et al. 2001b/2003; dry-run gap G2 (narrowed to procedural)"
     params_used: [seniority_band]
+
+  - id: R-EXPERT-03
+    title: "Running reference case"
+    directive: "When a reference_case is supplied, ground claims against that one shared concrete artifact throughout, and name it where a claim is checked against it. A reference case is a contrastive anchor, not a worked example: it shows what a claim predicts about a real artifact rather than walking the reader through a procedure. Never suppress it as scaffolding (R-EXPERT-01)."
+    priority: SHOULD
+    enforcement: soft_critic
+    check: {type: rubric, pass: expertise-calibration, question: "When a reference_case is supplied, are claims grounded against it as a contrastive anchor rather than replaced by a procedural walkthrough? y/n", pass_example: "'On the reference drawing, 12 of ~80 callouts have kinked leaders — which is where the straight-ray heuristic loses attribution' — the claim is checked against the shared artifact, no step-by-step."}
+    phase: [3,4,7]
+    counters: "Expertise-reversal suppression over-fires and strips the concrete grounding the reader needs to check a claim."
+    evidence_grade: convergent_craft
+    evidence_ref: "dry-run gap G2; EM Part II §7 (CFT — multiple concrete cases for advanced learners)"
+    params_used: [reference_case, seniority_band]
 
   - id: R-EXPERT-02
     title: "Scaffolding behind explicit gates"
@@ -608,7 +626,7 @@ rules:
     directive: "Every figure carries aria-label + role=img + a standalone figcaption."
     priority: SHOULD
     enforcement: hard_lint
-    check: {type: script, ref: "utils/parse_primer.py::figure_a11y", detail: "each <svg>/figure has aria-label, role=img, figcaption"}
+    check: {type: script, ref: "utils/parse_primer.py::figure_a11y", input: html, detail: "each <svg>/figure has aria-label, role=img, figcaption"}
     phase: [5,7]
     counters: "Inaccessible figures with no text alternative."
     evidence_grade: engineering
@@ -648,6 +666,18 @@ rules:
     counters: "LLM emits broken refs and phantom 'see Figure X' pointers."
     evidence_grade: engineering
     evidence_ref: "styleguide §11,§14; deep-primer Phase 4 self-check"
+
+  - id: R-XREF-04
+    title: "Anchor resolution when home ~= target"
+    directive: "When home_domain and target_domain are the same or overlapping, resolve home_anchor to the nearest ADJACENT technique or sub-field the reader already owns - never to the concept itself. The bridge-builder perspective becomes prior-art transfer: which neighbouring method does this borrow from, and where does the borrowing break? An anchor that restates the concept in its own terms is degenerate and fires no advance organizer."
+    priority: MUST
+    enforcement: soft_critic
+    check: {type: rubric, pass: structure, question: "Is each card's home_anchor a genuinely adjacent technique the reader already owns, rather than a restatement of the concept itself? y/n", also_hard_lint: "checks/univocity_terms.py::home_anchor_distinct", pass_example: "For a reader who already does instance segmentation, the anchor for leader-line following is ray casting in graphics - an adjacent technique - not 'segmentation', which is the concept restated."}
+    phase: [1,2,3]
+    counters: "With home ~= target the bridge metaphor degenerates into 'X is like X', and the card's advance-organizer effect never fires."
+    evidence_grade: convergent_craft
+    evidence_ref: "dry-run gap G1; EM Part I §1 (organizers fire only by activating PRIOR knowledge); Gentner structure-mapping"
+    params_used: [home_domain, target_domain]
 
   - id: R-XREF-03
     title: "Edges realized as cross-references"
@@ -762,6 +792,18 @@ rules:
     evidence_grade: engineering
     evidence_ref: "styleguide §6; EM Part I §2 (minimalism)"
     params_used: [length_budget]
+
+  - id: R-ARCH-07
+    title: "User-specified structure is authoritative"
+    directive: "When the user supplies an explicit section structure, it governs the top-level outline: every entry is realized by exactly one section, in the given order, and no top-level section is invented outside it. Headings may still be rewritten as predictive claims (R-SCENT-01) provided each section declares which entry it realizes via `maps_to`. The concept-map continues to drive depth WITHIN those sections."
+    priority: MUST
+    enforcement: hard_lint
+    check: {type: script, ref: "checks/structure_coverage.py::user_structure_respected", detail: "when parameters.user_structure is set: every entry claimed by exactly one section via maps_to, order preserved, no unmapped top-level section"}
+    phase: [2,3,7]
+    counters: "The derived outline quietly replaces the structure the user asked for, or the structure is honored only by copying the user's labels verbatim (which then collide with R-SCENT-01)."
+    evidence_grade: engineering
+    evidence_ref: "dry-run gap G6"
+    params_used: [user_structure]
 
   - id: R-ART-06
     title: "Annotated further-reading"
@@ -889,12 +931,12 @@ rules:
 
   - id: R-DISC-02
     title: "Framing diversity per wave"
-    directive: "Each discovery wave runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), with >=1 deliberately orthogonal framing (contrarian / adjacent-field) per wave; inter-run novelty is measured and redundant archetypes pruned."
+    directive: "The BREADTH wave (A) runs >= MIN_FRAMINGS briefs spanning distinct cells of the diversity matrix (framing/persona x decomposition angle x source-class x seed stance), including >=1 deliberately orthogonal framing (contrarian / adjacent-field). Later waves are targeted follow-ups and carry no floor, but every wave's briefs must occupy DISTINCT cells; inter-run novelty is measured and redundant archetypes pruned."
     priority: MUST
     enforcement: hard_lint
-    check: {type: script, ref: "checks/discovery.py::framing_diversity", input: discovery-log, detail: "each wave's brief manifest covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal"}
+    check: {type: script, ref: "checks/discovery.py::framing_diversity", input: discovery-log, detail: "wave A covers >= MIN_FRAMINGS distinct matrix cells incl. >=1 orthogonal; every wave's briefs occupy distinct cells"}
     phase: [1]
-    counters: "Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost."
+    counters: "Cosmetically-different briefs pay Nx tokens for 1x recall; the ensemble decorrelation is lost. Scoped to wave A (G10): forcing the floor onto a narrow follow-up wave would manufacture exactly that padding."
     evidence_grade: convergent_craft
     evidence_ref: "design (diversity is the lever; blind-spot decorrelation)"
 
@@ -948,7 +990,7 @@ rules:
     directive: "User-provided seed_sources are consulted and grounded. Direct seeds (url/file/project_ref) enter as accepted source_leads, exempt from triage-drop, marked provenance_origin=user; author/entity directives seed a targeted discovery brief. Seeds are authoritative for INCLUSION only: claims from them are still corroboration-graded (R-GROUND-05) and a seed contradicted by the discovered consensus renders as contested. The R-DISC-01 firewall still applies - a seed is fetched and grounded, never pre-trusted prose."
     priority: MUST
     enforcement: hard_lint
-    check: {type: script, ref: "checks/discovery.py::seed_handling", input: discovery-log, detail: "every seed_source appears in discovery-leads as status=accepted with provenance_origin=user; seed-only claims carry corroboration_count and are not promoted past their evidence"}
+    check: {type: script, ref: "checks/discovery.py::seed_handling", input: discovery-leads, detail: "every seed_source appears in discovery-leads as status=accepted with provenance_origin=user; seed-only claims carry corroboration_count and are not promoted past their evidence"}
     phase: [0,1]
     counters: "Treating a user-named source as ground truth - laundering a single seed into an asserted claim, or dropping it because the salience gate scored it low."
     evidence_grade: convergent_craft
